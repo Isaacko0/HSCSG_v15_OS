@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DeseOS — Color System (from P1 Identity Manual)
+   ============================================================ */
+
+:root {
+  /* Core Trio */
+  --color-vacio: #0A1024;
+  --color-aliento: #F7FAFF;
+  --color-chispa: #AFEB00;
+  
+  /* Reserved */
+  --color-crepusculo: #4F46E5;
+  --color-tinta-suave: #1E294F;
+  
+  /* Semáforo */
+  --color-critico: #D6336C;
+  --color-riesgo: #E8590C;
+  --color-irregular: #C98A12;
+  --color-estable: #0F9D8A;
+  --color-saludable: #AFEB00;
+  
+  /* Gradients */
+  --grad-cosmos: linear-gradient(135deg, #0c34e9 0%, #6524d6 100%);
+  --grad-wish: linear-gradient(135deg, #4f6a00 0%, #8a5c00 100%);
+  
+  /* UI */
+  --ink: #f2f5fd;
+  --mut: #9aa8ce;
+  --dim: #7c8bb4;
+  --line: rgba(148, 178, 255, 0.24);
+  --lineq: rgba(148, 178, 255, 0.14);
+  --surf: #071041;
+  --surf2: #0a1630;
+  --surf3: #0e1f4a;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+    background: var(--color-vacio);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+  }
+}
+
+/* ============================================================
+   Font Faces (local woff2)
+   ============================================================ */
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('@shared/assets/fonts/37b107a0-f38a-4d4f-96d6-074cd9c23276.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('@shared/assets/fonts/37b107a0-f38a-4d4f-96d6-074cd9c23276.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('@shared/assets/fonts/37b107a0-f38a-4d4f-96d6-074cd9c23276.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('@shared/assets/fonts/37b107a0-f38a-4d4f-96d6-074cd9c23276.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('@shared/assets/fonts/37b107a0-f38a-4d4f-96d6-074cd9c23276.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('@shared/assets/fonts/37b107a0-f38a-4d4f-96d6-074cd9c23276.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('@shared/assets/fonts/37b107a0-f38a-4d4f-96d6-074cd9c23276.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('@shared/assets/fonts/37b107a0-f38a-4d4f-96d6-074cd9c23276.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('@shared/assets/fonts/37b107a0-f38a-4d4f-96d6-074cd9c23276.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('@shared/assets/fonts/37b107a0-f38a-4d4f-96d6-074cd9c23276.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('@shared/assets/fonts/37b107a0-f38a-4d4f-96d6-074cd9c23276.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ============================================================
+   Utility Classes
+   ============================================================ */
+
+.font-jost { font-family: 'Jost', sans-serif; }
+.font-manrope { font-family: 'Manrope', sans-serif; }
+.font-newsreader { font-family: 'Newsreader', serif; }
+.font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+.text-vacio { color: var(--color-vacio); }
+.text-aliento { color: var(--color-aliento); }
+.color-chispa { color: var(--color-chispa); }
+.bg-vacio { background-color: var(--color-vacio); }
+.bg-aliento { background-color: var(--color-aliento); }
+.bg-chispa { background-color: var(--color-chispa); }
+
+.grad-cosmos { background: var(--grad-cosmos); }
+.grad-wish { background: var(--grad-wish); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--surf); }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--mut); }
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--color-chispa);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-chispa);
+  color: var(--color-vacio);
+}
