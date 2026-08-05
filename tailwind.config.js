@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        // DeseOS Design System
+        // Cosateca OS Design System
         vacio: '#0A1024',
         aliento: '#F7FAFF',
         chispa: '#AFEB00',

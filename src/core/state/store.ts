@@ -47,7 +47,7 @@ import { makeIntegralState, raiseIssue, ratifyDecision, certifyDesign, logLabor,
 import * as seed from '@core/state/seed'
 
 export interface AppState {
-  // Navigation (reused from DeseOS shell)
+  // Navigation (reused from Cosateca OS shell)
   screen: string
   collapsed: boolean
   navOpen: boolean
@@ -57,7 +57,7 @@ export interface AppState {
   toggleNav: () => void
   setVw: (v: number) => void
 
-  // Overlays (reused from DeseOS shell)
+  // Overlays (reused from Cosateca OS shell)
   notif: boolean
   notifList: any[]
   acct: boolean

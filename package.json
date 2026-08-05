@@ -1,7 +1,7 @@
 {
-  "name": "deseos",
-  "version": "1.0.0",
-  "description": "DeseOS / Contento.pro \u2014 Marketing Agency Operating System",
+  "name": "hscsg-v15-os",
+  "version": "15.14.0",
+  "description": "HSCSG v15 OS / Cosateca — Sistema operativo comunitario postmonetario (Materialismo Jerárquico + CaaS)",
   "type": "module",
   "scripts": {
     "dev": "vite",

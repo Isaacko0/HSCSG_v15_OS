@@ -6,7 +6,7 @@ description: Metodología probada para asimilar repositorios externos (cualquier
 # HSCSG v15 OS — Asimilación de repos externos
 
 ## Qué es HSCSG_v15_OS
-App web local (sin backend) tipo sistema operativo comunitario postmonetario. Fork de DeseOS/Contento.pro.
+App web local (sin backend) tipo sistema operativo comunitario postmonetario. Fork de Cosateca OS/Cosateca.
 Stack: React 18 + TypeScript + Vite 5 + React Router 6 + Zustand 4 (persist en localStorage) + Tailwind 3 + lucide-react.
 Cada repo externo se integra como un módulo vivo (pantalla navegable + estado persistido), no como dependencia.
 

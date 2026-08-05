@@ -67,10 +67,10 @@ Todas las entradas siguen el formato: versión, fecha, repos asimilados en ese p
 ## v15.1–v15.7 — 2026-08-05 · Asimilaciones base (paperclip, CaaS, Conway, Solarpunk×2, Eliza, prioritize)
 - **Asimilados:** Paperclip→Orquestación · CaaS→CaaS · Conway→Autómata Soberano · liz+isaac Solarpunk→Solarpunk·Don · Eliza→Colaberry · ZiadJ/prioritize→Priorizar·Colectivo.
 - **Documentos:** `docs/*_backup.md` + `docs/*_integration.md` para cada uno.
-- **Módulos:** `/orquestacion`, `/caas`, `/automat`, `/solarpunk`, `/colaberry`, `/priorizar` (+ los del fork DeseOS: Home, Base, Lucidez, Colectivo, ZNU, Verificación, Automat).
+- **Módulos:** `/orquestacion`, `/caas`, `/automat`, `/solarpunk`, `/colaberry`, `/priorizar` (+ los del fork Cosateca OS: Home, Base, Lucidez, Colectivo, ZNU, Verificación, Automat).
 - **Detalle:** ver `docs/automaton_backup_original.md`, `docs/CaaS_backup_original.md`, `docs/automaton_integration.md`, `docs/CaaS_integration.md`, `docs/colaberry_backup.md`, `docs/colaberry_integration.md`, `docs/prioritize_backup.md`, `docs/prioritize_integration.md`, `docs/solarpunk_integration.md`, `docs/solarpunk_liz_backup.md`, `docs/solarpunk_isaac_backup.md`.
 
-## v15.0 — Fork inicial (DeseOS / Contento.pro)
+## v15.0 — Fork inicial (Cosateca OS / Cosateca)
 - Base del proyecto: marketing agency OS con 7 pantallas base (Home, Base Material, Lucidez, Colectivo, ZNU, Verificación, Automat).
 - Stack: React 18 + TS + Vite + Zustand + Tailwind + lucide-react.
 - `vite.config.ts` con aliases `@core`, `@app`, `@components`, `@shared`.

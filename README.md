@@ -1,6 +1,6 @@
 # HSCSG v15 OS
 
-**Nodo Cosateca v0.1** — Sistema operativo comunitario postmonetario construido sobre el *Materialismo Jerárquico* (Leyes I/II/III) y el *CaaS* (Comunidad como Servicio). Fork de DeseOS / Contento.pro, ampliado por asimilación de 20 repositorios externos como módulos vivos.
+**Nodo Cosateca v0.1** — Sistema operativo comunitario postmonetario construido sobre el *Materialismo Jerárquico* (Leyes I/II/III) y el *CaaS* (Comunidad como Servicio). Fork de Cosateca OS / Cosateca, ampliado por asimilación de 20 repositorios externos como módulos vivos.
 
 > Repositorio: https://github.com/Isaacko0/HSCSG_v15_OS
 > Preview local: http://localhost:4173/
@@ -42,14 +42,14 @@ Cada repo asimilado deja dos documentos en `docs/`:
 
 | # | Ruta | Módulo | Origen | Qué hace |
 |---|------|--------|--------|----------|
-| 1 | `/` | Home | DeseOS | Panel de entrada / estado del nodo |
-| 2 | `/base` | Base Material | DeseOS | Tierra, agua, energía, comida, herramientas (núcleo Ley I) |
-| 3 | `/lucidez` | Lucidez | DeseOS | Claridad y transparencia (Ley III) |
-| 4 | `/colectivo` | Colectivo | DeseOS | Tejido social del nodo |
+| 1 | `/` | Home | Cosateca OS | Panel de entrada / estado del nodo |
+| 2 | `/base` | Base Material | Cosateca OS | Tierra, agua, energía, comida, herramientas (núcleo Ley I) |
+| 3 | `/lucidez` | Lucidez | Cosateca OS | Claridad y transparencia (Ley III) |
+| 4 | `/colectivo` | Colectivo | Cosateca OS | Tejido social del nodo |
 | 5 | `/automata` | Autómata Soberano | **Conway Automaton** | Entidad que sobrevive si regenera su base material |
-| 6 | `/znu` | ZNU | DeseOS + extendido | Moneda interna del nodo (demurrage, paridad) |
-| 7 | `/verificacion` | Verificación | DeseOS | Comprobación de verdad / manipulación |
-| 8 | `/automat` | Automat | DeseOS | Operador/agente del nodo |
+| 6 | `/znu` | ZNU | Cosateca OS + extendido | Moneda interna del nodo (demurrage, paridad) |
+| 7 | `/verificacion` | Verificación | Cosateca OS | Comprobación de verdad / manipulación |
+| 8 | `/automat` | Automat | Cosateca OS | Operador/agente del nodo |
 | 9 | `/orquestacion` | Orquestación | **Paperclip (resolveskills)** | Control plane de agentes + gates del Materialismo Jerárquico |
 | 10 | `/caas` | CaaS · Comunidad | **CaaS (C2C)** | Acceso por contribución (AUT × CDS), no por pago |
 | 11 | `/solarpunk` | Solarpunk · Don | **Solarpunk (x2)** | Ofertas/necesidades/mesh de regalo |
@@ -184,4 +184,4 @@ Cada asimilación primero hace `cp -r HSCSG_v15_OS HSCSG_v15_OS_BACKUP_<ts>` (si
 
 ## Licencia
 
-El fork DeseOS/Contento.pro conserva su licencia original. Los repos asimilados mantienen la suya (MIT en la mayoría: sovereignty-hub, tekitl es GPL-3.0, trustlines es GPL). El código de integración de HSCSG v15 OS se publica bajo la misma licencia del fork salvo donde se indique.
+El fork Cosateca OS/Cosateca conserva su licencia original. Los repos asimilados mantienen la suya (MIT en la mayoría: sovereignty-hub, tekitl es GPL-3.0, trustlines es GPL). El código de integración de HSCSG v15 OS se publica bajo la misma licencia del fork salvo donde se indique.
