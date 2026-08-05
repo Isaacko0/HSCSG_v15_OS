@@ -26,6 +26,7 @@ import type { PrioritizeState, Proposal } from '@core/state/prioritize'
 import type { VestingState } from '@core/state/vesting'
 import type { TrustState } from '@core/state/trustlines'
 import type { TekitlState } from '@core/state/tekitl'
+import type { SovereigntyState } from '@core/state/sovereignty'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -40,6 +41,7 @@ import {
   createProject, transitionStage, addRole, applyToRole, acceptVolunteer,
   logHours, completeVolunteer, mintCoins, appendTimeline, declareTalent
 } from '@core/lib/tekitl'
+import { makeSovereigntyState, cellKey, patternTheoryScore } from '@core/lib/sovereignty'
 import * as seed from '@core/state/seed'
 
 export interface AppState {
@@ -127,6 +129,9 @@ export interface AppState {
   // ===== Tekitl (asimilado de Baruch4413/tekitl) =====
   tekitl: TekitlState
 
+  // ===== Soberanía (asimilado de overkillkulture/sovereignty-hub + tairea/sovereignty-hub-ui) =====
+  sovereignty: SovereigntyState
+
   // actions
   setNodeName: (n: string) => void
   updateBase: (u: Partial<BaseMaterial>) => void
@@ -197,6 +202,9 @@ export interface AppState {
   potenciarProject: (projectId: string, fromUserId: string, toUserId: string, amount: number) => void
   appendProjectNote: (projectId: string, actorId: string, note: string) => void
   declareTalent: (userId: string, occupation: string, confidence: number, yearsExp: number) => void
+  // Soberanía
+  setSovereigntyAnswer: (pillar: number, layer: number, phase: 'none' | 'survive' | 'build' | 'scale') => void
+  computePatternScore: () => void
   resetAll: () => void
 }
 
@@ -436,6 +444,9 @@ export const useAppStore = create<AppState>()(
           { id: 'tal4', userId: 'Eva', occupation: 'Electricista', confidence: 3, yearsExp: 5 },
         ],
       },
+      // Soberanía (asimilado de overkillkulture/sovereignty-hub + tairea/sovereignty-hub-ui)
+      // 13 pilares × 7 capas × 3 fases = diagnóstico de base material del nodo (isomorfo a Materialismo Jerárquico).
+      sovereignty: makeSovereigntyState(),
 
       setNodeName: (n) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
@@ -637,6 +648,15 @@ export const useAppStore = create<AppState>()(
           talents: [...st.tekitl.talents, declareTalent(userId, occupation, confidence, yearsExp)],
         },
       })),
+      // ---- Soberanía (asimilado de overkillkulture/sovereignty-hub + tairea/sovereignty-hub-ui) ----
+      setSovereigntyAnswer: (pillar, layer, phase) => set((st) => {
+        const key = cellKey(pillar, layer)
+        const answers = { ...st.sovereignty.answers, [key]: phase }
+        return { sovereignty: { ...st.sovereignty, answers, patternScore: patternTheoryScore(answers) } }
+      }),
+      computePatternScore: () => set((st) => ({
+        sovereignty: { ...st.sovereignty, patternScore: patternTheoryScore(st.sovereignty.answers) },
+      })),
       resetAll: () =>
         set({
           nodeName: 'Nodo Cosateca v0.1',
@@ -720,6 +740,8 @@ export const useAppStore = create<AppState>()(
         timeline: [],
         talents: [],
       },
+      // Soberanía (asimilado de overkillkulture/sovereignty-hub + tairea/sovereignty-hub-ui)
+      sovereignty: makeSovereigntyState(),
         }),
     }),
     {
@@ -757,6 +779,7 @@ export const useAppStore = create<AppState>()(
         vesting: st.vesting,
         trust: st.trust,
         tekitl: st.tekitl,
+        sovereignty: st.sovereignty,
       }),
     },
   ),

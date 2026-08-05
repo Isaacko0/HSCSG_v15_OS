@@ -16,6 +16,7 @@ import { Priorizar } from '@app/screens/Priorizar'
 import { Vesting } from '@app/screens/Vesting'
 import { Trustlines } from '@app/screens/Trustlines'
 import { Tekitl } from '@app/screens/Tekitl'
+import { Soberania } from '@app/screens/Soberania'
 
 export function App() {
   return (
@@ -37,6 +38,7 @@ export function App() {
         <Route path="vesting" element={<Vesting />} />
         <Route path="trustlines" element={<Trustlines />} />
         <Route path="tekitl" element={<Tekitl />} />
+        <Route path="soberania" element={<Soberania />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
