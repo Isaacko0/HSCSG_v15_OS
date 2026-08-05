@@ -1,5 +1,5 @@
 import {
-  Mountain, Database, Eye, Users, Cpu, Coins, LayoutDashboard, Network, Users2, Bot, Leaf, MessagesSquare, ListChecks, Unlock, Link2, Briefcase, ShieldHalf,
+  Mountain, Database, Eye, Users, Cpu, Coins, LayoutDashboard, Network, Users2, Bot, Leaf, MessagesSquare, ListChecks, Unlock, Link2, Briefcase, ShieldHalf, RefreshCw,
   ChevronsLeft, ChevronsRight,
 } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -24,6 +24,7 @@ const NAV_ITEMS = [
   { key: 'trustlines', label: 'Trustlines · Crédito', icon: Link2, color: 'text-teal-400', path: '/trustlines' },
   { key: 'tekitl', label: 'Tekitl · Proyectos', icon: Briefcase, color: 'text-sky-400', path: '/tekitl' },
   { key: 'soberania', label: 'Soberanía · 13 Pilares', icon: ShieldHalf, color: 'text-emerald-400', path: '/soberania' },
+  { key: 'integral', label: 'Integral · Loop', icon: RefreshCw, color: 'text-emerald-400', path: '/integral' },
 ] as const
 
 interface AsideProps {

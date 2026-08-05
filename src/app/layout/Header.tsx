@@ -1,4 +1,4 @@
-import { Menu, X, Search, Bell, ChevronsRight, ChevronsLeft, Moon } from 'lucide-react'
+import { Menu, X, Search, Bell, ChevronsRight, ChevronsLeft, Moon, Sun } from 'lucide-react'
 import { useAppStore } from '@core/state/store'
 import { clsx } from 'clsx'
 
@@ -15,7 +15,7 @@ const SCREENS: Record<string, string> = {
 export function Header({ collapsed, onToggleCollapse, onToggleNav, isMobile, navOpen }: {
   collapsed: boolean; onToggleCollapse: () => void; onToggleNav: () => void; isMobile: boolean; navOpen: boolean
 }) {
-  const { screen, nodeName, notif, toggleNotif, acct, toggleAcct, search, setSearch } = useAppStore()
+  const { screen, nodeName, notif, toggleNotif, acct, toggleAcct, search, setSearch, lucidez, toggleLucidez } = useAppStore()
 
   return (
     <header className={clsx(
@@ -51,9 +51,23 @@ export function Header({ collapsed, onToggleCollapse, onToggleNav, isMobile, nav
         />
       </div>
       <div className="flex items-center gap-2">
-        <span className="text-[var(--mut)] text-xs hidden md:flex items-center gap-1">
-          <Moon className="w-4 h-4" /> modo lucidez
-        </span>
+        <button
+          onClick={toggleLucidez}
+          className={clsx(
+            'flex items-center gap-2 h-10 px-3 rounded-xl border transition-colors',
+            lucidez
+              ? 'border-chispa text-[var(--ink)] bg-[var(--surf2)]'
+              : 'border-[var(--line)] text-[var(--mut)] hover:text-white hover:bg-[var(--surf2)]',
+          )}
+          aria-label="Modo Lucidez (Ley III: transparencia radical)"
+          aria-pressed={lucidez}
+          title="Modo Lucidez · Ley III: lucidez, nunca engañar. Invierte a tema diurno y revela datos crudos."
+        >
+          {lucidez ? <Sun className="w-4 h-4 text-chispa" /> : <Moon className="w-4 h-4" />}
+          <span className="text-xs hidden md:flex items-center gap-1">
+            {lucidez ? 'Lucidez ON' : 'modo lucidez'}
+          </span>
+        </button>
         <button onClick={toggleNotif} className="w-10 h-10 flex items-center justify-center rounded-xl border border-[var(--line)] text-[var(--mut)] hover:text-white hover:bg-[var(--surf2)] transition-colors relative" aria-label="Notificaciones" aria-expanded={notif}>
           <Bell className="w-5 h-5" />
           <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-amber-400 rounded-full" aria-hidden="true" />

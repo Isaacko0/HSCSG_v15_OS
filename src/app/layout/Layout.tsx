@@ -6,6 +6,7 @@ import { Header } from './Header'
 import { Coach } from './Coach'
 import { Notifications } from './Notifications'
 import { AccountMenu } from './AccountMenu'
+import { Eye } from 'lucide-react'
 
 export function Layout() {
   const location = useLocation()
@@ -41,6 +42,10 @@ export function Layout() {
           isMobile={isMobile}
           navOpen={navOpen}
         />
+        <div className="lucidez-banner items-center gap-2 px-4 md:px-6 py-1.5 bg-chispa/15 border-b border-chispa/40 text-[var(--ink)] text-xs font-manrope">
+          <Eye className="w-4 h-4 text-chispa" aria-hidden="true" />
+          <span><strong>Modo Lucidez activo</strong> · Ley III: lucidez, nunca engañar. Tema diurno + datos crudos y provenance visibles en cada módulo.</span>
+        </div>
         <div className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
           <Outlet />
         </div>

@@ -198,3 +198,37 @@
   background: var(--color-chispa);
   color: var(--color-vacio);
 }
+
+/* ============================================================
+   Modo Lucidez (Ley III — transparencia radical)
+   Toggle en Header. Invierte a tema diurno (aliento/sol) y
+   revela datos crudos / provenance ocultos por defecto.
+   ============================================================ */
+[data-lucidez="on"] {
+  /* Tema diurno — el nodo "se despierta" (sol, no luna) */
+  --ink: #0a1024;
+  --mut: #4a598a;
+  --dim: #6b7aa6;
+  --line: rgba(20, 40, 90, 0.22);
+  --lineq: rgba(20, 40, 90, 0.12);
+  --surf: #f7faff;
+  --surf2: #eaf0fb;
+  --surf3: #dde6f7;
+  --color-vacio: #f7faff;
+}
+
+[data-lucidez="on"] body {
+  background: var(--color-vacio);
+  color: var(--ink);
+}
+
+[data-lucidez="on"] ::-webkit-scrollbar-track { background: var(--surf2); }
+[data-lucidez="on"] ::-webkit-scrollbar-thumb { background: var(--line); }
+
+/* Datos crudos / provenance: ocultos por defecto, visibles en Modo Lucidez */
+.lucidez-raw { display: none; }
+[data-lucidez="on"] .lucidez-raw { display: block; }
+
+/* Banner de ley III cuando el modo está activo */
+.lucidez-banner { display: none; }
+[data-lucidez="on"] .lucidez-banner { display: flex; }

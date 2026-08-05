@@ -17,6 +17,7 @@ import { Vesting } from '@app/screens/Vesting'
 import { Trustlines } from '@app/screens/Trustlines'
 import { Tekitl } from '@app/screens/Tekitl'
 import { Soberania } from '@app/screens/Soberania'
+import { Integral } from '@app/screens/Integral'
 
 export function App() {
   return (
@@ -39,6 +40,7 @@ export function App() {
         <Route path="trustlines" element={<Trustlines />} />
         <Route path="tekitl" element={<Tekitl />} />
         <Route path="soberania" element={<Soberania />} />
+        <Route path="integral" element={<Integral />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

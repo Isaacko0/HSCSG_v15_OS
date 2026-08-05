@@ -27,6 +27,7 @@ import type { VestingState } from '@core/state/vesting'
 import type { TrustState } from '@core/state/trustlines'
 import type { TekitlState } from '@core/state/tekitl'
 import type { SovereigntyState } from '@core/state/sovereignty'
+import type { IntegralState } from '@core/state/integral'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -42,6 +43,7 @@ import {
   logHours, completeVolunteer, mintCoins, appendTimeline, declareTalent
 } from '@core/lib/tekitl'
 import { makeSovereigntyState, cellKey, patternTheoryScore } from '@core/lib/sovereignty'
+import { makeIntegralState, raiseIssue, ratifyDecision, certifyDesign, logLabor, awardCredits, ingestSignal, recommend, promoteRecommendation } from '@core/lib/integral'
 import * as seed from '@core/state/seed'
 
 export interface AppState {
@@ -67,6 +69,10 @@ export interface AppState {
   brands: { id: string; name: string; handle: string; ini: string; logo?: string; accent?: string }[]
   brandsOff: number[]
   extraBrands: { id: string; name: string; handle: string; ini: string }[]
+  // Modo Lucidez (Ley III: transparencia radical — tema diurno + datos crudos visibles)
+  lucidez: boolean
+  toggleLucidez: () => void
+  setLucidez: (v: boolean) => void
   setBrand: (b: number) => void
   toggleBrandOff: (i: number) => void
   addExtraBrand: (b: { id: string; name: string; handle: string; ini: string }) => void
@@ -131,6 +137,9 @@ export interface AppState {
 
   // ===== Soberanía (asimilado de overkillkulture/sovereignty-hub + tairea/sovereignty-hub-ui) =====
   sovereignty: SovereigntyState
+
+  // ===== Integral (asimilado de Integral Collective: 9 repos) =====
+  integral: IntegralState
 
   // actions
   setNodeName: (n: string) => void
@@ -205,6 +214,15 @@ export interface AppState {
   // Soberanía
   setSovereigntyAnswer: (pillar: number, layer: number, phase: 'none' | 'survive' | 'build' | 'scale') => void
   computePatternScore: () => void
+  // Integral
+  raiseIntegralIssue: (title: string, raisedBy: string) => void
+  ratifyIntegralDecision: (issueId: string, decision: string, context: string, reasoning: string, supersedes?: string) => void
+  certifyIntegralDesign: (title: string, ecoScore: number) => void
+  logIntegralLabor: (projectId: string, participant: string, hours: number) => void
+  awardIntegralCredits: (participant: string, raw: number, ageDays?: number) => void
+  ingestIntegralSignal: (fromSystem: 'CDS' | 'OAD' | 'ITC' | 'COS' | 'FRS', severity: 'info' | 'warning' | 'critical', finding: string) => void
+  recommendIntegral: (finding: string, target: 'CDS' | 'OAD' | 'ITC' | 'COS' | 'FRS') => void
+  promoteRecommendation: (recId: string) => void
   resetAll: () => void
 }
 
@@ -292,7 +310,13 @@ export const useAppStore = create<AppState>()(
       setVw: (v) => set({ vw: v }),
 
       notif: false,
-      notifList: [],
+      notifList: [
+        { type: 'info', title: 'CaaS · Acceso disponible', body: 'Tu contribución AUT del mes habilita 3 vectores de acceso (ALIM, ENER, SALU).', time: 'hace 2h', onClick: () => {} },
+        { type: 'success', title: 'Vesting · Tramo liberado', body: 'Se liberaron 15.000 ZNU de tu allocation de 100.000. Reclamables ahora.', time: 'hace 5h', onClick: () => {} },
+        { type: 'warning', title: 'Soberanía · Pilar Water en build', body: 'Falta redundancia de bombeo. Sube la fase en /soberania para cerrar el eslabón débil.', time: 'ayer', onClick: () => {} },
+        { type: 'alert', title: 'Trustlines · Límite cercano', body: 'La línea Isaac↔Luz alcanzó el 60% del crédito mutuo. Considera saldar o ampliar.', time: 'ayer', onClick: () => {} },
+        { type: 'info', title: 'Integral · Loop en salud 78/100', body: 'FRS reporta 1 señal crítica en OAD (eco-assessment de baterías). Promovida a issue.', time: 'hace 2d', onClick: () => {} },
+      ],
       acct: false,
       acctMsg: null,
       brand: 0,
@@ -301,6 +325,22 @@ export const useAppStore = create<AppState>()(
       extraBrands: [],
       coach: { open: false, busy: false, draft: '', messages: [] },
       search: '',
+      lucidez: false,
+      toggleLucidez: () => set((st) => {
+        const v = !st.lucidez
+        if (typeof document !== 'undefined') {
+          if (v) document.documentElement.dataset.lucidez = 'on'
+          else delete document.documentElement.dataset.lucidez
+        }
+        return { lucidez: v }
+      }),
+      setLucidez: (v) => set(() => {
+        if (typeof document !== 'undefined') {
+          if (v) document.documentElement.dataset.lucidez = 'on'
+          else delete document.documentElement.dataset.lucidez
+        }
+        return { lucidez: v }
+      }),
       toggleNotif: () => set((st) => ({ notif: !st.notif })),
       setNotifList: (l) => set({ notifList: l }),
       toggleAcct: () => set((st) => ({ acct: !st.acct })),
@@ -447,6 +487,9 @@ export const useAppStore = create<AppState>()(
       // Soberanía (asimilado de overkillkulture/sovereignty-hub + tairea/sovereignty-hub-ui)
       // 13 pilares × 7 capas × 3 fases = diagnóstico de base material del nodo (isomorfo a Materialismo Jerárquico).
       sovereignty: makeSovereigntyState(),
+      // Integral (asimilado de Integral Collective: 9 repos)
+      // Loop cerrado postmonetario: CDS→OAD→COS→ITC→FRS→CDS. Filosofía de coordinación del nodo.
+      integral: makeIntegralState(),
 
       setNodeName: (n) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
@@ -657,6 +700,44 @@ export const useAppStore = create<AppState>()(
       computePatternScore: () => set((st) => ({
         sovereignty: { ...st.sovereignty, patternScore: patternTheoryScore(st.sovereignty.answers) },
       })),
+      // ---- Integral (asimilado de Integral Collective: 9 repos) ----
+      raiseIntegralIssue: (title, raisedBy) => set((st) => ({
+        integral: { ...st.integral, issues: [...st.integral.issues, raiseIssue(title, raisedBy)] },
+      })),
+      ratifyIntegralDecision: (issueId, decision, context, reasoning, supersedes) => set((st) => {
+        const r = ratifyDecision(st.integral.issues, issueId, decision, context, reasoning, supersedes)
+        const issues = r.issue
+          ? st.integral.issues.map((i) => (i.id === issueId ? r.issue! : i))
+          : st.integral.issues
+        return { integral: { ...st.integral, issues, decisions: [...st.integral.decisions, r.dr] } }
+      }),
+      certifyIntegralDesign: (title, ecoScore) => set((st) => ({
+        integral: { ...st.integral, designs: [...st.integral.designs, certifyDesign(title, ecoScore)] },
+      })),
+      logIntegralLabor: (projectId, participant, hours) => set((st) => ({
+        integral: { ...st.integral, labor: [...st.integral.labor, logLabor(projectId, participant, hours)] },
+      })),
+      awardIntegralCredits: (participant, raw, ageDays = 0) => set((st) => ({
+        integral: { ...st.integral, credits: [...st.integral.credits, awardCredits(participant, raw, ageDays)] },
+      })),
+      ingestIntegralSignal: (fromSystem, severity, finding) => set((st) => ({
+        integral: { ...st.integral, signals: [...st.integral.signals, ingestSignal(fromSystem, severity, finding)] },
+      })),
+      recommendIntegral: (finding, target) => set((st) => ({
+        integral: { ...st.integral, recommendations: [...st.integral.recommendations, recommend(finding, target)] },
+      })),
+      promoteRecommendation: (recId) => set((st) => {
+        const rec = st.integral.recommendations.find((r) => r.id === recId)
+        if (!rec || rec.promotedToIssue) return {}
+        const p = promoteRecommendation(rec)
+        return {
+          integral: {
+            ...st.integral,
+            recommendations: st.integral.recommendations.map((r) => (r.id === recId ? p.rec : r)),
+            issues: [...st.integral.issues, p.issue],
+          },
+        }
+      }),
       resetAll: () =>
         set({
           nodeName: 'Nodo Cosateca v0.1',
@@ -742,6 +823,8 @@ export const useAppStore = create<AppState>()(
       },
       // Soberanía (asimilado de overkillkulture/sovereignty-hub + tairea/sovereignty-hub-ui)
       sovereignty: makeSovereigntyState(),
+      // Integral (asimilado de Integral Collective: 9 repos)
+      integral: makeIntegralState(),
         }),
     }),
     {
@@ -780,6 +863,8 @@ export const useAppStore = create<AppState>()(
         trust: st.trust,
         tekitl: st.tekitl,
         sovereignty: st.sovereignty,
+        integral: st.integral,
+        lucidez: st.lucidez,
       }),
     },
   ),
