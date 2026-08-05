@@ -4,6 +4,7 @@
 
 > Repositorio: https://github.com/Isaacko0/HSCSG_v15_OS
 > Preview local: http://localhost:4173/
+> Deploy (Vercel): https://hscsg-v15-os.vercel.app/
 > Skill de asimilación incluida en `skills/hscsg-repo-assimilation/`
 
 ---
@@ -156,6 +157,16 @@ npm run test           # vitest
 ```
 
 > El preview (`npm run preview`) sirve `dist/` como una app estática portable. Por limitaciones de ES modules, **ábrelo vía el servidor** (`localhost:4173`), no con `file://`.
+
+---
+
+## Deploy (Vercel)
+
+La app es 100% estática (sin backend). `vercel.json` ya configura el build (`npm run build` → `dist/`) y el rewrite SPA (`/* → /index.html`, requerido por `BrowserRouter`).
+
+- **Producción:** https://hscsg-v15-os.vercel.app/
+- Despliega conectando el repo `Isaacko0/HSCSG_v15_OS` en vercel.com (auto-detecta Vite) o vía CLI: `vercel --prod`.
+- Cada push a `master` re-despliega automáticamente.
 
 ---
 

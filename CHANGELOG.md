@@ -4,6 +4,13 @@ Todas las entradas siguen el formato: versión, fecha, repos asimilados en ese p
 
 ---
 
+## v15.14 — 2026-08-05 · Deploy en Vercel
+- **URL de producción:** https://hscsg-v15-os.vercel.app/
+- **Config:** `vercel.json` (build `npm run build`, output `dist`, rewrite `/* → /index.html` para SPA/BrowserRouter) + `netlify.toml` (alternativa).
+- **README/CHANGELOG:** añadido enlace de deploy y sección "Deploy (Vercel)".
+
+---
+
 ## v15.13 — 2026-08-05 · Modo Lucidez (Ley III) + skill de asimilación
 - **Modo Lucidez:** el botón de luna del Header ahora es un toggle real de transparencia radical (Ley III: *lucidez, nunca engañar*). Al activarse: invierte el tema a **diurno** (sol, `data-lucidez="on"` en `<html>`), muestra un **banner de Ley III** en el Layout, y revela bloques `.lucidez-raw` con **datos crudos y provenance** (ej. desglose de System Health y origen de señales FRS en `/integral`).
 - **Implementación:** `store.ts` (`lucidez`, `toggleLucidez`, `setLucidez`, persistido + efecto en `document.documentElement`); `global.css` (bloque `[data-lucidez="on"]` + reglas `.lucidez-raw`/`.lucidez-banner`); `Header.tsx` (botón Moon↔Sun); `Layout.tsx` (banner); `Integral.tsx` (bloque crudo).
