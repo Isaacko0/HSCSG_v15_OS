@@ -1,9 +1,10 @@
 # HSCSG v15 OS
 
-**Nodo Cosateca v0.1** — Sistema operativo comunitario postmonetario construido sobre el *Materialismo Jerárquico* (Leyes I/II/III) y el *CaaS* (Comunidad como Servicio). Fork de DeseOS / Contento.pro, ampliado por asimilación de 11 repositorios externos como módulos vivos.
+**Nodo Cosateca v0.1** — Sistema operativo comunitario postmonetario construido sobre el *Materialismo Jerárquico* (Leyes I/II/III) y el *CaaS* (Comunidad como Servicio). Fork de DeseOS / Contento.pro, ampliado por asimilación de 20 repositorios externos como módulos vivos.
 
 > Repositorio: https://github.com/Isaacko0/HSCSG_v15_OS
 > Preview local: http://localhost:4173/
+> Skill de asimilación incluida en `skills/hscsg-repo-assimilation/`
 
 ---
 
@@ -57,12 +58,16 @@ Cada repo asimilado deja dos documentos en `docs/`:
 | 15 | `/trustlines` | Trustlines · Crédito | **trustlines-protocol** | Crédito mutuo ZNU entre pares (deuda bilateral simétrica) |
 | 16 | `/tekitl` | Tekitl · Proyectos | **Baruch4413/tekitl** | Proyectos colaborativos + coins sociales + portafolio |
 | 17 | `/soberania` | Soberanía · 13 Pilares | **sovereignty-hub + ui** | Diagnóstico de base material (3×7×13) + Pattern Theory |
+| 18 | `/integral` | Integral · Loop | **Integral Collective (9 repos)** | Loop cerrado postmonetario CDS→OAD→COS→ITC→FRS (planificación/reestructuración/retroalimentación) |
 
-> Nota: la tabla lista 17 filas porque Home (`/`) es la raíz; las rutas navegables son 16 (del `/base` al `/soberania`).
+> Nota: la tabla lista 18 filas porque Home (`/`) es la raíz; las rutas navegables son 17 (del `/base` al `/integral`).
+
+### Modo Lucidez (Ley III)
+El botón de luna en el Header es un **toggle real de transparencia radical** (Ley III: *lucidez, nunca engañar*). Al activarlo: invierte el tema a **diurno** (sol), muestra un banner de Ley III, y revela bloques `.lucidez-raw` con **datos crudos y provenance** (ej. en `/integral` se ve la fórmula del System Health y el origen de cada señal FRS). Persiste en `localStorage`.
 
 ---
 
-## Repos asimilados (11)
+## Repos asimilados (20)
 
 | Repo origen | Mapeado a | Backup + Integración |
 |------------|-----------|----------------------|
@@ -78,6 +83,15 @@ Cada repo asimilado deja dos documentos en `docs/`:
 | [Baruch4413/tekitl](https://github.com/Baruch4413/tekitl) | Tekitl · Proyectos | `docs/tekitl_backup.md` · `docs/tekitl_integration.md` |
 | [overkillkulture/sovereignty-hub](https://github.com/overkillkulture/sovereignty-hub) | Soberanía · 13 Pilares | `docs/sovereignty_hub_backup.md` · `docs/sovereignty_integration.md` |
 | [tairea/sovereignty-hub-ui](https://github.com/tairea/sovereignty-hub-ui) | Soberanía · 13 Pilares | `docs/sovereignty_hub_ui_backup.md` · `docs/sovereignty_integration.md` |
+| [tairea/integral-phase-1](https://github.com/tairea/integral-phase-1) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
+| [Integral-Collective/integral-whitepaper](https://github.com/Integral-Collective/integral-whitepaper) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
+| [Integral-Collective/integral-cds](https://github.com/Integral-Collective/integral-cds) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
+| [Integral-Collective/integral-oad](https://github.com/Integral-Collective/integral-oad) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
+| [Integral-Collective/integral-devguide](https://github.com/Integral-Collective/integral-devguide) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
+| [Integral-Collective/integral-cos](https://github.com/Integral-Collective/integral-cos) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
+| [Integral-Collective/integral-decisions](https://github.com/Integral-Collective/integral-decisions) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
+| [Integral-Collective/integral-frs](https://github.com/Integral-Collective/integral-frs) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
+| [Integral-Collective/integral-itc](https://github.com/Integral-Collective/integral-itc) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
 
 ¹ Los backups originales se guardan también fuera del repo en `../HSCSG_v15_OS_BACKUP_YYYYMMDD_HHMMSS/`.
 
@@ -88,23 +102,24 @@ Cada repo asimilado deja dos documentos en `docs/`:
 ```
 src/
 ├── app/
-│   ├── App.tsx              # Router (16 rutas)
+│   ├── App.tsx              # Router (17 rutas)
 │   ├── layout/              # Aside (nav), Header, Layout, Coach…
-│   └── screens/             # 16 pantallas (una por módulo)
+│   └── screens/             # 18 pantallas (una por módulo)
 ├── components/
 │   └── ui.tsx               # Card, Stat, Btn, Badge, EmptyState, Field, Bar
 ├── core/
 │   ├── lib/                 # Lógica pura de cada repo asimilado
 │   │   ├── automaton.ts  caas.ts  colaberry.ts  metrics.ts
 │   │   ├── orchestration.ts  prioritize.ts  solarpunk.ts
-│   │   ├── vesting.ts  trustlines.ts  tekitl.ts  sovereignty.ts
+│   │   ├── vesting.ts  trustlines.ts  tekitl.ts  sovereignty.ts  integral.ts
 │   └── state/               # Tipos + store (Zustand persistido)
 │       ├── store.ts         # Estado global + acciones + partialize
 │       ├── seed.ts  types.ts
 │       ├── automaton.ts  caas.ts  colaberry.ts  orchestration.ts
 │       ├── prioritize.ts  solarpunk.ts  vesting.ts  trustlines.ts
-│       ├── tekitl.ts  sovereignty.ts
-└── shared/                  # assets, estilos, tipos
+│       ├── tekitl.ts  sovereignty.ts  integral.ts
+├── shared/                  # assets, estilos, tipos
+└── skills/                  # hscsg-repo-assimilation (metodología de asimilación)
 ```
 
 **Stack:** React 18 + TypeScript + Vite 5 + React Router 6 + Zustand 4 + Tailwind 3 + lucide-react.
@@ -152,6 +167,7 @@ Cada asimilación primero hace `cp -r HSCSG_v15_OS HSCSG_v15_OS_BACKUP_<ts>` (si
 - `HSCSG_v15_OS_BACKUP_20260805_122034/` — antes de trustlines
 - `HSCSG_v15_OS_BACKUP_20260805_123427/` — antes de tekitl
 - `HSCSG_v15_OS_BACKUP_20260805_133739/` — antes de sovereignty-hub (+ui)
+- `HSCSG_v15_OS_BACKUP_20260805_140212/` — antes de Integral Collective (9 repos)
 
 ---
 

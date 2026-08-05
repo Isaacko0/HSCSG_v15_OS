@@ -4,6 +4,23 @@ Todas las entradas siguen el formato: versión, fecha, repos asimilados en ese p
 
 ---
 
+## v15.13 — 2026-08-05 · Modo Lucidez (Ley III) + skill de asimilación
+- **Modo Lucidez:** el botón de luna del Header ahora es un toggle real de transparencia radical (Ley III: *lucidez, nunca engañar*). Al activarse: invierte el tema a **diurno** (sol, `data-lucidez="on"` en `<html>`), muestra un **banner de Ley III** en el Layout, y revela bloques `.lucidez-raw` con **datos crudos y provenance** (ej. desglose de System Health y origen de señales FRS en `/integral`).
+- **Implementación:** `store.ts` (`lucidez`, `toggleLucidez`, `setLucidez`, persistido + efecto en `document.documentElement`); `global.css` (bloque `[data-lucidez="on"]` + reglas `.lucidez-raw`/`.lucidez-banner`); `Header.tsx` (botón Moon↔Sun); `Layout.tsx` (banner); `Integral.tsx` (bloque crudo).
+- **Seed de notificaciones:** `notifList` precargado con 5 ejemplos del nodo (CaaS, Vesting, Soberanía, Trustlines, Integral).
+- **Skill `hscsg-repo-assimilation`:** incluida en `skills/hscsg-repo-assimilation/` (SKILL.md + `references/`: arquitectura, isomorfismos Ley MJ, scaffold de módulo, gotchas Vite/Windows). Respaldada en GitHub junto al proyecto.
+- **Verificado:** tsc OK · build OK (1664 módulos) · rutas → 200.
+
+## v15.12 — 2026-08-05 · Integral (9 repos del Integral Collective)
+- **Asimilados:** `tairea/integral-phase-1`, `integral-whitepaper`, `integral-cds`, `integral-oad`, `integral-devguide`, `integral-cos`, `integral-decisions`, `integral-frs`, `integral-itc` → módulo **Integral · Loop** (`/integral`).
+- **Filosofía:** sistema cooperativo postmonetario cibernéticamente coordinado. Loop cerrado CDS→OAD→COS→ITC→FRS→CDS como marco de planificación, reestructuración y retroalimentación entre componentes de HSCSG.
+- **Backup previo:** `HSCSG_v15_OS_BACKUP_20260805_140212/`.
+- **Documentos:** `docs/integral_backup.md` (índice de 9 repos), `docs/integral_integration.md` (triple perspectiva + mapeo a vectores HSCSG).
+- **Lógica:** `src/core/lib/integral.ts` (`raiseIssue`, `ratifyDecision` append-only DR, `certifyDesign` ecoScore, `logLabor`, `awardCredits` con decay/no-transferible, `ingestSignal`, `diagnose`, `recommend`, `promoteRecommendation` — FRS advisory solo CDS decide, `systemHealth`).
+- **Tipos:** `src/core/state/integral.ts`. **Store:** estado `integral` + 9 acciones. **Pantalla:** `src/app/screens/Integral.tsx` (mapa del loop, System Health, CDS/OAD/COS/ITC/FRS).
+- **Verificado:** tsc OK · build OK (1664 módulos) · 17 rutas → 200.
+- **Isomorfismo:** CDS↔Priorizar/Colectivo, OAD↔Solarpunk/Tekitl, ITC↔ZNU/CaaS (decay), COS↔Tekitl/Autómata, FRS↔Lucidez/Verificación/Colaberry, DR↔institutional memory. Leyes I/II/III respetadas.
+
 ## v15.11 — 2026-08-05 · Soberanía (sovereignty-hub + ui)
 - **Asimilados:** `overkillkulture/sovereignty-hub` + `tairea/sovereignty-hub-ui` → módulo **Soberanía · 13 Pilares** (`/soberania`).
 - **Backup previo:** `HSCSG_v15_OS_BACKUP_20260805_133739/`.
