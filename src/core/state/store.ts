@@ -28,6 +28,8 @@ import type { TrustState } from '@core/state/trustlines'
 import type { TekitlState } from '@core/state/tekitl'
 import type { SovereigntyState } from '@core/state/sovereignty'
 import type { IntegralState } from '@core/state/integral'
+import type { MundusState } from '@core/state/mundus'
+import type { LifeState, GoalType, Effort, Area } from '@core/state/life'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -44,6 +46,8 @@ import {
 } from '@core/lib/tekitl'
 import { makeSovereigntyState, cellKey, patternTheoryScore } from '@core/lib/sovereignty'
 import { makeIntegralState, raiseIssue, ratifyDecision, certifyDesign, logLabor, awardCredits, ingestSignal, recommend, promoteRecommendation } from '@core/lib/integral'
+import { makeMundusState } from '@core/lib/mundus'
+import { makeLifeState, addGoal, toggleNext, toggleCompleted, removeGoal, setNotes } from '@core/lib/life'
 import * as seed from '@core/state/seed'
 
 export interface AppState {
@@ -69,6 +73,12 @@ export interface AppState {
   brands: { id: string; name: string; handle: string; ini: string; logo?: string; accent?: string }[]
   brandsOff: number[]
   extraBrands: { id: string; name: string; handle: string; ini: string }[]
+  // Life (asimilado de GuiFV/life)
+  addLifeGoal: (input: { name: string; description?: string; type: GoalType; effort: Effort; area: Area; important: number; urgent: number; znu?: number; start?: string; end?: string }) => void
+  toggleLifeNext: (id: string) => void
+  toggleLifeCompleted: (id: string) => void
+  removeLifeGoal: (id: string) => void
+  setLifeNotes: (notes: string) => void
   // Modo Lucidez (Ley III: transparencia radical — tema diurno + datos crudos visibles)
   lucidez: boolean
   toggleLucidez: () => void
@@ -140,6 +150,12 @@ export interface AppState {
 
   // ===== Integral (asimilado de Integral Collective: 9 repos) =====
   integral: IntegralState
+
+  // ===== Mundus (asimilado de Sci-Hive datapoint "Mundus Live") =====
+  mundus: MundusState
+
+  // ===== Life (asimilado de GuiFV/life, Django) =====
+  life: LifeState
 
   // actions
   setNodeName: (n: string) => void
@@ -341,6 +357,18 @@ export const useAppStore = create<AppState>()(
         }
         return { lucidez: v }
       }),
+
+      // ===== Life (asimilado de GuiFV/life) =====
+      addLifeGoal: (input) =>
+        set((st) => ({ life: addGoal(st.life, input) })),
+      toggleLifeNext: (id) =>
+        set((st) => ({ life: toggleNext(st.life, id) })),
+      toggleLifeCompleted: (id) =>
+        set((st) => ({ life: toggleCompleted(st.life, id) })),
+      removeLifeGoal: (id) =>
+        set((st) => ({ life: removeGoal(st.life, id) })),
+      setLifeNotes: (notes) =>
+        set((st) => ({ life: setNotes(st.life, notes) })),
       toggleNotif: () => set((st) => ({ notif: !st.notif })),
       setNotifList: (l) => set({ notifList: l }),
       toggleAcct: () => set((st) => ({ acct: !st.acct })),
@@ -490,6 +518,10 @@ export const useAppStore = create<AppState>()(
       // Integral (asimilado de Integral Collective: 9 repos)
       // Loop cerrado postmonetario: CDS→OAD→COS→ITC→FRS→CDS. Filosofía de coordinación del nodo.
       integral: makeIntegralState(),
+      // Mundus (asimilado de Sci-Hive datapoint "Mundus Live")
+      mundus: makeMundusState(),
+      // Life (asimilado de GuiFV/life, Django)
+      life: makeLifeState(),
 
       setNodeName: (n) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
@@ -825,6 +857,11 @@ export const useAppStore = create<AppState>()(
       sovereignty: makeSovereigntyState(),
       // Integral (asimilado de Integral Collective: 9 repos)
       integral: makeIntegralState(),
+      // Mundus (asimilado de Sci-Hive datapoint "Mundus Live")
+      // Símbolo de unidad global de IDETRA + Circular Exchange System. Isomorfo a CaaS.
+      mundus: makeMundusState(),
+      // Life (asimilado de GuiFV/life, Django): organizador de vida personal del nodo.
+      life: makeLifeState(),
         }),
     }),
     {
@@ -864,6 +901,8 @@ export const useAppStore = create<AppState>()(
         tekitl: st.tekitl,
         sovereignty: st.sovereignty,
         integral: st.integral,
+        mundus: st.mundus,
+        life: st.life,
         lucidez: st.lucidez,
       }),
     },
