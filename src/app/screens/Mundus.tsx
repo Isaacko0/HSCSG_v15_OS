@@ -1,6 +1,7 @@
 import { Globe, Circle, ArrowRight } from 'lucide-react'
 import { useAppStore } from '@core/state/store'
 import { Card, Stat } from '@components/ui'
+import { MUNDUS_PILLARS } from '@core/lib/mundus'
 
 export function Mundus() {
   const { mundus } = useAppStore()
@@ -38,7 +39,7 @@ export function Mundus() {
 
       <Card title="Pilares de Mundus → módulos Cosateca OS">
         <div className="grid md:grid-cols-2 gap-3">
-          {mundus.pillars.map((p) => (
+          {MUNDUS_PILLARS.map((p) => (
             <div
               key={p.key}
               className="p-3 rounded-xl border border-[var(--line)] hover:bg-[var(--surf2)] transition-colors"
