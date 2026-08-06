@@ -20,6 +20,7 @@ export function Solarpunk() {
   const [needR, setNeedR] = useState('')
   const [sanctReason, setSanctReason] = useState('')
   const memberIds = members.map((m) => m.id)
+  const senderId = memberIds[0] ?? 'nodo'
 
   const matches = matchOffersNeeds(solar.offers, solar.needs)
   const pmi = postMonetaryIndex(solar.exchanges)
@@ -58,18 +59,18 @@ export function Solarpunk() {
               <div className="flex gap-2 items-end">
                 <label className="flex flex-col gap-1 flex-1">
                   <span className="text-xs text-[var(--dim)] font-manrope">Recurso</span>
-                  <input className="inp" value={offerR} onChange={(e) => setOfferR(e.target.value)} placeholder="p.ej. 20kg tomate" />
+                  <input className="w-full h-10 px-3 rounded-xl bg-[var(--surf2)] border border-[var(--line)] text-[var(--ink)] placeholder-[var(--dim)] focus:outline-none focus:border-chispa" value={offerR} onChange={(e) => setOfferR(e.target.value)} placeholder="p.ej. 20kg tomate" />
                 </label>
-                <Btn variant="ghost" onClick={() => { if (offerR.trim() && memberIds[0]) { addOffer(offerR.trim(), 'bien', memberIds[0]); setOfferR('') } }}><Plus className="w-4 h-4" /> Ofrecer</Btn>
+                <Btn variant="ghost" onClick={() => { if (offerR.trim()) { addOffer(offerR.trim(), 'bien', senderId); setOfferR('') } }}><Plus className="w-4 h-4" /> Ofrecer</Btn>
               </div>
             </Card>
             <Card title="Necesitar (demanda)">
               <div className="flex gap-2 items-end">
                 <label className="flex flex-col gap-1 flex-1">
                   <span className="text-xs text-[var(--dim)] font-manrope">Recurso</span>
-                  <input className="inp" value={needR} onChange={(e) => setNeedR(e.target.value)} placeholder="p.ej. taladro" />
+                  <input className="w-full h-10 px-3 rounded-xl bg-[var(--surf2)] border border-[var(--line)] text-[var(--ink)] placeholder-[var(--dim)] focus:outline-none focus:border-chispa" value={needR} onChange={(e) => setNeedR(e.target.value)} placeholder="p.ej. taladro" />
                 </label>
-                <Btn variant="ghost" onClick={() => { if (needR.trim() && memberIds[0]) { addNeed(needR.trim(), 'bien', memberIds[0]); setNeedR('') } }}><Plus className="w-4 h-4" /> Necesitar</Btn>
+                <Btn variant="ghost" onClick={() => { if (needR.trim()) { addNeed(needR.trim(), 'bien', senderId); setNeedR('') } }}><Plus className="w-4 h-4" /> Necesitar</Btn>
               </div>
             </Card>
           </div>
@@ -156,9 +157,9 @@ export function Solarpunk() {
             <div className="flex gap-2 items-end">
               <label className="flex flex-col gap-1 flex-1">
                 <span className="text-xs text-[var(--dim)] font-manrope">Motivo (riesgo / emergencia)</span>
-                <input className="inp" value={sanctReason} onChange={(e) => setSanctReason(e.target.value)} placeholder="p.ej. compañero en riesgo, emergencia salud" />
+                <input className="w-full h-10 px-3 rounded-xl bg-[var(--surf2)] border border-[var(--line)] text-[var(--ink)] placeholder-[var(--dim)] focus:outline-none focus:border-chispa" value={sanctReason} onChange={(e) => setSanctReason(e.target.value)} placeholder="p.ej. compañero en riesgo, emergencia salud" />
               </label>
-              <Btn onClick={() => { if (sanctReason.trim() && memberIds[0]) { activateSanctuary(sanctReason.trim(), memberIds[0]); setSanctReason('') } }}>
+              <Btn onClick={() => { if (sanctReason.trim()) { activateSanctuary(sanctReason.trim(), senderId); setSanctReason('') } }}>
                 <ShieldAlert className="w-4 h-4" /> Activar
               </Btn>
             </div>

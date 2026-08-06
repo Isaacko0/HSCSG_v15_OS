@@ -193,6 +193,30 @@
   outline-offset: 2px;
 }
 
+/* Inputs compartidos (.inp usado en varias pantallas) */
+.inp,
+textarea.inp,
+select.inp {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  background: var(--surf2);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.875rem;
+}
+.inp::placeholder,
+textarea.inp::placeholder,
+select.inp::placeholder {
+  color: var(--dim);
+}
+.inp:focus,
+textarea.inp:focus,
+select.inp:focus {
+  outline: none;
+  border-color: var(--chispa);
+}
+
 /* Selection */
 ::selection {
   background: var(--color-chispa);
