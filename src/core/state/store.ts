@@ -79,6 +79,8 @@ export interface AppState {
   toggleLifeCompleted: (id: string) => void
   removeLifeGoal: (id: string) => void
   setLifeNotes: (notes: string) => void
+  // Mundus (asimilado de Sci-Hive datapoint "Mundus Live")
+  setMundusManifesto: (text: string) => void
   // Modo Lucidez (Ley III: transparencia radical — tema diurno + datos crudos visibles)
   lucidez: boolean
   toggleLucidez: () => void
@@ -369,6 +371,8 @@ export const useAppStore = create<AppState>()(
         set((st) => ({ life: removeGoal(st.life, id) })),
       setLifeNotes: (notes) =>
         set((st) => ({ life: setNotes(st.life, notes) })),
+      setMundusManifesto: (text) =>
+        set((st) => ({ mundus: { ...st.mundus, manifesto: text } })),
       toggleNotif: () => set((st) => ({ notif: !st.notif })),
       setNotifList: (l) => set({ notifList: l }),
       toggleAcct: () => set((st) => ({ acct: !st.acct })),

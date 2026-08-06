@@ -4,7 +4,7 @@ import { Card, Stat } from '@components/ui'
 import { MUNDUS_PILLARS } from '@core/lib/mundus'
 
 export function Mundus() {
-  const { mundus } = useAppStore()
+  const { mundus, setMundusManifesto } = useAppStore()
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-4">
@@ -17,15 +17,21 @@ export function Mundus() {
       </div>
 
       <Card>
-        <div className="flex flex-col md:flex-row items-center gap-6">
+        <div className="flex flex-col md:flex-row items-start gap-6">
           <div className="flex-shrink-0">
             <svg width="120" height="120" viewBox="0 0 120 120" aria-label="Círculo azul de Mundus">
               <circle cx="60" cy="60" r="54" fill="none" stroke="#3B82F6" strokeWidth="10" />
             </svg>
           </div>
-          <div>
-            <h2 className="font-manrope font-semibold text-lg mb-2">Manifiesto</h2>
-            <p className="text-[var(--ink)] leading-relaxed whitespace-pre-line">{mundus.manifesto}</p>
+          <div className="flex-1 w-full">
+            <h2 className="font-manrope font-semibold text-lg mb-2">Manifiesto del nodo</h2>
+            <textarea
+              value={mundus.manifesto}
+              onChange={(e) => setMundusManifesto(e.target.value)}
+              rows={6}
+              className="w-full px-3 py-2 rounded-xl bg-[var(--surf2)] border border-[var(--line)] text-[var(--ink)] placeholder-[var(--dim)] focus:outline-none focus:border-chispa resize-y"
+            />
+            <p className="text-xs text-[var(--dim)] mt-2">Editable por el dueño del nodo. El texto se guarda localmente en tu navegador.</p>
           </div>
         </div>
       </Card>
