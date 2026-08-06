@@ -75,6 +75,36 @@ export function Solarpunk() {
             </Card>
           </div>
 
+          <SectionTitle>Ofertas activas (don / recurso)</SectionTitle>
+          {solar.offers.length === 0 ? <EmptyState>Sin ofertas. Usa el formulario de arriba para ofrecer un recurso al nodo.</EmptyState> : (
+            <div className="space-y-2">
+              {solar.offers.map((o) => (
+                <div key={o.id} className="p-3 rounded-xl border border-[var(--line)] flex items-center justify-between">
+                  <div>
+                    <p className="font-manrope font-medium">{o.resource}</p>
+                    <p className="text-xs text-[var(--dim)]">ofrecido por {memberLabel(o.from)}</p>
+                  </div>
+                  <Badge color="text-emerald-400">DON</Badge>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <SectionTitle>Necesidades activas (demanda)</SectionTitle>
+          {solar.needs.length === 0 ? <EmptyState>Sin necesidades. Usa el formulario de arriba para pedir un recurso.</EmptyState> : (
+            <div className="space-y-2">
+              {solar.needs.map((n) => (
+                <div key={n.id} className="p-3 rounded-xl border border-[var(--line)] flex items-center justify-between">
+                  <div>
+                    <p className="font-manrope font-medium">{n.resource}</p>
+                    <p className="text-xs text-[var(--dim)]">requerido por {memberLabel(n.by)}</p>
+                  </div>
+                  <Badge color="text-sky-400">NECESITA</Badge>
+                </div>
+              ))}
+            </div>
+          )}
+
           <SectionTitle>Matchmaking (oferta ↔ necesidad, sin precio)</SectionTitle>
           {matches.length === 0 ? <EmptyState>Sin matches. Ofrece y necesita recursos del mismo tipo para que el sistema haga match por AUT/CDS.</EmptyState> : (
             <div className="space-y-2">
