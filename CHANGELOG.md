@@ -4,6 +4,24 @@ Todas las entradas siguen el formato: versión, fecha, repos asimilados en ese p
 
 ---
 
+## v15.17 — 2026-08-05 · Civilizaciones (horizontes postmonetarios)
+- **Nuevo módulo `/civilizaciones`** (icono Compass) en la barra lateral: enlaces a Auravana, One Community, The Venus Project y Resource Based Economy (economía basada en recursos). Coherentes con CaaS.
+- Tipos/lib/store/pantalla/nav/ruta. `docs/civilizaciones_sinergia.md`.
+- tsc/build OK, `/civilizaciones` → 200.
+
+## v15.16 — 2026-08-05 · Mundus editable + enlaces Origen IDETRA + fix Solarpunk
+- **Mundus:** manifiesto editable (textarea, persistido) con texto default no impositivo ("Si te resuena… cuidamos porque podemos, no porque debamos"). Cada pilar muestra "Módulo Cosateca" + "Origen IDETRA" (enlaces reales sci-hive.com, terraformus.org, plann.us, temet.app) leídos de constante estática para no depender de localStorage.
+- **Solarpunk fix:** las ofertas/necesidades ahora se listan (antes solo subía el contador). Listas "Ofertas activas" y "Necesidades activas".
+- **Fix inputs:** clase `.inp` definida en global.css (texto visible en Solarpunk, Automat, CaaS, Colaberry, Orquestacion, Priorizar).
+
+## v15.15 — 2026-08-05 · Mundus (Sci-Hive) + Life (GuiFV/life)
+- **Mundus:** módulo `/mundus` asimilado de Sci-Hive datapoint "Mundus Live" (IDETRA). Manifiesto + círculo azul + pilares mapeados a módulos HSCSG. Circular Exchange = CaaS.
+- **Life:** módulo `/life` asimilado de GuiFV/life (Django). Organizador personal con matriz Important×Urgent; costo reinterpretado en ZNU.
+- `docs/scihive_mundus_*`, `docs/guifv_life_*` (backup + integración, triple perspectiva).
+- 21 módulos, tsc/build OK, rutas `/mundus` `/life` → 200.
+
+---
+
 ## v15.14 — 2026-08-05 · Deploy en Vercel
 - **URL de producción:** https://hscsg-v15-os.vercel.app/
 - **Config:** `vercel.json` (build `npm run build`, output `dist`, rewrite `/* → /index.html` para SPA/BrowserRouter) + `netlify.toml` (alternativa).

@@ -2,7 +2,7 @@
 
 > 🌟 **Con todo el corazón: este proyecto no existiría sin [Pepe Sevilla](https://www.instagram.com/sevillamx/?hl=es).** Su visión, acompañamiento y empuje son la chispa de la que nace Cosateca OS. Gracias, Pepe. 🌟
 
-**Nodo Cosateca v0.1** — Sistema operativo comunitario postmonetario construido sobre el *Materialismo Jerárquico* (Leyes I/II/III) y el *CaaS* (Comunidad como Servicio). Fork de Cosateca OS, ampliado por asimilación de 20 repositorios externos como módulos vivos.
+**Nodo Cosateca v0.1** — Sistema operativo comunitario postmonetario construido sobre el *Materialismo Jerárquico* (Leyes I/II/III) y el *CaaS* (Comunidad como Servicio). Fork de Cosateca OS, ampliado por asimilación de 23 repositorios/datos externos como módulos vivos.
 
 > Repositorio: https://github.com/Isaacko0/HSCSG_v15_OS
 > Preview local: http://localhost:4173/
@@ -40,7 +40,7 @@ Cada repo asimilado deja dos documentos en `docs/`:
 
 ---
 
-## Módulos (16 pantallas)
+## Módulos (21 pantallas)
 
 | # | Ruta | Módulo | Origen | Qué hace |
 |---|------|--------|--------|----------|
@@ -61,9 +61,12 @@ Cada repo asimilado deja dos documentos en `docs/`:
 | 15 | `/trustlines` | Trustlines · Crédito | **trustlines-protocol** | Crédito mutuo ZNU entre pares (deuda bilateral simétrica) |
 | 16 | `/tekitl` | Tekitl · Proyectos | **Baruch4413/tekitl** | Proyectos colaborativos + coins sociales + portafolio |
 | 17 | `/soberania` | Soberanía · 13 Pilares | **sovereignty-hub + ui** | Diagnóstico de base material (3×7×13) + Pattern Theory |
-| 18 | `/integral` | Integral · Loop | **Integral Collective (9 repos)** | Loop cerrado postmonetario CDS→OAD→COS→ITC→FRS (planificación/reestructuración/retroalimentación) |
+| 18 | `/integral` | Integral · Loop | **Integral Collective (9 repos)** | Loop cerrado postmonetario CDS→OAD→COS→ITC→FRS |
+| 19 | `/mundus` | Mundus · Unidad | **Sci-Hive datapoint "Mundus Live" (IDETRA)** | Manifiesto editable + Circular Exchange = CaaS + pilares→módulos |
+| 20 | `/life` | Life · Organizador | **GuiFV/life (Django)** | Metas personales con matriz Important×Urgent; costo en ZNU |
+| 21 | `/civilizaciones` | Civilizaciones | **Auravana · One Community · TVP · RBE** | Horizontes postmonetarios enlazados (economía basada en recursos) |
 
-> Nota: la tabla lista 18 filas porque Home (`/`) es la raíz; las rutas navegables son 17 (del `/base` al `/integral`).
+> Rutas navegables: 21 (del `/` al `/civilizaciones`).
 
 ### Modo Lucidez (Ley III)
 El botón de luna en el Header es un **toggle real de transparencia radical** (Ley III: *lucidez, nunca engañar*). Al activarlo: invierte el tema a **diurno** (sol), muestra un banner de Ley III, y revela bloques `.lucidez-raw` con **datos crudos y provenance** (ej. en `/integral` se ve la fórmula del System Health y el origen de cada señal FRS). Persiste en `localStorage`.
@@ -95,6 +98,9 @@ El botón de luna en el Header es un **toggle real de transparencia radical** (L
 | [Integral-Collective/integral-decisions](https://github.com/Integral-Collective/integral-decisions) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
 | [Integral-Collective/integral-frs](https://github.com/Integral-Collective/integral-frs) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
 | [Integral-Collective/integral-itc](https://github.com/Integral-Collective/integral-itc) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
+| [Sci-Hive datapoint "Mundus Live"](https://sci-hive.com/datapoint/fcaf69a3-2b03-4fd9-90e2-96e49379ba79/mundus-live) | Mundus · Unidad | `docs/scihive_mundus_backup.md` · `docs/scihive_mundus_integration.md` |
+| [GuiFV/life](https://github.com/GuiFV/life) | Life · Organizador | `docs/guifv_life_backup.md` · `docs/guifv_life_integration.md` |
+| [Auravana · One Community · The Venus Project · Resource Based Economy](https://auravana.org/) | Civilizaciones | `docs/civilizaciones_sinergia.md` |
 
 ¹ Los backups originales se guardan también fuera del repo en `../HSCSG_v15_OS_BACKUP_YYYYMMDD_HHMMSS/`.
 
@@ -105,9 +111,9 @@ El botón de luna en el Header es un **toggle real de transparencia radical** (L
 ```
 src/
 ├── app/
-│   ├── App.tsx              # Router (17 rutas)
+│   ├── App.tsx              # Router (21 rutas)
 │   ├── layout/              # Aside (nav), Header, Layout, Coach…
-│   └── screens/             # 18 pantallas (una por módulo)
+│   └── screens/             # 21 pantallas (una por módulo)
 ├── components/
 │   └── ui.tsx               # Card, Stat, Btn, Badge, EmptyState, Field, Bar
 ├── core/
@@ -115,12 +121,13 @@ src/
 │   │   ├── automaton.ts  caas.ts  colaberry.ts  metrics.ts
 │   │   ├── orchestration.ts  prioritize.ts  solarpunk.ts
 │   │   ├── vesting.ts  trustlines.ts  tekitl.ts  sovereignty.ts  integral.ts
+│   │   ├── mundus.ts  life.ts  civilizaciones.ts
 │   └── state/               # Tipos + store (Zustand persistido)
 │       ├── store.ts         # Estado global + acciones + partialize
 │       ├── seed.ts  types.ts
 │       ├── automaton.ts  caas.ts  colaberry.ts  orchestration.ts
 │       ├── prioritize.ts  solarpunk.ts  vesting.ts  trustlines.ts
-│       ├── tekitl.ts  sovereignty.ts  integral.ts
+│       ├── tekitl.ts  sovereignty.ts  integral.ts  mundus.ts  life.ts  civilizaciones.ts
 ├── shared/                  # assets, estilos, tipos
 └── skills/                  # hscsg-repo-assimilation (metodología de asimilación)
 ```
@@ -169,6 +176,17 @@ HSCSG v15 OS es isomorfo a [**IDETRA**](https://idetra.org/) (*Initiative to Dev
 - **Sci-Hive** (conocimiento vetted, SCI) ↔ **Verificación + Lucidez + FRS**
 - **Terra Formus** (soluciones evaluadas) ↔ **Soberanía (OAD) + Autómata**
 - **Plann.us** ↔ **Tekitl** · **Temet.app** ↔ **Colaberry + Modo Lucidez** · **Delta Center/EduBox** ↔ **Base Material + Soberanía**
+
+---
+
+## Civilizaciones (horizontes postmonetarios)
+
+La barra lateral incluye [**Civilizaciones**](https://hscsg-v15-os.vercel.app/civilizaciones) (`/civilizaciones`), un módulo que enlaza proyectos hermanos de civilización postmonetaria y economía basada en recursos, coherentes con el CaaS de Cosateca:
+
+- [**Auravana**](https://auravana.org/) — diseños modulares gratuitos de comunidades + análisis sociológico territorial.
+- [**One Community**](https://onecommunityglobal.org/) — diseños bioconstructivos y paisajismo en código libre.
+- [**The Venus Project**](https://www.thevenusproject.com/) — economía basada en recursos, sin dejar a nadie atrás.
+- [**Resource Based Economy**](https://www.resourcebasedeconomy.org/) — las únicas limitaciones son las que nos imponemos a nosotros mismos.
 
 ---
 
