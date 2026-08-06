@@ -162,6 +162,16 @@ npm run test           # vitest
 
 ---
 
+## Sinergias con IDETRA
+
+HSCSG v15 OS es isomorfo a [**IDETRA**](https://idetra.org/) (*Initiative to Develop a Transition to a Circular Resource System*): ambos llegan al **postmonetario** desde ángulos distintos (IDETRA desde recursos circulares; HSCSG desde el Materialismo Jerárquico / CaaS). Mapeo completo en [`docs/idetra_sinergia.md`](docs/idetra_sinergia.md):
+- **Mundus** (Circular Exchange, anti-monetario) ↔ **CaaS + ZNU + Integral/ITC**
+- **Sci-Hive** (conocimiento vetted, SCI) ↔ **Verificación + Lucidez + FRS**
+- **Terra Formus** (soluciones evaluadas) ↔ **Soberanía (OAD) + Autómata**
+- **Plann.us** ↔ **Tekitl** · **Temet.app** ↔ **Colaberry + Modo Lucidez** · **Delta Center/EduBox** ↔ **Base Material + Soberanía**
+
+---
+
 ## Deploy (Vercel)
 
 La app es 100% estática (sin backend). `vercel.json` ya configura el build (`npm run build` → `dist/`) y el rewrite SPA (`/* → /index.html`, requerido por `BrowserRouter`).
