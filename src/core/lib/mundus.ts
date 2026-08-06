@@ -1,12 +1,13 @@
 // HSCSG v15 OS — Lógica del módulo Mundus (asimilado de Sci-Hive "Mundus Live")
 import type { MundusState, MundusPillar } from '@core/state/mundus'
 
-// Manifiesto original de Mundus Live (Sci-Hive / IDETRA), traducido y preservado.
-export const MUNDUS_MANIFESTO = `Dibuja un círculo azul. En cualquier lugar.
+// Manifiesto default de Mundus Live (Sci-Hive / IDETRA), versión no impositiva.
+// Editable por el dueño del nodo desde la pantalla /mundus.
+export const MUNDUS_MANIFESTO = `Un círculo azul, en cualquier lugar.
 En el dorso de tu mano, en la portada de tu cuaderno.
-Publícalo en redes, llévalo en una camiseta o una gorra.
-Necesitamos mostrar que todos queremos lo mismo: un pálido punto azul, sano y cuerdo,
-errante en el cosmos, impulsado por la forma más alta de intelecto que podamos reunir.`
+Si te resuena, publícalo en redes o llévalo en una camiseta o una gorra.
+Es solo una invitación a imaginar, juntos, un pálido punto azul más sano y cuerdo:
+un hogar común que cuidamos porque podemos, no porque debamos.`
 
 export const MUNDUS_PILLARS: MundusPillar[] = [
   { key: 'sci-hive', name: 'Sci-Hive', hscsgLink: '/verificacion', sourceUrl: 'https://sci-hive.com/', desc: 'Elevar la calidad del diálogo mediante evidencia (SCI).' },

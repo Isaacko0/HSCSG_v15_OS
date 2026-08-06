@@ -4,7 +4,7 @@
 
 Contenido del datapoint ("Mundus Live"):
 - hub: "Hive Mundus Live" · Author: Guilherme Forton Viotti · Created 20 ene 2026 · Edited 5 ago 2026 · (under development)
-- Manifiesto: "Draw a blue circle. Anywhere. On the back of your hand, on the cover of your notebook. Post it on social media, wear it on a t-shirt or baseball cap. We need to show we all want the same thing: a sane and healthy pale blue dot, wandering in the cosmos, being driven by the highest form of intellect we can muster."
+- Manifiesto (versión no impositiva, default editable): "Un círculo azul, en cualquier lugar. En el dorso de tu mano, en la portada de tu cuaderno. Si te resuena, publícalo en redes o llévalo en una camiseta o una gorra. Es solo una invitación a imaginar, juntos, un pálido punto azul más sano y cuerdo: un hogar común que cuidamos porque podemos, no porque debamos." (editable por el dueño del nodo desde /mundus).
 - "How to engage right now" / "Actions": revisar qué haces políticamente, socialmente y como comunidad (lado derecho de la página).
 - "Platforms" (pilares de Mundus): sci-hive, terra formus, plannus, temet — cada uno con su propósito.
 - Enlaces: BUILDING THE FUTURE, INTRODUCTION ON CHANGE, POLITICAL ACTION, POPULUS POWER, SOCIETAL ACTION, STRUCTURAL PRIVILEGE, WORLD ECOSYSTEM PRESERVATION.
