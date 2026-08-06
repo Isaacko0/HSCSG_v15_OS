@@ -9,6 +9,12 @@ Contenido del datapoint ("Mundus Live"):
 - "Platforms" (pilares de Mundus): sci-hive, terra formus, plannus, temet — cada uno con su propósito.
 - Enlaces: BUILDING THE FUTURE, INTRODUCTION ON CHANGE, POLITICAL ACTION, POPULUS POWER, SOCIETAL ACTION, STRUCTURAL PRIVILEGE, WORLD ECOSYSTEM PRESERVATION.
 
+Enlaces originales de las iniciativas (pilares de Mundus), confirmados en IDETRA home:
+- Sci-Hive: https://sci-hive.com/ — elevar la calidad del diálogo mediante evidencia (SCI).
+- Terra Formus: https://terraformus.org/ — promover cambio de forma estructurada y accionable.
+- Plann.us: https://plann.us/ — planear y ejecutar proyectos; pedir ayuda en la home.
+- Temet.app: https://temet.app/ — IA local, propiedad real de datos, compartir directo.
+
 Contexto (de IDETRA home, ya leído):
 - Mundus = "easily replicable symbol of global unity" (círculo azul sin bordes, inspirado en 'Pale Blue Dot' de Carl Sagan).
 - Principios del Circular Exchange System: acceso estratégico a recursos, reciclaje robusto en procesos industriales, automatización de tareas repetitivas, educación para reconfigurar valores, **eliminación de la dependencia monetaria**.

@@ -9,10 +9,10 @@ Necesitamos mostrar que todos queremos lo mismo: un pálido punto azul, sano y c
 errante en el cosmos, impulsado por la forma más alta de intelecto que podamos reunir.`
 
 export const MUNDUS_PILLARS: MundusPillar[] = [
-  { key: 'sci-hive', name: 'Sci-Hive', hscsgLink: '/verificacion', desc: 'Elevar la calidad del diálogo mediante evidencia (SCI).' },
-  { key: 'terra-formus', name: 'Terra Formus', hscsgLink: '/soberania', desc: 'Promover cambio de forma estructurada y accionable.' },
-  { key: 'plannus', name: 'Plann.us', hscsgLink: '/tekitl', desc: 'Planear y ejecutar proyectos; pedir ayuda en la home.' },
-  { key: 'temet', name: 'Temet.app', hscsgLink: '/colaberry', desc: 'IA local, propiedad real de datos, compartir directo.' },
+  { key: 'sci-hive', name: 'Sci-Hive', hscsgLink: '/verificacion', sourceUrl: 'https://sci-hive.com/', desc: 'Elevar la calidad del diálogo mediante evidencia (SCI).' },
+  { key: 'terra-formus', name: 'Terra Formus', hscsgLink: '/soberania', sourceUrl: 'https://terraformus.org/', desc: 'Promover cambio de forma estructurada y accionable.' },
+  { key: 'plannus', name: 'Plann.us', hscsgLink: '/tekitl', sourceUrl: 'https://plann.us/', desc: 'Planear y ejecutar proyectos; pedir ayuda en la home.' },
+  { key: 'temet', name: 'Temet.app', hscsgLink: '/colaberry', sourceUrl: 'https://temet.app/', desc: 'IA local, propiedad real de datos, compartir directo.' },
 ]
 
 export function makeMundusState(): MundusState {

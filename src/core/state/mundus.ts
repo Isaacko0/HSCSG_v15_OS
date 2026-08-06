@@ -6,6 +6,7 @@ export interface MundusPillar {
   key: string
   name: string
   hscsgLink: string // ruta interna HSCSG que lo implementa
+  sourceUrl: string // sitio original de la iniciativa IDETRA
   desc: string
 }
 

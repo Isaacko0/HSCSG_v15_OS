@@ -39,17 +39,21 @@ export function Mundus() {
       <Card title="Pilares de Mundus → módulos Cosateca OS">
         <div className="grid md:grid-cols-2 gap-3">
           {mundus.pillars.map((p) => (
-            <a
+            <div
               key={p.key}
-              href={p.hscsgLink}
-              className="flex items-center justify-between p-3 rounded-xl border border-[var(--line)] hover:bg-[var(--surf2)] transition-colors"
+              className="p-3 rounded-xl border border-[var(--line)] hover:bg-[var(--surf2)] transition-colors"
             >
-              <div>
-                <div className="font-manrope font-medium">{p.name}</div>
-                <div className="text-xs text-[var(--dim)]">{p.desc}</div>
+              <div className="font-manrope font-medium">{p.name}</div>
+              <div className="text-xs text-[var(--dim)] mb-2">{p.desc}</div>
+              <div className="flex flex-wrap gap-3 text-xs">
+                <a href={p.hscsgLink} className="flex items-center gap-1 text-emerald-400 hover:underline">
+                  Módulo Cosateca <ArrowRight className="w-3 h-3" />
+                </a>
+                <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sky-400 hover:underline">
+                  Origen IDETRA <ArrowRight className="w-3 h-3" />
+                </a>
               </div>
-              <ArrowRight className="w-4 h-4 text-[var(--mut)]" />
-            </a>
+            </div>
           ))}
         </div>
         <p className="text-xs text-[var(--dim)] mt-3 flex items-center gap-1">
