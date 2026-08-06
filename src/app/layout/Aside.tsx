@@ -1,5 +1,5 @@
 import {
-  Mountain, Database, Eye, Users, Cpu, Coins, LayoutDashboard, Network, Users2, Bot, Leaf, MessagesSquare, ListChecks, Unlock, Link2, Briefcase, ShieldHalf, RefreshCw, Globe, LifeBuoy,
+  Mountain, Database, Eye, Users, Cpu, Coins, LayoutDashboard, Network, Users2, Bot, Leaf, MessagesSquare, ListChecks, Unlock, Link2, Briefcase, ShieldHalf, RefreshCw, Globe, LifeBuoy, Compass,
   ChevronsLeft, ChevronsRight,
 } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -27,6 +27,7 @@ const NAV_ITEMS = [
   { key: 'integral', label: 'Integral · Loop', icon: RefreshCw, color: 'text-emerald-400', path: '/integral' },
   { key: 'mundus', label: 'Mundus · Unidad', icon: Globe, color: 'text-sky-400', path: '/mundus' },
   { key: 'life', label: 'Life · Organizador', icon: LifeBuoy, color: 'text-emerald-400', path: '/life' },
+  { key: 'civilizaciones', label: 'Civilizaciones', icon: Compass, color: 'text-emerald-400', path: '/civilizaciones' },
 ] as const
 
 interface AsideProps {

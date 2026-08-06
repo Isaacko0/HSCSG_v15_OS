@@ -30,6 +30,7 @@ import type { SovereigntyState } from '@core/state/sovereignty'
 import type { IntegralState } from '@core/state/integral'
 import type { MundusState } from '@core/state/mundus'
 import type { LifeState, GoalType, Effort, Area } from '@core/state/life'
+import type { CivilizacionesState } from '@core/state/civilizaciones'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -48,6 +49,7 @@ import { makeSovereigntyState, cellKey, patternTheoryScore } from '@core/lib/sov
 import { makeIntegralState, raiseIssue, ratifyDecision, certifyDesign, logLabor, awardCredits, ingestSignal, recommend, promoteRecommendation } from '@core/lib/integral'
 import { makeMundusState } from '@core/lib/mundus'
 import { makeLifeState, addGoal, toggleNext, toggleCompleted, removeGoal, setNotes } from '@core/lib/life'
+import { makeCivilizacionesState } from '@core/lib/civilizaciones'
 import * as seed from '@core/state/seed'
 
 export interface AppState {
@@ -158,6 +160,9 @@ export interface AppState {
 
   // ===== Life (asimilado de GuiFV/life, Django) =====
   life: LifeState
+
+  // ===== Civilizaciones (horizontes postmonetarios: Auravana, One Community, TVP, RBE) =====
+  civilizaciones: CivilizacionesState
 
   // actions
   setNodeName: (n: string) => void
@@ -526,6 +531,8 @@ export const useAppStore = create<AppState>()(
       mundus: makeMundusState(),
       // Life (asimilado de GuiFV/life, Django)
       life: makeLifeState(),
+      // Civilizaciones (horizontes postmonetarios: Auravana, One Community, TVP, RBE)
+      civilizaciones: makeCivilizacionesState(),
 
       setNodeName: (n) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
@@ -866,6 +873,8 @@ export const useAppStore = create<AppState>()(
       mundus: makeMundusState(),
       // Life (asimilado de GuiFV/life, Django): organizador de vida personal del nodo.
       life: makeLifeState(),
+      // Civilizaciones (horizontes postmonetarios)
+      civilizaciones: makeCivilizacionesState(),
         }),
     }),
     {
@@ -907,6 +916,7 @@ export const useAppStore = create<AppState>()(
         integral: st.integral,
         mundus: st.mundus,
         life: st.life,
+        civilizaciones: st.civilizaciones,
         lucidez: st.lucidez,
       }),
     },
