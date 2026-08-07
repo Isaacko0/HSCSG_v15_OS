@@ -21,6 +21,7 @@ import { Integral } from '@app/screens/Integral'
 import { Mundus } from '@app/screens/Mundus'
 import { Life } from '@app/screens/Life'
 import { Civilizaciones } from '@app/screens/Civilizaciones'
+import { Celulas } from '@app/screens/Celulas'
 
 export function App() {
   return (
@@ -47,6 +48,7 @@ export function App() {
         <Route path="mundus" element={<Mundus />} />
         <Route path="life" element={<Life />} />
         <Route path="civilizaciones" element={<Civilizaciones />} />
+        <Route path="celulas" element={<Celulas />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

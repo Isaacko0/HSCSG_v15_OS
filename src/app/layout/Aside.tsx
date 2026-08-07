@@ -28,6 +28,7 @@ const NAV_ITEMS = [
   { key: 'mundus', label: 'Mundus · Unidad', icon: Globe, color: 'text-sky-400', path: '/mundus' },
   { key: 'life', label: 'Life · Organizador', icon: LifeBuoy, color: 'text-emerald-400', path: '/life' },
   { key: 'civilizaciones', label: 'Civilizaciones', icon: Compass, color: 'text-emerald-400', path: '/civilizaciones' },
+  { key: 'celulas', label: 'Células · Tejido', icon: Network, color: 'text-emerald-400', path: '/celulas' },
 ] as const
 
 interface AsideProps {

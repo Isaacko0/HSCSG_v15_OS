@@ -31,6 +31,7 @@ import type { IntegralState } from '@core/state/integral'
 import type { MundusState } from '@core/state/mundus'
 import type { LifeState, GoalType, Effort, Area } from '@core/state/life'
 import type { CivilizacionesState } from '@core/state/civilizaciones'
+import type { CelulasState } from '@core/state/celulas'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -50,6 +51,7 @@ import { makeIntegralState, raiseIssue, ratifyDecision, certifyDesign, logLabor,
 import { makeMundusState } from '@core/lib/mundus'
 import { makeLifeState, addGoal, toggleNext, toggleCompleted, removeGoal, setNotes } from '@core/lib/life'
 import { makeCivilizacionesState } from '@core/lib/civilizaciones'
+import { makeCelulasState } from '@core/lib/celulas'
 import * as seed from '@core/state/seed'
 
 export interface AppState {
@@ -83,6 +85,7 @@ export interface AppState {
   setLifeNotes: (notes: string) => void
   // Mundus (asimilado de Sci-Hive datapoint "Mundus Live")
   setMundusManifesto: (text: string) => void
+  setCelulas: (u: Partial<{ miembros: number; celdasInternas: number; grupoIntermedio: number; nota: string }>) => void
   // Modo Lucidez (Ley III: transparencia radical — tema diurno + datos crudos visibles)
   lucidez: boolean
   toggleLucidez: () => void
@@ -163,6 +166,9 @@ export interface AppState {
 
   // ===== Civilizaciones (horizontes postmonetarios: Auravana, One Community, TVP, RBE) =====
   civilizaciones: CivilizacionesState
+
+  // ===== Células (Freedom Cells: tejido social fractal) =====
+  celulas: CelulasState
 
   // actions
   setNodeName: (n: string) => void
@@ -378,6 +384,8 @@ export const useAppStore = create<AppState>()(
         set((st) => ({ life: setNotes(st.life, notes) })),
       setMundusManifesto: (text) =>
         set((st) => ({ mundus: { ...st.mundus, manifesto: text } })),
+      setCelulas: (u) =>
+        set((st) => ({ celulas: { ...st.celulas, ...u } })),
       toggleNotif: () => set((st) => ({ notif: !st.notif })),
       setNotifList: (l) => set({ notifList: l }),
       toggleAcct: () => set((st) => ({ acct: !st.acct })),
@@ -533,6 +541,8 @@ export const useAppStore = create<AppState>()(
       life: makeLifeState(),
       // Civilizaciones (horizontes postmonetarios: Auravana, One Community, TVP, RBE)
       civilizaciones: makeCivilizacionesState(),
+      // Células (Freedom Cells): tejido social fractal
+      celulas: makeCelulasState(),
 
       setNodeName: (n) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
@@ -875,6 +885,8 @@ export const useAppStore = create<AppState>()(
       life: makeLifeState(),
       // Civilizaciones (horizontes postmonetarios)
       civilizaciones: makeCivilizacionesState(),
+      // Células (Freedom Cells): tejido social fractal
+      celulas: makeCelulasState(),
         }),
     }),
     {
@@ -917,6 +929,7 @@ export const useAppStore = create<AppState>()(
         mundus: st.mundus,
         life: st.life,
         civilizaciones: st.civilizaciones,
+        celulas: st.celulas,
         lucidez: st.lucidez,
       }),
     },
