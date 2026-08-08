@@ -86,6 +86,9 @@ export interface AppState {
   // Mundus (asimilado de Sci-Hive datapoint "Mundus Live")
   setMundusManifesto: (text: string) => void
   setCelulas: (u: Partial<{ miembros: number; celdasInternas: number; grupoIntermedio: number; nota: string }>) => void
+  // Idioma de la UI (ES / EN / PT-BR)
+  lang: 'es' | 'en' | 'pt'
+  setLang: (l: 'es' | 'en' | 'pt') => void
   // Modo Lucidez (Ley III: transparencia radical — tema diurno + datos crudos visibles)
   lucidez: boolean
   toggleLucidez: () => void
@@ -354,6 +357,7 @@ export const useAppStore = create<AppState>()(
       extraBrands: [],
       coach: { open: false, busy: false, draft: '', messages: [] },
       search: '',
+      lang: 'es',
       lucidez: false,
       toggleLucidez: () => set((st) => {
         const v = !st.lucidez
@@ -386,6 +390,7 @@ export const useAppStore = create<AppState>()(
         set((st) => ({ mundus: { ...st.mundus, manifesto: text } })),
       setCelulas: (u) =>
         set((st) => ({ celulas: { ...st.celulas, ...u } })),
+      setLang: (l) => set({ lang: l }),
       toggleNotif: () => set((st) => ({ notif: !st.notif })),
       setNotifList: (l) => set({ notifList: l }),
       toggleAcct: () => set((st) => ({ acct: !st.acct })),
@@ -930,6 +935,7 @@ export const useAppStore = create<AppState>()(
         life: st.life,
         civilizaciones: st.civilizaciones,
         celulas: st.celulas,
+        lang: st.lang,
         lucidez: st.lucidez,
       }),
     },

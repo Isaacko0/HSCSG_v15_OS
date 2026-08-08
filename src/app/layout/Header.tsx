@@ -1,5 +1,6 @@
-import { Menu, X, Search, Bell, ChevronsRight, ChevronsLeft, Moon, Sun } from 'lucide-react'
+import { Menu, X, Search, Bell, ChevronsRight, ChevronsLeft, Moon, Sun, Languages } from 'lucide-react'
 import { useAppStore } from '@core/state/store'
+import { LANG_LABELS, type Lang, t } from '@core/lib/i18n'
 import { clsx } from 'clsx'
 
 const SCREENS: Record<string, string> = {
@@ -15,7 +16,7 @@ const SCREENS: Record<string, string> = {
 export function Header({ collapsed, onToggleCollapse, onToggleNav, isMobile, navOpen }: {
   collapsed: boolean; onToggleCollapse: () => void; onToggleNav: () => void; isMobile: boolean; navOpen: boolean
 }) {
-  const { screen, nodeName, notif, toggleNotif, acct, toggleAcct, search, setSearch, lucidez, toggleLucidez } = useAppStore()
+  const { screen, nodeName, notif, toggleNotif, acct, toggleAcct, search, setSearch, lucidez, toggleLucidez, lang, setLang } = useAppStore()
 
   return (
     <header className={clsx(
@@ -35,7 +36,9 @@ export function Header({ collapsed, onToggleCollapse, onToggleNav, isMobile, nav
       )}
       <div className={clsx('flex items-center gap-3 min-w-0', collapsed && !isMobile ? 'w-16' : 'flex-1')}>
         {!collapsed && (
-          <h1 className="font-jost font-semibold text-lg truncate">{SCREENS[screen] || nodeName}</h1>
+          <h1 className="font-jost font-semibold text-lg truncate">
+            {lang !== 'es' && screen in SCREENS ? t('title.' + screen, lang) : (SCREENS[screen] || nodeName)}
+          </h1>
         )}
       </div>
       <div className="flex-1" />
@@ -51,6 +54,21 @@ export function Header({ collapsed, onToggleCollapse, onToggleNav, isMobile, nav
         />
       </div>
       <div className="flex items-center gap-2">
+        {/* Selector de idioma ES / EN / PT-BR */}
+        <label className="relative inline-flex items-center h-10 px-2 rounded-xl border border-[var(--line)] text-[var(--mut)] hover:text-white hover:bg-[var(--surf2)] transition-colors">
+          <Languages className="w-4 h-4 mr-1.5" aria-hidden="true" />
+          <span className="sr-only">Idioma / Language / Idioma</span>
+          <select
+            value={lang}
+            onChange={(e) => setLang(e.target.value as Lang)}
+            className="bg-transparent text-xs text-[var(--ink)] focus:outline-none cursor-pointer"
+            aria-label="Seleccionar idioma"
+          >
+            <option value="es">{LANG_LABELS.es}</option>
+            <option value="en">{LANG_LABELS.en}</option>
+            <option value="pt">{LANG_LABELS.pt}</option>
+          </select>
+        </label>
         <button
           onClick={toggleLucidez}
           className={clsx(

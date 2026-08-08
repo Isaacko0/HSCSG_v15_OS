@@ -5,30 +5,31 @@ import {
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAppStore } from '@core/state/store'
 import { clsx } from 'clsx'
+import { t } from '@core/lib/i18n'
 
 const NAV_ITEMS = [
-  { key: 'home', label: 'Inicio · Lucidez', icon: LayoutDashboard, color: 'text-chispa', path: '/' },
-  { key: 'base', label: 'Nivel 0 · Base Material', icon: Mountain, color: 'text-emerald-400', path: '/base' },
-  { key: 'lucidez', label: 'Métricas · CAC v12', icon: Database, color: 'text-lime-400', path: '/lucidez' },
-  { key: 'colectivo', label: 'Nivel 1 · Colectivo', icon: Users, color: 'text-purple-400', path: '/colectivo' },
-  { key: 'automata', label: 'Autómata v2 · Leyes MJ', icon: Cpu, color: 'text-cyan-400', path: '/automata' },
-  { key: 'znu', label: 'ZNU v2 · Soberanía', icon: Coins, color: 'text-amber-400', path: '/znu' },
-  { key: 'verificacion', label: 'Verificación Triaxial', icon: Eye, color: 'text-sky-400', path: '/verificacion' },
-  { key: 'orquestacion', label: 'Orquestación · MJ', icon: Network, color: 'text-rose-400', path: '/orquestacion' },
-  { key: 'caas', label: 'CaaS · Comunidad', icon: Users2, color: 'text-fuchsia-400', path: '/caas' },
-  { key: 'automat', label: 'Autómata Soberano', icon: Bot, color: 'text-cyan-400', path: '/automat' },
-  { key: 'solarpunk', label: 'Solarpunk · Don', icon: Leaf, color: 'text-emerald-400', path: '/solarpunk' },
-  { key: 'colaberry', label: 'Colaberry · Agente', icon: MessagesSquare, color: 'text-violet-400', path: '/colaberry' },
-  { key: 'priorizar', label: 'Priorizar · Colectivo', icon: ListChecks, color: 'text-orange-400', path: '/priorizar' },
-  { key: 'vesting', label: 'Vesting · ZNU', icon: Unlock, color: 'text-amber-400', path: '/vesting' },
-  { key: 'trustlines', label: 'Trustlines · Crédito', icon: Link2, color: 'text-teal-400', path: '/trustlines' },
-  { key: 'tekitl', label: 'Tekitl · Proyectos', icon: Briefcase, color: 'text-sky-400', path: '/tekitl' },
-  { key: 'soberania', label: 'Soberanía · 13 Pilares', icon: ShieldHalf, color: 'text-emerald-400', path: '/soberania' },
-  { key: 'integral', label: 'Integral · Loop', icon: RefreshCw, color: 'text-emerald-400', path: '/integral' },
-  { key: 'mundus', label: 'Mundus · Unidad', icon: Globe, color: 'text-sky-400', path: '/mundus' },
-  { key: 'life', label: 'Life · Organizador', icon: LifeBuoy, color: 'text-emerald-400', path: '/life' },
-  { key: 'civilizaciones', label: 'Civilizaciones', icon: Compass, color: 'text-emerald-400', path: '/civilizaciones' },
-  { key: 'celulas', label: 'Células · Tejido', icon: Network, color: 'text-emerald-400', path: '/celulas' },
+  { key: 'home', navKey: 'nav.home', icon: LayoutDashboard, color: 'text-chispa', path: '/' },
+  { key: 'base', navKey: 'nav.base', icon: Mountain, color: 'text-emerald-400', path: '/base' },
+  { key: 'lucidez', navKey: 'nav.lucidez', icon: Database, color: 'text-lime-400', path: '/lucidez' },
+  { key: 'colectivo', navKey: 'nav.colectivo', icon: Users, color: 'text-purple-400', path: '/colectivo' },
+  { key: 'automata', navKey: 'nav.automata', icon: Cpu, color: 'text-cyan-400', path: '/automata' },
+  { key: 'znu', navKey: 'nav.znu', icon: Coins, color: 'text-amber-400', path: '/znu' },
+  { key: 'verificacion', navKey: 'nav.verificacion', icon: Eye, color: 'text-sky-400', path: '/verificacion' },
+  { key: 'orquestacion', navKey: 'nav.orquestacion', icon: Network, color: 'text-rose-400', path: '/orquestacion' },
+  { key: 'caas', navKey: 'nav.caas', icon: Users2, color: 'text-fuchsia-400', path: '/caas' },
+  { key: 'automat', navKey: 'nav.automat', icon: Bot, color: 'text-cyan-400', path: '/automat' },
+  { key: 'solarpunk', navKey: 'nav.solarpunk', icon: Leaf, color: 'text-emerald-400', path: '/solarpunk' },
+  { key: 'colaberry', navKey: 'nav.colaberry', icon: MessagesSquare, color: 'text-violet-400', path: '/colaberry' },
+  { key: 'priorizar', navKey: 'nav.priorizar', icon: ListChecks, color: 'text-orange-400', path: '/priorizar' },
+  { key: 'vesting', navKey: 'nav.vesting', icon: Unlock, color: 'text-amber-400', path: '/vesting' },
+  { key: 'trustlines', navKey: 'nav.trustlines', icon: Link2, color: 'text-teal-400', path: '/trustlines' },
+  { key: 'tekitl', navKey: 'nav.tekitl', icon: Briefcase, color: 'text-sky-400', path: '/tekitl' },
+  { key: 'soberania', navKey: 'nav.soberania', icon: ShieldHalf, color: 'text-emerald-400', path: '/soberania' },
+  { key: 'integral', navKey: 'nav.integral', icon: RefreshCw, color: 'text-emerald-400', path: '/integral' },
+  { key: 'mundus', navKey: 'nav.mundus', icon: Globe, color: 'text-sky-400', path: '/mundus' },
+  { key: 'life', navKey: 'nav.life', icon: LifeBuoy, color: 'text-emerald-400', path: '/life' },
+  { key: 'civilizaciones', navKey: 'nav.civilizaciones', icon: Compass, color: 'text-emerald-400', path: '/civilizaciones' },
+  { key: 'celulas', navKey: 'nav.celulas', icon: Network, color: 'text-emerald-400', path: '/celulas' },
 ] as const
 
 interface AsideProps {
@@ -39,7 +40,7 @@ interface AsideProps {
 export function Aside({ collapsed, onToggleCollapse }: AsideProps) {
   const navigate = useNavigate()
   const location = useLocation()
-  const { nodeName } = useAppStore()
+  const { nodeName, lang } = useAppStore()
 
   const isActive = (path: string) =>
     path === '/' ? location.pathname === '/' : location.pathname.startsWith(path)
@@ -89,10 +90,10 @@ export function Aside({ collapsed, onToggleCollapse }: AsideProps) {
                   collapsed && 'justify-center px-0',
                 )}
                 aria-current={isActive(item.path) ? 'page' : undefined}
-                title={collapsed ? item.label : undefined}
+                title={collapsed ? t(item.navKey, lang) : undefined}
               >
                 <item.icon className={clsx('w-5 h-5 flex-shrink-0', item.color)} aria-hidden="true" />
-                {!collapsed && <span className="font-manrope font-medium whitespace-nowrap text-[13px]">{item.label}</span>}
+                {!collapsed && <span className="font-manrope font-medium whitespace-nowrap text-[13px]">{t(item.navKey, lang)}</span>}
               </button>
             </li>
           ))}
