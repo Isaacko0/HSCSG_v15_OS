@@ -6,6 +6,7 @@ export type SovereignPhase = 'none' | 'survive' | 'build' | 'scale'
 export interface SovereignPillar {
   n: number
   name: string
+  nameKey: string
   metaphor: string // cuerpo humano al que equivale
   color: string
   icon: string // lucide icon name
@@ -14,6 +15,7 @@ export interface SovereignPillar {
 export interface SovereignLayer {
   i: number
   name: string
+  nameKey: string
   desc: string
 }
 

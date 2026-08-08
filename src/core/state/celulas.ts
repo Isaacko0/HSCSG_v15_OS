@@ -1,29 +1,28 @@
 // HSCSG v15 OS — Tipos del módulo Células (Freedom Cells)
 // Asimilado de "Manual de Células de Libertad" (FreedomCells.org / Derrick Broze).
-// Modelo de tejido social fractal isomorfo al Colectivo de Cosateca.
+// Modelo de tejido social fractal isomorfo al Colectivo de Cosateca y a la Soberanía.
 
 export interface CelulaPrincipio {
   n: number
-  nombre: string
-  desc: string
+  nameKey: string
+  descKey: string
 }
 
 export interface CelulaRecomendacion {
   n: number
-  titulo: string
-  desc: string
+  titleKey: string
+  descKey: string
 }
 
 export interface CelulaMetodo {
   key: string
-  nombre: string
-  desc: string
+  nameKey: string
+  descKey: string
 }
 
-// Nivel de la red fractal: 8 → 64 → 512 → 4096
 export interface CelulaNivel {
   key: string
-  nombre: string
+  nivelKey: string
   tamano: number
   factor: string
 }
@@ -33,7 +32,6 @@ export interface CelulasState {
   recomendaciones: CelulaRecomendacion[]
   metodos: CelulaMetodo[]
   niveles: CelulaNivel[]
-  // estado editable del nodo (cuántas células/intermedios tiene el usuario)
   miembros: number
   celdasInternas: number
   grupoIntermedio: number

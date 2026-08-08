@@ -5,37 +5,37 @@ import type { SovereigntyState, SovereignPillar, SovereignLayer, SovereignPhase 
 
 // 13 pilares (del repo original: name, metaphor, color, icon lucide)
 export const PILLARS_13: SovereignPillar[] = [
-  { n: 1, name: 'Water', metaphor: 'The Bloodstream', color: '#1a5276', icon: 'Droplets' },
-  { n: 2, name: 'Food', metaphor: 'The Stomach', color: '#196f3d', icon: 'Utensils' },
-  { n: 3, name: 'Shelter', metaphor: 'The Skeleton', color: '#784212', icon: 'Home' },
-  { n: 4, name: 'Energy', metaphor: 'The Heart', color: '#f1c40f', icon: 'Zap' },
-  { n: 5, name: 'Medicine', metaphor: 'The Immune System', color: '#e74c3c', icon: 'BriefcaseMedical' },
-  { n: 6, name: 'Communication', metaphor: 'The Nervous System', color: '#3498db', icon: 'TowerBroadcast' },
-  { n: 7, name: 'Manufacturing', metaphor: 'The Hands', color: '#e67e22', icon: 'Cog' },
-  { n: 8, name: 'Security', metaphor: 'The Skin', color: '#2ecc71', icon: 'ShieldHalf' },
-  { n: 9, name: 'Transportation', metaphor: 'The Legs', color: '#7f8c8d', icon: 'Truck' },
-  { n: 10, name: 'Trade', metaphor: 'The Circulatory System', color: '#d4af37', icon: 'Scale' },
-  { n: 11, name: 'Governance', metaphor: 'The Brain', color: '#5b5ea6', icon: 'Gavel' },
-  { n: 12, name: 'Knowledge', metaphor: 'The Memory', color: '#48c9b0', icon: 'BookOpen' },
-  { n: 13, name: 'Culture', metaphor: 'The Soul', color: '#9c27b0', icon: 'MasksTheater' },
+  { n: 1, name: 'Water', nameKey: 'sov.water', metaphor: 'The Bloodstream', color: '#1a5276', icon: 'Droplets' },
+  { n: 2, name: 'Food', nameKey: 'sov.food', metaphor: 'The Stomach', color: '#196f3d', icon: 'Utensils' },
+  { n: 3, name: 'Shelter', nameKey: 'sov.shelter', metaphor: 'The Skeleton', color: '#784212', icon: 'Home' },
+  { n: 4, name: 'Energy', nameKey: 'sov.energy', metaphor: 'The Heart', color: '#f1c40f', icon: 'Zap' },
+  { n: 5, name: 'Medicine', nameKey: 'sov.medicine', metaphor: 'The Immune System', color: '#e74c3c', icon: 'BriefcaseMedical' },
+  { n: 6, name: 'Communication', nameKey: 'sov.communication', metaphor: 'The Nervous System', color: '#3498db', icon: 'Radio' },
+  { n: 7, name: 'Manufacturing', nameKey: 'sov.manufacturing', metaphor: 'The Hands', color: '#e67e22', icon: 'Cog' },
+  { n: 8, name: 'Security', nameKey: 'sov.security', metaphor: 'The Skin', color: '#2ecc71', icon: 'ShieldHalf' },
+  { n: 9, name: 'Transportation', nameKey: 'sov.transportation', metaphor: 'The Legs', color: '#7f8c8d', icon: 'Truck' },
+  { n: 10, name: 'Trade', nameKey: 'sov.trade', metaphor: 'The Circulatory System', color: '#d4af37', icon: 'Scale' },
+  { n: 11, name: 'Governance', nameKey: 'sov.governance', metaphor: 'The Brain', color: '#5b5ea6', icon: 'Gavel' },
+  { n: 12, name: 'Knowledge', nameKey: 'sov.knowledge', metaphor: 'The Memory', color: '#48c9b0', icon: 'BookOpen' },
+  { n: 13, name: 'Culture', nameKey: 'sov.culture', metaphor: 'The Soul', color: '#9c27b0', icon: 'Drama' },
 ]
 
 // 7 capas (del repo: Survival → Innovation)
 export const LAYERS_7: SovereignLayer[] = [
-  { i: 0, name: 'Survival', desc: 'Zero prep. Grid is down. You have nothing. Improvise.' },
-  { i: 1, name: 'Preparedness', desc: 'Kit built. Supplies stocked. Training done. Ready.' },
-  { i: 2, name: 'Stockpile', desc: 'Raw materials with trade value. Strategic reserves.' },
-  { i: 3, name: 'Production', desc: 'Making things. 3D printing, kits, assemblies, repairs.' },
-  { i: 4, name: 'Commerce', desc: 'Selling, drop-shipping, curating. Full product catalog.' },
-  { i: 5, name: 'Teaching', desc: 'Classes, guides, installs, consulting. Knowledge transfer.' },
-  { i: 6, name: 'Innovation', desc: 'Eureka-level breakthroughs. Category-defining work.' },
+  { i: 0, name: 'Survival', nameKey: 'sov.layer.survival', desc: 'Zero prep. Grid is down. You have nothing. Improvise.' },
+  { i: 1, name: 'Preparedness', nameKey: 'sov.layer.preparedness', desc: 'Kit built. Supplies stocked. Training done. Ready.' },
+  { i: 2, name: 'Stockpile', nameKey: 'sov.layer.stockpile', desc: 'Raw materials with trade value. Strategic reserves.' },
+  { i: 3, name: 'Production', nameKey: 'sov.layer.production', desc: 'Making things. 3D printing, kits, assemblies, repairs.' },
+  { i: 4, name: 'Commerce', nameKey: 'sov.layer.commerce', desc: 'Selling, drop-shipping, curating. Full product catalog.' },
+  { i: 5, name: 'Teaching', nameKey: 'sov.layer.teaching', desc: 'Classes, guides, installs, consulting. Knowledge transfer.' },
+  { i: 6, name: 'Innovation', nameKey: 'sov.layer.innovation', desc: 'Eureka-level breakthroughs. Category-defining work.' },
 ]
 
-export const PHASES: { key: SovereignPhase; label: string; color: string; rank: number }[] = [
-  { key: 'none', label: 'Not started', color: '#2a3340', rank: 0 },
-  { key: 'survive', label: 'Survive', color: '#e74c3c', rank: 1 },
-  { key: 'build', label: 'Build', color: '#f1c40f', rank: 2 },
-  { key: 'scale', label: 'Scale', color: '#2ecc71', rank: 3 },
+export const PHASES: { key: SovereignPhase; label: string; labelKey: string; color: string; rank: number }[] = [
+  { key: 'none', label: 'Not started', labelKey: 'sov.phase.none', color: '#2a3340', rank: 0 },
+  { key: 'survive', label: 'Survive', labelKey: 'sov.phase.survive', color: '#e74c3c', rank: 1 },
+  { key: 'build', label: 'Build', labelKey: 'sov.phase.build', color: '#f1c40f', rank: 2 },
+  { key: 'scale', label: 'Scale', labelKey: 'sov.phase.scale', color: '#2ecc71', rank: 3 },
 ]
 
 export const cellKey = (pillar: number, layer: number) => `${pillar}-${layer}`

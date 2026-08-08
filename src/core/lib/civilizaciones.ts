@@ -8,25 +8,25 @@ export const CIVILIZATION_LINKS: CivilizationLink[] = [
     key: 'auravana',
     name: 'Auravana',
     url: 'https://auravana.org/',
-    desc: 'Diseños modulares gratuitos de comunidades, con análisis exhaustivo y sociológico territorial de las civilizaciones a prescindir.',
+    descKey: 'civ.auravana',
   },
   {
     key: 'one-community',
     name: 'One Community',
     url: 'https://onecommunityglobal.org/',
-    desc: 'Diseños bioconstructivos de germinación y estímulo paisajístico variado, con los mejores componentes recreativos y explorativos sinérgicos de los aspectos de la vida en código libre.',
+    descKey: 'civ.onecommunity',
   },
   {
     key: 'the-venus-project',
     name: 'The Venus Project',
     url: 'https://www.thevenusproject.com/',
-    desc: 'Economía basada en recursos: adaptabilidad a cualquier tecnología sin dejar a nadie atrás, con implicaciones de continuidad planetaria.',
+    descKey: 'civ.thevenusproject',
   },
   {
     key: 'resource-based-economy',
     name: 'Resource Based Economy',
     url: 'https://www.resourcebasedeconomy.org/',
-    desc: 'Las únicas limitaciones son las que nos imponemos a nosotros mismos. Transición a una civilización sin escasez ni dinero.',
+    descKey: 'civ.resourcebasedeconomy',
   },
 ]
 

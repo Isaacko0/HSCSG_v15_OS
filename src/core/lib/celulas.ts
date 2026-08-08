@@ -3,43 +3,43 @@ import type { CelulasState, CelulaPrincipio, CelulaRecomendacion, CelulaMetodo, 
 
 // 5 principios de la Red de Células de Libertad
 export const CELULA_PRINCIPIOS: CelulaPrincipio[] = [
-  { n: 1, nombre: 'Localización', desc: 'Arraigo geográfico y cultural; actuar donde se vive.' },
-  { n: 2, nombre: 'Descentralización', desc: 'Sin centro de mando; poder distribuido en células.' },
-  { n: 3, nombre: 'Soluciones enfocadas', desc: 'Resolver problemas concretos de la comunidad, no teoría abstracta.' },
-  { n: 4, nombre: 'Apolítico', desc: 'Fuera de partidos y banderas; soberanía por encima del Estado.' },
-  { n: 5, nombre: 'No violento', desc: 'Resistencia y construcción sin violencia.' },
+  { n: 1, nameKey: 'cel.p1', descKey: 'cel.p1d' },
+  { n: 2, nameKey: 'cel.p2', descKey: 'cel.p2d' },
+  { n: 3, nameKey: 'cel.p3', descKey: 'cel.p3d' },
+  { n: 4, nameKey: 'cel.p4', descKey: 'cel.p4d' },
+  { n: 5, nameKey: 'cel.p5', descKey: 'cel.p5d' },
 ]
 
 // 12 recomendaciones para construir células (Derrick Broze, "Cómo salir de la tecnocracia")
 export const CELULA_RECOMENDACIONES: CelulaRecomendacion[] = [
-  { n: 1, titulo: 'Comprender tu motivación', desc: 'Saber por qué persigues este objetivo antes de empezar.' },
-  { n: 2, titulo: 'Identificar candidatos', desc: 'Personas sanas mental, física y espiritualmente para el objetivo.' },
-  { n: 3, titulo: 'Discutir temas comunes', desc: 'Fuerzas motrices que unen al grupo.' },
-  { n: 4, titulo: 'Puntos fuertes y débiles', desc: 'Análisis sincero individual y grupal.' },
-  { n: 5, titulo: 'Libertad vs seguridad', desc: 'Evaluar grado de libertad deseado y aceptabilidad de riesgo.' },
-  { n: 6, titulo: 'Objetivos corto/largo plazo', desc: '3 meses, 6 meses, 1 año; responsabilidad mutua.' },
-  { n: 7, titulo: 'Atención plena', desc: 'Comunicación no violenta y meditación en grupo.' },
-  { n: 8, titulo: 'Cumplir objetivos', desc: 'Documentar cada logro de la célula y miembros.' },
-  { n: 9, titulo: 'Educación grupal continua', desc: 'Ampliar conocimientos, habilidades y suministros.' },
-  { n: 10, titulo: 'Promover logros', desc: 'Redes sociales (cuando sea seguro) para mostrar la contraeconomía.' },
-  { n: 11, titulo: 'Ingresos/independencia', desc: 'Crear ingresos que el Estado no pueda gravar.' },
-  { n: 12, titulo: 'Red con otras células', desc: 'La clave: construir la comunidad contraeconómica amplia.' },
+  { n: 1, titleKey: 'cel.r1t', descKey: 'cel.r1d' },
+  { n: 2, titleKey: 'cel.r2t', descKey: 'cel.r2d' },
+  { n: 3, titleKey: 'cel.r3t', descKey: 'cel.r3d' },
+  { n: 4, titleKey: 'cel.r4t', descKey: 'cel.r4d' },
+  { n: 5, titleKey: 'cel.r5t', descKey: 'cel.r5d' },
+  { n: 6, titleKey: 'cel.r6t', descKey: 'cel.r6d' },
+  { n: 7, titleKey: 'cel.r7t', descKey: 'cel.r7d' },
+  { n: 8, titleKey: 'cel.r8t', descKey: 'cel.r8d' },
+  { n: 9, titleKey: 'cel.r9t', descKey: 'cel.r9d' },
+  { n: 10, titleKey: 'cel.r10t', descKey: 'cel.r10d' },
+  { n: 11, titleKey: 'cel.r11t', descKey: 'cel.r11d' },
+  { n: 12, titleKey: 'cel.r12t', descKey: 'cel.r12d' },
 ]
 
 // 4 métodos para organizar el cuadro interno (8 personas)
 export const CELULA_METODOS: CelulaMetodo[] = [
-  { key: 'familiaridad', nombre: 'Familiaridad y confianza', desc: 'Vincularse con quienes ya se conoce y se confía.' },
-  { key: 'proximidad', nombre: 'Proximidad geográfica', desc: 'Agrupar por zona para ayuda mutua presencial.' },
-  { key: 'intereses', nombre: 'Intereses compartidos', desc: 'Agrupar por áreas de trabajo común (jardinería, educación…).' },
-  { key: 'cronologico', nombre: 'Cronológico / al azar', desc: 'Por orden de llegada o sorteo (último recurso).' },
+  { key: 'familiaridad', nameKey: 'cel.m1', descKey: 'cel.m1d' },
+  { key: 'proximidad', nameKey: 'cel.m2', descKey: 'cel.m2d' },
+  { key: 'intereses', nameKey: 'cel.m3', descKey: 'cel.m3d' },
+  { key: 'cronologico', nameKey: 'cel.m4', descKey: 'cel.m4d' },
 ]
 
 // Escala fractal de la red: célula 8 → grupo intermedio 64 → meta grupo 512 → confederación 4096
 export const CELULA_NIVELES: CelulaNivel[] = [
-  { key: 'interna', nombre: 'Célula interna (personal)', tamano: 8, factor: 'base' },
-  { key: 'intermedio', nombre: 'Grupo intermedio (local)', tamano: 64, factor: '8 × 8' },
-  { key: 'meta', nombre: 'Meta grupo (regional)', tamano: 512, factor: '8 × 64' },
-  { key: 'confederacion', nombre: 'Confederación', tamano: 4096, factor: '8 × 512' },
+  { key: 'interna', nivelKey: 'cel.n1', tamano: 8, factor: 'base' },
+  { key: 'intermedio', nivelKey: 'cel.n2', tamano: 64, factor: '8 × 8' },
+  { key: 'meta', nivelKey: 'cel.n3', tamano: 512, factor: '8 × 64' },
+  { key: 'confederacion', nivelKey: 'cel.n4', tamano: 4096, factor: '8 × 512' },
 ]
 
 // Cálculo del tamaño de red dado el número de células internas (cada una = 8 personas)
@@ -50,11 +50,11 @@ export function redSize(celdasInternas: number): number {
 
 // Nivel de red alcanzable a partir de miembros totales (aprox por escala fractal)
 export function nivelRed(miembros: number): string {
-  if (miembros >= 4096) return 'Confederación (4096+)'
-  if (miembros >= 512) return 'Meta grupo (512)'
-  if (miembros >= 64) return 'Grupo intermedio (64)'
-  if (miembros >= 8) return 'Célula interna (8)'
-  return 'Núcleo en formación (<8)'
+  if (miembros >= 4096) return 'cel.n4'
+  if (miembros >= 512) return 'cel.n3'
+  if (miembros >= 64) return 'cel.n2'
+  if (miembros >= 8) return 'cel.n1'
+  return 'cel.n0'
 }
 
 export function makeCelulasState(): CelulasState {

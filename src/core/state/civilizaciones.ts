@@ -5,7 +5,7 @@ export interface CivilizationLink {
   key: string
   name: string
   url: string
-  desc: string
+  descKey: string // clave de i18n (civ.<key>) en lugar de desc fija
 }
 
 export interface CivilizacionesState {

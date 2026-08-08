@@ -1,26 +1,24 @@
 import { Globe2, ExternalLink, Compass } from 'lucide-react'
 import { useAppStore } from '@core/state/store'
 import { Card, Stat } from '@components/ui'
+import { t } from '@core/lib/i18n'
 
 export function Civilizaciones() {
-  const { civilizaciones } = useAppStore()
+  const { civilizaciones, lang } = useAppStore()
   return (
     <div className="space-y-6">
       <div>
         <h1 className="font-jost text-2xl md:text-3xl font-semibold flex items-center gap-2">
           <Compass className="w-7 h-7 text-emerald-400" /> Civilizaciones · Horizontes postmonetarios
         </h1>
-        <p className="text-[var(--dim)] mt-1">
-          Proyectos hermanos de civilización postmonetaria y economía basada en recursos. Como Cosateca OS,
-          apuntan al acceso por contribución y base material, no por dinero.
-        </p>
+        <p className="text-[var(--dim)] mt-1">{t('civ.subtitle', lang)}</p>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Stat label="Horizontes" value={`${civilizaciones.links.length}`} color="text-emerald-400" />
-        <Stat label="Modelo" value="Postmonetario" color="text-sky-400" />
-        <Stat label="Base" value="Recursos" color="text-violet-400" />
-        <Stat label="Límite" value="Autoimpuesto" color="text-rose-400" />
+        <Stat label={t('civ.horizons', lang)} value={`${civilizaciones.links.length}`} color="text-emerald-400" />
+        <Stat label={t('civ.model', lang)} value={t('civ.postmonetary', lang)} color="text-sky-400" />
+        <Stat label={t('civ.base', lang)} value={t('civ.resources', lang)} color="text-violet-400" />
+        <Stat label={t('civ.limit', lang)} value={t('civ.selfimposed', lang)} color="text-rose-400" />
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
@@ -31,7 +29,7 @@ export function Civilizaciones() {
                 <div className="font-manrope font-semibold text-lg flex items-center gap-2">
                   <Globe2 className="w-5 h-5 text-emerald-400" /> {l.name}
                 </div>
-                <p className="text-sm text-[var(--ink)] mt-2 leading-relaxed">{l.desc}</p>
+                <p className="text-sm text-[var(--ink)] mt-2 leading-relaxed">{t(l.descKey, lang)}</p>
               </div>
             </div>
             <a
@@ -40,16 +38,13 @@ export function Civilizaciones() {
               rel="noopener noreferrer"
               className="mt-3 inline-flex items-center gap-1 text-sm text-sky-400 hover:underline"
             >
-              Visitar <ExternalLink className="w-3 h-3" />
+              {t('civ.visit', lang)} <ExternalLink className="w-3 h-3" />
             </a>
           </Card>
         ))}
       </div>
 
-      <p className="text-xs text-[var(--dim)]">
-        Enlaces externos (se abren en nueva pestaña). No son parte del nodo Cosateca; se listan como referentes de
-        civilización postmonetaria coherentes con el Materialismo Jerárquico y el CaaS.
-      </p>
+      <p className="text-xs text-[var(--dim)]">{t('civ.note', lang)}</p>
     </div>
   )
 }
