@@ -28,6 +28,13 @@ export const CIVILIZATION_LINKS: CivilizationLink[] = [
     url: 'https://www.resourcebasedeconomy.org/',
     descKey: 'civ.resourcebasedeconomy',
   },
+  {
+    key: 'copiosis',
+    name: 'Copiaosis',
+    url: 'https://copiosis.net/',
+    descKey: 'civ.copiosis',
+    wide: true,
+  },
 ]
 
 export function makeCivilizacionesState(): CivilizacionesState {

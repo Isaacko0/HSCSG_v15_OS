@@ -6,6 +6,7 @@ export interface CivilizationLink {
   name: string
   url: string
   descKey: string // clave de i18n (civ.<key>) en lugar de desc fija
+  wide?: boolean // ocupa 2 columnas (flashcard ancha)
 }
 
 export interface CivilizacionesState {

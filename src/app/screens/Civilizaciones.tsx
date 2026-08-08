@@ -23,7 +23,7 @@ export function Civilizaciones() {
 
       <div className="grid md:grid-cols-2 gap-4">
         {civilizaciones.links.map((l) => (
-          <Card key={l.key}>
+          <Card key={l.key} className={l.wide ? 'md:col-span-2' : ''}>
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="font-manrope font-semibold text-lg flex items-center gap-2">
