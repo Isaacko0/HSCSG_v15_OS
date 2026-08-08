@@ -4,6 +4,12 @@ Todas las entradas siguen el formato: versión, fecha, repos asimilados en ese p
 
 ---
 
+## v15.18 — 2026-08-08 · Copiaosis + i18n + fix persistencia Civilizaciones
+- **Civilizaciones:** añadido **Copiaosis** (`https://copiosis.net/`) como flashcard ancha (ocupa 2 columnas, `wide: true`). Traducción ES/EN/PT en `i18n.ts`.
+- **i18n nivel 2:** el selector ES/EN/PT-BR ahora traduce también el contenido interno de 7 módulos (Solarpunk, Civilizaciones, Células, Mundus, Soberanía, Integral, Life). ~170 claves nuevas en `i18n.ts`. Marcas (ZNU, CaaS, nombres de orgs) no se traducen.
+- **Fix crítico Civilizaciones:** la pantalla iteraba `civilizaciones.links` (array **persistido** en localStorage), por lo que el seed nuevo (Copiaosis) no se reflejaba en navegadores con estado viejo. Ahora itera la **constante `CIVILIZATION_LINKS`** de `lib/civilizaciones.ts` (catálogo estático). Regla reforzada: los catálogos fijos NO deben leerse del store persistido.
+- tsc/build OK, `/civilizaciones` → 200, Copiaosis confirmado en bundle de producción.
+
 ## v15.17 — 2026-08-05 · Civilizaciones (horizontes postmonetarios)
 - **Nuevo módulo `/civilizaciones`** (icono Compass) en la barra lateral: enlaces a Auravana, One Community, The Venus Project y Resource Based Economy (economía basada en recursos). Coherentes con CaaS.
 - Tipos/lib/store/pantalla/nav/ruta. `docs/civilizaciones_sinergia.md`.
