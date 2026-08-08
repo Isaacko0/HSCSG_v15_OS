@@ -1,10 +1,11 @@
 import { Globe2, ExternalLink, Compass } from 'lucide-react'
 import { useAppStore } from '@core/state/store'
 import { Card, Stat } from '@components/ui'
+import { CIVILIZATION_LINKS } from '@core/lib/civilizaciones'
 import { t } from '@core/lib/i18n'
 
 export function Civilizaciones() {
-  const { civilizaciones, lang } = useAppStore()
+  const { lang } = useAppStore()
   return (
     <div className="space-y-6">
       <div>
@@ -15,14 +16,14 @@ export function Civilizaciones() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Stat label={t('civ.horizons', lang)} value={`${civilizaciones.links.length}`} color="text-emerald-400" />
+        <Stat label={t('civ.horizons', lang)} value={`${CIVILIZATION_LINKS.length}`} color="text-emerald-400" />
         <Stat label={t('civ.model', lang)} value={t('civ.postmonetary', lang)} color="text-sky-400" />
         <Stat label={t('civ.base', lang)} value={t('civ.resources', lang)} color="text-violet-400" />
         <Stat label={t('civ.limit', lang)} value={t('civ.selfimposed', lang)} color="text-rose-400" />
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
-        {civilizaciones.links.map((l) => (
+        {CIVILIZATION_LINKS.map((l) => (
           <Card key={l.key} className={l.wide ? 'md:col-span-2' : ''}>
             <div className="flex items-start justify-between gap-3">
               <div>
