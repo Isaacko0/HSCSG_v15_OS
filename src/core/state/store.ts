@@ -35,6 +35,7 @@ import type { CelulasState } from '@core/state/celulas'
 import type { ColonyState, DomainKind } from '@core/state/colony'
 import type { KlerosState, JurorVerdict } from '@core/state/kleros'
 import type { AgenciaState } from '@core/state/agencia'
+import type { GaiaState } from '@core/state/gaia'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -62,6 +63,7 @@ import {
   makeKlerosState, seatJuror, openDispute, addEvidence, castVote, resolveDispute, appealDispute, attestIdentity,
 } from '@core/lib/kleros'
 import { makeAgenciaState, reversePlan } from '@core/lib/agencia'
+import { makeGaiaState, addBounty, completeBounty, formCouncil } from '@core/lib/gaia'
 import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
 
@@ -196,6 +198,9 @@ export interface AppState {
   nodeMode: 'postmonetario' | 'conectado'
   priceParity: number // ZNU -> USDC (oráculo ReFi, Nivel 3)
 
+  // ===== Gaia Confederation (gobernanza biomimética + interoperabilidad) =====
+  gaia: GaiaState
+
   // actions
   setNodeName: (n: string) => void
   updateBase: (u: Partial<BaseMaterial>) => void
@@ -297,6 +302,13 @@ export interface AppState {
   setPlanMeta: (meta: number) => void
   setNodeMode: (mode: 'postmonetario' | 'conectado') => void
   setPriceParity: (p: number) => void
+  // Gaia Confederation
+  addCircle: (name: string, size: number) => void
+  addCapital: (kind: import('@core/lib/gaia').CapitalKind, amount: number) => void
+  setRegenMetric: (key: 'ecosystemHealth' | 'communityWellbeing' | 'systemicResilience', value: number) => void
+  addBounty: (title: string, need: string, znuReward: number) => void
+  completeBounty: (id: string) => void
+  formCouncil: (topic: string, members: string) => void
   resetAll: () => void
 }
 
@@ -599,6 +611,9 @@ export const useAppStore = create<AppState>()(
       nodeMode: 'postmonetario',
       priceParity: 0.02, // 1 ZNU ~ 0.02 USDC (oráculo ReFi de referencia)
 
+      // Gaia Confederation
+      gaia: makeGaiaState(),
+
       setNodeName: (n) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
       updateCAC: (u) => set((st) => ({ cac: { ...st.cac, ...u } })),
@@ -893,6 +908,24 @@ export const useAppStore = create<AppState>()(
       })),
       setNodeMode: (mode) => set({ nodeMode: mode }),
       setPriceParity: (p) => set({ priceParity: p }),
+      addCircle: (name, size) => set((st) => ({
+        gaia: { ...st.gaia, circles: [...st.gaia.circles, { id: `cir-${Date.now()}`, name, size }] },
+      })),
+      addCapital: (kind, amount) => set((st) => ({
+        gaia: { ...st.gaia, capitals: { ...st.gaia.capitals, [kind]: st.gaia.capitals[kind] + amount } },
+      })),
+      setRegenMetric: (key, value) => set((st) => ({
+        gaia: { ...st.gaia, metrics: { ...st.gaia.metrics, [key]: value } },
+      })),
+      addBounty: (title, need, znuReward) => set((st) => ({
+        gaia: { ...st.gaia, bounties: addBounty(st.gaia.bounties, { id: `b-${Date.now()}`, title, need, znuReward, done: false }) },
+      })),
+      completeBounty: (id) => set((st) => ({
+        gaia: { ...st.gaia, bounties: completeBounty(st.gaia.bounties, id) },
+      })),
+      formCouncil: (topic, members) => set((st) => ({
+        gaia: { ...st.gaia, councils: formCouncil(st.gaia.councils, topic, members.split(',').map((m) => m.trim()).filter(Boolean)) },
+      })),
       resetAll: () =>
         set({
           nodeName: 'Nodo Cosateca v0.1',
@@ -997,6 +1030,8 @@ export const useAppStore = create<AppState>()(
       agencia: makeAgenciaState(),
       nodeMode: 'postmonetario',
       priceParity: 0.02,
+      // Gaia Confederation
+      gaia: makeGaiaState(),
         }),
     }),
     {
@@ -1045,6 +1080,7 @@ export const useAppStore = create<AppState>()(
         agencia: st.agencia,
         nodeMode: st.nodeMode,
         priceParity: st.priceParity,
+        gaia: st.gaia,
         lang: st.lang,
         lucidez: st.lucidez,
       }),

@@ -88,6 +88,7 @@ S:  Síntesis (Integrar)              ← RAO + Federación DTN + Memética
 | **Colony (JoinColony)** | §2.18, §3.0, §3.5, §9.2, §14, §16 | DAO por reputación + tesorería programable (dominios/pots), voting por reputación (anti-plutocracia), vesting por hitos, events append-only |
 | **Kleros / Proof-of-Humanity** | §2.19, §3.0, §3.5, §9.2, §16 | Arbitraje descentralizado (jurados anónimos+penalización), oráculo de hechos (Realitio), identidad sybil-resistant (PoH), escrow+arbitraje, TCR curadas, Autómata ejecutor (corobot) |
 | **DeseOS / Contento.pro** | §2.20, §3.0, §14, §16 | SOA de agencia de marketing (BranDNA 12 secc, escalera 5M, ICP, Strategic Brain, Pagos/Pauta) **hibridado anfibio ZNU↔USD** |
+| **Gaia Confederation** | §2.21, §3.5, §9.2, §16 | Gobernanza biomimética (círculos Dunbar), economía regenerativa + monedas complementarias, passport contextual de confianza, justicia restaurativa, protocolo de interoperabilidad (corona el vaso comunicante) |
 
 ---
 
@@ -334,6 +335,58 @@ Los módulos Pagos/Pauta de DeseOS operan sobre `amount`; el render llama `displ
 
 ---
 
+## 2.21 Gaia Confederation: Protocolo de Interoperabilidad + Gobernanza Biomimética
+
+**Fuente:** `Gaia Confederation White Paper` (gaiaunion.com). White paper (no repo de código). Alianza de Territorios Autónomos, Resilientes y Regenerativos (ART). Meta-convergencia de gobernanza biomimética + economía regenerativa + passport de confianza + infraestructura distribuida.
+
+### 2.21.1 Aporte Conceptual
+- **Gobernanza biomimética (círculos):** Átomos→Células (1) → Círculo/Holón (3-13) → Comunidad/BioHábitat (13-150, Dunbar) → BioRegión/Federación (144-10k) → Confederación (Macro-organismo). **Holón-árquica** (cada nivel es todo y parte, sin dominación).
+- **Economía regenerativa:** más allá de capitalismo/socialismo. Múltiples capitales (natural, social, cultural, espiritual, experiencial, intelectual). Monedas complementarias (bioregionales, de propósito, time-banks, cripto-regenerativas).
+- **Passport de confianza contextual:** soberanía individual, reputación multidimensional, credenciales verificables, historial de contribución.
+- **Justicia restaurativa + Wisdom Councils:** CNV, reparación, consejos de sabiduría.
+- **Cultura Matrística (Maturana):** colaboración equilibrada, cuidado, integración de polaridades, biología del amor.
+- **Métricas de regeneración:** Ecosystem Health / Community Wellbeing / Systemic Resilience.
+- **Bounty System:** misiones comunitarias con recompensa.
+- **Protocolo de interoperabilidad:** Value Translation + Communication Interfaces + Conflict Resolution — permite que modelos distintos coexistan sin perder autonomía.
+
+### 2.21.2 Confluencia con el VASO COMUNICANTE (corona el enfoque HSCSG)
+Gaia propone un protocolo mínimo común para que modelos distintos colaboren. HSCSG ya lo practica vía el vaso comunicante (Colony, Kleros, Copiosis, DeseOS). Gaia lo hace **explícito**:
+1. **Value Translation:** mapeo ZNU ↔ EcoSocial token ↔ tiempo ↔ USD (oráculo anfibio DeseOS).
+2. **Communication Interfaces:** federación DTN/AP (offline-first).
+3. **Conflict Resolution:** Kleros (mecánico) + Wisdom Councils (complejo) + CNV.
+
+HSCSG no es "un sistema más" sino un **nodo traductor** en la confederación regenerativa.
+
+### 2.21.3 Tabla de Homologación
+
+| Gaia | Traducción Soberana HSCSG | Componente / Rol |
+|------|---------------------------|------------------|
+| Círculos biomiméticos (Dunbar) | Estructura fractal Nodo→Célula→Federación | `celulas` + `lib/gaia.ts` |
+| Múltiples capitales | AUT 12 vectores (extendido) | `lib/gaia.ts` `Capital` |
+| Passport contextual | CDS por dominio + PoH | CDS + Kleros |
+| Justicia restaurativa | Reparación sobre castigo | Kleros + Autómata |
+| Wisdom Councils | Capa humana sobre Kleros | `lib/gaia.ts` `WisdomCouncil` |
+| Economía regenerativa | ZNU / CaaS-BM / Copiosis | CaaS + NBR |
+| Bounty System | Misiones del nodo | `tasks` + ZNU |
+| Métricas regeneración | KPI del nodo | `lib/gaia.ts` `regenMetrics` |
+| Cultura Matrística | Principio rector del nodo | `civilizaciones` |
+
+### 2.21.4 Confluencia con Leyes MJ
+- **Ley I:** "Principio de No-Daño" + justicia restaurativa = MJ Gate (anti-daño verificable).
+- **Ley II:** recompensa por contribución regenerativa = ZNU por Beneficio Neto (Copiosis). Bounty = misión con recompensa AUT×CDS.
+- **Ley III:** "Compromiso con la Verdad" + dashboard = RAO + Modo Lucidez.
+
+### 2.21.5 Entregables Accionables
+| Entregable | Módulo HSCSG | Prioridad |
+|------------|--------------|-----------|
+| `docs/gaia_backup.md` + `gaia_integration.md` | Docs | **P0** |
+| `lib/gaia.ts` (Círculos Dunbar + Capitales + Métricas + Bounty + WisdomCouncil) | `/circulos` | **P1** |
+| Pantalla `/circulos` (círculos biomiméticos + capitales + métricas) | `/circulos` | **P1** |
+
+> **Nota de extirpación:** blockchain/DLT/EVM, IPFS/SSI cripto, cripto-regenerativas y macro-organismo centralizado → NO se asimilan (regla offline-first sin EVM). Se reemplazan por federación DTN/AP, credenciales locales y ZNU/CaaS-BM.
+
+---
+
 ## 3. MODELO DE NEGOCIO: LA CUATERNIDAD SOBERANA AMPLIADA
 
 ### 3.1 Estructura de 4 Planos
@@ -413,6 +466,7 @@ La integración de Copiosis (v7.1) proporciona la **arquitectura completa de la 
 | TCR (stake-curate) | Registro curado por CDS | `lib/caas.ts` |
 | escrow + arbitraje | Escrow Solarpunk resuelto por CDS | `lib/solarpunk.ts` |
 | Proof of Humanity V1/V2 | Identidad Soberana (1 humano=1 nodo) | `lib/identity.ts` |
+| Gaia Confederation | Protocolo de interoperabilidad + círculos biomiméticos | `lib/gaia.ts` (corona el vaso) |
 
 **Bootstrap resuelto:** HSCSG ya tiene Fondo Solarpunk, DSI, FABSHIP, CaaS-BM.
 
@@ -613,6 +667,9 @@ Usuario ejecuta acción (ValueFlows event) → Plataforma pasa a IA → Autómat
 | Identidad soberana | Atestigua humanidad (PoH) | `lib/identity.ts` (hash atestaciones) | verify 1-humano-1-nodo | Registro en RAO | I, II, III |
 | Oráculo de hechos | Consulta ¿ocurrió? | `lib/oracle.ts` (Realitio→BN) | attestTruth multisig | Hecho en RAO | I, III |
 | Escrow + arbitraje | Retiene fondo intercambio | `lib/solarpunk.ts` escrow | MJ Gate + CDS_Jurados | Liberación/retorno | I, II, III |
+| Círculo biomimético | Crea círculo Dunbar (3-13/13-150) | `lib/gaia.ts` CircleTier | CDS por dominio | Registro en RAO | I, II |
+| Bounty (misión) | Publica necesidad como misión | `lib/gaia.ts` Bounty | ZNU por AUT×CDS | Cumplimiento en RAO | II, III |
+| Wisdom Council | Consejo para conflicto complejo | `lib/gaia.ts` WisdomCouncil | CNV + Kleros | Acuerdo en RAO | I, III |
 
 ### 9.3 Bucles de Retroalimentación Específicos
 
@@ -948,7 +1005,7 @@ NetBenefitFlow (NBR) emitido cuando BN = Σ(W_i × S_i) - Damage > 0
 
 ## 16. CONCLUSIÓN: SOBERANÍA OPERACIONAL VERIFICABLE
 
-HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity + integración DeseOS/Contento.pro constituye el **primer sistema operativo civilizatorio completo** que une:
+HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity + integración DeseOS/Contento.pro + integración Gaia Confederation constituye el **primer sistema operativo civilizatorio completo** que une:
 
 1. **Base material verificada** (SVD v2 + AUT 12 vectores + FABSHIP)
 2. **Gobernanza cibernética autónoma** (CDS + CDS_Jurados + RAO + FRS + Estigmergia + dominios/pots Colony por reputación + **justicia Kleros / identidad soberana PoH**)

@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { key: 'colectivo', navKey: 'nav.colectivo', icon: Users, color: 'text-purple-400', path: '/colectivo' },
   { key: 'justicia', navKey: 'nav.justicia', icon: Scale, color: 'text-rose-400', path: '/justicia' },
   { key: 'agencia', navKey: 'nav.agencia', icon: Briefcase, color: 'text-fuchsia-400', path: '/agencia' },
+  { key: 'circulos', navKey: 'nav.circulos', icon: Network, color: 'text-emerald-400', path: '/circulos' },
   { key: 'automata', navKey: 'nav.automata', icon: Cpu, color: 'text-cyan-400', path: '/automata' },
   { key: 'znu', navKey: 'nav.znu', icon: Coins, color: 'text-amber-400', path: '/znu' },
   { key: 'verificacion', navKey: 'nav.verificacion', icon: Eye, color: 'text-sky-400', path: '/verificacion' },
