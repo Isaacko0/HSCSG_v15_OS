@@ -478,6 +478,42 @@ HSCSG no es solo máquina: es *comunidad que aprende en voz alta*.
 
 ---
 
+## 2.24 Pipeline Anidado + Agentes autónomos (automaton · alook · ponytail)
+
+**Fuentes (GitHub):** `Conway-Research/automaton` (AI soberana autofinanciada), `alookai/alook` (compañía AI personal / orquestación de roles), `DietrichGebert/ponytail` (potenciador CLI/MCP de agentes). **Reiteración/extrapolación del loop Integral** (CDS·OAD·COS·ITC·FRS) en pipeline anidado robusto.
+
+### 2.24.1 Matchmaker / Feedback / Flujos (lo que pidió el usuario)
+- **Matchmaker** = `alook`: empareja necesidades (Issues/CDS, Bounties/Gaia, Retos/Aprender) con capacidades (AUT + credibility Symbiosky + expertise Democracia).
+- **Feedback** = `automaton` + FRS: el agente soberano "muere" si no regenera base material → presión evolutiva = FRS natural; FRS retroalimenta cada subsistema (no solo observa).
+- **Flujos de trabajo** = `ponytail`: cada transición de pipeline es un comando de una línea con hooks de verificación (Ley III).
+- **Interrelaciones/correlaciones**: ver tabla en `docs/automaton_alook_ponytail_integration.md` §4.
+- **Pipelines anidados**: loop 3 capas (Percepción FRS → Decisión CDS+Matchmaker → Ejecución OAD/COS/ITC), con sub-loops por proyecto.
+
+### 2.24.2 Tabla de Homologación
+
+| Repo/Concepto | Traducción Soberana HSCSG | Componente / Rol |
+|---------------|---------------------------|------------------|
+| alook (orquestación) | Colaberry + Orquestación | Matchmaker de agentes/roles |
+| automaton (self-funding) | Autómata Soberano + ZNU/CaaS | Agente que gana su existencia (AUT×CDS) |
+| ponytail (una-línea) | flujos de trabajo / hooks | Potenciador de ejecución robusta |
+| Pipeline anidado | Integral (CDS·OAD·COS·ITC·FRS) | Loop robusto con degradación graceful |
+
+### 2.24.3 Confluencia con Leyes MJ
+- **Ley I**: automaton sobrevive solo si regenera base material; FRS evolutivo lo garantiza.
+- **Ley II**: self-funding del agente = AUT×CDS puro (acceso por contribución).
+- **Ley III**: ponytail hooks + append-only CDS = trazabilidad; nada se pierde.
+
+### 2.24.4 Entregables
+| Entregable | Módulo HSCSG | Prioridad |
+|------------|--------------|-----------|
+| `docs/automaton_alook_ponytail_backup.md` + `_integration.md` | Docs | **P0** |
+| `docs/pipeline_anidado.md` (loop 3 capas + agentes) | Docs | **P0** |
+| BRIEF §2.24, vaso §3.5, README | Brief | **P0** |
+
+> **Nota de extirpación:** pago de compute con dinero real (automaton), monorepo pnpm/turbo (alook), CLI externa (ponytail) → solo filosofía/primitivas de orquestación; soberanía local sin EVM.
+
+---
+
 ## 3. MODELO DE NEGOCIO: LA CUATERNIDAD SOBERANA AMPLIADA
 
 ### 3.1 Estructura de 4 Planos
@@ -560,6 +596,7 @@ La integración de Copiosis (v7.1) proporciona la **arquitectura completa de la 
 | Gaia Confederation | Protocolo de interoperabilidad + círculos biomiméticos | `lib/gaia.ts` (corona el vaso) |
 | iambrainstorming | Saber experiencial + aprendizaje interactivo | `lib/learning.ts` (capa educación) |
 | Symbiosky | Credibilidad por convicción + decay + anti-whale | `lib/symbiosky.ts` (va más allá: CDS gana convicción) |
+| automaton·alook·ponytail | Pipeline anidado + agentes (matchmaker/feedback) | `docs/pipeline_anidado.md` (capa de agentes) |
 
 **Bootstrap resuelto:** HSCSG ya tiene Fondo Solarpunk, DSI, FABSHIP, CaaS-BM.
 
@@ -1102,7 +1139,7 @@ NetBenefitFlow (NBR) emitido cuando BN = Σ(W_i × S_i) - Damage > 0
 
 ## 16. CONCLUSIÓN: SOBERANÍA OPERACIONAL VERIFICABLE
 
-HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity + integración DeseOS/Contento.pro + integración Gaia Confederation + integración iambrainstorming + integración Symbiosky constituye el **primer sistema operativo civilizatorio completo** que une:
+HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity + integración DeseOS/Contento.pro + integración Gaia Confederation + integración iambrainstorming + integración Symbiosky + integración automaton/alook/ponytail (pipeline anidado) constituye el **primer sistema operativo civilizatorio completo** que une:
 
 1. **Base material verificada** (SVD v2 + AUT 12 vectores + FABSHIP)
 2. **Gobernanza cibernética autónoma** (CDS + CDS_Jurados + RAO + FRS + Estigmergia + dominios/pots Colony por reputación + **justicia Kleros / identidad soberana PoH**)

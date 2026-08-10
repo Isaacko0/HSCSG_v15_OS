@@ -110,6 +110,9 @@ El botón de luna en el Header es un **toggle real de transparencia radical** (L
 | [Symbiosky (GitLab: whitpaper + contract-evm + nostr)](https://gitlab.com/blockchain-projects-ecosymra/symbiosky-whitpaper) | Credibilidad por Convicción | `docs/symbiosky_backup.md` · `docs/symbiosky_integration.md` |
 | [iambrainstorming.github.io (Amiya Tulu, libros)](https://iambrainstorming.github.io/) | Democracia / Aprender | `docs/iambrainstorming_backup.md` · `docs/iambrainstorming_integration.md` · `docs/iambrainstorming_libro_completo.md` |
 | [Kleros / Proof-of-Humanity / Realitio](https://kleros.io/) | Oráculo de Hechos + Identidad | `docs/kleros_backup.md` · `docs/kleros_integration.md` |
+| [Conway-Research/automaton](https://github.com/Conway-Research/automaton) | Pipeline anidado (agente soberano) | `docs/automaton_alook_ponytail_backup.md` · `docs/automaton_alook_ponytail_integration.md` |
+| [alookai/alook](https://github.com/alookai/alook) | Pipeline anidado (matchmaker de roles) | `docs/automaton_alook_ponytail_backup.md` · `docs/automaton_alook_ponytail_integration.md` |
+| [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | Pipeline anidado (potenciador) | `docs/automaton_alook_ponytail_backup.md` · `docs/automaton_alook_ponytail_integration.md` |
 
 ¹ Los backups originales se guardan también fuera del repo en `../HSCSG_v15_OS_BACKUP_YYYYMMDD_HHMMSS/`.
 
