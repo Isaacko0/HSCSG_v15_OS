@@ -89,6 +89,7 @@ S:  Síntesis (Integrar)              ← RAO + Federación DTN + Memética
 | **Kleros / Proof-of-Humanity** | §2.19, §3.0, §3.5, §9.2, §16 | Arbitraje descentralizado (jurados anónimos+penalización), oráculo de hechos (Realitio), identidad sybil-resistant (PoH), escrow+arbitraje, TCR curadas, Autómata ejecutor (corobot) |
 | **DeseOS / Contento.pro** | §2.20, §3.0, §14, §16 | SOA de agencia de marketing (BranDNA 12 secc, escalera 5M, ICP, Strategic Brain, Pagos/Pauta) **hibridado anfibio ZNU↔USD** |
 | **Gaia Confederation** | §2.21, §3.5, §9.2, §16 | Gobernanza biomimética (círculos Dunbar), economía regenerativa + monedas complementarias, passport contextual de confianza, justicia restaurativa, protocolo de interoperabilidad (corona el vaso comunicante) |
+| **iambrainstorming** | §2.22, §3.5, §16 | Blogs federados (principal, opinionated_observer, coding_blog, GitLab, interactive-five): saber experiencial + aprendizaje interactivo + pensamiento crítico (capa de educación/comunicación del vaso) |
 
 ---
 
@@ -387,6 +388,48 @@ HSCSG no es "un sistema más" sino un **nodo traductor** en la confederación re
 
 ---
 
+## 2.22 iambrainstorming: Saber Experiencial + Aprendizaje Interactivo (capa de educación del vaso)
+
+**Fuentes:** `iambrainstorming.github.io` (principal + Vercel), `opinionated_observer`, `coding_blog`, `blog` (GitLab), `interactive-five`. Sitios/blogs personales federados (HTML/MD estático, con README + LICENSE). **NO son DAOs/protocolos** — aportan *saber experiencial* y la capa de aprendizaje + comunicación (Ecología de Saberes de Gaia, UniDiversity).
+
+### 2.22.1 Aporte Conceptual
+- **Blog general:** pensamiento vivo, documentación de trayectoria (Capital experiencial de Gaia).
+- **Observador opinado:** análisis crítico / tensión dialéctica (la Lucidez necesita opiniones contrastadas, no consenso blando).
+- **Coding blog:** documentación técnica viva (Hylo knowledge base).
+- **Interactive-five:** aprendizaje por retos (mentoría/UniDiversity de Gaia).
+- **Federalismo de blogs:** múltiples voces soberanas, no una central — isomorfo a la estructura de HSCSG.
+
+### 2.22.2 Confluencia con el VASO COMUNICANTE
+iambrainstorming es la **capa de aprendizaje y comunicación**:
+- Copiosis (economía) · Colony (gobernanza) · Kleros/PoH (justicia/identidad) · DeseOS (agencia) · Gaia (interoperabilidad) · **iambrainstorming (saber experiencial + educación)**.
+HSCSG no es solo máquina: es *comunidad que aprende en voz alta*.
+
+### 2.22.3 Tabla de Homologación
+
+| iambrainstorming | Traducción Soberana HSCSG | Componente / Rol |
+|------------------|---------------------------|------------------|
+| Blog general | Saber experiencial del nodo | `lib/gaia.ts` Capital experiencial + Colaberry |
+| Observador opinado | Pensamiento crítico / Lucidez | RAO + Modo Lucidez |
+| Coding blog | Documentación técnica viva | Hylo (knowledge) |
+| Aprendizaje interactivo | Mentoría por retos | Gaia UniDiversity / Bounty |
+| Federalismo de blogs | Red de nodos de conocimiento | Federación DTN/AP |
+
+### 2.22.4 Confluencia con Leyes MJ
+- **Ley I:** libertad de expresión, pero MJ Gate filtra contenido que dañe base/material o personas. Interactive-five: aprendizaje no extractivo (sin dark patterns).
+- **Ley II:** el saber se comparte y reconoce por AUT×CDS (no por likes/algos). Bounty = misión de aprendizaje con recompensa ZNU.
+- **Ley III:** opinión etiquetada como tal (no como hecho). Blogs versionados en RAO = trazabilidad del saber.
+
+### 2.22.5 Entregables Accionables
+| Entregable | Módulo HSCSG | Prioridad |
+|------------|--------------|-----------|
+| `docs/iambrainstorming_backup.md` + `iambrainstorming_integration.md` | Docs | **P0** |
+| BRIEF §2.22, §3.5, §16 | Brief | **P0** |
+| `lib/learning.ts` (retos + saber experiencial) | `/aprender` | **P2** |
+
+> **Nota de extirpación:** analytics de terceros (GA/Vercel Insights) → RAO local. Dependencia de Vercel/GitHub Pages → HSCSG offline-first. Contenido que vulnere MJ → filtrado por MJ Gate.
+
+---
+
 ## 3. MODELO DE NEGOCIO: LA CUATERNIDAD SOBERANA AMPLIADA
 
 ### 3.1 Estructura de 4 Planos
@@ -467,6 +510,7 @@ La integración de Copiosis (v7.1) proporciona la **arquitectura completa de la 
 | escrow + arbitraje | Escrow Solarpunk resuelto por CDS | `lib/solarpunk.ts` |
 | Proof of Humanity V1/V2 | Identidad Soberana (1 humano=1 nodo) | `lib/identity.ts` |
 | Gaia Confederation | Protocolo de interoperabilidad + círculos biomiméticos | `lib/gaia.ts` (corona el vaso) |
+| iambrainstorming | Saber experiencial + aprendizaje interactivo | `lib/learning.ts` (capa educación) |
 
 **Bootstrap resuelto:** HSCSG ya tiene Fondo Solarpunk, DSI, FABSHIP, CaaS-BM.
 
@@ -1005,7 +1049,7 @@ NetBenefitFlow (NBR) emitido cuando BN = Σ(W_i × S_i) - Damage > 0
 
 ## 16. CONCLUSIÓN: SOBERANÍA OPERACIONAL VERIFICABLE
 
-HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity + integración DeseOS/Contento.pro + integración Gaia Confederation constituye el **primer sistema operativo civilizatorio completo** que une:
+HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity + integración DeseOS/Contento.pro + integración Gaia Confederation + integración iambrainstorming constituye el **primer sistema operativo civilizatorio completo** que une:
 
 1. **Base material verificada** (SVD v2 + AUT 12 vectores + FABSHIP)
 2. **Gobernanza cibernética autónoma** (CDS + CDS_Jurados + RAO + FRS + Estigmergia + dominios/pots Colony por reputación + **justicia Kleros / identidad soberana PoH**)
