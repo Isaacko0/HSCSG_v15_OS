@@ -17,6 +17,11 @@ Integra marcos teóricos externos en el documento fundacional HSCSG sin romper e
 - Alinear métricas CAC/MCI/ICS con nuevas dimensiones
 - Insertar secciones nuevas (2.10, 2.11, etc.) sin estropear índices
 
+🔴 **REGLA OBLIGATORIA**: en cada sesión y tras cada asimilación de repo/proyecto GitHub,
+actualizar el BRIEF + los `docs/*_backup.md` / `docs/*_integration.md` y pushear TODO
+(`git add -A` → commit → `git push origin master`). El remote usa HTTPS + git-credential-manager;
+**jamás** escribir tokens en archivos, commits o salida.
+
 ## Núcleo operativo
 
 ### 1. Variantes de documento
@@ -92,7 +97,7 @@ Integra marcos teóricos externos en el documento fundacional HSCSG sin romper e
 2. **Jamás** modificar el BRIEF fuera del repo `HSCSG_v15_OS`; todas las iteraciones ocurren en el archivo en la raíz del repo.
 3. **Commit + push por cambio significativo**: `feat: integración <Framework> en HSCSG v15 OS (<sub>)` con mensaje detallando secciones nuevas y cross-references.
 4. **Staging explícito**: `git add <archivos modificados>` antes de commit para asegurar que solo entran los archivos previstos.
-5. **Push de TODOS los archivos modificados en local**: tras cada sesión de edición, ejecutar `git add -A` (o listar explícitamente los archivos tocados) y `git push origin master` para sincronizar el estado local completo con GitHub.
+5. **Push de TODOS los archivos modificados en local**: tras cada sesión de edición, ejecutar `git add -A` (o listar explícitamente los archivos tocados) y `git push origin master` para sincronizar el estado local completo con GitHub. **🔴 REGLA DURA: nunca decir "listo / ya está en GitHub" hasta que el push termine sin error Y `git status --short` quede vacío.** En la sesión real el agente creó `docs/copiosis_*.md` + el BRIEF en disco pero no los pusheó; el usuario tuvo que preguntar "hiciste el commit?". Si el push no sube todo (working tree aún sucio), volver al paso 4. Si no hay red/auth, decirlo explícitamente.
 6. **🔒 SEGURIDAD — NUNCA revelar credenciales**:
    - El remote está configurado vía HTTPS + `git-credential-manager` (el token NO está en la URL ni en archivos). El push funciona sin escribir secretos.
    - **Jamás** incluir en el SKILL.md, commits, mensajes, docs o salida al usuario: tokens (`ghp_...`, `github_pat_...`), contraseñas, `client_secret`, URLs con `@token@github.com`, ni rutas a archivos `.env`.

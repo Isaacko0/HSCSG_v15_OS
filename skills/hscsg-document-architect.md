@@ -41,6 +41,13 @@ into a coherent whole with correct numeration and cross-references.
 - Preparing investor / ally-facing materials where nomenclature and coherence
   matter more than brevity.
 
+🔴 **REGLA OBLIGATORIA DE SINCRONIZACIÓN (cada sesión / asimilación)**:
+Tras cualquier edición del BRIEF o asimilación de repo/proyecto GitHub, es **obligatorio**:
+1. Actualizar `BRIEF_EXHAUSTIVO_HSCSG_COSATECA_OS.md` (raíz `HSCSG_v15_OS`) con los cambios.
+2. Crear/actualizar los `docs/<x>_backup.md` y `docs/<x>_integration.md` correspondientes.
+3. `git add -A` → `git commit` → `git push origin master` (subir TODOS los locales).
+4. Nunca revelar credenciales (ver sección 🔄 GitHub Sync Workflow).
+
 ---
 
 ## Core Deliverable Shape
@@ -180,6 +187,10 @@ anexos) was corrupted 3× by `write_file` truncation before being rebuilt cleanl
 with the `execute_code` + `open().write()` pattern. Treat any single-file
 deliverable above ~50KB as "rewrite, don't patch."
 
+**Recovery recipe (copy-paste):** see `references/large_markdown_recovery.md` — a
+ready-to-run `execute_code` template that rebuilds a corrupted big `.md` from
+concatenated section strings and verifies all `## N.` headings are present/in-order.
+
 ---
 
 ## Quality Gates
@@ -226,17 +237,26 @@ When the user asks to create an integration document mapping an external system 
 
 ---
 
-## 🔄 GitHub Sync Workflow (commit + push de TODOS los locales)
+## 🔄 GitHub Sync Workflow (OBLIGATORIO en cada sesión / asimilación)
 
-Al finalizar cualquier sesión de edición de documentos HSCSG (BRIEF, `docs/*_backup.md`,
-`docs/*_integration.md`, o cualquier otro archivo del repo `HSCSG_v15_OS`):
+**🔴 REGLA DURA — NUNCA reportar un entregable como "listo / completado / ya está en GitHub"
+hasta que `git push origin master` termine SIN error Y `git status --short` confirme
+working tree clean.** Un archivo que solo existe en disco local NO está hecho. En la
+sesión real el agente creó `docs/copiosis_*.md` y el BRIEF en disco, pero no los pusheó;
+el usuario tuvo que preguntar "hiciste el commit?". No repetir: el push es parte del
+entregable, no un paso opcional posterior. Si por cualquier razón no se puede pushear
+(auth caída, sin red), decirlo explícitamente y dejar el commit local como pendiente.
+
+Al finalizar **cualquier sesión** y **tras cada asimilación de repo/proyecto GitHub**, es
+obligatorio sincronizar el estado local completo con GitHub (incluye BRIEF + `docs/*_backup.md` + `docs/*_integration.md` del proyecto asimilado):
 
 1. **Estado local**: `git status --short` para listar todos los archivos modificados/untracked.
 2. **Staging**: `git add -A` (o listado explícito de los archivos tocados en esta sesión).
 3. **Commit**: `git commit -m "feat: <qué cambió> en HSCSG v15 OS"` — mensaje descriptivo,
    sin credenciales, sin rutas de `.env`.
 4. **Push**: `git push origin master` — sube el estado local completo a GitHub.
-5. **Verificar**: `git status --short` debe quedar vacío (working tree clean) tras el push.
+5. **Verificar**: re-ejecutar `git status --short`; debe quedar VACÍO. Si muestra archivos,
+   el push no subió todo → volver al paso 2. Solo entonces reportar éxito.
 
 **Documento canónico**: `BRIEF_EXHAUSTIVO_HSCSG_COSATECA_OS.md` vive en la **raíz** del repo
 `HSCSG_v15_OS` (no fuera del repo). Toda integración de framework/website/repo se aplica ahí.
