@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { Plus, CheckCircle2, Circle } from 'lucide-react'
+import { Plus, CheckCircle2, Circle, Network, Coins, Users2 } from 'lucide-react'
 import { useAppStore } from '@core/state/store'
 import { ics } from '@core/lib/metrics'
 import { Card, Stat, Bar, Btn, Badge, EmptyState } from '@components/ui'
+import { DOMAIN_KINDS, domainChildren } from '@core/lib/colony'
 import type { Member, MemberRole, VFType } from '@core/state/types'
 
 const ROLES: { id: MemberRole; label: string }[] = [
@@ -16,7 +17,7 @@ const ROLES: { id: MemberRole; label: string }[] = [
 const VF_TYPES: VFType[] = ['LaborFlow', 'LoveFlow', 'CareFlow', 'RepairFlow', 'ManufactureFlow']
 
 export function Colectivo() {
-  const { members, flows, addMember, toggleMemberDNA, addFlow, plans, togglePlanDone } = useAppStore()
+  const { members, flows, addMember, toggleMemberDNA, addFlow, plans, togglePlanDone, colony, addColonyDomain } = useAppStore()
   const icsVal = ics(members, flows)
   const signed = members.filter((m) => m.signedSocialDNA).length
 
@@ -108,7 +109,60 @@ export function Colectivo() {
           })}
         </div>
       </Card>
+
+      <DomainTree colony={colony} onAdd={addColonyDomain} />
     </div>
+  )
+}
+
+function DomainTree({ colony, onAdd }: {
+  colony: import('@core/state/colony').ColonyState
+  onAdd: (name: string, kind: import('@core/state/colony').DomainKind, parentId: string) => void
+}) {
+  const [name, setName] = useState('')
+  const [kind, setKind] = useState<import('@core/state/colony').DomainKind>('célula')
+  const renderNode = (parentId: string | null, depth: number): JSX.Element[] => {
+    return domainChildren(colony, parentId).map((d) => (
+      <div key={d.id} style={{ marginLeft: depth * 16 }}>
+        <div className="flex items-center justify-between bg-[var(--surf2)] rounded-xl px-3 py-2 my-1">
+          <div className="flex items-center gap-2">
+            <Network className="w-4 h-4 text-emerald-400" />
+            <span className="font-manrope text-sm">{d.name}</span>
+            <Badge color="bg-fuchsia-500/20 text-fuchsia-300">{DOMAIN_KINDS.find((k) => k.key === d.kind)?.label}</Badge>
+          </div>
+          <div className="flex items-center gap-2 text-xs text-[var(--dim)]">
+            <Coins className="w-4 h-4 text-amber-400" /> {d.pot} ZNU
+            <Users2 className="w-4 h-4 text-purple-400" /> {d.reputation}
+          </div>
+        </div>
+        {renderNode(d.id, depth + 1)}
+      </div>
+    ))
+  }
+  return (
+    <Card title="Dominios (Colony) — árbol de células + tesorería por pot">
+      <div className="flex flex-wrap items-end gap-2 mb-3">
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Nombre de célula/proyecto"
+          className="px-3 py-2 bg-[var(--surf2)] border border-[var(--line)] rounded-xl text-sm w-44"
+        />
+        <select
+          value={kind}
+          onChange={(e) => setKind(e.target.value as import('@core/state/colony').DomainKind)}
+          className="px-3 py-2 bg-[var(--surf2)] border border-[var(--line)] rounded-xl text-sm"
+        >
+          {DOMAIN_KINDS.map((k) => <option key={k.key} value={k.key}>{k.label}</option>)}
+        </select>
+        <Btn onClick={() => {
+          if (name.trim()) { onAdd(name.trim(), kind, 'root'); setName('') }
+        }}>Añadir dominio</Btn>
+      </div>
+      {colony.domains.length <= 1 && <EmptyState>Crea células/proyectos como dominios hijos del nodo. Cada uno tiene su pot (tesorería) y reputación.</EmptyState>}
+      {renderNode('root', 0)}
+      <p className="text-xs text-[var(--dim)] mt-2">La reputación se gana por contribución (AUT×CDS), no por tokens. El pot se mueve entre dominios por gobernanza CDS.</p>
+    </Card>
   )
 }
 

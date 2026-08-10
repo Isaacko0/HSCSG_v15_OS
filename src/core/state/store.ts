@@ -32,6 +32,8 @@ import type { MundusState } from '@core/state/mundus'
 import type { LifeState, GoalType, Effort, Area } from '@core/state/life'
 import type { CivilizacionesState } from '@core/state/civilizaciones'
 import type { CelulasState } from '@core/state/celulas'
+import type { ColonyState, DomainKind } from '@core/state/colony'
+import type { KlerosState, JurorVerdict } from '@core/state/kleros'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -52,6 +54,12 @@ import { makeMundusState } from '@core/lib/mundus'
 import { makeLifeState, addGoal, toggleNext, toggleCompleted, removeGoal, setNotes } from '@core/lib/life'
 import { makeCivilizacionesState } from '@core/lib/civilizaciones'
 import { makeCelulasState } from '@core/lib/celulas'
+import {
+  makeColonyState, addDomain, addReputation, movePot,
+} from '@core/lib/colony'
+import {
+  makeKlerosState, seatJuror, openDispute, addEvidence, castVote, resolveDispute, appealDispute, attestIdentity,
+} from '@core/lib/kleros'
 import * as seed from '@core/state/seed'
 
 export interface AppState {
@@ -173,6 +181,12 @@ export interface AppState {
   // ===== Células (Freedom Cells: tejido social fractal) =====
   celulas: CelulasState
 
+  // ===== Colony (asimilado de JoinColony: gobernanza por dominios + pots) =====
+  colony: ColonyState
+
+  // ===== Kleros / Proof-of-Humanity (justicia como servicio + identidad soberana) =====
+  kleros: KlerosState
+
   // actions
   setNodeName: (n: string) => void
   updateBase: (u: Partial<BaseMaterial>) => void
@@ -255,6 +269,18 @@ export interface AppState {
   ingestIntegralSignal: (fromSystem: 'CDS' | 'OAD' | 'ITC' | 'COS' | 'FRS', severity: 'info' | 'warning' | 'critical', finding: string) => void
   recommendIntegral: (finding: string, target: 'CDS' | 'OAD' | 'ITC' | 'COS' | 'FRS') => void
   promoteRecommendation: (recId: string) => void
+  // Colony (JoinColony)
+  addColonyDomain: (name: string, kind: DomainKind, parentId: string) => void
+  addColonyReputation: (id: string, amount: number) => void
+  moveColonyPot: (fromId: string, toId: string, amount: number, by: string) => void
+  // Kleros / Proof-of-Humanity
+  seatKlerosJuror: (name: string) => void
+  openKlerosDispute: (title: string, description: string, openedBy: string) => void
+  addKlerosEvidence: (disputeId: string, author: string, text: string) => void
+  castKlerosVote: (disputeId: string, jurorId: string, verdict: JurorVerdict) => void
+  resolveKlerosDispute: (disputeId: string, resolution: string) => void
+  appealKlerosDispute: (disputeId: string) => void
+  attestKlerosIdentity: (name: string, attestedBy: string) => void
   resetAll: () => void
 }
 
@@ -548,6 +574,10 @@ export const useAppStore = create<AppState>()(
       civilizaciones: makeCivilizacionesState(),
       // Células (Freedom Cells): tejido social fractal
       celulas: makeCelulasState(),
+      // Colony (JoinColony): gobernanza por dominios + pots
+      colony: makeColonyState(),
+      // Kleros / Proof-of-Humanity: justicia como servicio + identidad soberana
+      kleros: makeKlerosState(),
 
       setNodeName: (n) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
@@ -796,6 +826,36 @@ export const useAppStore = create<AppState>()(
           },
         }
       }),
+      // ===== Colony (JoinColony) =====
+      addColonyDomain: (name, kind, parentId) => set((st) => ({
+        colony: addDomain(st.colony, { name, kind, parentId }),
+      })),
+      addColonyReputation: (id, amount) => set((st) => ({
+        colony: addReputation(st.colony, id, amount),
+      })),
+      moveColonyPot: (fromId, toId, amount, by) => set((st) => ({
+        colony: movePot(st.colony, fromId, toId, amount, by),
+      })),
+      // ===== Kleros / Proof-of-Humanity =====
+      seatKlerosJuror: (name) => set((st) => ({ kleros: seatJuror(st.kleros, name) })),
+      openKlerosDispute: (title, description, openedBy) => set((st) => ({
+        kleros: openDispute(st.kleros, { title, description, openedBy }),
+      })),
+      addKlerosEvidence: (disputeId, author, text) => set((st) => ({
+        kleros: addEvidence(st.kleros, disputeId, author, text),
+      })),
+      castKlerosVote: (disputeId, jurorId, verdict) => set((st) => ({
+        kleros: castVote(st.kleros, disputeId, jurorId, verdict),
+      })),
+      resolveKlerosDispute: (disputeId, resolution) => set((st) => ({
+        kleros: resolveDispute(st.kleros, disputeId, resolution),
+      })),
+      appealKlerosDispute: (disputeId) => set((st) => ({
+        kleros: appealDispute(st.kleros, disputeId),
+      })),
+      attestKlerosIdentity: (name, attestedBy) => set((st) => ({
+        kleros: attestIdentity(st.kleros, name, attestedBy),
+      })),
       resetAll: () =>
         set({
           nodeName: 'Nodo Cosateca v0.1',
@@ -892,6 +952,10 @@ export const useAppStore = create<AppState>()(
       civilizaciones: makeCivilizacionesState(),
       // Células (Freedom Cells): tejido social fractal
       celulas: makeCelulasState(),
+      // Colony (JoinColony): gobernanza por dominios + pots
+      colony: makeColonyState(),
+      // Kleros / Proof-of-Humanity: justicia como servicio + identidad soberana
+      kleros: makeKlerosState(),
         }),
     }),
     {
@@ -935,6 +999,8 @@ export const useAppStore = create<AppState>()(
         life: st.life,
         civilizaciones: st.civilizaciones,
         celulas: st.celulas,
+        colony: st.colony,
+        kleros: st.kleros,
         lang: st.lang,
         lucidez: st.lucidez,
       }),

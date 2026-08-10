@@ -4,6 +4,7 @@ import { Home } from '@app/screens/Home'
 import { BaseMaterial } from '@app/screens/BaseMaterial'
 import { Lucidez } from '@app/screens/Lucidez'
 import { Colectivo } from '@app/screens/Colectivo'
+import { Justicia } from '@app/screens/Justicia'
 import { Automata } from '@app/screens/Automata'
 import { ZNU } from '@app/screens/ZNU'
 import { Verificacion } from '@app/screens/Verificacion'
@@ -31,6 +32,7 @@ export function App() {
         <Route path="base" element={<BaseMaterial />} />
         <Route path="lucidez" element={<Lucidez />} />
         <Route path="colectivo" element={<Colectivo />} />
+        <Route path="justicia" element={<Justicia />} />
         <Route path="automata" element={<Automata />} />
         <Route path="znu" element={<ZNU />} />
         <Route path="verificacion" element={<Verificacion />} />
