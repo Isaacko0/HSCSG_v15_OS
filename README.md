@@ -40,7 +40,7 @@ Cada repo asimilado deja dos documentos en `docs/`:
 
 ---
 
-## Módulos (24 pantallas)
+## Módulos (27 pantallas)
 
 | # | Ruta | Módulo | Origen | Qué hace |
 |---|------|--------|--------|----------|
@@ -70,8 +70,9 @@ Cada repo asimilado deja dos documentos en `docs/`:
 | 24 | `/democracia` | Democracia por Expertise | **iambrainstorming (Amiya Tulu)** | DPoS por expertise = CDS |
 | 25 | `/aprender` | Aprender haciendo | **iambrainstorming (interactive-five/coding_blog)** | Retos de aprendizaje + knowledge base |
 | 26 | `/oraculo` | Oráculo de Hechos | **Kleros / Realitio** | Resuelve disputas de hecho por consenso de jurados |
+| 27 | `/pipeline` | Pipeline Anidado (Orquestador Vivo) | **Integral · alook · automaton · ponytail** | Matchmaker + salud del loop + routing FRS |
 
-> Rutas navegables: 26 (del `/` al `/oraculo`).
+> Rutas navegables: 27 (del `/` al `/pipeline`).
 
 ### Modo Lucidez (Ley III)
 El botón de luna en el Header es un **toggle real de transparencia radical** (Ley III: *lucidez, nunca engañar*). Al activarlo: invierte el tema a **diurno** (sol), muestra un banner de Ley III, y revela bloques `.lucidez-raw` con **datos crudos y provenance** (ej. en `/integral` se ve la fórmula del System Health y el origen de cada señal FRS). Persiste en `localStorage`.

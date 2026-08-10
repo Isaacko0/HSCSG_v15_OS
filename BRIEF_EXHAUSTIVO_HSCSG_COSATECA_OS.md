@@ -514,6 +514,34 @@ HSCSG no es solo máquina: es *comunidad que aprende en voz alta*.
 
 ---
 
+## 2.25 Pipeline Anidado (Orquestador Vivo) — IMPLEMENTADO
+
+**Implementa** la sección §2.24: `lib/pipeline.ts` + `state/pipeline.ts` + pantalla `/pipeline` (27ª pantalla). Orquestador de lectura que computa en vivo:
+
+### 2.25.1 Componentes
+- `computeCapabilities()`: peso 0-100 por participante = 35% AUT (ITC/Integral) + 30% credibility (Symbiosky) + 20% expertise (Democracia) + 15% retos (Aprender).
+- `collectNeeds()`: necesidades activas = Issues CDS + Bounties Gaia + Retos Aprender.
+- `matchmaker()` (alook-style): empareja necesidad↔mejor participante.
+- `pipelineHealth()`: loopScore 0-100 + alertas (degradación graceful → Círculo Gaia).
+- `routeFeedback()` (automaton-style): enruta hallazgos FRS a CDS/OAD/COS/ITC.
+
+### 2.25.2 Loop anidado (3 capas)
+```
+FRS (observa) → CDS + Matchmaker (decide) → OAD → COS → ITC (ejecuta) → loop
+```
+Render vivo en `/pipeline` (Stat de necesidades/capacidades/matched/loopScore + Matchmaker + Capacidades + Routing FRS).
+
+### 2.25.3 Entregables
+| Entregable | Módulo HSCSG | Prioridad |
+|------------|--------------|-----------|
+| `lib/pipeline.ts` + `state/pipeline.ts` | NUEVO | **P0** |
+| Pantalla `/pipeline` | NUEVO (27ª) | **P0** |
+| BRIEF §2.25, README | Brief | **P0** |
+
+> **Nota:** estado derivado (no persistido); no muta otros módulos. Build 0 errores, `/pipeline` → 200.
+
+---
+
 ## 3. MODELO DE NEGOCIO: LA CUATERNIDAD SOBERANA AMPLIADA
 
 ### 3.1 Estructura de 4 Planos

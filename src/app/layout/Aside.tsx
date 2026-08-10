@@ -1,5 +1,5 @@
 import {
-  Mountain, Database, Eye, Users, Cpu, Coins, LayoutDashboard, Network, Users2, Bot, Leaf, MessagesSquare, ListChecks, Unlock, Link2, Briefcase, ShieldHalf, RefreshCw, Globe, LifeBuoy, Compass, Scale, Award, Landmark, GraduationCap, HelpCircle,
+  Mountain, Database, Eye, Users, Cpu, Coins, LayoutDashboard, Network, Users2, Bot, Leaf, MessagesSquare, ListChecks, Unlock, Link2, Briefcase, ShieldHalf, RefreshCw, Globe, LifeBuoy, Compass, Scale, Award, Landmark, GraduationCap, HelpCircle, Workflow,
   ChevronsLeft, ChevronsRight,
 } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -19,6 +19,7 @@ const NAV_ITEMS = [
   { key: 'democracia', navKey: 'nav.democracia', icon: Landmark, color: 'text-emerald-400', path: '/democracia' },
   { key: 'aprender', navKey: 'nav.aprender', icon: GraduationCap, color: 'text-fuchsia-400', path: '/aprender' },
   { key: 'oraculo', navKey: 'nav.oraculo', icon: HelpCircle, color: 'text-amber-400', path: '/oraculo' },
+  { key: 'pipeline', navKey: 'nav.pipeline', icon: Workflow, color: 'text-cyan-400', path: '/pipeline' },
   { key: 'automata', navKey: 'nav.automata', icon: Cpu, color: 'text-cyan-400', path: '/automata' },
   { key: 'znu', navKey: 'nav.znu', icon: Coins, color: 'text-amber-400', path: '/znu' },
   { key: 'verificacion', navKey: 'nav.verificacion', icon: Eye, color: 'text-sky-400', path: '/verificacion' },
