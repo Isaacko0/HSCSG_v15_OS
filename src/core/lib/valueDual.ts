@@ -37,8 +37,45 @@ export function attributionPct(values: Value[], source: (v: Value) => 'Orgánico
   return { organic: Math.round((org / total) * 100), paid: Math.round(((total - org) / total) * 100) }
 }
 
-// Medidor de Beneficio Neto (Copiosis NBR) reutilizando el termómetro de DeseOS.
+// Medidor de Beneficio Neto (Copaís NBR) reutilizando el termómetro de DeseOS.
 // El "revenue" en ZNU es el NBR del nodo.
 export function netBenefit(revenueZNU: number, costZNU: number): number {
   return Math.max(0, revenueZNU - costZNU)
+}
+
+// ============ ZNU NO-INFLABLE (iambrainstorming: "moneda que cuenta para la unidad") ============
+// Inspirado en "Going away with money and making a currency that counts to unity always" (Amiya Tulu, 2016).
+// El pool total es FIJO (=1 o 100%), no crece. Se divide en fracciones para productos/servicios.
+// No se puede "imprimir" ZNU; la riqueza se redistribuye por contribución, no por acumulación.
+
+export const ZNU_POOL_TOTAL = 1 // el total siempre es 1 (o 100%); nunca se incrementa
+export const ZNU_ROTATION_DEFAULT_DAYS = 60 // exchange money caduca (~2 meses, ver "Future of Money")
+
+/** Fracción de un nodo sobre el pool total (siempre suma <= 1). */
+export function znuShare(balance: number, totalSupply: number): number {
+  if (totalSupply <= 0) return 0
+  return Math.min(1, balance / totalSupply)
+}
+
+/**
+ * Rotación anti-acumulación: el "exchange ZNU" caduca y debe reactivarse.
+ * Si pasan > rotationDays desde la última actividad, el exceso sobre lo protegido
+ * se libera de vuelta al pool (no se destruye, se redistribuye).
+ */
+export function znuRotate(
+  balance: number,
+  protectedZNU: number,
+  daysSinceActivity: number,
+  rotationDays: number = ZNU_ROTATION_DEFAULT_DAYS,
+): { active: number; released: number } {
+  if (daysSinceActivity < rotationDays) return { active: balance, released: 0 }
+  const excess = Math.max(0, balance - protectedZNU)
+  // libera el exceso al pool (anti-acumulación de Amiya)
+  const released = excess
+  return { active: balance - released, released }
+}
+
+/** ¿El balance está concentrado (anti-propósito de la moneda)? Útil para MJ Gate / alerta. */
+export function znuConcentration(balance: number, totalSupply: number, threshold = 0.05): boolean {
+  return znuShare(balance, totalSupply) > threshold
 }

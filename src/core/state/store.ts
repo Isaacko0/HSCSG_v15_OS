@@ -37,6 +37,9 @@ import type { KlerosState, JurorVerdict } from '@core/state/kleros'
 import type { AgenciaState } from '@core/state/agencia'
 import type { GaiaState } from '@core/state/gaia'
 import type { CredibilityState } from '@core/state/symbiosky'
+import type { DemocracyState } from '@core/state/democracia'
+import type { LearningState } from '@core/state/learning'
+import type { OracleState } from '@core/state/oracle'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -66,6 +69,9 @@ import {
 import { makeAgenciaState, reversePlan } from '@core/lib/agencia'
 import { makeGaiaState, addBounty, completeBounty, formCouncil } from '@core/lib/gaia'
 import { makeCredibilityState, addProposal as symAddProposalFn, castVote as symCastVoteFn, createLock as symCreateLockFn, closeProposal as symCloseProposalFn, applyDecay as symApplyDecayFn } from '@core/lib/symbiosky'
+import { makeDemocracyState, electRep } from '@core/lib/democracia'
+import { makeLearningState, completeChallenge, addChallenge } from '@core/lib/learning'
+import { makeOracleState, askQuery, castOracleVote, resolveOracle } from '@core/lib/oracle'
 import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
 
@@ -204,6 +210,12 @@ export interface AppState {
   gaia: GaiaState
   // Symbiosky: credibilidad por convicción
   symbiosky: CredibilityState
+  // Democracia DPoS por expertise (iambrainstorming) = CDS
+  democracia: DemocracyState
+  // Aprendizaje por retos (iambrainstorming)
+  aprender: LearningState
+  // Oráculo de hechos (Kleros/Realitio)
+  oraculo: OracleState
   // actions
   setNodeName: (n: string) => void
   updateBase: (u: Partial<BaseMaterial>) => void
@@ -318,6 +330,15 @@ export interface AppState {
   symCreateLock: (voter: string, lockedZNU: number, level: 1 | 2 | 3 | 4 | 5, lockDays: number) => void
   symCloseProposal: (proposalId: string) => void
   symDecayTick: () => void
+  // Democracia
+  electDeptRep: (deptId: string, rep: string, voter: string) => void
+  // Aprender
+  completeChallenge: (id: string) => void
+  addLearningChallenge: (title: string, topic: string, znuReward: number) => void
+  // Oráculo
+  askOracle: (question: string, outcomes: string[]) => void
+  castOracleVote: (queryId: string, juror: string, outcome: string, stake: number) => void
+  resolveOracleQuery: (queryId: string) => void
   resetAll: () => void
 }
 
@@ -624,6 +645,12 @@ export const useAppStore = create<AppState>()(
       gaia: makeGaiaState(),
       // Symbiosky: credibilidad por convicción
       symbiosky: makeCredibilityState(),
+      // Democracia DPoS por expertise
+      democracia: makeDemocracyState(),
+      // Aprendizaje por retos
+      aprender: makeLearningState(),
+      // Oráculo de hechos
+      oraculo: makeOracleState(),
 
       setNodeName: (n) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
@@ -943,6 +970,18 @@ export const useAppStore = create<AppState>()(
       symCreateLock: (voter, lockedZNU, level, lockDays) => set((st) => ({ symbiosky: symCreateLockFn(st.symbiosky, voter, lockedZNU, level, lockDays) })),
       symCloseProposal: (proposalId) => set((st) => ({ symbiosky: symCloseProposalFn(st.symbiosky, proposalId) })),
       symDecayTick: () => set((st) => ({ symbiosky: symApplyDecayFn(st.symbiosky, Date.now(), 365 * 86400000) })),
+      // ===== Democracia DPoS por expertise (iambrainstorming) =====
+      electDeptRep: (deptId, rep, voter) => set((st) => ({ democracia: electRep(st.democracia, deptId, rep, voter) })),
+      // ===== Aprendizaje por retos (iambrainstorming) =====
+      completeChallenge: (id) => set((st) => ({ aprender: completeChallenge(st.aprender, id) })),
+      addLearningChallenge: (title, topic, znuReward) => set((st) => ({ aprender: addChallenge(st.aprender, title, topic, znuReward) })),
+      // ===== Oráculo de hechos (Kleros/Realitio) -> lo cableo como alias de oracle =====
+      askOracle: (question, outcomes) => set((st) => ({ oraculo: askQuery(st.oraculo, question, outcomes) })),
+      castOracleVote: (queryId, juror, outcome, stake) => set((st) => ({ oraculo: castOracleVote(st.oraculo, queryId, juror, outcome, stake) })),
+      resolveOracleQuery: (queryId) => set((st) => {
+        const r = resolveOracle(st.oraculo, queryId)
+        return { oraculo: r.state }
+      }),
       resetAll: () =>
         set({
           nodeName: 'Nodo Cosateca v0.1',
@@ -1051,6 +1090,12 @@ export const useAppStore = create<AppState>()(
       gaia: makeGaiaState(),
       // Symbiosky: credibilidad por convicción
       symbiosky: makeCredibilityState(),
+      // Democracia DPoS por expertise
+      democracia: makeDemocracyState(),
+      // Aprendizaje por retos
+      aprender: makeLearningState(),
+      // Oráculo de hechos
+      oraculo: makeOracleState(),
         }),
     }),
     {
@@ -1101,6 +1146,9 @@ export const useAppStore = create<AppState>()(
         priceParity: st.priceParity,
         gaia: st.gaia,
         symbiosky: st.symbiosky,
+        democracia: st.democracia,
+        aprender: st.aprender,
+        oraculo: st.oraculo,
         lang: st.lang,
         lucidez: st.lucidez,
       }),

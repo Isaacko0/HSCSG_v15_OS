@@ -126,3 +126,43 @@ export function attestIdentity(st: KlerosState, name: string, attestedBy: string
     identities: [...st.identities, { id: uid(), name, attestedBy: [attestedBy], registeredAt: Date.now() }],
   }
 }
+
+// ============ JURADO COMO RATIONAL PRICE DISCOVERER (Symbiosky + iambrainstorming) ============
+// Isomorfo a "Score Schelling game" (Amiya): los jurados estiman el precio/utilidad
+// de un bien por CONSENSO (no oferta/demanda). Quien acierta la mediana recibe bonus;
+// quien se desvía pierde stake (reputationDecay). Esto es exactamente el mecanismo
+// de "discovery of positive externality through score Schelling game".
+
+export interface PriceEstimate {
+  juror: string
+  value: number // utilidad/precio estimado
+  stake: number
+}
+
+/** mediana de las estimaciones (resistente a manipulación) */
+export function medianEstimate(estimates: PriceEstimate[]): number {
+  if (estimates.length === 0) return 0
+  const vals = estimates.map((e) => e.value).sort((a, b) => a - b)
+  const mid = Math.floor(vals.length / 2)
+  return vals.length % 2 ? vals[mid] : (vals[mid - 1] + vals[mid]) / 2
+}
+
+/**
+ * Bono para quienes aciertan cerca de la mediana (dentro de tol%).
+ * Penalización (reputationDecay) para los disidentes lejanos.
+ */
+export function priceDiscovery(
+  estimates: PriceEstimate[],
+  tolerancePct = 10,
+): { median: number; rewarded: string[]; penalized: string[] } {
+  const median = medianEstimate(estimates)
+  const rewarded: string[] = []
+  const penalized: string[] = []
+  for (const e of estimates) {
+    const dev = median === 0 ? 0 : Math.abs(e.value - median) / median * 100
+    if (dev <= tolerancePct) rewarded.push(e.juror)
+    else penalized.push(e.juror)
+  }
+  return { median, rewarded, penalized }
+}
+

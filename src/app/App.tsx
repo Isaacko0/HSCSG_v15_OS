@@ -8,6 +8,9 @@ import { Justicia } from '@app/screens/Justicia'
 import { Agencia } from '@app/screens/Agencia'
 import { Circulos } from '@app/screens/Circulos'
 import { Credibilidad } from '@app/screens/Credibilidad'
+import { Democracia } from '@app/screens/Democracia'
+import { Aprender } from '@app/screens/Aprender'
+import { Oraculo } from '@app/screens/Oraculo'
 import { Automata } from '@app/screens/Automata'
 import { ZNU } from '@app/screens/ZNU'
 import { Verificacion } from '@app/screens/Verificacion'
@@ -39,6 +42,9 @@ export function App() {
         <Route path="agencia" element={<Agencia />} />
         <Route path="circulos" element={<Circulos />} />
         <Route path="credibilidad" element={<Credibilidad />} />
+        <Route path="democracia" element={<Democracia />} />
+        <Route path="aprender" element={<Aprender />} />
+        <Route path="oraculo" element={<Oraculo />} />
         <Route path="automata" element={<Automata />} />
         <Route path="znu" element={<ZNU />} />
         <Route path="verificacion" element={<Verificacion />} />

@@ -40,7 +40,7 @@ Cada repo asimilado deja dos documentos en `docs/`:
 
 ---
 
-## Módulos (21 pantallas)
+## Módulos (24 pantallas)
 
 | # | Ruta | Módulo | Origen | Qué hace |
 |---|------|--------|--------|----------|
@@ -49,7 +49,7 @@ Cada repo asimilado deja dos documentos en `docs/`:
 | 3 | `/lucidez` | Lucidez | Cosateca OS | Claridad y transparencia (Ley III) |
 | 4 | `/colectivo` | Colectivo | Cosateca OS | Tejido social del nodo |
 | 5 | `/automata` | Autómata Soberano | **Conway Automaton** | Entidad que sobrevive si regenera su base material |
-| 6 | `/znu` | ZNU | Cosateca OS + extendido | Moneda interna del nodo (demurrage, paridad) |
+| 6 | `/znu` | ZNU | Cosateca OS + extendido | Moneda interna del nodo (demurrage, paridad, no-inflable) |
 | 7 | `/verificacion` | Verificación | Cosateca OS | Comprobación de verdad / manipulación |
 | 8 | `/automat` | Automat | Cosateca OS | Operador/agente del nodo |
 | 9 | `/orquestacion` | Orquestación | **Paperclip (resolveskills)** | Control plane de agentes + gates del Materialismo Jerárquico |
@@ -65,8 +65,13 @@ Cada repo asimilado deja dos documentos en `docs/`:
 | 19 | `/mundus` | Mundus · Unidad | **Sci-Hive datapoint "Mundus Live" (IDETRA)** | Manifiesto editable + Circular Exchange = CaaS + pilares→módulos |
 | 20 | `/life` | Life · Organizador | **GuiFV/life (Django)** | Metas personales con matriz Important×Urgent; costo en ZNU |
 | 21 | `/civilizaciones` | Civilizaciones | **Auravana · One Community · TVP · RBE** | Horizontes postmonetarios enlazados (economía basada en recursos) |
+| 22 | `/circulos` | Círculos Biomiméticos | **Gaia Confederation** | Círculos Dunbar + 6 capitales + bounty + wisdom council |
+| 23 | `/credibilidad` | Credibilidad por Convicción | **Symbiosky (GitLab)** | Conviction voting + reward por score + decay + anti-whale |
+| 24 | `/democracia` | Democracia por Expertise | **iambrainstorming (Amiya Tulu)** | DPoS por expertise = CDS |
+| 25 | `/aprender` | Aprender haciendo | **iambrainstorming (interactive-five/coding_blog)** | Retos de aprendizaje + knowledge base |
+| 26 | `/oraculo` | Oráculo de Hechos | **Kleros / Realitio** | Resuelve disputas de hecho por consenso de jurados |
 
-> Rutas navegables: 21 (del `/` al `/civilizaciones`).
+> Rutas navegables: 26 (del `/` al `/oraculo`).
 
 ### Modo Lucidez (Ley III)
 El botón de luna en el Header es un **toggle real de transparencia radical** (Ley III: *lucidez, nunca engañar*). Al activarlo: invierte el tema a **diurno** (sol), muestra un banner de Ley III, y revela bloques `.lucidez-raw` con **datos crudos y provenance** (ej. en `/integral` se ve la fórmula del System Health y el origen de cada señal FRS). Persiste en `localStorage`.
@@ -101,6 +106,10 @@ El botón de luna en el Header es un **toggle real de transparencia radical** (L
 | [Sci-Hive datapoint "Mundus Live"](https://sci-hive.com/datapoint/fcaf69a3-2b03-4fd9-90e2-96e49379ba79/mundus-live) | Mundus · Unidad | `docs/scihive_mundus_backup.md` · `docs/scihive_mundus_integration.md` |
 | [GuiFV/life](https://github.com/GuiFV/life) | Life · Organizador | `docs/guifv_life_backup.md` · `docs/guifv_life_integration.md` |
 | [Auravana · One Community · The Venus Project · Resource Based Economy](https://auravana.org/) | Civilizaciones | `docs/civilizaciones_sinergia.md` |
+| [Gaia Confederation (whitepaper)](https://gaiaconfederation.org/) | Círculos Biomiméticos | `docs/gaia_backup.md` · `docs/gaia_integration.md` |
+| [Symbiosky (GitLab: whitpaper + contract-evm + nostr)](https://gitlab.com/blockchain-projects-ecosymra/symbiosky-whitpaper) | Credibilidad por Convicción | `docs/symbiosky_backup.md` · `docs/symbiosky_integration.md` |
+| [iambrainstorming.github.io (Amiya Tulu, libros)](https://iambrainstorming.github.io/) | Democracia / Aprender | `docs/iambrainstorming_backup.md` · `docs/iambrainstorming_integration.md` · `docs/iambrainstorming_libro_completo.md` |
+| [Kleros / Proof-of-Humanity / Realitio](https://kleros.io/) | Oráculo de Hechos + Identidad | `docs/kleros_backup.md` · `docs/kleros_integration.md` |
 
 ¹ Los backups originales se guardan también fuera del repo en `../HSCSG_v15_OS_BACKUP_YYYYMMDD_HHMMSS/`.
 
@@ -122,6 +131,7 @@ src/
 │   │   ├── orchestration.ts  prioritize.ts  solarpunk.ts
 │   │   ├── vesting.ts  trustlines.ts  tekitl.ts  sovereignty.ts  integral.ts
 │   │   ├── mundus.ts  life.ts  civilizaciones.ts
+│   │   ├── gaia.ts  symbiosky.ts  democracia.ts  learning.ts  oracle.ts  kleros.ts  valueDual.ts
 │   └── state/               # Tipos + store (Zustand persistido)
 │       ├── store.ts         # Estado global + acciones + partialize
 │       ├── seed.ts  types.ts
@@ -209,6 +219,10 @@ Cada asimilación primero hace `cp -r HSCSG_v15_OS HSCSG_v15_OS_BACKUP_<ts>` (si
 - `HSCSG_v15_OS_BACKUP_20260805_123427/` — antes de tekitl
 - `HSCSG_v15_OS_BACKUP_20260805_133739/` — antes de sovereignty-hub (+ui)
 - `HSCSG_v15_OS_BACKUP_20260805_140212/` — antes de Integral Collective (9 repos)
+- `HSCSG_v15_OS_BACKUP_20260810_120141/` — antes de Gaia Confederation
+- `HSCSG_v15_OS_BACKUP_20260810_125936/` — antes de iambrainstorming
+- `HSCSG_v15_OS_BACKUP_20260810_134655/` — antes de Symbiosky
+- `HSCSG_v15_OS_BACKUP_20260810_145000/` — antes de P2 (democracia/aprender/oraculo + ZNU no-inflable + jurados price discoverers)
 
 ---
 
