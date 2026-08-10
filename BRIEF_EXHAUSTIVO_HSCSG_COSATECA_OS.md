@@ -86,6 +86,7 @@ S:  Síntesis (Integrar)              ← RAO + Federación DTN + Memética
 | **OneManCompany** | §8.3-8.4 | Vessel+Talent; E²R Tree Search; SSOT; Registry; Talent Market; Multi-agent meetings |
 | **Copiosis** | §2.17, §3.0, §3.5, §5.6, §6.1, §14.1, §14.3-14.4, §16, §17 | NBR, Beneficio Neto 8 escalas, 3 tipos bienes, Jurados Ciudadanos, Estigmergia, Transición voluntaria, MVP post-dinero |
 | **Colony (JoinColony)** | §2.18, §3.0, §3.5, §9.2, §14, §16 | DAO por reputación + tesorería programable (dominios/pots), voting por reputación (anti-plutocracia), vesting por hitos, events append-only |
+| **Kleros / Proof-of-Humanity** | §2.19, §3.0, §3.5, §9.2, §16 | Arbitraje descentralizado (jurados anónimos+penalización), oráculo de hechos (Realitio), identidad sybil-resistant (PoH), escrow+arbitraje, TCR curadas, Autómata ejecutor (corobot) |
 
 ---
 
@@ -224,6 +225,61 @@ S:  Síntesis (Integrar)              ← RAO + Federación DTN + Memética
 
 ---
 
+## 2.19 Kleros / Proof-of-Humanity: Justicia como Servicio + Identidad Soberana
+
+**Fuente:** 27 repos de `kleros` + `Proof-Of-Humanity` (court/protocol, dispute-resolver, governor, curate, scout, moderate, reality/realitio, escrow, PoH V1/V2). Protocolo de **arbitraje descentralizado** ("justicia como servicio") + **identidad sybil-resistant** (1 humano = 1 nodo) + **oráculo de hechos** (Realitio). HSCSG lo adopta como **referente de resolución de disputas y verdad verificable** — re-implementado offline-first, sin EVM.
+
+### 2.19.1 Aporte Conceptual
+- **Jurados anónimos**: sorteo + anonimato + rotación; resuelven disputes por evidencia (ERC-1497).
+- **Penalización por desacuerdo**: quien vota con la minoría pierde staking (PNK) → incentivo honestidad.
+- **Oráculo de hechos (Realitio)**: resuelve preguntas factuales (¿ocurrió la contribución?) → verdad para Value Equation.
+- **Identidad soberana (PoH)**: 1 humano = 1 nodo (sybil-resistance por atestación, no KYC estatal).
+- **Escrow + arbitraje**: fondo retenido se libera solo si ambos cumplen; jurados resuelven si no.
+- **TCR (Token Curated Registries)**: listas curadas por la comunidad (recursos, células).
+- **Autómata ejecutor (corobot/governor)**: agente que ejecuta decisiones de gobernanza.
+
+### 2.19.2 Tabla de Homologación
+
+| Kleros / PoH | Traducción Soberana HSCSG | Componente / Rol |
+|--------------|---------------------------|------------------|
+| KlerosLiquid (court) | CDS_Jurados (órgano resolución) | `lib/cds.ts` |
+| Jurado (sorteo+anon+rotación) | Miembro CDS_Jurados | ya asimilado (Copiosis) |
+| Penalización voto minoritario | `reputationDecay` (AUT×CDS) | `lib/metrics.ts` |
+| Evidence (ERC-1497) | `EvidenceRecord` en RAO | `lib/store.ts` |
+| Appeal | `appealDecision()` CDS | `lib/cds.ts` |
+| Dispute Resolver (oráculo) | Autómata ejecuta tras CDS | `lib/automaton.ts` |
+| corobot / governor | Autómata Soberano (ejecutor) | `lib/automaton.ts` |
+| Realitio (oráculo hechos) | `lib/oracle.ts` (verdad BN) | nuevo |
+| event-service | RAO (append-only) | `lib/store.ts` |
+| TCR (stake-curate) | Registro curado por CDS | `lib/caas.ts` |
+| scout | Conway Agent (buscador tareas) | `lib/automaton.ts` |
+| escrow + arbitraje | Escrow Solarpunk resuelto por CDS | `lib/solarpunk.ts` |
+| kleros-moderate | Moderación del nodo (CDS) | nuevo |
+| Proof of Humanity V1/V2 | Identidad Soberana (1 humano=1 nodo) | `lib/identity.ts` |
+
+### 2.19.3 Confluencia con Leyes MJ
+- **Ley I**: penalización al deshonesto + escrow protege cumplidor → MJ Gate + CDS_Jurados resuelven disputa protegiendo base.
+- **Ley II**: jurar/curaduría/scout = trabajo recompensado (AUT×CDS); identidad soberana evita farmeo.
+- **Ley III**: evidencia + votos públicos (append-only) + oráculo hechos → RAO + Modo Lucidez + `lib/oracle.ts`.
+
+### 2.19.4 Mejoras Mutuas
+**Kleros → HSCSG:** penalización por desacuerdo (`reputationDecay`), oráculo de hechos (BN verificable), identidad sybil-resistant, Autómata ejecutor (corobot), TCR (catálogos curados), escrow+arbitraje.
+**HSCSG → Kleros:** offline-first (sin EVM), anti-especulación (voz por AUT×CDS no staking PNK), base material anclada (AUT), identidad soberana sin KYC, Autómata Soberano (ejecutor sin usuarios activos).
+
+### 2.19.5 Entregables Accionables
+| Entregable | Módulo HSCSG | Prioridad |
+|------------|--------------|-----------|
+| `lib/kleros.ts` (Juror, Dispute, Evidence, Appeal) | CDS_Jurados | **P0** |
+| `lib/cds.ts` (extend: reputationDecay, appealDecision) | CDS_Jurados | **P0** |
+| `lib/identity.ts` (nuevo: Identidad Soberana PoH) | Identidad | **P0** |
+| `lib/oracle.ts` (nuevo: oráculo hechos → BN) | Value Eq | **P1** |
+| `lib/automaton.ts` (extend: ejecutor corobot) | Autómata | **P1** |
+| `lib/solarpunk.ts` (extend: escrow+CDS) | Solarpunk | **P1** |
+| Pantalla `/justicia` (nuevo) | CDS_Jurados | **P1** |
+| Backup docs (kleros-court, kleros-ecosystem) + `kleros_integration.md` | Docs | **P0** |
+
+---
+
 ## 3. MODELO DE NEGOCIO: LA CUATERNIDAD SOBERANA AMPLIADA
 
 ### 3.1 Estructura de 4 Planos
@@ -289,6 +345,20 @@ La integración de Copiosis (v7.1) proporciona la **arquitectura completa de la 
 | Vesting (hitos) | Vesting ZNU (berry-vesting) | `lib/vesting.ts` |
 | Events (append-only) | RAO (Decision Records) | `lib/store.ts` |
 | ArbitraryTransaction | Autómata Soberano (MJ Gate) | `lib/automaton.ts` |
+
+**Vaso Comunicante Kleros ↔ HSCSG: Justicia como Servicio + Identidad Soberana**
+
+| Kleros / PoH | HSCSG v15 OS | Estado |
+|--------------|--------------|--------|
+| KlerosLiquid (court) | CDS_Jurados (órgano resolución) | `lib/cds.ts` |
+| Penalización voto minoritario | `reputationDecay` (AUT×CDS) | `lib/metrics.ts` |
+| Evidence (ERC-1497) | `EvidenceRecord` en RAO | `lib/store.ts` |
+| Appeal | `appealDecision()` CDS | `lib/cds.ts` |
+| Dispute Resolver / corobot | Autómata ejecuta tras CDS | `lib/automaton.ts` |
+| Realitio (oráculo hechos) | `lib/oracle.ts` (verdad BN) | nuevo |
+| TCR (stake-curate) | Registro curado por CDS | `lib/caas.ts` |
+| escrow + arbitraje | Escrow Solarpunk resuelto por CDS | `lib/solarpunk.ts` |
+| Proof of Humanity V1/V2 | Identidad Soberana (1 humano=1 nodo) | `lib/identity.ts` |
 
 **Bootstrap resuelto:** HSCSG ya tiene Fondo Solarpunk, DSI, FABSHIP, CaaS-BM.
 
@@ -485,6 +555,10 @@ Usuario ejecuta acción (ValueFlows event) → Plataforma pasa a IA → Autómat
 | Vesting unlock | claimVesting() | totalUnlocked, releasable | verify hito AUT | ZNU liberado | I, II, III |
 | Replicación nodo | CDS spawn | Deploy Vessel+Talent | Autómata madre guía | Nodo federado | I, II, III |
 | Gobernanza dominio | Crea/decide en célula | `DomainNode` + `Pot` (colony.ts) | CDS weight por AUT×CDS | Decisión en RAO | I, II, III |
+| Disputa | Abre dispute + evidencia | `EvidenceRecord` + CDS_Jurados | `reputationDecay` (penaliza desacuerdo) | Resolución en RAO | I, II, III |
+| Identidad soberana | Atestigua humanidad (PoH) | `lib/identity.ts` (hash atestaciones) | verify 1-humano-1-nodo | Registro en RAO | I, II, III |
+| Oráculo de hechos | Consulta ¿ocurrió? | `lib/oracle.ts` (Realitio→BN) | attestTruth multisig | Hecho en RAO | I, III |
+| Escrow + arbitraje | Retiene fondo intercambio | `lib/solarpunk.ts` escrow | MJ Gate + CDS_Jurados | Liberación/retorno | I, II, III |
 
 ### 9.3 Bucles de Retroalimentación Específicos
 
@@ -818,12 +892,12 @@ NetBenefitFlow (NBR) emitido cuando BN = Σ(W_i × S_i) - Damage > 0
 
 ## 16. CONCLUSIÓN: SOBERANÍA OPERACIONAL VERIFICABLE
 
-HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony constituye el **primer sistema operativo civilizatorio completo** que une:
+HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity constituye el **primer sistema operativo civilizatorio completo** que une:
 
 1. **Base material verificada** (SVD v2 + AUT 12 vectores + FABSHIP)
-2. **Gobernanza cibernética autónoma** (CDS + CDS_Jurados + RAO + FRS + Estigmergia + **dominios/pots Colony por reputación**)
+2. **Gobernanza cibernética autónoma** (CDS + CDS_Jurados + RAO + FRS + Estigmergia + dominios/pots Colony por reputación + **justicia Kleros / identidad soberana PoH**)
 3. **Economía postmonetaria híbrida** (NBR-ZNU-ReFi, 3 tipos bienes, 3 niveles financieros, demurrage, paridad biofísica)
-4. **Autómata soberano** (Conway Agent + MJ Gate + NetBenefitEngine + E²R Search + Vessel/Talent)
+4. **Autómata soberano** (Conway Agent + MJ Gate + NetBenefitEngine + E²R Search + Vessel/Talent + **ejecutor corobot/governor Kleros**)
 5. **Doble capa resiliente** (Local offline-first + Social online + Federación DTN/AP)
 6. **Hoja de ruta con validación empírica** (Fase 0 Proto-CO: 10 casos beta, 90 días)
 
