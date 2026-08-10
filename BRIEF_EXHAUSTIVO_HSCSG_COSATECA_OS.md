@@ -89,7 +89,8 @@ S:  Síntesis (Integrar)              ← RAO + Federación DTN + Memética
 | **Kleros / Proof-of-Humanity** | §2.19, §3.0, §3.5, §9.2, §16 | Arbitraje descentralizado (jurados anónimos+penalización), oráculo de hechos (Realitio), identidad sybil-resistant (PoH), escrow+arbitraje, TCR curadas, Autómata ejecutor (corobot) |
 | **DeseOS / Contento.pro** | §2.20, §3.0, §14, §16 | SOA de agencia de marketing (BranDNA 12 secc, escalera 5M, ICP, Strategic Brain, Pagos/Pauta) **hibridado anfibio ZNU↔USD** |
 | **Gaia Confederation** | §2.21, §3.5, §9.2, §16 | Gobernanza biomimética (círculos Dunbar), economía regenerativa + monedas complementarias, passport contextual de confianza, justicia restaurativa, protocolo de interoperabilidad (corona el vaso comunicante) |
-| **iambrainstorming** | §2.22, §3.5, §16 | Blogs federados (principal, opinionated_observer, coding_blog, GitLab, interactive-five): saber experiencial + aprendizaje interactivo + pensamiento crítico (capa de educación/comunicación del vaso) |
+| **iambrainstorming** | §2.22, §3.5, §16 | Blogs federados (principal, opinionated_observer, coding_blog, GitLab, interactive-five): saber experiencial + aprendizaje interactivo + pensamiento crítico (capa de educación del vaso) |
+| **Symbiosky** | §2.23, §3.5, §9.2, §16 | Conviction voting (credibilidad por convicción, lock ∝ confianza), reward=mean_score×mult, decay 5%/año por inactividad, anti-whale, capa Nostr/AT Protocol (VA MÁS ALLÁ de HSCSG: CDS gana convicción bloqueada, ZNU gana decay) |
 
 ---
 
@@ -433,6 +434,50 @@ HSCSG no es solo máquina: es *comunidad que aprende en voz alta*.
 
 ---
 
+## 2.23 Symbiosky: Credibilidad por Convicción (VA MÁS ALLÁ de HSCSG)
+
+**Fuentes (GitLab):** `blockchain-projects-ecosymra/symbiosky-whitpaper` (PDF+Typst, v1.0 Dic 2025, "Monetizing Credibility, Not Clicks"), `blockchain-projects-ecosymra/symbiosky-contract-evm` (Foundry/Solidity, MIT, 7 contratos), `symbiosky/symbiosky-nostr` (Rust/Dioxus). **Esta fuente aporta primitivas que HSCSG NO tenía.**
+
+### 2.23.1 Qué aporta (gap real vs HSCSG)
+- **Conviction voting**: votar bloqueando ZNU ∝ a la confianza (lock hasta 5 años). HSCSG/CDS solo vota por reputación, NO por convicción bloqueada.
+- **Reward = mean_score × multiplier** (score 1-10, umbral: score<5 = sin fondos). HSCSG no tiene score+umbral.
+- **Decay 5%/año por inactividad** (sobre el exceso sobre lo protegido). ZNU no tenía decay por inactividad.
+- **Anti-whale**: influencia cara = iliquidez (lock largo), vote limits, conviction resets.
+- **Funding por umbral**: ≥50 votos, ≥10 convicción ponderada.
+- **Capa de mensajería descentralizada (Nostr/AT Protocol)** → federación DTN/AP real entre nodos.
+
+### 2.23.2 Parámetros extraídos (whitepaper + contratos)
+`INACTIVITY_DECAY_BPS=500` (5%), `MAX_LOCK_DURATION=5y`, `MIN_VOTES=50`, `MIN_CONVICTION=10`, `SCORE_THRESHOLD=5`, `REWARD_MULTIPLIER=100`, `MAX_REWARD_PER_PROPOSAL=1000`, `CONFIG_TIMELOCK_DELAY=20d`. Token SYSKY cap 20M (→ ZNU).
+
+### 2.23.3 Tabla de Homologación
+
+| Symbiosky | Traducción Soberana HSCSG | Componente / Rol |
+|-----------|---------------------------|------------------|
+| Conviction voting (lock ∝ confianza) | CDS con convicción bloqueada | `lib/symbiosky.ts` + `/credibilidad` |
+| Reward = mean_score × mult | AUT×CDS (score 1-10 + umbral) | `lib/symbiosky.ts` |
+| Decay 5%/año por inactividad | ZNU con decay (anti-hoarding) | `lib/symbiosky.ts` |
+| Anti-whale (lock, resets) | CDS (influencia cara = iliquidez) | `lib/symbiosky.ts` |
+| Funding por umbral | CDS quorum | `lib/symbiosky.ts` |
+| Nostr/AT Protocol | Federación DTN/AP (mensajería) | Federación |
+
+### 2.23.4 Confluencia con Leyes MJ
+- **Ley I**: anti-whale + umbrales evitan captura/daño por concentración; decay redistribuye sin expropiar.
+- **Ley II**: reward por credibilidad = AUT×CDS puro (se gana por contribución verificable).
+- **Ley III**: score 1-10 ponderado por convicción = trazabilidad (RAO); conviction resets = anti-engaño.
+
+### 2.23.5 Entregables (implementados, no P2)
+| Entregable | Módulo HSCSG | Prioridad |
+|------------|--------------|-----------|
+| `docs/symbiosky_backup.md` + `symbiosky_integration.md` | Docs | **P0** |
+| `lib/symbiosky.ts` (conviction+reward+decay+antiwhale) | NUEVO | **P0** |
+| `state/symbiosky.ts` + store (6 lugares) | store | **P0** |
+| Pantalla `/credibilidad` | NUEVO | **P0** |
+| BRIEF §2.23, §3.5, §9.2, §16 | Brief | **P0** |
+
+> **Nota de extirpación:** EVM/Solidity/Foundry, SYSKY ERC20, Bluesky/Nostr remotos → lógica pura offline + ZNU + federación DTN/AP.
+
+---
+
 ## 3. MODELO DE NEGOCIO: LA CUATERNIDAD SOBERANA AMPLIADA
 
 ### 3.1 Estructura de 4 Planos
@@ -514,6 +559,7 @@ La integración de Copiosis (v7.1) proporciona la **arquitectura completa de la 
 | Proof of Humanity V1/V2 | Identidad Soberana (1 humano=1 nodo) | `lib/identity.ts` |
 | Gaia Confederation | Protocolo de interoperabilidad + círculos biomiméticos | `lib/gaia.ts` (corona el vaso) |
 | iambrainstorming | Saber experiencial + aprendizaje interactivo | `lib/learning.ts` (capa educación) |
+| Symbiosky | Credibilidad por convicción + decay + anti-whale | `lib/symbiosky.ts` (va más allá: CDS gana convicción) |
 
 **Bootstrap resuelto:** HSCSG ya tiene Fondo Solarpunk, DSI, FABSHIP, CaaS-BM.
 
@@ -717,6 +763,10 @@ Usuario ejecuta acción (ValueFlows event) → Plataforma pasa a IA → Autómat
 | Círculo biomimético | Crea círculo Dunbar (3-13/13-150) | `lib/gaia.ts` CircleTier | CDS por dominio | Registro en RAO | I, II |
 | Bounty (misión) | Publica necesidad como misión | `lib/gaia.ts` Bounty | ZNU por AUT×CDS | Cumplimiento en RAO | II, III |
 | Wisdom Council | Consejo para conflicto complejo | `lib/gaia.ts` WisdomCouncil | CNV + Kleros | Acuerdo en RAO | I, III |
+| Propuesta de conocimiento | Crea propuesta (research/edu) | `lib/symbiosky.ts` addProposal | MJ Gate (anti-daño) | Registro en RAO | I, II |
+| Voto por convicción | Bloquea ZNU ∝ confianza, score 1-10 | `lib/symbiosky.ts` symCastVote | CDS por convicción | Trazabilidad RAO | II, III |
+| Reward por credibilidad | mean_score × mult (umbral <5) | `lib/symbiosky.ts` computeReward | AUT×CDS | Cumplimiento RAO | II |
+| Decay por inactividad | 5%/año sobre exceso | `lib/symbiosky.ts` applyDecay | Anti-hoarding ZNU | Auditoría RAO | II |
 
 ### 9.3 Bucles de Retroalimentación Específicos
 
@@ -1052,7 +1102,7 @@ NetBenefitFlow (NBR) emitido cuando BN = Σ(W_i × S_i) - Damage > 0
 
 ## 16. CONCLUSIÓN: SOBERANÍA OPERACIONAL VERIFICABLE
 
-HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity + integración DeseOS/Contento.pro + integración Gaia Confederation + integración iambrainstorming constituye el **primer sistema operativo civilizatorio completo** que une:
+HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity + integración DeseOS/Contento.pro + integración Gaia Confederation + integración iambrainstorming + integración Symbiosky constituye el **primer sistema operativo civilizatorio completo** que une:
 
 1. **Base material verificada** (SVD v2 + AUT 12 vectores + FABSHIP)
 2. **Gobernanza cibernética autónoma** (CDS + CDS_Jurados + RAO + FRS + Estigmergia + dominios/pots Colony por reputación + **justicia Kleros / identidad soberana PoH**)

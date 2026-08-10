@@ -36,6 +36,7 @@ import type { ColonyState, DomainKind } from '@core/state/colony'
 import type { KlerosState, JurorVerdict } from '@core/state/kleros'
 import type { AgenciaState } from '@core/state/agencia'
 import type { GaiaState } from '@core/state/gaia'
+import type { CredibilityState } from '@core/state/symbiosky'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -64,6 +65,7 @@ import {
 } from '@core/lib/kleros'
 import { makeAgenciaState, reversePlan } from '@core/lib/agencia'
 import { makeGaiaState, addBounty, completeBounty, formCouncil } from '@core/lib/gaia'
+import { makeCredibilityState, addProposal as symAddProposalFn, castVote as symCastVoteFn, createLock as symCreateLockFn, closeProposal as symCloseProposalFn, applyDecay as symApplyDecayFn } from '@core/lib/symbiosky'
 import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
 
@@ -200,7 +202,8 @@ export interface AppState {
 
   // ===== Gaia Confederation (gobernanza biomimética + interoperabilidad) =====
   gaia: GaiaState
-
+  // Symbiosky: credibilidad por convicción
+  symbiosky: CredibilityState
   // actions
   setNodeName: (n: string) => void
   updateBase: (u: Partial<BaseMaterial>) => void
@@ -309,6 +312,12 @@ export interface AppState {
   addBounty: (title: string, need: string, znuReward: number) => void
   completeBounty: (id: string) => void
   formCouncil: (topic: string, members: string) => void
+  // Symbiosky
+  symAddProposal: (title: string, author: string) => void
+  symCastVote: (proposalId: string, voter: string, score: number, conviction: 1 | 2 | 3 | 4 | 5) => void
+  symCreateLock: (voter: string, lockedZNU: number, level: 1 | 2 | 3 | 4 | 5, lockDays: number) => void
+  symCloseProposal: (proposalId: string) => void
+  symDecayTick: () => void
   resetAll: () => void
 }
 
@@ -613,6 +622,8 @@ export const useAppStore = create<AppState>()(
 
       // Gaia Confederation
       gaia: makeGaiaState(),
+      // Symbiosky: credibilidad por convicción
+      symbiosky: makeCredibilityState(),
 
       setNodeName: (n) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
@@ -926,6 +937,12 @@ export const useAppStore = create<AppState>()(
       formCouncil: (topic, members) => set((st) => ({
         gaia: { ...st.gaia, councils: formCouncil(st.gaia.councils, topic, members.split(',').map((m) => m.trim()).filter(Boolean)) },
       })),
+      // ===== Symbiosky: credibilidad por convicción =====
+      symAddProposal: (title, author) => set((st) => ({ symbiosky: symAddProposalFn(st.symbiosky, title, author) })),
+      symCastVote: (proposalId, voter, score, conviction) => set((st) => ({ symbiosky: symCastVoteFn(st.symbiosky, proposalId, voter, score, conviction) })),
+      symCreateLock: (voter, lockedZNU, level, lockDays) => set((st) => ({ symbiosky: symCreateLockFn(st.symbiosky, voter, lockedZNU, level, lockDays) })),
+      symCloseProposal: (proposalId) => set((st) => ({ symbiosky: symCloseProposalFn(st.symbiosky, proposalId) })),
+      symDecayTick: () => set((st) => ({ symbiosky: symApplyDecayFn(st.symbiosky, Date.now(), 365 * 86400000) })),
       resetAll: () =>
         set({
           nodeName: 'Nodo Cosateca v0.1',
@@ -1032,6 +1049,8 @@ export const useAppStore = create<AppState>()(
       priceParity: 0.02,
       // Gaia Confederation
       gaia: makeGaiaState(),
+      // Symbiosky: credibilidad por convicción
+      symbiosky: makeCredibilityState(),
         }),
     }),
     {
@@ -1081,6 +1100,7 @@ export const useAppStore = create<AppState>()(
         nodeMode: st.nodeMode,
         priceParity: st.priceParity,
         gaia: st.gaia,
+        symbiosky: st.symbiosky,
         lang: st.lang,
         lucidez: st.lucidez,
       }),
