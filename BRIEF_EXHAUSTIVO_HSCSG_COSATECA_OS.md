@@ -392,12 +392,15 @@ HSCSG no es "un sistema más" sino un **nodo traductor** en la confederación re
 
 **Fuentes:** `iambrainstorming.github.io` (principal + Vercel), `opinionated_observer`, `coding_blog`, `blog` (GitLab), `interactive-five`. Sitios/blogs personales federados (HTML/MD estático, con README + LICENSE). **NO son DAOs/protocolos** — aportan *saber experiencial* y la capa de aprendizaje + comunicación (Ecología de Saberes de Gaia, UniDiversity).
 
-### 2.22.1 Aporte Conceptual
-- **Blog general:** pensamiento vivo, documentación de trayectoria (Capital experiencial de Gaia).
-- **Observador opinado:** análisis crítico / tensión dialéctica (la Lucidez necesita opiniones contrastadas, no consenso blando).
-- **Coding blog:** documentación técnica viva (Hylo knowledge base).
-- **Interactive-five:** aprendizaje por retos (mentoría/UniDiversity de Gaia).
-- **Federalismo de blogs:** múltiples voces soberanas, no una central — isomorfo a la estructura de HSCSG.
+### 2.22.1 Aporte Conceptual (modelo de negocio del conocimiento + moneda postmonetaria)
+- **Conocimiento libre financiado por modelos híbridos**: tie-ups internacionales + acceso de pago temporal en mercados desarrollados hasta recuperar costo, luego libera (cap. *Business Model for Lectures*, 2015). Isomorfo a CaaS.
+- **ICOs como crowdfunding** con contrato que devuelve fondos si falla (auditable) — cap. *Why startup funding through ICOs* (2019). Isomorfo a Solarpunk escrow + CDS.
+- **APIs abiertas como infraestructura de negocio** — cap. *Apps can solve social security* (2018). Isomorfo a federación DTN/AP.
+- **Moneda "que cuenta para la unidad"**: total=1, no inflable; 4 tipos (exchange caduca/storage atado a identidad/deposits/loans) — cap. *Going away with money* (2016). Isomorfo a **ZNU**.
+- **Price discovery por consenso de utilidad** (Schelling games, median commit-and-reveal, tax shitcoin/subsidize good) — cap. *What if crypto token prices* (39k chars, 2022). Isomorfo a **CDS + RAO**.
+- **Democracia justa DPoS por expertise** (árbol de departamentos) — cap. *From hypocrisy to democracy* (2019). Isomorfo a **CDS**.
+- **UBI ligado a thriving/educación** (no incondicional ciego) — cap. *Universal Basic Income...* (2018). Isomorfo a **CaaS-BM**.
+- **5h/día, sin bullshit jobs** — cap. *Supply Chains* (2022). Límite de trabajo postmonetario.
 
 ### 2.22.2 Confluencia con el VASO COMUNICANTE
 iambrainstorming es la **capa de aprendizaje y comunicación**:
