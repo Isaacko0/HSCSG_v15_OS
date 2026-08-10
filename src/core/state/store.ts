@@ -34,6 +34,7 @@ import type { CivilizacionesState } from '@core/state/civilizaciones'
 import type { CelulasState } from '@core/state/celulas'
 import type { ColonyState, DomainKind } from '@core/state/colony'
 import type { KlerosState, JurorVerdict } from '@core/state/kleros'
+import type { AgenciaState } from '@core/state/agencia'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -60,6 +61,8 @@ import {
 import {
   makeKlerosState, seatJuror, openDispute, addEvidence, castVote, resolveDispute, appealDispute, attestIdentity,
 } from '@core/lib/kleros'
+import { makeAgenciaState, reversePlan } from '@core/lib/agencia'
+import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
 
 export interface AppState {
@@ -187,6 +190,12 @@ export interface AppState {
   // ===== Kleros / Proof-of-Humanity (justicia como servicio + identidad soberana) =====
   kleros: KlerosState
 
+  // ===== DeseOS / Contento.pro (método de agencia + arquitectura anfibia) =====
+  agencia: AgenciaState
+  // Modo anfibio del nodo: postmonetario (ZNU/CaaS) o conectado (USD/ReFi)
+  nodeMode: 'postmonetario' | 'conectado'
+  priceParity: number // ZNU -> USDC (oráculo ReFi, Nivel 3)
+
   // actions
   setNodeName: (n: string) => void
   updateBase: (u: Partial<BaseMaterial>) => void
@@ -281,6 +290,13 @@ export interface AppState {
   resolveKlerosDispute: (disputeId: string, resolution: string) => void
   appealKlerosDispute: (disputeId: string) => void
   attestKlerosIdentity: (name: string, attestedBy: string) => void
+  // DeseOS / Contento.pro
+  setBrandDNA: (key: BrandDNAKey, value: string) => void
+  setOfferPrice: (id: string, field: 'znuPrice' | 'usdPrice', amount: number) => void
+  addICP: (icp: ICPProfile) => void
+  setPlanMeta: (meta: number) => void
+  setNodeMode: (mode: 'postmonetario' | 'conectado') => void
+  setPriceParity: (p: number) => void
   resetAll: () => void
 }
 
@@ -578,6 +594,10 @@ export const useAppStore = create<AppState>()(
       colony: makeColonyState(),
       // Kleros / Proof-of-Humanity: justicia como servicio + identidad soberana
       kleros: makeKlerosState(),
+      // DeseOS / Contento.pro: método de agencia + modo anfibio
+      agencia: makeAgenciaState(),
+      nodeMode: 'postmonetario',
+      priceParity: 0.02, // 1 ZNU ~ 0.02 USDC (oráculo ReFi de referencia)
 
       setNodeName: (n) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
@@ -856,6 +876,23 @@ export const useAppStore = create<AppState>()(
       attestKlerosIdentity: (name, attestedBy) => set((st) => ({
         kleros: attestIdentity(st.kleros, name, attestedBy),
       })),
+      setBrandDNA: (key, value) => set((st) => ({
+        agencia: { ...st.agencia, brand: { ...st.agencia.brand, [key]: value } },
+      })),
+      setOfferPrice: (id, field, amount) => set((st) => ({
+        agencia: {
+          ...st.agencia,
+          offers: st.agencia.offers.map((o) => (o.id === id ? { ...o, [field]: amount } : o)),
+        },
+      })),
+      addICP: (icp) => set((st) => ({
+        agencia: { ...st.agencia, icps: [...st.agencia.icps, icp] },
+      })),
+      setPlanMeta: (meta) => set((st) => ({
+        agencia: { ...st.agencia, plan: reversePlan(meta) },
+      })),
+      setNodeMode: (mode) => set({ nodeMode: mode }),
+      setPriceParity: (p) => set({ priceParity: p }),
       resetAll: () =>
         set({
           nodeName: 'Nodo Cosateca v0.1',
@@ -956,6 +993,10 @@ export const useAppStore = create<AppState>()(
       colony: makeColonyState(),
       // Kleros / Proof-of-Humanity: justicia como servicio + identidad soberana
       kleros: makeKlerosState(),
+      // DeseOS / Contento.pro: método de agencia + modo anfibio
+      agencia: makeAgenciaState(),
+      nodeMode: 'postmonetario',
+      priceParity: 0.02,
         }),
     }),
     {
@@ -1001,6 +1042,9 @@ export const useAppStore = create<AppState>()(
         celulas: st.celulas,
         colony: st.colony,
         kleros: st.kleros,
+        agencia: st.agencia,
+        nodeMode: st.nodeMode,
+        priceParity: st.priceParity,
         lang: st.lang,
         lucidez: st.lucidez,
       }),

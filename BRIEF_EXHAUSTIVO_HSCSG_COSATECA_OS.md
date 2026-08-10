@@ -87,6 +87,7 @@ S:  Síntesis (Integrar)              ← RAO + Federación DTN + Memética
 | **Copiosis** | §2.17, §3.0, §3.5, §5.6, §6.1, §14.1, §14.3-14.4, §16, §17 | NBR, Beneficio Neto 8 escalas, 3 tipos bienes, Jurados Ciudadanos, Estigmergia, Transición voluntaria, MVP post-dinero |
 | **Colony (JoinColony)** | §2.18, §3.0, §3.5, §9.2, §14, §16 | DAO por reputación + tesorería programable (dominios/pots), voting por reputación (anti-plutocracia), vesting por hitos, events append-only |
 | **Kleros / Proof-of-Humanity** | §2.19, §3.0, §3.5, §9.2, §16 | Arbitraje descentralizado (jurados anónimos+penalización), oráculo de hechos (Realitio), identidad sybil-resistant (PoH), escrow+arbitraje, TCR curadas, Autómata ejecutor (corobot) |
+| **DeseOS / Contento.pro** | §2.20, §3.0, §14, §16 | SOA de agencia de marketing (BranDNA 12 secc, escalera 5M, ICP, Strategic Brain, Pagos/Pauta) **hibridado anfibio ZNU↔USD** |
 
 ---
 
@@ -277,6 +278,59 @@ S:  Síntesis (Integrar)              ← RAO + Federación DTN + Memética
 | `lib/solarpunk.ts` (extend: escrow+CDS) | Solarpunk | **P1** |
 | Pantalla `/justicia` (nuevo) | CDS_Jurados | **P1** |
 | Backup docs (kleros-court, kleros-ecosystem) + `kleros_integration.md` | Docs | **P0** |
+
+---
+
+## 2.20 DeseOS / Contento.pro: SOA de Agencia Hibridado Anfibio (ZNU ↔ USD)
+
+**Fuente:** `DeseOS_project1.zip` (Soul.MBA / Pepe Sevilla). Sistema Operativo de Agencia de Marketing (BranDNA, escalera 5M, CRM/ICP, Strategic Brain, producción VITCH, Persuade, Pauta/medios, Pagos/facturación, Perfecciona, Publica). Stack **idéntico** a HSCSG v15 OS (React 18.3 · TS 5.3 · Vite 5 · Tailwind 3.3 · Zustand 4.5 · lucide-react · react-router 6). Licencia MIT.
+
+### 2.20.1 Aporte Conceptual
+- **BranDNA (12 secciones):** propósito, villano, promesa, método, voz, estética → constitución de identidad del nodo.
+- **Escalera 5M:** Magnet → Mini → Core → Mastermind → Mentorship → catálogo de bienes/servicios del nodo.
+- **ICP Builder (5 niveles de consciencia):** perfiles de miembros/aliados que alimentan el CDS.
+- **Strategic Brain:** planificación inversa (meta→leads→alcance→piezas→inversión).
+- **Pagos/Pauta:** termómetro de ingresos + atribución orgánico/pagado → **hibridado anfibio**.
+
+### 2.20.2 ARQUITECTURA ANFIBIA (núcleo)
+El nodo opera en dos modos sin duplicar lógica:
+1. **Postmonetario (default offline):** valor en **ZNU** + acceso **CaaS-BM**. Sin USD, sin Stripe.
+2. **Conectado (puente ReFi, Nivel 3):** expone ciertos bienes en **USD/USDC** para comercio externo, vía oráculo de paridad (`priceParity`).
+
+```ts
+type ValueUnit = 'ZNU' | 'USD'
+interface Value { amount: number; unit: ValueUnit }
+// displayValue(v, nodeMode, parity) decide etiqueta; la lógica de cálculo es agnóstica a la unidad
+```
+Los módulos Pagos/Pauta de DeseOS operan sobre `amount`; el render llama `displayValue`. **No se extirpa el dinero: se hace anfibio.** Esto resuelve el dilema: el nodo soberano no depende del USD pero puede nadar en él cuando conviene (comercio externo, deuda heredada, ReFi).
+
+### 2.20.3 Tabla de Homologación
+
+| DeseOS | Traducción Soberana HSCSG | Componente / Rol |
+|--------|---------------------------|------------------|
+| BranDNA 12 secc | Identidad del nodo (constitución) | `lib/agencia.ts` |
+| Escalera 5M | Catálogo de bienes CaaS | `lib/agencia.ts` `OfferLadder` |
+| ICP 5 niveles | Perfiles de miembros (CDS) | `members` + Colony |
+| Strategic Brain | Planificación del nodo | `plans` + Integral |
+| Termómetro ingresos | Medidor de Beneficio Neto (NBR) | `lib/valueDual.ts` |
+| Pagos (USD) | **ANFIBIO: ZNU ↔ USD** | `nodeMode` + `priceParity` |
+| Pauta (medios) | Difusión ZNU-orgánica ↔ USD-pagada | `lib/valueDual.ts` |
+| Persuade | Comunicación voz de marca | Colaberry |
+| Publica | Distribución | Federación DTN/AP |
+
+### 2.20.4 Confluencia con Leyes MJ
+- **Ley I:** BranDNA define a quién NO sirve; MJ Gate bloquea venta externa USD ciega (oráculo de paridad no depredador).
+- **Ley II:** "precio" por valor entregado → ZNU por Beneficio Neto (Copiosis). Mismo `amount`, distinta etiqueta.
+- **Ley III:** atribución orgánico/pagado = RAO + Modo Lucidez (origen del valor visible).
+
+### 2.20.5 Entregables Accionables
+| Entregable | Módulo HSCSG | Prioridad |
+|------------|--------------|-----------|
+| `lib/agencia.ts` (BranDNA + OfferLadder + ICP) | `/agencia` | **P0** |
+| `lib/valueDual.ts` (Value + displayValue anfibio) | CaaS/ReFi | **P0** |
+| `nodeMode` + `priceParity` en store | store | **P0** |
+| Pantalla `/agencia` (BranDNA + 5M + Pagos anfibios) | `/agencia` | **P0** |
+| Backup docs (deseos_backup, deseos_integration) | Docs | **P0** |
 
 ---
 
@@ -769,6 +823,8 @@ El **Autómata HSCSG + RAO + SVD v2 + Federación DTN** *es* la infraestructura 
 | **Nivel 2: Dividendo Soberano + Recompensa BN (ZNU/NBR)** | Ingreso base garantizado + recompensa por Beneficio Neto | DSI (100 ZNU/mes) + NetBenefitFlow (NBR→ZNU via claimVesting) + Value Equation | CDS + CDS_Jurados (pesos BN) + **Dominios/Pots Colony** (reparto por célula vía AUT×CDS) | CaaS Tier 1 (necesidades gratis) + Vesting por hitos AUT + NBR Gateways (lujos) |
 | **Nivel 3: Puente ReFi + Capital Institucional (USDC/€)** | Conversión a moneda fiduciaria para comercio externo y deuda heredada | Oráculo Paridad Local + ZCS/ZNU + ReFi Bridge (Toucan, Regen, Plan Vivo) | CGC + Autómata auditoría | 1 tCO₂e = 500 ZNU; ESRS/CSRD/TCFD/TNFD/SBTi auto-generados vía dMRV |
 
+**Modo Anfibio (DeseOS):** el nodo elige `nodeMode: 'postmonetario' | 'conectado'`. En postmonetario todo valor es ZNU/CaaS (sin USD). En conectado, los bienes del catálogo (escalera 5M) se exponen en USD/USDC vía `priceParity` (oráculo ReFi), manteniendo la misma lógica de cálculo (Pagos/Pauta anfibios). MJ Gate bloquea ventas externas ciegas (anti-endeudamiento). Ver §2.20.
+
 ### 14.2 NBR-ZNU Hybrid Flow (Integración Copiosis)
 
 ```
@@ -892,7 +948,7 @@ NetBenefitFlow (NBR) emitido cuando BN = Σ(W_i × S_i) - Damage > 0
 
 ## 16. CONCLUSIÓN: SOBERANÍA OPERACIONAL VERIFICABLE
 
-HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity constituye el **primer sistema operativo civilizatorio completo** que une:
+HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity + integración DeseOS/Contento.pro constituye el **primer sistema operativo civilizatorio completo** que une:
 
 1. **Base material verificada** (SVD v2 + AUT 12 vectores + FABSHIP)
 2. **Gobernanza cibernética autónoma** (CDS + CDS_Jurados + RAO + FRS + Estigmergia + dominios/pots Colony por reputación + **justicia Kleros / identidad soberana PoH**)
