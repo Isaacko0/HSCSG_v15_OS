@@ -84,7 +84,8 @@ S:  Síntesis (Integrar)              ← RAO + Federación DTN + Memética
 | **FABSHIP/HUMANIA** | §5.1-5.5, §14.3-14.4 | Earthship 6 vectores → AUT_*; FabLab; ValueFlows productivos; Resource-Based Pricing |
 | **Auravana/One Community/TVP/RBE** | §17 | Horizontes postmonetarios; diseños modulares gratuitos; bioconstrucción |
 | **OneManCompany** | §8.3-8.4 | Vessel+Talent; E²R Tree Search; SSOT; Registry; Talent Market; Multi-agent meetings |
-| **Copiosis** | §2.17, §3.0, §3.5, §5.6, §6.1, §14.1, §14.3-14.4, §16 | NBR, Beneficio Neto 8 escalas, 3 tipos bienes, Jurados Ciudadanos, Estigmergia, Transición voluntaria |
+| **Copiosis** | §2.17, §3.0, §3.5, §5.6, §6.1, §14.1, §14.3-14.4, §16, §17 | NBR, Beneficio Neto 8 escalas, 3 tipos bienes, Jurados Ciudadanos, Estigmergia, Transición voluntaria, MVP post-dinero |
+| **Colony (JoinColony)** | §2.18, §3.0, §3.5, §9.2, §14, §16 | DAO por reputación + tesorería programable (dominios/pots), voting por reputación (anti-plutocracia), vesting por hitos, events append-only |
 
 ---
 
@@ -177,6 +178,52 @@ S:  Síntesis (Integrar)              ← RAO + Federación DTN + Memética
 
 ---
 
+## 2.18 Colony (JoinColony): Gobernanza por Reputación + Tesorería Programable
+
+**Fuente:** 5 repos de JoinColony (`colonyNetwork` contratos, `colonyJS`/`colonySDK` librerías TS, `colony-gql` GraphQL + `colony-neue` Vue3, `ColonyFrontEndLivingStandard` guía). Protocolo DAO desplegado en Ethereum/Gnosis Chain. HSCSG lo adopta como **referente de gobernanza descentralizada y tesorería por dominios** — re-implementado offline-first, sin EVM.
+
+### 2.18.1 Aporte Conceptual
+- **Colony = organización soberana**: una colony es un nodo; sus `domains` (árbol) son células/sub-colectivos.
+- **Reputación por trabajo real**: se gana contribuyendo, NO se compra con tokens → base de voz anti-plutocrática.
+- **Tesorería por pots**: cada dominio tiene su `pot` (presupuesto); los fondos se mueven entre dominios por gobernanza.
+- **Voting por reputación**: el peso de voto ∝ reputación en el dominio, no 1-token-1-voto.
+- **Vesting por hitos**: liberación de tokens por contribución verificada, no por tiempo.
+- **Events append-only**: toda acción queda registrada inmutable (→ RAO).
+
+### 2.18.2 Tabla de Homologación
+
+| Concepto Colony | Traducción Soberana HSCSG | Componente / Rol |
+|-----------------|---------------------------|------------------|
+| Colony (organización) | Nodo Cosateca (Colectivo) | `/colectivo` + CDS |
+| Domain (árbol) | Célula / sub-colectivo (Life Radius 15km) | `lib/colony.ts` `DomainNode` |
+| Pot (tesorería) | Fondo de Célula / CaaS reparto | `lib/caas.ts` |
+| Reputation (por dominio) | AUT × CDS (contribución verificada) | `lib/metrics.ts` + CDS |
+| Voting (por reputación) | CDS (consentimiento ponderado) | `lib/integral.ts` |
+| Token (CLNY) | ZNU (demurrage + paridad biofísica) | `lib/vesting.ts` / `lib/trustlines.ts` |
+| Vesting (hitos) | Vesting ZNU (berry-vesting) | `lib/vesting.ts` |
+| Events (append-only) | RAO (Decision Records) | `lib/store.ts` |
+| ArbitraryTransaction | Autómata Soberano (MJ Gate) | `lib/automaton.ts` |
+
+### 2.18.3 Confluencia con Leyes MJ
+- **Ley I**: permisos por dominio + multisig limitan daño → MJ Gate bloquea acción que degrade AUT.
+- **Ley II**: reputación por trabajo → ZNU por Value Equation (AUT×CDS); vesting por hitos.
+- **Ley III**: transacciones públicas on-chain → RAO inmutable + Modo Lucidez.
+
+### 2.18.4 Mejoras Mutuas
+**Colony → HSCSG:** dominios en árbol (federación de células), reputación por trabajo (refuerza AUT×CDS), funding pots (CaaS-BM por circunscripción), dashboard de gobernanza (`colony-neue`), estándar frontend vivo.
+**HSCSG → Colony:** offline-first (sin EVM), anti-especulación (ZNU demurrage), base material anclada (AUT 13 pilares), Autómata Soberano (ejecutor sin usuarios activos), Modo Lucidez.
+
+### 2.18.5 Entregables Accionables
+| Entregable | Módulo HSCSG | Prioridad |
+|------------|--------------|-----------|
+| `lib/colony.ts` (DomainNode, Pot, Reputation, Role) | Colectivo/CDS | **P0** |
+| `lib/caas.ts` (extend: DomainPot por célula) | CaaS-BM | **P0** |
+| `lib/integral.ts` (extend: CDS weight por AUT) | CDS | **P1** |
+| Pantalla `/colectivo` (extend: árbol dominios + pots) | Colectivo | **P1** |
+| Backup docs (5 repos) + `colony_integration.md` | Docs | **P0** |
+
+---
+
 ## 3. MODELO DE NEGOCIO: LA CUATERNIDAD SOBERANA AMPLIADA
 
 ### 3.1 Estructura de 4 Planos
@@ -228,6 +275,20 @@ La integración de Copiosis (v7.1) proporciona la **arquitectura completa de la 
 | Bienes Capital gratis | `capitalAccessTier` | CaaS/FABSHIP |
 | Estigmergia | `BN_Gradient_Signal` | FRS |
 | Transición 3 fases | Fases HSCSG 0-D | Fase 0 = Proto-CO |
+
+**Vaso Comunicante Colony ↔ HSCSG: Gobernanza por Reputación + Tesorería Programable**
+
+| Colony | HSCSG v15 OS | Estado |
+|--------|--------------|--------|
+| Colony (organización) | Nodo Cosateca (Colectivo) | `/colectivo` + CDS |
+| Domain (árbol) | Célula / sub-colectivo | `lib/colony.ts` `DomainNode` |
+| Pot (tesorería) | Fondo de Célula / CaaS reparto | `lib/caas.ts` |
+| Reputation (por dominio) | AUT × CDS (contribución verificada) | `lib/metrics.ts` + CDS |
+| Voting (por reputación) | CDS (consentimiento ponderado) | `lib/integral.ts` |
+| Token (CLNY) | ZNU (demurrage + paridad biofísica) | `lib/vesting.ts` |
+| Vesting (hitos) | Vesting ZNU (berry-vesting) | `lib/vesting.ts` |
+| Events (append-only) | RAO (Decision Records) | `lib/store.ts` |
+| ArbitraryTransaction | Autómata Soberano (MJ Gate) | `lib/automaton.ts` |
 
 **Bootstrap resuelto:** HSCSG ya tiene Fondo Solarpunk, DSI, FABSHIP, CaaS-BM.
 
@@ -423,6 +484,7 @@ Usuario ejecuta acción (ValueFlows event) → Plataforma pasa a IA → Autómat
 | Crédito mutuo | Trustline + debitTransfer | openTrustline, debitTransfer | getDebt, path-finding | Debt bilateral | I, II, III |
 | Vesting unlock | claimVesting() | totalUnlocked, releasable | verify hito AUT | ZNU liberado | I, II, III |
 | Replicación nodo | CDS spawn | Deploy Vessel+Talent | Autómata madre guía | Nodo federado | I, II, III |
+| Gobernanza dominio | Crea/decide en célula | `DomainNode` + `Pot` (colony.ts) | CDS weight por AUT×CDS | Decisión en RAO | I, II, III |
 
 ### 9.3 Bucles de Retroalimentación Específicos
 
@@ -630,7 +692,7 @@ El **Autómata HSCSG + RAO + SVD v2 + Federación DTN** *es* la infraestructura 
 | Nivel | Descripción | Instrumentos | Gobernanza | Ejemplo HSCSG |
 |-------|-------------|--------------|------------|---------------|
 | **Nivel 1: Trueque Tokenizado (PAR/Túmin/G1)** | Economía circular local 1:1 tiempo/servicio | ValueFlows registry + asamblea trimestral define equivalencias | Asamblea local + CDS | ZCS nativo: *trueque tokenizado* §14.9; Índice Reciprocidad PAR > 60% Fase C |
-| **Nivel 2: Dividendo Soberano + Recompensa BN (ZNU/NBR)** | Ingreso base garantizado + recompensa por Beneficio Neto | DSI (100 ZNU/mes) + NetBenefitFlow (NBR→ZNU via claimVesting) + Value Equation | CDS + CDS_Jurados (pesos BN) | CaaS Tier 1 (necesidades gratis) + Vesting por hitos AUT + NBR Gateways (lujos) |
+| **Nivel 2: Dividendo Soberano + Recompensa BN (ZNU/NBR)** | Ingreso base garantizado + recompensa por Beneficio Neto | DSI (100 ZNU/mes) + NetBenefitFlow (NBR→ZNU via claimVesting) + Value Equation | CDS + CDS_Jurados (pesos BN) + **Dominios/Pots Colony** (reparto por célula vía AUT×CDS) | CaaS Tier 1 (necesidades gratis) + Vesting por hitos AUT + NBR Gateways (lujos) |
 | **Nivel 3: Puente ReFi + Capital Institucional (USDC/€)** | Conversión a moneda fiduciaria para comercio externo y deuda heredada | Oráculo Paridad Local + ZCS/ZNU + ReFi Bridge (Toucan, Regen, Plan Vivo) | CGC + Autómata auditoría | 1 tCO₂e = 500 ZNU; ESRS/CSRD/TCFD/TNFD/SBTi auto-generados vía dMRV |
 
 ### 14.2 NBR-ZNU Hybrid Flow (Integración Copiosis)
@@ -756,10 +818,10 @@ NetBenefitFlow (NBR) emitido cuando BN = Σ(W_i × S_i) - Damage > 0
 
 ## 16. CONCLUSIÓN: SOBERANÍA OPERACIONAL VERIFICABLE
 
-HSCSG v15 OS + Hylo-Cosateca + integración Copiosis constituye el **primer sistema operativo civilizatorio completo** que une:
+HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony constituye el **primer sistema operativo civilizatorio completo** que une:
 
 1. **Base material verificada** (SVD v2 + AUT 12 vectores + FABSHIP)
-2. **Gobernanza cibernética autónoma** (CDS + CDS_Jurados + RAO + FRS + Estigmergia)
+2. **Gobernanza cibernética autónoma** (CDS + CDS_Jurados + RAO + FRS + Estigmergia + **dominios/pots Colony por reputación**)
 3. **Economía postmonetaria híbrida** (NBR-ZNU-ReFi, 3 tipos bienes, 3 niveles financieros, demurrage, paridad biofísica)
 4. **Autómata soberano** (Conway Agent + MJ Gate + NetBenefitEngine + E²R Search + Vessel/Talent)
 5. **Doble capa resiliente** (Local offline-first + Social online + Federación DTN/AP)
