@@ -6,6 +6,7 @@ import { useAppStore } from '@core/state/store'
 import { systemHealth, diagnose } from '@core/lib/integral'
 import type { IntegralSystem } from '@core/state/integral'
 import { Card, Stat, Btn, Badge } from '@components/ui'
+import { NextStageBanner } from '@components/NextStageBanner'
 import { t } from '@core/lib/i18n'
 
 const SYS: { key: IntegralSystem; labelKey: string; icon: any; color: string; descKey: string }[] = [
@@ -28,6 +29,7 @@ export function Integral() {
 
   return (
     <div className="space-y-6">
+      <NextStageBanner stage="integral" />
       <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
           <h1 className="font-jost text-2xl md:text-3xl font-semibold flex items-center gap-2">

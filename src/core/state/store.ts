@@ -221,6 +221,8 @@ export interface AppState {
   oraculo: OracleState
   // Gaia Union (organismo vivo regenerativo)
   gaiaunion: GaiaUnionState
+  // Conector de flujo: params sembrados para la siguiente pantalla (auto-llenado)
+  stageSeeds: Record<string, Record<string, unknown>>
   // actions
   setNodeName: (n: string) => void
   updateBase: (u: Partial<BaseMaterial>) => void
@@ -346,7 +348,8 @@ export interface AppState {
   resolveOracleQuery: (queryId: string) => void
   // Gaia Union (organismo vivo)
   setEpigeneticMode: (mode: 'estable' | 'adaptativo') => void
-  // Pipeline (actuator: cierra el loop, no solo viewer)
+  // Conector de flujo
+  seedStage: (target: string, params: Record<string, unknown>) => void
   pipeDispatch: (needTitle: string, assignee: string) => void
   pipeAdvisory: (finding: string, severity?: 'info' | 'warning' | 'critical') => void
   pipeApply: (drId: string) => void
@@ -665,6 +668,8 @@ export const useAppStore = create<AppState>()(
       oraculo: makeOracleState(),
       // Gaia Union (organismo vivo regenerativo)
       gaiaunion: makeGaiaUnionState(),
+      // Conector de flujo
+      stageSeeds: {},
 
       setNodeName: (n) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
@@ -998,6 +1003,10 @@ export const useAppStore = create<AppState>()(
       }),
       // ===== Gaia Union (organismo vivo) =====
       setEpigeneticMode: (mode) => set((st) => ({ gaiaunion: { ...st.gaiaunion, epigeneticMode: mode } })),
+      // ===== Conector de flujo (auto-llenado entre pantallas) =====
+      seedStage: (target, params) => set((st) => ({
+        stageSeeds: { ...st.stageSeeds, [target]: params },
+      })),
       // ===== Pipeline: actuator (CIERRA el loop) =====
       pipeDispatch: (needTitle, assignee) => set((st) => {
         const next = dispatchMatch(st.integral, needTitle, assignee)
@@ -1189,6 +1198,7 @@ export const useAppStore = create<AppState>()(
         aprender: st.aprender,
         oraculo: st.oraculo,
         gaiaunion: st.gaiaunion,
+        stageSeeds: st.stageSeeds,
         lang: st.lang,
         lucidez: st.lucidez,
       }),

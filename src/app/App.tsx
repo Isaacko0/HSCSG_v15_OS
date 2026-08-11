@@ -13,6 +13,7 @@ import { Aprender } from '@app/screens/Aprender'
 import { Oraculo } from '@app/screens/Oraculo'
 import { Pipeline } from '@app/screens/Pipeline'
 import { GaiaUnion } from '@app/screens/GaiaUnion'
+import { Flujo } from '@app/screens/Flujo'
 import { Automata } from '@app/screens/Automata'
 import { ZNU } from '@app/screens/ZNU'
 import { Verificacion } from '@app/screens/Verificacion'
@@ -49,6 +50,7 @@ export function App() {
         <Route path="oraculo" element={<Oraculo />} />
         <Route path="pipeline" element={<Pipeline />} />
         <Route path="gaiaunion" element={<GaiaUnion />} />
+        <Route path="flujo" element={<Flujo />} />
         <Route path="automata" element={<Automata />} />
         <Route path="znu" element={<ZNU />} />
         <Route path="verificacion" element={<Verificacion />} />

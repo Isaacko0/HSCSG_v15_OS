@@ -604,6 +604,32 @@ El loop `/pipeline` (CDS→OAD→COS→ITC→FRS) se reencuadra como **cuerpo vi
 
 ---
 
+## 2.28 Conector de Flujo (entramado entre pantallas) — COMPLEMENTA P1
+
+**Motivo:** el usuario detectó que las pantallas repetían boilerplate (`useState`/`useMemo`) releían el
+mismo store en vez de auto-enviarse parámetros; pedía un entramado conector que pre-llene la siguiente
+pantalla. Inspirado en el patrón `stage`/`next`/`seed` de **DeseOS** (Personas→Prospecta→Persuade→Publica).
+
+### 2.28.1 Entregables
+- `lib/connector.ts`: `STAGES` (10 etapas del flujo cibernético) + `deriveStageParams(stage,state)` (auto-llena params de la SIGUIENTE desde el estado, **derivado no duplicado**) + `nextStageOf`.
+- `components/NextStageBanner.tsx`: banner compartido que cada pantalla monta; muestra la siguiente etapa con params ya calculados y al navegar `seedStage(target,params)` los deja sembrados para pre-llenar.
+- Store: `stageSeeds` (campo) + `seedStage(target,params)` (acción) + partialize.
+- Pantalla `/flujo` (29ª): orquestador del entramado, grid responsive, muestra cada etapa con sus params y botón "Abrir y sembrar".
+- Banner montado en `/base`, `/circulos`, `/integral` (prueba del auto-llenado).
+
+### 2.28.2 Por qué no trunca lo hecho
+El conector es **adicional**: no modifica la lógica de ningún módulo existente; `deriveStageParams` es
+pura y lee el store ya existente. El actuator P0/P1 queda intacto. El banner es un componente compartido
+(elimina la repetición de subfunciones que señaló el usuario).
+
+| Entregable | Módulo HSCSG | Prioridad |
+|------------|--------------|-----------|
+| `lib/connector.ts` + `components/NextStageBanner.tsx` | NUEVO | **P0** |
+| `stageSeeds`/`seedStage` en store | store | **P0** |
+| Pantalla `/flujo` (29ª) | NUEVO | **P0** |
+
+---
+
 ## 3. MODELO DE NEGOCIO: LA CUATERNIDAD SOBERANA AMPLIADA
 
 ### 3.1 Estructura de 4 Planos

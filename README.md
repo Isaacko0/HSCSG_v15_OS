@@ -40,7 +40,7 @@ Cada repo asimilado deja dos documentos en `docs/`:
 
 ---
 
-## Módulos (28 pantallas)
+## Módulos (29 pantallas)
 
 | # | Ruta | Módulo | Origen | Qué hace |
 |---|------|--------|--------|----------|
@@ -72,8 +72,9 @@ Cada repo asimilado deja dos documentos en `docs/`:
 | 26 | `/oraculo` | Oráculo de Hechos | **Kleros / Realitio** | Resuelve disputas de hecho por consenso de jurados |
 | 27 | `/pipeline` | Pipeline Anidado (Orquestador Vivo) | **Integral · alook · automaton · ponytail** | Matchmaker + salud del loop + routing FRS (actuator: despacha/issues) |
 | 28 | `/gaiaunion` | Gaia Union (Organismo Vivo) | **Gaia Union (Plan Maestro)** | Niveles + sistemas vitales + ADN + epigenética |
+| 29 | `/flujo` | Entramado Cibernético (Conector) | **DeseOS (stage/next/seed)** | Auto-llenado entre pantallas + mapa del flujo |
 
-> Rutas navegables: 28 (del `/` al `/gaiaunion`).
+> Rutas navegables: 29 (del `/` al `/flujo`).
 
 ### Modo Lucidez (Ley III)
 El botón de luna en el Header es un **toggle real de transparencia radical** (Ley III: *lucidez, nunca engañar*). Al activarlo: invierte el tema a **diurno** (sol), muestra un banner de Ley III, y revela bloques `.lucidez-raw` con **datos crudos y provenance** (ej. en `/integral` se ve la fórmula del System Health y el origen de cada señal FRS). Persiste en `localStorage`.

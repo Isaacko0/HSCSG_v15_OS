@@ -2,6 +2,7 @@ import { Mountain, Zap, Droplets, Sprout, Wrench, Leaf, Wallet } from 'lucide-re
 import { useAppStore } from '@core/state/store'
 import { survivalCredit } from '@core/lib/metrics'
 import { Card, Field, Stat, Bar, Btn } from '@components/ui'
+import { NextStageBanner } from '@components/NextStageBanner'
 
 export function BaseMaterial() {
   const { base, updateBase, resetAll } = useAppStore()
@@ -13,10 +14,10 @@ export function BaseMaterial() {
       : credit >= 1000 ? { label: 'Crítica', color: 'text-orange-400' }
       : credit >= 500 ? { label: 'Hibernación', color: 'text-red-400' }
       : { label: 'Muerto', color: 'text-red-500' }
-
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between flex-wrap gap-4">
+      <NextStageBanner stage="base" />
+      <div className="flex items-center justify-between">
         <div>
           <h1 className="font-jost text-2xl md:text-3xl font-semibold">Nivel 0 · Base Material Inmediata</h1>
           <p className="text-[var(--dim)] mt-1">Tierra · Agua · Energía · Comida · Herramientas · Cuerpos. El único servidor real.</p>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Card, Stat, Badge, Btn, EmptyState } from '@components/ui'
+import { NextStageBanner } from '@components/NextStageBanner'
 import { useAppStore } from '@core/state/store'
 import {
   CAPITAL_KINDS, classifyCircle, regenScore,
@@ -21,6 +22,7 @@ export function Circulos() {
 
   return (
     <div className="space-y-6">
+      <NextStageBanner stage="circulos" />
       <div>
         <h1 className="font-jost text-2xl md:text-3xl font-semibold">Círculos Biomiméticos (Gaia)</h1>
         <p className="text-[var(--dim)] mt-1">Gobernanza holón-árquica + múltiples capitales + regeneración. Protocolo de interoperabilidad (vaso comunicante).</p>
