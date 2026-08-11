@@ -12,6 +12,7 @@ import { Democracia } from '@app/screens/Democracia'
 import { Aprender } from '@app/screens/Aprender'
 import { Oraculo } from '@app/screens/Oraculo'
 import { Pipeline } from '@app/screens/Pipeline'
+import { GaiaUnion } from '@app/screens/GaiaUnion'
 import { Automata } from '@app/screens/Automata'
 import { ZNU } from '@app/screens/ZNU'
 import { Verificacion } from '@app/screens/Verificacion'
@@ -47,6 +48,7 @@ export function App() {
         <Route path="aprender" element={<Aprender />} />
         <Route path="oraculo" element={<Oraculo />} />
         <Route path="pipeline" element={<Pipeline />} />
+        <Route path="gaiaunion" element={<GaiaUnion />} />
         <Route path="automata" element={<Automata />} />
         <Route path="znu" element={<ZNU />} />
         <Route path="verificacion" element={<Verificacion />} />

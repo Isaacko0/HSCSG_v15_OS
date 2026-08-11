@@ -542,6 +542,45 @@ Render vivo en `/pipeline` (Stat de necesidades/capacidades/matched/loopScore + 
 
 ---
 
+## 2.26 Gaia Union (Organismo Vivo Regenerativo) — IMPLEMENTADO
+
+**Fuente:** documento `.md` local "Gaia Union: El Plan Maestro Integrado para la Emergencia Planetaria" (white-paper/ontología, no repo de código). Asimilado con la misma variante que Gaia Confederation.
+
+### 2.26.1 Qué aporta (capa ontológica/biológica que el pipeline mecánico NO tenía)
+- **Niveles de organización**: Persona=Célula → Equipo=Tejido → Proyecto=Órgano → Sistema Vital → Organismo.
+- **9 Sistemas Vitales** análogos a los biológicos (Nervioso, Circulatorio, Homeostático, Metabólico, Aprendizaje, Evolutivo, Investigación, Territorial físico, Territorial de encuentro).
+- **Constitución=ADN**, **Código Genético=Valores** (8 valores filtrables por Ley MJ), **Gobernanza=Epigenética** (adaptable sin alterar esencia).
+
+### 2.26.2 Reencuadre del pipeline (lo que pidió el usuario: matchmaker / feedback / flujos)
+El loop `/pipeline` (CDS→OAD→COS→ITC→FRS) se reencuadra como **cuerpo vivo**:
+| Sistema Vital Gaia | Órgano HSCSG | Ley |
+|--------------------|--------------|-----|
+| Nervioso (Hub/OS) | `/pipeline` FRS + Matchmaker | III |
+| Circulatorio (Fund) | ZNU / CaaS / ITC | II |
+| Homeostático (DAO) | CDS + Wisdom Council | I |
+| Metabólico (Market) | Solarpunk / Tekitl / Trustlines | II |
+| Aprendizaje (School) | `/aprender` | III |
+| Evolutivo (ImpactHub) | `/integral` COS + Bounty | II |
+| Investigación (BioLabs) | `/oraculo` + `/verificacion` | III |
+| Territorial (BioHabitats) | `/base` | I |
+| Territorial (BioHubs) | Federación DTN/AP | I |
+
+- **Matchmaker (alook)**: empareja *células* (personas) con *órganos* (necesidades) por peso.
+- **Feedback (FRS/automaton)**: sistema nervioso que retroalimenta cada órgano.
+- **Flujos (ponytail)**: reflejos de una línea del organismo.
+
+### 2.26.3 Entregables
+| Entregable | Módulo HSCSG | Prioridad |
+|------------|--------------|-----------|
+| `docs/gaiaunion_backup.md` + `gaiaunion_integration.md` | Docs | **P0** |
+| `lib/gaiaunion.ts` (organism model) + `state/gaiaunion.ts` | NUEVO | **P0** |
+| Pantalla `/gaiaunion` (28ª) | NUEVO | **P0** |
+| BRIEF §2.26, vaso §3.5, matriz §9.2, §16 | Brief | **P0** |
+
+> **Nota de extirpación:** Fund externo USD, BioHabitats físicos reales, marca "Gaia Union" → ZNU/CaaS + `/base` + ontología del vaso.
+
+---
+
 ## 3. MODELO DE NEGOCIO: LA CUATERNIDAD SOBERANA AMPLIADA
 
 ### 3.1 Estructura de 4 Planos
@@ -625,6 +664,7 @@ La integración de Copiosis (v7.1) proporciona la **arquitectura completa de la 
 | iambrainstorming | Saber experiencial + aprendizaje interactivo | `lib/learning.ts` (capa educación) |
 | Symbiosky | Credibilidad por convicción + decay + anti-whale | `lib/symbiosky.ts` (va más allá: CDS gana convicción) |
 | automaton·alook·ponytail | Pipeline anidado + agentes (matchmaker/feedback) | `docs/pipeline_anidado.md` (capa de agentes) |
+| Gaia Union | Organismo vivo (niveles + sistemas vitales) | `lib/gaiaunion.ts` (ontología del vaso) |
 
 **Bootstrap resuelto:** HSCSG ya tiene Fondo Solarpunk, DSI, FABSHIP, CaaS-BM.
 
@@ -1167,7 +1207,7 @@ NetBenefitFlow (NBR) emitido cuando BN = Σ(W_i × S_i) - Damage > 0
 
 ## 16. CONCLUSIÓN: SOBERANÍA OPERACIONAL VERIFICABLE
 
-HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity + integración DeseOS/Contento.pro + integración Gaia Confederation + integración iambrainstorming + integración Symbiosky + integración automaton/alook/ponytail (pipeline anidado) constituye el **primer sistema operativo civilizatorio completo** que une:
+HSCSG v15 OS + Hylo-Cosateca + integración Copiosis + integración Colony + integración Kleros/Proof-of-Humanity + integración DeseOS/Contento.pro + integración Gaia Confederation + integración iambrainstorming + integración Symbiosky + integración automaton/alook/ponytail (pipeline anidado) + integración Gaia Union (organismo vivo) constituye el **primer sistema operativo civilizatorio completo** que une:
 
 1. **Base material verificada** (SVD v2 + AUT 12 vectores + FABSHIP)
 2. **Gobernanza cibernética autónoma** (CDS + CDS_Jurados + RAO + FRS + Estigmergia + dominios/pots Colony por reputación + **justicia Kleros / identidad soberana PoH**)

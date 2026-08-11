@@ -40,6 +40,7 @@ import type { CredibilityState } from '@core/state/symbiosky'
 import type { DemocracyState } from '@core/state/democracia'
 import type { LearningState } from '@core/state/learning'
 import type { OracleState } from '@core/state/oracle'
+import type { GaiaUnionState } from '@core/state/gaiaunion'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -72,6 +73,7 @@ import { makeCredibilityState, addProposal as symAddProposalFn, castVote as symC
 import { makeDemocracyState, electRep } from '@core/lib/democracia'
 import { makeLearningState, completeChallenge, addChallenge } from '@core/lib/learning'
 import { makeOracleState, askQuery, castOracleVote, resolveOracle } from '@core/lib/oracle'
+import { makeGaiaUnionState } from '@core/lib/gaiaunion'
 import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
 
@@ -216,6 +218,8 @@ export interface AppState {
   aprender: LearningState
   // Oráculo de hechos (Kleros/Realitio)
   oraculo: OracleState
+  // Gaia Union (organismo vivo regenerativo)
+  gaiaunion: GaiaUnionState
   // actions
   setNodeName: (n: string) => void
   updateBase: (u: Partial<BaseMaterial>) => void
@@ -339,6 +343,8 @@ export interface AppState {
   askOracle: (question: string, outcomes: string[]) => void
   castOracleVote: (queryId: string, juror: string, outcome: string, stake: number) => void
   resolveOracleQuery: (queryId: string) => void
+  // Gaia Union (organismo vivo)
+  setEpigeneticMode: (mode: 'estable' | 'adaptativo') => void
   resetAll: () => void
 }
 
@@ -651,6 +657,8 @@ export const useAppStore = create<AppState>()(
       aprender: makeLearningState(),
       // Oráculo de hechos
       oraculo: makeOracleState(),
+      // Gaia Union (organismo vivo regenerativo)
+      gaiaunion: makeGaiaUnionState(),
 
       setNodeName: (n) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
@@ -982,6 +990,8 @@ export const useAppStore = create<AppState>()(
         const r = resolveOracle(st.oraculo, queryId)
         return { oraculo: r.state }
       }),
+      // ===== Gaia Union (organismo vivo) =====
+      setEpigeneticMode: (mode) => set((st) => ({ gaiaunion: { ...st.gaiaunion, epigeneticMode: mode } })),
       resetAll: () =>
         set({
           nodeName: 'Nodo Cosateca v0.1',
@@ -1096,6 +1106,8 @@ export const useAppStore = create<AppState>()(
       aprender: makeLearningState(),
       // Oráculo de hechos
       oraculo: makeOracleState(),
+      // Gaia Union (organismo vivo regenerativo)
+      gaiaunion: makeGaiaUnionState(),
         }),
     }),
     {
@@ -1149,6 +1161,7 @@ export const useAppStore = create<AppState>()(
         democracia: st.democracia,
         aprender: st.aprender,
         oraculo: st.oraculo,
+        gaiaunion: st.gaiaunion,
         lang: st.lang,
         lucidez: st.lucidez,
       }),
