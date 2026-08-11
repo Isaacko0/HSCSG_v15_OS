@@ -1,17 +1,18 @@
 // Pipeline anidado robusto (orquestador vivo del loop Integral + agentes).
-// Lógica pura y de LECTURA: consume el AppState y produce sugerencias de matchmaker,
-// salud del loop y routing de feedback. NO muta estados (para no romper el flujo existente).
+// Capa de LECTURA (computeCapabilities/collectNeeds/matchmaker/pipelineHealth/routeFeedback)
+// + Capa de CIERRE (dispatchMatch / autoAdvisory): ESTAS SÍ mutan el estado vía el store.
 //
 // Inspirado en: Integral (CDS·OAD·COS·ITC·FRS), alook (matchmaker de roles),
 // automaton (agente soberano self-funding), ponytail (una-línea/hooks), Symbiosky
-// (credibility como peso), Gaia (bounties/círculos), iambrainstorming (aprender/democracia).
+// (credibility como peso), Gaia (bounties/círculos), iambrainstorming (aprender/democracia),
+// Gaia Union (organismo vivo: FRS=Neural, ZNU=Circulatorio, CDS=Homeostático).
 
 import type { CredibilityState } from '@core/state/symbiosky'
 import type { DemocracyState } from '@core/state/democracia'
 import type { LearningState } from '@core/state/learning'
 import type { IntegralState } from '@core/state/integral'
 import type { GaiaState } from '@core/state/gaia'
-import { systemHealth as systemHealthImport } from '@core/lib/integral'
+import { systemHealth as systemHealthImport, raiseIssue, ratifyDecision } from '@core/lib/integral'
 
 // ---- Tipos del pipeline ----
 
@@ -177,4 +178,50 @@ export function routeFeedback(finding: string, severity: 'info' | 'warning' | 'c
   if (f.includes('manipul') || f.includes('lucidez')) routes.push({ target: 'FRS', action: severity === 'critical' ? 'auditar YA / throttle' : 'observar' })
   if (routes.length === 0) routes.push({ target: 'FRS', action: 'observar' })
   return routes
+}
+
+// ============================================================================
+// CAPA DE CIERRE (actuator) — ROMPE la limitación de "solo viewer".
+// Estas funciones SÍ mutan IntegralState: convierten el matchmaker y el
+// feedback en actos reales del loop (CDS→decisión→OAD→COS→ITC→FRS→CDS).
+// Deben ser invocadas desde acciones del store (no desde la pantalla directa).
+// ============================================================================
+
+/**
+ * dispatchMatch: el matchmaker (alook) DEJA de ser foto.
+ * Crea un Issue CDS enlazado a la necesidad y lo ratifica como decisión
+ * (despacho). Devuelve el nuevo IntegralState.
+ */
+export function dispatchMatch(
+  s: IntegralState,
+  needTitle: string,
+  assignee: string,
+): IntegralState {
+  const issue = raiseIssue(`[MATCH] ${needTitle} → ${assignee}`, 'pipeline')
+  const ratified = ratifyDecision(s.issues.concat(issue), issue.id, `Despachar a ${assignee}`, 'Matchmaker /pipeline', `Match automático por peso de capacidad (AUT+credibility+expertise+retos).`)
+  return { ...s, issues: ratified.issue ? s.issues.concat(ratified.issue) : s.issues.concat(issue), decisions: s.decisions.concat(ratified.dr) }
+}
+
+/**
+ * autoAdvisory: el feedback FRS (automaton) DEJA de ser sugerencia.
+ * Si la salud del loop cae bajo `threshold`, genera un issue advisory en CDS
+ * enrutado por routeFeedback. Devuelve el nuevo IntegralState + el hallazgo.
+ */
+export function autoAdvisory(
+  s: IntegralState,
+  finding: string,
+  severity: 'info' | 'warning' | 'critical' = 'warning',
+  threshold = 60,
+): { state: IntegralState; triggered: boolean; routes: FrsRoute[] } {
+  const health = systemHealthSafe(s)
+  if (health >= threshold) return { state: s, triggered: false, routes: [] }
+  const routes = routeFeedback(finding, severity)
+  const target = routes[0]?.target ?? 'FRS'
+  const issue = raiseIssue(`[FRS→${target}] ${finding} (salud=${health})`, 'pipeline')
+  const ratified = ratifyDecision(s.issues.concat(issue), issue.id, `Advisory FRS→${target}`, 'Routing de Feedback /pipeline', `Salud del loop ${health} < ${threshold}. Acción sugerida: ${routes.map((r) => r.action).join('; ')}.`)
+  return {
+    state: { ...s, issues: s.issues.concat(issue), decisions: s.decisions.concat(ratified.dr) },
+    triggered: true,
+    routes,
+  }
 }

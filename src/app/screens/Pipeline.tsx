@@ -1,13 +1,15 @@
 import { useMemo, useState } from 'react'
-import { Card, Stat, Badge, EmptyState } from '@components/ui'
+import { Card, Stat, Badge, EmptyState, Btn } from '@components/ui'
 import {
   computeCapabilities, collectNeeds, matchmaker, pipelineHealth, routeFeedback,
-  type FrsTarget,
+  type FrsTarget, type Match,
 } from '@core/lib/pipeline'
 import { useAppStore } from '@core/state/store'
 
 export function Pipeline() {
-  const { integral, gaia, symbiosky, democracia, aprender } = useAppStore()
+  const { integral, gaia, symbiosky, democracia, aprender, pipeDispatch, pipeAdvisory } = useAppStore()
+  const [dispatched, setDispatched] = useState<Match[]>([])
+  const [advisoryLog, setAdvisoryLog] = useState<string[]>([])
 
   // Capacidades y necesidades se recomputan en vivo (sub-loop del pipeline)
   const caps = useMemo(() => computeCapabilities({ integral, credibility: symbiosky, democracia, aprender }), [integral, symbiosky, democracia, aprender])
@@ -18,6 +20,18 @@ export function Pipeline() {
   const [finding, setFinding] = useState('')
   const [severity, setSeverity] = useState<'info' | 'warning' | 'critical'>('warning')
   const routes = useMemo(() => (finding.trim() ? routeFeedback(finding, severity) : []), [finding, severity])
+
+  // ACTUATOR: el matchmaker deja de ser foto
+  const dispatch = (m: Match) => {
+    pipeDispatch(m.need.title, m.participant)
+    setDispatched((d) => d.concat(m))
+  }
+  // ACTUATOR: el feedback FRS se ejecuta (issue advisory + rotación ZNU si aplica)
+  const runAdvisory = () => {
+    if (!finding.trim()) return
+    pipeAdvisory(finding, severity)
+    setAdvisoryLog((l) => l.concat(`[${severity}] ${finding} → ${routes.map((r) => r.target).join(',')}`))
+  }
 
   return (
     <div className="space-y-6">
@@ -42,19 +56,25 @@ export function Pipeline() {
       )}
 
       <div className="grid md:grid-cols-2 gap-4">
-        <Card title="CAPA 1 · Matchmaker (alook-style)">
+        <Card title="CAPA 1 · Matchmaker (alook-style) — ACTUADOR">
           {needs.length === 0 ? (
             <EmptyState>No hay necesidades activas. Crea un Issue, Bounty o Reto.</EmptyState>
           ) : (
             <div className="space-y-2">
-              {matches.map((m, i) => (
-                <div key={i} className="border border-white/10 rounded p-2 text-sm">
-                  <div className="font-medium">[{m.need.source}] {m.need.title}</div>
-                  <div className="text-xs text-white/50">
-                    → <b>{m.participant}</b> · afinidad {m.score} · {m.reason}
+              {matches.map((m, i) => {
+                const done = dispatched.some((d) => d.need.id === m.need.id && d.participant === m.participant)
+                return (
+                  <div key={i} className="border border-white/10 rounded p-2 text-sm">
+                    <div className="font-medium">[{m.need.source}] {m.need.title}</div>
+                    <div className="text-xs text-white/50">
+                      → <b>{m.participant}</b> · afinidad {m.score} · {m.reason}
+                    </div>
+                    <Btn onClick={() => dispatch(m)} disabled={done}>
+                      {done ? 'Despachado ✓' : 'Despachar (CDS)'}
+                    </Btn>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           )}
         </Card>
@@ -75,7 +95,7 @@ export function Pipeline() {
         </Card>
       </div>
 
-      <Card title="CAPA 0 · Routing de Feedback FRS (automaton-style)">
+      <Card title="CAPA 0 · Routing de Feedback FRS (automaton-style) — ACTUADOR">
         <div className="flex flex-wrap gap-2 items-end">
           <div className="flex flex-col">
             <label className="text-xs text-white/60">Hallazgo</label>
@@ -91,6 +111,7 @@ export function Pipeline() {
               <option value="critical">critical</option>
             </select>
           </div>
+          <Btn onClick={runAdvisory}>Ejecutar routing FRS</Btn>
         </div>
         {routes.length > 0 && (
           <div className="mt-2 space-y-1 text-sm">
@@ -102,9 +123,15 @@ export function Pipeline() {
             ))}
           </div>
         )}
+        {advisoryLog.length > 0 && (
+          <div className="mt-2 text-xs text-amber-300/80">
+            Ejecutado: {advisoryLog.slice(-3).map((l, i) => <div key={i}>• {l}</div>)}
+          </div>
+        )}
       </Card>
 
       <p className="text-xs text-white/40">Pipeline anidado: FRS observa → CDS+Matchmaker decide → OAD/COS/ITC ejecuta.
+        ACTUADOR: "Despachar" crea un Issue CDS ratificado; "Ejecutar routing FRS" crea advisory + rota ZNU si hay concentración.
         Degradación graceful: si un órgano falla, escala a Círculo Gaia. Editable por el dueño del nodo.</p>
     </div>
   )

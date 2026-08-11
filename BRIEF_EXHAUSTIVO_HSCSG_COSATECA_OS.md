@@ -579,6 +579,29 @@ El loop `/pipeline` (CDS→OAD→COS→ITC→FRS) se reencuadra como **cuerpo vi
 
 > **Nota de extirpación:** Fund externo USD, BioHabitats físicos reales, marca "Gaia Union" → ZNU/CaaS + `/base` + ontología del vaso.
 
+## 2.27 Cierre del Loop del Pipeline (actuator) — CORRECCIÓN de limitación
+
+**Detectado:** tras §2.26 el usuario señaló que `/pipeline` era un **viewer** (matchmaker/feedback no mutaban). El loop CDS→…→FRS era diagrama, no mecanismo. Se corrigió (igual trampa que la corrección P0 de Symbiosky).
+
+### 2.27.1 Qué se cerró (commit actuarial)
+- `lib/pipeline.ts`: `dispatchMatch` + `autoAdvisory` llaman `raiseIssue`+`ratifyDecision` de integral → **mutan IntegralState**.
+- Store: `pipeDispatch` / `pipeAdvisory` (prefijo `pipe`, sin colisión de namespace).
+- `/pipeline`: botones "Despachar (CDS)" y "Ejecutar routing FRS" → el matchmaker crea Issue CDS ratificado; el feedback FRS crea advisory. **Loop cerrado en CDS→decisión.**
+
+### 2.27.2 Límites reales (honestidad, no forzar molde)
+- No hay tránsito automático decisión→OAD/COS/ITC (solo `ratifyDecision` deja `status:'decided'`).
+- `ZNUState` es `perMember` (sin balance agregado) → `znuRotate`/`znuDecay` NO cableados al advisory (quedó P2).
+- FRS no es módulo: `autoAdvisory` solo se dispara manualmente, no por señales vivas de otros módulos.
+
+### 2.27.3 Especulación pragmática (siguiente escalón)
+`docs/pipeline_loop_cierre.md`: balance ZNU agregado + `znuDecay` real (P1); `applyDecision`→OAD/COS (P1); `ingestFrsSignal` + estigmergia continua (P2); anti-whale real (P1).
+
+| Entregable | Módulo HSCSG | Prioridad |
+|------------|--------------|-----------|
+| `lib/pipeline.ts` (dispatchMatch/autoAdvisory) + store pipeDispatch/pipeAdvisory | NUEVO | **P0** |
+| `/pipeline` actuator (botones) | NUEVO | **P0** |
+| `docs/pipeline_loop_cierre.md` | Docs | **P0** |
+
 ---
 
 ## 3. MODELO DE NEGOCIO: LA CUATERNIDAD SOBERANA AMPLIADA
@@ -665,6 +688,7 @@ La integración de Copiosis (v7.1) proporciona la **arquitectura completa de la 
 | Symbiosky | Credibilidad por convicción + decay + anti-whale | `lib/symbiosky.ts` (va más allá: CDS gana convicción) |
 | automaton·alook·ponytail | Pipeline anidado + agentes (matchmaker/feedback) | `docs/pipeline_anidado.md` (capa de agentes) |
 | Gaia Union | Organismo vivo (niveles + sistemas vitales) | `lib/gaiaunion.ts` (ontología del vaso) |
+| Pipeline (actuator) | Cierre del loop: matchmaker/feedback mutan CDS | `lib/pipeline.ts` (dispatchMatch/autoAdvisory) |
 
 **Bootstrap resuelto:** HSCSG ya tiene Fondo Solarpunk, DSI, FABSHIP, CaaS-BM.
 

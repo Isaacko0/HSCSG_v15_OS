@@ -74,6 +74,7 @@ import { makeDemocracyState, electRep } from '@core/lib/democracia'
 import { makeLearningState, completeChallenge, addChallenge } from '@core/lib/learning'
 import { makeOracleState, askQuery, castOracleVote, resolveOracle } from '@core/lib/oracle'
 import { makeGaiaUnionState } from '@core/lib/gaiaunion'
+import { dispatchMatch, autoAdvisory } from '@core/lib/pipeline'
 import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
 
@@ -345,6 +346,9 @@ export interface AppState {
   resolveOracleQuery: (queryId: string) => void
   // Gaia Union (organismo vivo)
   setEpigeneticMode: (mode: 'estable' | 'adaptativo') => void
+  // Pipeline (actuator: cierra el loop, no solo viewer)
+  pipeDispatch: (needTitle: string, assignee: string) => void
+  pipeAdvisory: (finding: string, severity?: 'info' | 'warning' | 'critical') => void
   resetAll: () => void
 }
 
@@ -992,6 +996,18 @@ export const useAppStore = create<AppState>()(
       }),
       // ===== Gaia Union (organismo vivo) =====
       setEpigeneticMode: (mode) => set((st) => ({ gaiaunion: { ...st.gaiaunion, epigeneticMode: mode } })),
+      // ===== Pipeline: actuator (CIERRA el loop) =====
+      pipeDispatch: (needTitle, assignee) => set((st) => {
+        const next = dispatchMatch(st.integral, needTitle, assignee)
+        return { integral: next }
+      }),
+      pipeAdvisory: (finding, severity = 'warning') => set((st) => {
+        const { state } = autoAdvisory(st.integral, finding, severity)
+        // nota: la rotación ZNU anti-acumulación requiere un balance agregado que
+        // ZNUState (perMember) no expone hoy; el advisory FRS→CDS ya cierra el loop.
+        // Ver docs/pipeline_loop_cierre.md (P2: exponer balance global + znuDecay real).
+        return { integral: state }
+      }),
       resetAll: () =>
         set({
           nodeName: 'Nodo Cosateca v0.1',
