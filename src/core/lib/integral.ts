@@ -121,3 +121,36 @@ export function makeIntegralState(): IntegralState {
     ],
   }
 }
+
+// ============================================================================
+// P1 — Autonomía de extremo a extremo (cierra OAD/COS tras CDS)
+// ============================================================================
+
+/**
+ * Balance ZNU agregado DERIVADO (no persistido): evita duplicar estado y desincronizar
+ * el actuator del P0. Se calcula desde los TimeCredits ya otorgados (post-decay).
+ * Si no hay créditos aún, devuelve 0 (el pool es virtual hasta que se contribuye).
+ */
+export function znuBalanceFrom(s: IntegralState): number {
+  return s.credits.reduce((a, c) => a + c.credits, 0)
+}
+
+/**
+ * applyDecision: mueve una DecisionRecord ratificada en CDS hacia su órgano de ejecución
+ * (OAD → CertifiedDesign, COS → LaborEvent). Función PURA: devuelve el nuevo IntegralState.
+ * Cierra el eslabón CDS→OAD/COS del loop (antes solo quedaba en status:'decided').
+ */
+export function applyDecision(s: IntegralState, drId: string): IntegralState {
+  const dr = s.decisions.find((d) => d.id === drId)
+  if (!dr) return s
+  const ctx = dr.context.toLowerCase()
+  if (ctx.includes('oad') || ctx.includes('diseño') || ctx.includes('design')) {
+    const design: CertifiedDesign = { id: uid(), title: dr.decision, ecoScore: 50, version: 1 }
+    return { ...s, designs: s.designs.concat(design) }
+  }
+  if (ctx.includes('cos') || ctx.includes('labor') || ctx.includes('taller')) {
+    const labor: LaborEvent = { id: uid(), projectId: dr.id, participant: 'nodo', hours: 1, certified: true }
+    return { ...s, labor: s.labor.concat(labor) }
+  }
+  return s
+}

@@ -12,7 +12,8 @@ import type { DemocracyState } from '@core/state/democracia'
 import type { LearningState } from '@core/state/learning'
 import type { IntegralState } from '@core/state/integral'
 import type { GaiaState } from '@core/state/gaia'
-import { systemHealth as systemHealthImport, raiseIssue, ratifyDecision } from '@core/lib/integral'
+import { systemHealth as systemHealthImport, raiseIssue, ratifyDecision, znuBalanceFrom, applyDecision } from '@core/lib/integral'
+import { znuDecay } from '@core/lib/valueDual'
 
 // ---- Tipos del pipeline ----
 
@@ -224,4 +225,20 @@ export function autoAdvisory(
     triggered: true,
     routes,
   }
+}
+
+/**
+ * applyDecisionTo: wrapper del actuator P1. Mueve una decisión CDS a OAD/COS.
+ * Devuelve el nuevo IntegralState (cierra el eslabón CDS→OAD/COS).
+ */
+export function applyDecisionTo(s: IntegralState, drId: string): IntegralState {
+  return applyDecision(s, drId)
+}
+
+/**
+ * znuDecayOnBalance: aplica decay por inactividad al balance agregado derivado.
+ * Usado por el actuator cuando una señal de concentración/inactividad lo dispara.
+ */
+export function znuDecayOnBalance(s: IntegralState, ratePerDay = 0.000137, daysSince = 60): number {
+  return znuDecay(znuBalanceFrom(s), ratePerDay, daysSince)
 }

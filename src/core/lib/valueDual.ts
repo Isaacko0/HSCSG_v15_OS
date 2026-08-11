@@ -79,3 +79,15 @@ export function znuRotate(
 export function znuConcentration(balance: number, totalSupply: number, threshold = 0.05): boolean {
   return znuShare(balance, totalSupply) > threshold
 }
+
+/**
+ * Decay por inactividad (P1): el ZNU pierde poder adquisitivo con el tiempo si no se
+ * ejerce (anti-acumulación de Amiya + "use-it-or-lose-it"). Aislado de Symbiosky
+ * (cuya convicción es un score distinto, no el balance del pool).
+ * `rate` = fracción por día (ej. 5%/año ≈ 0.000137/día). Devuelve balance post-decay.
+ */
+export function znuDecay(balance: number, ratePerDay: number, daysSinceActivity: number): number {
+  if (balance <= 0 || daysSinceActivity <= 0) return balance
+  const factor = Math.pow(1 - ratePerDay, daysSinceActivity)
+  return Math.round(balance * factor * 1e6) / 1e6
+}

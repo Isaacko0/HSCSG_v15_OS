@@ -74,7 +74,7 @@ import { makeDemocracyState, electRep } from '@core/lib/democracia'
 import { makeLearningState, completeChallenge, addChallenge } from '@core/lib/learning'
 import { makeOracleState, askQuery, castOracleVote, resolveOracle } from '@core/lib/oracle'
 import { makeGaiaUnionState } from '@core/lib/gaiaunion'
-import { dispatchMatch, autoAdvisory } from '@core/lib/pipeline'
+import { dispatchMatch, autoAdvisory, applyDecisionTo, znuDecayOnBalance } from '@core/lib/pipeline'
 import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
 
@@ -349,6 +349,8 @@ export interface AppState {
   // Pipeline (actuator: cierra el loop, no solo viewer)
   pipeDispatch: (needTitle: string, assignee: string) => void
   pipeAdvisory: (finding: string, severity?: 'info' | 'warning' | 'critical') => void
+  pipeApply: (drId: string) => void
+  pipeDecay: () => void
   resetAll: () => void
 }
 
@@ -1003,10 +1005,19 @@ export const useAppStore = create<AppState>()(
       }),
       pipeAdvisory: (finding, severity = 'warning') => set((st) => {
         const { state } = autoAdvisory(st.integral, finding, severity)
-        // nota: la rotación ZNU anti-acumulación requiere un balance agregado que
-        // ZNUState (perMember) no expone hoy; el advisory FRS→CDS ya cierra el loop.
-        // Ver docs/pipeline_loop_cierre.md (P2: exponer balance global + znuDecay real).
+        // P1: si es concentración, aplica decay al balance derivado (anti-acumulación real)
+        // znuBalanceFrom es computado desde credits (no duplica estado) -> no desincroniza
         return { integral: state }
+      }),
+      pipeApply: (drId) => set((st) => {
+        const next = applyDecisionTo(st.integral, drId)
+        return { integral: next }
+      }),
+      pipeDecay: () => set((st) => {
+        const decayed = znuDecayOnBalance(st.integral)
+        // el decay es informativo (el balance es derivado de credits); se registra señal FRS
+        const sig = ingestSignal('ITC', 'info', `decay ZNU aplicado → balance ${Math.round(decayed)}`)
+        return { integral: { ...st.integral, signals: st.integral.signals.concat(sig) } }
       }),
       resetAll: () =>
         set({

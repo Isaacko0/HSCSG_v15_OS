@@ -7,7 +7,7 @@ import {
 import { useAppStore } from '@core/state/store'
 
 export function Pipeline() {
-  const { integral, gaia, symbiosky, democracia, aprender, pipeDispatch, pipeAdvisory } = useAppStore()
+  const { integral, gaia, symbiosky, democracia, aprender, pipeDispatch, pipeAdvisory, pipeApply } = useAppStore()
   const [dispatched, setDispatched] = useState<Match[]>([])
   const [advisoryLog, setAdvisoryLog] = useState<string[]>([])
 
@@ -94,6 +94,25 @@ export function Pipeline() {
           )}
         </Card>
       </div>
+
+      <Card title="CAPA 1.5 · Decisiones ratificadas (CDS→OAD/COS) — ACTUADOR P1">
+        {integral.decisions.length === 0 ? (
+          <EmptyState>Aún no hay decisiones. Despacha un match o ejecuta un advisory FRS.</EmptyState>
+        ) : (
+          <div className="space-y-2">
+            {integral.decisions.map((d) => {
+              const applied = integral.designs.some((x) => x.title === d.decision) || integral.labor.some((x) => x.projectId === d.id)
+              return (
+                <div key={d.id} className="border border-white/10 rounded p-2 text-sm">
+                  <div className="font-medium">{d.decision}</div>
+                  <div className="text-xs text-white/50">{d.context} · {d.date ? new Date(d.date).toLocaleDateString('es') : ''}</div>
+                  <Btn onClick={() => pipeApply(d.id)} disabled={applied}>{applied ? 'Aplicada ✓' : 'Aplicar (OAD/COS)'}</Btn>
+                </div>
+              )
+            })}
+          </div>
+        )}
+      </Card>
 
       <Card title="CAPA 0 · Routing de Feedback FRS (automaton-style) — ACTUADOR">
         <div className="flex flex-wrap gap-2 items-end">
