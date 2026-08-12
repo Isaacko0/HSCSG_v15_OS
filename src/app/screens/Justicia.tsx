@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import { Card, Stat, Badge, Btn, EmptyState } from '@components/ui'
+import { Card, Stat, Badge, Btn, EmptyState, EvidenceLedger, ScoreSchellingChart } from '@components/ui'
 import { Scale, ShieldHalf, Users, FileText, UserCheck } from 'lucide-react'
 import { useAppStore } from '@core/state/store'
 import { VERDICTS } from '@core/lib/kleros'
+import { scoreSchelling } from '@core/lib/evidence'
+import type { EvidenceKind } from '@core/state/kleros'
 
 export function Justicia() {
   const { kleros, members, openKlerosDispute, addKlerosEvidence, castKlerosVote, resolveKlerosDispute, appealKlerosDispute, seatKlerosJuror, attestKlerosIdentity } = useAppStore()
@@ -11,6 +13,8 @@ export function Justicia() {
   const [desc, setDesc] = useState('')
   const [activeId, setActiveId] = useState<string | null>(null)
   const [evText, setEvText] = useState('')
+  const [evKind, setEvKind] = useState<EvidenceKind>('aut.observation')
+  const [evUrl, setEvUrl] = useState('')
   const [resText, setResText] = useState('')
   const [jurorName, setJurorName] = useState('')
   const [idName, setIdName] = useState('')
@@ -75,19 +79,35 @@ export function Justicia() {
               {activeId === d.id && (
                 <div className="mt-3 space-y-3 border-t border-[var(--lineq)] pt-3">
                   <div>
-                    <div className="text-xs text-[var(--dim)] mb-1">Evidencia ({d.evidence.length})</div>
-                    {d.evidence.map((e) => (
-                      <div key={e.id} className="text-sm bg-[var(--surf-2)] rounded px-2 py-1 mb-1">
-                        <span className="text-[var(--dim)]">{e.author}:</span> {e.text}
-                      </div>
-                    ))}
+                    <div className="text-xs text-[var(--dim)] mb-1">Evidencia ({d.evidence.length}) — Evidence Model (CompAI CRM)</div>
+                    <EvidenceLedger items={d.evidence} />
+                    <select
+                      className="bg-[var(--surf-2)] border border-[var(--lineq)] rounded px-2 py-1 text-sm mt-2 w-full"
+                      value={evKind}
+                      onChange={(e) => setEvKind(e.target.value as EvidenceKind)}
+                    >
+                      <option value="aut.observation">aut.observation (0.85)</option>
+                      <option value="cds.consensus">cds.consensus (0.80)</option>
+                      <option value="crm.signature-block">crm.signature-block (0.80)</option>
+                      <option value="github.account-identity">github.account-identity (0.80)</option>
+                      <option value="crm.thread-reply">crm.thread-reply (0.85)</option>
+                      <option value="web.cited-claim">web.cited-claim (0.40)</option>
+                      <option value="employer-only">employer-only (0.20)</option>
+                      <option value="contradiction">contradiction (0.00)</option>
+                    </select>
                     <input
                       className="w-full bg-[var(--surf-2)] border border-[var(--lineq)] rounded-lg px-3 py-2 text-sm mt-1"
-                      placeholder="Añadir evidencia"
+                      placeholder="Fuente (URL opcional)"
+                      value={evUrl}
+                      onChange={(e) => setEvUrl(e.target.value)}
+                    />
+                    <input
+                      className="w-full bg-[var(--surf-2)] border border-[var(--lineq)] rounded-lg px-3 py-2 text-sm mt-1"
+                      placeholder="Añadir evidencia (observación, no confianza)"
                       value={evText}
                       onChange={(e) => setEvText(e.target.value)}
                     />
-                    <Btn variant="ghost" onClick={() => { if (evText.trim()) { addKlerosEvidence(d.id, senderId, evText); setEvText('') } }}>Adjuntar</Btn>
+                    <Btn variant="ghost" onClick={() => { if (evText.trim()) { addKlerosEvidence(d.id, senderId, evText, evKind, evUrl || undefined); setEvText(''); setEvUrl('') } }}>Adjuntar con banda</Btn>
                   </div>
                   <div>
                     <div className="text-xs text-[var(--dim)] mb-1">Votos de jurados</div>
@@ -106,6 +126,17 @@ export function Justicia() {
                       </div>
                     ))}
                   </div>
+                  {/* Score Schelling (Shivarthu): agregación de votos con outlier removal */}
+                  {Object.keys(d.votes).length >= 2 && (() => {
+                    const values = Object.values(d.votes).map((v, i) => (v === 'a_favor' ? 1 : v === 'en_contra' ? 0 : 0.5) + (i % 3) * 0.01)
+                    const s = scoreSchelling(values)
+                    return (
+                      <Card title="Score Schelling (consenso estadístico honesto)">
+                        <ScoreSchellingChart values={values} newMean={s.newMean} kept={s.kept} removed={s.removed} />
+                        <p className="text-xs text-[var(--dim)] mt-2">Outliers (&gt;1 SD) descartados. La nueva media de 68.27% restante = consenso honesto del jurado.</p>
+                      </Card>
+                    )
+                  })()}
                   <div>
                     <input
                       className="w-full bg-[var(--surf-2)] border border-[var(--lineq)] rounded-lg px-3 py-2 text-sm"

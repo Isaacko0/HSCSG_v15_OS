@@ -1,5 +1,6 @@
 // Kleros (justicia) — lógica pura: jurados, disputas, evidencia, penalización, identidad.
 import type { KlerosState, Dispute, EvidenceRecord, JurorVerdict, Juror } from '@core/state/kleros'
+import { scoreEvidence, type EvidenceKind } from '@core/lib/evidence'
 
 const uid = () => Math.random().toString(36).slice(2, 9)
 
@@ -50,8 +51,20 @@ export function addEvidence(
   disputeId: string,
   author: string,
   text: string,
+  kind?: EvidenceKind,
+  sourceUrl?: string,
 ): KlerosState {
-  const ev: EvidenceRecord = { id: uid(), disputeId, author, text, ts: Date.now() }
+  // Evidence Model (CompAI CRM): calcular band automáticamente si se da kind.
+  let band: EvidenceRecord['band'] = undefined
+  let score: number | undefined
+  let detail: string | undefined
+  if (kind) {
+    const scored = scoreEvidence([{ kind, detail: text, sourceUrl }])
+    band = scored.band
+    score = Number(scored.score.toFixed(2))
+    detail = scored.rationale
+  }
+  const ev: EvidenceRecord = { id: uid(), disputeId, author, text, ts: Date.now(), kind, band, score, detail, sourceUrl }
   return {
     ...st,
     disputes: st.disputes.map((d) =>

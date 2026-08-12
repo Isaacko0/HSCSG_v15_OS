@@ -2,12 +2,36 @@
 export type DisputeStatus = 'abierta' | 'en_juicio' | 'resuelta' | 'apelada'
 export type JurorVerdict = 'a_favor' | 'en_contra' | 'abstención'
 
+// Evidence Model (CompAI CRM): cada evidencia lleva kind + band calculado.
+export type EvidenceKind =
+  | 'profile.email-match'
+  | 'linkedin.employer-and-name'
+  | 'crm.thread-reply'
+  | 'crm.signature-block'
+  | 'github.account-identity'
+  | 'crm.meeting-attendance'
+  | 'aut.observation'
+  | 'cds.consensus'
+  | 'web.cited-claim'
+  | 'handle.name-form'
+  | 'search.cites-profile'
+  | 'employer-only'
+  | 'contradiction'
+
+export type FactBand = 'VERIFIED' | 'PROBABLE' | 'POSSIBLE' | null
+
 export interface EvidenceRecord {
   id: string
   disputeId: string
   author: string
   text: string
   ts: number
+  // NUEVO (Evidence Model): kind + band calculado al adjuntar
+  kind?: EvidenceKind
+  band?: FactBand
+  score?: number
+  detail?: string // por qué se clasificó así (rationale)
+  sourceUrl?: string
 }
 
 export interface Juror {

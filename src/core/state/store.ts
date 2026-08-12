@@ -312,7 +312,7 @@ export interface AppState {
   // Kleros / Proof-of-Humanity
   seatKlerosJuror: (name: string) => void
   openKlerosDispute: (title: string, description: string, openedBy: string) => void
-  addKlerosEvidence: (disputeId: string, author: string, text: string) => void
+  addKlerosEvidence: (disputeId: string, author: string, text: string, kind?: any, sourceUrl?: string) => void
   castKlerosVote: (disputeId: string, jurorId: string, verdict: JurorVerdict) => void
   resolveKlerosDispute: (disputeId: string, resolution: string) => void
   appealKlerosDispute: (disputeId: string) => void
@@ -933,8 +933,8 @@ export const useAppStore = create<AppState>()(
       openKlerosDispute: (title, description, openedBy) => set((st) => ({
         kleros: openDispute(st.kleros, { title, description, openedBy }),
       })),
-      addKlerosEvidence: (disputeId, author, text) => set((st) => ({
-        kleros: addEvidence(st.kleros, disputeId, author, text),
+      addKlerosEvidence: (disputeId, author, text, kind?: any, sourceUrl?: string) => set((st) => ({
+        kleros: addEvidence(st.kleros, disputeId, author, text, kind, sourceUrl),
       })),
       castKlerosVote: (disputeId, jurorId, verdict) => set((st) => ({
         kleros: castVote(st.kleros, disputeId, jurorId, verdict),

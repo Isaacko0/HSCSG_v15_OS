@@ -752,7 +752,7 @@ La integración de Copiosis (v7.1) proporciona la **arquitectura completa de la 
 | Gaia Union | Organismo vivo (niveles + sistemas vitales) | `lib/gaiaunion.ts` (ontología del vaso) |
 | Pipeline (actuator) | Cierre del loop: matchmaker/feedback mutan CDS | `lib/pipeline.ts` (dispatchMatch/autoAdvisory) |
 | **Shivarthu** | **Consenso estadístico honesto: Score Schelling + Commit-Reveal + Voto por Mérito** | `lib/cds_jurados.ts` (outlier removal) + `lib/symbiosky.ts` (commit-reveal) + `lib/integral.ts` (weight 3 factores) |
-| **CompAI CRM** | **Evidence Model Soberano: no confidence, Fact Bands, Write Path 3 reglas, Work Queue leasing** | `lib/evidence.ts` (nuevo) + `lib/cds.ts` (bandFor) + `lib/automaton.ts` (claimDue) |
+| **CompAI CRM** | **Evidence Model Soberano: no confidence, Fact Bands, Write Path 3 reglas, Work Queue leasing** | `lib/evidence.ts` (**IMPLEMENTADO** ✓ scoreEvidence+bandFor+scoreSchelling) + `EvidenceLedger`/`FactBandBadge`/`ScoreSchellingChart` (UI **IMPLEMENTADO** ✓) + `Justicia.tsx` (adjuntar evidencia con banda **IMPLEMENTADO** ✓) |
 
 **Bootstrap resuelto:** HSCSG ya tiene Fondo Solarpunk, DSI, FABSHIP, CaaS-BM.
 
