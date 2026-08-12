@@ -16,6 +16,7 @@
 12. **Automaton / alook / ponytail** — Pipeline anidado, agentes soberanos, matchmaker/feedback
 13. **Pipeline Actuator (P0)** — Cierre del loop CDS→decisión con `dispatchMatch`/`autoAdvisory`
 14. **Conector de Flujo (P0)** — `deriveStageParams`, `NextStageBanner`, `/flujo` (29ª pantalla)
+15. **AuroraGov** — Gobernanza jerárquica ejecutable (OU Tree, Power contextual, Delegación, Propuesta Sensibility Map, Process Manager, Blockchain Projector)
 
 ---
 
@@ -28,15 +29,23 @@
 | 2 | **9 Sistemas Vitales Mapeados 1:1** | Gaia Union | Correspondencia biológica explícita: Nervioso, Circulatorio, Homeostático, Metabólico, Aprendizaje, Evolutivo, Investigación, Territorial-físico, Territorial-encuentro | Tabla en §2.26.2 + `lib/gaiaunion.ts` |
 | 3 | **Triple Capa Ontológica: ADN / Código Genético / Epigenética** | Gaia Union | Constitución=ADN (3 Leyes MJ), Valores=Código Genético (8 valores), Gobernanza=Epigenética (CDS/MJ Gate adaptable) | Unifica MJ + MJ Gate + CDS |
 | 4 | **Ontogénesis como Hoja de Ruta Civilizatoria** | Gaia Union + HSCSG v14 | Fases 0-D leídas como desarrollo embrionario: Proto-CO=blastocisto → Fase A=gastrulación → Fase B=organogénesis → Fase C=maduro → Fase D=federación | BRIEF §10.1 + §2.26.5 |
+| 5 | **OU Tree con Operaciones Algebraicas** | AuroraGov | Jerarquía `root.area.sub` con `get_parent`, `ou_tree_list` (ancestros), `join`, `get_complex_level`, `valid_slug?`/`id_valid?` — estructura jerárquica computable | `lib/aurora_gov.ts` + `lib/gaia.ts` `CircleTier` tree ops |
 
 ### A2. Gobernanza / Justicia / Identidad
 | # | Concepto Nuevo | Fuente | Descripción | Implementación HSCSG |
 |---|----------------|--------|-------------|---------------------|
-| 5 | **CDS_Jurados (Jurados Ciudadanos)** | Copiosis | Capa humana verificable: sorteo, anonimato, rotación, pesos `W_i` acotados, actas RAO | `lib/cds_jurados.ts` (P0) |
-| 6 | **Conviction Voting (Credibilidad por Convicción)** | Symbiosky | Votar bloqueando ZNU ∝ confianza (lock hasta 5 años); reward = mean_score × multiplier; decay 5%/año; anti-whale | `lib/symbiosky.ts` + store (6 lugares) + `/credibilidad` (P0) |
-| 7 | **Kleros/PoH → Justicia Soberana + Identidad Soberana** | Kleros/PoH | Jurados anónimos + penalización desacuerdo + oráculo hechos (Realitio→BN) + identidad sybil-resistant (1 humano=1 nodo) + escrow+arbitraje | `lib/kleros.ts`, `lib/identity.ts`, `lib/oracle.ts`, `lib/cds.ts` (extend) |
-| 8 | **Wisdom Councils (Consejos de Sabiduría)** | Gaia Confederation | Capa humana sobre Kleros para conflictos complejos: CNV + mediación | `lib/gaia.ts` `WisdomCouncil` |
-| 9 | **DomainNode + Pot (Colony)** | Colony | Árbol de dominios = células/sub-colectivos; cada dominio tiene su pot (presupuesto); fondos se mueven por gobernanza | `lib/colony.ts` `DomainNode` + `lib/caas.ts` extend |
+| 6 | **CDS_Jurados (Jurados Ciudadanos)** | Copiosis | Capa humana verificable: sorteo, anonimato, rotación, pesos `W_i` acotados, actas RAO | `lib/cds_jurados.ts` (P0) |
+| 7 | **Conviction Voting (Credibilidad por Convicción)** | Symbiosky | Votar bloqueando ZNU ∝ confianza (lock hasta 5 años); reward = mean_score × multiplier; decay 5%/año; anti-whale | `lib/symbiosky.ts` + store (6 lugares) + `/credibilidad` (P0) |
+| 8 | **Kleros/PoH → Justicia Soberana + Identidad Soberana** | Kleros/PoH | Jurados anónimos + penalización desacuerdo + oráculo hechos (Realitio→BN) + identidad sybil-resistant (1 humano=1 nodo) + escrow+arbitraje | `lib/kleros.ts`, `lib/identity.ts`, `lib/oracle.ts`, `lib/cds.ts` (extend) |
+| 9 | **Wisdom Councils (Consejos de Sabiduría)** | Gaia Confederation | Capa humana sobre Kleros para conflictos complejos: CNV + mediación | `lib/gaia.ts` `WisdomCouncil` |
+| 10 | **DomainNode + Pot (Colony)** | Colony | Árbol de dominios = células/sub-colectivos; cada dominio tiene su pot (presupuesto); fondos se mueven por gobernanza | `lib/colony.ts` `DomainNode` + `lib/caas.ts` extend |
+| 11 | **Power/Sensitivity Contextual (OU+Persona+PowerID)** | AuroraGov | `power_value` por tupla (OU, persona, power_id); promedio por OU = umbral votación. **AUT×CDS contextualizado por dominio** | `lib/aurora_gov.ts` `Power` + `lib/colony.ts` extend |
+| 12 | **Proposal Sensibility Map (OU → Threshold)** | AuroraGov | Cada propuesta lleva mapa `OU_id → avg_power`; ejecución requiere quórum **en cada OU afectada independientemente**. Evita tiranía de la mayoría global | `lib/integral.ts` `validate_proposal_score` |
+| 13 | **PowerDelegation Activable/Desactivable** | AuroraGov | Delegación granular por `power_id` (no global). `MapSet` de delegados por OU+power_id. Se activa/desactiva en caliente | `lib/symbiosky.ts` + `lib/colony.ts` `PowerDelegation` |
+| 14 | **Membership Rank Progresivo (junior→regular→senior)** | AuroraGov | Derechos de voto y propuesta ligados a rank, no a token. Rank se gana por contribución (AUT×CDS) y tiempo | `lib/caas.ts` `membership_rank` unificado con `capitalAccessTier` |
+| 15 | **GovPower DSL (Comandos Auto-Descriptivos)** | AuroraGov | Cada comando gov expone `gov_power()` (id, name, description, category, module) + `field_definitions()` para UI dinámica. Elimina boilerplate formularios | `lib/connector.ts` `field_definitions` por stage |
+| 16 | **Process Manager como Orquestador Post-Aprobación** | AuroraGov | `ProposalExecutor` escucha `ProposalExecuted` → construye comando real → dispatch → `ConsumeProposal`. Patrón robusto para ejecución automática con manejo errores (retry, skip, stop) | `lib/automaton.ts` + `lib/pipeline.ts` `ProposalExecutor` |
+| 17 | **Blockchain Projector con Causalidad** | AuroraGov | Hash chain SHA256 + `correlation_id` + `causation_id` + `ou_id`/`person_id`/`proposal_id` en cada bloque. RAO con trazabilidad completa | `lib/store.ts` RAO extendido |
 
 ### A3. Economía Postmonetaria / ValueFlows
 | # | Concepto Nuevo | Fuente | Descripción | Implementación HSCSG |
@@ -160,6 +169,7 @@
 | `lib/pipeline.ts` | ✅ **NUEVO P0** | computeCapabilities, collectNeeds, matchmaker, pipelineHealth, routeFeedback, dispatchMatch, autoAdvisory |
 | `lib/connector.ts` | ✅ **NUEVO P0** | STAGES, deriveStageParams, nextStageOf |
 | `lib/gaiaunion.ts` | 🔄 **P0** | Organismo: niveles, 9 sistemas vitales, constitución, código genético, epigenética |
+| `lib/aurora_gov.ts` | 🔄 **P0** | OU Tree ops, Power struct, Proposal validation, GovPower DSL |
 | `lib/netbenefit.ts` | 🔄 **P0** | NetBenefit Engine 8 escalas + CDS_Jurados pesos |
 | `lib/cds_jurados.ts` | 🔄 **P0** | Sorteo, anonimato, rotación, `W_i` acotados, actas RAO |
 | `lib/copiosis.ts` | 🔄 **P0** | NetBenefitFlow, goodType, luxuryPriceNBR, capitalAccessTier, BN_Gradient_Signal |
@@ -212,8 +222,8 @@ Cada módulo nuevo añade: `use<Modulo>`, `<Modulo>State`, tipos, acciones, sele
 
 ## PARTE E: RESUMEN EJECUTIVO DE LA ASIMILACIÓN
 
-**Total conceptos analizados:** ~60 fuentes integradas en 5 sesiones previas + esta sesión  
-**Nuevos conceptos nacidos (Parte A):** 39  
+**Total conceptos analizados:** ~60 fuentes integradas en 5 sesiones previas + esta sesión + AuroraGov  
+**Nuevos conceptos nacidos (Parte A):** 56 (39 previos + 17 AuroraGov)  
 **Etapas de evolución/refinamiento (Parte B):** 25  
 **Pantallas totales HSCSG v15 OS:** 29 (21 base + 8 nuevas P0/P1)  
 **Módulos `lib/` totales:** ~35 (20 base + 15 nuevos P0/P1)  

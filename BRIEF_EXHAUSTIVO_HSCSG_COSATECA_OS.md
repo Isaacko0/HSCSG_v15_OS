@@ -729,6 +729,22 @@ La integración de Copiosis (v7.1) proporciona la **arquitectura completa de la 
 | TCR (stake-curate) | Registro curado por CDS | `lib/caas.ts` |
 | escrow + arbitraje | Escrow Solarpunk resuelto por CDS | `lib/solarpunk.ts` |
 | Proof of Humanity V1/V2 | Identidad Soberana (1 humano=1 nodo) | `lib/identity.ts` |
+
+**Vaso Comunicante AuroraGov ↔ HSCSG: Gobernanza Jerárquica Ejecutable + Poder Contextual**
+
+| AuroraGov | HSCSG v15 OS | Estado |
+|-----------|--------------|--------|
+| OU Tree (dot-notation, ancestros) | Círculos biomiméticos jerárquicos + federación | `lib/gaia.ts` `CircleTier` + `lib/colony.ts` `DomainNode` tree |
+| Power/Sensitivity (OU+Persona+PowerID) | AUT×CDS weight por dominio + CDS_Jurados `W_i` | `lib/colony.ts` `Power` + `lib/cds_jurados.ts` |
+| PowerDelegation (líquida, granular) | Conviction voting (Symbiosky) + delegación CDS | `lib/symbiosky.ts` + `lib/colony.ts` `PowerDelegation` |
+| Proposal Sensibility Map (OU→threshold) | CDS multi-dominio: quórum ponderado por célula | `lib/integral.ts` `validate_proposal_score` |
+| Membership Ranks (junior/regular/senior) | CaaS-BM tiers: stake ZNU + AUT ≥ threshold | `lib/caas.ts` `capitalAccessTier` + `membership_rank` |
+| Roles por OU (MapSet assignments) | `DomainNode` roles + `DomainPot` tesorería | `lib/colony.ts` `DomainNode.roles` + `lib/caas.ts` `DomainPot` |
+| Blockchain Projector (hash chain + causalidad) | RAO inmutable + ERC-8004 hash + correlación/causación | `lib/store.ts` RAO extendido |
+| Process Manager (ProposalExecutor) | Autómata Soberano: E²R + MJ Gate + ejecución post-CDS | `lib/automaton.ts` + `lib/pipeline.ts` |
+| GovPower DSL (comandos auto-descriptivos) | `STAGES` + `deriveStageParams` + `field_definitions` dinámicas | `lib/connector.ts` |
+| Propuesta multi-paso validada | Pipeline anidado 3 capas (Percepción→Decisión→Ejecución) | `lib/pipeline.ts` + `lib/connector.ts` |
+
 | Gaia Confederation | Protocolo de interoperabilidad + círculos biomiméticos | `lib/gaia.ts` (corona el vaso) |
 | iambrainstorming | Saber experiencial + aprendizaje interactivo | `lib/learning.ts` (capa educación) |
 | Symbiosky | Credibilidad por convicción + decay + anti-whale | `lib/symbiosky.ts` (va más allá: CDS gana convicción) |
@@ -1444,5 +1460,6 @@ interface CaaSMember {
 
 *Documento fundacional v1.0 | Zeitnus / Isaac Ko | Agosto 2026*  
 *Metodología: 4 Fases (Desempaquetado → Limpieza → GitHub → Evolución) + Sistema Alráico (G1-CARMIS)*  
-*Fuentes: 23 integraciones `HSCSG_v15_OS/docs/` + informes HSCSG v14 + OneManCompany + IDETRA + **Copiosis v7.1 (backup + integración completa)***  
-*Backup Copiosis: `docs/copiosis_backup.md` | Integración: `docs/copiosis_integration.md`
+*Fuentes: 24 integraciones `HSCSG_v15_OS/docs/` + informes HSCSG v14 + OneManCompany + IDETRA + **Copiosis v7.1 (backup + integración completa)** + **AuroraGov (backup + integración completa)***  
+*Backup Copiosis: `docs/copiosis_backup.md` | Integración: `docs/copiosis_integration.md`*  
+*Backup AuroraGov: `docs/aurora_gov_backup.md` | Integración: `docs/aurora_gov_integration.md`*
