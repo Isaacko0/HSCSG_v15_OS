@@ -752,6 +752,7 @@ La integración de Copiosis (v7.1) proporciona la **arquitectura completa de la 
 | Gaia Union | Organismo vivo (niveles + sistemas vitales) | `lib/gaiaunion.ts` (ontología del vaso) |
 | Pipeline (actuator) | Cierre del loop: matchmaker/feedback mutan CDS | `lib/pipeline.ts` (dispatchMatch/autoAdvisory) |
 | **Shivarthu** | **Consenso estadístico honesto: Score Schelling + Commit-Reveal + Voto por Mérito** | `lib/cds_jurados.ts` (outlier removal) + `lib/symbiosky.ts` (commit-reveal) + `lib/integral.ts` (weight 3 factores) |
+| **CompAI CRM** | **Evidence Model Soberano: no confidence, Fact Bands, Write Path 3 reglas, Work Queue leasing** | `lib/evidence.ts` (nuevo) + `lib/cds.ts` (bandFor) + `lib/automaton.ts` (claimDue) |
 
 **Bootstrap resuelto:** HSCSG ya tiene Fondo Solarpunk, DSI, FABSHIP, CaaS-BM.
 
@@ -1461,7 +1462,8 @@ interface CaaSMember {
 
 *Documento fundacional v1.0 | Zeitnus / Isaac Ko | Agosto 2026*  
 *Metodología: 4 Fases (Desempaquetado → Limpieza → GitHub → Evolución) + Sistema Alráico (G1-CARMIS)*  
-*Fuentes: 24 integraciones `HSCSG_v15_OS/docs/` + informes HSCSG v14 + OneManCompany + IDETRA + **Copiosis v7.1 (backup + integración completa)** + **AuroraGov (backup + integración completa)** + **Shivarthu (backup + integración completa)***  
+*Fuentes: 24 integraciones `HSCSG_v15_OS/docs/` + informes HSCSG v14 + OneManCompany + IDETRA + **Copiosis v7.1 (backup + integración completa)** + **AuroraGov (backup + integración completa)** + **Shivarthu (backup + integración completa)** + **CompAI CRM (backup + integración completa)***  
 *Backup Copiosis: `docs/copiosis_backup.md` | Integración: `docs/copiosis_integration.md`*  
 *Backup AuroraGov: `docs/aurora_gov_backup.md` | Integración: `docs/aurora_gov_integration.md`*  
-*Backup Shivarthu: `docs/shivarthu_backup.md` | Integración: `docs/shivarthu_integration.md`*
+*Backup Shivarthu: `docs/shivarthu_backup.md` | Integración: `docs/shivarthu_integration.md`*  
+*Backup CompAI CRM: `docs/compai_crm_backup.md` | Integración: `docs/compai_crm_integration.md`*

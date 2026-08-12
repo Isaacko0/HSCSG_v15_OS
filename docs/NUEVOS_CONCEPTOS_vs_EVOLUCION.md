@@ -18,6 +18,7 @@
 14. **Conector de Flujo (P0)** — `deriveStageParams`, `NextStageBanner`, `/flujo` (29ª pantalla)
 15. **AuroraGov** — Gobernanza jerárquica ejecutable (OU Tree, Power contextual, Delegación, Propuesta Sensibility Map, Process Manager, Blockchain Projector)
 16. **Shivarthu** — Consenso estadístico honesto (Score Schelling outlier removal, Commit-Reveal, Voto por Mérito, Departments por expertise, Vouching, Positive Externality Validation)
+17. **CompAI CRM** — Evidence Model Soberano (no confidence, Fact Bands, Write Path 3 reglas, Work Queue leasing, Budget+reason, Sandbox deny-all, Capabilities optional, Data Boundaries, Identity Matching fail-closed)
 
 ---
 
@@ -61,6 +62,22 @@
 | 25 | **Positive Externality Validation Pallet** | Shivarthu | Post de externality + stake + Score Schelling → score final set en storage. Incentiva contribución verificable | `lib/netbenefit.ts` + `lib/copiosis.ts` |
 | 26 | **PhaseData Pipeline (7 fases)** | Shivarthu | Evidence → Staking → Drawing → Commit → Vote → Appeal → Execution. Ciclo de vida completo de disputa/juicio | `lib/pipeline.ts` `PhaseData` enum |
 | 27 | **Juror Selection por Stake-Weighted Random (anti-Sybil)** | Shivarthu | Probabilidad selección ∝ tokens stakeados + selección aleatoria. Port a sorteo + anonimato en HSCSG | `lib/cds_jurados.ts` draw (sorteo, no stake tree) |
+
+### A8. Evidence Model Soberano / Epistemología del Nodo (CompAI CRM)
+| # | Concepto Nuevo | Fuente | Descripción | Implementación HSCSG |
+|---|----------------|--------|-------------|---------------------|
+| 28 | **Evidence Model (NO confidence scores)** | CompAI CRM | Herramientas reportan *observaciones* (`crm.signature-block`, `github.account-identity`); ledger precia cada evidencia por peso. Modelo nunca gradea su certeza | `lib/evidence.ts` (nuevo) + `lib/cds_jurados.ts` |
+| 29 | **Fact Bands (VERIFIED/PROBABLE/POSSIBLE)** | CompAI CRM | Banding por score+primary: VERIFIED escribe auto, PROBABLE/POSSIBLE sugiere a humano, null no guarda | `lib/cds.ts` `bandFor` + `lib/automaton.ts` |
+| 30 | **Write Path Único con 3 Reglas** | CompAI CRM | Nunca sobreescribir humano, nunca re-ofercer dismissal, nunca escribir sin primary source. Forzado en código | `lib/automaton.ts` `recordDecision` + `lib/pipeline.ts` |
+| 31 | **Work Queue + Leasing (FOR UPDATE SKIP LOCKED)** | CompAI CRM | Dispatchers toman trabajo disjunto; run muerto libera row al expirar lease. Concurrencia sin lock global | `lib/automaton.ts` `claimDue` (RAM) |
+| 32 | **Budget por Session + schedule_recheck(reason)** | CompAI CRM | Agente gasta presupuesto investigación; agenda revisión con razón mostrada a humano. Autonomía con accountability | `lib/pipeline.ts` `scheduleStigmergy` + `lib/cds.ts` |
+| 33 | **Sandbox deny-all egress + no DATABASE_URL** | CompAI CRM | Shell sin red ni DB = text processor, no exfiltration. Seguridad por default | Arquitectura anfibia (offline) |
+| 34 | **Capabilities Optional by Default** | CompAI CRM | Sin keys funciona con evidencia propia; cada key abre 1 lugar. Degradación elegante, nunca error | `lib/connector.ts` `nodeMode` |
+| 35 | **Data Boundaries (egress rules)** | CompAI CRM | No customer text en query terceros; solo business context; nada personal. Privacy por diseño | `lib/trustlines.ts` `dataBoundaries` |
+| 36 | **Identity Matching fail-closed** | CompAI CRM | "Guess where to look, never what you find"; ambos checks (employer+name) o no es ellos | `lib/identity.ts` `matchIdentity` |
+| 37 | **Intelligence Never Lives in API** | CompAI CRM | Nest reporta que pasó; agent decide qué significa. Evita drift de lógica | `lib/cds.ts` (edge decision) |
+| 38 | **No Organizations (single tenant)** | CompAI CRM | organizationId siempre mismo valor = columna inútil. Simplicidad deliberada | `lib/caas.ts` (célula única) |
+| 39 | **Contradiction Held (not averaged)** | CompAI CRM | Fuentes que discrepan se hold, no se promedian a "60% true". Honestidad epistémica | `lib/evidence.ts` `scoreEvidence` |
 | # | Concepto Nuevo | Fuente | Descripción | Implementación HSCSG |
 |---|----------------|--------|-------------|---------------------|
 | 10 | **NBR-ZNU Hybrid Flow** | Copiosis | NBR (medalla intransferible, ex nihilo, quemable) → `claimVesting()` → ZNU líquido → ZCS/Trustlines/ReFi | `lib/copiosis.ts` tipo `NetBenefitFlow` + `lib/vesting.ts` |
@@ -236,7 +253,7 @@ Cada módulo nuevo añade: `use<Modulo>`, `<Modulo>State`, tipos, acciones, sele
 ## PARTE E: RESUMEN EJECUTIVO DE LA ASIMILACIÓN
 
 **Total conceptos analizados:** ~60 fuentes integradas en 5 sesiones previas + esta sesión + AuroraGov + Shivarthu  
-**Nuevos conceptos nacidos (Parte A):** 66 (39 previos + 17 AuroraGov + 10 Shivarthu)  
+**Nuevos conceptos nacidos (Parte A):** 78 (39 previos + 17 AuroraGov + 10 Shivarthu + 12 CompAI CRM)  
 **Etapas de evolución/refinamiento (Parte B):** 25  
 **Pantallas totales HSCSG v15 OS:** 29 (21 base + 8 nuevas P0/P1)  
 **Módulos `lib/` totales:** ~35 (20 base + 15 nuevos P0/P1)  
