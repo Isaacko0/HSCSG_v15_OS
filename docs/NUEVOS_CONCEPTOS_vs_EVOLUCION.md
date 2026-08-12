@@ -17,6 +17,7 @@
 13. **Pipeline Actuator (P0)** — Cierre del loop CDS→decisión con `dispatchMatch`/`autoAdvisory`
 14. **Conector de Flujo (P0)** — `deriveStageParams`, `NextStageBanner`, `/flujo` (29ª pantalla)
 15. **AuroraGov** — Gobernanza jerárquica ejecutable (OU Tree, Power contextual, Delegación, Propuesta Sensibility Map, Process Manager, Blockchain Projector)
+16. **Shivarthu** — Consenso estadístico honesto (Score Schelling outlier removal, Commit-Reveal, Voto por Mérito, Departments por expertise, Vouching, Positive Externality Validation)
 
 ---
 
@@ -47,7 +48,19 @@
 | 16 | **Process Manager como Orquestador Post-Aprobación** | AuroraGov | `ProposalExecutor` escucha `ProposalExecuted` → construye comando real → dispatch → `ConsumeProposal`. Patrón robusto para ejecución automática con manejo errores (retry, skip, stop) | `lib/automaton.ts` + `lib/pipeline.ts` `ProposalExecutor` |
 | 17 | **Blockchain Projector con Causalidad** | AuroraGov | Hash chain SHA256 + `correlation_id` + `causation_id` + `ou_id`/`person_id`/`proposal_id` en cada bloque. RAO con trazabilidad completa | `lib/store.ts` RAO extendido |
 
-### A3. Economía Postmonetaria / ValueFlows
+### A7. Consenso Estadístico / Gobernanza por Mérito (Shivarthu)
+| # | Concepto Nuevo | Fuente | Descripción | Implementación HSCSG |
+|---|----------------|--------|-------------|---------------------|
+| 18 | **Score Schelling Game con Outlier Removal (mean ± 1 SD)** | Shivarthu | Agregación de juicios: descarta valores >1 SD de la mean, recalcula mean de 68.27% restante = score. Robusto contra manipulación | `lib/cds_jurados.ts` `aggregateScores` |
+| 19 | **Commit-Reveal Voting (hash + salt)** | Shivarthu | Voto secreto: commit = keccak256(voto+salt); reveal = voto+salt; verifica hash match. Evita coerción/compra de votos | `lib/symbiosky.ts` `commitVote` + `revealVote` |
+| 20 | **Voto por Mérito (reputation/exp/externality ≠ stake)** | Shivarthu | Peso de voto determinado por contribución verificada (AUT×CDS), no por riqueza. Seq Phragmén adaptado a mérito | `lib/integral.ts` weight 3 factores |
+| 21 | **Departments por Especialidad (expertos como líderes)** | Shivarthu | Gobernanza dividida por dominio técnico; representantes requieren expertise validada por Schelling | `lib/gaia.ts` `CircleTier` + `expertiseTag` |
+| 22 | **Vouching Family Tree + Moderators** | Shivarthu | Aval mutuo entre conocidos; moderadores (approval voting) invalidan vouching falso downvotando garante | `lib/identity.ts` `vouchingTree` + `lib/gaia.ts` WisdomCouncil |
+| 23 | **Department Tipping (5 categorías crecientes)** | Shivarthu | Funding por tiers (SmallTipper→BigSpender); aplicar fondos mayores requiere mayor stake/responsabilidad | `lib/caas.ts` `capitalAccessTier` + `lib/colony.ts` DomainPot |
+| 24 | **Randomized Tax (sin inflación)** | Shivarthu | Tax aleatorio por transacción (0-5%) + anti-hoarding por account_number % 1000. Recolecta sin inflación | Complementa ZNU demurrage 5%/28d |
+| 25 | **Positive Externality Validation Pallet** | Shivarthu | Post de externality + stake + Score Schelling → score final set en storage. Incentiva contribución verificable | `lib/netbenefit.ts` + `lib/copiosis.ts` |
+| 26 | **PhaseData Pipeline (7 fases)** | Shivarthu | Evidence → Staking → Drawing → Commit → Vote → Appeal → Execution. Ciclo de vida completo de disputa/juicio | `lib/pipeline.ts` `PhaseData` enum |
+| 27 | **Juror Selection por Stake-Weighted Random (anti-Sybil)** | Shivarthu | Probabilidad selección ∝ tokens stakeados + selección aleatoria. Port a sorteo + anonimato en HSCSG | `lib/cds_jurados.ts` draw (sorteo, no stake tree) |
 | # | Concepto Nuevo | Fuente | Descripción | Implementación HSCSG |
 |---|----------------|--------|-------------|---------------------|
 | 10 | **NBR-ZNU Hybrid Flow** | Copiosis | NBR (medalla intransferible, ex nihilo, quemable) → `claimVesting()` → ZNU líquido → ZCS/Trustlines/ReFi | `lib/copiosis.ts` tipo `NetBenefitFlow` + `lib/vesting.ts` |
@@ -222,8 +235,8 @@ Cada módulo nuevo añade: `use<Modulo>`, `<Modulo>State`, tipos, acciones, sele
 
 ## PARTE E: RESUMEN EJECUTIVO DE LA ASIMILACIÓN
 
-**Total conceptos analizados:** ~60 fuentes integradas en 5 sesiones previas + esta sesión + AuroraGov  
-**Nuevos conceptos nacidos (Parte A):** 56 (39 previos + 17 AuroraGov)  
+**Total conceptos analizados:** ~60 fuentes integradas en 5 sesiones previas + esta sesión + AuroraGov + Shivarthu  
+**Nuevos conceptos nacidos (Parte A):** 66 (39 previos + 17 AuroraGov + 10 Shivarthu)  
 **Etapas de evolución/refinamiento (Parte B):** 25  
 **Pantallas totales HSCSG v15 OS:** 29 (21 base + 8 nuevas P0/P1)  
 **Módulos `lib/` totales:** ~35 (20 base + 15 nuevos P0/P1)  
