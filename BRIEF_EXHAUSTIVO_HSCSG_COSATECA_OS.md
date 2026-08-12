@@ -543,41 +543,61 @@ Render vivo en `/pipeline` (Stat de necesidades/capacidades/matched/loopScore + 
 ---
 
 ## 2.26 Gaia Union (Organismo Vivo Regenerativo) — IMPLEMENTADO
-
-**Fuente:** documento `.md` local "Gaia Union: El Plan Maestro Integrado para la Emergencia Planetaria" (white-paper/ontología, no repo de código). Asimilado con la misma variante que Gaia Confederation.
+## 2.26 Gaia Union / Red de EcoHabitats & BioRegiones (Organismo Vivo Regenerativo) — IMPLEMENTADO
+**Fuente:** documento `.md` local "Gaia Union: El Plan Maestro Integrado para la Emergencia Planetaria" (título original: "Red de EcoHabitats & BioRegiones del Mundo Unificado - Un solo Corazon") — white-paper/ontología de ecosistema vivo, no repo de código. Asimilado con la misma variante que Gaia Confederation.
 
 ### 2.26.1 Qué aporta (capa ontológica/biológica que el pipeline mecánico NO tenía)
 - **Niveles de organización**: Persona=Célula → Equipo=Tejido → Proyecto=Órgano → Sistema Vital → Organismo.
 - **9 Sistemas Vitales** análogos a los biológicos (Nervioso, Circulatorio, Homeostático, Metabólico, Aprendizaje, Evolutivo, Investigación, Territorial físico, Territorial de encuentro).
-- **Constitución=ADN**, **Código Genético=Valores** (8 valores filtrables por Ley MJ), **Gobernanza=Epigenética** (adaptable sin alterar esencia).
+- **Constitución=ADN**, **Código Genético=Valores** (8 valores: Regeneración, Cooperación, Transparencia, Diversidad, Soberanía, Interdependencia, Amor, Servicio — filtrables por Ley MJ), **Gobernanza=Epigenética** (adaptable sin alterar esencia).
 
 ### 2.26.2 Reencuadre del pipeline (lo que pidió el usuario: matchmaker / feedback / flujos)
 El loop `/pipeline` (CDS→OAD→COS→ITC→FRS) se reencuadra como **cuerpo vivo**:
 | Sistema Vital Gaia | Órgano HSCSG | Ley |
 |--------------------|--------------|-----|
-| Nervioso (Hub/OS) | `/pipeline` FRS + Matchmaker | III |
-| Circulatorio (Fund) | ZNU / CaaS / ITC | II |
-| Homeostático (DAO) | CDS + Wisdom Council | I |
-| Metabólico (Market) | Solarpunk / Tekitl / Trustlines | II |
-| Aprendizaje (School) | `/aprender` | III |
-| Evolutivo (ImpactHub) | `/integral` COS + Bounty | II |
-| Investigación (BioLabs) | `/oraculo` + `/verificacion` | III |
-| Territorial (BioHabitats) | `/base` | I |
-| Territorial (BioHubs) | Federación DTN/AP | I |
+| Nervioso (Hub/OS) | `/pipeline` FRS + Matchmaker + `lib/connector.ts` | III |
+| Circulatorio (Fund) | ZNU / CaaS / ITC / Trustlines / Vesting | II |
+| Homeostático (DAO) | CDS + Wisdom Council + `lib/symbiosky.ts` | I |
+| Metabólico (Market) | Solarpunk / Tekitl / Trustlines / `/flujo` | II |
+| Aprendizaje (School) | `/aprender` + Colaberry + `lib/learning.ts` | III |
+| Evolutivo (ImpactHub) | `/integral` COS + Bounty (`lib/gaia.ts`) | II |
+| Investigación (BioLabs) | `/oraculo` + `/verificacion` + `lib/oracle.ts` | III |
+| Territorial (BioHabitats) | `/base` (AUT_ALIM/ENER/HABI/AGUA/SALU) | I |
+| Territorial (BioHubs) | Nodos federados DTN/AP + `/circulos` (Dunbar) | I |
 
-- **Matchmaker (alook)**: empareja *células* (personas) con *órganos* (necesidades) por peso.
-- **Feedback (FRS/automaton)**: sistema nervioso que retroalimenta cada órgano.
-- **Flujos (ponytail)**: reflejos de una línea del organismo.
+- **Matchmaker (alook en `lib/pipeline.ts`)**: empareja *células* (personas/agentes) con *órganos* (necesidades CAC) por peso (35% AUT + 30% credibility Symbiosky + 20% expertise Democracia + 15% retos Aprender).
+- **Feedback (FRS/automaton en `lib/pipeline.ts` + `lib/automaton.ts`)**: sistema nervioso que retroalimenta cada órgano vía `routeFeedback()` → enruta a CDS/OAD/COS/ITC.
+- **Flujos (ponytail / `lib/connector.ts`)**: reflejos de una línea; `deriveStageParams(stage,state)` auto-llena siguiente etapa (derivado no duplicado); `NextStageBanner` siembra navegación (`seedStage`).
 
 ### 2.26.3 Entregables
 | Entregable | Módulo HSCSG | Prioridad |
 |------------|--------------|-----------|
-| `docs/gaiaunion_backup.md` + `gaiaunion_integration.md` | Docs | **P0** |
-| `lib/gaiaunion.ts` (organism model) + `state/gaiaunion.ts` | NUEVO | **P0** |
-| Pantalla `/gaiaunion` (28ª) | NUEVO | **P0** |
+| `docs/gaia_ecohabitats_backup.md` + `gaia_ecohabitats_integration.md` | Docs | **P0** |
+| `lib/gaiaunion.ts` (organismo: niveles + 9 sistemas vitales + constitución + código genético + epigenética) | NUEVO | **P0** |
+| `state/gaiaunion.ts` + store (6 lugares: `useGaiaUnion`, `gaiaUnionState`, `organismHealth`, `vitalSystems`, `constitution`, `epigenetics`) | store | **P0** |
+| Pantalla `/gaiaunion` (28ª) — mapa de organismo vivo interactivo | NUEVO | **P0** |
 | BRIEF §2.26, vaso §3.5, matriz §9.2, §16 | Brief | **P0** |
 
 > **Nota de extirpación:** Fund externo USD, BioHabitats físicos reales, marca "Gaia Union" → ZNU/CaaS + `/base` + ontología del vaso.
+
+### 2.26.4 Conceptos NUEVOS NACIDOS (no existían en HSCSG v15 OS antes)
+1. **Organismo Vivo como Meta-Arquitectura** — reencuadre ontológico: módulos→órganos, loops→fisiología.
+2. **9 Sistemas Vitales Mapeados 1:1** — correspondencia biológica explícita (Nervioso, Circulatorio, Homeostático, Metabólico, Aprendizaje, Evolutivo, Investigación, Territorial-físico, Territorial-encuentro).
+3. **Constitución=ADN / Código Genético=Valores / Epigenética=Gobernanza** — triple capa ontológica unificando MJ (3 Leyes) + MJ Gate + CDS.
+4. **BioHabitats = `/base` medido en territorio real** — 13 pilares AUT como "signos vitales" territoriales.
+5. **BioHubs = Federación DTN/AP + Círculos Dunbar** — nodos físicos de encuentro = círculos biomiméticos (3-13, 13-150) federados.
+6. **Matchmaker como Emparejamiento Célula-Órgano** — no solo asignar tareas; emparejar células con necesidades de órganos según peso fisiológico.
+7. **Feedback como Sistema Nervioso Autónomo** — FRS retroalimenta cada órgano vía `routeFeedback` como impulsos nerviosos.
+8. **IVC como Salud del Organismo** — IVC = 1 - σᵤ×(1-η)×(1-ξ_norm) ≥ 0.85 tiene base ontológica biológica.
+
+### 2.26.5 Conceptos ETAPAS DE EVOLUCIÓN (refinamientos de lo existente)
+1. Pipeline CDS→OAD→COS→ITC→FRS → **Sistema Nervioso + Circulatorio** (metafísica operativa, no lógica nueva).
+2. ZNU/ITC/Trustlines → **Sangre/Flujos Circulatorios** (economía postmonetaria con anclaje biológico).
+3. CDS + Wisdom Council → **Homeostasis / Sistema Inmune** (gobernanza equilibra, protege, no daña — Ley I).
+4. Solarpunk/Tekitl → **Metabolismo Regenerativo** (intercambio = transformación de recursos en valor vivo).
+5. Colaberry/Aprender/Oracle → **Aprendizaje / Memoria / Investigación** (módulos conocimiento con roles fisiológicos).
+6. Conector `/flujo` + `deriveStageParams` → **Reflejos / Vías Nerviosas Rápidas** (ponytail materializado).
+7. Fases HSCSG 0-D → **Ontogénesis del Organismo** (Proto-CO=blastocisto → Fase A=gastrulación → Fase B=organogénesis → Fase C=maduro → Fase D=federación).
 
 ## 2.27 Cierre del Loop del Pipeline (actuator) — CORRECCIÓN de limitación
 
