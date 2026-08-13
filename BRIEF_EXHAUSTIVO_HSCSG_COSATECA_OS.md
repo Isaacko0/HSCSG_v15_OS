@@ -1,7 +1,7 @@
 # BRIEF EXHAUSTIVO QUIRÚRGICO: HSCSG — Modelo de Negocio, HSCSG v15 OS & Cosateca OS
 **Documento fundacional v1.0 | Zeitnus / Isaac Ko | Agosto 2026**
 **Metodología:** 4 Fases (Desempaquetado → Limpieza → GitHub → Evolución) + Sistema Alráico (G1-CARMIS)
-**Fuentes primarias:** 23 integraciones documentadas en `HSCSG_v15_OS/docs/`, informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados + **Copiosis v7.1 (backup + integración completa)**.
+**Fuentes primarias:** 24 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM con backup + integración completa), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
 
 ---
 
@@ -24,7 +24,8 @@
 16. [Conclusión: Soberanía Operacional Verificable](#16-conclusión)
 [Anexo A: Glosario Unificado](#anexo-a-glosario-unificado)
 [Anexo B: Tabla de Mapeo](#anexo-b-tabla-de-mapeo)
-[Anexo C: Value Equation & ValueFlows Types](#anexo-c-value-equation--valueflows-types)
+[Anexo C: Value Equation & ValueFlows Types](#anexo-c-value-equation--valueflows-types)  
+[17. Implementación UI — Sesión 2026-08-12](#17-implementación-ui--sesión-2026-08-12-evidence-model--delegación--capabilities)
 
 ---
 
@@ -1466,4 +1467,65 @@ interface CaaSMember {
 *Backup Copiosis: `docs/copiosis_backup.md` | Integración: `docs/copiosis_integration.md`*  
 *Backup AuroraGov: `docs/aurora_gov_backup.md` | Integración: `docs/aurora_gov_integration.md`*  
 *Backup Shivarthu: `docs/shivarthu_backup.md` | Integración: `docs/shivarthu_integration.md`*  
-*Backup CompAI CRM: `docs/compai_crm_backup.md` | Integración: `docs/compai_crm_integration.md`*
+*Backup CompAI CRM: `docs/compai_crm_backup.md` | Integración: `docs/compai_crm_integration.md`*  
+
+---
+
+## 17. IMPLEMENTACIÓN UI — SESIÓN 2026-08-12 (Evidence Model + Delegación + Capabilities)
+
+Esta sesión cerró el ciclo **asimilación → implementación real** de 4 repos en HSCSG v15 OS. No fue solo documentación: el código está en `src/` y pusheado a `origin/master`.
+
+### 17.1 Stack de asimilación (4 repos, +78 conceptos nacidos en `docs/NUEVOS_CONCEPTOS_vs_EVOLUCION.md`)
+| Repo | Aporte core | Módulo HSCSG resultante |
+|------|-----------|------------------------|
+| Gaia Union | Organismo vivo (9 sistemas vitales) | `lib/gaiaunion.ts` (ontología del vaso) |
+| AuroraGov | Departamentos por expertise, Vouching, Randomized Tax | `lib/delegation.ts` (Power Delegation) |
+| Shivarthu | Score Schelling outlier removal, Commit-Reveal, Voto por Mérito | `lib/evidence.ts` (scoreSchelling) |
+| CompAI CRM | Evidence Model (no confidence), Fact Bands, Write Path 3 reglas, Capabilities optional, Data Boundaries | `lib/evidence.ts` (scoreEvidence/bandFor) + `lib/capacidades.ts` |
+
+### 17.2 Archivos creados/modificados (P0a + P0b + P1 + P2)
+**Lógica**
+- `src/core/lib/evidence.ts` ✨ NUEVO — `scoreEvidence`, `bandFor`, `scoreSchelling`, `WEIGHTS`, tipos `EvidenceKind`/`FactBand`/`Evidence`/`Scored`
+- `src/core/lib/delegation.ts` ✨ NUEVO — `delegatePower`, `revokeDelegation`, `delegationTree`, `expertInfluence`
+- `src/core/lib/capacidades.ts` ✨ NUEVO — `toggleCapability`, `nodePerimeter`
+- `src/core/lib/kleros.ts` — `addEvidence` calcula `band` automáticamente
+- `src/core/lib/integral.ts` — `raiseIssueWithEvidence` auto-ejecuta si `VERIFIED`
+- `src/core/state/{delegation,capacidades}.ts` ✨ NUEVO — tipos + seed
+- `src/core/state/kleros.ts` — `EvidenceRecord` extendido con `kind`/`band`/`score`/`detail`
+- `src/core/state/integral.ts` — `Issue` extendido con `evidence`/`band`/`score`
+- `src/core/state/store.ts` — cableo de 3 módulos nuevos + acciones
+
+**UI**
+- `src/components/ui.tsx` — `FactBandBadge`, `EvidenceLedger`, `ScoreSchellingChart`
+- `src/app/screens/Justicia.tsx` — adjunta evidencia con `kind` + URL → banda calculada; chart Schelling
+- `src/app/screens/Integral.tsx` — Fact Bands en issues; VERIFIED auto-ejecuta; Lucidez 2.0 ("por qué el nodo decidió")
+- `src/app/screens/Delegacion.tsx` ✨ NUEVO — árbol de delegación por dominio + influencia de expertos
+- `src/app/screens/Capacidades.tsx` ✨ NUEVO — modo anfibio + capabilities + perímetro (jardín cerrado)
+- Router: `App.tsx`, `Aside.tsx`, `Header.tsx` (SCREENS), `i18n.ts` — 2 rutas nuevas
+
+**Tests (P2)**
+- `vitest.config.ts` ✨ NUEVO — alias `@core`/`@components`/`@app` + environment node
+- `src/core/lib/evidence.test.ts` ✨ NUEVO — 9 tests
+- `src/core/lib/delegation.test.ts` ✨ NUEVO — 5 tests
+- `src/core/lib/capacidades.test.ts` ✨ NUEVO — 6 tests
+
+### 17.3 Principio rector de la nueva UI (Ley III aplicada a la epistemología)
+> **Evidencia sobre Confianza.** El nodo reporta *qué observó* (Evidence Model), no *qué tan seguro está* (prohibido calificar su propia certeza). VERIFIED (≥0.85 + primary) auto-ejecuta; PROBABLE/POSSIBLE requieren ratificación humana; contradiction atenúa bajo 0.45.
+
+### 17.4 Estado de verificación
+- `npm run build` → **0 errores** (1669 módulos transformados)
+- `npx vitest run` → **20/20 tests pasan**
+- Git: 5 commits pusheados a `origin/master` en la sesión:
+  - `0996e4b` docs: asimilación CompAI CRM
+  - `924d4e6` feat(justicia): Evidence Model + Score Schelling
+  - `f544f0c` feat(integral): P0b Fact Bands + Lucidez 2.0
+  - `001db4a` feat(P1): Delegación + Capabilities
+  - `6be1c7a` test(P2): 20 tests vitest
+
+### 17.5 Pendiente (siguiente sesión)
+- P3: `commit-reveal` voting en Symbiosky (Shivarthu) — `lib/symbiosky.ts`
+- P3: `voto por mérito` (reputation×experience×externality) en CDS — `lib/integral.ts`
+- P3: e2e de flujo VERIFIED→auto-ejecuta en `/integral`
+- Asimilar resto de la lista de 24 repos documentados en `docs/`
+
+*Fin sección 17 — implementación sesión 2026-08-12.*
