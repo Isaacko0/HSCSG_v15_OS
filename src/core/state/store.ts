@@ -41,6 +41,8 @@ import type { DemocracyState } from '@core/state/democracia'
 import type { LearningState } from '@core/state/learning'
 import type { OracleState } from '@core/state/oracle'
 import type { GaiaUnionState } from '@core/state/gaiaunion'
+import type { DelegationState, DomainKey } from '@core/state/delegation'
+import type { CapabilityState, CapabilityKey } from '@core/state/capacidades'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -75,6 +77,10 @@ import { makeDemocracyState, electRep } from '@core/lib/democracia'
 import { makeLearningState, completeChallenge, addChallenge } from '@core/lib/learning'
 import { makeOracleState, askQuery, castOracleVote, resolveOracle } from '@core/lib/oracle'
 import { makeGaiaUnionState } from '@core/lib/gaiaunion'
+import { delegatePower, revokeDelegation } from '@core/lib/delegation'
+import { toggleCapability } from '@core/lib/capacidades'
+import { makeDelegationState } from '@core/state/delegation'
+import { makeCapabilityState } from '@core/state/capacidades'
 import { dispatchMatch, autoAdvisory, applyDecisionTo, znuDecayOnBalance } from '@core/lib/pipeline'
 import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
@@ -222,6 +228,10 @@ export interface AppState {
   oraculo: OracleState
   // Gaia Union (organismo vivo regenerativo)
   gaiaunion: GaiaUnionState
+  // Power Delegation (AuroraGov + Symbiosky): liquid democracy local por dominio
+  delegation: DelegationState
+  // Capabilities (CompAI CRM): optional by default, jardín cerrado offline
+  capacidades: CapabilityState
   // Conector de flujo: params sembrados para la siguiente pantalla (auto-llenado)
   stageSeeds: Record<string, Record<string, unknown>>
   // actions
@@ -350,6 +360,11 @@ export interface AppState {
   resolveOracleQuery: (queryId: string) => void
   // Gaia Union (organismo vivo)
   setEpigeneticMode: (mode: 'estable' | 'adaptativo') => void
+  // Power Delegation
+  delegatePower: (from: string, to: string, domain: DomainKey, weight?: number) => void
+  revokeDelegation: (from: string, domain: DomainKey) => void
+  // Capabilities
+  toggleCapability: (key: CapabilityKey) => void
   // Conector de flujo
   seedStage: (target: string, params: Record<string, unknown>) => void
   pipeDispatch: (needTitle: string, assignee: string) => void
@@ -670,6 +685,10 @@ export const useAppStore = create<AppState>()(
       oraculo: makeOracleState(),
       // Gaia Union (organismo vivo regenerativo)
       gaiaunion: makeGaiaUnionState(),
+      // Power Delegation (AuroraGov + Symbiosky)
+      delegation: makeDelegationState(),
+      // Capabilities (CompAI CRM)
+      capacidades: makeCapabilityState(),
       // Conector de flujo
       stageSeeds: {},
 
@@ -1008,6 +1027,17 @@ export const useAppStore = create<AppState>()(
       }),
       // ===== Gaia Union (organismo vivo) =====
       setEpigeneticMode: (mode) => set((st) => ({ gaiaunion: { ...st.gaiaunion, epigeneticMode: mode } })),
+      // ===== Power Delegation (AuroraGov + Symbiosky) =====
+      delegatePower: (from, to, domain, weight = 1) => set((st) => ({
+        delegation: delegatePower(st.delegation, from, to, domain, weight),
+      })),
+      revokeDelegation: (from, domain) => set((st) => ({
+        delegation: revokeDelegation(st.delegation, from, domain),
+      })),
+      // ===== Capabilities (CompAI CRM) =====
+      toggleCapability: (key) => set((st) => ({
+        capacidades: toggleCapability(st.capacidades, key, st.nodeMode),
+      })),
       // ===== Conector de flujo (auto-llenado entre pantallas) =====
       seedStage: (target, params) => set((st) => ({
         stageSeeds: { ...st.stageSeeds, [target]: params },

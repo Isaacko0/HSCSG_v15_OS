@@ -32,6 +32,8 @@ import { Mundus } from '@app/screens/Mundus'
 import { Life } from '@app/screens/Life'
 import { Civilizaciones } from '@app/screens/Civilizaciones'
 import { Celulas } from '@app/screens/Celulas'
+import { Delegacion } from '@app/screens/Delegacion'
+import { Capacidades } from '@app/screens/Capacidades'
 
 export function App() {
   return (
@@ -69,6 +71,8 @@ export function App() {
         <Route path="life" element={<Life />} />
         <Route path="civilizaciones" element={<Civilizaciones />} />
         <Route path="celulas" element={<Celulas />} />
+        <Route path="delegacion" element={<Delegacion />} />
+        <Route path="capacidades" element={<Capacidades />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

@@ -48,6 +48,8 @@ export const I18N: Dict = {
   'nav.life': { es: 'Life · Organizador', en: 'Life · Organizer', pt: 'Life · Organizador' },
   'nav.civilizaciones': { es: 'Civilizaciones', en: 'Civilizations', pt: 'Civilizações' },
   'nav.celulas': { es: 'Células · Tejido', en: 'Cells · Tissue', pt: 'Células · Tecido' },
+  'nav.delegacion': { es: 'Delegación', en: 'Delegation', pt: 'Delegação' },
+  'nav.capacidades': { es: 'Capabilities', en: 'Capabilities', pt: 'Capabilities' },
 
   // Títulos de módulos (h1)
   'title.base': { es: 'Base Material', en: 'Material Base', pt: 'Base Material' },

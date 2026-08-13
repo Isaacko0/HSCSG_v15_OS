@@ -1,6 +1,7 @@
 import {
   Mountain, Database, Eye, Users, Cpu, Coins, LayoutDashboard, Network, Users2, Bot, Leaf, MessagesSquare, ListChecks, Unlock, Link2, Briefcase, ShieldHalf, RefreshCw, Globe, LifeBuoy, Compass, Scale, Award, Landmark, GraduationCap, HelpCircle, Workflow, Dna, Waypoints,
   ChevronsLeft, ChevronsRight,
+  GitBranch, ShieldCheck,
 } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAppStore } from '@core/state/store'
@@ -40,6 +41,8 @@ const NAV_ITEMS = [
   { key: 'life', navKey: 'nav.life', icon: LifeBuoy, color: 'text-emerald-400', path: '/life' },
   { key: 'civilizaciones', navKey: 'nav.civilizaciones', icon: Compass, color: 'text-emerald-400', path: '/civilizaciones' },
   { key: 'celulas', navKey: 'nav.celulas', icon: Network, color: 'text-emerald-400', path: '/celulas' },
+  { key: 'delegacion', navKey: 'nav.delegacion', icon: GitBranch, color: 'text-emerald-400', path: '/delegacion' },
+  { key: 'capacidades', navKey: 'nav.capacidades', icon: ShieldCheck, color: 'text-amber-400', path: '/capacidades' },
 ] as const
 
 interface AsideProps {

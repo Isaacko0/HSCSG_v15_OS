@@ -11,6 +11,8 @@ const SCREENS: Record<string, string> = {
   automata: 'Autómata v2 · Leyes MJ',
   znu: 'ZNU v2 · Soberanía Material',
   verificacion: 'Verificación Triaxial',
+  delegacion: 'Delegación de Poder (liquid democracy local)',
+  capacidades: 'Capabilities (jardín cerrado)',
 }
 
 export function Header({ collapsed, onToggleCollapse, onToggleNav, isMobile, navOpen }: {
