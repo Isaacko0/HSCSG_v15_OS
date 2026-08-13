@@ -56,7 +56,8 @@ import {
   logHours, completeVolunteer, mintCoins, appendTimeline, declareTalent
 } from '@core/lib/tekitl'
 import { makeSovereigntyState, cellKey, patternTheoryScore } from '@core/lib/sovereignty'
-import { makeIntegralState, raiseIssue, ratifyDecision, certifyDesign, logLabor, awardCredits, ingestSignal, recommend, promoteRecommendation } from '@core/lib/integral'
+import { makeIntegralState, raiseIssue, raiseIssueWithEvidence, ratifyDecision, certifyDesign, logLabor, awardCredits, ingestSignal, recommend, promoteRecommendation } from '@core/lib/integral'
+import type { Evidence } from '@core/lib/evidence'
 import { makeMundusState } from '@core/lib/mundus'
 import { makeLifeState, addGoal, toggleNext, toggleCompleted, removeGoal, setNotes } from '@core/lib/life'
 import { makeCivilizacionesState } from '@core/lib/civilizaciones'
@@ -298,6 +299,7 @@ export interface AppState {
   computePatternScore: () => void
   // Integral
   raiseIntegralIssue: (title: string, raisedBy: string) => void
+  raiseIntegralIssueWithEvidence: (title: string, raisedBy: string, evidence: Evidence[]) => void
   ratifyIntegralDecision: (issueId: string, decision: string, context: string, reasoning: string, supersedes?: string) => void
   certifyIntegralDesign: (title: string, ecoScore: number) => void
   logIntegralLabor: (projectId: string, participant: string, hours: number) => void
@@ -883,6 +885,9 @@ export const useAppStore = create<AppState>()(
       // ---- Integral (asimilado de Integral Collective: 9 repos) ----
       raiseIntegralIssue: (title, raisedBy) => set((st) => ({
         integral: { ...st.integral, issues: [...st.integral.issues, raiseIssue(title, raisedBy)] },
+      })),
+      raiseIntegralIssueWithEvidence: (title, raisedBy, evidence) => set((st) => ({
+        integral: { ...st.integral, issues: [...st.integral.issues, raiseIssueWithEvidence(title, raisedBy, evidence)] },
       })),
       ratifyIntegralDecision: (issueId, decision, context, reasoning, supersedes) => set((st) => {
         const r = ratifyDecision(st.integral.issues, issueId, decision, context, reasoning, supersedes)

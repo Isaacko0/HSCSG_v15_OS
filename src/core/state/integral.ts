@@ -10,6 +10,10 @@ export interface Issue {
   raisedBy: string
   status: 'open' | 'deliberating' | 'decided' | 'dispatched'
   createdAt: number
+  // Evidence Model (CompAI CRM): cada issue lleva evidencias + band calculado
+  evidence?: { kind: string; text: string; sourceUrl?: string }[]
+  band?: 'VERIFIED' | 'PROBABLE' | 'POSSIBLE' | null
+  score?: number
 }
 
 export interface DecisionRecord {

@@ -5,7 +5,8 @@ import {
 import { useAppStore } from '@core/state/store'
 import { systemHealth, diagnose } from '@core/lib/integral'
 import type { IntegralSystem } from '@core/state/integral'
-import { Card, Stat, Btn, Badge } from '@components/ui'
+import { Card, Stat, Btn, Badge, FactBandBadge } from '@components/ui'
+import { type Evidence, type EvidenceKind } from '@core/lib/evidence'
 import { NextStageBanner } from '@components/NextStageBanner'
 import { t } from '@core/lib/i18n'
 
@@ -18,8 +19,11 @@ const SYS: { key: IntegralSystem; labelKey: string; icon: any; color: string; de
 ]
 
 export function Integral() {
-  const { integral, raiseIntegralIssue, certifyIntegralDesign, logIntegralLabor, awardIntegralCredits, ingestIntegralSignal, recommendIntegral, promoteRecommendation, lang } = useAppStore()
+  const { integral, raiseIntegralIssue, raiseIntegralIssueWithEvidence, certifyIntegralDesign, logIntegralLabor, awardIntegralCredits, ingestIntegralSignal, recommendIntegral, promoteRecommendation, lucidez, lang } = useAppStore()
   const [newIssue, setNewIssue] = useState('')
+  const [newEvidence, setNewEvidence] = useState('')
+  const [newEvidenceKind, setNewEvidenceKind] = useState<EvidenceKind>('cds.consensus')
+  const [evidenceDraft, setEvidenceDraft] = useState<Evidence[]>([])
   const [newDesign, setNewDesign] = useState({ title: '', eco: 80 })
   const [newSignal, setNewSignal] = useState({ from: 'COS' as IntegralSystem, sev: 'warning' as 'info' | 'warning' | 'critical', finding: '' })
   const [newLabor, setNewLabor] = useState({ projectId: 'p1', participant: 'Isaac Ko', hours: 4 })
@@ -71,10 +75,43 @@ export function Integral() {
         <Card title={t('integ.cdsCard', lang)}>
           <div className="space-y-1 mb-2">
             {integral.issues.map((i) => (
-              <div key={i.id} className="flex items-center justify-between text-sm">
+              <div key={i.id} className="flex items-center justify-between text-sm flex-wrap gap-1">
                 <span>{i.title} <Badge color="text-violet-400">{i.status}</Badge></span>
+                {i.band && <FactBandBadge band={i.band} score={i.score} />}
+                {i.band === 'VERIFIED' && <Badge color="bg-emerald-500/20 text-emerald-300">auto-ejecutada</Badge>}
               </div>
             ))}
+          </div>
+          {/* Draft de evidencia (Evidence Model) */}
+          <div className="mb-2 p-2 rounded border border-[var(--line)] space-y-1">
+            <div className="text-xs text-[var(--dim)]">Evidencia del issue (Fact Bands — CompAI CRM)</div>
+            {evidenceDraft.map((e, idx) => (
+              <div key={idx} className="flex items-center gap-1 text-xs">
+                <Badge color="border-[var(--line)] text-[var(--mut)]">{e.kind}</Badge>
+                <span>{e.detail}</span>
+              </div>
+            ))}
+            <div className="flex gap-1">
+              <select
+                value={newEvidenceKind}
+                onChange={e => setNewEvidenceKind(e.target.value as EvidenceKind)}
+                className="px-2 py-1 bg-[var(--surf2)] border border-[var(--line)] rounded-xl text-[var(--ink)] text-xs"
+              >
+                <option value="cds.consensus">cds.consensus (0.80)</option>
+                <option value="aut.observation">aut.observation (0.85)</option>
+                <option value="crm.signature-block">crm.signature-block (0.80)</option>
+                <option value="web.cited-claim">web.cited-claim (0.40)</option>
+                <option value="employer-only">employer-only (0.20)</option>
+                <option value="contradiction">contradiction (0.00)</option>
+              </select>
+              <input
+                placeholder="texto de observación"
+                value={newEvidence}
+                onChange={e => setNewEvidence(e.target.value)}
+                className="flex-1 px-2 py-1 bg-[var(--surf2)] border border-[var(--line)] rounded-xl text-[var(--ink)] text-xs"
+              />
+              <Btn variant="ghost" onClick={() => { if (newEvidence.trim()) { setEvidenceDraft([...evidenceDraft, { kind: newEvidenceKind, detail: newEvidence }]); setNewEvidence('') } }}>＋</Btn>
+            </div>
           </div>
           <div className="flex gap-2">
             <input
@@ -83,8 +120,17 @@ export function Integral() {
               onChange={e => setNewIssue(e.target.value)}
               className="flex-1 px-3 py-2 bg-[var(--surf2)] border border-[var(--line)] rounded-xl text-[var(--ink)] text-sm"
             />
-            <Btn onClick={() => { if (newIssue.trim()) { raiseIntegralIssue(newIssue, 'Isaac Ko'); setNewIssue('') } }}>{t('integ.raise', lang)}</Btn>
+            <Btn
+              onClick={() => {
+                if (newIssue.trim()) {
+                  if (evidenceDraft.length > 0) raiseIntegralIssueWithEvidence(newIssue, 'Isaac Ko', evidenceDraft)
+                  else raiseIntegralIssue(newIssue, 'Isaac Ko')
+                  setNewIssue(''); setEvidenceDraft([])
+                }
+              }}
+            >{t('integ.raise', lang)}</Btn>
           </div>
+          <p className="text-xs text-[var(--dim)] mt-2">Con evidencia: VERIFIED auto-ejecuta · PROBABLE/POSSIBLE quedan para ratificar. Sin evidencia: issue abierto normal.</p>
           {integral.decisions.map((d) => (
             <div key={d.id} className="mt-2 p-2 rounded border border-[var(--line)] text-xs">
               <Badge color="text-sky-400">{d.id}</Badge> {d.decision}
@@ -194,7 +240,8 @@ export function Integral() {
         <span className="text-xs text-[var(--dim)]">{t('integ.footer', lang)}</span>
       </div>
 
-      {/* Modo Lucidez: datos crudos / provenance (ocultos por defecto) */}
+      {/* Modo Lucidez: datos crudos / provenance (visible SOLO si Modo Lucidez ON — Ley III) */}
+      {lucidez && (
       <div className="lucidez-raw mt-4 p-4 rounded-xl border border-chispa/40 bg-[var(--surf2)] text-sm space-y-2">
         <p className="font-manrope font-semibold text-chispa">{t('integ.rawTitle', lang)}</p>
         <p className="text-[var(--dim)]">{t('integ.raw1', lang)} <strong className="text-[var(--ink)]">{health}</strong>/100.</p>
@@ -205,8 +252,20 @@ export function Integral() {
             <li key={s.id}>{s.fromSystem} → {s.severity}: {s.finding} (ts {new Date(s.ts).toISOString()})</li>
           ))}
         </ul>
+        {/* Lucidez 2.0 (Ley III + Evidence Model): por qué el nodo decidió cada issue */}
+        <p className="font-manrope font-semibold text-chispa mt-3">Lucidez 2.0 · Por qué el nodo decidió (Evidence Model)</p>
+        <ul className="list-disc list-inside text-[var(--dim)] text-xs space-y-1">
+          {integral.issues.filter((i) => i.band).map((i) => (
+            <li key={i.id}>
+              <strong className="text-[var(--ink)]">{i.title}</strong> → band {i.band} (score {i.score}).
+              Evidencias: {i.evidence?.map((e) => `${e.kind}: ${e.text}`).join(' · ') || 'ninguna'}
+            </li>
+          ))}
+          {integral.issues.filter((i) => i.band).length === 0 && <li>Sin issues con evidencia aún. Adjunta observaciones para ver el razonamiento del nodo.</li>}
+        </ul>
         <p className="text-[var(--dim)] text-xs">{t('integ.rawNote', lang)}</p>
       </div>
+      )}
     </div>
   )
 }

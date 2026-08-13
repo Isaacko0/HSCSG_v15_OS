@@ -5,6 +5,7 @@ import type {
   IntegralState, Issue, DecisionRecord, CertifiedDesign, LaborEvent, TimeCredit,
   SignalPacket, Recommendation, IntegralSystem,
 } from '@core/state/integral'
+import { scoreEvidence, type Evidence } from '@core/lib/evidence'
 
 const uid = () => Math.random().toString(36).slice(2, 10)
 const now = () => Date.now()
@@ -13,6 +14,26 @@ let drSeq = 1
 // ---- CDS: Collaborative Decision System ----
 export function raiseIssue(title: string, raisedBy: string): Issue {
   return { id: uid(), title, raisedBy, status: 'open', createdAt: now() }
+}
+
+// Evidence Model (CompAI CRM): abrir issue CON evidencias → band calculada
+// automáticamente. VERIFIED auto-ejecuta; PROBABLE/POSSIBLE requiere ratificar.
+export function raiseIssueWithEvidence(
+  title: string,
+  raisedBy: string,
+  evidence: Evidence[],
+): Issue {
+  const scored = scoreEvidence(evidence)
+  return {
+    id: uid(),
+    title,
+    raisedBy,
+    status: scored.band === 'VERIFIED' ? 'decided' : 'open',
+    createdAt: now(),
+    evidence: evidence.map((e) => ({ kind: e.kind, text: e.detail, sourceUrl: e.sourceUrl })),
+    band: scored.band,
+    score: Number(scored.score.toFixed(2)),
+  }
 }
 
 export function ratifyDecision(
