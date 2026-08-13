@@ -1,4 +1,4 @@
-import { CreditCard, Palette, UsersRound, Link, Plug, Download, LogOut, Trash2, X, ChevronRight, Info } from 'lucide-react'
+import { CreditCard, Palette, UsersRound, Link, Plug, Download, LogOut, Trash2, X, ChevronRight, Info, Facebook } from 'lucide-react'
 import { useAppStore } from '@core/state/store'
 
 export function AccountMenu() {
@@ -15,6 +15,10 @@ export function AccountMenu() {
     { label: 'Exportar mis datos', note: 'base material, CAC, ValueFlows, PVSO en JSON', icon: Download, color: 'var(--mut)' },
     { label: 'Cerrar sesión', note: 'en este dispositivo', icon: LogOut, color: 'var(--mut)' },
     { label: 'Reiniciar nodo', note: 'borra toda la base material local', icon: Trash2, color: '#b0245a' },
+  ]
+
+  const contactItems = [
+    { label: 'Contacto', note: 'facebook.com/Isaack0o', icon: Facebook, color: '#1877f2', href: 'https://www.facebook.com/Isaack0o/' },
   ]
 
   return (
@@ -59,6 +63,26 @@ export function AccountMenu() {
                   </div>
                   <ChevronRight className="w-4 h-4 text-[var(--dim)] flex-shrink-0" aria-hidden="true" />
                 </button>
+              </li>
+            ))}
+          </ul>
+          <ul className="divide-y divide-[var(--lineq)]" role="list">
+            {contactItems.map((item, i) => (
+              <li key={`c${i}`}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-4 py-3 text-left flex items-center gap-3 hover:bg-[var(--surf2)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-chispa"
+                  style={{ color: item.color }}
+                >
+                  <item.icon className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                  <div className="flex-1 min-w-0 text-left">
+                    <p className="font-manrope font-medium text-sm truncate">{item.label}</p>
+                    <p className="text-[var(--dim)] text-xs truncate">{item.note}</p>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-[var(--dim)] flex-shrink-0" aria-hidden="true" />
+                </a>
               </li>
             ))}
           </ul>
