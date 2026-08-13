@@ -36,6 +36,21 @@ export function raiseIssueWithEvidence(
   }
 }
 
+// Voto por Mérito (Shivarthu): el peso del voto de un miembro NO depende de su
+// stake, sino de su mérito = reputación × experiencia × externalidad positiva.
+// Normalizados 0-1 para que el producto sea comparable entre dominios.
+export function validateProposalScore(
+  reputation: number, // 0-100
+  experience: number, // 0-50 años o proyectos
+  externality: number, // 0-100 (validación de externalidad positiva, Shivarthu)
+): { weight: number; breakdown: { rep: number; exp: number; ext: number } } {
+  const rep = Math.max(0, Math.min(1, reputation / 100))
+  const exp = Math.max(0, Math.min(1, experience / 50))
+  const ext = Math.max(0, Math.min(1, externality / 100))
+  const weight = Number((rep * exp * ext).toFixed(3))
+  return { weight, breakdown: { rep, exp, ext } }
+}
+
 export function ratifyDecision(
   issues: Issue[],
   issueId: string,

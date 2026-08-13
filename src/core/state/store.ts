@@ -58,7 +58,6 @@ import {
   logHours, completeVolunteer, mintCoins, appendTimeline, declareTalent
 } from '@core/lib/tekitl'
 import { makeSovereigntyState, cellKey, patternTheoryScore } from '@core/lib/sovereignty'
-import { makeIntegralState, raiseIssue, raiseIssueWithEvidence, ratifyDecision, certifyDesign, logLabor, awardCredits, ingestSignal, recommend, promoteRecommendation } from '@core/lib/integral'
 import type { Evidence } from '@core/lib/evidence'
 import { makeMundusState } from '@core/lib/mundus'
 import { makeLifeState, addGoal, toggleNext, toggleCompleted, removeGoal, setNotes } from '@core/lib/life'
@@ -72,10 +71,11 @@ import {
 } from '@core/lib/kleros'
 import { makeAgenciaState, reversePlan } from '@core/lib/agencia'
 import { makeGaiaState, addBounty, completeBounty, formCouncil } from '@core/lib/gaia'
-import { makeCredibilityState, addProposal as symAddProposalFn, castVote as symCastVoteFn, createLock as symCreateLockFn, closeProposal as symCloseProposalFn, applyDecay as symApplyDecayFn } from '@core/lib/symbiosky'
-import { makeDemocracyState, electRep } from '@core/lib/democracia'
+import { makeCredibilityState, addProposal as symAddProposalFn, castVote as symCastVoteFn, createLock as symCreateLockFn, closeProposal as symCloseProposalFn, applyDecay as symApplyDecayFn, castCommit as symCastCommitFn, openReveal as symOpenRevealFn, revealVote as symRevealVoteFn } from '@core/lib/symbiosky'
+import { makeIntegralState, raiseIssue, raiseIssueWithEvidence, ratifyDecision, certifyDesign, logLabor, awardCredits, ingestSignal, recommend, promoteRecommendation, validateProposalScore } from '@core/lib/integral'
 import { makeLearningState, completeChallenge, addChallenge } from '@core/lib/learning'
 import { makeOracleState, askQuery, castOracleVote, resolveOracle } from '@core/lib/oracle'
+import { makeDemocracyState, electRep } from '@core/lib/democracia'
 import { makeGaiaUnionState } from '@core/lib/gaiaunion'
 import { delegatePower, revokeDelegation } from '@core/lib/delegation'
 import { toggleCapability } from '@core/lib/capacidades'
@@ -349,6 +349,12 @@ export interface AppState {
   symCreateLock: (voter: string, lockedZNU: number, level: 1 | 2 | 3 | 4 | 5, lockDays: number) => void
   symCloseProposal: (proposalId: string) => void
   symDecayTick: () => void
+  // Symbiosky commit-reveal (Shivarthu)
+  symCommitVote: (proposalId: string, voter: string, score: number, conviction: 1 | 2 | 3 | 4 | 5, salt: string) => void
+  symOpenReveal: (proposalId: string) => void
+  symRevealVote: (proposalId: string, voter: string, score: number, conviction: 1 | 2 | 3 | 4 | 5, salt: string) => void
+  // Voto por Mérito (Shivarthu en CDS)
+  validateIntegralMerit: (issueId: string, reputation: number, experience: number, externality: number) => void
   // Democracia
   electDeptRep: (deptId: string, rep: string, voter: string) => void
   // Aprender
@@ -1013,6 +1019,28 @@ export const useAppStore = create<AppState>()(
       symCreateLock: (voter, lockedZNU, level, lockDays) => set((st) => ({ symbiosky: symCreateLockFn(st.symbiosky, voter, lockedZNU, level, lockDays) })),
       symCloseProposal: (proposalId) => set((st) => ({ symbiosky: symCloseProposalFn(st.symbiosky, proposalId) })),
       symDecayTick: () => set((st) => ({ symbiosky: symApplyDecayFn(st.symbiosky, Date.now(), 365 * 86400000) })),
+      // ===== Symbiosky commit-reveal (Shivarthu) =====
+      symCommitVote: (proposalId, voter, score, conviction, salt) => set((st) => ({
+        symbiosky: symCastCommitFn(st.symbiosky, proposalId, voter, score, conviction, salt),
+      })),
+      symOpenReveal: (proposalId) => set((st) => ({
+        symbiosky: symOpenRevealFn(st.symbiosky, proposalId),
+      })),
+      symRevealVote: (proposalId, voter, score, conviction, salt) => set((st) => ({
+        symbiosky: symRevealVoteFn(st.symbiosky, proposalId, voter, score, conviction, salt),
+      })),
+      // ===== Voto por Mérito (Shivarthu en CDS) =====
+      validateIntegralMerit: (issueId, reputation, experience, externality) => set((st) => {
+        const { weight } = validateProposalScore(reputation, experience, externality)
+        return {
+          integral: {
+            ...st.integral,
+            issues: st.integral.issues.map((i) =>
+              i.id === issueId ? { ...i, merit: { reputation, experience, externality, weight } } : i,
+            ),
+          },
+        }
+      }),
       // ===== Democracia DPoS por expertise (iambrainstorming) =====
       electDeptRep: (deptId, rep, voter) => set((st) => ({ democracia: electRep(st.democracia, deptId, rep, voter) })),
       // ===== Aprendizaje por retos (iambrainstorming) =====

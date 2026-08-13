@@ -37,6 +37,10 @@ export interface Proposal {
   /** votes: address(nodo) -> { score 1-10, convictionLevel } */
   votes: Record<string, { score: number; conviction: ConvictionLevel }>
   createdAt: number
+  /** FASE de votación (Shivarthu commit-reveal): 'commit' -> 'reveal' -> 'closed' */
+  phase: 'commit' | 'reveal' | 'closed'
+  /** commits pendientes: voter -> { hash, salt } (revelados en fase reveal) */
+  commits: Record<string, { hash: string; salt: string }>
 }
 
 export interface ConvictionLock {
@@ -140,6 +144,8 @@ export function addProposal(st: CredibilityState, title: string, author: string)
     author,
     votes: {},
     createdAt: Date.now(),
+    phase: 'commit',
+    commits: {},
   }
   return { ...st, proposals: [...st.proposals, p] }
 }
@@ -202,3 +208,68 @@ export function applyDecay(st: CredibilityState, now: number, yearMs: number): C
   }
   return { ...st, balances }
 }
+
+// ============ COMMIT-REVEAL VOTING (Shivarthu) ============
+// El votante primero compromete un HASH(score+conviction+salt) en fase 'commit'.
+// Solo en fase 'reveal' expone score/conviction/salt; si el hash coincide, el voto
+// cuenta. Esto evita votación estratégica copiando a otros (el voto es secreto hasta reveal).
+export function commitHash(score: number, conviction: number, salt: string): string {
+  // hash determinista offline (FNV-1a simplificado) — suficiente para commit-reveal local
+  const msg = `${score}|${conviction}|${salt}`
+  let h = 2166136261
+  for (let i = 0; i < msg.length; i++) {
+    h ^= msg.charCodeAt(i)
+    h = Math.imul(h, 16777619)
+  }
+  return (h >>> 0).toString(16).padStart(8, '0')
+}
+
+export function castCommit(
+  st: CredibilityState,
+  proposalId: string,
+  voter: string,
+  score: number,
+  conviction: ConvictionLevel,
+  salt: string,
+): CredibilityState {
+  const hash = commitHash(score, conviction, salt)
+  return {
+    ...st,
+    proposals: st.proposals.map((p) =>
+      p.id === proposalId && p.phase === 'commit'
+        ? { ...p, commits: { ...p.commits, [voter]: { hash, salt } } }
+        : p,
+    ),
+  }
+}
+
+export function openReveal(st: CredibilityState, proposalId: string): CredibilityState {
+  return {
+    ...st,
+    proposals: st.proposals.map((p) =>
+      p.id === proposalId && p.phase === 'commit' ? { ...p, phase: 'reveal' } : p,
+    ),
+  }
+}
+
+export function revealVote(
+  st: CredibilityState,
+  proposalId: string,
+  voter: string,
+  score: number,
+  conviction: ConvictionLevel,
+  salt: string,
+): CredibilityState {
+  return {
+    ...st,
+    proposals: st.proposals.map((p) => {
+      if (p.id !== proposalId || p.phase !== 'reveal') return p
+      const c = p.commits[voter]
+      if (!c || c.salt !== salt) return p // salt no coincide: commit inválido
+      const expected = commitHash(score, conviction, salt)
+      if (c.hash !== expected) return p // hash no coincide: voto rechazado (tamper)
+      return { ...p, votes: { ...p.votes, [voter]: { score, conviction } } }
+    }),
+  }
+}
+

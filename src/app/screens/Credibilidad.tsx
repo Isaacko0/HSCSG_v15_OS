@@ -7,13 +7,15 @@ import {
 import { useAppStore } from '@core/state/store'
 
 export function Credibilidad() {
-  const { symbiosky, symAddProposal, symCreateLock, symCloseProposal } = useAppStore()
+  const { symbiosky, symAddProposal, symCreateLock, symCloseProposal, symCommitVote, symOpenReveal, symRevealVote } = useAppStore()
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('Nodo Cosateca')
   const [score, setScore] = useState(8)
   const [conv, setConv] = useState<ConvictionLevel>(3)
   const [lockZNU, setLockZNU] = useState(100)
   const [lockDays, setLockDays] = useState(365)
+  const [salt, setSalt] = useState('')
+  const [activeProp, setActiveProp] = useState<string | null>(null)
 
   const memberIds = Object.keys(symbiosky.balances)
   const voter = memberIds[0] ?? 'nodo'
@@ -103,7 +105,7 @@ export function Credibilidad() {
           {' '}{maxConvictionForLock(lockDays)} (lock {lockDays}d).</p>
       </Card>
 
-      {/* Lista de propuestas con resultados */}
+      {/* Lista de propuestas con resultados + commit-reveal (Shivarthu) */}
       {proposals.length === 0 ? (
         <EmptyState>Aún no hay propuestas. Crea una arriba para empezar a monetizar credibilidad.</EmptyState>
       ) : (
@@ -112,10 +114,14 @@ export function Credibilidad() {
             const { meanScore, totalConviction } = weightedConviction(p)
             const passes = meetsThreshold(p)
             const res = symbiosky.results[p.id]
+            const isActive = activeProp === p.id
             return (
               <Card key={p.id} title={p.title}>
                 <div className="text-sm space-y-1">
-                  <div>Autor: <b>{p.author}</b></div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span>Autor: <b>{p.author}</b></span>
+                    <Badge color={p.phase === 'commit' ? 'bg-amber-500/20 text-amber-300' : p.phase === 'reveal' ? 'bg-sky-500/20 text-sky-300' : 'bg-zinc-500/20 text-zinc-300'}>fase: {p.phase}</Badge>
+                  </div>
                   <div>Votos: {Object.keys(p.votes).length} · Convicción ponderada: {totalConviction}</div>
                   <div>Score medio ponderado: <b>{meanScore.toFixed(2)}</b></div>
                   <div>
@@ -123,6 +129,32 @@ export function Credibilidad() {
                       ? <Badge color="bg-emerald-500/20 text-emerald-300">Cumple umbral</Badge>
                       : <Badge color="bg-rose-500/20 text-rose-300">No cumple umbral (50 votos / 10 conv)</Badge>}
                   </div>
+
+                  {/* COMMIT-REVEAL UI */}
+                  {p.phase !== 'closed' && (
+                    <div className="mt-2 p-2 rounded border border-white/10 space-y-1">
+                      <div className="text-xs text-white/60">Voto commit-reveal (Shivarthu): secreto hasta reveal</div>
+                      <div className="flex gap-1 items-end flex-wrap">
+                        <input
+                          placeholder="salt (secreto)"
+                          value={isActive ? salt : ''}
+                          onChange={(e) => { setActiveProp(p.id); setSalt(e.target.value) }}
+                          className="bg-black/30 border border-white/10 rounded px-2 py-1 text-sm w-40"
+                        />
+                        {p.phase === 'commit' && (
+                          <>
+                            <Btn variant="ghost" onClick={() => { if (salt.trim()) { symCommitVote(p.id, voter, score, conv, salt); setSalt('') } }}>Commit (hash)</Btn>
+                            <Btn variant="ghost" onClick={() => symOpenReveal(p.id)}>Abrir reveal</Btn>
+                          </>
+                        )}
+                        {p.phase === 'reveal' && (
+                          <Btn variant="ghost" onClick={() => { if (salt.trim()) { symRevealVote(p.id, voter, score, conv, salt); setSalt('') } }}>Reveal (cuenta voto)</Btn>
+                        )}
+                      </div>
+                      <div className="text-xs text-white/40">Commits pendientes: {Object.keys(p.commits).length} · Votos revelados: {Object.keys(p.votes).length}</div>
+                    </div>
+                  )}
+
                   {res ? (
                     <div className="mt-2">
                       {res.funded

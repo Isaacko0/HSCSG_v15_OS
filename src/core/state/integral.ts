@@ -14,6 +14,8 @@ export interface Issue {
   evidence?: { kind: string; text: string; sourceUrl?: string }[]
   band?: 'VERIFIED' | 'PROBABLE' | 'POSSIBLE' | null
   score?: number
+  // Voto por Mérito (Shivarthu): validación externality con 3 factores
+  merit?: { reputation: number; experience: number; externality: number; weight: number }
 }
 
 export interface DecisionRecord {

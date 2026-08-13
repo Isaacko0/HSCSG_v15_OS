@@ -19,11 +19,14 @@ const SYS: { key: IntegralSystem; labelKey: string; icon: any; color: string; de
 ]
 
 export function Integral() {
-  const { integral, raiseIntegralIssue, raiseIntegralIssueWithEvidence, certifyIntegralDesign, logIntegralLabor, awardIntegralCredits, ingestIntegralSignal, recommendIntegral, promoteRecommendation, lucidez, lang } = useAppStore()
+  const { integral, raiseIntegralIssue, raiseIntegralIssueWithEvidence, validateIntegralMerit, certifyIntegralDesign, logIntegralLabor, awardIntegralCredits, ingestIntegralSignal, recommendIntegral, promoteRecommendation, lucidez, lang } = useAppStore()
   const [newIssue, setNewIssue] = useState('')
   const [newEvidence, setNewEvidence] = useState('')
   const [newEvidenceKind, setNewEvidenceKind] = useState<EvidenceKind>('cds.consensus')
   const [evidenceDraft, setEvidenceDraft] = useState<Evidence[]>([])
+  const [meritRep, setMeritRep] = useState(80)
+  const [meritExp, setMeritExp] = useState(10)
+  const [meritExt, setMeritExt] = useState(70)
   const [newDesign, setNewDesign] = useState({ title: '', eco: 80 })
   const [newSignal, setNewSignal] = useState({ from: 'COS' as IntegralSystem, sev: 'warning' as 'info' | 'warning' | 'critical', finding: '' })
   const [newLabor, setNewLabor] = useState({ projectId: 'p1', participant: 'Isaac Ko', hours: 4 })
@@ -79,6 +82,7 @@ export function Integral() {
                 <span>{i.title} <Badge color="text-violet-400">{i.status}</Badge></span>
                 {i.band && <FactBandBadge band={i.band} score={i.score} />}
                 {i.band === 'VERIFIED' && <Badge color="bg-emerald-500/20 text-emerald-300">auto-ejecutada</Badge>}
+                {i.merit && <Badge color="bg-purple-500/20 text-purple-300">mérito {i.merit.weight}</Badge>}
               </div>
             ))}
           </div>
@@ -136,6 +140,20 @@ export function Integral() {
               <Badge color="text-sky-400">{d.id}</Badge> {d.decision}
             </div>
           ))}
+          {/* Voto por Mérito (Shivarthu): peso = reputación × experiencia × externalidad */}
+          <div className="mt-3 p-2 rounded border border-[var(--line)] space-y-1">
+            <div className="text-xs text-[var(--dim)]">Voto por Mérito (Shivarthu) — aplica a un issue</div>
+            <div className="flex gap-1 items-end flex-wrap">
+              <select value={newIssue || (integral.issues[0]?.id ?? '')} onChange={(e) => setNewIssue(e.target.value)} className="px-2 py-1 bg-[var(--surf2)] border border-[var(--line)] rounded-xl text-[var(--ink)] text-xs">
+                {integral.issues.map((i) => <option key={i.id} value={i.id}>{i.title.slice(0, 24)}</option>)}
+              </select>
+              <input type="number" placeholder="rep" value={meritRep} onChange={(e) => setMeritRep(Number(e.target.value))} className="w-14 px-1 py-1 bg-[var(--surf2)] border border-[var(--line)] rounded-xl text-[var(--ink)] text-xs" />
+              <input type="number" placeholder="exp" value={meritExp} onChange={(e) => setMeritExp(Number(e.target.value))} className="w-14 px-1 py-1 bg-[var(--surf2)] border border-[var(--line)] rounded-xl text-[var(--ink)] text-xs" />
+              <input type="number" placeholder="ext" value={meritExt} onChange={(e) => setMeritExt(Number(e.target.value))} className="w-14 px-1 py-1 bg-[var(--surf2)] border border-[var(--line)] rounded-xl text-[var(--ink)] text-xs" />
+              <Btn variant="ghost" onClick={() => { const id = newIssue || integral.issues[0]?.id; if (id) validateIntegralMerit(id, meritRep, meritExp, meritExt) }}>Validar mérito</Btn>
+            </div>
+            <p className="text-xs text-[var(--dim)]">El peso del voto NO depende del stake, sino del mérito del miembro (rep×exp×ext normalizados 0-1).</p>
+          </div>
         </Card>
 
         <Card title={t('integ.oadCard', lang)}>
