@@ -12,7 +12,8 @@ const SCREENS: Record<string, string> = {
   znu: 'ZNU v2 · Soberanía Material',
   verificacion: 'Verificación Triaxial',
   delegacion: 'Delegación de Poder (liquid democracy local)',
-  capacidades: 'Capabilities (jardín cerrado)',
+  capacidades: 'Capacidades · Jardín Cerrado',
+  educacion: 'Educación Postmonetaria · Didacta',
 }
 
 export function Header({ collapsed, onToggleCollapse, onToggleNav, isMobile, navOpen }: {

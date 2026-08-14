@@ -43,6 +43,8 @@ import type { OracleState } from '@core/state/oracle'
 import type { GaiaUnionState } from '@core/state/gaiaunion'
 import type { DelegationState, DomainKey } from '@core/state/delegation'
 import type { CapabilityState, CapabilityKey } from '@core/state/capacidades'
+import type { EducationState } from '@core/state/education'
+import type { EducaasState } from '@core/state/educaas'
 import { autFromCAC, ics, pgsLM } from '@core/lib/metrics'
 import { revenueShare } from '@core/lib/caas'
 import { evaluateAction } from '@core/lib/automaton'
@@ -81,6 +83,8 @@ import { delegatePower, revokeDelegation } from '@core/lib/delegation'
 import { toggleCapability } from '@core/lib/capacidades'
 import { makeDelegationState } from '@core/state/delegation'
 import { makeCapabilityState } from '@core/state/capacidades'
+import { makeEducationState, createCourse as eduCreateCourse, enroll as eduEnroll, recordProgress as eduRecordProgress, issueCertificate as eduIssueCert, createAssessment as eduCreateAssessment, gradeByMerit as eduGradeMerit, verifyCertificate as eduVerifyCert } from '@core/lib/education'
+import { makeEducaasState, setEducaasMode as eaSetMode, subscribe as eaSubscribe, cancelSubscription as eaCancel } from '@core/lib/educaas'
 import { dispatchMatch, autoAdvisory, applyDecisionTo, znuDecayOnBalance } from '@core/lib/pipeline'
 import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
@@ -232,10 +236,13 @@ export interface AppState {
   delegation: DelegationState
   // Capabilities (CompAI CRM): optional by default, jardín cerrado offline
   capacidades: CapabilityState
+  // Educación postmonetaria (Didacta Community asimilado)
+  education: EducationState
+  // Educaas: monetización educativa anfibia (Didacta billing/subscriptions)
+  educaas: EducaasState
   // Conector de flujo: params sembrados para la siguiente pantalla (auto-llenado)
   stageSeeds: Record<string, Record<string, unknown>>
   // actions
-  setNodeName: (n: string) => void
   updateBase: (u: Partial<BaseMaterial>) => void
   updateCAC: (u: Partial<CACVectors>) => void
   addSensor: (s: Omit<SensorReading, 'id' | 'ts'>) => void
@@ -360,7 +367,18 @@ export interface AppState {
   // Aprender
   completeChallenge: (id: string) => void
   addLearningChallenge: (title: string, topic: string, znuReward: number) => void
-  // Oráculo
+  // Educación (Didacta Community asimilado)
+  createEduCourse: (title: string, level: 'basico' | 'medio' | 'avanzado', evidenceRequired?: boolean) => void
+  enrollEdu: (courseId: string, memberId: string) => void
+  recordEduProgress: (courseId: string, memberId: string, progress: number) => void
+  issueEduCertificate: (courseId: string, memberId: string) => void
+  createEduAssessment: (courseId: string, rubric: { criterion: string; meritWeight: number }[]) => void
+  gradeEduByMerit: (assessmentId: string, reputation: number, experience: number, externality: number) => { meritWeight: number; weightedScore: number }
+  verifyEduCertificate: (certId: string) => boolean
+  // Educaas (anfibio)
+  setEducaasMode: (mode: 'postmonetario' | 'conectado', parity?: number) => void
+  subscribeEducaas: (memberId: string, planId: string) => void
+  cancelEducaas: (memberId: string) => void
   askOracle: (question: string, outcomes: string[]) => void
   castOracleVote: (queryId: string, juror: string, outcome: string, stake: number) => void
   resolveOracleQuery: (queryId: string) => void
@@ -695,10 +713,13 @@ export const useAppStore = create<AppState>()(
       delegation: makeDelegationState(),
       // Capabilities (CompAI CRM)
       capacidades: makeCapabilityState(),
+      // Educación postmonetaria (Didacta) + Educaas anfibio
+      education: makeEducationState(),
+      educaas: makeEducaasState(),
       // Conector de flujo
       stageSeeds: {},
 
-      setNodeName: (n) => set({ nodeName: n }),
+      setNodeName: (n: string) => set({ nodeName: n }),
       updateBase: (u) => set((st) => ({ base: { ...st.base, ...u } })),
       updateCAC: (u) => set((st) => ({ cac: { ...st.cac, ...u } })),
       addSensor: (s) => set((st) => ({ sensors: [...st.sensors, { ...s, id: uid(), ts: Date.now() }] })),
@@ -1041,6 +1062,45 @@ export const useAppStore = create<AppState>()(
           },
         }
       }),
+      // ===== Educación postmonetaria (Didacta Community) =====
+      createEduCourse: (title, level, evidenceRequired = true) => set((st) => ({
+        education: eduCreateCourse(st.education, title, level, evidenceRequired),
+      })),
+      enrollEdu: (courseId, memberId) => set((st) => ({
+        education: eduEnroll(st.education, courseId, memberId),
+      })),
+      recordEduProgress: (courseId, memberId, progress) => set((st) => ({
+        education: eduRecordProgress(st.education, courseId, memberId, progress),
+      })),
+      issueEduCertificate: (courseId, memberId) => set((st) => ({
+        education: eduIssueCert(st.education, courseId, memberId),
+      })),
+      createEduAssessment: (courseId, rubric) => set((st) => ({
+        education: eduCreateAssessment(st.education, courseId, rubric),
+      })),
+      gradeEduByMerit: (assessmentId, reputation, experience, externality) => {
+        let result = { meritWeight: 0, weightedScore: 0 }
+        set((st) => {
+          result = eduGradeMerit(st.education, assessmentId, reputation, experience, externality)
+          return st
+        })
+        return result
+      },
+      verifyEduCertificate: (certId) => {
+        let ok = false
+        set((st) => { ok = eduVerifyCert(st.education, certId); return st })
+        return ok
+      },
+      // ===== Educaas (monetización anfibia) =====
+      setEducaasMode: (mode, parity = 0.01) => set((st) => ({
+        educaas: eaSetMode(st.educaas, mode, parity),
+      })),
+      subscribeEducaas: (memberId, planId) => set((st) => ({
+        educaas: eaSubscribe(st.educaas, memberId, planId),
+      })),
+      cancelEducaas: (memberId) => set((st) => ({
+        educaas: eaCancel(st.educaas, memberId),
+      })),
       // ===== Democracia DPoS por expertise (iambrainstorming) =====
       electDeptRep: (deptId, rep, voter) => set((st) => ({ democracia: electRep(st.democracia, deptId, rep, voter) })),
       // ===== Aprendizaje por retos (iambrainstorming) =====

@@ -1,7 +1,7 @@
 # BRIEF EXHAUSTIVO QUIRÚRGICO: HSCSG — Modelo de Negocio, HSCSG v15 OS & Cosateca OS
 **Documento fundacional v1.0 | Zeitnus / Isaac Ko | Agosto 2026**
 **Metodología:** 4 Fases (Desempaquetado → Limpieza → GitHub → Evolución) + Sistema Alráico (G1-CARMIS)
-**Fuentes primarias:** 24 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM con backup + integración completa), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
+**Fuentes primarias:** 25 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
 
 ---
 
@@ -1463,11 +1463,12 @@ interface CaaSMember {
 
 *Documento fundacional v1.0 | Zeitnus / Isaac Ko | Agosto 2026*  
 *Metodología: 4 Fases (Desempaquetado → Limpieza → GitHub → Evolución) + Sistema Alráico (G1-CARMIS)*  
-*Fuentes: 24 integraciones `HSCSG_v15_OS/docs/` + informes HSCSG v14 + OneManCompany + IDETRA + **Copiosis v7.1 (backup + integración completa)** + **AuroraGov (backup + integración completa)** + **Shivarthu (backup + integración completa)** + **CompAI CRM (backup + integración completa)***  
+*Fuentes: 24 integraciones `HSCSG_v15_OS/docs/` + informes HSCSG v14 + OneManCompany + IDETRA + **Copiosis v7.1 (backup + integración completa)** + **AuroraGov (backup + integración completa)** + **Shivarthu (backup + integración completa)** + **CompAI CRM (backup + integración completa)** + **Didacta Community (backup + integración completa, +18 conceptos)***  
 *Backup Copiosis: `docs/copiosis_backup.md` | Integración: `docs/copiosis_integration.md`*  
 *Backup AuroraGov: `docs/aurora_gov_backup.md` | Integración: `docs/aurora_gov_integration.md`*  
 *Backup Shivarthu: `docs/shivarthu_backup.md` | Integración: `docs/shivarthu_integration.md`*  
 *Backup CompAI CRM: `docs/compai_crm_backup.md` | Integración: `docs/compai_crm_integration.md`*  
+*Backup Didacta: `docs/didacta/didacta_backup.md` | Integración: `docs/didacta/didacta_integration.md`*  
 
 ---
 

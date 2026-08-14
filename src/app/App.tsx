@@ -34,6 +34,7 @@ import { Civilizaciones } from '@app/screens/Civilizaciones'
 import { Celulas } from '@app/screens/Celulas'
 import { Delegacion } from '@app/screens/Delegacion'
 import { Capacidades } from '@app/screens/Capacidades'
+import { Educacion } from '@app/screens/Educacion'
 
 export function App() {
   return (
@@ -73,6 +74,7 @@ export function App() {
         <Route path="celulas" element={<Celulas />} />
         <Route path="delegacion" element={<Delegacion />} />
         <Route path="capacidades" element={<Capacidades />} />
+        <Route path="educacion" element={<Educacion />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

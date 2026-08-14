@@ -42,7 +42,8 @@ const NAV_ITEMS = [
   { key: 'civilizaciones', navKey: 'nav.civilizaciones', icon: Compass, color: 'text-emerald-400', path: '/civilizaciones' },
   { key: 'celulas', navKey: 'nav.celulas', icon: Network, color: 'text-emerald-400', path: '/celulas' },
   { key: 'delegacion', navKey: 'nav.delegacion', icon: GitBranch, color: 'text-emerald-400', path: '/delegacion' },
-  { key: 'capacidades', navKey: 'nav.capacidades', icon: ShieldCheck, color: 'text-amber-400', path: '/capacidades' },
+  { key: 'capacidades', navKey: 'nav.capacidades', icon: ShieldCheck, color: 'text-emerald-400', path: '/capacidades' },
+  { key: 'educacion', navKey: 'nav.educacion', icon: GraduationCap, color: 'text-emerald-400', path: '/educacion' },
 ] as const
 
 interface AsideProps {

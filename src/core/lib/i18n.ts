@@ -50,6 +50,7 @@ export const I18N: Dict = {
   'nav.celulas': { es: 'Células · Tejido', en: 'Cells · Tissue', pt: 'Células · Tecido' },
   'nav.delegacion': { es: 'Delegación', en: 'Delegation', pt: 'Delegação' },
   'nav.capacidades': { es: 'Capabilities', en: 'Capabilities', pt: 'Capabilities' },
+  'nav.educacion': { es: 'Educación', en: 'Education', pt: 'Educação' },
 
   // Títulos de módulos (h1)
   'title.base': { es: 'Base Material', en: 'Material Base', pt: 'Base Material' },
