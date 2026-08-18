@@ -47,3 +47,7 @@ urbanika_*
 
 # block/buzz asimilación (clone temporal en raíz)
 /buzz/
+
+# NEAR asimilación (clones temporales)
+near_core-contracts/
+near_*/

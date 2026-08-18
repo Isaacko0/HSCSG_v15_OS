@@ -1,7 +1,7 @@
 # BRIEF EXHAUSTIVO QUIRÚRGICO: HSCSG — Modelo de Negocio, HSCSG v15 OS & Cosateca OS
 **Documento fundacional v1.0 | Zeitnus / Isaac Ko | Agosto 2026**
 **Metodología:** 4 Fases (Desempaquetado → Limpieza → GitHub → Evolución) + Sistema Alráico (G1-CARMIS)
-**Fuentes primarias:** 38 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
+**Fuentes primarias:** 39 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
 
 ---
 
@@ -1471,6 +1471,7 @@ interface CaaSMember {
 *Backup Didacta: `docs/didacta/didacta_backup.md` | Integración: `docs/didacta/didacta_integration.md`*  
 *Backup Urbanika (12): `docs/urbanika/*_backup.md` | Integración: `docs/urbanika/urbanika_integration.md`*  
 *Backup Buzz: `docs/buzz/buzz_backup.md` | Integración: `docs/buzz/buzz_integration.md`*  
+*Backup NEAR: `docs/near/near_backup.md` | Integración: `docs/near/near_integration.md`*  
 
 ---
 
