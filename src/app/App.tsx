@@ -35,6 +35,9 @@ import { Celulas } from '@app/screens/Celulas'
 import { Delegacion } from '@app/screens/Delegacion'
 import { Capacidades } from '@app/screens/Capacidades'
 import { Educacion } from '@app/screens/Educacion'
+import { SoberaniaCredito } from '@app/screens/SoberaniaCredito'
+import { Regen } from '@app/screens/Regen'
+import { Vecinal } from '@app/screens/Vecinal'
 
 export function App() {
   return (
@@ -75,6 +78,9 @@ export function App() {
         <Route path="delegacion" element={<Delegacion />} />
         <Route path="capacidades" element={<Capacidades />} />
         <Route path="educacion" element={<Educacion />} />
+        <Route path="soberania-credito" element={<SoberaniaCredito />} />
+        <Route path="regen" element={<Regen />} />
+        <Route path="vecinal" element={<Vecinal />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

@@ -51,6 +51,9 @@ export const I18N: Dict = {
   'nav.delegacion': { es: 'Delegación', en: 'Delegation', pt: 'Delegação' },
   'nav.capacidades': { es: 'Capabilities', en: 'Capabilities', pt: 'Capabilities' },
   'nav.educacion': { es: 'Educación', en: 'Education', pt: 'Educação' },
+  'nav.soberania-credito': { es: 'Soberanía Crédito', en: 'Credit Sovereignty', pt: 'Soberania Crédito' },
+  'nav.regen': { es: 'Regen', en: 'Regen', pt: 'Regen' },
+  'nav.vecinal': { es: 'Vecinal', en: 'Neighborhood', pt: 'Vecinal' },
 
   // Títulos de módulos (h1)
   'title.base': { es: 'Base Material', en: 'Material Base', pt: 'Base Material' },

@@ -14,6 +14,9 @@ const SCREENS: Record<string, string> = {
   delegacion: 'Delegación de Poder (liquid democracy local)',
   capacidades: 'Capacidades · Jardín Cerrado',
   educacion: 'Educación Postmonetaria · Didacta',
+  'soberania-credito': 'Soberanía de Crédito · Urbanika',
+  regen: 'Regen · Directorio Ecotecnias',
+  vecinal: 'Gobernanza Vecinal E5M',
 }
 
 export function Header({ collapsed, onToggleCollapse, onToggleNav, isMobile, navOpen }: {

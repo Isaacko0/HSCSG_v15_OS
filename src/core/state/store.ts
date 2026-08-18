@@ -85,6 +85,12 @@ import { makeDelegationState } from '@core/state/delegation'
 import { makeCapabilityState } from '@core/state/capacidades'
 import { makeEducationState, createCourse as eduCreateCourse, enroll as eduEnroll, recordProgress as eduRecordProgress, issueCertificate as eduIssueCert, createAssessment as eduCreateAssessment, gradeByMerit as eduGradeMerit, verifyCertificate as eduVerifyCert } from '@core/lib/education'
 import { makeEducaasState, setEducaasMode as eaSetMode, subscribe as eaSubscribe, cancelSubscription as eaCancel } from '@core/lib/educaas'
+import type { SovereignCreditState } from '@core/state/sovereignCredit'
+import type { RegenState } from '@core/state/regen'
+import type { VecinalState } from '@core/state/vecinal'
+import { makeSovereignCreditState, addAttestation as scAdd, setMode as scSetMode, exportAttestation as scExport, scoreOf as scScore } from '@core/lib/sovereignCredit'
+import { makeRegenState, addEcoTech as rgAdd, catalogByCategory as rgCat, avgSaving as rgAvg } from '@core/lib/regen'
+import { makeVecinalState, raisePropuesta as vRaise, castCommit as vCast, openReveal as vOpen, revealVote as vReveal, tally as vTally } from '@core/lib/vecinal'
 import { dispatchMatch, autoAdvisory, applyDecisionTo, znuDecayOnBalance } from '@core/lib/pipeline'
 import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
@@ -240,6 +246,10 @@ export interface AppState {
   education: EducationState
   // Educaas: monetización educativa anfibia (Didacta billing/subscriptions)
   educaas: EducaasState
+  // Urbanika asimilado
+  sovereignCredit: SovereignCreditState
+  regen: RegenState
+  vecinal: VecinalState
   // Conector de flujo: params sembrados para la siguiente pantalla (auto-llenado)
   stageSeeds: Record<string, Record<string, unknown>>
   // actions
@@ -379,6 +389,21 @@ export interface AppState {
   setEducaasMode: (mode: 'postmonetario' | 'conectado', parity?: number) => void
   subscribeEducaas: (memberId: string, planId: string) => void
   cancelEducaas: (memberId: string) => void
+  // SovereignCredit (Urbanika DeFi-Adoption-IRL)
+  addAttestation: (subject: string, issuer: string, claim: string, weight: number) => void
+  setSovereignMode: (mode: 'postmonetario' | 'conectado') => void
+  exportSovereignAttestation: (memberId: string) => { memberId: string; score: number; portable: boolean }
+  sovereignScore: (memberId: string) => number
+  // Regen (Urbanika Directorio_Regen + Nidori)
+  addEcoTech: (name: string, category: string, provider: string, description: string) => void
+  regenCatalog: () => Record<string, { id: string; name: string; category: string; provider: string; description: string }[]>
+  regenAvgSaving: () => number
+  // Vecinal (Urbanika Gobernanza Vecinal E5M)
+  raiseVecinal: (barrioId: string, title: string) => void
+  castVecinalCommit: (propId: string, voter: string, choice: 'si' | 'no') => void
+  openVecinalReveal: (propId: string) => void
+  revealVecinalVote: (propId: string, voter: string, choice: 'si' | 'no') => void
+  vecinalTally: (propId: string) => { si: number; no: number; approved: boolean }
   askOracle: (question: string, outcomes: string[]) => void
   castOracleVote: (queryId: string, juror: string, outcome: string, stake: number) => void
   resolveOracleQuery: (queryId: string) => void
@@ -716,6 +741,10 @@ export const useAppStore = create<AppState>()(
       // Educación postmonetaria (Didacta) + Educaas anfibio
       education: makeEducationState(),
       educaas: makeEducaasState(),
+      // Urbanika asimilado
+      sovereignCredit: makeSovereignCreditState(),
+      regen: makeRegenState(),
+      vecinal: makeVecinalState(),
       // Conector de flujo
       stageSeeds: {},
 
@@ -1101,6 +1130,55 @@ export const useAppStore = create<AppState>()(
       cancelEducaas: (memberId) => set((st) => ({
         educaas: eaCancel(st.educaas, memberId),
       })),
+      // ===== SovereignCredit (Urbanika DeFi-Adoption-IRL) =====
+      addAttestation: (subject, issuer, claim, weight) => set((st) => ({
+        sovereignCredit: scAdd(st.sovereignCredit, subject, issuer, claim, weight),
+      })),
+      setSovereignMode: (mode) => set((st) => ({
+        sovereignCredit: scSetMode(st.sovereignCredit, mode),
+      })),
+      exportSovereignAttestation: (memberId) => {
+        let r = { memberId, score: 0, portable: false }
+        set((st) => { r = scExport(st.sovereignCredit, memberId); return st })
+        return r
+      },
+      sovereignScore: (memberId) => {
+        let s = 0
+        set((st) => { s = scScore(st.sovereignCredit, memberId); return st })
+        return s
+      },
+      // ===== Regen (Urbanika Directorio_Regen + Nidori) =====
+      addEcoTech: (name, category, provider, description) => set((st) => ({
+        regen: rgAdd(st.regen, name, category, provider, description),
+      })),
+      regenCatalog: () => {
+        let c: Record<string, { id: string; name: string; category: string; provider: string; description: string }[]> = {}
+        set((st) => { c = rgCat(st.regen); return st })
+        return c
+      },
+      regenAvgSaving: () => {
+        let a = 0
+        set((st) => { a = rgAvg(st.regen); return st })
+        return a
+      },
+      // ===== Vecinal (Urbanika Gobernanza Vecinal E5M) =====
+      raiseVecinal: (barrioId, title) => set((st) => ({
+        vecinal: vRaise(st.vecinal, barrioId, title),
+      })),
+      castVecinalCommit: (propId, voter, choice) => set((st) => ({
+        vecinal: vCast(st.vecinal, propId, voter, choice),
+      })),
+      openVecinalReveal: (propId) => set((st) => ({
+        vecinal: vOpen(st.vecinal, propId),
+      })),
+      revealVecinalVote: (propId, voter, choice) => set((st) => ({
+        vecinal: vReveal(st.vecinal, propId, voter, choice),
+      })),
+      vecinalTally: (propId) => {
+        let t = { si: 0, no: 0, approved: false }
+        set((st) => { t = vTally(st.vecinal, propId); return st })
+        return t
+      },
       // ===== Democracia DPoS por expertise (iambrainstorming) =====
       electDeptRep: (deptId, rep, voter) => set((st) => ({ democracia: electRep(st.democracia, deptId, rep, voter) })),
       // ===== Aprendizaje por retos (iambrainstorming) =====

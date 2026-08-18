@@ -44,6 +44,9 @@ const NAV_ITEMS = [
   { key: 'delegacion', navKey: 'nav.delegacion', icon: GitBranch, color: 'text-emerald-400', path: '/delegacion' },
   { key: 'capacidades', navKey: 'nav.capacidades', icon: ShieldCheck, color: 'text-emerald-400', path: '/capacidades' },
   { key: 'educacion', navKey: 'nav.educacion', icon: GraduationCap, color: 'text-emerald-400', path: '/educacion' },
+  { key: 'soberania-credito', navKey: 'nav.soberania-credito', icon: ShieldCheck, color: 'text-emerald-400', path: '/soberania-credito' },
+  { key: 'regen', navKey: 'nav.regen', icon: Leaf, color: 'text-emerald-400', path: '/regen' },
+  { key: 'vecinal', navKey: 'nav.vecinal', icon: Users, color: 'text-emerald-400', path: '/vecinal' },
 ] as const
 
 interface AsideProps {
