@@ -18,9 +18,10 @@ const SCREENS: Record<string, string> = {
   regen: 'Regen · Directorio Ecotecnias',
   vecinal: 'Gobernanza Vecinal E5M',
   nostr: 'Transporte Nostr · Buzz',
-  agentes: 'Malla de Agentes · Buzz Mesh',
-  verificacionPor: 'Verificación · Proof of Response',
-}
+    agentes: 'Malla de Agentes · Buzz Mesh',
+    verificacionPor: 'Verificación · Proof of Response',
+    simulador: 'Simulador · Verificación Triaxial',
+  }
 
 export function Header({ collapsed, onToggleCollapse, onToggleNav, isMobile, navOpen }: {
   collapsed: boolean; onToggleCollapse: () => void; onToggleNav: () => void; isMobile: boolean; navOpen: boolean

@@ -17,6 +17,7 @@ import { Flujo } from '@app/screens/Flujo'
 import { Automata } from '@app/screens/Automata'
 import { ZNU } from '@app/screens/ZNU'
 import { Verificacion } from '@app/screens/Verificacion'
+import { Simulador } from '@app/screens/Simulador'
 import { Orquestacion } from '@app/screens/Orquestacion'
 import { CaaS } from '@app/screens/CaaS'
 import { Automat } from '@app/screens/Automat'
@@ -86,6 +87,7 @@ export function App() {
         <Route path="nostr" element={<Nostr />} />
         <Route path="agentes" element={<Agentes />} />
         <Route path="verificacion" element={<Verificacion />} />
+        <Route path="simulador" element={<Simulador />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
