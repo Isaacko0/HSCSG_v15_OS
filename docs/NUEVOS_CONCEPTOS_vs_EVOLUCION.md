@@ -253,7 +253,7 @@ Cada módulo nuevo añade: `use<Modulo>`, `<Modulo>State`, tipos, acciones, sele
 ## PARTE E: RESUMEN EJECUTIVO DE LA ASIMILACIÓN
 
 **Total conceptos analizados:** ~60 fuentes integradas en 5 sesiones previas + esta sesión + AuroraGov + Shivarthu  
-**Nuevos conceptos nacidos (Parte A):** 96 (39 previos + 17 AuroraGov + 10 Shivarthu + 12 CompAI CRM + 18 Didacta)  
+**Nuevos conceptos nacidos (Parte A):** 118 (39 previos + 17 AuroraGov + 10 Shivarthu + 12 CompAI CRM + 18 Didacta + 22 Urbanika)  
 **Etapas de evolución/refinamiento (Parte B):** 25  
 **Pantallas totales HSCSG v15 OS:** 29 (21 base + 8 nuevas P0/P1)  
 **Módulos `lib/` totales:** ~35 (20 base + 15 nuevos P0/P1)  
