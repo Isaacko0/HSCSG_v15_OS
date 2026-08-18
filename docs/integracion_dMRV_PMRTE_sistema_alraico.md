@@ -1,4 +1,4 @@
-# INTEGRACIÓN: dMRV · PMRTE · Sistema Alráico · Materialismo Jerárquico · MENEDAS · Dinero · Sistema de Incentivos · CAC + CAC
+# INTEGRACIÓN: dMRV · PMRTE · Sistema Alráico · Materialismo Jerárquico · monedas · Dinero · Sistema de Incentivos · CAC + CAC
 
 > Documento de síntesis HSCSG v15 OS. Texto base extraído fielmente del `BRIEF_EXHAUSTIVO_HSCSG_COSATECA_OS.md` (secciones 2.1–2.3, 6.1, 11.3, 17) y `docs/CaaS_integration.md`.
 > Propósito: articular cómo estos 9 conceptos forman UN solo motor operativo en el nodo local offline-first.
@@ -68,15 +68,15 @@ S:  Síntesis (Integrar)              ← RAO + Federación DTN + Memética
 - Se ancla en: CDS (Credibilidad por Convicción de Symbiosky) + AUT (Ley II MJ).
 - Sustituye la lógica "más volume = más pago" por "más soberanía generada = más retribución".
 
-## 5. Dinero y MENEDAS (capa monetaria anfibia)
+## 5. Dinero y monedas (capa monetaria anfibia)
 
 ### 5.1 ZNU — la moneda interna del nodo (README §6)
 - Moneda interna del nodo: **demurrage, paridad, no-inflable**.
 - Es la unidad de la capa **postmonetaria** (default offline). En Vercel/deploy conectado, se vuelve anfibia vía oráculo priceParity.
 
-### 5.2 MENEDAS — monedas complementarias
+### 5.2 Monedas complementarias
 - El ecosistema opera con **monedas complementarias** (estilo Gaia Confederation passport contextual de confianza), no una sola divisa.
-- Cada dominio (barrio, célula, federación) puede tener su MENEDA con paridad local a ZNU.
+- Cada dominio (barrio, célula, federación) puede tener su moneda con paridad local a ZNU.
 - **Principio anfibio (corrección HSCSG):** la lógica de cálculo es agnóstica a la unidad. Misma función opera en modo `postmonetario` (ZNU/tiempo-crédito) o `conectado` (EUR/USDC vía priceParity, Nivel 3 ReFi). El render decide la etiqueta; la lógica no cambia.
 
 ### 5.3 Postmonetario vs Conectado
@@ -104,7 +104,7 @@ El sistema de incentivos de HSCSG NO usa precio de mercado ciego. Se compone de:
 4. **R** Integral propone retribución según PMRTE.
 5. **M** Métricas: η, ξ, σᵤ, PGS, ICS, IVC, 12 vectores.
 6. **I** Autómata ejecuta el vesting ZNU.
-7. **S** RAO + Federación sintetiza la nueva MENEDA de dominio.
+7. **S** RAO + Federación sintetiza la nueva moneda de dominio.
 
 ## 7. Mapa de relaciones (un solo motor)
 
@@ -121,7 +121,7 @@ Sistema Alráico (G1-CARMIS)  ──▶  paso C = dMRV  ──▶  RAO (append-o
 Ley II (AUT×CDS) + PMRTE  ──▶  Sistema de Incentivos
         │ retribuye
         ▼
-ZNU (moneda interna) + MENEDAS complementarias  ──▶  anfibio: postmonetario ↔ conectado (ReFi Nivel 3, dMRV → ESRS)
+ZNU (moneda interna) + monedas complementarias  ──▶  anfibio: postmonetario ↔ conectado (ReFi Nivel 3, dMRV → ESRS)
 ```
 
 ## 8. Estado en el código HSCSG v15 OS
@@ -134,9 +134,9 @@ ZNU (moneda interna) + MENEDAS complementarias  ──▶  anfibio: postmonetari
 | CA / CA colectiva | agregación de AUT por dominio | ◐ parcial |
 | dMRV | SVD v2 + RAO (BRIEF §11.3) | ◐ diseño, no hay hardware |
 | PMRTE | `docs/CaaS_integration.md` (criterio CaaS) | ✓ documentado |
-| ZNU / MENEDAS | `lib/caas.ts`, `lib/valueDual.ts` (anfibio) | ✓ |
+| ZNU / monedas | `lib/caas.ts`, `lib/valueDual.ts` (anfibio) | ✓ |
 | Sistema de incentivos | Symbiosky + vesting + CDS_Jurados | ✓ parcial |
 | CAC (Coef. Autonomía Civilizatoria) | `lib/metrics.ts` media geométrica 12 AUT | ✓ |
 
 ---
-*Síntesis de texto REAL del BRIEF_EXHAUSTIVO (§2.1–2.3, 6.1, 11.3, 17) + CaaS_integration.md. PMRTE y MENEDAS se integran según su uso documentado (CaaS / monedas complementarias). Sin contenido inventado.*
+*Síntesis de texto REAL del BRIEF_EXHAUSTIVO (§2.1–2.3, 6.1, 11.3, 17) + CaaS_integration.md. PMRTE y monedas se integran según su uso documentado (CaaS / monedas complementarias). Sin contenido inventado.*
