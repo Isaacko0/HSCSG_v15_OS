@@ -91,6 +91,10 @@ import type { VecinalState } from '@core/state/vecinal'
 import { makeSovereignCreditState, addAttestation as scAdd, setMode as scSetMode, exportAttestation as scExport, scoreOf as scScore } from '@core/lib/sovereignCredit'
 import { makeRegenState, addEcoTech as rgAdd, catalogByCategory as rgCat, avgSaving as rgAvg } from '@core/lib/regen'
 import { makeVecinalState, raisePropuesta as vRaise, castCommit as vCast, openReveal as vOpen, revealVote as vReveal, tally as vTally } from '@core/lib/vecinal'
+import type { NostrRelayState } from '@core/state/nostrRelay'
+import { makeNostrRelayState, publishLocal as nrPublish, setRelayConfig as nrSetCfg, connect as nrConnect, disconnect as nrDisconnect } from '@core/lib/nostrRelay'
+import type { AgentMeshState } from '@core/state/agentMesh'
+import { makeAgentMeshState, spawnAgent as amSpawn, shareCompute as amShare, requestCompute as amRequest, remoteResurrect as amResurrect } from '@core/lib/agentMesh'
 import { dispatchMatch, autoAdvisory, applyDecisionTo, znuDecayOnBalance } from '@core/lib/pipeline'
 import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
@@ -250,6 +254,9 @@ export interface AppState {
   sovereignCredit: SovereignCreditState
   regen: RegenState
   vecinal: VecinalState
+  // block/buzz asimilado
+  nostrRelay: NostrRelayState
+  agentMesh: AgentMeshState
   // Conector de flujo: params sembrados para la siguiente pantalla (auto-llenado)
   stageSeeds: Record<string, Record<string, unknown>>
   // actions
@@ -404,6 +411,16 @@ export interface AppState {
   openVecinalReveal: (propId: string) => void
   revealVecinalVote: (propId: string, voter: string, choice: 'si' | 'no') => void
   vecinalTally: (propId: string) => { si: number; no: number; approved: boolean }
+  // NostrRelay (block/buzz)
+  publishNostr: (ev: unknown) => void
+  setRelayCfg: (cfg: { url?: string; community?: string; localOnly?: boolean }) => void
+  connectRelay: (url: string) => void
+  disconnectRelay: () => void
+  // AgentMesh (block/buzz)
+  spawnAgent: (pubkey: string, name: string, body?: 'local' | 'remote' | 'disposable') => void
+  shareAgentCompute: (memberId: string, resource: string) => void
+  requestAgentCompute: (agentId: string) => { ok: boolean; resource?: string }
+  resurrectAgent: (agentId: string) => void
   askOracle: (question: string, outcomes: string[]) => void
   castOracleVote: (queryId: string, juror: string, outcome: string, stake: number) => void
   resolveOracleQuery: (queryId: string) => void
@@ -745,6 +762,9 @@ export const useAppStore = create<AppState>()(
       sovereignCredit: makeSovereignCreditState(),
       regen: makeRegenState(),
       vecinal: makeVecinalState(),
+      // block/buzz asimilado
+      nostrRelay: makeNostrRelayState(),
+      agentMesh: makeAgentMeshState(),
       // Conector de flujo
       stageSeeds: {},
 
@@ -1179,7 +1199,33 @@ export const useAppStore = create<AppState>()(
         set((st) => { t = vTally(st.vecinal, propId); return st })
         return t
       },
-      // ===== Democracia DPoS por expertise (iambrainstorming) =====
+      // ===== NostrRelay + AgentMesh (block/buzz) =====
+      publishNostr: (ev) => set((st) => ({
+        nostrRelay: nrPublish(st.nostrRelay, ev as never),
+      })),
+      setRelayCfg: (cfg) => set((st) => ({
+        nostrRelay: nrSetCfg(st.nostrRelay, cfg),
+      })),
+      connectRelay: (url) => set((st) => ({
+        nostrRelay: nrConnect(st.nostrRelay, url),
+      })),
+      disconnectRelay: () => set((st) => ({
+        nostrRelay: nrDisconnect(st.nostrRelay),
+      })),
+      spawnAgent: (pubkey, name, body) => set((st) => ({
+        agentMesh: amSpawn(st.agentMesh, pubkey, name, body),
+      })),
+      shareAgentCompute: (memberId, resource) => set((st) => ({
+        agentMesh: amShare(st.agentMesh, memberId, resource),
+      })),
+      requestAgentCompute: (agentId) => {
+        let r = { ok: false }
+        set((st) => { r = amRequest(st.agentMesh, agentId); return st })
+        return r
+      },
+      resurrectAgent: (agentId) => set((st) => ({
+        agentMesh: amResurrect(st.agentMesh, agentId),
+      })),
       electDeptRep: (deptId, rep, voter) => set((st) => ({ democracia: electRep(st.democracia, deptId, rep, voter) })),
       // ===== Aprendizaje por retos (iambrainstorming) =====
       completeChallenge: (id) => set((st) => ({ aprender: completeChallenge(st.aprender, id) })),

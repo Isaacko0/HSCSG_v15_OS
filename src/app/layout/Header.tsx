@@ -17,6 +17,8 @@ const SCREENS: Record<string, string> = {
   'soberania-credito': 'Soberanía de Crédito · Urbanika',
   regen: 'Regen · Directorio Ecotecnias',
   vecinal: 'Gobernanza Vecinal E5M',
+  nostr: 'Transporte Nostr · Buzz',
+  agentes: 'Malla de Agentes · Buzz Mesh',
 }
 
 export function Header({ collapsed, onToggleCollapse, onToggleNav, isMobile, navOpen }: {

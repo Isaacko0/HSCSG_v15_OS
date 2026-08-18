@@ -77,7 +77,7 @@ Total acumulado HSCSG: 118 + 14 = **132 conceptos nacidos**.
 - [x] Fase 1 Desempaquetado (clone 4033 archivos)
 - [x] Fase 2 Limpieza (gitignore + backup real)
 - [x] Fase 3 GitHub (backup + integration commiteados)
-- [ ] Fase 4 Evolución: implementar módulos 2.1–2.3 + UI (P0 de Buzz) — pendiente por tamaño del workspace (Rust); propuesta documentada lista para implementar.
+- [x] Fase 4 Evolución: implementados módulos nostrRelay + agentMesh + UI /nostr,/agentes (commit 671f03c+). 42/42 tests.
 - [ ] Actualizar BRIEF_EXHAUSTIVO (fuentes 37→38, conceptos 118→132)
 
 ---

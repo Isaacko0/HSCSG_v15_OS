@@ -38,6 +38,8 @@ import { Educacion } from '@app/screens/Educacion'
 import { SoberaniaCredito } from '@app/screens/SoberaniaCredito'
 import { Regen } from '@app/screens/Regen'
 import { Vecinal } from '@app/screens/Vecinal'
+import { Nostr } from '@app/screens/Nostr'
+import { Agentes } from '@app/screens/Agentes'
 
 export function App() {
   return (
@@ -81,6 +83,8 @@ export function App() {
         <Route path="soberania-credito" element={<SoberaniaCredito />} />
         <Route path="regen" element={<Regen />} />
         <Route path="vecinal" element={<Vecinal />} />
+        <Route path="nostr" element={<Nostr />} />
+        <Route path="agentes" element={<Agentes />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
