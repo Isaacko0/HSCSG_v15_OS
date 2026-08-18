@@ -32,7 +32,7 @@ export const I18N: Dict = {
   'nav.colectivo': { es: 'Colectivo', en: 'Collective', pt: 'Coletivo' },
   'nav.automata': { es: 'Autómata Soberano', en: 'Sovereign Automaton', pt: 'Autômato Soberano' },
   'nav.znu': { es: 'ZNU', en: 'ZNU', pt: 'ZNU' },
-  'nav.verificacion': { es: 'Verificación', en: 'Verification', pt: 'Verificação' },
+  'nav.verificacionPor': { es: 'Verificación', en: 'Verification', pt: 'Verificação' },
   'nav.automat': { es: 'Automat', en: 'Automat', pt: 'Automat' },
   'nav.orquestacion': { es: 'Orquestación', en: 'Orchestration', pt: 'Orquestração' },
   'nav.caas': { es: 'CaaS · Comunidad', en: 'CaaS · Community', pt: 'CaaS · Comunidade' },

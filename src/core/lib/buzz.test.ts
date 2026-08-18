@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { makeNostrRelayState, publishLocal, connect, disconnect, setRelayConfig } from '@core/lib/nostrRelay'
+import { makeNostrRelayState, publishLocal, connect, disconnect } from '@core/lib/nostrRelay'
 import { buildEvent, verifyEventShape, queryLocal } from '@core/lib/nostrRelay'
 import { makeAgentMeshState, spawnAgent, shareCompute, requestCompute, remoteResurrect, auditTrail } from '@core/lib/agentMesh'
 

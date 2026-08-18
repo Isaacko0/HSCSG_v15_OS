@@ -1,98 +1,84 @@
-import { Brain, FlaskConical, Cpu, Plus } from 'lucide-react'
+import { useState } from 'react'
+import { ShieldCheck, CheckCircle2, XCircle, Gauge } from 'lucide-react'
 import { useAppStore } from '@core/state/store'
-import { autFromCAC, pgsLM, xiFromPVSO, etaFromPVSO, pmrtePartial } from '@core/lib/metrics'
-import { Card, Stat, Btn, EmptyState, Field } from '@components/ui'
+import { Card, Stat, Btn, Badge } from '@components/ui'
 
 export function Verificacion() {
-  const { cac, base, pvsos, addPVSO } = useAppStore()
-  const aut = autFromCAC(cac)
-  const pgs = pgsLM(aut)
-  const xi = xiFromPVSO(pvsos)
-  const eta = etaFromPVSO(pvsos)
-  const pmrte = pmrtePartial(aut, pvsos)
+  const por = useAppStore((s) => s.proofOfResponse)
+  const issuePor = useAppStore((s) => s.issuePor)
+  const respondPor = useAppStore((s) => s.respondPor)
+  const provePorFailure = useAppStore((s) => s.provePorFailure)
+  const [from, setFrom] = useState('Alice')
+  const [to, setTo] = useState('Bob')
+  const [payload, setPayload] = useState('dar datos X')
+  const [result, setResult] = useState<string | null>(null)
 
-  // Verificación triaxial (MJ/Alráico §2.x)
-  const mental = pgs > 0 // CDS + diseño
-  const simulacion = pvsos.length >= 1 // Autómata / modelo
-  const laboratorio = base.tierra_ha > 0 && base.energia_kwh_dia > 0 // sensores reales en tierra
-  const triaxialPass = mental && simulacion && laboratorio
+  const issue = () => {
+    issuePor(from, to, payload, 5000)
+    setResult('Request emitido. Bob debe responder en 5s o se prueba fallo.')
+  }
+
+  const respondLast = () => {
+    const last = por.requests[por.requests.length - 1]
+    if (!last) return
+    respondPor(last.id, to, 'datos X entregados')
+    setResult('Bob respondió firmado a tiempo ✓')
+  }
+
+  const proveLast = () => {
+    const last = por.requests[por.requests.length - 1]
+    if (!last) return
+    provePorFailure(last.id, 'sin respuesta en b')
+    setResult('Prueba de fallo generada + penalización de stake ✓')
+  }
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="font-jost text-2xl md:text-3xl font-semibold">Verificación Triaxial</h1>
-        <p className="text-[var(--dim)] mt-1">Mental (CDS) + Simulación (Autómata) + Laboratorio (Sensores en tierra real).</p>
+      <div className="flex items-center gap-3">
+        <Gauge className="w-7 h-7 text-emerald-400" />
+        <div>
+          <h1 className="text-xl font-semibold text-white">Verificación · Proof of Response</h1>
+          <p className="text-sm text-slate-400">Respuesta firmada o prueba de fallo verificable (NEAR AI asimilado) — anfibio offline/RAO.</p>
+        </div>
       </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Stat label="η (ontogenética)" value={eta.toFixed(2)} sub="PGS promedio PVSO" color="text-chispa" />
-        <Stat label="ξ (aprendizaje)" value={xi.toFixed(2)} sub="Δη validado por ciclo" />
-        <Stat label="PMRTE parcial" value={pmrte.toFixed(3)} sub="μ·ε·ρ·τ·δ (modelo)" />
-        <Stat label="Triaxial" value={triaxialPass ? 'PASS' : 'INCOMPLETA'} color={triaxialPass ? 'text-emerald-400' : 'text-orange-400'} />
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Stat label="Modo" value={por.mode === 'offline' ? 'Offline (RAO)' : 'Conectado'} />
+        <Stat label="Requests" value={String(por.requests.length)} />
+        <Stat label="Respuestas" value={String(por.responses.length)} />
+        <Stat label="Penalizaciones" value={String(por.penalties.length)} />
       </div>
-
-      <div className="grid md:grid-cols-3 gap-4">
-        <Card title="I · Mental (CDS)">
-          <div className="flex items-center gap-2 mb-2">
-            <Brain className="w-5 h-5 text-purple-400" />
-            {mental ? <span className="text-emerald-400 text-sm">✓ diseño/consenso</span> : <span className="text-orange-400 text-sm">○ pendiente</span>}
-          </div>
-          <p className="text-[var(--dim)] text-sm">PGS calculado: {pgs.toFixed(2)}. El colectivo comprende su posición jerárquica real (MJ §1.5).</p>
-        </Card>
-        <Card title="II · Simulación (Autómata)">
-          <div className="flex items-center gap-2 mb-2">
-            <Cpu className="w-5 h-5 text-cyan-400" />
-            {simulacion ? <span className="text-emerald-400 text-sm">✓ modelo corrido</span> : <span className="text-orange-400 text-sm">○ sin PVSO</span>}
-          </div>
-          <p className="text-[var(--dim)] text-sm">PVSOs registrados: {pvsos.length}. η={eta.toFixed(2)}, ξ={xi.toFixed(2)}.</p>
-        </Card>
-        <Card title="III · Laboratorio (Tierra)">
-          <div className="flex items-center gap-2 mb-2">
-            <FlaskConical className="w-5 h-5 text-emerald-400" />
-            {laboratorio ? <span className="text-emerald-400 text-sm">✓ sensores en campo</span> : <span className="text-orange-400 text-sm">○ sin base</span>}
-          </div>
-          <p className="text-[var(--dim)] text-sm">Tierra {base.tierra_ha}ha, energía {base.energia_kwh_dia}kWh/d. Sin laboratorio, toda métrica es SIMULACIÓN ILUSTRATIVA.</p>
-        </Card>
-      </div>
-
-      <Card title="PVSO — Protocolo de Validación de Salud Ontogenética (cada 28 días)">
-        <AddPVSO onAdd={(cycle, pgsVal, aut_alim, aut_ener, aut_habi, aut_salu) =>
-          addPVSO({ cycle, pgs: pgsVal, aut_alim, aut_ener, aut_habi, aut_salu, notes: 'PVSO de campo' })} />
-        {pvsos.length === 0 ? (
-          <EmptyState>Aún no hay PVSOs. Registra la primera medición de campo (Ciclo 1).</EmptyState>
-        ) : (
-          <ul className="mt-4 space-y-2">
-            {[...pvsos].reverse().map((p) => (
-              <li key={p.id} className="bg-[var(--surf2)] rounded-xl px-3 py-2 text-sm">
-                <div className="flex items-center justify-between">
-                  <span className="font-manrope font-medium">Ciclo {p.cycle} · PGS {p.pgs.toFixed(2)}</span>
-                  <span className="text-[var(--dim)] text-xs">{new Date(p.ts).toLocaleDateString()}</span>
-                </div>
-                <div className="text-[var(--dim)] text-xs mt-1">
-                  AUT_ALIM {p.aut_alim.toFixed(2)} · ENER {p.aut_ener.toFixed(2)} · HABI {p.aut_habi.toFixed(2)} · SALU {p.aut_salu.toFixed(2)}
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+      <Card>
+        <h2 className="text-sm font-semibold text-white mb-3">Emitir request firmado</h2>
+        <div className="flex gap-2 flex-wrap items-center">
+          <input className="bg-slate-800 text-white rounded px-2 py-1 text-sm" placeholder="from" value={from} onChange={(e) => setFrom(e.target.value)} />
+          <input className="bg-slate-800 text-white rounded px-2 py-1 text-sm" placeholder="to" value={to} onChange={(e) => setTo(e.target.value)} />
+          <input className="bg-slate-800 text-white rounded px-2 py-1 text-sm flex-1" placeholder="payload" value={payload} onChange={(e) => setPayload(e.target.value)} />
+          <Btn onClick={issue}><ShieldCheck className="w-4 h-4" /> Emitir</Btn>
+        </div>
+        <div className="flex gap-2 mt-3">
+          <Btn onClick={respondLast}><CheckCircle2 className="w-4 h-4" /> Bob responde</Btn>
+          <Btn onClick={proveLast}><XCircle className="w-4 h-4" /> Probar fallo</Btn>
+        </div>
       </Card>
-    </div>
-  )
-}
-
-function AddPVSO({ onAdd }: { onAdd: (cycle: number, pgs: number, a: number, e: number, h: number, s: number) => void }) {
-  return (
-    <div className="flex flex-wrap items-end gap-2">
-      <Field label="Ciclo" value={1} onChange={() => {}} />
-      <input type="number" defaultValue={1} min={1} id="pvso-cycle" className="w-16 px-2 py-2 bg-[var(--surf2)] border border-[var(--line)] rounded-xl text-sm" />
-      <Btn onClick={() => {
-        const c = Number((document.getElementById('pvso-cycle') as HTMLInputElement)?.value || 1)
-        const { cac } = useAppStore.getState()
-        const a = Math.min(1, cac.ALIM), e = Math.min(1, cac.ENER), h = Math.min(1, cac.HABI), s = Math.min(1, cac.SALU)
-        const pgs = (a + e + h + s + Math.min(1, cac.PROD)) / 5
-        onAdd(c, +pgs.toFixed(2), +a.toFixed(2), +e.toFixed(2), +h.toFixed(2), +s.toFixed(2))
-      }}><Plus className="w-4 h-4 mr-1" /> Registrar PVSO</Btn>
-      <p className="text-[var(--dim)] text-xs w-full">Valor por defecto = métricas CAC actuales (reemplaza con datos de campo reales).</p>
+      <Card>
+        <h2 className="text-sm font-semibold text-white mb-3">Requests</h2>
+        <div className="space-y-1">
+          {por.requests.slice().reverse().map((r) => {
+            const ok = por.responses.some((x) => x.requestId === r.id)
+            const fail = por.failures.some((x) => x.requestId === r.id)
+            return (
+              <div key={r.id} className="text-xs bg-slate-900 rounded p-2 flex items-center gap-2">
+                <Badge color={ok ? 'border-emerald-500 text-emerald-400' : fail ? 'border-red-500 text-red-400' : 'border-slate-600 text-slate-400'}>
+                  {ok ? 'respondido' : fail ? 'fallo probado' : 'pendiente'}
+                </Badge>
+                <span className="text-slate-400">{r.from} → {r.to}: {r.payload}</span>
+              </div>
+            )
+          })}
+          {por.requests.length === 0 && <p className="text-xs text-slate-500">Sin requests.</p>}
+        </div>
+      </Card>
+      {result && <p className="text-xs text-emerald-400">{result}</p>}
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import {
-  Mountain, Database, Eye, Users, Cpu, Coins, LayoutDashboard, Network, Radio, Users2, Bot, Leaf, MessagesSquare, ListChecks, Unlock, Link2, Briefcase, ShieldHalf, RefreshCw, Globe, LifeBuoy, Compass, Scale, Award, Landmark, GraduationCap, HelpCircle, Workflow, Dna, Waypoints,
+  Mountain, Database, Eye, Users, Cpu, Coins, LayoutDashboard, Network, Radio, Gauge, Users2, Bot, Leaf, MessagesSquare, ListChecks, Unlock, Link2, Briefcase, ShieldHalf, RefreshCw, Globe, LifeBuoy, Compass, Scale, Award, Landmark, GraduationCap, HelpCircle, Workflow, Dna, Waypoints,
   ChevronsLeft, ChevronsRight,
   GitBranch, ShieldCheck,
 } from 'lucide-react'
@@ -49,6 +49,7 @@ const NAV_ITEMS = [
   { key: 'vecinal', navKey: 'nav.vecinal', icon: Users, color: 'text-emerald-400', path: '/vecinal' },
   { key: 'nostr', navKey: 'nav.nostr', icon: Radio, color: 'text-emerald-400', path: '/nostr' },
   { key: 'agentes', navKey: 'nav.agentes', icon: Bot, color: 'text-emerald-400', path: '/agentes' },
+  { key: 'verificacion', navKey: 'nav.verificacionPor', icon: Gauge, color: 'text-emerald-400', path: '/verificacion' },
 ] as const
 
 interface AsideProps {

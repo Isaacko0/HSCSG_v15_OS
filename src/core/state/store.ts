@@ -95,6 +95,8 @@ import type { NostrRelayState } from '@core/state/nostrRelay'
 import { makeNostrRelayState, publishLocal as nrPublish, setRelayConfig as nrSetCfg, connect as nrConnect, disconnect as nrDisconnect } from '@core/lib/nostrRelay'
 import type { AgentMeshState } from '@core/state/agentMesh'
 import { makeAgentMeshState, spawnAgent as amSpawn, shareCompute as amShare, requestCompute as amRequest, remoteResurrect as amResurrect } from '@core/lib/agentMesh'
+import type { ProofOfResponseState } from '@core/state/proofOfResponse'
+import { makeProofOfResponseState, issueRequest as porIssue, respond as porRespond, proveFailure as porProve, isSatisfied as porSatisfied } from '@core/lib/proofOfResponse'
 import { dispatchMatch, autoAdvisory, applyDecisionTo, znuDecayOnBalance } from '@core/lib/pipeline'
 import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
@@ -257,6 +259,8 @@ export interface AppState {
   // block/buzz asimilado
   nostrRelay: NostrRelayState
   agentMesh: AgentMeshState
+  // NEAR asimilado
+  proofOfResponse: ProofOfResponseState
   // Conector de flujo: params sembrados para la siguiente pantalla (auto-llenado)
   stageSeeds: Record<string, Record<string, unknown>>
   // actions
@@ -421,6 +425,11 @@ export interface AppState {
   shareAgentCompute: (memberId: string, resource: string) => void
   requestAgentCompute: (agentId: string) => { ok: boolean; resource?: string }
   resurrectAgent: (agentId: string) => void
+  // Proof of Response (NEAR AI)
+  issuePor: (from: string, to: string, payload: string, deadlineB?: number) => void
+  respondPor: (requestId: string, responder: string, payload: string) => void
+  provePorFailure: (requestId: string, reason: string) => void
+  porSatisfied: (requestId: string) => boolean
   askOracle: (question: string, outcomes: string[]) => void
   castOracleVote: (queryId: string, juror: string, outcome: string, stake: number) => void
   resolveOracleQuery: (queryId: string) => void
@@ -765,6 +774,8 @@ export const useAppStore = create<AppState>()(
       // block/buzz asimilado
       nostrRelay: makeNostrRelayState(),
       agentMesh: makeAgentMeshState(),
+      // NEAR asimilado
+      proofOfResponse: makeProofOfResponseState(),
       // Conector de flujo
       stageSeeds: {},
 
@@ -1226,6 +1237,21 @@ export const useAppStore = create<AppState>()(
       resurrectAgent: (agentId) => set((st) => ({
         agentMesh: amResurrect(st.agentMesh, agentId),
       })),
+      // ===== Proof of Response (NEAR AI) =====
+      issuePor: (from, to, payload, deadlineB) => set((st) => ({
+        proofOfResponse: porIssue(st.proofOfResponse, from, to, payload, deadlineB),
+      })),
+      respondPor: (requestId, responder, payload) => set((st) => ({
+        proofOfResponse: porRespond(st.proofOfResponse, requestId, responder, payload),
+      })),
+      provePorFailure: (requestId, reason) => set((st) => ({
+        proofOfResponse: porProve(st.proofOfResponse, requestId, reason),
+      })),
+      porSatisfied: (requestId) => {
+        let ok = false
+        set((st) => { ok = porSatisfied(st.proofOfResponse, requestId); return st })
+        return ok
+      },
       electDeptRep: (deptId, rep, voter) => set((st) => ({ democracia: electRep(st.democracia, deptId, rep, voter) })),
       // ===== Aprendizaje por retos (iambrainstorming) =====
       completeChallenge: (id) => set((st) => ({ aprender: completeChallenge(st.aprender, id) })),

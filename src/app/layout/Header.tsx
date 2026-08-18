@@ -19,6 +19,7 @@ const SCREENS: Record<string, string> = {
   vecinal: 'Gobernanza Vecinal E5M',
   nostr: 'Transporte Nostr · Buzz',
   agentes: 'Malla de Agentes · Buzz Mesh',
+  verificacionPor: 'Verificación · Proof of Response',
 }
 
 export function Header({ collapsed, onToggleCollapse, onToggleNav, isMobile, navOpen }: {

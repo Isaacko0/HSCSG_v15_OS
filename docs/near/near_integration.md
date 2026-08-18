@@ -71,7 +71,7 @@ Total acumulado HSCSG: 132 + 12 = **144 conceptos nacidos**.
 - [x] Fase 1 Desempaquetado (4 PDFs + clone core-contracts)
 - [x] Fase 2 Limpieza (gitignore + backup real)
 - [x] Fase 3 GitHub (backup + integration commiteados)
-- [ ] Fase 4 Evolución: implementar `proofOfResponse.ts` + UI (P0 de NEAR) — pendiente
+- [x] Fase 4 Evolución: implementados módulos proofOfResponse + UI /verificacion (commit bf09fde+). 46/46 tests.
 - [ ] Actualizar BRIEF (fuentes 38→39, conceptos 132→144)
 
 ---

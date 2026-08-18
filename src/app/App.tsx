@@ -85,6 +85,7 @@ export function App() {
         <Route path="vecinal" element={<Vecinal />} />
         <Route path="nostr" element={<Nostr />} />
         <Route path="agentes" element={<Agentes />} />
+        <Route path="verificacion" element={<Verificacion />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
