@@ -2,12 +2,12 @@
 
 > 🌟 **Con todo el corazón: este proyecto no existiría sin [Pepe Sevilla](https://www.instagram.com/sevillamx/?hl=es).** Su visión, acompañamiento y empuje son la chispa de la que nace Cosateca OS. Gracias, Pepe. 🌟
 
-**Nodo Cosateca v0.1** — Sistema operativo comunitario postmonetario construido sobre el *Materialismo Jerárquico* (Leyes I/II/III) y el *CaaS* (Comunidad como Servicio). Fork de Cosateca OS, ampliado por asimilación de 23 repositorios/datos externos como módulos vivos.
+**Nodo Cosateca v0.1** — Sistema operativo comunitario postmonetario construido sobre el *Materialismo Jerárquico* (Leyes I/II/III) y el *CaaS* (Comunidad como Servicio). Fork de Cosateca OS, ampliado por asimilación de **30+ repositorios/datos externos** como módulos vivos, más una **capa científica** (8 documentos EBD) y un **orquestador nativo del Sistema Alráico** (`loopEngine` + `/simulador`).
 
 > Repositorio: https://github.com/Isaacko0/HSCSG_v15_OS
 > Preview local: http://localhost:4173/
 > Deploy (Vercel): https://hscsg-v15-os.vercel.app/
-> Skill de asimilación incluida en `skills/hscsg-repo-assimilation/`
+> Skills del proyecto en `skills/` (asimilación + ciencia + vasos comunicantes): `hscsg-repo-assimilation`, `hscsg-scientific-papers`, `hscsg-unified-assimilation-science`
 
 ---
 
@@ -73,15 +73,19 @@ Cada repo asimilado deja dos documentos en `docs/`:
 | 27 | `/pipeline` | Pipeline Anidado (Orquestador Vivo) | **Integral · alook · automaton · ponytail** | Matchmaker + salud del loop + routing FRS (actuator: despacha/issues) |
 | 28 | `/gaiaunion` | Gaia Union (Organismo Vivo) | **Gaia Union (Plan Maestro)** | Niveles + sistemas vitales + ADN + epigenética |
 | 29 | `/flujo` | Entramado Cibernético (Conector) | **DeseOS (stage/next/seed)** | Auto-llenado entre pantallas + mapa del flujo |
+| 30 | `/verificacion` | Verificación (Laboratorio) | **NEAR (proofOfResponse)** | Respuesta firmada O fallo verificable (Proof of Response) |
+| 31 | `/nostr` | Nostr Relay (Transporte) | **block/buzz** | Puente transporte Nostr (eventos firmados, RAO local, modo anfibio) |
+| 32 | `/agentes` | Agent Mesh (Malla) | **block/buzz Mesh** | Malla de agentes: compute por membresía + cuerpo desechable/portable |
+| 33 | `/simulador` | Simulador (Eje Simulación) | **Sistema Alráico (loopEngine)** | Verificación Triaxial: sliders Ω/s/κ, αʰ(t), sobrecargas γ-CARMIS, resonancias |
 
-> Rutas navegables: 29 (del `/` al `/flujo`).
+> Rutas navegables: 33 (del `/` al `/simulador`).
 
 ### Modo Lucidez (Ley III)
 El botón de luna en el Header es un **toggle real de transparencia radical** (Ley III: *lucidez, nunca engañar*). Al activarlo: invierte el tema a **diurno** (sol), muestra un banner de Ley III, y revela bloques `.lucidez-raw` con **datos crudos y provenance** (ej. en `/integral` se ve la fórmula del System Health y el origen de cada señal FRS). Persiste en `localStorage`.
 
 ---
 
-## Repos asimilados (20)
+## Repos asimilados (30+)
 
 | Repo origen | Mapeado a | Backup + Integración |
 |------------|-----------|----------------------|
@@ -97,25 +101,21 @@ El botón de luna en el Header es un **toggle real de transparencia radical** (L
 | [Baruch4413/tekitl](https://github.com/Baruch4413/tekitl) | Tekitl · Proyectos | `docs/tekitl_backup.md` · `docs/tekitl_integration.md` |
 | [overkillkulture/sovereignty-hub](https://github.com/overkillkulture/sovereignty-hub) | Soberanía · 13 Pilares | `docs/sovereignty_hub_backup.md` · `docs/sovereignty_integration.md` |
 | [tairea/sovereignty-hub-ui](https://github.com/tairea/sovereignty-hub-ui) | Soberanía · 13 Pilares | `docs/sovereignty_hub_ui_backup.md` · `docs/sovereignty_integration.md` |
-| [tairea/integral-phase-1](https://github.com/tairea/integral-phase-1) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
-| [Integral-Collective/integral-whitepaper](https://github.com/Integral-Collective/integral-whitepaper) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
-| [Integral-Collective/integral-cds](https://github.com/Integral-Collective/integral-cds) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
-| [Integral-Collective/integral-oad](https://github.com/Integral-Collective/integral-oad) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
-| [Integral-Collective/integral-devguide](https://github.com/Integral-Collective/integral-devguide) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
-| [Integral-Collective/integral-cos](https://github.com/Integral-Collective/integral-cos) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
-| [Integral-Collective/integral-decisions](https://github.com/Integral-Collective/integral-decisions) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
-| [Integral-Collective/integral-frs](https://github.com/Integral-Collective/integral-frs) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
-| [Integral-Collective/integral-itc](https://github.com/Integral-Collective/integral-itc) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
-| [Sci-Hive datapoint "Mundus Live"](https://sci-hive.com/datapoint/fcaf69a3-2b03-4fd9-90e2-96e49379ba79/mundus-live) | Mundus · Unidad | `docs/scihive_mundus_backup.md` · `docs/scihive_mundus_integration.md` |
+| [Integral Collective (9 repos)](https://github.com/Integral-Collective) | Integral · Loop | `docs/integral_backup.md` · `docs/integral_integration.md` |
+| [Sci-Hive datapoint "Mundus Live"](https://sci-hive.com/) | Mundus · Unidad | `docs/scihive_mundus_backup.md` · `docs/scihive_mundus_integration.md` |
 | [GuiFV/life](https://github.com/GuiFV/life) | Life · Organizador | `docs/guifv_life_backup.md` · `docs/guifv_life_integration.md` |
-| [Auravana · One Community · The Venus Project · Resource Based Economy](https://auravana.org/) | Civilizaciones | `docs/civilizaciones_sinergia.md` |
-| [Gaia Confederation (whitepaper)](https://gaiaconfederation.org/) | Círculos Biomiméticos | `docs/gaia_backup.md` · `docs/gaia_integration.md` |
-| [Symbiosky (GitLab: whitpaper + contract-evm + nostr)](https://gitlab.com/blockchain-projects-ecosymra/symbiosky-whitpaper) | Credibilidad por Convicción | `docs/symbiosky_backup.md` · `docs/symbiosky_integration.md` |
-| [iambrainstorming.github.io (Amiya Tulu, libros)](https://iambrainstorming.github.io/) | Democracia / Aprender | `docs/iambrainstorming_backup.md` · `docs/iambrainstorming_integration.md` · `docs/iambrainstorming_libro_completo.md` |
-| [Kleros / Proof-of-Humanity / Realitio](https://kleros.io/) | Oráculo de Hechos + Identidad | `docs/kleros_backup.md` · `docs/kleros_integration.md` |
-| [Conway-Research/automaton](https://github.com/Conway-Research/automaton) | Pipeline anidado (agente soberano) | `docs/automaton_alook_ponytail_backup.md` · `docs/automaton_alook_ponytail_integration.md` |
-| [alookai/alook](https://github.com/alookai/alook) | Pipeline anidado (matchmaker de roles) | `docs/automaton_alook_ponytail_backup.md` · `docs/automaton_alook_ponytail_integration.md` |
-| [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | Pipeline anidado (potenciador) | `docs/automaton_alook_ponytail_backup.md` · `docs/automaton_alook_ponytail_integration.md` |
+| [Auravana · One Community · TVP · RBE](https://auravana.org/) | Civilizaciones | `docs/civilizaciones_sinergia.md` |
+| [Gaia Confederation](https://gaiaconfederation.org/) | Círculos Biomimétricos | `docs/gaia_backup.md` · `docs/gaia_integration.md` |
+| [Symbiosky (GitLab)](https://gitlab.com/blockchain-projects-ecosymra/symbiosky-whitpaper) | Credibilidad por Convicción | `docs/symbiosky_backup.md` · `docs/symbiosky_integration.md` |
+| [iambrainstorming (Amiya Tulu)](https://iambrainstorming.github.io/) | Democracia / Aprender | `docs/iambrainstorming_backup.md` · `docs/iambrainstorming_integration.md` |
+| [Kleros / Proof-of-Humanity / Realitio](https://kleros.io/) | Oráculo de Hechos | `docs/kleros_backup.md` · `docs/kleros_integration.md` |
+| [Conway-Research/automaton + alook + ponytail](https://github.com/Conway-Research/automaton) | Pipeline anidado | `docs/automaton_alook_ponytail_backup.md` · `docs/automaton_alook_ponytail_integration.md` |
+| **Didacta Community** (Postgres/Stripe/S3) | Educación Postmonetaria + Educaas | `docs/didacta_backup.md` · `docs/didacta_integration.md` (extirpado infra, conservado lógica) |
+| **Urbanika (12 repos)** | SovereignCredit · Regen · Vecinal | `docs/urbanika_*/_backup.md` · `_integration.md` (3 módulos reales) |
+| **block/buzz** (Nostr Relay + Agent Mesh) | Nostr Relay + Agent Mesh | `docs/buzz/buzz_backup.md` · `buzz_integration.md` (transporte Nostr + malla agentes) |
+| **NEAR** (4 PDFs + core-contracts) | Proof of Response (Verificación) | `docs/near/near_backup.md` · `near_integration.md` (respuesta firmada O fallo) |
+| **ADSOA** (Pérez-Leguizamo & Godínez-Borja, IEEE 2017 + IEICE 2016) | Capa nativa misión crítica | `docs/research_output/01..08_*` (8 docs EBD) — Banco de México UV-PKI |
+| **Jacque Fresco / RBE** (Yates 2014 + Leiva 2012) | Horizonte civilizatorio RBE | `docs/fresco_rbe_backup.md` · `fresco_rbe_integration.md` (vía skill, no-duplicación) |
 
 ¹ Los backups originales se guardan también fuera del repo en `../HSCSG_v15_OS_BACKUP_YYYYMMDD_HHMMSS/`.
 
@@ -126,9 +126,9 @@ El botón de luna en el Header es un **toggle real de transparencia radical** (L
 ```
 src/
 ├── app/
-│   ├── App.tsx              # Router (21 rutas)
+│   ├── App.tsx              # Router (33 rutas)
 │   ├── layout/              # Aside (nav), Header, Layout, Coach…
-│   └── screens/             # 21 pantallas (una por módulo)
+│   └── screens/             # 33 pantallas (una por módulo + verificación)
 ├── components/
 │   └── ui.tsx               # Card, Stat, Btn, Badge, EmptyState, Field, Bar
 ├── core/
@@ -138,19 +138,38 @@ src/
 │   │   ├── vesting.ts  trustlines.ts  tekitl.ts  sovereignty.ts  integral.ts
 │   │   ├── mundus.ts  life.ts  civilizaciones.ts
 │   │   ├── gaia.ts  symbiosky.ts  democracia.ts  learning.ts  oracle.ts  kleros.ts  valueDual.ts
+│   │   ├── nostrRelay.ts  agentMesh.ts  proofOfResponse.ts   # block/buzz + NEAR
+│   │   ├── loopEngine.ts   # orquestador nativo Sistema Alráico (γ-CARMIS + resonancia)
+│   │   └── loopEngine.test.ts  # 7/7 tests
 │   └── state/               # Tipos + store (Zustand persistido)
 │       ├── store.ts         # Estado global + acciones + partialize
 │       ├── seed.ts  types.ts
 │       ├── automaton.ts  caas.ts  colaberry.ts  orchestration.ts
 │       ├── prioritize.ts  solarpunk.ts  vesting.ts  trustlines.ts
 │       ├── tekitl.ts  sovereignty.ts  integral.ts  mundus.ts  life.ts  civilizaciones.ts
+│       ├── nostrRelay.ts  agentMesh.ts  proofOfResponse.ts
 ├── shared/                  # assets, estilos, tipos
-└── skills/                  # hscsg-repo-assimilation (metodología de asimilación)
+└── skills/                  # metodología del proyecto (3 skills)
+    ├── hscsg-repo-assimilation/         # asimilación de repos como módulos vivos (4 fases)
+    ├── hscsg-scientific-papers/          # protocolo de papers (EBD + vasos comunicantes)
+    └── hscsg-unified-assimilation-science/  # skill maestra fusionada
 ```
 
 **Stack:** React 18 + TypeScript + Vite 5 + React Router 6 + Zustand 4 + Tailwind 3 + lucide-react.
 
 **Persistencia:** el store se guarda en `localStorage` (sin backend). `node_modules` y `dist` están en `.gitignore`.
+
+---
+
+## Capa Científica & Vasos Comunicantes
+
+HSCSG v15 OS no solo asimila código: cada fuente externa (repo O paper) se documenta con **vasos comunicantes totales** — evidencia → decisión EBD → módulo → test KPI → documento, trazables entre sí.
+
+- **8 Documentos Científico-Estratégicos** en `docs/research_output/` (metodología EBD): Propuesta de Investigación, Brief Estratégico, White Paper, Documento de Diseño Basado en Evidencia (D1-D8), Brief Científico, Memorándum de Validación (**DV-01 a DV-04 APROBADAS**), Informe de Factibilidad, Protocolo de Comunicación Científica.
+- **Orquestador Alráico nativo:** `src/core/lib/loopEngine.ts` ejecuta 6 loops + γ-CARMIS (reconfig ante sobrecarga) + resonancia (αʰ₁·αʰ₂·3.0 > αʰ₁+αʰ₂). `/simulador` lo expone en vivo (sliders Ω/s/κ, proyección αʰ(t), sobrecargas y resonancias).
+- **Skills de orquestación** en `skills/` (ver arriba) — aplicables a cualquier nueva fuente que pases.
+
+> **Automatización sugerida:** la skill `hscsg-unified-assimilation-science` puede ejecutarse periódicamente (cron) para re-sincronizar README/BRIEF/CHANGELOG con el estado real del repo y mantener los vasos comunicantes al día.
 
 ---
 
