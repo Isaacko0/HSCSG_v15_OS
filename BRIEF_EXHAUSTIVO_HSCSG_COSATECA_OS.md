@@ -1,7 +1,7 @@
 # BRIEF EXHAUSTIVO QUIRÚRGICO: HSCSG — Modelo de Negocio, HSCSG v15 OS & Cosateca OS
 **Documento fundacional v1.0 | Zeitnus / Isaac Ko | Agosto 2026**
 **Metodología:** 4 Fases (Desempaquetado → Limpieza → GitHub → Evolución) + Sistema Alráico (G1-CARMIS)
-**Fuentes primarias:** 39 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
+**Fuentes primarias:** 41 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa, **+ Jacque Fresco/RBE vía tesis Yates 2014 (UCLan) y Leiva 2012 (U. Valparaíso)**), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
 
 ---
 
@@ -1533,3 +1533,37 @@ Esta sesión cerró el ciclo **asimilación → implementación real** de 4 repo
 - Asimilar resto de la lista de 24 repos documentados en `docs/`
 
 *Fin sección 17 — implementación sesión 2026-08-12.*
+
+---
+
+## 18. CAPA CIENTÍFICA & VASOS COMUNICANTES (Sesión 2026-08-18)
+
+### 18.1 Paquete de 8 Documentos Científico-Estratégicos (ADSOA-HSCSG)
+Generados en `docs/research_output/` aplicando metodología **EBD (Evidence-Based Design)** y trazabilidad total:
+1. `01_Propuesta_Investigacion_Aplicada_ADSOA_HSCSG.md` — plan 6 meses / 3 fases / 480h / $0.
+2. `02_Brief_Estrategico_Basado_Evidencia_ADSOA.md` — gap analysis + Go/No-Go.
+3. `03_White_Paper_Estrategia_ADSOA_HSCSG.md` — arquitectura objetivo + specs.
+4. `04_Documento_Diseno_Basado_Evidencia_EBD.md` — **8 decisiones D1-D8** (ADSOA nativo, ACP, DF, Content Code, UV-PKI, Folio, Autonomous Guard, Coordination) trazables a papers Banxico.
+5. `05_Brief_Cientifico_ADSOA_HSCSG.md` — hipótesis H₁/H₀ + metodología.
+6. `06_Memorandum_Validacion_Estrategica.md` — **DV-01 a DV-04 APROBADAS** (PI + Stakeholder + Reviewer).
+7. `07_Informe_Factibilidad_Metodologica.md` — técnica/operativa/económica/temporal + riesgos R1-R6.
+8. `08_Protocolo_Comunicacion_Cientifica.md` — estándares papers, datos abiertos, peer review.
+
+**Evidencia primaria citada:** Pérez-Leguizamo & Godínez-Borja (IEEE ISADS 2017, DOI 10.1109/ISADS.2017.27) + IEICE 2016 (Banco de México, UV-PKI misión crítica).
+
+### 18.2 Sistema Alráico como Orquestador Nativo (loopEngine + Simulador)
+- `src/core/lib/loopEngine.ts` ✨ — kernel ADS: 6 loops (cdsDecay, meritMint, agentCompute, regenMrv, nostrAudit, vecinalAccountability) + **γ-CARMIS** (reconfig ante sobrecarga) + **resonancia** (αʰ₁·αʰ₂·3.0 > αʰ₁+αʰ₂). 7/7 tests passing.
+- `src/app/screens/Simulador.tsx` ✨ — Eje Simulación de la Verificación Triaxial: sliders Ω/s/κ, proyección αʰ(t), stepper tick-a-tick, sobrecargas y resonancias en vivo. **Deployado:** `/simulador` → 200.
+
+### 18.3 Skills de Orquestación (publicadas en `skills/`)
+- `hscsg-repo-assimilation` — asimilación de repos externos como módulos vivos (4 fases).
+- `hscsg-scientific-papers` — protocolo de papers con EBD + vasos comunicantes.
+- `hscsg-unified-assimilation-science` — **skill maestra fusionada**: asimilación + ciencia + **vasos comunicantes totales** en todo HSCSG.
+
+### 18.4 Nuevas Fuentes Teóricas (RBE / Jacque Fresco)
+Asimiladas vía la skill (vía Ciencia, no código — principio de no-duplicación):
+- **Yates 2014** *Crime, Criminality & Social Revolution* (MA UCLan) — tesis sobre ideas de Jacque Fresco / The Venus Project. → `docs/fresco_rbe_backup.md`
+- **Leiva 2012** *Economía Monetaria y Economía Basada en Recursos* (U. Valparaíso, Adm. Pública) — análisis teórico RBE vs monetaria. → `docs/fresco_rbe_integration.md`
+- **Vasos comunicantes:** ambos mapean a Leyes MJ (I: recursos como base; II: acceso por contribución; III: métricas físicas) y al horizonte `CivilizacionesState` (RBE/TVP). **Fuentes primarias BRIEF: 39 → 41.**
+
+*Fin sección 18 — cierre de tanda 2026-08-18 (8 docs + 3 skills + loopEngine/Simulador + Fresco/RBE).*

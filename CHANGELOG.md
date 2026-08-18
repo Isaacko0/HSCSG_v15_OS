@@ -4,6 +4,15 @@ Todas las entradas siguen el formato: versión, fecha, repos asimilados en ese p
 
 ---
 
+## v15.19 — 2026-08-18 · Capa Científica: 8 Docs + 3 Skills + loopEngine/Simulador + Fresco/RBE
+- **8 Documentos Científico-Estratégicos (ADSOA-HSCSG)** en `docs/research_output/` (EBD + vasos comunicantes): Propuesta Investigación, Brief Estratégico, White Paper, EBD (D1-D8), Brief Científico, Memorándum Validación (**DV-01 a DV-04 APROBADAS**), Informe Factibilidad, Protocolo Comunicación.
+- **loopEngine.ts** ✨ — orquestador nativo Sistema Alráico: 6 loops (cdsDecay, meritMint, agentCompute, regenMrv, nostrAudit, vecinalAccountability) + **γ-CARMIS** + **resonancia** (factor 3.0). 7/7 tests (`loopEngine.test.ts`).
+- **Simulador.tsx** ✨ — Eje Simulación Verificación Triaxial (sliders Ω/s/κ, αʰ(t), stepper, sobrecargas/resonancias). **`/simulador` → 200 en Vercel.**
+- **3 Skills** en `skills/`: `hscsg-repo-assimilation` (legacy) · `hscsg-scientific-papers` (protocolo papers) · `hscsg-unified-assimilation-science` (**maestra fusionada**: asimilación + ciencia + vasos comunicantes totales).
+- **Fuentes RBE/Fresco** asimiladas (vía Ciencia, sin código nuevo): Yates 2014 *Crime, Criminality & Social Revolution* (UCLan, ideas de Jacque Fresco) + Leiva 2012 *Economía Monetaria y EBR* (U. Valparaíso). → `docs/fresco_rbe_backup.md` + `docs/fresco_rbe_integration.md`. **Fuentes primarias BRIEF: 39 → 41.**
+- **BRIEF:** nueva sección 18 (Capa Científica & Vasos Comunicantes).
+- **Verificado:** `npm run build` → exit 0 · `loopEngine.test.ts` → 7/7 · Vercel `/simulador` `/verificacion` `/nostr` `/agentes` → 200.
+
 ## v15.18 — 2026-08-08 · Copiaosis + i18n + fix persistencia Civilizaciones
 - **Civilizaciones:** añadido **Copiaosis** (`https://copiosis.net/`) como flashcard ancha (ocupa 2 columnas, `wide: true`). Traducción ES/EN/PT en `i18n.ts`.
 - **i18n nivel 2:** el selector ES/EN/PT-BR ahora traduce también el contenido interno de 7 módulos (Solarpunk, Civilizaciones, Células, Mundus, Soberanía, Integral, Life). ~170 claves nuevas en `i18n.ts`. Marcas (ZNU, CaaS, nombres de orgs) no se traducen.
