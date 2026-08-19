@@ -95,6 +95,8 @@ import type { NostrRelayState } from '@core/state/nostrRelay'
 import { makeNostrRelayState, publishLocal as nrPublish, setRelayConfig as nrSetCfg, connect as nrConnect, disconnect as nrDisconnect } from '@core/lib/nostrRelay'
 import type { AgentMeshState } from '@core/state/agentMesh'
 import { makeAgentMeshState, spawnAgent as amSpawn, shareCompute as amShare, requestCompute as amRequest, remoteResurrect as amResurrect } from '@core/lib/agentMesh'
+import type { NooaState } from '@core/state/nooa'
+import { makeNooaState, spawnNooaAgent as nooaSpawn, addMethod as nooaAddMethod, hide as nooaHide, extendLib as nooaExtend } from '@core/state/nooa'
 import type { ProofOfResponseState } from '@core/state/proofOfResponse'
 import { makeProofOfResponseState, issueRequest as porIssue, respond as porRespond, proveFailure as porProve, isSatisfied as porSatisfied } from '@core/lib/proofOfResponse'
 import { dispatchMatch, autoAdvisory, applyDecisionTo, znuDecayOnBalance } from '@core/lib/pipeline'
@@ -259,6 +261,8 @@ export interface AppState {
   // block/buzz asimilado
   nostrRelay: NostrRelayState
   agentMesh: AgentMeshState
+  // NVIDIA OO-Agents (NOOA) asimilado — capa agente-orobjeto isomorfa a agentMesh + Leyes MJ
+  nooa: NooaState
   // NEAR asimilado
   proofOfResponse: ProofOfResponseState
   // Conector de flujo: params sembrados para la siguiente pantalla (auto-llenado)
@@ -425,6 +429,11 @@ export interface AppState {
   shareAgentCompute: (memberId: string, resource: string) => void
   requestAgentCompute: (agentId: string) => { ok: boolean; resource?: string }
   resurrectAgent: (agentId: string) => void
+  // NOOA (NVIDIA OO-Agents)
+  spawnNooaAgent: (name: string, opts?: Partial<Omit<import('@core/state/nooa').NooaAgent, 'id' | 'name' | 'methods' | 'fields' | 'libs'>>) => void
+  addNooaMethod: (agentId: string, m: Omit<import('@core/state/nooa').NooaMethod, 'visibility'> & { visibility?: 'visible' | 'hidden' }) => void
+  hideNooa: (agentId: string, name: string) => void
+  extendNooaLib: (agentId: string, lib: string) => void
   // Proof of Response (NEAR AI)
   issuePor: (from: string, to: string, payload: string, deadlineB?: number) => void
   respondPor: (requestId: string, responder: string, payload: string) => void
@@ -774,6 +783,7 @@ export const useAppStore = create<AppState>()(
       // block/buzz asimilado
       nostrRelay: makeNostrRelayState(),
       agentMesh: makeAgentMeshState(),
+      nooa: makeNooaState(),
       // NEAR asimilado
       proofOfResponse: makeProofOfResponseState(),
       // Conector de flujo
@@ -1236,6 +1246,19 @@ export const useAppStore = create<AppState>()(
       },
       resurrectAgent: (agentId) => set((st) => ({
         agentMesh: amResurrect(st.agentMesh, agentId),
+      })),
+      // ===== NOOA (NVIDIA OO-Agents) — capa agente-orobjeto =====
+      spawnNooaAgent: (name, opts) => set((st) => ({
+        nooa: nooaSpawn(st.nooa, name, opts),
+      })),
+      addNooaMethod: (agentId, m) => set((st) => ({
+        nooa: nooaAddMethod(st.nooa, agentId, m),
+      })),
+      hideNooa: (agentId, name) => set((st) => ({
+        nooa: nooaHide(st.nooa, agentId, name),
+      })),
+      extendNooaLib: (agentId, lib) => set((st) => ({
+        nooa: nooaExtend(st.nooa, agentId, lib),
       })),
       // ===== Proof of Response (NEAR AI) =====
       issuePor: (from, to, payload, deadlineB) => set((st) => ({
