@@ -97,6 +97,8 @@ import type { AgentMeshState } from '@core/state/agentMesh'
 import { makeAgentMeshState, spawnAgent as amSpawn, shareCompute as amShare, requestCompute as amRequest, remoteResurrect as amResurrect } from '@core/lib/agentMesh'
 import type { NooaState } from '@core/state/nooa'
 import { makeNooaState, spawnNooaAgent as nooaSpawn, addMethod as nooaAddMethod, hide as nooaHide, extendLib as nooaExtend } from '@core/state/nooa'
+import type { ContentState } from '@core/state/content'
+import { makeContentState, captureIdea as cCapture, scoreIdea as cScore, humanDecision as cDecision, ingestNews as cNews } from '@core/state/content'
 import type { ProofOfResponseState } from '@core/state/proofOfResponse'
 import { makeProofOfResponseState, issueRequest as porIssue, respond as porRespond, proveFailure as porProve, isSatisfied as porSatisfied } from '@core/lib/proofOfResponse'
 import { dispatchMatch, autoAdvisory, applyDecisionTo, znuDecayOnBalance } from '@core/lib/pipeline'
@@ -263,6 +265,8 @@ export interface AppState {
   agentMesh: AgentMeshState
   // NVIDIA OO-Agents (NOOA) asimilado — capa agente-orobjeto isomorfa a agentMesh + Leyes MJ
   nooa: NooaState
+  // ContentCreation-OS asimilado — co-pilot de contenido anfibio (gate humano = Ley III MJ)
+  content: ContentState
   // NEAR asimilado
   proofOfResponse: ProofOfResponseState
   // Conector de flujo: params sembrados para la siguiente pantalla (auto-llenado)
@@ -434,6 +438,11 @@ export interface AppState {
   addNooaMethod: (agentId: string, m: Omit<import('@core/state/nooa').NooaMethod, 'visibility'> & { visibility?: 'visible' | 'hidden' }) => void
   hideNooa: (agentId: string, name: string) => void
   extendNooaLib: (agentId: string, lib: string) => void
+  // ContentCreation-OS (co-pilot contenido anfibio)
+  captureIdea: (text: string, opts?: { source?: 'cli' | 'telegram' | 'nostr' | 'rss'; lane?: string }) => void
+  scoreIdea: (ideaId: string, brandFit: number, angles: string[]) => void
+  decideIdea: (ideaId: string, decision: 'approved' | 'rejected') => void
+  ingestNews: (items: { title: string; url: string; keyword: string; date: string }[]) => void
   // Proof of Response (NEAR AI)
   issuePor: (from: string, to: string, payload: string, deadlineB?: number) => void
   respondPor: (requestId: string, responder: string, payload: string) => void
@@ -784,6 +793,7 @@ export const useAppStore = create<AppState>()(
       nostrRelay: makeNostrRelayState(),
       agentMesh: makeAgentMeshState(),
       nooa: makeNooaState(),
+      content: makeContentState(),
       // NEAR asimilado
       proofOfResponse: makeProofOfResponseState(),
       // Conector de flujo
@@ -1259,6 +1269,19 @@ export const useAppStore = create<AppState>()(
       })),
       extendNooaLib: (agentId, lib) => set((st) => ({
         nooa: nooaExtend(st.nooa, agentId, lib),
+      })),
+      // ===== ContentCreation-OS (co-pilot contenido anfibio) =====
+      captureIdea: (text, opts) => set((st) => ({
+        content: cCapture(st.content, text, opts),
+      })),
+      scoreIdea: (ideaId, brandFit, angles) => set((st) => ({
+        content: cScore(st.content, ideaId, brandFit, angles),
+      })),
+      decideIdea: (ideaId, decision) => set((st) => ({
+        content: cDecision(st.content, ideaId, decision),
+      })),
+      ingestNews: (items) => set((st) => ({
+        content: cNews(st.content, items),
       })),
       // ===== Proof of Response (NEAR AI) =====
       issuePor: (from, to, payload, deadlineB) => set((st) => ({
