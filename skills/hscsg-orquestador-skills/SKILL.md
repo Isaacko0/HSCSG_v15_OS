@@ -105,7 +105,51 @@ Cada skill debe citar a las hermanas cuando su salida dependa de ellas:
 4. EJECUTAR tarea en skill hija
 5. VERIFICAR (build + tests + vasos) — ver unified-assimilation-science FASE 4
 6. COMMIT + PUSH + TAG (trazabilidad: EBD, DV, KPI, refs)
+7. DISPARAR SYNC (vasos comunicantes al día) — ver §8
 ```
+
+---
+
+## 8. Mantenimiento de Vasos Comunicantes (Sync Periódico)
+
+El orquestador **dispara y asegura** el cron de sincronización que mantiene README/BRIEF/CHANGELOG
+y las skills propias al día con el estado real del repo. Esto es obligatorio para no romper los
+vasos comunicantes entre skills.
+
+### Al cargar esta skill, el orquestador debe:
+
+**A) Ejecutar el sync inmediatamente (mantenimiento):**
+
+```bash
+bash "/c/Users/Isaacko0/Documents/HSCSG_v15_OS/scripts/sync_docs.sh"
+```
+
+El script: cuenta rutas reales en `App.tsx`, skills, docs científicos; verifica `npm run build`;
+re-espeja `skills/hscsg-*` al índice de Hermes (`~/.hermes/skills/hscsg/`); y auto-commitea/pushea
+cambios en `docs/` o `skills/`.
+
+**B) Asegurar que el cron esté programado (idempotente):**
+
+```bash
+# Verificar existencia del cron 'HSCSG sync docs (vasos comunicantes)'
+cronjob(action="list")
+# Si NO existe, crearlo:
+cronjob(action="create",
+  name="HSCSG sync docs (vasos comunicantes)",
+  schedule="0 3 * * 0",            # domingos 03:00
+  skills=["hscsg-orquestador-skills"],   # carga el router, que a su vez corre sync_docs.sh
+  prompt="Ejecuta el orquestador HSCSG: corre scripts/sync_docs.sh (re-espeja skills propias al indice Hermes, cuenta rutas/docs, verifica build, auto-commitea docs/skills). Reporta conteos y estado. Si build falla, NO commitees y avisa.",
+  repeat="forever")
+```
+
+> **Idempotencia:** si el cron ya existe (job_id `23ec7972c64e`), no recrearlo — solo confirmar
+> que está `enabled: true`. El orquestador puede invocarlo manualmente con `cronjob(action="run", job_id="23ec7972c64e")`
+> cuando el usuario pida "sincroniza ahora" o tras una asimilación grande.
+
+### Cuándo disparar el sync
+- Al final de cualquier tarea de asimilación/creación de skill (paso 7 arriba).
+- Cuando el usuario pida "mantén vasos comunicantes al día" / "sincroniza".
+- Periódicamente vía el cron (domingos) — no requiere acción manual.
 
 ---
 
