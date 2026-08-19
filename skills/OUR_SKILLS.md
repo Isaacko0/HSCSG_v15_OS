@@ -8,20 +8,23 @@ de las skills de instalación de Hermes (agency-*, business-design/*, software-d
 - Viven en `HSCSG_v15_OS/skills/` (carpetas `SKILL.md`) y se espejan a `~/.hermes/skills/hscsg/`.
 - El cron `sync_docs.sh` las re-copia automáticamente al índice de Hermes.
 
-## Skills propias (creadas en conjunto) — 7 TOTAL
+## Skills propias (creadas en conjunto) — 10 TOTAL
 
-> **Ubicación:** Todas ahora en `HSCSG_v15_OS/skills/<nombre>/` (carpetas SKILL.md) y
-> indexadas en `~/.hermes/skills/hscsg/<nombre>/` (verificadas `available` salvo notas).
+> **Ubicación:** Todas en `HSCSG_v15_OS/skills/<nombre>/` (carpetas SKILL.md) y
+> indexadas en `~/.hermes/skills/hscsg/<nombre>/` (verificadas `available`).
 
-| # | Skill (name en frontmatter) | Carpeta repo | Indexada Hermes | Origen / Evidence |
-|---|---|---|---|---|
-| 1 | `hscsg-repo-assimilation` | `skills/hscsg-repo-assimilation/` | ✅ `hscsg/` | Isaac Ko — asimilación repos (4 fases) |
-| 2 | `hscsg-scientific-papers` | `skills/hscsg-scientific-papers/` | ✅ `hscsg/` | Isaac Ko — protocolo papers EBD |
-| 3 | `hscsg-unified-assimilation-science` | `skills/hscsg-unified-assimilation-science/` | ✅ `hscsg/` (verificada `available`) | Isaac Ko — skill maestra fusionada |
-| 4 | `hscsg-document-architect` | `skills/hscsg-document-architect/` | ✅ `hscsg/` | Zeitnus — doc fundacional unificado |
-| 5 | `hscsg-multi-framework-integration` | `skills/hscsg-multi-framework-integration/` | ✅ `hscsg/` (+ instalada `business-design/`) | Zeitnus (MIT) — multi-framework |
-| 6 | `loop-engineering-canvas` (carpeta `Sistema-Alraico-loop-engineering-skill`) | `skills/Sistema-Alraico-loop-engineering-skill/` | ✅ `hscsg/` (verificada `available`) | Isaacko0 (Amid Dabir, CC0 1.0) — Sistema Alráico |
-| 7 | `hscsg-monetary-integration` | `skills/hscsg-monetary-integration/` | ✅ `hscsg/` (verificada `available`; colisión con `business-strategy/` resuelta por carpeta) | HSCSG + Hermes Agent (MIT) — sistemas monetarios alt. |
+| # | Skill (name) | Dominio | Indexada |
+|---|---|---|---|
+| 1 | `hscsg-repo-assimilation` | Asimilación repos (4 fases) | ✅ |
+| 2 | `hscsg-scientific-papers` | Protocolo papers EBD | ✅ |
+| 3 | `hscsg-unified-assimilation-science` | Fusión asimilación + ciencia (maestra base) | ✅ (available) |
+| 4 | `hscsg-document-architect` | Documentos fundacionales unificados | ✅ |
+| 5 | `hscsg-multi-framework-integration` | Multi-framework (DisCO, 8 Cap, Integral) | ✅ (+ instalada `business-design/`) |
+| 6 | `loop-engineering-canvas` (carpeta `Sistema-Alraico-loop-engineering-skill`) | Canvas epistémico Alráico (20 límites, ECROx, triaxial) | ✅ (available) |
+| 7 | `hscsg-monetary-integration` | Sistemas monetarios alt. (G1, Túmin, PAR, ZCS/ZNU) | ✅ (available; colisión `business-strategy/` resuelta por carpeta) |
+| 8 | `hscsg-coeficiente-autonomia` | **NUEVA** AUT, CDS, 3 Leyes MJ, soberanía del nodo | ✅ (available) |
+| 9 | `hscsg-sistema-alraico` | **NUEVA** Kernel loopEngine: γ-CARMIS, resonancia, sobrecargas | ✅ (available) |
+| 10 | `hscsg-orquestador-skills` | **NUEVA** Router maestro + vasos comunicantes entre las 9 | ✅ (available) |
 
 ## Skills de instalación de Hermes (NO nuestras — no tocar con cron)
 
@@ -31,15 +34,14 @@ de las skills de instalación de Hermes (agency-*, business-design/*, software-d
 - `hscsg/hscsg-external-integration` — instalada previamente (foros cerrados)
 - `software-development/*`, `creative/*`, `research/*`, etc.
 
-## Notas de normalización (resuelto 2026-08-18)
+## Notas
 
-- Las 2 skills que vivían en repos GitHub separados (`Sistema-Alraico-loop-engineering-skill`, `hscsg-monetary-integration`)
-  se trajeron al repo `HSCSG_v15_OS/skills/` como carpetas y se indexaron al índice Hermes.
-- Los 2 `.md` sueltos (`hscsg-document-architect`, `hscsg-multi-framework-integration`) se normalizaron a carpetas `SKILL.md`.
-- `Sistema-Alraico-loop-engineering-skill` usaba `SKILL` (sin .md); se renombró a `SKILL.md` para compatibilidad Hermes.
+- `hscsg-orquestador-skills` es el ROUTER: mapea intención → skill específica y abre vasos
+  comunicantes cruzados (formato `[alraico:loopEngine]`, `[aut:CDS]`, `[mon:ZNU]`, etc.).
+- `hscsg-sistema-alraico` y `hscsg-coeficiente-autonomia` se extrajeron de `loopEngine.ts`,
+  `Automat.tsx`, `Coach.tsx` (antes vivían dispersas, ahora son skills dedicadas).
 
 ## Pendiente
 
-- Confirmar nombres de las **otras 2 skills de Alráico / coeficiente de autonomía** que el usuario menciona
-  (no localizadas en `~/.hermes/skills` ni en repos `Isaacko0/` con filtros obvios). Posiblemente viven
-  como sub-módulos dentro de `Sistema-Alraico-loop-engineering-skill` (references CSV: 20 límites, ECROx, γ-CARMIS).
+- Confirmar nombres de las **otras 2 skills de Alráico / coeficiente de autonomía** que el
+  usuario menciona (no localizadas). Posiblemente sub-módulos de `Sistema-Alraico-loop-engineering-skill`.
