@@ -1,7 +1,7 @@
 # BRIEF EXHAUSTIVO QUIRÚRGICO: HSCSG — Modelo de Negocio, HSCSG v15 OS & Cosateca OS
 **Documento fundacional v1.0 | Zeitnus / Isaac Ko | Agosto 2026**
 **Metodología:** 4 Fases (Desempaquetado → Limpieza → GitHub → Evolución) + Sistema Alráico (G1-CARMIS)
-**Fuentes primarias:** 44 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa, **+ Jacque Fresco/RBE vía tesis Yates 2014 (UCLan) y Leiva 2012 (U. Valparaíso)**, **+ NVIDIA OO-Agents (NOOA) asimilado como capa agente-orobjeto**, **+ ContentCreation-OS (CynthiaSalazarB) asimilado como co-pilot de contenido anfibio**, **+ CaaS Market Intel (DataInsightsMarket 2020–2034) como fuente de modelo de negocio**), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
+**Fuentes primarias:** 46 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa, **+ Jacque Fresco/RBE vía tesis Yates 2014 (UCLan) y Leiva 2012 (U. Valparaíso)**, **+ NVIDIA OO-Agents (NOOA) asimilado como capa agente-orobjeto**, **+ ContentCreation-OS (CynthiaSalazarB) asimilado como co-pilot de contenido anfibio**, **+ CaaS Market Intel (DataInsightsMarket 2020–2034) como fuente de modelo de negocio**, **+ community_ai-alliance (b3alliance) OS de comunidad federada abierta**, **+ usdglo-celo (Glo Foundation USDGLO) stablecoin con propósito ReFi/UBI**), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
 
 ---
 
@@ -94,6 +94,8 @@ S:  Síntesis (Integrar)              ← RAO + Federación DTN + Memética
 | **iambrainstorming** | §2.22, §3.5, §16 | Blogs federados (principal, opinionated_observer, coding_blog, GitLab, interactive-five): saber experiencial + aprendizaje interactivo + pensamiento crítico (capa de educación del vaso) |
 | **Symbiosky** | §2.23, §3.5, §9.2, §16 | Conviction voting (credibilidad por convicción, lock ∝ confianza), reward=mean_score×mult, decay 5%/año por inactividad, anti-whale, capa Nostr/AT Protocol (VA MÁS ALLÁ de HSCSG: CDS gana convicción bloqueada, ZNU gana decay) |
 | **CaaS Market Intel** | §1, §7, §16 | Reporte mercado CaaS (DataInsightsMarket, 2020–2034): $7–42B, CAGR 25%, dominan platforms cloud-centralizados (Verint 29.9%, Discourse 2.6%). Constraint #1 = privacidad/GDPR. Web3 governance a 5–7 años. **Diferenciador HSCSG:** CaaS offline-soberano + postmonetario (ZNU) + Web3 ya operativo. Ver `docs/caas_market.md`. |
+| **community_ai-alliance (b3alliance)** | §15, §16 | OS de comunidad federada abierta (AI Alliance fork): grupos por región/tema, CoC, gobernanza por PR. Isomorfo a `células`/`civilizaciones` + Hylo. Evidencia de gobernanza abierta (vs Verint cerrado). Ver `docs/ai_alliance_*.md`. |
+| **usdglo-celo (Glo Foundation)** | §11, §14 | USDGLO stablecoin con propósito (ReFi/UBI), contratos Foundry/Hardhat v1–v4. Roles MINTER/PAUSER/DENYLISTER + cap emisión + denylist. Isomorfo a `hscsg-monetary-integration` (ZNU↔USD anfibio) + Nivel 3 ReFi (oráculo priceParity). Ver `docs/usdglo_*.md`. |
 
 ---
 

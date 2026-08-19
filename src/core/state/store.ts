@@ -99,6 +99,8 @@ import type { NooaState } from '@core/state/nooa'
 import { makeNooaState, spawnNooaAgent as nooaSpawn, addMethod as nooaAddMethod, hide as nooaHide, extendLib as nooaExtend } from '@core/state/nooa'
 import type { ContentState } from '@core/state/content'
 import { makeContentState, captureIdea as cCapture, scoreIdea as cScore, humanDecision as cDecision, ingestNews as cNews } from '@core/state/content'
+import type { UsdgloState } from '@core/state/usdglo'
+import { makeUsdgloState, setMode as uSetMode, mint as uMint, denylist as uDenylist } from '@core/state/usdglo'
 import type { ProofOfResponseState } from '@core/state/proofOfResponse'
 import { makeProofOfResponseState, issueRequest as porIssue, respond as porRespond, proveFailure as porProve, isSatisfied as porSatisfied } from '@core/lib/proofOfResponse'
 import { dispatchMatch, autoAdvisory, applyDecisionTo, znuDecayOnBalance } from '@core/lib/pipeline'
@@ -267,6 +269,8 @@ export interface AppState {
   nooa: NooaState
   // ContentCreation-OS asimilado — co-pilot de contenido anfibio (gate humano = Ley III MJ)
   content: ContentState
+  // usdglo (Glo Foundation USDGLO) asimilado — oráculo priceParity ReFi Nivel 3 anfibio
+  usdglo: UsdgloState
   // NEAR asimilado
   proofOfResponse: ProofOfResponseState
   // Conector de flujo: params sembrados para la siguiente pantalla (auto-llenado)
@@ -443,6 +447,10 @@ export interface AppState {
   scoreIdea: (ideaId: string, brandFit: number, angles: string[]) => void
   decideIdea: (ideaId: string, decision: 'approved' | 'rejected') => void
   ingestNews: (items: { title: string; url: string; keyword: string; date: string }[]) => void
+  // usdglo (oráculo USDGLO ReFi Nivel 3)
+  setUsdgloMode: (connected: boolean) => void
+  mintUsdglo: (to: string, amount: number) => void
+  denylistUsdglo: (actor: string) => void
   // Proof of Response (NEAR AI)
   issuePor: (from: string, to: string, payload: string, deadlineB?: number) => void
   respondPor: (requestId: string, responder: string, payload: string) => void
@@ -794,6 +802,7 @@ export const useAppStore = create<AppState>()(
       agentMesh: makeAgentMeshState(),
       nooa: makeNooaState(),
       content: makeContentState(),
+      usdglo: makeUsdgloState(),
       // NEAR asimilado
       proofOfResponse: makeProofOfResponseState(),
       // Conector de flujo
@@ -1282,6 +1291,16 @@ export const useAppStore = create<AppState>()(
       })),
       ingestNews: (items) => set((st) => ({
         content: cNews(st.content, items),
+      })),
+      // ===== usdglo (oráculo USDGLO ReFi Nivel 3 anfibio) =====
+      setUsdgloMode: (connected) => set((st) => ({
+        usdglo: uSetMode(st.usdglo, connected),
+      })),
+      mintUsdglo: (to, amount) => set((st) => ({
+        usdglo: uMint(st.usdglo, to, amount),
+      })),
+      denylistUsdglo: (actor) => set((st) => ({
+        usdglo: uDenylist(st.usdglo, actor),
       })),
       // ===== Proof of Response (NEAR AI) =====
       issuePor: (from, to, payload, deadlineB) => set((st) => ({

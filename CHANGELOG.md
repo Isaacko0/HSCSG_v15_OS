@@ -4,6 +4,27 @@ Todas las entradas siguen el formato: versión, fecha, repos asimilados en ese p
 
 ---
 
+## v15.22 — 2026-08-19 · Asimilación community_ai-alliance + usdglo-celo (Glo Foundation)
+
+**Repos asimilados:**
+- `b3alliance/community_ai-alliance` (33 archivos, fork AI Alliance) → OS de comunidad federada abierta (grupos región/tema, CoC, gobernanza por PR). Isomorfo a `células`/`civilizaciones` + Hylo. Solo doc (markdown, sin módulo).
+- `Glo-Foundation/usdglo-celo` (71 archivos) → USDGLO stablecoin con propósito (ReFi/UBI), contratos v1–v4. Roles MINTER/PAUSER/DENYLISTER + cap emisión + denylist.
+
+**Módulos creados (usdglo):**
+- `src/core/state/usdglo.ts` — tipos `UsdgloState` (oráculo priceParity, modo soberano/conectado, cap, denylist).
+- `src/core/lib/usdglo.ts` — lógica pura (`canMint`, `mintHeadroom`, `isSovereign`, `denylistedActors`).
+- `store.ts` — `usdglo` en AppState + 3 acciones (`setUsdgloMode`, `mintUsdglo`, `denylistUsdglo`).
+
+**Principio anfibio:**
+- ai-alliance: extirpado GitHub como sede única → almacenamiento HSCSG local + Nostr federation; conservado estructura de grupos/CoC.
+- usdglo: extirpado red mainnet/Polygon/Celo + Defender/Hardhat; conservado patrón stablecoin con propósito como oráculo priceParity Nivel 3 ReFi (ZNU↔USD anfibio, `hscsg-monetary-integration`).
+
+**Docs:** `docs/ai_alliance_backup.md` + `ai_alliance_integration.md` · `docs/usdglo_backup.md` + `usdglo_integration.md`.
+**BRIEF:** fuentes 44→46 + 2 entradas en tabla de asimilaciones.
+**Verificación:** build OK · 53/53 tests.
+
+---
+
 ## v15.21 — 2026-08-18 · Asimilación ContentCreation-OS (CynthiaSalazarB)
 
 **Repos asimilados:** `CynthiaSalazarB/ContentCreation-OS` (Python, 66 archivos) → co-pilot de contenido anfibio.
