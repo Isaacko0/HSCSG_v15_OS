@@ -4,6 +4,21 @@ Todas las entradas siguen el formato: versión, fecha, repos asimilados en ese p
 
 ---
 
+## v15.21 — 2026-08-18 · Asimilación ContentCreation-OS (CynthiaSalazarB)
+
+**Repos asimilados:** `CynthiaSalazarB/ContentCreation-OS` (Python, 66 archivos) → co-pilot de contenido anfibio.
+**Módulos creados:**
+- `src/core/state/content.ts` — tipos `Idea`/`NewsItem`/`ContentState` (captura multi-puerta, brand-fit advisory, gate humano).
+- `src/core/lib/content.ts` — lógica pura (`pendingIdeas`, `approvedIdeas`, `needsAngles` γ-CARMIS, `avgBrandFit`, `newsCount` rolling 30d).
+- `src/app/screens/Contenido.tsx` + ruta `/contenido` + nav (PenLine) — Idea Bank con score + gate humano.
+- `store.ts` — `content` en AppState + 4 acciones.
+**Principio anfibio:** extirpado Notion, Telegram+GCP VM, Gemini, GitHub Action; conservado capture→score→ángulos→gate humano (Ley III MJ).
+**Isomorfismo:** brandDNA (Agencia.tsx), MJ Gate, loopEngine idempotente, registry de módulos.
+**Docs:** `docs/contentcreation_backup.md` + `docs/contentcreation_integration.md` (vasos `[EBD-D1][DV-01][repo:contentcreation][aut:LeyIII][alraico:loopEngine]`).
+**Verificación:** build OK · 53/53 tests · preview `/contenido`=200.
+
+---
+
 ## v15.20 — 2026-08-18 · Asimilación NVIDIA OO-Agents (NOOA)
 
 **Repos asimilados:** `NVIDIA-NeMo/labs-OO-Agents` (NOOA, Apache 2.0, 1302 archivos) → capa agente-orobjeto.

@@ -1,7 +1,7 @@
 # BRIEF EXHAUSTIVO QUIRÚRGICO: HSCSG — Modelo de Negocio, HSCSG v15 OS & Cosateca OS
 **Documento fundacional v1.0 | Zeitnus / Isaac Ko | Agosto 2026**
 **Metodología:** 4 Fases (Desempaquetado → Limpieza → GitHub → Evolución) + Sistema Alráico (G1-CARMIS)
-**Fuentes primarias:** 42 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa, **+ Jacque Fresco/RBE vía tesis Yates 2014 (UCLan) y Leiva 2012 (U. Valparaíso)**, **+ NVIDIA OO-Agents (NOOA) asimilado como capa agente-orobjeto**), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
+**Fuentes primarias:** 43 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa, **+ Jacque Fresco/RBE vía tesis Yates 2014 (UCLan) y Leiva 2012 (U. Valparaíso)**, **+ NVIDIA OO-Agents (NOOA) asimilado como capa agente-orobjeto**, **+ ContentCreation-OS (CynthiaSalazarB) asimilado como co-pilot de contenido anfibio**), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
 
 ---
 
