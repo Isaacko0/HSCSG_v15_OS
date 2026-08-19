@@ -4,7 +4,21 @@ Todas las entradas siguen el formato: versión, fecha, repos asimilados en ese p
 
 ---
 
-## v15.19 — 2026-08-18 · Capa Científica: 8 Docs + 3 Skills + loopEngine/Simulador + Fresco/RBE
+## v15.20 — 2026-08-18 · Asimilación NVIDIA OO-Agents (NOOA)
+
+**Repos asimilados:** `NVIDIA-NeMo/labs-OO-Agents` (NOOA, Apache 2.0, 1302 archivos) → capa agente-orobjeto.
+**Módulos creados:**
+- `src/core/state/nooa.ts` — tipos `NooaAgent`/`NooaState` (estado tipado, visibilidad, estrategia, self-extending).
+- `src/core/lib/nooa.ts` — lógica pura (`visibleMethods`, `detectBlindAgents`, `reconfigBlindAgents` γ-CARMIS, `meshAutonomy`).
+- `src/app/screens/OoAgents.tsx` + ruta `/oo-agents` + nav (Boxes) — pantalla viva.
+- `store.ts` — `nooa` en AppState + 4 acciones.
+**Principio anfibio:** extirpado `unifiedllm`/`nemo_relay` (NVIDIA), `nooa-cli`, `nooa-bench`; conservado modelo agente-orobjeto isomorfo a `agentMesh` + Leyes MJ.
+**Docs:** `docs/nooa_backup.md` + `docs/nooa_integration.md` (vasos comunicantes `[EBD-D1][DV-01][repo:nooa][alraico:loopEngine][aut:LeyII]`).
+**Verificación:** build OK · 53/53 tests · preview `/oo-agents`=200. Vercel CLI no autenticado (deploy manual pendiente).
+
+---
+
+## v15.19 — 2026-08-18 · Capa Científica: 8 Docs + 3 Skills + Fresco/RBE
 - **8 Documentos Científico-Estratégicos (ADSOA-HSCSG)** en `docs/research_output/` (EBD + vasos comunicantes): Propuesta Investigación, Brief Estratégico, White Paper, EBD (D1-D8), Brief Científico, Memorándum Validación (**DV-01 a DV-04 APROBADAS**), Informe Factibilidad, Protocolo Comunicación.
 - **loopEngine.ts** ✨ — orquestador nativo Sistema Alráico: 6 loops (cdsDecay, meritMint, agentCompute, regenMrv, nostrAudit, vecinalAccountability) + **γ-CARMIS** + **resonancia** (factor 3.0). 7/7 tests (`loopEngine.test.ts`).
 - **Simulador.tsx** ✨ — Eje Simulación Verificación Triaxial (sliders Ω/s/κ, αʰ(t), stepper, sobrecargas/resonancias). **`/simulador` → 200 en Vercel.**
