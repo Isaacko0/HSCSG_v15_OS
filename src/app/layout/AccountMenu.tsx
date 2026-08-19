@@ -1,4 +1,5 @@
-import { CreditCard, Palette, UsersRound, Link, Plug, Download, LogOut, Trash2, X, ChevronRight, Info, Facebook } from 'lucide-react'
+import { CreditCard, Palette, UsersRound, Link, Plug, Download, LogOut, Trash2, X, ChevronRight, Info, Facebook, Library } from 'lucide-react'
+import { Link as RouterLink } from 'react-router-dom'
 import { useAppStore } from '@core/state/store'
 
 export function AccountMenu() {
@@ -18,6 +19,7 @@ export function AccountMenu() {
   ]
 
   const contactItems = [
+    { label: 'Fuentes de asimilación', note: 'índice de las 49 fuentes (repo + oficial)', icon: Library, color: '#0a6f61', to: '/fuentes' },
     { label: 'Contacto', note: 'facebook.com/Isaack0o', icon: Facebook, color: '#1877f2', href: 'https://www.facebook.com/Isaack0o/' },
   ]
 
@@ -69,20 +71,35 @@ export function AccountMenu() {
           <ul className="divide-y divide-[var(--lineq)]" role="list">
             {contactItems.map((item, i) => (
               <li key={`c${i}`}>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full px-4 py-3 text-left flex items-center gap-3 hover:bg-[var(--surf2)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-chispa"
-                  style={{ color: item.color }}
-                >
-                  <item.icon className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
-                  <div className="flex-1 min-w-0 text-left">
-                    <p className="font-manrope font-medium text-sm truncate">{item.label}</p>
-                    <p className="text-[var(--dim)] text-xs truncate">{item.note}</p>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-[var(--dim)] flex-shrink-0" aria-hidden="true" />
-                </a>
+                {item.to ? (
+                  <RouterLink
+                    to={item.to}
+                    className="w-full px-4 py-3 text-left flex items-center gap-3 hover:bg-[var(--surf2)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-chispa"
+                    style={{ color: item.color }}
+                  >
+                    <item.icon className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                    <div className="flex-1 min-w-0 text-left">
+                      <p className="font-manrope font-medium text-sm truncate">{item.label}</p>
+                      <p className="text-[var(--dim)] text-xs truncate">{item.note}</p>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-[var(--dim)] flex-shrink-0" aria-hidden="true" />
+                  </RouterLink>
+                ) : (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full px-4 py-3 text-left flex items-center gap-3 hover:bg-[var(--surf2)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-chispa"
+                    style={{ color: item.color }}
+                  >
+                    <item.icon className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                    <div className="flex-1 min-w-0 text-left">
+                      <p className="font-manrope font-medium text-sm truncate">{item.label}</p>
+                      <p className="text-[var(--dim)] text-xs truncate">{item.note}</p>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-[var(--dim)] flex-shrink-0" aria-hidden="true" />
+                  </a>
+                )}
               </li>
             ))}
           </ul>

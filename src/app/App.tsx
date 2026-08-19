@@ -43,6 +43,7 @@ import { Nostr } from '@app/screens/Nostr'
 import { Agentes } from '@app/screens/Agentes'
 import { OoAgents } from '@app/screens/OoAgents'
 import { Contenido } from '@app/screens/Contenido'
+import { Fuentes } from '@app/screens/Fuentes'
 
 export function App() {
   return (
@@ -90,6 +91,7 @@ export function App() {
         <Route path="agentes" element={<Agentes />} />
         <Route path="oo-agents" element={<OoAgents />} />
         <Route path="contenido" element={<Contenido />} />
+        <Route path="fuentes" element={<Fuentes />} />
         <Route path="verificacion" element={<Verificacion />} />
         <Route path="simulador" element={<Simulador />} />
       </Route>
