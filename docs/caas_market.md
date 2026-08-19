@@ -2,7 +2,8 @@
 
 **Fecha ingesta:** 2026-08-19 · **Fuente:** DataInsightsMarket — "Community as a Service (CaaS) Market" report (2020–2034).
 **Tipo:** Reporte de mercado (no repo GitHub) → fuente primaria para BRIEF + EBD-D (modelo de negocio).
-**Vasos:** `[EBD-D1]` `docs/research_output/04_*` · `[DV-01]` `docs/research_output/06_*` · `[repo:caas-market]` · `[mon:ZNU]` `skills/hscsg-monetary-integration`.
+- **Vasos:** `[EBD-D1]` `docs/research_output/04_*` · `[DV-01]` `docs/research_output/06_*` · `[repo:caas-market]` · `[mon:ZNU]` `skills/hscsg-monetary-integration`.
+- **EBD derivado:** `docs/research_output/09_EBD_CaaS_Market_Fit.md` (matriz D1–D8 de market fit).
 
 ---
 

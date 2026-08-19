@@ -25,6 +25,7 @@
 [Anexo A: Glosario Unificado](#anexo-a-glosario-unificado)
 [Anexo B: Tabla de Mapeo](#anexo-b-tabla-de-mapeo)
 [Anexo C: Value Equation & ValueFlows Types](#anexo-c-value-equation--valueflows-types)  
+[Anexo D: Competitive Landscape CaaS — HSCSG vs Market](#anexo-d-competitive-landscape-caas--hscsg-vs-market)
 [17. Implementación UI — Sesión 2026-08-12](#17-implementación-ui--sesión-2026-08-12-evidence-model--delegación--capabilities)
 
 ---
@@ -1568,3 +1569,36 @@ Asimiladas vía la skill (vía Ciencia, no código — principio de no-duplicaci
 - **Vasos comunicantes:** ambos mapean a Leyes MJ (I: recursos como base; II: acceso por contribución; III: métricas físicas) y al horizonte `CivilizacionesState` (RBE/TVP). **Fuentes primarias BRIEF: 39 → 41.**
 
 *Fin sección 18 — cierre de tanda 2026-08-18 (8 docs + 3 skills + loopEngine/Simulador + Fresco/RBE).*
+
+---
+
+## [Anexo D: Competitive Landscape CaaS — HSCSG vs Market]
+
+**Fuente:** `docs/caas_market.md` (DataInsightsMarket CaaS Market 2020–2034). **Vasos:** `[repo:caas-market][EBD-D1][DV-01][mon:ZNU]`.
+
+El mercado CaaS crece 25% CAGR ($7–42B) pero está **atado a nube + vigilancia**. HSCSG ocupa el vacío azul: **CaaS offline-soberano + postmonetario (ZNU) + Web3 ya operativo**.
+
+### D.1 Tabla de diferenciadores (HSCSG vs top competidores)
+
+| Diferenciador | **HSCSG v15 OS** | Verint (29.9%) | Discourse (2.6%) | Mighty Networks | Circle | Higher Logic |
+|---|---|---|---|---|---|---|
+| **Despliegue** | Local-first / offline (RAO) | Cloud SaaS | Self-host/cloud | Cloud SaaS | Cloud SaaS | Cloud SaaS |
+| **Privacidad (GDPR/CCPA)** | Por arquitectura (datos locales) | Cumplimiento parche | Depende deploy | Cumplimiento parche | Cumplimiento parche | Cumplimiento parche |
+| **Monetización** | ZNU postmonetario + anfibio USD (oráculo) | Suscripción enterprise | Suscripción/pagos | Suscripción + cursos | Suscripción | Suscripción |
+| **Web3 / tokenización** | Nostr + NEAR PoR + ZNU (operativo) | No | No | No | No | No |
+| **Gobernanza** | CDS-SUI-CGC-FRS-RAO (cibernética) | Centralizada | Comunidad | Creador | Creador | Asociación |
+| **IA en comunidad** | Asiste, humano decide (Ley III MJ) | Moderación AI | Mínima | Recomendación | Curación AI | Analytics |
+| **Creator economy** | CaaS members + vecinal + ZNU | No enfocado | Sí (foros) | Sí (core) | Sí (core) | No |
+| **Costo para SME** | $0 (nodo local) | Alto enterprise | Medio | Medio | Medio | Medio |
+| **Sin internet** | Sí (funciona offline) | No | Solo self-host | No | No | No |
+
+### D.2 Posición estratégica
+
+- **Red Ocean (Verint/Discourse/Mighty/Circle):** platforms cloud-centralizados, suscripción, datos en terceros. HSCSG NO compite ahí.
+- **Blue Ocean HSCSG:** CaaS soberano que (1) cumple privacidad por diseño, (2) funciona sin internet, (3) es postmonetario por defecto (ZNU) con conexión USD opcional, (4) ya tiene Web3 real (Nostr/NEAR), (5) gate humano MJ (no auto-decisión AI).
+- **Riesgo a cubrir:** adopción SME requiere UX simple (ya resuelto con `src/app` + Hylo fork social layer). El reporte cita "integración compleja" como freno SME → HSCSG lo resuelve con módulos `run(ctx)` idempotentes (loopEngine) + almacenamiento local sin config.
+
+### D.3 Conclusión
+
+HSCSG no es "un CaaS más": es el **CaaS soberano del postmonetario**. El reporte proyecta Web3 governance a 5–7 años; HSCSG lo tiene operativo hoy. Ese es el moat.
+
