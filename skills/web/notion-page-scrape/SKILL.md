@@ -87,6 +87,23 @@ To know how many `i` exist and their order, run just the finder:
 (() => { const f=()=>Array.from(document.querySelectorAll('div,button,a')).filter(e=>{const t=e.textContent.trim();return (t==='Explore'||t==='View')&&e.children.length===0;}); const c=f(); return 'count='+c.length+' :: '+c.map((e,k)=>k+':'+e.closest('[class]')?.parentElement?.querySelector('h2,h3')?.textContent?.trim()||'?').join(' | '); })()
 ```
 
+### Capturing descriptions + domain (NOT just titles) — Nivel 2
+When a filtered view lists entries as `Name / description / domain` (e.g. OpenCivics
+"Open Civic Systems", "Individuals", "Organizations"), the `innerText` already contains
+all three, separated by newlines. Do NOT collapse to just the name — preserve the full
+`Name — description (Domain)` triple. The eval in step 3 returns exactly that; paste it
+verbatim into the deliverable.
+
+**Known limitation (verified 2026-08-19):** Notion *gallery/board* views for RESOURCE
+types (Primitives, Patterns, Protocols, Playbooks, Frameworks, Templates, Artifacts) and
+some Browse-By lists render ONLY the entry NAME in `innerText` — there is no per-entry
+description in the filtered-view DOM. To get descriptions you must click into EACH entry
+(card → detail page) and read its detail `innerText`. That is dozens-to-hundreds of extra
+navigations; usually NOT worth it. So:
+- Directories / Individuals / Organizations → rescue with full `Name — desc (domain)`.
+- Resources / Browse-By → rescue as name lists; note explicitly that descriptions require
+  per-entry clicking (don't silently claim "only titles extracted" as if it were a bug).
+
 ## Pitfalls (learned the hard way)
 - **`n=0` after a successful click**: the `All` button (or a prior click) blanked
   the page. Re-`browser_navigate` the direct URL before the next category. The
@@ -117,3 +134,25 @@ After rescuing, compile into a single `.md`: index/definitions + each category
 with its individual entries, plus an "isomorphism" mapping to the host project
 (e.g. HSCSG: Network Governance→CDS, Currency Design→ZNU, Open Protocols→
 interop layer, Rights of Nature→ecotech, Public Interest AI→human gate).
+
+### FAITHFUL CAPTURE — two view shapes (critical, learned 2026-08-19)
+Notion Commons-style pages have TWO different filtered-view shapes; the
+`innerText` they return differs and you must NOT normalize them:
+
+- **Directories / individuals / organizations views** return each entry as
+  `Name` + newline + `description` + newline + `Domain` (the row text is
+  `Name — description` and the domain tag is on its own line).
+  → PRESERVE all three. Compile as `**Name** — description (Domain)`.
+  DO NOT collapse to `Name · Name · Name` — that silently DESTROYS the
+  descriptions the browser already fetched. This happened once; the user caught
+  it: "solo extrajiste los títulos". The descriptions are real data, not noise.
+- **Resources views** (Primitives, Patterns, Protocols, Playbooks, Frameworks,
+  Templates, Artifacts) return ONLY entry names (gallery view, no description in
+  the filtered `innerText`). → Listing just names there is CORRECT. Do NOT claim
+  you "lost" descriptions — Notion simply does not expose them in that view.
+  Recovering per-entry descriptions means clicking into each entry (dozens of
+  navigations); only do that if the user explicitly asks.
+
+Rule of thumb: if the `browser_console` result shows `Name / description / Domain`
+triples, keep them. If it's a flat name list, that's the true shape — keep the
+list and note "Notion lists names only in this view." See `references/faithful-capture.md`.
