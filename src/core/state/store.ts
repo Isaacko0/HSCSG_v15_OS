@@ -106,6 +106,10 @@ import { makeProofOfResponseState, issueRequest as porIssue, respond as porRespo
 import { dispatchMatch, autoAdvisory, applyDecisionTo, znuDecayOnBalance } from '@core/lib/pipeline'
 import type { BrandDNAKey, ICPProfile } from '@core/lib/agencia'
 import * as seed from '@core/state/seed'
+import type { BoundariesState } from '@core/state/boundaries'
+import { initialBoundaries, makeAuditRow } from '@core/state/boundaries'
+import type { CoworkersState } from '@core/state/coworkers'
+import { initialCoworkers, makeCoworker, makeChannel } from '@core/state/coworkers'
 
 export interface AppState {
   // Navigation (reused from Cosateca OS shell)
@@ -472,6 +476,20 @@ export interface AppState {
   pipeAdvisory: (finding: string, severity?: 'info' | 'warning' | 'critical') => void
   pipeApply: (drId: string) => void
   pipeDecay: () => void
+  // Boundaries (policy gateway anfibio inspirado en OpenBot) — gobernanza de acciones de agente
+  boundaries: BoundariesState
+  setBoundaryPolicy: (policy: Partial<BoundariesState['policy']>) => void
+  addBoundaryRule: (list: 'deny' | 'allow', expr: string) => void
+  removeBoundaryRule: (list: 'deny' | 'allow', index: number) => void
+  clearBoundaryAudit: () => void
+  logBoundaryAudit: (row: Omit<import('@core/lib/boundaries').AuditRow, 'id' | 'ts'>) => void
+  // Coworkers (agentes con perfil durable + handover humano, inspirado en OpenBot)
+  coworkers: CoworkersState
+  addCoworker: (input: { name: string; title: string; role: string; visibility?: 'private' | 'public' }) => void
+  toggleCoworkerHidden: (id: string) => void
+  setCoworkerControl: (id: string, control: { by: string; since: number; reason?: string } | null) => void
+  startChannel: (coworkerId: string) => string
+  postToChannel: (channelId: string, from: 'human' | 'bot', text: string) => void
   resetAll: () => void
 }
 
@@ -629,6 +647,8 @@ export const useAppStore = create<AppState>()(
 
       nodeName: 'Nodo Cosateca v0.1',
       base: seed.seedBase,
+      boundaries: initialBoundaries,
+      coworkers: initialCoworkers,
       cac: seed.seedCAC,
       sensors: [],
       members: seed.seedMembers,
@@ -1366,10 +1386,69 @@ export const useAppStore = create<AppState>()(
         const sig = ingestSignal('ITC', 'info', `decay ZNU aplicado → balance ${Math.round(decayed)}`)
         return { integral: { ...st.integral, signals: st.integral.signals.concat(sig) } }
       }),
+      // ===== Boundaries (policy gateway anfibio inspirado en OpenBot) =====
+      setBoundaryPolicy: (policy) => set((st) => ({
+        boundaries: { ...st.boundaries, policy: { ...st.boundaries.policy, ...policy } },
+      })),
+      addBoundaryRule: (list, expr) => set((st) => {
+        if (!expr.trim()) return {}
+        return {
+          boundaries: {
+            ...st.boundaries,
+            policy: { ...st.boundaries.policy, [list]: [...st.boundaries.policy[list], expr.trim()] },
+          },
+        }
+      }),
+      removeBoundaryRule: (list, index) => set((st) => {
+        const next = st.boundaries.policy[list].filter((_, i) => i !== index)
+        return {
+          boundaries: { ...st.boundaries, policy: { ...st.boundaries.policy, [list]: next } },
+        }
+      }),
+      clearBoundaryAudit: () => set((st) => ({ boundaries: { ...st.boundaries, audit: [] } })),
+      logBoundaryAudit: (row) => set((st) => {
+        const full = makeAuditRow(row)
+        return {
+          boundaries: { ...st.boundaries, audit: [full, ...st.boundaries.audit].slice(0, st.boundaries.maxAudit) },
+        }
+      }),
+      // ===== Coworkers (inspirado en OpenBot) =====
+      addCoworker: (input) => set((st) => ({
+        coworkers: { ...st.coworkers, coworkers: [...st.coworkers.coworkers, makeCoworker(input)] },
+      })),
+      toggleCoworkerHidden: (id) => set((st) => ({
+        coworkers: {
+          ...st.coworkers,
+          coworkers: st.coworkers.coworkers.map((c) => (c.id === id ? { ...c, hidden: !c.hidden } : c)),
+        },
+      })),
+      setCoworkerControl: (id, control) => set((st) => ({
+        coworkers: {
+          ...st.coworkers,
+          coworkers: st.coworkers.coworkers.map((c) => (c.id === id ? { ...c, control } : c)),
+        },
+      })),
+      startChannel: (coworkerId) => {
+        const ch = makeChannel(coworkerId)
+        set((st) => ({ coworkers: { ...st.coworkers, channels: [...st.coworkers.channels, ch] } }))
+        return ch.id
+      },
+      postToChannel: (channelId, from, text) => set((st) => ({
+        coworkers: {
+          ...st.coworkers,
+          channels: st.coworkers.channels.map((ch) =>
+            ch.id === channelId
+              ? { ...ch, messages: [...ch.messages, { id: `m_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`, from, text, ts: Date.now() }] }
+              : ch,
+          ),
+        },
+      })),
       resetAll: () =>
         set({
           nodeName: 'Nodo Cosateca v0.1',
           base: initialBase,
+          boundaries: initialBoundaries,
+          coworkers: initialCoworkers,
           cac: initialCAC,
           sensors: [],
           members: [],

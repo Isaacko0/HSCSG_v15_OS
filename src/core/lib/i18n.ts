@@ -29,6 +29,9 @@ export const I18N: Dict = {
   'nav.home': { es: 'Inicio', en: 'Home', pt: 'Início' },
   'nav.base': { es: 'Base Material', en: 'Material Base', pt: 'Base Material' },
   'nav.lucidez': { es: 'Lucidez', en: 'Lucidity', pt: 'Lucidez' },
+  'nav.fuentes': { es: 'Fuentes', en: 'Sources', pt: 'Fontes' },
+  'nav.boundaries': { es: 'Boundaries', en: 'Boundaries', pt: 'Fronteiras' },
+  'nav.coworkers': { es: 'Coworkers', en: 'Coworkers', pt: 'Coworkers' },
   'nav.colectivo': { es: 'Colectivo', en: 'Collective', pt: 'Coletivo' },
   'nav.automata': { es: 'Autómata Soberano', en: 'Sovereign Automaton', pt: 'Autômato Soberano' },
   'nav.znu': { es: 'ZNU', en: 'ZNU', pt: 'ZNU' },
@@ -80,6 +83,9 @@ export const I18N: Dict = {
   'title.life': { es: 'Life · Organizador', en: 'Life · Organizer', pt: 'Life · Organizador' },
   'title.civilizaciones': { es: 'Civilizaciones · Horizontes postmonetarios', en: 'Civilizations · Post-monetary horizons', pt: 'Civilizações · Horizontes pós-monetários' },
   'title.celulas': { es: 'Células · Tejido social fractal', en: 'Cells · Fractal social tissue', pt: 'Células · Tecido social fractal' },
+  'title.fuentes': { es: 'Fuentes de Asimilación', en: 'Assimilation Sources', pt: 'Fontes de Assimilação' },
+  'title.boundaries': { es: 'Boundaries · Gateway de acciones', en: 'Boundaries · Action Gateway', pt: 'Boundaries · Gateway de ações' },
+  'title.coworkers': { es: 'Coworkers · Agentes con rol', en: 'Coworkers · Agents with role', pt: 'Coworkers · Agentes com papel' },
 
   // Home
   'home.welcome': {

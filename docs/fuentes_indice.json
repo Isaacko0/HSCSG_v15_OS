@@ -1,6 +1,6 @@
 {
   "generado": "2026-08-19",
-  "total": 49,
+  "total": 50,
   "descripcion": "Índice de fuentes de asimilación HSCSG v15 OS. repo_doc = backup/integration en el repo (soberano, offline). fuente_oficial = URL viva original (solo si es pública y el usuario la marca; abre en nueva pestaña con rel=noopener).",
   "fuentes": [
     { "id": "F01", "nombre": "Copiosis v7.1", "tipo": "Modelo económico post-escasez", "mapeo_hscsg": "ZNU/CaaS (lógica de cálculo anfibia)", "repo_doc": "https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/copiosis_backup.md", "fuente_oficial": null },
@@ -51,6 +51,7 @@
     { "id": "F46", "nombre": "Mundus", "tipo": "Manifiesto", "mapeo_hscsg": "Manifiesto Mundus", "repo_doc": null, "fuente_oficial": null },
     { "id": "F47", "nombre": "OpenCivics Commons", "tipo": "Directorio cívico federado (Notion)", "mapeo_hscsg": "19 dominios + ~300 entradas → ZNU/Alráico/vasos comunicantes", "repo_doc": "https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/opencivics_commons_backup.md", "fuente_oficial": "https://commons.opencivics.co/OpenCivics-Commons-25106d2570f280a885c9e57d0600f387" },
     { "id": "F48", "nombre": "OpenCivics Wiki", "tipo": "Conocimiento vivo (Obsidian Publish)", "mapeo_hscsg": "4 pilares → horizontes HSCSG", "repo_doc": "https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/opencivics_wiki_backup.md", "fuente_oficial": "https://wiki.opencivics.co/" },
-    { "id": "F49", "nombre": "Towards an Open Civics (PDF)", "tipo": "Tesis fundacional OpenCivics", "mapeo_hscsg": "extitutions / prosocial incentives / Sumak Kawsay", "repo_doc": "https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/towards_open_civics_backup.txt", "fuente_oficial": "https://opencivics.wiki/" }
+    { "id": "F49", "nombre": "Towards an Open Civics (PDF)", "tipo": "Tesis fundacional OpenCivics", "mapeo_hscsg": "extitutions / prosocial incentives / Sumak Kawsay", "repo_doc": "https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/towards_open_civics_backup.txt", "fuente_oficial": "https://opencivics.wiki/" },
+    { "id": "F50", "nombre": "OpenBot (CopilotKit)", "tipo": "Plataforma AI coworkers con computer-use gobernado (AG-UI, gateway CEL fail-closed, audit)", "mapeo_hscsg": "Boundaries (policy gateway) / Coworkers / γ-CARMIS / gate MJ / Lucidez", "repo_doc": "https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/openbot_backup.md", "fuente_oficial": "https://github.com/CopilotKit/openbot" }
   ]
 }
