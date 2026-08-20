@@ -1,4 +1,4 @@
-import { X, Send, Loader2, Mountain, MessageSquare } from 'lucide-react'
+import { X, Send, Loader2, Mountain, MessageSquare, Sparkles } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 import { useAppStore } from '@core/state/store'
 import { clsx } from 'clsx'
@@ -27,7 +27,42 @@ const RESPONSES: Record<string, string> = {
     'ZNU v2 = acceso a base material. Emisión 100 ZNU/mes por miembro SOLO si AUT_ALIM≥0.5, AUT_ENER≥0.5, AUT_HABI≥0.4. Demurrage 5%/mes sobre exceso de 300 ZNU → Fondo de Acceso Común (tierra/agua/energía/herramientas/semillas).',
 }
 
-export function Coach() {
+// FAB persistente estilo Happpy CMO - siempre visible como entry point
+function CoachFAB({ onOpen }: { onOpen: () => void }) {
+  return (
+    <button
+      onClick={onOpen}
+      title="Happpy · tu ContentCoach"
+      className={clsx(
+        'fixed bottom-6 right-6 z-[60] w-14 h-14 rounded-full',
+        'bg-[var(--grad-cosmos)] text-white',
+        'flex items-center justify-center',
+        'shadow-[0_18px_40px_-14px_rgba(12,52,233,0.55)]',
+        'transition-all duration-300',
+        'hover:scale-105 hover:shadow-[0_22px_50px_-12px_rgba(12,52,233,0.7)]',
+        'animate-co-float',
+        'focus:outline-none focus:ring-2 focus:ring-[var(--brand)] focus:ring-offset-2 focus:ring-offset-[var(--bg)]',
+        'co-press'
+      ) as any}
+      style={{ animation: 'co-float 5s ease-in-out infinite' }}
+      aria-label="Abrir Lucidez Coach"
+    >
+      <span className={clsx(
+        'w-10 h-10 rounded-full flex items-center justify-center',
+        'bg-[var(--grad-wish)] text-[var(--ink-on-accent)]',
+        'animate-co-float',
+        'transition-transform duration-300'
+      ) as any} style={{ animation: 'co-float 5s ease-in-out infinite' }}>
+        <Sparkles className="w-5 h-5" aria-hidden="true" />
+      </span>
+      {/* Pulse ring for attention */}
+      <span className="absolute inset-0 rounded-full bg-[var(--grad-cosmos)] opacity-30 animate-[pulse_2s_ease-in-out_infinite]" aria-hidden="true" />
+    </button>
+  )
+}
+
+// Chat dialog completo (existente mejorado)
+function CoachDialog() {
   const { coach, setCoach, addCoachMessage, setCoachDraft, setCoachBusy } = useAppStore()
   const [inputHeight, setInputHeight] = useState(44)
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -61,8 +96,11 @@ export function Coach() {
   if (!coach.open) return null
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 w-full max-w-md md:max-w-lg" role="dialog" aria-label="Lucidez - Asistente">
-      <div className="bg-[var(--surf)] border border-[var(--line)] rounded-2xl shadow-2xl overflow-hidden">
+    <div className="fixed bottom-6 right-6 z-50 w-full max-w-md md:max-w-lg" role="dialog" aria-label="Lucidez - Asistente">
+      <div className={clsx(
+        'bg-[var(--surf)] border border-[var(--line)] rounded-2xl shadow-2xl overflow-hidden',
+        'animate-[co-pop-in_0.22s_cubic-bezier(0.23,1,0.32,1)]'
+      ) as any}>
         <div className="flex items-center justify-between p-4 border-b border-[var(--lineq)] bg-[var(--surf2)]/50">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[var(--grad-wish)] flex items-center justify-center">
@@ -146,5 +184,20 @@ export function Coach() {
         </form>
       </div>
     </div>
+  )
+}
+
+// Componente principal: FAB persistente + Dialog
+export function Coach() {
+  const { setCoach } = useAppStore()
+
+  return (
+    <>
+      {/* FAB persistente estilo Happpy CMO - siempre visible */}
+      <CoachFAB onOpen={() => setCoach({ open: true })} />
+      
+      {/* Dialog completo */}
+      <CoachDialog />
+    </>
   )
 }

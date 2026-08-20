@@ -256,3 +256,68 @@ select.inp:focus {
 /* Banner de ley III cuando el modo está activo */
 .lucidez-banner { display: none; }
 [data-lucidez="on"] .lucidez-banner { display: flex; }
+
+/* ============================================================
+   Animaciones HSCSG (co-float, co-pop-in, co-press, pulse)
+   ============================================================ */
+
+[role="button"]:active:active,
+.co-press:active:active {
+  transform: scale(0.98) !important;
+}
+
+@keyframes co-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes co-pop-in {
+  from { transform: scale(0.96); }
+  to { transform: none; }
+}
+
+@keyframes co-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Animación de flotación para FAB estilo Happpy */
+.animate-co-float {
+  animation: co-float 5s ease-in-out infinite;
+}
+
+.animate-co-pop-in {
+  animation: co-pop-in 0.22s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animate-co-spin {
+  animation: co-spin 14s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Press state para botones */
+.co-press:active:active {
+  transform: scale(0.98) !important;
+}
+
+.co-press:active {
+  transform: scale(0.98);
+}
+
+/* Pulse ring para FAB */
+@keyframes pulse-ring {
+  0% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.1; transform: scale(1.1); }
+  100% { opacity: 0.3; transform: scale(1); }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
