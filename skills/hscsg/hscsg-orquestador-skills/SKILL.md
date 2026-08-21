@@ -76,6 +76,9 @@ INTENCIÓN DEL USUARIO
        ├─ "integra este PDF / procesa este reporte / asimila este binario" ► hscsg-pdf-to-framework
        │                                                    (3 fases: ocr-and-documents → scientific-papers(Brief)
        │                                                     → external-framework-integration + push origin/main)
+       ├─ "asimila este hilo / malla de enlaces / comunidad / invitaciones a grupos" ► hscsg-mesh-assimilation
+       │                                                    (3 fases: extraer+clasificar malla → scientific-papers(Brief)
+       │                                                     → integration + índice Fxx-Fyy en lote + push origin/main)
        └─ tarea mixta / ambigua ──────────────────────────► hscsg-unified-assimilation-science
                                                             (que a su vez invoca las específicas)
 ```
@@ -102,6 +105,7 @@ Cada skill debe citar a las hermanas cuando su salida dependa de ellas:
 | Marco | `[mf:DisCO]` | `hscsg-multi-framework-integration` |
 | Canvas | `[canvas:20limites]` | `Sistema-Alraico-loop-engineering-skill` |
 | PDF→Framework | `[pdf2fw:<slug>]` | `hscsg-pdf-to-framework` |
+| Mesh→Framework | `[mesh2fw:<slug>]` | `hscsg-mesh-assimilation` |
 
 ---
 
