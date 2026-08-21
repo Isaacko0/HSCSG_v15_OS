@@ -1,7 +1,7 @@
 # BRIEF EXHAUSTIVO QUIRÚRGICO: HSCSG — Modelo de Negocio, HSCSG v15 OS & Cosateca OS
 **Documento fundacional v1.0 | Zeitnus / Isaac Ko | Agosto 2026**
 **Metodología:** 4 Fases (Desempaquetado → Limpieza → GitHub → Evolución) + Sistema Alráico (G1-CARMIS)
-**Fuentes primarias:** 50 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa, **+ Jacque Fresco/RBE vía tesis Yates 2014 (UCLan) y Leiva 2012 (U. Valparaíso)**, **+ NVIDIA OO-Agents (NOOA) asimilado como capa agente-orobjeto**, **+ ContentCreation-OS (CynthiaSalazarB) asimilado como co-pilot de contenido anfibio**, **+ CaaS Market Intel (DataInsightsMarket 2020–2034) como fuente de modelo de negocio**, **+ community_ai-alliance (b3alliance) OS de comunidad federada abierta**, **+ usdglo-celo (Glo Foundation USDGLO) stablecoin con propósito ReFi/UBI**, **+ OpenCivics (tres fuentes 2026-08-19): (47) OpenCivics Commons, (48) OpenCivics Wiki, (49) "Towards an Open Civics" PDF/tesis fundacional — valida la arquitectura anfibia desde la teoría de civilización**, **+ OpenBot (CopilotKit, fuente 50, 2026-08-19): plataforma AI coworkers con computer-use gobernado (AG-UI, gateway CEL fail-closed, audit). Asimilada AMPLIADA: (a) docs backup+integration, (b) módulo Boundaries en el OS (policy gateway anfibio: deny>allow, fail-closed, audit previo, repeat detector — `src/core/lib/boundaries.ts` + pantalla /boundaries), (c) módulo Coworkers (agentes con perfil durable, standing role, canal, handover humano — pantalla /coworkers), (d) 3 skills Hermes anfibias (openbot-governed-computer-use, policy-cel-gateway, ag-ui-protocol)**), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
+**Fuentes primarias:** 60 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa, **+ Jacque Fresco/RBE vía tesis Yates 2014 (UCLan) y Leiva 2012 (U. Valparaíso)**, **+ NVIDIA OO-Agents (NOOA) asimilado como capa agente-orobjeto**, **+ ContentCreation-OS (CynthiaSalazarB) asimilado como co-pilot de contenido anfibio**, **+ CaaS Market Intel (DataInsightsMarket 2020–2034) como fuente de modelo de negocio**, **+ community_ai-alliance (b3alliance) OS de comunidad federada abierta**, **+ usdglo-celo (Glo Foundation USDGLO) stablecoin con propósito ReFi/UBI**, **+ OpenCivics (tres fuentes 2026-08-19): (47) OpenCivics Commons, (48) OpenCivics Wiki, (49) "Towards an Open Civics" PDF/tesis fundacional — valida la arquitectura anfibia desde la teoría de civilización**, **+ OpenBot (CopilotKit, fuente 50, 2026-08-19): plataforma AI coworkers con computer-use gobernado (AG-UI, gateway CEL fail-closed, audit). Asimilada AMPLIADA: (a) docs backup+integration, (b) módulo Boundaries en el OS (policy gateway anfibio: deny>allow, fail-closed, audit previo, repeat detector — `src/core/lib/boundaries.ts` + pantalla /boundaries), (c) módulo Coworkers (agentes con perfil durable, standing role, canal, handover humano — pantalla /coworkers), (d) 3 skills Hermes anfibias (openbot-governed-computer-use, policy-cel-gateway, ag-ui-protocol)**, **+ The State of Communities Report 2026 (MUTUO, fuente 51, 2026-08-21, vía skill `hscsg-pdf-to-framework`): Brief Científico H₁/H₀ sobre comunidades mutuas como infraestructura de resiliencia + integración al SoV. `[pdf2fw:state-of-communities-2026]`**, **+ PerCon Flow / Potentialism + ecosistema "New Paradigm" (fuentes 52–60, 2026-08-21, vía hilo ThomasPoetter [LABS]): (52) PerCon Flow/Potentialism núcleo (WhatsApp/Telegram/Discord/FB/LinkedIn), (53) Catalist Network, (54) The Next System Project, (55) OpenCivics + Commons Stack + Funding the Commons + Schelling Point (ReFi/web3 commons), (56) Global People Power (Pause for Peace / global strike), (57) Commoners Catalog + Commonsverse + Commoning Spaces (David Bollier), (58) Solaris France ("Internet Humain" células mutualistas), (59) General Strike Revolution + Revolutionary Peoples Manifesto (demanda estructural), (60) Our Free Society (filtrado: conspiración sin evidencia — mapeado a Ley II MJ "conocimiento verificable"). `[EBD-D1][LeyI|II|III]`**), informes ejecutivos HSCSG v14, análisis OneManCompany, IDETRA, repos asimilados.
 
 ---
 
@@ -1571,6 +1571,32 @@ Asimiladas vía la skill (vía Ciencia, no código — principio de no-duplicaci
 - **Vasos comunicantes:** ambos mapean a Leyes MJ (I: recursos como base; II: acceso por contribución; III: métricas físicas) y al horizonte `CivilizacionesState` (RBE/TVP). **Fuentes primarias BRIEF: 39 → 41.**
 
 *Fin sección 18 — cierre de tanda 2026-08-18 (8 docs + 3 skills + loopEngine/Simulador + Fresco/RBE).*
+
+---
+
+### 18.5 Tanda 2026-08-21 — PerCon Flow / Potentialism + "New Paradigm" (hilo ThomasPoetter [LABS])
+
+Asimilación **vía vasos comunicantes totales** del ecosistema de capitalismo-postmonetario que Marcus Packard + ThomasPoetter catalizan en sus grupos (WhatsApp `BIFbDe1wKMrHAVz8RAU1d1`, Telegram `@PerConFlow`, Discord `PaaEyKcXwh`, FB `1213283999162758`, LinkedIn `14026138`), más el Google Doc *Clustering Platforms towards The New Paradigm* (40+ plataforms: CZ ECOSYSTEM, GAME-B, NEW ECONOMY COALITION, WELLBEING ECONOMY, THE GREAT TRANSITION INITITIVE, GLOBAL TAPESTRY OF ALTERNATIVES, FAIRCOOP, COMMONS STACK, FUNDING THE COMMONS, Catalist, OpenCivics, The Next System Project, etc.).
+
+**Brief Científico** (`docs/research_output/10_Brief_Cientifico_PerConFlow_Potentialism.md`):
+- **H₁:** el "New Paradigm" es un **clúster de modelos post-capitalistas convergentes** (RBE, economía de dones, commons, municipalismo/Game-B, ReFi/web3 commons, huelga/asambleas) que comparten el patrón estructural de HSCSG (autogobierno + base material + métricas físicas + capa social).
+- **H₀:** son iniciativas dispersas sin infraestructura técnica operativa que las conecte (fragmentación = falla clásica que HSCSG resuelve con el Tejido + loopEngine).
+- **Vasos:** `[EBD-D1][LeyI|II|III][mj:CivilizacionesState]`.
+
+**Mapa de fuentes 52–60** (`docs/percon_flow_potentialism_integration.md`):
+- (52) **PerCon Flow / Potentialism** núcleo — comparación SEM vs otros modelos (docx/pdf compris.com).
+- (53) **Catalist Network** — knowledge ecosystem personal→comunitario→global (cuadrícula + Catamark).
+- (54) **The Next System Project** — demandas estructurales post-capitalistas.
+- (55) **OpenCivics + Commons Stack + Funding the Commons + Schelling Point** — ReFi/web3 commons (conviction voting, bonding curves, public goods funding).
+- (56) **Global People Power** — Pause for Peace / global strike for peace / ciudadanos-asambleas.
+- (57) **Commoners Catalog + Commonsverse + Commoning Spaces** (David Bollier) — taxonomía del commoning (CLT, timebanking, gift economies, plataformas cooperativas, monedas alternativas).
+- (58) **Solaris France** — "Internet Humain" células mutualistas descentralizadas (sin jefe, sin jerarquía).
+- (59) **General Strike Revolution + Revolutionary Peoples Manifesto** — programa de reformas (UBI, co-ops 50%, jornada 28h, cancelación deuda).
+- (60) **Our Free Society** — *filtrado*: narrativa de conspiración sin evidencia verificable → mapeado a **Ley II MJ** ("conocimiento verificable") como contraejemplo de lo que HSCSG NO asimila como infraestructura.
+
+**Acción HSCSG concreta:** (a) PerCon Flow es **candidato de nodo Puente** en el Hylo fork (social layer) — ofrece la red de 40+ plataforms como índice de aliados; (b) el patrón "clúster convergente" valida la **arquitectura anfibia** (cada modelo opera en modo postmonetario local ZNU con conexión USD opcional vía oráculo); (c) Solaris/Commoning Spaces validan el **modo offline/mesh** del Tejido (funciona sin internet). **Fuentes primarias BRIEF: 50 → 60.**
+
+*Fin sección 18.5 — cierre de tanda 2026-08-21 (2 docs + 9 fuentes F51–F60 + vasos BRIEF/CHANGELOG).*
 
 ---
 

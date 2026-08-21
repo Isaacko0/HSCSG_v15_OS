@@ -4,6 +4,25 @@ Todas las entradas siguen el formato: versión, fecha, repos asimilados en ese p
 
 ---
 
+## v15.23 — 2026-08-21 · Asimilación PerCon Flow / Potentialism + "New Paradigm" + State of Communities 2026
+
+**Fuentes (9):** hilo ThomasPoetter [LABS] (WhatsApp/Telegram/Discord/FB/LinkedIn) + Google Doc *Clustering Platforms towards The New Paradigm* (40+ plataforms: CZ ECOSYSTEM, GAME-B, NEW ECONOMY COALITION, WELLBEING ECONOMY, THE GREAT TRANSITION INITIATIVE, GLOBAL TAPESTRY OF ALTERNATIVES, FAIRCOOP, COMMONS STACK, FUNDING THE COMMONS, Catalist, OpenCivics, The Next System Project, etc.) + sitios Catalist / Next System / OpenCivics+CommonsStack+FundingTheCommons+SchellingPoint / Global People Power / Commoners Catalog+Commonsverse+Commoning Spaces (Bollier) / Solaris France / General Strike Revolution+Revolutionary Peoples Manifesto / Our Free Society (filtrado). + The State of Communities Report 2026 (MUTUO) vía `hscsg-pdf-to-framework`.
+
+**Mapeo HSCSG:**
+- PerCon Flow / Potentialism = **nodo Puente** candidato en Hylo fork (social layer): la red de 40+ plataforms como índice de aliados.
+- "Clúster convergente" valida **arquitectura anfibia** (cada modelo: postmonetario local ZNU + conexión USD opcional vía oráculo priceParity).
+- Solaris / Commoning Spaces validan **modo offline/mesh** del Tejido (funciona sin internet).
+- Our Free Society → mapeado a **Ley II MJ** ("conocimiento verificable") como contraejemplo de lo NO asimilable.
+
+**Principio anfibio:** se asimila la *lógica de commoning* (CLT, timebanking, gift economies, plataformas cooperativas, monedas alternativas) y la *coordinación ReFi/web3* (conviction voting, bonding curves, public goods); se extirpa infra ajena (stablecoins externas, discords con paywalls de traducción, narrativa conspirativa sin evidencia).
+
+**Docs:** `docs/research_output/10_Brief_Cientifico_PerConFlow_Potentialism.md` · `docs/percon_flow_potentialism_integration.md` · (previo) `09_Brief_Cientifico_StateOfCommunities2026.md` + `State_of_Communities_2026_integration.md` (vía `hscsg-pdf-to-framework` `pdf2fw:state-of-communities-2026`).
+**BRIEF:** fuentes 50→60 + §18.5 + vasos `[EBD-D1][LeyI|II|III][mj:CivilizacionesState]`.
+**Índice:** `docs/fuentes_indice.json` F51–F60 (total 60).
+**Verificación:** JSON válido (node) · sin build de frontend (solo docs + índice, no toca `src/`).
+
+---
+
 ## v15.22 — 2026-08-19 · Asimilación community_ai-alliance + usdglo-celo (Glo Foundation)
 
 **Repos asimilados:**
