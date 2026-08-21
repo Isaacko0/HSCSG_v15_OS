@@ -51,6 +51,7 @@ cruzada evidencia → decisión → código → test → skill → paper).
 | 9 | `Sistema-Alraico-loop-engineering-skill` (`loop-engineering-canvas`) | Canvas epistémico universal (20 límites, ECROx, triaxial) | "diagnosticar problema estancado", "canvas de bucles" |
 | 10 | `hscsg-repo-assimilation` (modo web-rescue) | Rescate de webs JS-heavy / datos externos a `.md` | "scrapea/rescata esta web", "rescata el contenido de <url>" |
 | 11 | `hscsg-pdf-to-framework` | **Pipeline PDF→Framework (3 fases):** extracción (`ocr-and-documents`) → Brief Científico (`hscsg-scientific-papers` Doc 5) → asimilación (`external-framework-integration`) + push `origin/main` | "integra este PDF", "procesa este reporte", "asimila este archivo binario" |
+| 12 | `hscsg-percon-flow-scan` | **Scan PerCon Flow / New Paradigm (3 fases para hilos/URLs):** parseo de hilo/export o fetch de URLs (`web_extract`) → Brief Científico (`hscsg-scientific-papers` Doc 5) → asimilación (`external-framework-integration`) + índice F## + push `origin/main`. Reutiliza el contrato de `hscsg-pdf-to-framework` con Fase 1 = parseo (no OCR). **No se une a grupos de invitación** (solo procedencia) | "escanea este hilo", "asimila esta malla de enlaces", "procesa este dump de WhatsApp/Telegram", "integra estas comunidades new paradigm" |
 
 ---
 
@@ -76,9 +77,11 @@ INTENCIÓN DEL USUARIO
        ├─ "integra este PDF / procesa este reporte / asimila este binario" ► hscsg-pdf-to-framework
        │                                                    (3 fases: ocr-and-documents → scientific-papers(Brief)
        │                                                     → external-framework-integration + push origin/main)
-       ├─ "asimila este hilo / malla de enlaces / comunidad / invitaciones a grupos" ► hscsg-mesh-assimilation
-       │                                                    (3 fases: extraer+clasificar malla → scientific-papers(Brief)
-       │                                                     → integration + índice Fxx-Fyy en lote + push origin/main)
+       ├─ "asimila este hilo / malla de enlaces / comunidad / invitaciones a grupos" ► hscsg-percon-flow-scan
+       │                                                    (3 fases: parsear hilo/export o web_extract de URLs
+       │                                                     → scientific-papers(Brief)
+       │                                                     → integration + índice F## en lote + push origin/main;
+       │                                                     NO se une a grupos, solo procedencia)
        └─ tarea mixta / ambigua ──────────────────────────► hscsg-unified-assimilation-science
                                                             (que a su vez invoca las específicas)
 ```
@@ -105,7 +108,7 @@ Cada skill debe citar a las hermanas cuando su salida dependa de ellas:
 | Marco | `[mf:DisCO]` | `hscsg-multi-framework-integration` |
 | Canvas | `[canvas:20limites]` | `Sistema-Alraico-loop-engineering-skill` |
 | PDF→Framework | `[pdf2fw:<slug>]` | `hscsg-pdf-to-framework` |
-| Mesh→Framework | `[mesh2fw:<slug>]` | `hscsg-mesh-assimilation` |
+| PerConFlow/New-Paradigm Scan | `[perconflow:<slug>]` | `hscsg-percon-flow-scan` |
 
 ---
 
