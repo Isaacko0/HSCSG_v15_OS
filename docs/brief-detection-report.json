@@ -1,0 +1,571 @@
+{
+  "timestamp": "2026-08-22T22:54:27.584Z",
+  "gaps": [
+    {
+      "id": "BI-002",
+      "type": "backup_missing",
+      "source": "Copiosis v7.1",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-012",
+        "BF-013",
+        "BF-044",
+        "BF-045",
+        "BF-046"
+      ]
+    },
+    {
+      "id": "BI-003",
+      "type": "backup_missing",
+      "source": "Conway Automaton",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-014",
+        "BF-015",
+        "BF-044"
+      ]
+    },
+    {
+      "id": "BI-004",
+      "type": "backup_missing",
+      "source": "OneManCompany",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-016",
+        "BF-017"
+      ]
+    },
+    {
+      "id": "BI-005",
+      "type": "backup_missing",
+      "source": "Integral Collective",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-018",
+        "BF-019"
+      ]
+    },
+    {
+      "id": "BI-006",
+      "type": "backup_missing",
+      "source": "DisCO",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-020"
+      ]
+    },
+    {
+      "id": "BI-007",
+      "type": "backup_missing",
+      "source": "FABSHIP/HUMANIA",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-021"
+      ]
+    },
+    {
+      "id": "BI-008",
+      "type": "backup_missing",
+      "source": "Auravana/OC/TVP/RBE",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-022"
+      ]
+    },
+    {
+      "id": "BI-009",
+      "type": "backup_missing",
+      "source": "Prosocial Protocol",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-023"
+      ]
+    },
+    {
+      "id": "BI-010",
+      "type": "backup_missing",
+      "source": "8 Formas de Capital",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-024"
+      ]
+    },
+    {
+      "id": "BI-002",
+      "type": "backup_integration_missing",
+      "source": "Copiosis v7.1",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§2.17"
+      ]
+    },
+    {
+      "id": "BI-003",
+      "type": "backup_integration_missing",
+      "source": "Conway Automaton",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§2.1"
+      ]
+    },
+    {
+      "id": "BI-004",
+      "type": "backup_integration_missing",
+      "source": "OneManCompany",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§8.2"
+      ]
+    },
+    {
+      "id": "BI-005",
+      "type": "backup_integration_missing",
+      "source": "Integral Collective",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§9.3"
+      ]
+    },
+    {
+      "id": "BI-006",
+      "type": "backup_integration_missing",
+      "source": "DisCO",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§14.1"
+      ]
+    },
+    {
+      "id": "BI-007",
+      "type": "backup_integration_missing",
+      "source": "FABSHIP/HUMANIA",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§6.1"
+      ]
+    },
+    {
+      "id": "BI-008",
+      "type": "backup_integration_missing",
+      "source": "Auravana/OC/TVP/RBE",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§17"
+      ]
+    },
+    {
+      "id": "BI-009",
+      "type": "backup_integration_missing",
+      "source": "Prosocial Protocol",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§14.1"
+      ]
+    },
+    {
+      "id": "BI-010",
+      "type": "backup_integration_missing",
+      "source": "8 Formas de Capital",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§6.1"
+      ]
+    },
+    {
+      "id": "BI-002",
+      "type": "backup_integration_missing",
+      "source": "Copiosis v7.1",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§2.17"
+      ]
+    },
+    {
+      "id": "BI-003",
+      "type": "backup_integration_missing",
+      "source": "Conway Automaton",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§2.1"
+      ]
+    },
+    {
+      "id": "BI-004",
+      "type": "backup_integration_missing",
+      "source": "OneManCompany",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§8.2"
+      ]
+    },
+    {
+      "id": "BI-005",
+      "type": "backup_integration_missing",
+      "source": "Integral Collective",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§9.3"
+      ]
+    },
+    {
+      "id": "BI-006",
+      "type": "backup_integration_missing",
+      "source": "DisCO",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§14.1"
+      ]
+    },
+    {
+      "id": "BI-007",
+      "type": "backup_integration_missing",
+      "source": "FABSHIP/HUMANIA",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§6.1"
+      ]
+    },
+    {
+      "id": "BI-008",
+      "type": "backup_integration_missing",
+      "source": "Auravana/OC/TVP/RBE",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§17"
+      ]
+    },
+    {
+      "id": "BI-009",
+      "type": "backup_integration_missing",
+      "source": "Prosocial Protocol",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§14.1"
+      ]
+    },
+    {
+      "id": "BI-010",
+      "type": "backup_integration_missing",
+      "source": "8 Formas de Capital",
+      "priority": "P0",
+      "related_briefs": [
+        "BF-001§6.1"
+      ]
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "agencia",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "agentMesh",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "automaton",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "boundaries",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "caas",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "capacidades",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "celulas",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "civilizaciones",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "colaberry",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "colony",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "connector",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "content",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "delegation",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "democracia",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "educaas",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "education",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "evidence",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "gaia",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "gaiaunion",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "i18n",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "integral",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "kleros",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "learning",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "life",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "loopEngine",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "metrics",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "mundus",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "nooa",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "nostrRelay",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "oracle",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "orchestration",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "pipeline",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "prioritize",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "proofOfResponse",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "regen",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "solarpunk",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "sovereignCredit",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "sovereignty",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "symbiosky",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "tekitl",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "trustlines",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "usdglo",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "valueDual",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "vecinal",
+      "priority": "P1",
+      "workstream": "CORE"
+    },
+    {
+      "id": "SM-001",
+      "type": "spec_missing",
+      "module": "vesting",
+      "priority": "P1",
+      "workstream": "CORE"
+    }
+  ]
+}
