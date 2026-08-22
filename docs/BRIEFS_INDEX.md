@@ -170,6 +170,16 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **BF-075** | **RESPUESTA_COLABORACION_GAIA_MYCELIUM.md** | `docs/` | ✅ **NUEVO** | Respuesta ES a equipos Gaia-Mycelium (Brandon Nørgaard) |
 | **BF-076** | **RESPUESTA_COLABORACION_GAIA_MYCELIUM_EN.md** | `docs/` | ✅ **NUEVO** | Respuesta EN a equipos Gaia-Mycelium (Brandon Nørgaard) |
 
+### 👥 PERFILES COGNITIVOS Y PROFESIONALES (Guías de Integración)
+| # | Documento | Ubicación | Estado | Audiencia | Descripción |
+|---|-----------|-----------|--------|-----------|-------------|
+| **BF-077** | **BRIEF_PERFIL_PROFESIONALES.md** | `docs/` | ✅ **NUEVO** | Especialistas, ingenieros, científicos, profesionales certificados | Punto de entrada por especialidad, flujo de trabajo, herramientas, casos de éxito |
+| **BF-078** | **BRIEF_PERFIL_POLIMATAS.md** | `docs/` | ✅ **NUEVO** | Polimatas (3+ dominios expertos) | Orquestador como herramienta nativa, flujo no lineal, arquitecto de vasos comunicantes |
+| **BF-079** | **BRIEF_PERFIL_GENERALISTAS.md** | `docs/` | ✅ **NUEVO** | Generalistas (navegan ancho, conectan puntos) | Mapa navegación, flujo ancho→profundo→ancho, contribución alto impacto sin ser experto |
+| **BF-080** | **BRIEF_PERFIL_AUTODIDACTAS.md** | `docs/` | ✅ **NUEVO** | Autodidactas (aprenden por cuenta, sin currículo) | Cero permisos, mapa aprendizaje autodirigido, herramientas autodidactas, patrón éxito |
+| **BF-081** | **BRIEF_PERFIL_INTERDISCIPLINARES.md** | `docs/` | ✅ **NUEVO** | Interdisciplinares (2-3 disciplinas, puentes metodológicos) | Vasos comunicantes como puentes, flujo puente→método→estándar, 3 puentes/semana |
+| **BF-082** | **BRIEF_PERFIL_TRANSDISCIPLINARES.md** | `docs/` | ✅ **NUEVO** | Transdisciplinares (trascienden disciplinas, incluyen stakeholders no académicos) | Base Material + Autómata Soberano, flujo vida→acción→regeneración, briefs como semillas |
+
 ### 📋 REPORTES DE DETECTOR DE BRIEFS (Generados Automáticamente)
 | # | Documento | Ubicación | Estado | Descripción |
 |---|-----------|-----------|--------|-------------|
@@ -261,7 +271,7 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **Trustlines** | ✅ 1 backup | ✅ 1 integration | Crédito mutuo → ZNU + ValueFlows | 0 | 2 |
 | **USDGLO** | ✅ 1 backup | ✅ 1 integration | Stablecoin → priceParity oracle | 0 | 2 |
 
-**Total:** 39 proyectos fuente | 24 completados (48 docs backup+integration) | 15 pendientes | **104 briefs totales** | 4 skills Hermes desplegadas | 23 docs operativos en `docs/`
+**Total:** 39 proyectos fuente | 24 completados (48 docs backup+integration) | 15 pendientes | **110 briefs totales** | 4 skills Hermes desplegadas | 29 docs operativos en `docs/`
 
 ---
 

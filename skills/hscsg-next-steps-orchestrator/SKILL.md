@@ -1,14 +1,14 @@
 ---
 name: hscsg-next-steps-orchestrator
-description: Orquesta próximos pasos HSCSG con priorización dinámica, registro de tareas usuario+agente, grafo de dependencias y continuity.
-version: 0.2.0
+description: Orquesta próximos pasos HSCSG con priorización dinámica, registro de tareas usuario+agente, grafo de dependencias, continuity y detección automática de gaps documentales.
+version: 0.3.0
 author: Isaac Ko (Isaacko0), Hermes Agent
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [hscsg, orchestration, next-steps, copiosis, deseos, automaton, deploy, prioritization]
-    related_skills: [plan, hermes-agent-skill-authoring]
+    tags: [hscsg, orchestration, next-steps, copiosis, deseos, automaton, deploy, prioritization, brief-detection]
+    related_skills: [plan, hermes-agent-skill-authoring, brief-detector-recommender]
 ---
 
 # HSCSG Next Steps Orchestrator Skill
@@ -311,3 +311,49 @@ Al invocar skill:
 
 - `plan` — para crear plan detallado por workstream
 - `hermes-agent-skill-authoring` — estándares para documentar cada módulo migrado como skill
+- `brief-detector-recommender` — detección automática de gaps documentales, recomendación de briefs, proyección 30/60/90d, extrapolación patrones; invocable desde orchestrator
+
+### 10. INTEGRACIÓN CON BRIEF-DETECTOR-RECOMMENDER
+
+El orchestrator puede invocar el detector de briefs como parte del ciclo de mejora continua:
+
+```bash
+# Desde orchestrator (vía terminal tool o script)
+node scripts/brief-detector-recommender.cjs full-cycle
+```
+
+**Flujo de integración:**
+
+1. **Trigger**: Tras cada asimilación de repo, o semanal via cron, o cuando usuario pide "¿qué briefs faltan?"
+2. **Ejecución**: `full-cycle` genera 4 reportes en `docs/`:
+   - `brief-detection-report.json` — gaps estructurados
+   - `brief-recommendations.md` — priorizados P0/P1/P2
+   - `brief-projection-30-60-90.md` — horizonte temporal
+   - `brief-extrapolation.md` — patrones + predicción próximos repos
+3. **Consumo por orchestrator**:
+   - Parse `brief-detection-report.json` → actualiza `orchestrator-state.json` con nuevos tasks
+   - Lee `brief-recommendations.md` → presenta al usuario en menú interactivo
+   - Añade tasks `BRIEF-create-<ID>` al workstream `DOCUMENTATION`
+4. **Task recurrente sugerida**:
+```json
+{
+  "id": "BRIEF-detector-cycle",
+  "title": "Ejecutar brief-detector-recommender full-cycle (semanal)",
+  "deps": [],
+  "effort": 1,
+  "value": 85,
+  "workstream": "DOCUMENTATION",
+  "source": "agent",
+  "priority": 80,
+  "recurring": "weekly",
+  "blocks": [],
+  "status": "pending",
+  "notes": "Actualiza BRIEFS_INDEX.md, detecta gaps, recomienda próximos briefs"
+}
+```
+
+**Pitfall:** Los reportes son markdown/JSON parseables — no depender de formato visual, usar estructura consistente.
+
+---
+
+### 11. PITFALLS (Actualizados)
