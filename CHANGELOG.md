@@ -4,7 +4,13 @@ Todas las entradas siguen el formato: versión, fecha, repos asimilados en ese p
 
 ---
 
-## v15.23 — 2026-08-21 · Asimilación PerCon Flow / Potentialism + "New Paradigm" + State of Communities 2026
+## v15.24 — 2026-08-21 · Dump completo PerCon Flow / New Paradigm (F61–F114)
+
+**Repos/documentos asimilados:** `docs/research_output/11_Brief_Cientifico_PerConFlow_Dump.md`, `docs/percon_flow_potentialism_integration_2.md`, `docs/percon_flow_patch_prosocial.md`, `docs/fuentes_indice.json` (F61–F114, total 114).
+
+**Estado verificación:** Índice JSON válido (114 entradas, cierre íntegro). 54 fuentes nuevas del dump íntegro del hilo de Marcus Packard (grupos, plataformas new-paradigm, compassion-complex, anti-work, regenerative-finance, commons). Sin unión a grupos ajenos (solo metadatos de procedencia). Documents/scripts sin credenciales.
+
+---
 
 **Fuentes (9):** hilo ThomasPoetter [LABS] (WhatsApp/Telegram/Discord/FB/LinkedIn) + Google Doc *Clustering Platforms towards The New Paradigm* (40+ plataforms: CZ ECOSYSTEM, GAME-B, NEW ECONOMY COALITION, WELLBEING ECONOMY, THE GREAT TRANSITION INITIATIVE, GLOBAL TAPESTRY OF ALTERNATIVES, FAIRCOOP, COMMONS STACK, FUNDING THE COMMONS, Catalist, OpenCivics, The Next System Project, etc.) + sitios Catalist / Next System / OpenCivics+CommonsStack+FundingTheCommons+SchellingPoint / Global People Power / Commoners Catalog+Commonsverse+Commoning Spaces (Bollier) / Solaris France / General Strike Revolution+Revolutionary Peoples Manifesto / Our Free Society (filtrado). + The State of Communities Report 2026 (MUTUO) vía `hscsg-pdf-to-framework`.
 
