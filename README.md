@@ -7,7 +7,21 @@
 > Repositorio: https://github.com/Isaacko0/HSCSG_v15_OS
 > Preview local: http://localhost:4173/
 > Deploy (Vercel): https://hscsg-v15-os.vercel.app/
-> Skills del proyecto en `skills/` (asimilación + ciencia + vasos comunicantes): `hscsg-repo-assimilation`, `hscsg-scientific-papers`, `hscsg-unified-assimilation-science`
+> Skills del proyecto en `skills/` (asimilación + ciencia + vasos comunicantes): `hscsg-repo-assimilation`, `hscsg-scientific-papers`, `hscsg-unified-assimilation-science`, `hscsg-next-steps-orchestrator`, `hscsg-gaia-mycelium-integration`
+
+---
+
+## Herramienta de Desarrollo: Hermes Agent
+
+> **Este repositorio se está construyendo y manteniendo colaborativamente con [Hermes Agent](https://hermes-agent.nousresearch.com/)** — la interfaz de agente autónoma de [Nous Research](https://nousresearch.com/).
+
+Hermes Agent permite:
+- Ejecución autónoma de código, git, terminal, web search
+- Skills modulares (ver `skills/`) para workflows repetibles
+- Orquestación de tareas complejas con continuity protocol
+- Integración nativa con GitHub, Vercel, y herramientas CLI
+
+[![Hermes Agent](https://img.shields.io/badge/Built%20with-Hermes%20Agent-6E40C9?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDJMMiA3bDEwIDUgMTAtNXoiIGZpbGw9IiM2RTQwQzkiLz48cGF0aCBkPSJNMTIgMjJMMTQgMTdsLTEwLTUgLTEwIDV6IiBmaWxsPSIjNkU0MEM5Ii8+PC9zdmc+)]()
 
 ---
 
