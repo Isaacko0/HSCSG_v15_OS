@@ -129,6 +129,12 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **BF-031** | **contento_architecture.md** | `docs/` | ✅ Extraído | `DeseOS_project1/docs/ARCHITECTURE.md` | Arquitectura bundle single-file: 39 assets, 11 módulos P1-P11, loader, CSS vars, localStorage |
 | **BF-032** | **deseOS_modules_map.md** | `docs/` | ✅ Extraído | `DeseOS_extracted/src/modules/` | Mapa 11 módulos: P1 BranDNA, P2 Products, P3 CRM/ICP, P4 Plan, P5 VITCH, P6 Persuade, P7 Pauta, P8 Pagos, P9 Perfecciona, P10 Publica, P11 Prospecta |
 
+### 🛠️ TOOLING Y DATOS CURADOS (AI Tools Curados)
+| # | Documento | Ubicación | Estado | Fuente | Descripción |
+|---|-----------|-----------|--------|--------|-------------|
+| **BF-083** | **cyfyifanchen_opc_backup.md** | `docs/` | ✅ **NUEVO** | `cyfyifanchen/one-person-company` | Curación IA tools: LLM rankings (WebDev Arena), TTS matrix (30+), Code tools (50+), Design tools (25+), Website builders (15+), Productivity (30+) |
+| **BF-084** | **cyfyifanchen_opc_integration.md" | `docs/` | ✅ **NUEVO** | `cyfyifanchen/one-person-company` | Integración datos puros: 14 data constants TypeScript, integración Automaton/CoachFAB/CaaS-BM/navteka, 6 tasks orchestrator |
+
 ### ⚙️ MÓDULOS TÉCNICOS HSCSG v15 OS (Core)
 | # | Documento | Ubicación | Estado | Módulo | Descripción |
 |---|-----------|-----------|--------|--------|-------------|
@@ -271,7 +277,7 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **Trustlines** | ✅ 1 backup | ✅ 1 integration | Crédito mutuo → ZNU + ValueFlows | 0 | 2 |
 | **USDGLO** | ✅ 1 backup | ✅ 1 integration | Stablecoin → priceParity oracle | 0 | 2 |
 
-**Total:** 39 proyectos fuente | 25 completados (50 docs backup+integration) | 14 pendientes | **112 briefs totales** | 4 skills Hermes desplegadas | 31 docs operativos en `docs/`
+**Total:** 39 proyectos fuente | 26 completados (52 docs backup+integration) | 13 pendientes | **114 briefs totales** | 4 skills Hermes desplegadas | 33 docs operativos en `docs/`
 
 ---
 
