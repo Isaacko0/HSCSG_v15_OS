@@ -141,6 +141,12 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **BF-085** | **opc_source_opc_backup.md** | `docs/` | ✅ **NUEVO** | `opc-source/one-person-company` | Arquitectura Cloud Native: CNCF Landscape + Alibaba (KubeVela, OCM, Sealer, OpenKruise, Istio, Dapr, OpenTelemetry, Prometheus, Grafana, K8s, Nacos, Sentinel, Seata, RocketMQ) |
 | **BF-086** | **opc_source_opc_integration.md** | `docs/` | ✅ **NUEVO** | `opc-source/one-person-company` | Integración infra: 11 módulos core, multi-cluster, service mesh, observabilidad, CNCF Landscape, neko-federation, 6 tasks orchestrator |
 
+### 📋 AWESOME LISTS Y CASOS DE ESTUDIO
+| # | Documento | Ubicación | Estado | Fuente | Descripción |
+|---|-----------|-----------|--------|--------|-------------|
+| **BF-087** | **awesome_opc_backup.md** | `docs/` | ✅ **NUEVO** | `chen103226/awesome-one-person-company` | Awesome list bilingüe: casos estudio verificados (Levels $2.1M/año, Lou $1.03M, Yongfook $600K ARR, Barry $29M ARR, 小熊猫C++ ¥5万+/mes), stacks 2026, Mom Test, 30-day launch |
+| **BF-088** | **awesome_opc_integration.md** | `docs/` | ✅ **NUEVO** | `chen103226/awesome-one-person-company` | Integración datos: case_studies, stacks_recommendations, mom_test_methodology, 30_day_launch_checklist, learning_paths, enrichment de 3 briefs |
+
 ### ⚙️ MÓDULOS TÉCNICOS HSCSG v15 OS (Core)
 | # | Documento | Ubicación | Estado | Módulo | Descripción |
 |---|-----------|-----------|--------|--------|-------------|
@@ -282,9 +288,10 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **Towards Open Civics** | ✅ 1 backup | ✅ 1 integration | Open Civics → OpenHaven + CDS | 0 | 2 |
 | **Trustlines** | ✅ 1 backup | ✅ 1 integration | Crédito mutuo → ZNU + ValueFlows | 0 | 2 |
 || **USDGLO** | ✅ 1 backup | ✅ 1 integration | Stablecoin → priceParity oracle | 0 | 2 ||
-|| **opc-source/one-person-company** | ✅ `opc_source_opc_backup.md` | ✅ `opc_source_opc_integration.md` | `lib/multi_cluster.ts`, `lib/service_mesh.ts`, `lib/observability_stack.ts`, `lib/cloud_native_container.ts`, `lib/cncf_landscape.ts`, `lib/alibaba_cloud_stack.ts`, `lib/cluster_delivery.ts`, `lib/iac_manager.ts`, `lib/microservice_frameworks.ts`, `lib/os_reference.ts`, `docs/infrastructure_diagram_v010.md` | 1 (`hscsg-opc-source-assimilation` pendiente) | 2 |
+|| **opc-source/one-person-company** | ✅ `opc_source_opc_backup.md` | ✅ `opc_source_opc_integration.md` | `lib/multi_cluster.ts`, `lib/service_mesh.ts`, `lib/observability_stack.ts`, `lib/cloud_native_container.ts`, `lib/cncf_landscape.ts`, `lib/alibaba_cloud_stack.ts`, `lib/cluster_delivery.ts`, `lib/iac_manager.ts`, `lib/microservice_frameworks.ts`, `lib/os_reference.ts`, `docs/infrastructure_diagram_v010.md` | 1 (`hscsg-opc-source-assimilation` pendiente) | 2 ||
+|| **chen103226/awesome-one-person-company** | ✅ `awesome_opc_backup.md` | ✅ `awesome_opc_integration.md` | `lib/case_studies.ts`, `lib/stacks_recommendations.ts`, `lib/mom_test_methodology.ts`, `docs/30_day_launch_checklist.md`, `docs/learning_paths.md`, `docs/creator_quotes.md` | 1 (`hscsg-awesome-opc-assimilation` pendiente) | 2 |
 
-**Total:** 39 proyectos fuente | 28 completados (56 docs backup+integration) | 11 pendientes | **118 briefs totales** | 4 skills Hermes desplegadas | 37 docs operativos en `docs/`
+**Total:** 39 proyectos fuente | 29 completados (58 docs backup+integration) | 10 pendientes | **120 briefs totales** | 4 skills Hermes desplegadas | 39 docs operativos en `docs/`
 
 ---
 
