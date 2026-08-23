@@ -133,7 +133,13 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | # | Documento | Ubicación | Estado | Fuente | Descripción |
 |---|-----------|-----------|--------|--------|-------------|
 | **BF-083** | **cyfyifanchen_opc_backup.md** | `docs/` | ✅ **NUEVO** | `cyfyifanchen/one-person-company` | Curación IA tools: LLM rankings (WebDev Arena), TTS matrix (30+), Code tools (50+), Design tools (25+), Website builders (15+), Productivity (30+) |
-| **BF-084** | **cyfyifanchen_opc_integration.md" | `docs/` | ✅ **NUEVO** | `cyfyifanchen/one-person-company` | Integración datos puros: 14 data constants TypeScript, integración Automaton/CoachFAB/CaaS-BM/navteka, 6 tasks orchestrator |
+| **BF-084** | **cyfyifanchen_opc_integration.md** | `docs/` | ✅ **NUEVO** | `cyfyifanchen/one-person-company` | Integración datos puros: 14 data constants TypeScript, integración Automaton/CoachFAB/CaaS-BM/navteka, 6 tasks orchestrator |
+
+### ☁️ INFRAESTRUCTURA CLOUD NATIVE (CNCF + Alibaba)
+| # | Documento | Ubicación | Estado | Fuente | Descripción |
+|---|-----------|-----------|--------|--------|-------------|
+| **BF-085** | **opc_source_opc_backup.md** | `docs/` | ✅ **NUEVO** | `opc-source/one-person-company` | Arquitectura Cloud Native: CNCF Landscape + Alibaba (KubeVela, OCM, Sealer, OpenKruise, Istio, Dapr, OpenTelemetry, Prometheus, Grafana, K8s, Nacos, Sentinel, Seata, RocketMQ) |
+| **BF-086** | **opc_source_opc_integration.md** | `docs/` | ✅ **NUEVO** | `opc-source/one-person-company` | Integración infra: 11 módulos core, multi-cluster, service mesh, observabilidad, CNCF Landscape, neko-federation, 6 tasks orchestrator |
 
 ### ⚙️ MÓDULOS TÉCNICOS HSCSG v15 OS (Core)
 | # | Documento | Ubicación | Estado | Módulo | Descripción |
@@ -275,9 +281,10 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **Tekitl** | ✅ 1 backup | ✅ 1 integration | Proyectos/coins/portfolio → HSCSG | 0 | 2 |
 | **Towards Open Civics** | ✅ 1 backup | ✅ 1 integration | Open Civics → OpenHaven + CDS | 0 | 2 |
 | **Trustlines** | ✅ 1 backup | ✅ 1 integration | Crédito mutuo → ZNU + ValueFlows | 0 | 2 |
-| **USDGLO** | ✅ 1 backup | ✅ 1 integration | Stablecoin → priceParity oracle | 0 | 2 |
+|| **USDGLO** | ✅ 1 backup | ✅ 1 integration | Stablecoin → priceParity oracle | 0 | 2 ||
+|| **opc-source/one-person-company** | ✅ `opc_source_opc_backup.md` | ✅ `opc_source_opc_integration.md` | `lib/multi_cluster.ts`, `lib/service_mesh.ts`, `lib/observability_stack.ts`, `lib/cloud_native_container.ts`, `lib/cncf_landscape.ts`, `lib/alibaba_cloud_stack.ts`, `lib/cluster_delivery.ts`, `lib/iac_manager.ts`, `lib/microservice_frameworks.ts`, `lib/os_reference.ts`, `docs/infrastructure_diagram_v010.md` | 1 (`hscsg-opc-source-assimilation` pendiente) | 2 |
 
-**Total:** 39 proyectos fuente | 26 completados (52 docs backup+integration) | 13 pendientes | **114 briefs totales** | 4 skills Hermes desplegadas | 33 docs operativos en `docs/`
+**Total:** 39 proyectos fuente | 28 completados (56 docs backup+integration) | 11 pendientes | **118 briefs totales** | 4 skills Hermes desplegadas | 37 docs operativos en `docs/`
 
 ---
 

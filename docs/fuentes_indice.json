@@ -154,7 +154,7 @@
       "id": 16,
       "nombre": "opc-source/one-person-company (Cloud Native Infra)",
       "url": "https://github.com/opc-source/one-person-company",
-      "estado": "⏳ Pendiente",
+      "estado": "✅ Backup + Integration completos",
       "backup": "opc_source_opc_backup.md",
       "integration": "opc_source_opc_integration.md",
       "briefs_relacionados": ["BF-085", "BF-086"],
