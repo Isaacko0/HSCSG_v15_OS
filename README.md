@@ -341,6 +341,7 @@ La barra lateral incluye [**Civilizaciones**](https://hscsg-v15-os.vercel.app/ci
 - [**One Community**](https://onecommunityglobal.org/) — diseños bioconstructivos y paisajismo en código libre.
 - [**The Venus Project**](https://www.thevenusproject.com/) — economía basada en recursos, sin dejar a nadie atrás.
 - [**Resource Based Economy**](https://www.resourcebasedeconomy.org/) — las únicas limitaciones son las que nos imponemos a nosotros mismos.
+- [**Copiosis**](https://copiosis.net/) — diseño socioeconómico post-dinero (NBR, Beneficio Neto 8 escalas, Jurados Ciudadanos, 3 tipos de bienes, Estigmergia) — asimilado en HSCSG v15 OS.
 
 ---
 
