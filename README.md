@@ -82,7 +82,6 @@ node scripts/orchestrator-next-steps.js next
 | **Cómo contribuir paso a paso (4 fases)** | [`BRIEF_ONBOARDING_CONSTRUCTOR.md`](docs/BRIEF_ONBOARDING_CONSTRUCTOR.md) | Desempaquetado → Limpieza → GitHub → Evolución + templates obligatorios |
 | **Integración Gaia-Mycelium + OpenHaven + Weave** | [`gaia_mycelium_integration.md`](docs/gaia_mycelium_integration.md) | 20 mapeos, 6 vasos, 8 workstreams, plan 4 semanas |
 | **Análisis exhaustivo 4 proyectos (17 URLs)** | [`ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md`](docs/ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md) | Tabla maestra 14 conceptos, 11 gaps, arquitectura pila unificada |
-| **Respuesta a equipos Gaia-Mycelium (Brandon Nørgaard)** | [`RESPUESTA_COLABORACION_GAIA_MYCELIUM.md`](docs/RESPUESTA_COLABORACION_GAIA_MYCELIUM.md) | 100% validación puntos Brandon + soluciones HSCSG implementadas |
 | **Detector automático de gaps + recomendaciones** | [`scripts/brief-detector-recommender.cjs`](scripts/brief-detector-recommender.cjs) | `detect`/`recommend`/`project`/`extrapolate`/`full-cycle` |
 
 ---
