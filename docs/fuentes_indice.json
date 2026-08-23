@@ -32,9 +32,9 @@
     },
     {
       "id": 4,
-      "nombre": "OneManCompany",
-      "url": "https://github.com/ZiadJ/onemanco",
-      "estado": "⏳ Pendiente",
+      "nombre": "OneManCompany (1mancompany)",
+      "url": "https://github.com/1mancompany/OneManCompany",
+      "estado": "✅ Backup + Integration completos",
       "backup": "onemanco_backup.md",
       "integration": "onemanco_integration.md",
       "briefs_relacionados": ["BF-016", "BF-017"],
@@ -139,6 +139,36 @@
       "integration": "ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md",
       "briefs_relacionados": ["BF-056"],
       "seccion_ref": "15"
+    },
+    {
+      "id": 15,
+      "nombre": "cyfyifanchen/one-person-company (AI Tools)",
+      "url": "https://github.com/cyfyifanchen/one-person-company",
+      "estado": "⏳ Pendiente",
+      "backup": "cyfyifanchen_opc_backup.md",
+      "integration": "cyfyifanchen_opc_integration.md",
+      "briefs_relacionados": ["BF-083", "BF-084"],
+      "seccion_ref": "16"
+    },
+    {
+      "id": 16,
+      "nombre": "opc-source/one-person-company (Cloud Native Infra)",
+      "url": "https://github.com/opc-source/one-person-company",
+      "estado": "⏳ Pendiente",
+      "backup": "opc_source_opc_backup.md",
+      "integration": "opc_source_opc_integration.md",
+      "briefs_relacionados": ["BF-085", "BF-086"],
+      "seccion_ref": "16"
+    },
+    {
+      "id": 17,
+      "nombre": "chen103226/awesome-one-person-company (Awesome List)",
+      "url": "https://github.com/chen103226/awesome-one-person-company",
+      "estado": "⏳ Pendiente",
+      "backup": "awesome_opc_backup.md",
+      "integration": "awesome_opc_integration.md",
+      "briefs_relacionados": ["BF-087", "BF-088"],
+      "seccion_ref": "16"
     }
   ]
 }

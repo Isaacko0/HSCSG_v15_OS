@@ -30,8 +30,8 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **BI-004** | **copiosis_integration.md** | `docs/` | ✅ Completo | Copiosis v7.1 | Homologación NBR→ZNU, BN→NetBenefit, Jurados→CDS_Jurados, 3 bienes→goodType |
 | **BI-005** | **conway_automaton_backup.md** | `docs/` | ⏳ Pendiente | Conway Research | Automaton: Never harm / Earn existence / Never deceive + Vessel+Talent + E²R |
 | **BI-006** | **conway_automaton_integration.md** | `docs/` | ⏳ Pendiente | Conway Research | Isomorfismo Leyes MJ ↔ Automaton + arquitectura Vessel |
-| **BI-007** | **onemanco_backup.md** | `docs/` | ⏳ Pendiente | OneManCompany | Vessel, Talent, E²R Tree Search, SSOT, Registry, Talent Market, Multi-agent meetings |
-| **BI-008** | **onemanco_integration.md** | `docs/` | ⏳ Pendiente | OneManCompany | Runtime empresarial soberano + coaching 1:1 + PIP rotación |
+|| **BI-007** | **onemanco_backup.md** | `docs/` | ✅ **Completo** | OneManCompany (1mancompany) | Vessel, Talent, E²R Tree Search, SSOT, Registry, Talent Market, Multi-agent meetings |
+|| **BI-008** | **onemanco_integration.md** | `docs/` | ✅ **Completo** | OneManCompany (1mancompany) | Runtime empresarial soberano + coaching 1:1 + PIP rotación + VESSEL/TALENT/E²R |
 | **BI-009** | **integral_collective_backup.md** | `docs/` | ⏳ Pendiente | Integral Collective | Loop CDS→OAD→COS→ITC→FRS = arquitectura celular |
 | **BI-010** | **integral_collective_integration.md** | `docs/` | ⏳ Pendiente | Integral Collective | Mapeo loop integral → HSCSG bucle 3 |
 | **BI-011** | **disco_backup.md** | `docs/` | ⏳ Pendiente | DisCO | 3 flujos ValueFlows, gobernanza consentimiento, transparencia radical |
@@ -236,7 +236,7 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **OpenBot (CopilotKit)** | ✅ `openbot_backup.md` | ✅ `openbot_integration.md` | `boundaries.ts`, `coworkers.ts`, screens Boundaries/Coworkers | 3 (`openbot-governed-computer-use`, `policy-cel-gateway`, `ag-ui-protocol`) | 2 |
 | **Copiosis v7.1** | ✅ `copiosis_backup.md` | ✅ `copiosis_integration.md` | 0 (mapeo en BF-001 §2.17) | 0 | 2 |
 | **Conway Automaton** | ⏳ Pendiente (5 docs) | ⏳ Pendiente | 0 (isomorfismo en BF-001 §2.1) | 0 | 5 (pendientes 2) |
-| **OneManCompany** | ⏳ Pendiente (2 docs) | ⏳ Pendiente | 0 (arquitectura en BF-001 §8.2) | 0 | 2 (pendientes 2) |
+|| **OneManCompany** | ✅ `onemanco_backup.md` | ✅ `onemanco_integration.md` | `lib/automaton.ts`, `lib/automation.ts`, `lib/talent_market.ts`, `lib/ceo_executor.ts`, `lib/heartbeat.ts`, `lib/registry.ts`, `lib/e2r_tree.ts`, `lib/automaton_config.ts` | 1 (`hscsg-onemanco-assimilation` pendiente) | 2 |
 | **Integral Collective** | ✅ `integral_backup.md` | ✅ `integral_integration.md` | 0 (loop mapeado en BF-001 §9.3) | 0 | 2 |
 | **DisCO** | ⏳ Pendiente | ⏳ Pendiente | 0 (ValueFlows types en BF-001 Anexo C) | 0 | 0 (pendiente 2) |
 | **FABSHIP/HUMANIA** | ⏳ Pendiente (2 docs) | ⏳ Pendiente | 0 (AUT_* mapeados en BF-001 §6.1) | 0 | 2 (pendientes 2) |
@@ -271,7 +271,7 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **Trustlines** | ✅ 1 backup | ✅ 1 integration | Crédito mutuo → ZNU + ValueFlows | 0 | 2 |
 | **USDGLO** | ✅ 1 backup | ✅ 1 integration | Stablecoin → priceParity oracle | 0 | 2 |
 
-**Total:** 39 proyectos fuente | 24 completados (48 docs backup+integration) | 15 pendientes | **110 briefs totales** | 4 skills Hermes desplegadas | 29 docs operativos en `docs/`
+**Total:** 39 proyectos fuente | 25 completados (50 docs backup+integration) | 14 pendientes | **112 briefs totales** | 4 skills Hermes desplegadas | 31 docs operativos en `docs/`
 
 ---
 
