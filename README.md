@@ -2,12 +2,12 @@
 
 > 🌟 **Con todo el corazón: este proyecto no existiría sin [Pepe Sevilla](https://www.instagram.com/sevillamx/?hl=es).** Su visión, acompañamiento y empuje son la chispa de la que nace Cosateca OS. Gracias, Pepe. 🌟
 
-**Nodo Cosateca v0.1** — Sistema operativo comunitario postmonetario construido sobre el *Materialismo Jerárquico* (Leyes I/II/III) y el *CaaS* (Comunidad como Servicio). Fork de Cosateca OS, ampliado por asimilación de **30+ repositorios/datos externos** como módulos vivos, más una **capa científica** (8 documentos EBD) y un **orquestador nativo del Sistema Alráico** (`loopEngine` + `/simulador`).
+**Nodo Cosateca v0.1** — Sistema operativo comunitario postmonetario construido sobre el *Materialismo Jerárquico* (Leyes I/II/III) y el *CaaS* (Comunidad como Servicio). Fork de Cosateca OS, ampliado por asimilación de **31+ repositorios/datos externos** como módulos vivos, más una **capa científica** (8 documentos EBD) y un **orquestador nativo del Sistema Alráico** (`loopEngine` + `/simulador`).
 
 > Repositorio: https://github.com/Isaacko0/HSCSG_v15_OS
 > Preview local: http://localhost:4173/
 > Deploy (Vercel): https://hscsg-v15-os.vercel.app/
-> Skills del proyecto en `skills/` (asimilación + ciencia + vasos comunicantes): `hscsg-repo-assimilation`, `hscsg-scientific-papers`, `hscsg-unified-assimilation-science`, `hscsg-next-steps-orchestrator`, `hscsg-gaia-mycelium-integration`
+> Skills del proyecto en `skills/` (asimilación + ciencia + vasos comunicantes): `hscsg-repo-assimilation`, `hscsg-scientific-papers`, `hscsg-unified-assimilation-science`, `hscsg-next-steps-orchestrator`, `hscsg-gaia-mycelium-integration`, `brief-detector-recommender`
 
 ---
 
@@ -60,7 +60,7 @@ HSCSG v15 OS es una aplicación web local (sin servidor central) que funciona co
 # 1. Clona y levanta
 git clone https://github.com/Isaacko0/HSCSG_v15_OS.git
 cd HSCSG_v15_OS && npm install && npm run dev
-# → http://localhost:3000 (explora 33 rutas: /boundaries, /automata, /coach, /vasos, /simulador)
+# → http://localhost:3000 (explora 47 rutas: /boundaries, /automata, /coach, /vasos, /simulador, /meta-crisis)
 
 # 2. Diagnóstico automático
 node scripts/orchestrator-next-steps.js status
@@ -78,11 +78,15 @@ node scripts/orchestrator-next-steps.js next
 | Necesidad | Documento | Qué Encuentras |
 |-----------|-----------|----------------|
 | **Visión completa + arquitectura + métricas + hoja ruta** | [`BRIEF_EXHAUSTIVO_HSCSG_COSATECA_OS.md`](docs/BRIEF_EXHAUSTIVO_HSCSG_COSATECA_OS.md) | Fundacional: 3 Leyes MJ, 21 módulos, 12 CAC, 7 métricas, 4 bucles, economía híbrida |
-| **Índice navegable de TODOS los briefs (110)** | [`BRIEFS_INDEX.md`](docs/BRIEFS_INDEX.md) | 39 proyectos, 78 backups/integrations, 4 skills, 29 operativos, 4 auto-generados |
+| **Índice navegable de TODOS los briefs (125)** | [`BRIEFS_INDEX.md`](docs/BRIEFS_INDEX.md) | 39 proyectos, 78 backups/integrations, 4 skills, 44 operativos, 4 auto-generados |
 | **Cómo contribuir paso a paso (4 fases)** | [`BRIEF_ONBOARDING_CONSTRUCTOR.md`](docs/BRIEF_ONBOARDING_CONSTRUCTOR.md) | Desempaquetado → Limpieza → GitHub → Evolución + templates obligatorios |
 | **Integración Gaia-Mycelium + OpenHaven + Weave** | [`gaia_mycelium_integration.md`](docs/gaia_mycelium_integration.md) | 20 mapeos, 6 vasos, 8 workstreams, plan 4 semanas |
 | **Análisis exhaustivo 4 proyectos (17 URLs)** | [`ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md`](docs/ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md) | Tabla maestra 14 conceptos, 11 gaps, arquitectura pila unificada |
 | **Detector automático de gaps + recomendaciones** | [`scripts/brief-detector-recommender.cjs`](scripts/brief-detector-recommender.cjs) | `detect`/`recommend`/`project`/`extrapolate`/`full-cycle` |
+| **Síntesis MJ + Sistema Alráico (33KB)** | [`hscsg_mj_synthesis.md`](docs/hscsg_mj_synthesis.md) | Diagnóstico Lucidez Material, Pirámide 4 niveles, Plan 90 días, CAC v12 |
+| **Autovividasis (proceso vivido)** | [`autovividasis.md`](docs/autovividasis.md) | Chequeo: ¿el avance está siendo vivido o solo calculado? |
+| **URBION: Ontogénesis Urbana** | [`urbion_urban_ontogenesis.md`](docs/urbion_urban_ontogenesis.md) | Ciudad como organismo sociotécnico en devenir |
+| **Karatani: Modos de Intercambio** | [`karatani_modes.md`](docs/karatani_modes.md) | Modos A/B/C/D aplicados a HSCSG |
 
 ---
 
@@ -96,6 +100,7 @@ node scripts/orchestrator-next-steps.js next
 | `/vasos` | 6 Vasos Comunicantes (governance:sync, trust:bridge, infra:connect, intel:match, app:federate, eco:sync) | `BF-043` / `vasos_comunicantes_spec.md` |
 | `/simulador` | Sistema Alráico (6 loops, γ-CARMIS, resonancia, sliders Ω/s/κ) | `BF-001` §9 / `loopEngine.ts` |
 | `/soberania` | Base Material 13 Pilares × 7 Capas × 4 Fases = 364 celdas | `BF-001` §3 / `celulas_integration.md` |
+| `/meta-crisis` | Mapa del ecosistema meta-crisis (50+ proyectos, 100+ personas, 75+ libros, 18 isomorfismos) | `BF-089/090/091` / `metacrisis_integration.md` |
 
 ---
 
