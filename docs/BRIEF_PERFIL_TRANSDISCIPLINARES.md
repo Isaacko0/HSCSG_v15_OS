@@ -23,6 +23,7 @@ Eres transdisciplinar: **no unes disciplinas — las disuelves** en una práctic
 | **Economía Anfibia (ZNU/CaaS)** | Dinero que muere al usarse (demurrage) + paridad biofísica (1 ZNU ≡ 1 kWh + 1 kcal + 1 L) |
 | **6 Vasos Comunicantes** | Flujo vital entre nodos soberanos: gobernanza, confianza, infra, intel, app, eco |
 | **Modo Lucidez** | Toggle que revela la verdad cruda: provenance, raw data, MJ gate logs — sin narrativa |
+| **Meta-Crisis Map** | Ecosistema de transición: 50+ proyectos, 100+ personas, 75+ libros — sabiduría colectiva de la bifurcación |
 
 ---
 

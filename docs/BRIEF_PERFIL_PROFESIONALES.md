@@ -20,6 +20,9 @@ Eres experto en tu dominio (ingeniería, biología, economía, derecho, medicina
 | **Ciencias Ambientales** | NOOA + Fresco/RBE + Base Material agua/tierra | Contabilidad oceánica/tierra, dMRV, PMRVE, métricas regenerativas |
 | **Derecho/Gobernanza** | CDS-SUI-CGC-FRS-RAO + Kleros | Loop gobernanza operacional, corte descentralizada, jurados sorteados |
 | **Ciencias de la Computación** | Boundaries CEL + Autómata E²R + neko-rooms | Policy gateway fail-closed, búsqueda árbol E²R, WebRTC federado |
+| **Ciencias Cognitivas/Psicología** | Meta-Crisis (Vervaeke, Meaning Crisis, Wisdom Web) + Autómata E²R | Relevance realization, wisdom cultivation, sensemaking, meaning-making |
+| **Filosofía/Ética** | Meta-Crisis (Wilber, Rowson, Freinacht) + Leyes MJ | Integral theory, metamodernity, developmental politics, ética aplicada |
+| **Estudios Culturales** | Meta-Crisis (Emergentsia, Liminal Web, Metamodernity) + Fondo Solarpunk | Cultural transformation, regenerative culture, indigenous thinking |
 | **Medicina/Salud** | Base Material salud + GuifV Life | Soberanía sanitaria, métricas PGS/ICS, coaching integrado |
 | **Arquitectura/Urbanismo** | Tekitl + Shivarthu + Base Material | Proyectos + coins sociales + portfolio, diseños civilización modulares |
 | **Psicología/CCSS** | Prosocial + Autómata Ley III + CoachFAB | Food Web, PBA, Lucidez Mode, asistente IA ético |

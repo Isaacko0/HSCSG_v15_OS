@@ -25,6 +25,7 @@ Los 6 vasos **SON** interdisciplinariedad operativa:
 | **intel:match** | IA/ML + Ciencias cognitivas + Economía | Autómata E²R (búsqueda) ↔ Gaia Matching (recomendación) ↔ CoachFAB (HCI) |
 | **app:federate** | Economía + Diseño de mercados + Gobernanza | CaaS-BM (ofertas) ↔ Gaia Market (UX) ↔ ZNU (monetario) ↔ Canal Funds (financiero) |
 | **eco:sync** | Ecología + Métricas + Ciencia de datos | CAC/PGS (cuantitativo) ↔ Gaia Score (social) ↔ OpenHaven Matrix (descubrimiento) |
+| **meta-crisis** | Ciencias cognitivas + Filosofía + Sistemas complejos | Vervaeke (wisdom) ↔ Schmachtenberger (governance) ↔ Wilber (integral) ↔ Rowson (metamodernity) |
 
 ---
 
