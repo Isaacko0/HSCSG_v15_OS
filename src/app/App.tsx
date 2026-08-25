@@ -46,6 +46,7 @@ import { Contenido } from '@app/screens/Contenido'
 import { Fuentes } from '@app/screens/Fuentes'
 import { Boundaries } from '@app/screens/Boundaries'
 import { Coworkers } from '@app/screens/Coworkers'
+import { MetaCrisis } from '@app/screens/MetaCrisis'
 
 export function App() {
   return (
@@ -96,6 +97,7 @@ export function App() {
         <Route path="fuentes" element={<Fuentes />} />
         <Route path="boundaries" element={<Boundaries />} />
         <Route path="coworkers" element={<Coworkers />} />
+        <Route path="meta-crisis" element={<MetaCrisis />} />
         <Route path="verificacion" element={<Verificacion />} />
         <Route path="simulador" element={<Simulador />} />
       </Route>

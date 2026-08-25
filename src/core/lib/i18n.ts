@@ -32,6 +32,7 @@ export const I18N: Dict = {
   'nav.fuentes': { es: 'Fuentes', en: 'Sources', pt: 'Fontes' },
   'nav.boundaries': { es: 'Boundaries', en: 'Boundaries', pt: 'Fronteiras' },
   'nav.coworkers': { es: 'Coworkers', en: 'Coworkers', pt: 'Coworkers' },
+  'nav.metaCrisis': { es: 'Meta-Crisis', en: 'Meta-Crisis', pt: 'Meta-Crise' },
   'nav.colectivo': { es: 'Colectivo', en: 'Collective', pt: 'Coletivo' },
   'nav.automata': { es: 'Autómata Soberano', en: 'Sovereign Automaton', pt: 'Autômato Soberano' },
   'nav.znu': { es: 'ZNU', en: 'ZNU', pt: 'ZNU' },
