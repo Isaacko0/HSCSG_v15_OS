@@ -1,184 +1,23 @@
 {
   "fuentes": [
-    {
-      "id": 1,
-      "nombre": "OpenBot (CopilotKit)",
-      "url": "https://github.com/CopilotKit/OpenBot",
-      "estado": "✅ Completo",
-      "backup": "openbot_backup.md",
-      "integration": "openbot_integration.md",
-      "briefs_relacionados": ["BF-010", "BF-011", "BF-050", "BF-051", "BF-052"],
-      "seccion_ref": "2.1"
-    },
-    {
-      "id": 2,
-      "nombre": "Copiosis v7.1",
-      "url": "https://copiosis.net",
-      "estado": "⏳ Pendiente",
-      "backup": "copiosis_backup.md",
-      "integration": "copiosis_integration.md",
-      "briefs_relacionados": ["BF-012", "BF-013", "BF-044", "BF-045", "BF-046"],
-      "seccion_ref": "2.17"
-    },
-    {
-      "id": 3,
-      "nombre": "Conway Automaton",
-      "url": "https://github.com/Conway-Research/automaton",
-      "estado": "⏳ Pendiente",
-      "backup": "conway_automaton_backup.md",
-      "integration": "conway_automaton_integration.md",
-      "briefs_relacionados": ["BF-014", "BF-015", "BF-044"],
-      "seccion_ref": "2.1"
-    },
-    {
-      "id": 4,
-      "nombre": "OneManCompany (1mancompany)",
-      "url": "https://github.com/1mancompany/OneManCompany",
-      "estado": "✅ Backup + Integration completos",
-      "backup": "onemanco_backup.md",
-      "integration": "onemanco_integration.md",
-      "briefs_relacionados": ["BF-016", "BF-017"],
-      "seccion_ref": "8.2"
-    },
-    {
-      "id": 5,
-      "nombre": "Integral Collective",
-      "url": "https://github.com/Integral-Collective",
-      "estado": "⏳ Pendiente",
-      "backup": "integral_collective_backup.md",
-      "integration": "integral_collective_integration.md",
-      "briefs_relacionados": ["BF-018", "BF-019"],
-      "seccion_ref": "9.3"
-    },
-    {
-      "id": 6,
-      "nombre": "DisCO",
-      "url": "https://github.com/disco-coop",
-      "estado": "⏳ Pendiente",
-      "backup": "disco_backup.md",
-      "integration": "disco_integration.md",
-      "briefs_relacionados": ["BF-020"],
-      "seccion_ref": "14.1"
-    },
-    {
-      "id": 7,
-      "nombre": "FABSHIP/HUMANIA",
-      "url": "https://github.com/fabship",
-      "estado": "⏳ Pendiente",
-      "backup": "fabs_hip_backup.md",
-      "integration": "fabs_hip_integration.md",
-      "briefs_relacionados": ["BF-021"],
-      "seccion_ref": "6.1"
-    },
-    {
-      "id": 8,
-      "nombre": "Auravana/OC/TVP/RBE",
-      "url": "https://auravana.org",
-      "estado": "⏳ Pendiente",
-      "backup": "auravana_backup.md",
-      "integration": "auravana_integration.md",
-      "briefs_relacionados": ["BF-022"],
-      "seccion_ref": "17"
-    },
-    {
-      "id": 9,
-      "nombre": "Prosocial Protocol",
-      "url": "https://github.com/prosocial",
-      "estado": "⏳ Pendiente",
-      "backup": "prososocial_backup.md",
-      "integration": "prososocial_integration.md",
-      "briefs_relacionados": ["BF-023"],
-      "seccion_ref": "14.1"
-    },
-    {
-      "id": 10,
-      "nombre": "8 Formas de Capital",
-      "url": "https://8forms.capital",
-      "estado": "⏳ Pendiente",
-      "backup": "8capital_backup.md",
-      "integration": "8capital_integration.md",
-      "briefs_relacionados": ["BF-024"],
-      "seccion_ref": "6.1"
-    },
-    {
-      "id": 11,
-      "nombre": "DeseOS/Contento.pro",
-      "url": "https://demo.contento.pro",
-      "estado": "✅ Extraído",
-      "backup": "contento_deseOS_analysis.md",
-      "integration": "contento_deseOS_analysis.md",
-      "briefs_relacionados": ["BF-030", "BF-031", "BF-032"],
-      "seccion_ref": "3.1"
-    },
-    {
-      "id": 12,
-      "nombre": "Gaia-Mycelium",
-      "url": "https://gaia-mycelium.org",
-      "estado": "✅ Integración completa",
-      "backup": "gaia_mycelium_backup.md",
-      "integration": "gaia_mycelium_integration.md",
-      "briefs_relacionados": ["BF-056"],
-      "seccion_ref": "15"
-    },
-    {
-      "id": 13,
-      "nombre": "Project Weave",
-      "url": "https://projectweave.tech",
-      "estado": "✅ Análisis completo",
-      "backup": "N/A",
-      "integration": "ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md",
-      "briefs_relacionados": ["BF-056"],
-      "seccion_ref": "15"
-    },
-    {
-      "id": 14,
-      "nombre": "OpenHaven",
-      "url": "https://openhaven.net",
-      "estado": "✅ Análisis completo",
-      "backup": "N/A",
-      "integration": "ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md",
-      "briefs_relacionados": ["BF-056"],
-      "seccion_ref": "15"
-    },
-    {
-      "id": 15,
-      "nombre": "cyfyifanchen/one-person-company (AI Tools)",
-      "url": "https://github.com/cyfyifanchen/one-person-company",
-      "estado": "✅ Backup + Integration completos",
-      "backup": "cyfyifanchen_opc_backup.md",
-      "integration": "cyfyifanchen_opc_integration.md",
-      "briefs_relacionados": ["BF-083", "BF-084"],
-      "seccion_ref": "16"
-    },
-    {
-      "id": 16,
-      "nombre": "opc-source/one-person-company (Cloud Native Infra)",
-      "url": "https://github.com/opc-source/one-person-company",
-      "estado": "✅ Backup + Integration completos",
-      "backup": "opc_source_opc_backup.md",
-      "integration": "opc_source_opc_integration.md",
-      "briefs_relacionados": ["BF-085", "BF-086"],
-      "seccion_ref": "16"
-    },
-    {
-      "id": 17,
-      "nombre": "chen103226/awesome-one-person-company (Awesome List)",
-      "url": "https://github.com/chen103226/awesome-one-person-company",
-      "estado": "✅ Backup + Integration completos",
-      "backup": "awesome_opc_backup.md",
-      "integration": "awesome_opc_integration.md",
-      "briefs_relacionados": ["BF-087", "BF-088"],
-      "seccion_ref": "16"
-    },
-    {
-      "id": 18,
-      "nombre": "metacrisis.org (Meta-Crisis Meta-Resource)",
-      "url": "https://metacrisis.org",
-      "estado": "✅ Backup + Integration completos",
-      "backup": "metacrisis_backup.md",
-      "integration": "metacrisis_integration.md",
-      "briefs_relacionados": ["BF-089", "BF-090", "BF-091"],
-      "seccion_ref": "18"
-    }
+    { "id": 1, "nombre": "OpenBot (CopilotKit)", "url": "https://github.com/CopilotKit/OpenBot", "estado": "✅ Completo", "backup": "openbot_backup.md", "integration": "openbot_integration.md", "briefs_relacionados": ["BF-010", "BF-011", "BF-050", "BF-051", "BF-052"], "seccion_ref": "2.1" },
+    { "id": 2, "nombre": "Copiosis v7.1", "url": "https://copiosis.net", "estado": "⏳ Pendiente", "backup": "copiosis_backup.md", "integration": "copiosis_integration.md", "briefs_relacionados": ["BF-012", "BF-013", "BF-044", "BF-045", "BF-046"], "seccion_ref": "2.17" },
+    { "id": 3, "nombre": "Conway Automaton", "url": "https://github.com/Conway-Research/automaton", "estado": "⏳ Pendiente", "backup": "conway_automaton_backup.md", "integration": "conway_automaton_integration.md", "briefs_relacionados": ["BF-014", "BF-015", "BF-044"], "seccion_ref": "2.1" },
+    { "id": 4, "nombre": "OneManCompany (1mancompany)", "url": "https://github.com/1mancompany/OneManCompany", "estado": "✅ Backup + Integration completos", "backup": "onemanco_backup.md", "integration": "onemanco_integration.md", "briefs_relacionados": ["BF-016", "BF-017"], "seccion_ref": "8.2" },
+    { "id": 5, "nombre": "Integral Collective", "url": "https://github.com/Integral-Collective", "estado": "⏳ Pendiente", "backup": "integral_collective_backup.md", "integration": "integral_collective_integration.md", "briefs_relacionados": ["BF-018", "BF-019"], "seccion_ref": "9.3" },
+    { "id": 6, "nombre": "DisCO", "url": "https://github.com/disco-coop", "estado": "⏳ Pendiente", "backup": "disco_backup.md", "integration": "disco_integration.md", "briefs_relacionados": ["BF-020"], "seccion_ref": "14.1" },
+    { "id": 7, "nombre": "FABSHIP/HUMANIA", "url": "https://github.com/fabship", "estado": "⏳ Pendiente", "backup": "fabs_hip_backup.md", "integration": "fabs_hip_integration.md", "briefs_relacionados": ["BF-021"], "seccion_ref": "6.1" },
+    { "id": 8, "nombre": "Auravana/OC/TVP/RBE", "url": "https://auravana.org", "estado": "⏳ Pendiente", "backup": "auravana_backup.md", "integration": "auravana_integration.md", "briefs_relacionados": ["BF-022"], "seccion_ref": "17" },
+    { "id": 9, "nombre": "Prosocial Protocol", "url": "https://github.com/prosocial", "estado": "⏳ Pendiente", "backup": "prososocial_backup.md", "integration": "prososocial_integration.md", "briefs_relacionados": ["BF-023"], "seccion_ref": "14.1" },
+    { "id": 10, "nombre": "8 Formas de Capital", "url": "https://8forms.capital", "estado": "⏳ Pendiente", "backup": "8capital_backup.md", "integration": "8capital_integration.md", "briefs_relacionados": ["BF-024"], "seccion_ref": "6.1" },
+    { "id": 11, "nombre": "DeseOS/Contento.pro", "url": "https://demo.contento.pro", "estado": "✅ Extraído", "backup": "contento_deseOS_analysis.md", "integration": "contento_deseOS_analysis.md", "briefs_relacionados": ["BF-030", "BF-031", "BF-032"], "seccion_ref": "3.1" },
+    { "id": 12, "nombre": "Gaia-Mycelium", "url": "https://gaia-mycelium.org", "estado": "✅ Integración completa", "backup": "gaia_mycelium_backup.md", "integration": "gaia_mycelium_integration.md", "briefs_relacionados": ["BF-056"], "seccion_ref": "15" },
+    { "id": 13, "nombre": "Project Weave", "url": "https://projectweave.tech", "estado": "✅ Análisis completo", "backup": "N/A", "integration": "ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md", "briefs_relacionados": ["BF-056"], "seccion_ref": "15" },
+    { "id": 14, "nombre": "OpenHaven", "url": "https://openhaven.net", "estado": "✅ Análisis completo", "backup": "N/A", "integration": "ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md", "briefs_relacionados": ["BF-056"], "seccion_ref": "15" },
+    { "id": 15, "nombre": "cyfyifanchen/one-person-company (AI Tools)", "url": "https://github.com/cyfyifanchen/one-person-company", "estado": "✅ Backup + Integration completos", "backup": "cyfyifanchen_opc_backup.md", "integration": "cyfyifanchen_opc_integration.md", "briefs_relacionados": ["BF-083", "BF-084"], "seccion_ref": "16" },
+    { "id": 16, "nombre": "opc-source/one-person-company (Cloud Native Infra)", "url": "https://github.com/opc-source/one-person-company", "estado": "✅ Backup + Integration completos", "backup": "opc_source_opc_backup.md", "integration": "opc_source_opc_integration.md", "briefs_relacionados": ["BF-085", "BF-086"], "seccion_ref": "16" },
+    { "id": 17, "nombre": "chen103226/awesome-one-person-company (Awesome List)", "url": "https://github.com/chen103226/awesome-one-person-company", "estado": "✅ Backup + Integration completos", "backup": "awesome_opc_backup.md", "integration": "awesome_opc_integration.md", "briefs_relacionados": ["BF-087", "BF-088"], "seccion_ref": "16" },
+    { "id": 18, "nombre": "metacrisis.org (Meta-Crisis Meta-Resource)", "url": "https://metacrisis.org", "estado": "✅ Backup + Integration completos", "backup": "metacrisis_backup.md", "integration": "metacrisis_integration.md", "briefs_relacionados": ["BF-089", "BF-090", "BF-091"], "seccion_ref": "18" },
+    { "id": 19, "nombre": "Obsidian Vault (Teoría y Síntesis HSCSG)", "url": "H:\\Mi unidad\\HSCSG Empresa mas memoria\\", "estado": "✅ Backup + Integration completos", "backup": "obsidian_vault_backup.md", "integration": "obsidian_vault_integration.md", "briefs_relacionados": ["BF-092", "BF-093"], "seccion_ref": "19" }
   ]
 }
