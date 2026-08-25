@@ -1,7 +1,7 @@
 # BRIEF EXHAUSTIVO QUIRÚRGICO: HSCSG — Modelo de Negocio, HSCSG v15 OS & Cosateca OS
 **Documento fundacional v1.0 | Zeitnus / Isaac Ko | Agosto 2026**
 **Metodología:** 4 Fases (Desempaquetado → Limpieza → GitHub → Evolución) + Sistema Alráico (G1-CARMIS)
-**Fuentes primarias:** 114 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa, **+ Jacque Fresco/RBE vía tesis Yates 2014 (UCLan) y Leiva 2012 (U. Valparaíso)**, **+ NVIDIA OO-Agents (NOOA) asimilado como capa agente-orobjeto**, **+ ContentCreation-OS (CynthiaSalazarB) asimilado como co-pilot de contenido anfibio**, **+ CaaS Market Intel (DataInsightsMarket 2020–2034) como fuente de modelo de negocio**, **+ community_ai-alliance (b3alliance) OS de comunidad federada abierta**, **+ usdglo-celo (Glo Foundation USDGLO) stablecoin con propósito ReFi/UBI**, **+ OpenCivics (tres fuentes 2026-08-19): (47) OpenCivics Commons, (48) OpenCivics Wiki, (49) "Towards an Open Civics" PDF/tesis fundacional — valida la arquitectura anfibia desde la teoría de civilización**, **+ OpenBot (CopilotKit, fuente 50, 2026-08-19): plataforma AI coworkers con computer-use gobernado (AG-UI, gateway CEL fail-closed, audit). Asimilada AMPLIADA: (a) docs backup+integration, (b) módulo Boundaries en el OS (policy gateway anfibio: deny>allow, fail-closed, audit previo, repeat detector — `src/core/lib/boundaries.ts` + pantalla /boundaries), (c) módulo Coworkers (agentes con perfil durable, standing role, canal, handover humano — pantalla /coworkers), (d) 3 skills Hermes anfibias (openbot-governed-computer-use, policy-cel-gateway, ag-ui-protocol)**, **+ The State of Communities Report 2026 (MUTUO, fuente 51, 2026-08-21, vía skill `hscsg-pdf-to-framework`): Brief Científico H₁/H₀ sobre comunidades mutuas como infraestructura de resiliencia + integración al SoV. `[pdf2fw:state-of-communities-2026]`**, **+ PerCon Flow / Potentialism + ecosistema "New Paradigm" (fuentes 52–114, 2026-08-21, vía hilo Marcus Packard / ThomasPoetter [LABS]): (52–60) núcleo PerCon Flow + Catalist/NextSystem/OpenCivics+CommonsStack+FundingTheCommons/GlobalPeoplePower/CommonersCatalog/2020sPerfectVision/doc Google Clustering ~70 plataformas; (61–114) dump completo — grupos (FB Plebians, Discord Solaris/Trove/GeneralStrike), plataformas new-paradigm (Giveth, GloDollar, OpenCivics, Commoning.space, Catalist, OurFreeSociety, AbolishWork, FreeXenon, EmergentCommons, EvolutionInstitute, RepairTogether, CoolBlock, GreaterGood, CompassionateMind/Institute/Kindness/Emory/Resource-Project/USA, LibraryPunk, GameB, InterfaithSpirit, Evonomics, ConciliatorsGuild, AudaciousProject, InfectiousGenerosity, SelfDeterminationTheory, PassItOn, Galtung, Prosocial, SchellingPoint, GivingTuesday, nCase Trust, UpstreamPodcast, SocialEcology, NPSCoalition, BreakingTheCycle, HGI/ENA, CHN, BFI WorldGame, CostsOfWar, WorldGivingIndex, PatrickTheGiver, YouTube nextsystem/compassion, Google Doc clustering). `[perconflow:<slug>]`**
+**Fuentes primarias:** 114 integraciones documentadas en `HSCSG_v15_OS/docs/` (incl. Copiosis v7.1, AuroraGov, Shivarthu, CompAI CRM, Didacta Community con backup + integración completa, **+ Jacque Fresco/RBE vía tesis Yates 2014 (UCLan) y Leiva 2012 (U. Valparaíso)**, **+ NVIDIA OO-Agents (NOOA) asimilado como capa agente-orobjeto**, **+ ContentCreation-OS (CynthiaSalazarB) asimilado como co-pilot de contenido anfibio**, **+ CaaS Market Intel (DataInsightsMarket 2020–2034) como fuente de modelo de negocio**, **+ community_ai-alliance (b3alliance) OS de comunidad federada abierta**, **+ usdglo-celo (Glo Foundation USDGLO) stablecoin con propósito ReFi/UBI**, **+ OpenCivics (tres fuentes 2026-08-19): (47) OpenCivics Commons, (48) OpenCivics Wiki, (49) "Towards an Open Civics" PDF/tesis fundacional — valida la arquitectura anfibia desde la teoría de civilización**, **+ OpenBot (CopilotKit, fuente 50, 2026-08-19): plataforma AI coworkers con computer-use gobernado (AG-UI, gateway CEL fail-closed, audit). Asimilada AMPLIADA: (a) docs backup+integration, (b) módulo Boundaries en el OS (policy gateway anfibio: deny>allow, fail-closed, audit previo, repeat detector — `src/core/lib/boundaries.ts` + pantalla /boundaries), (c) módulo Coworkers (agentes con perfil durable, standing role, canal, handover humano — pantalla /coworkers), (d) 3 skills Hermes anfibias (openbot-governed-computer-use, policy-cel-gateway, ag-ui-protocol)**, **+ The State of Communities Report 2026 (MUTUO, fuente 51, 2026-08-21, vía skill `hscsg-pdf-to-framework`): Brief Científico H₁/H₀ sobre comunidades mutuas como infraestructura de resiliencia + integración al SoV. `[pdf2fw:state-of-communities-2026]`**, **+ PerCon Flow / Potentialism + ecosistema "New Paradigm" (fuentes 52–114, 2026-08-21, vía hilo Marcus Packard / ThomasPoetter [LABS]): (52–60) núcleo PerCon Flow + Catalist/NextSystem/OpenCivics+CommonsStack+FundingTheCommons/GlobalPeoplePower/CommonersCatalog/2020sPerfectVision/doc Google Clustering ~70 plataformas; (61–114) dump completo — grupos (FB Plebians, Discord Solaris/Trove/GeneralStrike), plataformas new-paradigm (Giveth, GloDollar, OpenCivics, Commoning.space, Catalist, OurFreeSociety, AbolishWork, FreeXenon, EmergentCommons, EvolutionInstitute, RepairTogether, CoolBlock, GreaterGood, CompassionateMind/Institute/Kindness/Emory/Resource-Project/USA, LibraryPunk, GameB, InterfaithSpirit, Evonomics, ConciliatorsGuild, AudaciousProject, InfectiousGenerosity, SelfDeterminationTheory, PassItOn, Galtung, Prosocial, SchellingPoint, GivingTuesday, nCase Trust, UpstreamPodcast, SocialEcology, NPSCoalition, BreakingTheCycle, HGI/ENA, CHN, BFI WorldGame, CostsOfWar, WorldGivingIndex, PatrickTheGiver, YouTube nextsystem/compassion, Google Doc clustering). `[perconflow:<slug>]`**, **+ Meta-Crisis Meta-Resource (Kyle Kowalski / Sloww, metacrisis.org, fuentes 115–130, 2026-08-22): 50+ proyectos, 100+ personas, 75+ libros, 15+ comunidades, 250+ hashtags del ecosistema meta-crisis (wisdom web, liminal web, sensemaking web). 18 isomorfismos meta-crisis ↔ HSCSG documentados. Proyectos clave: Game B (Jordan Hall, Jim Rutt, Daniel Schmachtenberger), Life Itself (pragmatic utopians), Awakening from the Meaning Crisis (John Vervaeke, 50 episodios), The Consilience Project (Daniel Schmachtenberger), Emerge (Tomas Björkman, Jonathan Rowson), Rebel Wisdom (Alexander Beiner), Sloww (Kyle Kowalski). Isomorfismos clave: Game A→Game B = Extractivo→Regenerativo, Sensemaking = Autómata E²R + Lucidez, Liminal Web = Vasos Comunicantes, Gift Economy = ZNU + ValueFlows. `[metacrisis:<slug>]`**
 
 ---
 
@@ -1600,6 +1600,193 @@ Asimilación **vía vasos comunicantes totales** del ecosistema de capitalismo-p
 
 ---
 
+## 19. Meta-Crisis y Proyectos Amigos (Ecosistema de Transición)
+
+**Fuente:** metacrisis.org (Obsidian Publish, Kyle Kowalski / Sloww) — mapeo del ecosistema "meta-crisis" (wisdom web, liminal web, sensemaking web). 50+ proyectos, 100+ personas, 75+ libros, 15+ comunidades, 250+ hashtags.
+
+### 19.1 Proyectos Amigos (Isomorfismos HSCSG)
+
+| Proyecto | Tipo | Isomorfismo HSCSG | Proyecto HSCSG |
+|----------|------|-------------------|----------------|
+| **Game B** | Memetic tag + community | Game A→Game B = Extractivo→Regenerativo | Post-monetary civilization |
+| **Life Itself** | Community + coliving | Pragmatic utopians, middle way Plum Village ↔ Silicon Valley | Cosateca model |
+| **Awakening from the Meaning Crisis** | YouTube series (50 episodes) | John Vervaeke: wisdom cultivation, relevance realization | Ley III MJ (Lucidez) |
+| **The Consilience Project** | Research publication | Daniel Schmachtenberger: global risk, governance design | CDS + governance |
+| **Emerge** | Network + media | Tomas Björkman + Jonathan Rowson: connecting pioneers | Vasos comunicantes |
+| **Rebel Wisdom** | Media + community | Alexander Beiner: intellectual dark web, meaning crisis | Sensemaking |
+| **Sloww** | Education + community | Kyle Kowalski: art of living, Ikigai 2.0 | BRIEF_PERFIL_AUTODIDACTAS |
+| **The Center for Humane Technology** | Advocacy | Tristan Harris: technology ethics, attention economy | Ley III MJ (no dañar) |
+| **The Great Simplification** | Podcast + education | Nate Hagens: resource economics, risk | CAC vectors |
+| **Metamoderna** | Think tank | Hanzi Freinacht: metamodern politics, 12 Commandments | Developmental politics |
+| **Integral Life** | Community + education | Ken Wilber: integral theory, AQAL | Sistema Alráico |
+| **Less Wrong** | Community + blog | Rationality community, AI safety | Autómata E²R |
+| **Long Now Foundation** | Think tank | Long-term thinking, 10,000 year clock | 7 generations |
+| **Santa Fe Institute** | Research institute | Complexity science, emergence | loopEngine |
+| **Foresight Institute** | Think tank | Nanotechnology, AI, existential risk | Technology governance |
+| **Future of Life Institute** | Advocacy | AI safety, existential risk | Ley I MJ |
+
+### 19.2 Personas Clave (Conexiones HSCSG)
+
+| Persona | Rol | Conexión HSCSG |
+|---------|-----|----------------|
+| **John Vervaeke** | Cognitive scientist, "Awakening from the Meaning Crisis" | Ley III MJ (Lucidez), wisdom cultivation, relevance realization |
+| **Daniel Schmachtenberger** | Systems thinker, The Consilience Project, Game B | Civilizational design, existential risk, governance |
+| **Jordan Hall** | Game B co-founder | Collective intelligence, anti-fragile civilization |
+| **Jim Rutt** | Game B, Jim Rutt Show | Complexity, technology, civilization design |
+| **Zak Stein** | Psychometrics, "Education is the Metacrisis" | Education, psychometrics, wisdom cultivation |
+| **Ken Wilber** | Integral Theory founder | Integral 2.0, AQAL, Sistema Alráico |
+| **Jonathan Rowson** | Perspectiva, chess grandmaster | Metamodernity, systems change, cultural evolution |
+| **Hanzi Freinacht** | Metamoderna, author | Developmental politics, metamodernism |
+| **Tomas Björkman** | Emerge co-founder | Social systems, cultural transformation |
+| **Tristan Harris** | Center for Humane Technology | Ley III MJ (no dañar), technology ethics |
+| **Nate Hagens** | The Great Simplification | CAC vectors, resource constraints |
+| **Jamie Wheal** | Cultural architecture | Psychospiritual development |
+| **Charles Eisenstein** | Author, activist | Gift economy, post-monetary |
+| **Iain McGilchrist** | Psychiatrist, author | Divided brain, perception |
+| **Tyson Yunkaporta** | Indigenous studies | Indigenous thinking, Sand Talk |
+| **Bayo Akomolafe** | Post-activist, author | Decolonial wisdom, embodied activism |
+| **Kyle Kowalski** | Sloww founder, metacrisis.org curator | Art of living, Ikigai 2.0 |
+| **Brandon Norgaard** | Meta-crisis researcher | Ecosystem mapping, Gaia-Mycelium connection |
+
+### 19.3 18 Isomorfismos Meta-Crisis ↔ HSCSG
+
+| # | Concepto Meta-Crisis | Concepto HSCSG | Isomorfismo |
+|---|---------------------|----------------|-------------|
+| 1 | Meta-Crisis | Crisis de civilización (HSCSG §1) | Interlocking existential risks = dependencia estructurada |
+| 2 | Meaning Crisis | Crisis de sentido (Ley III MJ) | Wisdom cultivation = Lucidez cultivation |
+| 3 | Game A → Game B | Extractivo → Regenerativo | Post-monetary transition |
+| 4 | Sensemaking | Autómata E²R + Lucidez | Relevance realization = E²R tree search |
+| 5 | Liminal Web | Vasos Comunicantes | Network of networks |
+| 6 | Wisdom Web | CoachFAB + Coworkers | Wisdom cultivation tools |
+| 7 | Emergentsia | Civilizaciones (HSCSG §17) | Post-monetary communities |
+| 8 | Metamodernity | Sistema Alráico (G1-CARMIS) | Developmental, integrative |
+| 9 | Collective Intelligence | CDS + Autómata | Collaborative decision-making |
+| 10 | Anti-fragile Civilization | CaaS-BM + ZNU | Resilient economic systems |
+| 11 | Existential Risk | Ley I MJ (no dañar) | Harm prevention, fail-closed |
+| 12 | Governance Design | CDS + MJ Laws | Sovereign governance |
+| 13 | Cultural Transformation | Fondo Solarpunk + Cosatecas | Regenerative culture |
+| 14 | Indigenous Thinking | Base Material + Tekitl | Territorial knowledge |
+| 15 | Gift Economy | ZNU + ValueFlows | Post-monetary exchange |
+| 16 | Vertical Development | 13 Pilares × 7 Capas | Developmental matrix |
+| 17 | Integral Theory | Sistema Alráico (8 caras) | Holistic framework |
+| 18 | Complexity Science | loopEngine (6 loops) | Systems dynamics |
+
+### 19.4 Bibliografía Clave (75+ libros)
+
+**Cognitive Science + Wisdom:**
+- Vervaeke, Andersen, Miller (2022) — *Predictive processing and relevance realization*
+- McGilchrist (2021) — *The Matter With Things*
+- Snowden (2020) — *Cynefin - Weaving Sense-Making*
+- Stein (2019) — *Education in a Time Between Worlds*
+- McGilchrist (2009) — *The Master and His Emissary*
+
+**Civilization Design + Governance:**
+- Rowson, Pascal, Stein et al. (2021) — *Dispatches from a Time Between Worlds*
+- Hagens, White (2021) — *Reality Blind*
+- Brewer (2021) — *The Design Pathway for Regenerating Earth*
+- McIntosh (2020) — *Developmental Politics*
+- Rowson (2019) — *The Moves That Matter*
+- Björkman (2019) — *The World We Create*
+- Andersen (2019) — *Metamodernity*
+- Scharmer (2018) — *The Essentials of Theory U*
+- Wilber (2017) — *The Religion of Tomorrow*
+
+**Economics + Post-Monetary:**
+- Duettmann et al. (2022) — *Gaming the Future*
+- Eisenstein (2020) — *Climate: A New Story*
+- Pollock (2018) — *The Open Revolution*
+- Eisenstein (2011) — *Sacred Economics, Revised*
+- Eisenstein (2007) — *The Ascent of Humanity*
+
+**Spirituality + Consciousness:**
+- Segall (2023) — *Crossing the Threshold*
+- Beiner (2023) — *The Bigger Picture*
+- Freinacht (2022) — *12 Commandments*
+- Dempsey (2022) — *Emergentism*
+- Wheal (2021) — *Recapture the Rapture*
+- Segall (2021) — *Physics of the World-Soul*
+- Yunkaporta (2020) — *Sand Talk*
+- Andersen (2020) — *Bildung: Keep Growing*
+- Evans (2020) — *Breaking Open*
+- Johnson (2019) — *Seeing Through the World*
+- Davis (2019) — *High Weirdness*
+- Peterson (2018) — *12 Rules for Life*
+- Wilber (2008) — *Integral Life Practice*
+- Wilber (2006) — *Integral Spirituality*
+- Wilber (2000) — *A Theory of Everything*
+- Wilber (1995) — *Sex, Ecology, Spirituality*
+- Wilber (1977) — *The Spectrum of Consciousness*
+
+**Systems + Complexity:**
+- Last (2023) — *Systems and Subjects*
+- Henriques (2022) — *A New Synthesis for Psychology*
+- Kavanagh (2021) — *Collective Wisdom in the West*
+- Beakbane (2021) — *How to Understand Everything*
+- Cook-Greuter (2021) — *Ego Development*
+- Lightfoot (2020) — *A Collective Blooming*
+- White, Hagens (2019) — *The Bottlenecks of the 21st Century*
+- Henriques (2011) — *A New Unified Theory of Psychology*
+- Cook-Greuter (2010) — *Postautonomous Ego Development*
+
+### 19.5 Comunidades Meta-Crisis (15+)
+
+| Plataforma | Comunidad | Proyecto |
+|------------|-----------|----------|
+| **Circle** | Sloww Society Community | Sloww |
+| **Circle** | UTOK Community | UTOK |
+| **Discord** | Awakening from the Meaning Crisis | John Vervaeke |
+| **Discord** | Doomer Optimism | Doomer Optimism |
+| **Discord** | Future Thinkers | Future Thinkers |
+| **Discord** | Holistic Technology + Wise Innovation | Michael Garfield |
+| **Discord** | Second Renaissance | Second Renaissance |
+| **Discourse** | Integral Life Forum | Integral Life |
+| **Discourse** | MetacrisisDAO | MetacrisisDAO |
+| **Discourse** | Second Renaissance Forum | Second Renaissance |
+| **Mighty Networks** | Buddhist Geeks | Buddhist Geeks |
+| **Mighty Networks** | NAAS Community | Charles Eisenstein |
+| **Mighty Networks** | Emergent Commons | Rebel Wisdom |
+| **Mighty Networks** | Emerge Community | Emerge |
+| **Mighty Networks** | Future Thinkers | Future Thinkers |
+| **Mighty Networks** | Game B | Game B |
+| **Mighty Networks** | Voicecraft | Voicecraft |
+| **Signal** | Founder Satsang | — |
+| **Telegram** | MetaCrisis.xyz Close Collaborators | — |
+| **WhatsApp** | Life Itself | Life Itself |
+| **Other** | we{collective} | we{collective} |
+
+### 19.6 Mapas y Síntesis (15+, 2018-2024)
+
+| Año | Título | Autor/Fuente |
+|-----|--------|--------------|
+| 2024 | Is the Meta-Crisis a Me-Crisis? | Kyle Kowalski (Sloww) |
+| 2024 | An Overview of Ecosystem Names & Mapping Efforts | Life Itself |
+| 2023 | Meme to Vibe: A Philosophical Report | Peter Limberg |
+| 2022 | Meta Crisis Concept Space Maps | HexaField |
+| 2022 | Comparing Approaches to Addressing the Meta-Crisis | Brandon Norgaard |
+| 2022 | Education is the Metacrisis | Zak Stein |
+| 2022 | Transformational Communities | Tucker Walsh |
+| 2021 | Tasting the Pickle: Ten flavours of meta-crisis | Jonathan Rowson |
+| 2021 | The Liminal Web: Mapping An Emergent Subculture | Joe Lightfoot |
+| 2021 | Mapping For Emergence | Life Itself |
+| 2021 | The Flourishing of All Living Things | Naryan |
+| 2021 | A movement with no name | Marcus Gabler |
+| 2021 | Building the Wisdom Age | Roote |
+| 2021 | The Sense-Making Web | Chris Leong |
+| 2021 | The Noosphere Map | Johan |
+| 2020 | State of Sensemaking 2020 | Life Itself |
+| 2020 | The Dawn of the Metatribe | Tyler Alterman |
+| 2019 | The Rise of the 'Emergentsia' | Brent Cooper |
+| 2019 | Awakening the Twelve Tribes of Transformation | Jonathan Rowson |
+| 2019 | A Story to Bind Us | Alexander Beiner |
+| 2019 | The Sensemaking Web Braindump | Gwendolyn Huot |
+| 2018 | The Memetic Tribes Of Culture War 2.0 | Peter Limberg + Conor Barnes |
+
+---
+
+*Fin sección 19 — Meta-Crisis y Proyectos Amigos (2026-08-22)*
+
+---
+
 ## [Anexo D: Competitive Landscape CaaS — HSCSG vs Market]
 
 **Fuente:** `docs/caas_market.md` (DataInsightsMarket CaaS Market 2020–2034). **Vasos:** `[repo:caas-market][EBD-D1][DV-01][mon:ZNU]`.
@@ -1630,3 +1817,12 @@ El mercado CaaS crece 25% CAGR ($7–42B) pero está **atado a nube + vigilancia
 
 HSCSG no es "un CaaS más": es el **CaaS soberano del postmonetario**. El reporte proyecta Web3 governance a 5–7 años; HSCSG lo tiene operativo hoy. Ese es el moat.
 
+
+---
+
+## HISTORIAL DE VERSIONES
+
+| Versión | Fecha | Cambios | Autor |
+|---------|-------|---------|-------|
+| v1.0 | 2026-08-22 | Documento fundacional completo con integración Copiosis, navteka, análisis contento/deseOS | Isaac Ko |
+| v1.1 | 2026-08-22 | +Sección 19: Meta-Crisis y Proyectos Amigos (50+ proyectos, 100+ personas, 75+ libros, 18 isomorfismos) | Isaac Ko |
