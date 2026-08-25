@@ -51,3 +51,4 @@ urbanika_*
 # NEAR asimilación (clones temporales)
 near_core-contracts/
 near_*/
+.env*

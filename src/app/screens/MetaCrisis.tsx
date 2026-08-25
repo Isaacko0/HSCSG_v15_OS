@@ -1,7 +1,5 @@
 import { Globe2, ExternalLink, Compass, BookOpen, Users, Map, Tag } from 'lucide-react'
-import { useAppStore } from '@core/state/store'
 import { Card, Stat } from '@components/ui'
-import { t } from '@core/lib/i18n'
 import { META_CRISIS_PROJECTS } from '@core/lib/meta_crisis_projects'
 import { META_CRISIS_PEOPLE } from '@core/lib/meta_crisis_people'
 import { META_CRISIS_BOOKS } from '@core/lib/meta_crisis_books'
@@ -11,7 +9,6 @@ import { META_CRISIS_ISOMORPHISMS } from '@core/lib/meta_crisis_isomorphisms'
 import { META_CRISIS_CONCEPTS } from '@core/lib/meta_crisis_concepts'
 
 export function MetaCrisis() {
-  const { lang } = useAppStore()
   return (
     <div className="space-y-6">
       <div>

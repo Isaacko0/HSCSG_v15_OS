@@ -3,18 +3,20 @@ import { ExternalLink, Github, BookOpen } from 'lucide-react'
 import fuentesData from '../../../docs/fuentes_indice.json'
 
 type Fuente = {
-  id: string
+  id: number
   nombre: string
-  tipo: string
-  mapeo_hscsg: string
-  repo_doc: string | null
-  fuente_oficial: string | null
+  url: string
+  estado: string
+  backup: string
+  integration: string
+  briefs_relacionados: string[]
+  seccion_ref: string
 }
 
 export function Fuentes() {
-  const fuentes = (fuentesData as { fuentes: Fuente[]; total: number; generado: string }).fuentes
-  const conOficial = fuentes.filter((f) => f.fuente_oficial).length
-  const conRepo = fuentes.filter((f) => f.repo_doc).length
+  const fuentes = (fuentesData as { fuentes: Fuente[] }).fuentes
+  const conOficial = fuentes.filter((f) => f.url).length
+  const conRepo = fuentes.filter((f) => f.backup).length
 
   return (
     <div className="space-y-6">
@@ -27,7 +29,6 @@ export function Fuentes() {
         <Stat label="Fuentes" value={`${fuentes.length}`} sub="integradas" />
         <Stat label="Con doc en repo" value={`${conRepo}`} sub="backup/integration" />
         <Stat label="Con fuente oficial" value={`${conOficial}`} sub="URL viva" />
-        <Stat label="Generado" value={fuentesData.generado} sub="índice" />
       </div>
 
       <Card title="Índice de fuentes (click para ir)">
@@ -43,14 +44,14 @@ export function Fuentes() {
               </div>
 
               <div className="flex-1 text-sm text-white/70">
-                <span className="text-white/90">{f.tipo}</span>
+                <span className="text-white/90">{f.estado}</span>
                 <span className="mx-2 text-white/30">·</span>
-                <span className="text-emerald-300/80">→ {f.mapeo_hscsg}</span>
+                <span className="text-emerald-300/80">→ {f.seccion_ref}</span>
               </div>
 
               <div className="flex items-center gap-2">
-                {f.repo_doc ? (
-                  <a href={f.repo_doc} target="_blank" rel="noopener noreferrer">
+                {f.backup ? (
+                  <a href={f.backup} target="_blank" rel="noopener noreferrer">
                     <Btn>
                       <Github className="w-4 h-4 mr-1" /> Ver en repo
                     </Btn>
@@ -59,8 +60,8 @@ export function Fuentes() {
                   <Badge color="bg-white/10 text-white/40">sin doc local</Badge>
                 )}
 
-                {f.fuente_oficial ? (
-                  <a href={f.fuente_oficial} target="_blank" rel="noopener noreferrer">
+                {f.url ? (
+                  <a href={f.url} target="_blank" rel="noopener noreferrer">
                     <Btn>
                       <ExternalLink className="w-4 h-4 mr-1" /> Fuente oficial
                     </Btn>
