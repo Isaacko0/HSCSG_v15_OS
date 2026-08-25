@@ -169,6 +169,16 @@
       "integration": "awesome_opc_integration.md",
       "briefs_relacionados": ["BF-087", "BF-088"],
       "seccion_ref": "16"
+    },
+    {
+      "id": 18,
+      "nombre": "metacrisis.org (Meta-Crisis Meta-Resource)",
+      "url": "https://metacrisis.org",
+      "estado": "✅ Backup + Integration completos",
+      "backup": "metacrisis_backup.md",
+      "integration": "metacrisis_integration.md",
+      "briefs_relacionados": ["BF-089", "BF-090", "BF-091"],
+      "seccion_ref": "18"
     }
   ]
 }
