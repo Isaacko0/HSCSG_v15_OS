@@ -47,6 +47,7 @@ import { Fuentes } from '@app/screens/Fuentes'
 import { Boundaries } from '@app/screens/Boundaries'
 import { Coworkers } from '@app/screens/Coworkers'
 import { MetaCrisis } from '@app/screens/MetaCrisis'
+import { Nextcloud } from '@app/screens/Nextcloud'
 
 export function App() {
   return (
@@ -98,6 +99,7 @@ export function App() {
         <Route path="boundaries" element={<Boundaries />} />
         <Route path="coworkers" element={<Coworkers />} />
         <Route path="meta-crisis" element={<MetaCrisis />} />
+        <Route path="nextcloud" element={<Nextcloud />} />
         <Route path="verificacion" element={<Verificacion />} />
         <Route path="simulador" element={<Simulador />} />
       </Route>

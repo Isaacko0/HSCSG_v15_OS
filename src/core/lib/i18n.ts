@@ -33,6 +33,7 @@ export const I18N: Dict = {
   'nav.boundaries': { es: 'Boundaries', en: 'Boundaries', pt: 'Fronteiras' },
   'nav.coworkers': { es: 'Coworkers', en: 'Coworkers', pt: 'Coworkers' },
   'nav.metaCrisis': { es: 'Meta-Crisis', en: 'Meta-Crisis', pt: 'Meta-Crise' },
+  'nav.nextcloud': { es: 'Nextcloud', en: 'Nextcloud', pt: 'Nextcloud' },
   'nav.colectivo': { es: 'Colectivo', en: 'Collective', pt: 'Coletivo' },
   'nav.automata': { es: 'Autómata Soberano', en: 'Sovereign Automaton', pt: 'Autômato Soberano' },
   'nav.znu': { es: 'ZNU', en: 'ZNU', pt: 'ZNU' },

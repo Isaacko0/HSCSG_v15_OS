@@ -1,7 +1,7 @@
 import {
   Mountain, Database, Eye, Users, Cpu, Coins, LayoutDashboard, Network, Radio, Gauge, SlidersHorizontal, Users2, Bot, Leaf, MessagesSquare, ListChecks, Unlock, Link2, Briefcase, ShieldHalf, RefreshCw, Globe, LifeBuoy, Compass, Scale, Award, Landmark, GraduationCap, HelpCircle, Workflow, Dna, Waypoints, Boxes, PenLine,
   ChevronsLeft, ChevronsRight,
-  GitBranch, ShieldCheck, Library, Brain,
+  GitBranch, ShieldCheck, Library, Brain, Cloud,
 } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAppStore } from '@core/state/store'
@@ -57,6 +57,7 @@ const NAV_ITEMS = [
   { key: 'boundaries', navKey: 'nav.boundaries', icon: ShieldCheck, color: 'text-rose-400', path: '/boundaries' },
   { key: 'coworkers', navKey: 'nav.coworkers', icon: Users, color: 'text-sky-400', path: '/coworkers' },
   { key: 'meta-crisis', navKey: 'nav.metaCrisis', icon: Brain, color: 'text-emerald-400', path: '/meta-crisis' },
+  { key: 'nextcloud', navKey: 'nav.nextcloud', icon: Cloud, color: 'text-blue-400', path: '/nextcloud' },
 ] as const
 
 interface AsideProps {

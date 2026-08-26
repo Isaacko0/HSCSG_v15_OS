@@ -27,6 +27,12 @@ Hermes Agent permite:
 
 ## Qué es
 
+**Holosociocibersimbiogénesis (HSCSG)** es una arquitectura de transición hacia un ecosistema **post-mercado, post-dependencia y post-centralización**. No es una utopía literaria; es un marco informacional, técnico y territorial ejecutable.
+
+> *"No estamos diseñando software para optimizar el mercado actual. Estamos programando el sistema operativo de la próxima transición civilizatoria."*
+
+**Objetivo civilizatorio último:** Que cualquier colectivo humano, en cualquier territorio, pueda desplegar **autosuficiencia operativa** en sus dominios críticos (alimentación, energía, salud, gobernanza, conocimiento, producción, comunicación, hábitat y finanzas) en un plazo máximo de **7 generaciones**, sin depender de actores externos a su propio ecosistema.
+
 HSCSG v15 OS es una aplicación web local (sin servidor central) que funciona como el "sistema operativo" de un nodo comunitario soberano. No es una app de productividad: es un **marco de construcción de realidad** donde cada módulo asimilado aporta una capacidad concreta (base material, crédito mutuo, proyectos, vesting, soberanía civilizatoria…) y todas se gobiernan por las mismas 3 leyes:
 
 | Ley | Enunciado | Dónde se manifiesta |
@@ -213,6 +219,13 @@ El botón de luna en el Header es un **toggle real de transparencia radical** (L
 
 | Repo origen | Mapeado a | Backup + Integración |
 |------------|-----------|----------------------|
+| **Vault Obsidian del usuario (Isaac Ko)** | Holosociocibersimbiogénesis (definición oficial) | `docs/hscsg_definition.md` · `docs/obsidian_vault_backup.md` · `docs/obsidian_vault_integration.md` |
+| **HSCSG_MJ_SYNTHESIS_v15** (38KB) | Materialismo Jerárquico + Sistema Alráico | `docs/hscsg_mj_synthesis.md` |
+| **Autovividasis** | Proceso auto-referencial (vivido vs calculado) | `docs/autovividasis.md` |
+| **URBION Ontogénesis Urbana** | Ciudad viva simbiótica | `docs/urbion_urban_ontogenesis.md` |
+| **Karatani Modos de Intercambio** | Modos A/B/C/D → HSCSG Modo D | `docs/karatani_modes.md` |
+| **Plan 90 Días** | 3 ciclos lunares + PVSO targets | `docs/plan_90_dias.md` |
+| **Fases 0→E** | Hoja de ruta MJ (hard gates) | `docs/fases_hoja_ruta.md` |
 | [Paperclip (resolveskills)](https://github.com/) | Orquestación | `docs/automaton_backup_original.md`¹ · `docs/automaton_integration.md` |
 | [CaaS (C2C)](https://github.com/) | CaaS | `docs/CaaS_backup_original.md` · `docs/CaaS_integration.md` |
 | [Conway Automaton](https://github.com/) | Autómata Soberano | `docs/automaton_backup_original.md` · `docs/automaton_integration.md` |

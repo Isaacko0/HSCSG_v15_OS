@@ -37,6 +37,7 @@ import type { KlerosState, JurorVerdict } from '@core/state/kleros'
 import type { AgenciaState } from '@core/state/agencia'
 import type { GaiaState } from '@core/state/gaia'
 import type { CredibilityState } from '@core/state/symbiosky'
+import type { NextcloudState } from '@core/state/nextcloud'
 import type { DemocracyState } from '@core/state/democracia'
 import type { LearningState } from '@core/state/learning'
 import type { OracleState } from '@core/state/oracle'
@@ -74,6 +75,7 @@ import {
 import { makeAgenciaState, reversePlan } from '@core/lib/agencia'
 import { makeGaiaState, addBounty, completeBounty, formCouncil } from '@core/lib/gaia'
 import { makeCredibilityState, addProposal as symAddProposalFn, castVote as symCastVoteFn, createLock as symCreateLockFn, closeProposal as symCloseProposalFn, applyDecay as symApplyDecayFn, castCommit as symCastCommitFn, openReveal as symOpenRevealFn, revealVote as symRevealVoteFn } from '@core/lib/symbiosky'
+import { makeNextcloudState } from '@core/state/nextcloud'
 import { makeIntegralState, raiseIssue, raiseIssueWithEvidence, ratifyDecision, certifyDesign, logLabor, awardCredits, ingestSignal, recommend, promoteRecommendation, validateProposalScore } from '@core/lib/integral'
 import { makeLearningState, completeChallenge, addChallenge } from '@core/lib/learning'
 import { makeOracleState, askQuery, castOracleVote, resolveOracle } from '@core/lib/oracle'
@@ -246,6 +248,8 @@ export interface AppState {
   gaia: GaiaState
   // Symbiosky: credibilidad por convicción
   symbiosky: CredibilityState
+  // Nextcloud: soberanía de datos
+  nextcloud: NextcloudState
   // Democracia DPoS por expertise (iambrainstorming) = CDS
   democracia: DemocracyState
   // Aprendizaje por retos (iambrainstorming)
@@ -798,6 +802,8 @@ export const useAppStore = create<AppState>()(
       gaia: makeGaiaState(),
       // Symbiosky: credibilidad por convicción
       symbiosky: makeCredibilityState(),
+      // Nextcloud: soberanía de datos
+      nextcloud: makeNextcloudState(),
       // Democracia DPoS por expertise
       democracia: makeDemocracyState(),
       // Aprendizaje por retos
