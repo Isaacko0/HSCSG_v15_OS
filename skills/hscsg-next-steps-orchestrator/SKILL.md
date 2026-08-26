@@ -154,6 +154,20 @@ Al llamar la skill (vía `orchestrator:status` o sin args), **siempre** presenta
     {"id": "DEPLOY-link", "title": "Vercel link + env vars + deploy prod", "deps": [], "effort": 2, "value": 95},
     {"id": "DEPLOY-verify", "title": "Verificar rutas 200 + CoachFAB visible", "deps": ["DEPLOY-link"], "effort": 1, "value": 90},
     {"id": "DEPLOY-auto", "title": "Configurar auto-deploy on push", "deps": ["DEPLOY-verify"], "effort": 1, "value": 85}
+  ],
+  "VAULT_MODULES": [
+    {"id": "VAULT-lucidez_material", "title": "Implementar lib/lucidez_material.ts (Pirámide 4 niveles MJ)", "deps": [], "effort": 2, "value": 90},
+    {"id": "VAULT-autovividasis", "title": "Implementar lib/autovividasis.ts (chequeo vivido vs calculado)", "deps": [], "effort": 2, "value": 88},
+    {"id": "VAULT-urbion", "title": "Implementar lib/urbion.ts (Ontogénesis Urbana)", "deps": [], "effort": 2, "value": 85},
+    {"id": "VAULT-karatani", "title": "Implementar lib/karatani.ts (Modos A/B/C/D)", "deps": [], "effort": 1, "value": 82},
+    {"id": "VAULT-plan90", "title": "Implementar lib/plan_90_dias.ts (3 ciclos lunares)", "deps": [], "effort": 2, "value": 88},
+    {"id": "VAULT-fases", "title": "Implementar lib/fases.ts (Fases 0→E + hard gates)", "deps": [], "effort": 2, "value": 85}
+  ],
+  "NEXTCLOUD": [
+    {"id": "NC-fix-types", "title": "Corregir type mismatch en nextcloud (re-exportar tipos)", "deps": [], "effort": 1, "value": 95},
+    {"id": "NC-build-verify", "title": "Build OK + push main (nextcloud asimilado)", "deps": ["NC-fix-types"], "effort": 1, "value": 90},
+    {"id": "NC-brief-update", "title": "Actualizar BRIEF_EXHAUSTIVO con Nextcloud (Sección 20)", "deps": ["NC-build-verify"], "effort": 1, "value": 85},
+    {"id": "NC-readme-update", "title": "Actualizar README.md con /nextcloud en Pantallas Clave", "deps": ["NC-build-verify"], "effort": 1, "value": 80}
   ]
 }
 ```
@@ -353,6 +367,58 @@ node scripts/brief-detector-recommender.cjs full-cycle
 ```
 
 **Pitfall:** Los reportes son markdown/JSON parseables — no depender de formato visual, usar estructura consistente.
+
+---
+
+### 12. RECOMENDACIONES DE TAREAS (Sugerencias del Agente)
+
+Cuando el usuario pida recomendaciones o "qué sigue", el agente debe evaluar el contexto y sugerir tareas de los workstreams pendientes. Las tareas se guardan en `orchestrator-state.json` con `source: "agent"`:
+
+#### Prioridad P0 (Completar primero — desbloquea otros workstreams):
+
+| ID | Tarea | Workstream | Esfuerzo | Valor |
+|----|-------|------------|----------|-------|
+| `NC-fix-types` | Corregir type mismatch en nextcloud (re-exportar tipos) | NEXTCLOUD | 1 | 95 |
+| `NC-build-verify` | Build OK + push main (nextcloud asimilado) | NEXTCLOUD | 1 | 90 |
+| `VAULT-lucidez_material` | Implementar lib/lucidez_material.ts (Pirámide 4 niveles MJ) | VAULT_MODULES | 2 | 90 |
+| `VAULT-autovividasis` | Implementar lib/autovividasis.ts (chequeo vivido vs calculado) | VAULT_MODULES | 2 | 88 |
+
+#### Prioridad P1 (Alta — módulos del vault):
+
+| ID | Tarea | Workstream | Esfuerzo | Valor |
+|----|-------|------------|----------|-------|
+| `VAULT-plan90` | Implementar lib/plan_90_dias.ts (3 ciclos lunares) | VAULT_MODULES | 2 | 88 |
+| `VAULT-urbion` | Implementar lib/urbion.ts (Ontogénesis Urbana) | VAULT_MODULES | 2 | 85 |
+| `VAULT-fases` | Implementar lib/fases.ts (Fases 0→E + hard gates) | VAULT_MODULES | 2 | 85 |
+| `VAULT-karatani` | Implementar lib/karatani.ts (Modos A/B/C/D) | VAULT_MODULES | 1 | 82 |
+
+#### Prioridad P2 (Media — documentación post-asimilación):
+
+| ID | Tarea | Workstream | Esfuerzo | Valor |
+|----|-------|------------|----------|-------|
+| `NC-brief-update` | Actualizar BRIEF_EXHAUSTIVO con Nextcloud (Sección 20) | NEXTCLOUD | 1 | 85 |
+| `NC-readme-update` | Actualizar README.md con /nextcloud en Pantallas Clave | NEXTCLOUD | 1 | 80 |
+
+#### Cómo proponer tareas al usuario:
+
+1. **Contexto:** Workstreams activos + tareas completadas/ora
+2. **Tareas sugeridas:** Mostrar 3-5 tareas ordenadas por score (valor/esfuerzo)
+3. **Preguntar:** *"¿Quieres que guarde esta tarea en el orchestrator?"* (regla de comportamiento)
+4. **Guardar:** Si el usuario confirma, añadir a `orchestrator-state.json` con `source: "agent"`
+5. **Ejecutar:** Si el usuario elige una tarea, seguirla según el procedimiento del workstream
+
+#### Workstreams disponibles para recomendación:
+
+| Workstream | Descripción | Tareas pendientes |
+|------------|-------------|-------------------|
+| `P0_SPECS` | Especificaciones fundacionales (netbenefit, cds_jurados, copiosis) | 4 |
+| `MIGRATION` | 11 módulos DeseOS (P1→P11) | 11 |
+| `COACH` | Integración Autómata + BranDNA + Lucidez | 4 |
+| `ROLES` | Mapeo DeseOS→Coworkers | 3 |
+| `DEPLOY` | Vercel link + verify + auto-deploy | 3 |
+| `VAULT_MODULES` | 7 módulos TypeScript del vault Obsidian | 6 |
+| `NEXTCLOUD` | Asimilación Nextcloud Server | 4 |
+| `DOCUMENTATION` | Briefs, detección de gaps | 1 (recurring) |
 
 ---
 
