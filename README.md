@@ -1,6 +1,6 @@
 # HSCSG v15 OS
 
-> 🌟 **Con todo el corazón: este proyecto no existiría sin [Pepe Sevilla](https://www.instagram.com/sevillamx/?hl=es).** Su visión, acompañamiento y empuje son la chispa de la que nace Cosateca OS. Gracias, Pepe. 🌟
+> 🌟 **Con todo el corazón: este proyecto no existiría sin [Pepe Sevilla](https://www.instagram.com/sevillamx/?hl=es).** Su visión, acompañamiento y empuje son la chispa de la que nace Cosateca OS. Gracias, Pepe. 🌟   [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Isaacko0/HSCSG_v15_OS)
 
 **Nodo Cosateca v0.1** — Sistema operativo comunitario postmonetario construido sobre el *Materialismo Jerárquico* (Leyes I/II/III) y el *CaaS* (Comunidad como Servicio). Fork de Cosateca OS, ampliado por asimilación de **31+ repositorios/datos externos** como módulos vivos, más una **capa científica** (8 documentos EBD) y un **orquestador nativo del Sistema Alráico** (`loopEngine` + `/simulador`).
 
