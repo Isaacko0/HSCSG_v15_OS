@@ -399,6 +399,18 @@ Cuando el usuario pida recomendaciones o "qué sigue", el agente debe evaluar el
 | `NC-brief-update` | Actualizar BRIEF_EXHAUSTIVO con Nextcloud (Sección 20) | NEXTCLOUD | 1 | 85 |
 | `NC-readme-update` | Actualizar README.md con /nextcloud en Pantallas Clave | NEXTCLOUD | 1 | 80 |
 
+#### Prioridad P3 (Normal — mejoras continuas):
+
+| ID | Tarea | Workstream | Esfuerzo | Valor |
+|----|-------|------------|----------|-------|
+| `P0-netbenefit` | Crear lib/netbenefit.ts (Motor BN 8 escalas) | P0_SPECS | 3 | 95 |
+| `P0-cds_jurados` | Crear lib/cds_jurados.ts (Jury summon, weights) | P0_SPECS | 3 | 90 |
+| `P0-copiosis` | Crear lib/copiosis.ts (NetBenefitFlow, GoodType) | P0_SPECS | 2 | 88 |
+| `P0-valueflows` | Extender ValueFlows types | P0_SPECS | 1 | 85 |
+| `DEPLOY-link` | Vercel link + env vars + deploy prod | DEPLOY | 2 | 95 |
+| `DEPLOY-verify` | Verificar rutas 200 + CoachFAB visible | DEPLOY | 1 | 90 |
+| `DEPLOY-auto` | Configurar auto-deploy on push | DEPLOY | 1 | 85 |
+
 #### Cómo proponer tareas al usuario:
 
 1. **Contexto:** Workstreams activos + tareas completadas/ora

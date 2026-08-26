@@ -373,7 +373,71 @@ La app es 100% estática (sin backend). `vercel.json` ya configura el build (`np
 
 ---
 
-## Backups de HSCSG (fuera del repo)
+## Documentación para DeepWiki
+
+DeepWiki (https://deepwiki.com) genera documentación automática a partir del repositorio. Para asegurar que indexe toda la información:
+
+### Índice de Documentación Principal
+
+| Archivo | Descripción |
+|---------|-------------|
+| `docs/INDICE_COMPLETO_BACKUPS.md` | **Índice maestro: 78 documentos** (39 backup + 39 integration) organizados por categoría |
+| `docs/BRIEFS_INDEX.md` | Índice de 127 briefs |
+| `docs/hscsg_definition.md` | Definición oficial Holosociocibersimbiogénesis |
+| `docs/BRIEF_EXHAUSTIVO_HSCSG_COSATECA_OS.md` | Brief exhaustivo quirúrgico |
+
+### Categorías de Backups (39 documentos)
+
+| Categoría | Cantidad | Ejemplos |
+|-----------|----------|----------|
+| Gobernanza y Organización | 18 | OpenBot, Kleros, Colony, Gaia, Symbiosky |
+| Economía y Monetario | 7 | Copiosis, Trustlines, USDGLO, CaaS |
+| Inteligencia Artificial | 5 | NOOA, ContentCreation, Colaberry |
+| Civilizaciones y Horizontes | 7 | Fresco/RBE, Integral, DeseOS |
+| Comunidades y Redes | 5 | AI Alliance, Meta-Crisis, Gaia Mycelium |
+| Infraestructura y Nube | 3 | Nextcloud, OneManCompany |
+| One-Person Company | 3 | awesome-opc, cyfyifanchen, opc-source |
+
+### Cómo forzar actualización de DeepWiki
+
+DeepWiki se actualiza automáticamente, pero puedes forzarlo:
+
+1. **Visita:** https://deepwiki.com/Isaacko0/HSCSG_v15_OS
+2. **Click en "Refresh"** (si está disponible)
+3. **Espera 24-48 horas** para indexación completa
+4. **Verifica:** Que aparezcan las secciones de backups/integrations
+
+### ¿Por qué DeepWiki no se actualiza inmediatamente?
+
+DeepWiki tiene un proceso de indexación asíncrona:
+- **Cache:** Periódico (24-48h)
+- **Rate limits:** API de GitHub limita frecuencia
+- **Procesamiento:** Análisis de IA toma tiempo
+- **Disparador:** Algunos cambios no disparan re-indexación automática
+
+### Solución: Indexación manual
+
+Para asegurar que DeepWiki indexe los nuevos documentos:
+
+1. **Añade enlaces en README.md** a los documentos clave
+2. **Mantén un índice maestro** (`docs/INDICE_COMPLETO_BACKUPS.md`)
+3. **Usa headers descriptivos** en cada documento
+4. **Agrega metadata YAML** en los .md para mejor indexación
+
+### Documentos Pendientes de Indexación
+
+| Documento | Estado | Prioridad |
+|-----------|--------|-----------|
+| `docs/nextcloud_backup.md` | ✅ Creado | Alta |
+| `docs/nextcloud_integration.md` | ✅ Creado | Alta |
+| `docs/INDICE_COMPLETO_BACKUPS.md` | ✅ Creado | Crítica |
+| `docs/hscsg_definition.md` | ✅ Actualizado v2.0 | Alta |
+| `docs/hscsg_mj_synthesis.md` | ✅ Creado | Alta |
+| `docs/autovividasis.md` | ✅ Creado | Media |
+| `docs/urbion_urban_ontogenesis.md` | ✅ Creado | Media |
+| `docs/karatani_modes.md` | ✅ Creado | Media |
+| `docs/plan_90_dias.md` | ✅ Creado | Media |
+| `docs/fases_hoja_ruta.md` | ✅ Creado | Media |
 
 Cada asimilación primero hace `cp -r HSCSG_v15_OS HSCSG_v15_OS_BACKUP_<ts>` (sin node_modules/dist):
 
