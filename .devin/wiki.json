@@ -1,0 +1,301 @@
+The content has been copied to your clipboard. Please paste it here to complete the file creatio{
+  "repo_notes": [
+    {
+      "content": ""
+    }
+  ],
+  "pages": [
+    {
+      "title": "Overview: HSCSG v15 OS",
+      "purpose": "High-level introduction to the HSCSG v15 OS — what it is, its civilizational mission, the Materialismo Jerárquico (MJ) framework, the three core laws, and how the system is organized. Links to all major child sections.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Project. Philosophy and Civilizational Framework",
+      "purpose": "Deep dive into the Materialismo Jerárquico (MJ) philosophy, the Three Laws (Ley I/II/III), the Cuaternidad Soberana business model, the Amphibious (Anfibio) design principle, and the GaiaUnion biological meta-architecture that maps OS modules to vital systems.",
+      "parent": "Overview: HSCSG v15 OS",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Getting Started: Setup, Build, and Deployment",
+      "purpose": "How to install, run locally (Vite dev server), build for production, and deploy to Vercel or Netlify. Covers package.json scripts, Node.js requirements, the SPA catch-all routing configuration, and the vitest test runner setup.",
+      "parent": "Overview: HSCSG v15 OS",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Core Architecture",
+      "purpose": "Overview of the technical architecture: React/TypeScript SPA, Zustand global store, module pattern, offline-first persistence, and the relationship between lib (pure logic), state (types + initial state), and screens (UI). Links to child pages for each major subsystem.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Global State Store (useAppStore)",
+      "purpose": "Detailed reference for the Zustand store in src/core/state/store.ts — AppState interface, all sub-state slices (BaseMaterial, CACVectors, ZNUState, IntegralState, etc.), key actions (setLucidez, updateBase, runCaasPayout, proposeAction), the persist/partialize strategy for localStorage, and the seed initialization pattern.",
+      "parent": "Core Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "UI Shell: Layout, Navigation, and i18n",
+      "purpose": "Covers the App.tsx route map (all 46+ routes), the Layout/Aside/Header shell components, the NAV_ITEMS array, the Lucidez Mode CSS toggle (data-lucidez attribute), the global CSS design system (CSS variables, color tokens, Tailwind config), shared UI components (Card, Stat, Bar, Badge), and the i18n dictionary (ES/EN/PT).",
+      "parent": "Core Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Module Assimilation Pattern",
+      "purpose": "Explains the canonical pattern for integrating external repositories as live modules: the four-phase assimilation pipeline (identify → filter → map → index), the canonical file scaffold (screen/lib/state/docs), MJ Law isomorphism mapping, and the fuentes_indice.json registry of 114 external sources.",
+      "parent": "Core Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Metrics and Calculation Library",
+      "purpose": "Reference for src/core/lib/metrics.ts — the pure calculation functions: autFromCAC (AUT vectors from CAC sensors), pgsLM (biophysical score), survivalCredit, znuEligible/znuEmission, demurrage, ics, and population. Explains how these feed into the store actions and the loopEngine.",
+      "parent": "Core Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "The Alráico System and loopEngine",
+      "purpose": "Overview of the Sistema Alráico (G1-CARMIS) — the tick-based orchestration kernel that drives the entire OS. Introduces the six loops, γ-CARMIS reconfiguration, resonance detection, and the Simulador screen. Links to child pages for the engine internals and the skills layer.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "loopEngine: Tick Execution and γ-CARMIS",
+      "purpose": "Deep dive into src/core/lib/loopEngine.ts — runAlraicoTick, runAlraicoSimulation, detectOverloads (lucidez/symbiosky/agentMesh/proofOfResponse/regen checks), simulateReconfig (γ-CARMIS heuristic), the six maintenance loops (cdsDecay, meritMint, agentCompute, regenMrv, nostrAudit, vecinalAccountability), detectResonances, and the LoopEngineConfig. Covers loopEngine.test.ts and the Simulador.tsx triaxial verification UI (Ω, s, κ sliders).",
+      "parent": "The Alráico System and loopEngine",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Skills Framework and Orchestrator",
+      "purpose": "Covers the skills/ directory structure — the hscsg-orquestador-skills master router, skill loading via skill_view(), the vasos comunicantes cross-citation protocol, sync_docs.sh automation, the hscsg-sistema-alraico and hscsg-coeficiente-autonomia skills, and the Sistema-Alraico-loop-engineering-skill reference materials (CSV taxonomies, worksheets, canvas scripts).",
+      "parent": "The Alráico System and loopEngine",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Governance and Decision-Making",
+      "purpose": "Overview of the governance layer — how decisions are made, ratified, and executed across the Integral Loop, AuroraGov OU tree, Symbiosky conviction engine, Kleros justice system, and liquid democracy. Links to child pages for each sub-system.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "The Integral Loop (CDS → OAD → COS → ITC → FRS)",
+      "purpose": "Detailed reference for src/core/lib/integral.ts and src/core/state/integral.ts — the five-stage coordination cycle: raiseIssue/raiseIssueWithEvidence, validateProposalScore (Shivarthu merit voting), ratifyDecision/DecisionRecord, certifyDesign (OAD ecoScore), logLabor (COS), awardCredits with decay (ITC), ingestSignal/recommend (FRS), systemHealth diagnostic, and applyDecision actuator. Covers the Integral.tsx screen.",
+      "parent": "Governance and Decision-Making",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Symbiosky: Conviction Voting and Credibility",
+      "purpose": "Covers src/core/lib/symbiosky.ts and src/core/state/symbiosky.ts — the commit-reveal voting protocol (castCommit/revealVote), weightedConviction, computeReward, ConvictionLock mechanics, inactivity decay (INACTIVITY_DECAY_BPS), the anti-whale illiquidity principle, and the Credibilidad.tsx screen. Includes symbiosky.test.ts patterns.",
+      "parent": "Governance and Decision-Making",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Justice, Delegation, and Democracy",
+      "purpose": "Covers the Kleros justice module (src/core/lib/kleros.ts — openDispute, addEvidence, castVote, resolveDispute, attestIdentity, Evidence Model with Fact Bands), the AuroraGov power delegation system (src/core/lib/delegation.ts — delegatePower, revokeDelegation, liquid democracy tree), the Democracia screen (DPoS by expertise, electRep), and the Vecinal module (neighborhood governance with commit-reveal voting).",
+      "parent": "Governance and Decision-Making",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Pipeline and Matchmaker",
+      "purpose": "Covers src/core/lib/pipeline.ts — the nested pipeline orchestrator that bridges governance and execution: computeCapabilities, collectNeeds, the Matchmaker (35% AUT + 30% credibility + 20% expertise + 15% learning), dispatchMatch, autoAdvisory, routeFeedback (FRS nervous system), pipeDecay (ZNU anti-accumulation), and pipelineHealth. Covers the Pipeline.tsx screen and connector.ts stage navigation.",
+      "parent": "Governance and Decision-Making",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Post-Monetary Economy",
+      "purpose": "Overview of the economic layer — ZNU currency, CaaS tiers, Trustlines mutual credit, Vesting, Copiosis Net Benefit, USDGLO oracle, and the Amphibious (ZNU ↔ USD) architecture. Links to child pages for each economic sub-system.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "ZNU Currency: Emission, Demurrage, and Vesting",
+      "purpose": "Covers the ZNU internal unit of account — znuEligible/znuEmission conditions (AUT thresholds), demurrage (5% per 28-day epoch, znuDecayOnBalance), the valueDual.ts Amphibious architecture (displayValue, NodeMode, priceParity oracle), the Vesting module (src/core/lib/vesting.ts — BerryInvestorVesting isomorph, totalUnlocked, releasable, setBeneficiary, canRenounce), and the ZNU.tsx and Vesting.tsx screens.",
+      "parent": "Post-Monetary Economy",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "CaaS: Community-as-a-Service Tiers and Revenue",
+      "purpose": "Covers src/core/lib/caas.ts — the five CaaS tiers (Visitante → Custodio), tierEligible (AUT/CDS thresholds), streamMJStatus (MJ Law compliance for revenue streams), revenueShare/runCaasPayout, the CaaS.tsx screen, and the CaaS Market Fit EBD document. Explains how USDC revenue converts to ZNU via priceParity and funds the Fondo Solarpunk.",
+      "parent": "Post-Monetary Economy",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Trustlines, Sovereign Credit, and USDGLO",
+      "purpose": "Covers src/core/lib/trustlines.ts (bilateral mutual credit — openTrustline, increaseDebt, debitTransfer, getDebt symmetry), src/core/lib/sovereignCredit.ts (attestation-based credit scoring, exportAttestation for DeFi/NEAR bridge), src/core/lib/usdglo.ts (ReFi oracle — canMint, mintHeadroom, isSovereign), and the Trustlines.tsx and SoberaniaCredito.tsx screens.",
+      "parent": "Post-Monetary Economy",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Autonomous Agents and Compute Mesh",
+      "purpose": "Overview of the agent layer — the Autómata Soberano, Orquestación control plane, AgentMesh/Buzz compute pool, Nostr relay transport, OO-Agents, Boundaries policy gateway, and Coworkers roster. Links to child pages.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Autómata Soberano and MJ Gate",
+      "purpose": "Covers src/core/lib/automaton.ts — survivalTier (AUT-based survival tiers: high/normal/low_material/critical/dormant), evaluateAction (MJ Gate delegation to evaluateMJGate), soulDrift (Ley III float detection), spawnChild, runHeartbeat. Covers src/core/lib/orchestration.ts — evaluateMJGate (Ley I/II/III enforcement), budgetStatus, nextHeartbeat, AgentNode/TaskNode/AuditEntry types. Covers the Automata.tsx and Automat.tsx screens.",
+      "parent": "Autonomous Agents and Compute Mesh",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "AgentMesh, Nostr Relay, and Proof of Response",
+      "purpose": "Covers src/core/state/agentMesh.ts (Agent struct, spawnAgent, shareCompute, requestCompute, remoteResurrect — Buzz Mesh pattern), src/core/lib/nostrRelay.ts (buildEvent, verifyEventShape, queryLocal — NIP-50 local filter), src/core/state/proofOfResponse.ts (issueRequest, respond, proveFailure, isSatisfied — NEAR AI Proof of Response), src/core/state/nooa.ts (OO-Agents: visibleMethods, detectBlindAgents, reconfigBlindAgents, meshAutonomy). Covers Nostr.tsx, Agentes.tsx, OoAgents.tsx screens.",
+      "parent": "Autonomous Agents and Compute Mesh",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Boundaries Policy Gateway and Coworkers",
+      "purpose": "Covers the OpenBot-inspired governance layer: src/core/lib/boundaries.ts (governAction, evaluateBoundary, fail-closed CEL-like rules, dry-run vs enforce modes, repeat detector, human handover), src/app/screens/Boundaries.tsx (policy admin UI), src/app/screens/Coworkers.tsx (agent roster, standing roles, channels), and the AG-UI protocol skill.",
+      "parent": "Autonomous Agents and Compute Mesh",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Community Modules and Social Layer",
+      "purpose": "Overview of the social and community-facing modules: Colectivo/Colony, Células, Círculos, Solarpunk gift economy, Tekitl projects, Regen/Vecinal, Educación, and the Civilizaciones/Mundus/Life personal layer. Links to child pages.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Collective Organization: Colony, Células, and Círculos",
+      "purpose": "Covers src/core/lib/colony.ts (Colony domain tree — addDomain, addReputation, movePot, DomainKind hierarchy), src/core/lib/celulas.ts (Freedom Cells — CELULA_PRINCIPIOS, CELULA_RECOMENDACIONES, fractal scale 8→64→512→4096), src/app/screens/Circulos.tsx (circle navigation with NextStageBanner/connector.ts stage seeding), and the Colectivo.tsx screen.",
+      "parent": "Community Modules and Social Layer",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Solarpunk Gift Economy, Tekitl Projects, and Regen",
+      "purpose": "Covers src/core/lib/solarpunk.ts (matchOffersNeeds, trustScore Web of Trust, postMonetaryIndex, evaluateSanctuary Ley I gate), src/core/lib/tekitl.ts (collaborative projects — createProject, FSM stage transitions, addRole, applyToRole, logHours, mintCoins, declareTalent), src/core/lib/regen.ts (EcoTech catalog, addEcoTech, avgSaving), and src/core/lib/vecinal.ts (neighborhood governance). Covers Solarpunk.tsx, Tekitl.tsx, Regen.tsx, Vecinal.tsx screens.",
+      "parent": "Community Modules and Social Layer",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Education, Agencia, and Content Creation",
+      "purpose": "Covers src/core/lib/educaas.ts (EduCaaS amphibious subscription — priceLabel, isActive), src/core/lib/education.ts (course/enrollment/certificate lifecycle), src/core/lib/agencia.ts (BrandDNA 12 sections, OFFER_LADDER 5M escalera, ICP awareness levels, reversePlan), src/core/lib/content.ts (idea capture → brandFit score → human gate → angles → news rolling). Covers Educacion.tsx, Agencia.tsx, Contenido.tsx screens.",
+      "parent": "Community Modules and Social Layer",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Mundus, Life, and Civilizaciones",
+      "purpose": "Covers the Mundus module (src/core/lib/mundus.ts — makeMundusState, MUNDUS_PILLARS mapping to IDETRA initiatives, Blue Circle symbol, Circular Exchange System), the Life personal organizer (src/core/lib/life.ts — addGoal, matrixCalculation, znuProjected, GoalType/Effort/Area), and the Civilizaciones module (src/core/lib/civilizaciones.ts — external civilization links catalog). Covers Mundus.tsx, Life.tsx, Civilizaciones.tsx screens.",
+      "parent": "Community Modules and Social Layer",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Sovereignty and Verification",
+      "purpose": "Overview of the sovereignty diagnostic and verification layer — the 13 Pillars × 7 Layers matrix, the Proof of Response verification protocol, the Evidence Model, and the NEAR/Buzz integration for decentralized verification. Links to child pages.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    }
+  ]
+}n.
