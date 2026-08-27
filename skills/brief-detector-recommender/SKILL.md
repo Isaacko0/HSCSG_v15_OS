@@ -179,7 +179,7 @@ gaps = []
 ### Distribución de Tipos de Repo
 1. **Identidad/Gobernanza** (30%): OpenBot, Conway, OneManCompany, Integral
 2. **Economía** (20%): Copiosis, DisCO, FABSHIP
-3. **Infra/Comms** (20%): neko, SynchroLabs, Project Weave
+3. **Infra/Comms** (20%): neko, **Discovery Layer**, Project Weave
 4. **IA/Inteligencia** (15%): Autómata, CoachFAB, Weave
 4. **Social/Ecosistema** (15%): Hylo, navteka, DisCO, FABSHIP
 

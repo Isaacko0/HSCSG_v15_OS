@@ -37,7 +37,7 @@
     },
     {
       "id": "GAIA-infra-connect",
-      "title": "Implementar infra:connect neko↔SynchroLabs + Boundaries↔Project Weave",
+      "title": "Implementar infra:connect neko↔**Discovery Layer** + Boundaries↔Project Weave",
       "deps": ["MIG-P1-BranDNA"],
       "effort": 5,
       "value": 90,
@@ -45,7 +45,7 @@
       "source": "agent",
       "priority": 90,
       "blocks": ["GAIA-intel-match"],
-      "notes": "Requiere: SynchroLabs discovery API, Project Weave protocol specs"
+      "notes": "Requiere: **Discovery Layer** discovery API, Project Weave protocol specs"
     },
     {
       "id": "GAIA-intel-match",
@@ -141,14 +141,14 @@ MIG-P1-BranDNA ────────────────────┘
 
 | Spec | Source | Needed By | Status |
 |------|--------|-----------|--------|
-| **SynchroLabs Discovery API** | Brandon/Gaia | GAIA-infra-connect | ❌ Pendiente |
-| **Project Weave Protocol Specs** (DIDComm, Trust Registry, VC schemas) | Brandon/Weave | GAIA-trust-bridge, GAIA-infra-connect | ❌ Pendiente |
+| **Discovery Layer Discovery API** | Equipo Gaia-Mycelium/Gaia | GAIA-infra-connect | ❌ Pendiente |
+| **Project Weave Protocol Specs** (DIDComm, Trust Registry, VC schemas) | Equipo Gaia-Mycelium/Weave | GAIA-trust-bridge, GAIA-infra-connect | ❌ Pendiente |
 | **FPP (First Person Project) VC Schemas** | Kaliya/Weave | GAIA-trust-bridge | ❌ Pendiente |
 | **4 Trust Levels VC Types** (self/community/ambassador/third-party) | Mycelium/Gaia | GAIA-trust-bridge | ❌ Pendiente |
 | **Gaia Matching/Recommendation Engine API** | Felipe/Gaia | GAIA-intel-match | ❌ Pendiente |
 | **Gaia Market Commission + Commonomics Specs** | Felipe/Gaia | GAIA-app-federate | ❌ Pendiente |
 | **Gaia Impact Measurement Pipelines** | Felipe/Gaia | GAIA-eco-sync | ❌ Pendiente |
-| **First Person / Sovereign Stack Refs** | Brandon/Weave | GAIA-infra-connect, GAIA-trust-bridge | ❌ Pendiente |
+| **First Person / Sovereign Stack Refs** | Equipo Gaia-Mycelium/Weave | GAIA-infra-connect, GAIA-trust-bridge | ❌ Pendiente |
 | **OpenHaven Matrix API** | OpenHaven Team | GAIA-infra-connect, GAIA-eco-sync | ❌ Pendiente |
 
 ---
@@ -159,7 +159,7 @@ MIG-P1-BranDNA ────────────────────┘
 |--------|------|---------|
 | `gaia_sync.ts` | `src/core/lib/gaia_sync.ts` | CDS Decision Records ↔ Gaia DAO proposals (VC signed) |
 | `trust_bridge.ts` | `src/core/lib/trust_bridge.ts` | NetBenefitFlow ↔ VC settlement, Trust Registry ↔ RAO sync |
-| `synchrolabs_adapter.ts` | `src/core/lib/synchrolabs_adapter.ts` | neko rooms discovery via SynchroLabs API |
+| `discovery_adapter.ts` | `src/core/lib/discovery_adapter.ts` | neko rooms discovery via **Discovery Layer** API |
 | `ai_matching_bridge.ts` | `src/core/lib/ai_matching_bridge.ts` | Autómata E²R ↔ Gaia Recommendation Engine |
 | `marketplace_federation.ts` | `src/core/lib/marketplace_federation.ts` | CaaS-BM offers in Gaia Market, custom commission + Commonomics |
 | `impact_bridge.ts` | `src/core/lib/impact_bridge.ts` | CAC/PGS ↔ Gaia Score bidirectional, multidimensional pipelines |
@@ -194,7 +194,7 @@ MIG-P1-BranDNA ────────────────────┘
 - [ ] FPP credentials recognized in HSCSG
 
 ### infra:connect (GAIA-infra-connect)
-- [ ] neko rooms discoverable via SynchroLabs API
+- [ ] neko rooms discoverable via **Discovery Layer** API
 - [ ] Boundaries CEL allows Project Weave protocols
 - [ ] TSP (Trust Spanning Protocol) integrated for secure comms
 

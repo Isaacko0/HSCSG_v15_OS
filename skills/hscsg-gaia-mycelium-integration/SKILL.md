@@ -35,7 +35,7 @@ Integra operativamente la arquitectura HSCSG v15 OS (nodo soberano offline-first
 |----------------------------------|-------------------------|------------------|--------|
 | **Capa 1 — Gobernanza** (Gaia DAO, reglas, soberanía) | CDS-SUI-CGC-FRS-RAO + Autómata Soberano (Leyes MJ) | `governance:sync` — CDS ↔ Gaia DAO proposals, veto MJ Gate | 🟡 Parcial |
 | **Capa 2 — Datos & Trust** (Data Trust, DIDs, VC, Trust Registries) | ValueFlows + RAO + ERC-8004 + ZNU/Vesting | `trust:bridge` — VC ↔ NetBenefitFlow, Trust Registry ↔ RAO | 🔴 Pendiente |
-| **Capa 3 — Infraestructura** (APIs, SynchroLabs, Project Weave) | neko-rooms + Boundaries (CEL) + Vasos neko:* | `infra:connect` — SynchroLabs ↔ neko, Project Weave ↔ Boundaries | 🟡 Parcial |
+|| **Capa 3 — Infraestructura** (APIs, **Discovery Layer**, Project Weave) | neko-rooms + Boundaries (CEL) + Vasos neko:* | `infra:connect` — **Discovery Layer** ↔ neko, Project Weave ↔ Boundaries | 🟡 Parcial |
 | **Capa 4 — Inteligencia** (Agentes IA, Recommendation, AI Matching) | Autómata + 10 Agentes Solarpunk + CoachFAB (Happpy) | `intel:match` — AI Matching ↔ Autómata E²R, Recommendation ↔ CoachFAB | 🟡 Parcial |
 | **Capa 5 — Aplicaciones** (PHI, Map, Passport, Market, Gatherings, Fondos, Impact) | 21 módulos HSCSG + navteka (coach, boundaries, coworkers, briefs, vasos, neko) | `app:federate` — Marketplace ↔ CaaS-BM, PHI ↔ Life/Colectivo, Impact ↔ CAC/PGS | 🔴 Pendiente |
 | **Capa 6 — Ecosistema Vivo** (Personas, comunidades, territorios, proyectos, orgs, conocimiento, recursos) | Base Material (13 Pilares) + Colectivo + Tekitl + Trustlines + FABSHIP | `eco:sync` — Territorios ↔ Base Material, Proyectos ↔ Tekitl, Conocimiento ↔ Conocimiento (AUT_CONO) | 🟡 Parcial |
@@ -48,7 +48,7 @@ Integra operativamente la arquitectura HSCSG v15 OS (nodo soberano offline-first
 |------|-------------------|-------------------|-----------|
 | `governance:sync` | CDS Decision Records → Gaia DAO proposals | Gaia DAO decisions → CDS Issues (MJ Gate eval) | Signed VC + RAO anchor |
 | `trust:bridge` | NetBenefitFlow (BN→ZNU) → Gaia Trust Registry | Gaia VC (credenciales) → HSCSG ValueFlows events | DIDComm + Project Weave protocols |
-| `infra:connect` | neko-room sessions → SynchroLabs discovery | Project Weave connectivity → Boundaries policy allowlist | WebRTC + CEL policy |
+|| `infra:connect` | neko-room sessions → **Discovery Layer** discovery | Project Weave connectivity → Boundaries policy allowlist | WebRTC + CEL policy |
 | `intel:match` | Autómata E²R search results → Gaia AI Matching | Gaia Recommendation Engine → Autómata retrofeed | JSON-LD + verifiable inference |
 | `app:federate` | CaaS-BM offers/needs → Gaia Marketplace | Gaia Market transactions → HSCSG ValueFlows + ZNU | Custom commission + Commonomics |
 | `eco:sync` | Base Material metrics (CAC/PGS) → Gaia Impact Measurement | Gaia Score → HSCSG AUT vectors update | Multidimensional pipelines |
@@ -62,7 +62,7 @@ Aplicados desde la instrucción del usuario:
 | Principio IPD | Implementación HSCSG-Gaia |
 |---------------|---------------------------|
 | **Front End Loading** | Fase 0 Proto-CO (HSCSG) + 90-day launch (Mycelium) = planning conjunto antes de build |
-| **Multidisciplinar temprano** | Autómata (IA) + SynchroLabs (infra) + Project Weave (protocolos) + CDS (gobernanza) en mismo diseño |
+| **Multidisciplinar temprano** | Autómata (IA) + **Discovery Layer** (infra) + Project Weave (protocolos) + CDS (gobernanza) en mismo diseño |
 | **Concurrent Engineering** | Migración DeseOS P1→P11 (HSCSG) || Gaia Marketplace + PHI + Map (paralelo, shared specs) |
 | **TQM aplicado a ingeniería** | CAC/PGS/IVC métricas continuas + Gaia Score + Impact Measurement = single source of truth |
 | **Integration Manager** | `hscsg-next-steps-orchestrator` skill = orchestrator técnico; Gaia Felipe = integration manager humano |
@@ -76,7 +76,7 @@ Aplicados desde la instrucción del usuario:
   "GAIA_INTEGRATION": [
     {"id": "GAIA-gov-sync", "title": "Implementar governance:sync CDS↔Gaia DAO", "deps": ["P0-copiosis", "COACH-automaton"], "effort": 5, "value": 95, "workstream": "GAIA_INTEGRATION", "source": "agent", "priority": 95, "blocks": ["GAIA-trust-bridge", "GAIA-app-federate"], "status": "pending", "notes": "VC-signed Decision Records, MJ Gate veto, RAO anchor"},
     {"id": "GAIA-trust-bridge", "title": "Implementar trust:bridge NetBenefitFlow↔VC", "deps": ["GAIA-gov-sync", "P0-valueflows"], "effort": 5, "value": 93, "workstream": "GAIA_INTEGRATION", "source": "agent", "priority": 93, "blocks": ["GAIA-app-federate"], "status": "pending", "notes": "DIDComm, Project Weave, Trust Registry ↔ RAO"},
-    {"id": "GAIA-infra-connect", "title": "Implementar infra:connect neko↔SynchroLabs", "deps": ["MIG-P10-Publica", "DEPLOY-link"], "effort": 4, "value": 90, "workstream": "GAIA_INTEGRATION", "source": "agent", "priority": 90, "blocks": ["GAIA-intel-match"], "status": "pending", "notes": "WebRTC discovery, Boundaries CEL allowlist"},
+    {"id": "GAIA-infra-connect", "title": "Implementar infra:connect neko↔**Discovery Layer**", "deps": ["MIG-P10-Publica", "DEPLOY-link"], "effort": 4, "value": 90, "workstream": "GAIA_INTEGRATION", "source": "agent", "priority": 90, "blocks": ["GAIA-intel-match"], "status": "pending", "notes": "WebRTC discovery, Boundaries CEL allowlist"},
     {"id": "GAIA-intel-match", "title": "Implementar intel:match Autómata↔AI Matching", "deps": ["GAIA-infra-connect", "COACH-integration"], "effort": 4, "value": 92, "workstream": "GAIA_INTEGRATION", "source": "agent", "priority": 92, "blocks": ["GAIA-eco-sync"], "status": "pending", "notes": "E²R ↔ Recommendation Engine, verifiable inference"},
     {"id": "GAIA-app-federate", "title": "Implementar app:federate Marketplace↔CaaS-BM", "deps": ["GAIA-trust-bridge", "MIG-P5-Produce"], "effort": 5, "value": 94, "workstream": "GAIA_INTEGRATION", "source": "agent", "priority": 94, "blocks": ["GAIA-eco-sync"], "status": "pending", "notes": "Custom commission, Commonomics, ZNU settlement"},
     {"id": "GAIA-eco-sync", "title": "Implementar eco:sync Base Material↔Gaia Impact", "deps": ["GAIA-app-federate", "GAIA-intel-match"], "effort": 3, "value": 88, "workstream": "GAIA_INTEGRATION", "source": "agent", "priority": 88, "blocks": [], "status": "pending", "notes": "CAC/PGS ↔ Gaia Score, multidimensional pipelines"},
@@ -147,7 +147,7 @@ P0-netbenefit → P0-copiosis → COACH-automaton → COACH-integration
 - `GAIA-gov-sync` requiere `P0-copiosis` (NetBenefitFlow types) + `COACH-automaton` (MJ Gate)
 - `GAIA-trust-bridge` requiere `GAIA-gov-sync` (gobernanza) + `P0-valueflows` (types extendidos)
 - `GAIA-app-federate` requiere `GAIA-trust-bridge` (VC settlement) + `MIG-P5-Produce` (ofertas CaaS-BM)
-- `GAIA-intel-match` requiere `GAIA-infra-connect` (neko/SynchroLabs) + `COACH-integration` (BranDNA context)
+- `GAIA-intel-match` requiere `GAIA-infra-connect` (neko/**Discovery Layer**) + `COACH-integration` (BranDNA context)
 
 ---
 
@@ -218,7 +218,7 @@ node scripts/orchestrator-next-steps.js run GAIA-marketplace-level3
 
 - [ ] **GAIA-gov-sync**: CDS Decision Records → Gaia DAO proposals (VC signed), MJ Gate veto functional
 - [ ] **GAIA-trust-bridge**: NetBenefitFlow ↔ VC settlement, Trust Registry ↔ RAO sync, DIDComm working
-- [ ] **GAIA-infra-connect**: neko rooms discoverable via SynchroLabs, Boundaries CEL allows Project Weave protocols
+- [ ] **GAIA-infra-connect**: neko rooms discoverable via **Discovery Layer**, Boundaries CEL allows Project Weave protocols
 - [ ] **GAIA-intel-match**: Autómata E²R ↔ Gaia Recommendation, verifiable inference chains, CoachFAB unified
 - [ ] **GAIA-app-federate**: CaaS-BM offers in Gaia Market, custom commission + Commonomics, ZNU settlement
 - [ ] **GAIA-eco-sync**: CAC/PGS ↔ Gaia Score bidirectional, multidimensional pipelines operational

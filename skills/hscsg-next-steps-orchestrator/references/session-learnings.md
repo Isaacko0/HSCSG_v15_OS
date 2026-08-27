@@ -29,7 +29,7 @@ Added to orchestrator base tasks:
 |------|--------|--------------|-------|
 | GAIA-gov-sync | pending | P0-copiosis, COACH-automaton | CDS ↔ Gaia DAO |
 | GAIA-trust-bridge | pending | GAIA-gov-sync, P0-valueflows | NetBenefitFlow ↔ VC |
-| GAIA-infra-connect | pending | MIG-P1-BranDNA | neko + SynchroLabs |
+|| GAIA-infra-connect | pending | MIG-P1-BranDNA | neko + **Discovery Layer** |
 | GAIA-intel-match | pending | COACH-automaton, COACH-integration | Autómata E²R ↔ Gaia Matching |
 | GAIA-app-federate | pending | GAIA-trust-bridge, GAIA-intel-match | CaaS-BM ↔ Gaia Market |
 | GAIA-eco-sync | pending | GAIA-app-federate | CAC/PGS ↔ Gaia Score |
