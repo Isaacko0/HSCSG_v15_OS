@@ -198,8 +198,8 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **BF-072** | **git_workflow.md** | `docs/` | ✅ Asimilado | Git workflow: git-credential-manager, push origin/master sin tokens, cron orquestador |
 | **BF-073** | **BRIEF_ONBOARDING_CONSTRUCTOR.md** | `docs/` | ✅ **NUEVO** | Guía práctica asimilación 4 fases + primera contribución |
 | **BF-074** | **ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md** | `docs/` | ✅ **NUEVO** | Análisis 17 URLs, 4 proyectos, gaps, plan 4 semanas |
-| **BF-075** | **RESPUESTA_COLABORACION_GAIA_MYCELIUM.md** | `docs/` | ✅ **NUEVO** | Respuesta ES a equipos Gaia-Mycelium (Brandon Nørgaard) |
-| **BF-076** | **RESPUESTA_COLABORACION_GAIA_MYCELIUM_EN.md** | `docs/` | ✅ **NUEVO** | Respuesta EN a equipos Gaia-Mycelium (Brandon Nørgaard) |
+|| **BF-075** | **RESPUESTA_COLABORACION_GAIA_MYCELIUM.md** | `docs/` | ✅ **NUEVO** | Respuesta ES a equipos Gaia-Mycelium |
+|| **BF-076** | **RESPUESTA_COLABORACION_GAIA_MYCELIUM_EN.md** | `docs/` | ✅ **NUEVO** | Respuesta EN a equipos Gaia-Mycelium |
 
 ### 👥 PERFILES COGNITIVOS Y PROFESIONALES (Guías de Integración)
 | # | Documento | Ubicación | Estado | Audiencia | Descripción |

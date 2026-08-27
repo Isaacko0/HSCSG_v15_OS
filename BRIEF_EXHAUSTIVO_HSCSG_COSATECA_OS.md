@@ -1646,7 +1646,7 @@ Asimilación **vía vasos comunicantes totales** del ecosistema de capitalismo-p
 | **Tyson Yunkaporta** | Indigenous studies | Indigenous thinking, Sand Talk |
 | **Bayo Akomolafe** | Post-activist, author | Decolonial wisdom, embodied activism |
 | **Kyle Kowalski** | Sloww founder, metacrisis.org curator | Art of living, Ikigai 2.0 |
-| **Brandon Norgaard** | Meta-crisis researcher | Ecosystem mapping, Gaia-Mycelium connection |
+| **Investigador Meta-Crisis** | Meta-crisis researcher | Ecosystem mapping, Gaia-Mycelium connection |
 
 ### 19.3 18 Isomorfismos Meta-Crisis ↔ HSCSG
 
@@ -1762,7 +1762,7 @@ Asimilación **vía vasos comunicantes totales** del ecosistema de capitalismo-p
 | 2024 | An Overview of Ecosystem Names & Mapping Efforts | Life Itself |
 | 2023 | Meme to Vibe: A Philosophical Report | Peter Limberg |
 | 2022 | Meta Crisis Concept Space Maps | HexaField |
-| 2022 | Comparing Approaches to Addressing the Meta-Crisis | Brandon Norgaard |
+| 2022 | Comparing Approaches to Addressing the Meta-Crisis | **Investigador Meta-Crisis** |
 | 2022 | Education is the Metacrisis | Zak Stein |
 | 2022 | Transformational Communities | Tucker Walsh |
 | 2021 | Tasting the Pickle: Ten flavours of meta-crisis | Jonathan Rowson |

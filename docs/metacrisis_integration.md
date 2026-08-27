@@ -247,7 +247,7 @@ npm run preview
 
 ## Próximos Pasos (Post-Integración)
 
-1. **Conectar con Gaia-Mycelium** — Brandon Nørgaard (Comparing Approaches to Meta-Crisis) tiene conexión directa con Gaia-Mycelium
+1. **Conectar con Gaia-Mycelium** — El investigador de "Comparing Approaches to Meta-Crisis" tiene conexión directa con Gaia-Mycelium
 2. **Conectar con OpenHaven** — El mapeo de proyectos meta-crisis enriquece la OpenHaven Matrix
 3. **Conectar con Project Weave** — Los isomorfismos meta-crisis ↔ HSCSG pueden ser verificables via Weave protocols
 4. **Conectar con OneManCompany** — Game B + Autómata Soberano = runtime de nueva civilización

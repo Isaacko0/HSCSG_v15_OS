@@ -59,7 +59,7 @@ Pensadores, creadores, investigadores y activistas del espacio meta-crisis. Algu
 | **Tyson Yunkaporta** | "Sand Talk" | Indigenous thinking, cultural research |
 | **Bayo Akomolafe** | "Raising Free People", post-activism | Decolonial wisdom, embodied activism |
 | **Kyle Kowalski** | Sloww, metacrisis.org curator | Art of living, Ikigai 2.0, synthesizer |
-| **Brandon Norgaard** | Comparing Approaches to Meta-Crisis | Ecosystem mapping, Gaia-Mycelium connection |
+| **Investigador Meta-Crisis** | Comparing Approaches to Meta-Crisis | Ecosystem mapping, Gaia-Mycelium connection |
 | **Bonnitta Roy** | Process studies, "Dispatters from a Time Between Worlds" | Systems thinking, cultural evolution |
 | **Brendan Graham Dempsey** | "Emergentism" | Complexity religion, metamodern world |
 
@@ -139,7 +139,7 @@ Cronología de intentos de mapeo/síntesis del ecosistema meta-crisis:
 | **2024** | An Overview of Ecosystem Names & Mapping Efforts | Life Itself | https://ecosystem.lifeitself.org/overview |
 | **2023** | Meme to Vibe: A Philosophical Report | Peter Limberg | https://thestoa.substack.com/p/meme-to-vibe-a-philosophical-report |
 | **2022** | Meta Crisis Concept Space Maps | HexaField | Google Slides |
-| **2022** | Comparing Approaches to Addressing the Meta-Crisis | Brandon Norgaard | Medium + Google Sheet + Google Doc |
+| **2022** | Comparing Approaches to Addressing the Meta-Crisis | **Investigador Meta-Crisis** | Medium + Google Sheet + Google Doc |
 | **2022** | Education is the Metacrisis | Zak Stein | https://systems-souls-society.com/education-is-the-metacrisis/ |
 | **2022** | Transformational Communities | Tucker Walsh | Medium |
 | **2021** | Tasting the Pickle: Ten flavours of meta-crisis | Jonathan Rowson | https://systems-souls-society.com/tasting-the-pickle-ten-flavours-of-meta-crisis-and-the-appetite-for-a-new-civilisation/ |
@@ -311,7 +311,7 @@ Cronología de intentos de mapeo/síntesis del ecosistema meta-crisis:
 | **Jim Rutt** | Game B, Jim Rutt Show | Complexity, technology, civilization |
 | **Zak Stein** | Education is the Metacrisis | Education, psychometrics, wisdom |
 | **Kyle Kowalski** | Sloww, metacrisis.org | Curation, art of living, Ikigai 2.0 |
-| **Brandon Norgaard** | Comparing Approaches to Meta-Crisis | Ecosystem mapping, Gaia-Mycelium connection |
+| **Investigador Meta-Crisis** | Comparing Approaches to Meta-Crisis | Ecosystem mapping, Gaia-Mycelium connection |
 | **Tomas Björkman** | Emerge, The World We Create | Social systems, cultural transformation |
 | **Jonathan Rowson** | Perspectiva, Dispatches | Metamodernity, chess & strategy |
 | **Hanzi Freinacht** | Metamoderna | Developmental politics, metamodernism |

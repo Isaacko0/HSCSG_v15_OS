@@ -140,7 +140,7 @@ wait
 |------|---------------------|
 | **governance:sync** | CDS ↔ Gaia DAO ↔ Conway MJ Gate ↔ Kleros = gobernanza multi-capa |
 | **trust:bridge** | ERC-8004 ↔ FPP/Weave ↔ DIDComm ↔ RAO = identidad transversal |
-| **infra:connect** | neko ↔ SynchroLabs ↔ Project Weave TSP ↔ DTG = comms soberanas |
+|| **infra:connect** | neko ↔ **Discovery Layer** ↔ Project Weave TSP ↔ DTG = comms soberanas |
 | **intel:match** | Autómata E²R ↔ Gaia Matching ↔ CoachFAB ↔ FPP = IA verificable |
 | **app:federate** | CaaS-BM ↔ Gaia Market ↔ ZNU ↔ Canal Funds = economía anfibia |
 | **eco:sync** | CAC/PGS ↔ Gaia Score ↔ OpenHaven Matrix ↔ MCI = métricas unificadas |

@@ -70,7 +70,7 @@ node scripts/orchestrator-next-steps.js status
 | **Economía Postmonetaria** | `netbenefit.ts`, `copiosis_integration.md`, `znu.ts` | Calculadora BN + jurados |
 | **Identidad Soberana** | `ERC-8004`, `rao.ts`, `gaia_mycelium_integration.md` | VC schema + trust bridge |
 | **IA Verificable** | `automaton.ts`, `CoachFAB.tsx`, `lucidez_audit_spec.md` | Chip CoachFAB + Lucidez |
-| **Infra P2P** | `neko-client`, `synchrolabs_adapter.ts`, `vasos page.tsx` | neko-room + vaso nuevo |
+|| **Infra P2P** | `neko-client`, `discovery_adapter.ts`, `vasos page.tsx` | neko-room + vaso nuevo |
 
 ---
 

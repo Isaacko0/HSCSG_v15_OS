@@ -21,7 +21,7 @@ Los 6 vasos **SON** interdisciplinariedad operativa:
 |------|---------------------|-------------------|
 | **governance:sync** | Ciencia política + Informática + Derecho | CDS (gobernanza) ↔ Gaia DAO (blockchain/social) ↔ MJ Gate (filosofía/ética) |
 | **trust:bridge** | Criptografía + Sociología + Derecho digital | ERC-8004 (tech) ↔ FPP/Weave (social) ↔ DIDComm (estándares) ↔ RAO (ontología) |
-| **infra:connect** | Redes P2P + Ingeniería de sistemas + UX | neko (WebRTC) ↔ SynchroLabs (discovery) ↔ Project Weave TSP (comms) |
+|| **infra:connect** | Redes P2P + Ingeniería de sistemas + UX | neko (WebRTC) ↔ **Discovery Layer** (discovery) ↔ Project Weave TSP (comms) |
 | **intel:match** | IA/ML + Ciencias cognitivas + Economía | Autómata E²R (búsqueda) ↔ Gaia Matching (recomendación) ↔ CoachFAB (HCI) |
 | **app:federate** | Economía + Diseño de mercados + Gobernanza | CaaS-BM (ofertas) ↔ Gaia Market (UX) ↔ ZNU (monetario) ↔ Canal Funds (financiero) |
 | **eco:sync** | Ecología + Métricas + Ciencia de datos | CAC/PGS (cuantitativo) ↔ Gaia Score (social) ↔ OpenHaven Matrix (descubrimiento) |

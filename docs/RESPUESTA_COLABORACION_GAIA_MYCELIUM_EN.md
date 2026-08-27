@@ -1,15 +1,15 @@
 # Response to Teams: Zeitnus-HSCSG (HSCSG v15 OS) ↔ Gaia-Mycelium Collaboration
 
 **Date:** August 22, 2026  
-**To:** Gaia-Mycelium Team (Felipe, Camilo, Marty, Brandon) + Zeitnus-HSCSG Team (Isaac Ko / Isaacko0)  
+**To:** Gaia-Mycelium Team (Felipe, Camilo, Marty) + Zeitnus-HSCSG Team (Isaac Ko / Isaacko0)  
 **From:** Isaac Ko (Zeitnus / HSCSG v15 OS)  
-**Based on:** [Operational Integration Document](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/gaia_mycelium_integration.md) + Full [HSCSG_v15_OS](https://github.com/Isaacko0/HSCSG_v15_OS) Repo + Brandon Nørgaard's Analysis + **Exhaustive OpenHaven + Project Weave Analysis** ([full doc](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md))
+**Based on:** [Operational Integration Document](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/gaia_mycelium_integration.md) + Full [HSCSG_v15_OS](https://github.com/Isaacko0/HSCSG_v15_OS) Repo + Análisis del equipo Gaia-Mycelium + **Exhaustive OpenHaven + Project Weave Analysis** ([full doc](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md))
 
 ---
 
 ## 1. Acknowledgment and Expanded Recognition
 
-**Brandon:** Your analysis is **exceptionally precise** and hits the core architectural problems. We validate 100% of your points and **add implementation layers already solved in HSCSG**, plus **OpenHaven + Project Weave deep alignment**:
+**Equipo Gaia-Mycelium:** Your analysis is **exceptionally precise** and hits the core architectural problems. We validate 100% of your points and **add implementation layers already solved in HSCSG**, plus **OpenHaven + Project Weave deep alignment**:
 
 - ✅ **"Complementarity is overstated"** → Our Take/Adapt/Discard mapping + **OpenHaven Matrix (205 tools, 40 attrs)** does this operationally: discovery layer separated from trust layer.
 - ✅ **"Interoperability ≠ agent-readability"** → Critical distinction implemented in 4 layers: **Boundaries (CEL)** = invocation/policy; **ValueFlows + RAO** = provenance/identity/revocation; **Autómata E²R** = verifiable inference; **CoachFAB** = agent-to-user (AG-UI).
@@ -25,7 +25,7 @@
 
 ## 2. What HSCSG v15 OS ALREADY SOLVES (Current State + New Mappings)
 
-| Problem (Brandon + Weave/OpenHaven) | Solution in HSCSG v15 OS (Implemented) | Reference |
+| Problem (Equipo Gaia-Mycelium + Weave/OpenHaven) | Solution in HSCSG v15 OS (Implemented) | Reference |
 |--------------------------------------|----------------------------------------|-----------|
 | **Identity / Provenance / Revocation** | **ERC-8004** (self-sovereign) + **RAO append-only** + **MJ Gate veto** | `lib/automaton.ts`, `lib/rao.ts` |
 | **Field-level consent (CARE)** | **Boundaries (CEL-like)** deny>allow, fail-closed, dry-run | `lib/boundaries.ts`, `src/core/state/boundaries.ts` |
@@ -68,13 +68,13 @@
 
 | Gap | What We Need | Source | Where It Fits |
 |-----|--------------|--------|---------------|
-| **SynchroLabs discovery API** | Specs for decentralized neko-rooms discovery | Gaia §4 | `GAIA-infra-connect` / `lib/synchrolabs_adapter.ts` |
-| **Project Weave Protocol Specs** | DIDComm, Trust Registry, VC schemas, FPP specs | Weave technical-depth + Brandon | `GAIA-trust-bridge` / `lib/trust_bridge.ts` |
+|| **Discovery Layer API** | Specs for decentralized neko-rooms discovery | Gaia §4 | `GAIA-infra-connect` / `lib/discovery_adapter.ts` |
+| **Project Weave Protocol Specs** | DIDComm, Trust Registry, VC schemas, FPP specs | Weave technical-depth + Equipo Gaia-Mycelium | `GAIA-trust-bridge` / `lib/trust_bridge.ts` |
 | **VC Schemas 4 trust levels** | Formal VC types (self/community/ambassador/third-party) | Weave §7 + Gaia §7 | `GAIA-trust-bridge` / `lib/cds.ts` |
 | **AI Matching / Recommendation Engine** | API to connect Autómata E²R ↔ Gaia Matching + Weave Recommendation | Gaia §13 + Weave §4 | `GAIA-intel-match` / `lib/ai_matching_bridge.ts` |
 | **Gaia Market commission + Commonomics** | Custom commission rules + referral 30/70 + **Weave Canal Funds model** | Gaia §4,6 + Weave Stream D | `GAIA-app-federate` / `lib/marketplace_federation.ts` |
 | **Multidimensional Impact Measurement** | Social science pipelines (not LLM) + **OpenHaven verification signals** | Gaia §12 + Weave §12 | `GAIA-eco-sync` / `lib/impact_bridge.ts` |
-| **First Person Project / Sovereign Stack** | Architectural reference for identity layer | Weave §11 + Brandon | `GAIA-infra-connect` / `GAIA-trust-bridge` |
+| **First Person Project / Sovereign Stack** | Architectural reference for identity layer | Weave §11 + Equipo Gaia-Mycelium | `GAIA-infra-connect` / `GAIA-trust-bridge` |
 | **OpenHaven Matrix API** | 205 tools, 40 attrs, governance/capture risk filters | OpenHaven Matrix | `GAIA-infra-connect` / discovery layer |
 | **Weave Capture Patterns** | 5 anti-capture patterns as design principles | Weave technical-depth | `lib/boundaries.ts`, `lib/automaton.ts` |
 | **OpenHaven Verification Model** | Additive signals (Research/Dev/Community) → LucidezVerifier | OpenHaven Process | `packages/ui/CoachFAB.tsx` (LucidezVerifier) |
@@ -97,17 +97,17 @@ node scripts/orchestrator-next-steps.js run P0-valueflows
 
 | From HSCSG → Gaia/Mycelium/Weave | From Gaia/Mycelium/Weave → HSCSG |
 |----------------------------------|----------------------------------|
-| HSCSG_v15_OS Repo (public) | **SynchroLabs API specs** (discovery) |
+| HSCSG_v15_OS Repo (public) | **Discovery Layer API specs** (discovery) |
 | Full Integration Doc | **Project Weave Protocol Specs** (DIDComm, Trust Registry, VC schemas, FPP specs) |
 | Orchestrator CLI + GAIA_INTEGRATION (8 tasks) | **FPP specs** + First Person Project refs |
 | Skills: orchestrator + gaia-integration | **Sovereign Stack Model** refs |
-| Demo: /boundaries, /automata, /coach, /vasos, /simulador | **SynchroLabs demo** + **Project Weave demo** |
+| Demo: /boundaries, /automata, /coach, /vasos, /simulador | **Discovery Layer demo** + **Project Weave demo** |
 | navteka: neko-room + Coworkers + Boundaries | **Gaia Hub matching** + **Mycelium portal** |
 | OpenHaven Matrix (205 tools) for discovery | **Weave 6 Capital Streams** for funding model |
 | Weave Capture Patterns as design principles | **OpenHaven Verification Model** for LucidezVerifier |
 
 **Mutual Demo (Thu 28/08 - 30 min):**
-- **Gaia Hub matching** + **Mycelium portal** (Brandon request)
+- **Gaia Hub matching** + **Mycelium portal** (Equipo Gaia-Mycelium request)
 - **HSCSG**: `/boundaries`, `/automata`, `/coach`, `/vasos`, `/simulador`, CoachFAB FAB
 - **navteka**: neko-room + Coworkers + Boundaries policy
 
@@ -132,7 +132,7 @@ node scripts/orchestrator-next-steps.js run GAIA-trust-bridge
 ### Week 4: Infra Connect + Intel Match (Parallel)
 
 ```bash
-# Parallel A: Infra (neko + SynchroLabs + Weave TSP/DTG)
+# Parallel A: Infra (neko + **Discovery Layer** + Weave TSP/DTG)
 node scripts/orchestrator-next-steps.js run MIG-P1-BranDNA
 node scripts/orchestrator-next-steps.js run GAIA-infra-connect
 
@@ -148,10 +148,10 @@ node scripts/orchestrator-next-steps.js run GAIA-intel-match
 
 | Role | Who | Responsibility | Reference |
 |------|-----|----------------|-----------|
-| **Integration Manager (Tech)** | Isaac (HSCSG) + Brandon (Gaia/Mycelium/Weave) | Architecture, protocols, specs | Weave Co-Chairs model (Kaliya/Kevin) |
-| **Content/Audience Deal Lead** | Felipe (Gaia/Mycelium) | Courses, audience, short-term content | Brandon: "most viable short-term deal" |
+| **Integration Manager (Tech)** | Isaac (HSCSG) + Equipo Gaia-Mycelium/Weave | Architecture, protocols, specs | Weave Co-Chairs model (Kaliya/Kevin) |
+| **Content/Audience Deal Lead** | Felipe (Gaia/Mycelium) | Courses, audience, short-term content | Equipo Gaia-Mycelium: "most viable short-term deal" |
 | **Funding Proposal Lead** | Felipe + Isaac | Joint proposal Section 15 + **Weave 6 Capital Streams** | Weave Streams A-F |
-| **Technical Convening (Neutral)** | **Project Weave (Kaliya/Kevin)** | Neutral ground for trust protocols | Brandon: "Weave plausible place" |
+| **Technical Convening (Neutral)** | **Project Weave (Kaliya/Kevin)** | Neutral ground for trust protocols | Equipo Gaia-Mycelium: "Weave plausible place" |
 | **OpenHaven Discovery Layer** | OpenHaven Research Team | Matrix (205 tools) as shared discovery layer | OpenHaven Matrix API |
 
 **Golden Rule:** *"The IA should not invent its own evidence"* → **Shared LucidezVerifier service** (OpenHaven additive signals: Research/Dev/Community verification).
@@ -165,7 +165,7 @@ node scripts/orchestrator-next-steps.js run GAIA-intel-match
 | **Full Operational Integration** | [gaia_mycelium_integration.md](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/gaia_mycelium_integration.md) | 20 mappings, Take/Adapt/Discard, 8 workstreams, 33d critical path |
 | **Exhaustive OpenHaven + Weave Analysis** | [ANALISIS_EXHAUSTIVO...](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md) | **17 URLs navigated**, 4 projects, gaps, 4-week plan, final architecture |
 | **Original Gaia-Mycelium Backup** | [gaia_mycelium_backup.md](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/gaia_mycelium_backup.md) | Original doc complete (6 layers, 3 levels, Commonomics) |
-| **Collaboration Response (ES)** | [RESPUESTA_COLABORACION...](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/RESPUESTA_COLABORACION_GAIA_MYCELIUM.md) | **This document** - point-by-point Brandon + Weave/OpenHaven |
+| **Collaboration Response (ES)** | [RESPUESTA_COLABORACION...](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/RESPUESTA_COLABORACION_GAIA_MYCELIUM.md) | **This document** - point-by-point Equipo Gaia-Mycelium + Weave/OpenHaven |
 | **Collaboration Response (EN)** | [RESPUESTA_COLABORACION..._EN.md](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/RESPUESTA_COLABORACION_GAIA_MYCELIUM_EN.md) | English version |
 | **HSCSG Exhaustive Brief** | [BRIEF_EXHAUSTIVO...](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/BRIEF_EXHAUSTIVO_HSCSG_COSATECA_OS.md) | Foundational: 3 MJ Laws, 21 modules, 12 CAC, 7 metrics, 4 loops |
 | **Exhaustive OpenHaven+Weave Analysis** | [ANALISIS_EXHAUSTIVO...](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/ANALISIS_EXHAUSTIVO_OPENHAVEN_WEAVE_HSCSG_GAIA.md) | **17 URLs**, 4 projects, gaps, 4-week plan, final architecture |
@@ -202,13 +202,13 @@ The 4 projects form a **natural stack without redundancy**:
 | Team | Contact | Role |
 |------|---------|------|
 | **Zeitnus / HSCSG v15 OS** | Isaac Ko (Isaacko0) | `isaacko0@users.noreply.github.com` / @Isaacko0 |
-| **Gaia-Mycelium** | Felipe / Camilo / Marty / Brandon | Brandon: `brandon@civicenlightenment.org` |
+| **Gaia-Mycelium** | Felipe / Camilo / Marty | [contacto privado] |
 | **Project Weave (Neutral + Funding)** | Kaliya Young / Kevin Triplett | `hello@projectweave.tech` |
 | **OpenHaven (Discovery Layer)** | OpenHaven Research Team | `https://openhaven.net/es/contact` |
 
 ---
 
-**Suggested Next Step:** 30-min technical call **Thu 28/08** (Isaac + Brandon + Felipe) → align SynchroLabs/Project Weave/FPP specs and kick off `GAIA-gov-sync` via orchestrator.
+**Suggested Next Step:** 30-min technical call **Thu 28/08** (Isaac + Felipe + Equipo Gaia-Mycelium) → align **Discovery Layer**/Project Weave/FPP specs and kick off `GAIA-gov-sync` via orchestrator.
 
 ---
 

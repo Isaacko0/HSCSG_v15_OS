@@ -20,7 +20,7 @@ La Alianza Gaia-Mycelium aporta la **capa de interoperabilidad, confianza verifi
 | 2 | **Conectar → Comprender → Verificar → Colaborar → Intercambiar → Regenerar** | 1 | G1-CARMIS Loop (Sistema Alráico) | `lib/alraico.ts` | ✅ Ya implementado |
 | 3 | **Capa Gobernanza: Gaia DAO / estructuras comunitarias** | 2, 17 | CDS-SUI-CGC-FRS-RAO + Autómata (Leyes MJ) | `lib/cds.ts`, `lib/automaton.ts` | `GAIA-gov-sync` task |
 | 4 | **Capa Datos & Trust: Data Trust + DIDs + VCs + Trust Registries** | 2, 6 | ValueFlows + RAO + ERC-8004 + ZNU/Vesting | `lib/valueflows.ts`, `lib/rao.ts` | `GAIA-trust-bridge` task |
-| 5 | **Capa Infraestructura: SynchroLabs + Project Weave** | 4, 5, 17 | neko-rooms + Boundaries (CEL) + Vasos neko:* | `packages/neko-client`, `lib/boundaries.ts` | `GAIA-infra-connect` task |
+|| 5 | **Capa Infraestructura: Discovery Layer + Project Weave** | 4, 5, 17 | neko-rooms + Boundaries (CEL) + Vasos neko:* | `packages/neko-client`, `lib/boundaries.ts` | `GAIA-infra-connect` task |
 | 6 | **Capa Inteligencia: AI Matching + Recommendation Engine** | 4, 17 | Autómata E²R + 10 Agentes Solarpunk + CoachFAB | `lib/automaton.ts`, `packages/ui/CoachFAB.tsx` | `GAIA-intel-match` task |
 | 7 | **Capa Aplicaciones: Market, PHI, Map, Passport** | 13, 17 | 21 módulos HSCSG + navteka screens | `src/app/(os)/*`, `apps/web/app/(os)/*` | `GAIA-app-federate` task |
 | 8 | **Capa Ecosistema Vivo: Personas, territorios, proyectos** | 17 | Base Material (13 Pilares) + Colectivo + Tekitl | `lib/base-material.ts`, `lib/tekitl.ts` | `GAIA-eco-sync` task |
@@ -55,7 +55,7 @@ La Alianza Gaia-Mycelium aporta la **capa de interoperabilidad, confianza verifi
 
 ### 🔄 ADAPT (Modificar para HSCSG)
 1. **DIDs / VCs / Trust Registries (W3C standards)** → Adaptar a **ERC-8004 + RAO + ValueFlows** (offline-first, no W3C DID resolution)
-2. **SynchroLabs (discovery centralizado)** → Adaptar a **neko-rooms discovery descentralizado** + Boundaries CEL allowlist
+2. **Discovery Layer (discovery descentralizado)** → Adaptar a **neko-rooms discovery descentralizado** + Boundaries CEL allowlist
 3. **Project Weave (protocolos W3C DIDComm)** → Adaptar a **Boundaries CEL + custom protocol translation layer**
 4. **Data Trust (entidad legal)** → Adaptar a **RAO-governed ValueFlows commons** (no entidad legal, append-only log)
 5. **Gaia DAO (on-chain voting)** → Adaptar a **CDS off-chain + Autómata MJ Gate veto** (no blockchain)
@@ -79,7 +79,7 @@ La Alianza Gaia-Mycelium aporta la **capa de interoperabilidad, confianza verifi
 |---------|--------|--------------|----------|-------|------------|--------|
 | GAIA-gov-sync | Implementar governance:sync CDS↔Gaia DAO | P0-copiosis, COACH-automaton | 5 | 95 | GAIA_INTEGRATION | pending |
 | GAIA-trust-bridge | Implementar trust:bridge NetBenefitFlow↔VC | GAIA-gov-sync, P0-valueflows | 5 | 93 | GAIA_INTEGRATION | pending |
-| GAIA-infra-connect | Implementar infra:connect neko↔SynchroLabs | MIG-P10-Publica, DEPLOY-link | 4 | 90 | GAIA_INTEGRATION | pending |
+|| GAIA-infra-connect | Implementar infra:connect neko↔**Discovery Layer** | MIG-P10-Publica, DEPLOY-link | 4 | 90 | GAIA_INTEGRATION | pending |
 | GAIA-intel-match | Implementar intel:match Autómata↔AI Matching | GAIA-infra-connect, COACH-integration | 4 | 92 | GAIA_INTEGRATION | pending |
 | GAIA-app-federate | Implementar app:federate Marketplace↔CaaS-BM | GAIA-trust-bridge, MIG-P5-Produce | 5 | 94 | GAIA_INTEGRATION | pending |
 | GAIA-eco-sync | Implementar eco:sync Base Material↔Gaia Impact | GAIA-app-federate, GAIA-intel-match | 3 | 88 | GAIA_INTEGRATION | pending |
@@ -108,7 +108,7 @@ TOTAL: 33 días mínimos
 |---------|-----------|------------|
 | `lib/gaia_sync.ts` | Governance sync: CDS Decision Records ↔ Gaia DAO proposals (VC signed) | GAIA-gov-sync |
 | `lib/trust_bridge.ts` | Trust bridge: NetBenefitFlow ↔ VC, Trust Registry ↔ RAO, DIDComm | GAIA-trust-bridge |
-| `lib/synchrolabs_adapter.ts` | Adapter: neko discovery ↔ SynchroLabs, Boundaries CEL ↔ Project Weave | GAIA-infra-connect |
+|| `lib/discovery_adapter.ts` | Adapter: neko discovery ↔ Discovery Layer, Boundaries CEL ↔ Project Weave | GAIA-infra-connect |
 | `lib/ai_matching_bridge.ts` | Intel match: Autómata E²R ↔ Recommendation Engine, verifiable inference | GAIA-intel-match |
 | `lib/marketplace_federation.ts` | App federate: CaaS-BM offers ↔ Gaia Market, custom commission + ZNU | GAIA-app-federate |
 | `lib/impact_bridge.ts` | Eco sync: CAC/PGS ↔ Gaia Score, multidimensional pipelines | GAIA-eco-sync |
@@ -158,7 +158,7 @@ interface AutomatonConfig {
 |------|-------------------|
 | `governance:sync` | CDS Decision Records → Gaia DAO proposals (VC signed), MJ Gate veto functional |
 | `trust:bridge` | NetBenefitFlow ↔ VC settlement, Trust Registry ↔ RAO sync, DIDComm working |
-| `infra:connect` | neko rooms discoverable via SynchroLabs, Boundaries CEL allows Project Weave protocols |
+|| `infra:connect` | neko rooms discoverable via **Discovery Layer**, Boundaries CEL allows Project Weave protocols |
 | `intel:match` | Autómata E²R ↔ Gaia Recommendation, verifiable inference chains, CoachFAB unified |
 | `app:federate` | CaaS-BM offers in Gaia Market, custom commission + Commonomics, ZNU settlement |
 | `eco:sync` | CAC/PGS ↔ Gaia Score bidirectional, multidimensional pipelines operational |

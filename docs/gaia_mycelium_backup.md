@@ -1,6 +1,6 @@
 # Alianza Gaia-Mycelium — Backup Quirúrgico
 
-**Fuente:** Documento de trabajo "Alianza Gaia-Mycelium / Gran Alianza (IA & Tecnologías para la Vida)" — reunión exploratoria con Brandon (OpenHaven, SynchroLabs, Project Weave) + Felipe (Mycelium) + Gaia Platform.
+**Fuente:** Documento de trabajo "Alianza Gaia-Mycelium / Gran Alianza (IA & Tecnologías para la Vida)" — reunión exploratoria con el **Equipo Gaia-Mycelium** (OpenHaven, **Discovery Layer**, Project Weave) + Felipe (Mycelium) + Gaia Platform.
 
 **Tipo:** Memoria de conversación + arquitectura propuesta + modelo económico + roadmap.
 
@@ -44,18 +44,22 @@ Interoperabilidad real requiere:
 
 ## 4. Componentes Tecnológicos Clave
 
-### 4.1 SynchroLabs (Sección 4)
+### 4.1 Discovery Layer (Sección 4)
+
 Conectividad, descubrimiento, interacción entre sistemas, conexión de actores y recursos.
 
 ### 4.2 Project Weave (Sección 5)
+
 Protocolos fundamentales: privacidad, seguridad, confianza verificable, identidad, credenciales, protocolos comunes → **"capa de confianza comunitaria para Internet"**.
 
 ### 4.3 Identidades, Credenciales, Trust Registries (Sección 6)
+
 - **DIDs**: Identificadores interoperables para personas, orgs, proyectos
 - **VCs**: Demostrar características/experiencias sin autoridad central
 - **Trust Registries**: Quién validó qué y bajo qué condiciones
 
 ### 4.4 Integración Niveles de Confianza (Sección 7)
+
 Mycelium 4 niveles → **VCs interoperables**:
 1. Autodeclaración
 2. Validación comunitaria
@@ -63,13 +67,14 @@ Mycelium 4 niveles → **VCs interoperables**:
 4. Certificación por terceros
 
 ### 4.5 Ecosystem Mapping (Sección 8)
+
 Búsqueda/descubrimiento gobernado por comunidades → **"apropiarse de los medios de computación"**.
 
 ---
 
 ## 5. Divergencia IA: AI-First vs Trust-First (Secciones 9-11)
 
-| Visión Gaia | Preocupación Brandon | Síntesis (Sección 11) |
+| Visión Gaia | Preocupación del Equipo Gaia-Mycelium | Síntesis (Sección 11) |
 |-------------|---------------------|----------------------|
 | AI-first: agentes simplifican interacción | LLM no auditables inventan evidencia | **AI-First + Trust-First** |
 | IA = fuente de verdad | IA dentro de límites verificables | **Datos → Evidencia → Protocolo → Inferencia → IA** |
@@ -79,6 +84,7 @@ Búsqueda/descubrimiento gobernado por comunidades → **"apropiarse de los medi
 ---
 
 ## 6. Medición Multidimensional de Impacto (Sección 12)
+
 Pipelines basados en ciencias sociales (no solo LLM) para medir impacto de personas, orgs, proyectos, territorios, redes → conecta con Gaia Score, confianza, financiación, Marketplace, fondos, certificación.
 
 ---
@@ -127,7 +133,7 @@ Pipelines basados en ciencias sociales (no solo LLM) para medir impacto de perso
 |------|-------------|
 | **1. Gobernanza** | Gaia DAO, estructuras comunitarias, reglas, soberanía |
 | **2. Datos & Trust** | Data Trust + DIDs + VCs + Trust Registries |
-| **3. Infraestructura** | APIs + SynchroLabs + Project Weave + compatibles |
+| **3. Infraestructura** | APIs + **Discovery Layer** + Project Weave + compatibles |
 | **4. Inteligencia** | Agentes IA + Recommendation Engine + AI Matching |
 | **5. Aplicaciones** | PHI, Map, Passport, Market, Gatherings, Proyectos, Fondos, Impact |
 | **6. Ecosistema Vivo** | Personas + comunidades + territorios + proyectos + orgs + conocimiento + recursos |
@@ -138,7 +144,7 @@ Pipelines basados en ciencias sociales (no solo LLM) para medir impacto de perso
 
 | Actor | Acciones |
 |-------|----------|
-| **Brandon** | Enviar overview técnico: SynchroLabs, Project Weave, DIDs, VCs, Trust Registries, Ecosystem Mapping, Impact Measurement |
+| **Equipo Gaia-Mycelium** | Enviar overview técnico: **Discovery Layer**, Project Weave, DIDs, VCs, Trust Registries, Ecosystem Mapping, Impact Measurement |
 | **Felipe** | Compartir con Mycelium, facilitar conversación técnica, explorar integración, evaluar financiación |
 | **Gaia–Mycelium** | Explorar: interoperabilidad, Data Trust, identidad/credenciales, protocolos confianza, AI Matching, Recommendation Engine, Ecosystem Mapping, impacto, Marketplace, educación/PHI, financiación conjunta |
 
@@ -166,7 +172,7 @@ Pipelines basados en ciencias sociales (no solo LLM) para medir impacto de perso
 | Meta Plataforma interoperable | HSCSG v15 OS + navteka (offline-first + social) | 🟡 Parcial |
 | Capa Gobernanza (Gaia DAO) | CDS-SUI-CGC-FRS-RAO + Autómata (Leyes MJ) | 🟡 Parcial |
 | Capa Datos & Trust (Data Trust, DIDs, VCs, Trust Registries) | ValueFlows + RAO + ERC-8004 + ZNU/Vesting | 🔴 Pendiente |
-| Capa Infraestructura (SynchroLabs, Project Weave) | neko-rooms + Boundaries (CEL) + Vasos neko:* | 🟡 Parcial |
+| Capa Infraestructura (Discovery Layer, Project Weave) | neko-rooms + Boundaries (CEL) + Vasos neko:* | 🟡 Parcial |
 | Capa Inteligencia (AI Matching, Recommendation) | Autómata + 10 Agentes Solarpunk + CoachFAB (Happpy) | 🟡 Parcial |
 | Capa Aplicaciones (Market, PHI, Map, Passport) | 21 módulos HSCSG + navteka | 🔴 Pendiente |
 | Capa Ecosistema Vivo | Base Material (13 Pilares) + Colectivo + Tekitl + Trustlines | 🟡 Parcial |

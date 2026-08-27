@@ -142,12 +142,12 @@ Investigación Activa → Envíos Comunidad → Revisión Líder Investigación
 | **Base Material** (13 Pilares) | Foundation layer | `/base`, `/soberania`, 13 Pilares × 7 Capas × 4 Fases |
 | **Governance** (CDS + Autómata MJ) | Layer 1 Governance (Gaia DAO) | `lib/cds.ts`, `lib/automaton.ts`, Leyes MJ I/II/III |
 | **Trust/Identity** (ERC-8004 + RAO + ValueFlows) | Layer 2 Trust (FPP + DTG) | `lib/valueflows.ts`, `lib/rao.ts`, ERC-8004 |
-| **Infra/Comms** (neko + Boundaries CEL) | Layer 3 Infra (TSP + SynchroLabs) | `packages/neko-client`, `lib/boundaries.ts`, neko-rooms |
+| **Infra/Comms** (neko + Boundaries CEL) | Layer 3 Infra (TSP + **Discovery Layer**) | `packages/neko-client`, `lib/boundaries.ts`, neko-rooms |
 | **Intelligence** (Autómata E²R + CoachFAB) | Layer 4 Intel (AI Matching) | `lib/automaton.ts`, `packages/ui/CoachFAB.tsx` |
 | **Economy** (ZNU + CaaS-BM + Solarpunk) | Economic Layer | `lib/znu.ts`, `lib/caas.ts`, `lib/solarpunk.ts` |
 
-#### Diferenciadores Resueltos (vs Brandon's Analysis)
-| Brandon's Point | HSCSG Solution |
+#### Diferenciadores Resueltos (vs Análisis del Equipo Gaia-Mycelium)
+| Punto del Equipo Gaia-Mycelium | HSCSG Solution |
 |-----------------|----------------|
 | Identity/Provenance/Revocation | ERC-8004 + RAO append-only + MJ Gate veto |
 | Field-level consent (CARE) | Boundaries CEL (deny>allow, fail-closed, dry-run) |
@@ -170,7 +170,7 @@ Investigación Activa → Envíos Comunidad → Revisión Líder Investigación
 |------|-------------|--------|
 | 1. Gobernanza | Gaia DAO, estructuras comunitarias | Diseño |
 | 2. Datos & Trust | Data Trust + DIDs + VCs + Trust Registries | Diseño |
-| 3. Infraestructura | SynchroLabs + Project Weave + APIs | Diseño |
+| 3. Infraestructura | **Discovery Layer** + Project Weave + APIs | Diseño |
 | 4. Inteligencia | AI Matching + Recommendation Engine | Diseño |
 | 5. Aplicaciones | Market, PHI, Map, Passport, Gatherings | Diseño + 90-day launch |
 | 6. Ecosistema Vivo | Personas, comunidades, territorios | En desarrollo |
@@ -215,13 +215,13 @@ Investigación Activa → Envíos Comunidad → Revisión Líder Investigación
 
 | Gap | Fuente | Qué Falta | Acción Inmediata |
 |-----|--------|-----------|------------------|
-| **SynchroLabs API/Specs** | Gaia-Mycelium §4, Integración §4.1 | Discovery API para neko-rooms | Brandon → compartir specs |
-| **Project Weave Protocol Specs** | Weave technical-depth + Gaia §5 | DIDComm, Trust Registry, VC schemas | Brandon → compartir specs |
+| **Discovery Layer API/Specs** | Gaia-Mycelium §4, Integración §4.1 | Discovery API para neko-rooms | Equipo Gaia-Mycelium → compartir specs |
+| **Project Weave Protocol Specs** | Weave technical-depth + Gaia §5 | DIDComm, Trust Registry, VC schemas | Equipo Gaia-Mycelium → compartir specs |
 | **VC Schemas 4 Niveles** | Weave §7 + Gaia §7 | Formal VC types (self/community/ambassador/third-party) | Definir en `lib/cds.ts` |
 | **AI Matching/Recommendation API** | Gaia §13 + Weave §4 | Conectar Autómata E²R ↔ Gaia Matching | `GAIA-intel-match` task |
 | **Market Commission + Commonomics Specs** | Gaia §4,6 + Weave Stream D | Custom commission rules + referral 30/70 | `GAIA-app-federate` task |
 | **Impact Measurement Pipelines** | Gaia §12 + Weave §12 | Social science pipelines (no LLM) | `GAIA-eco-sync` task |
-| **First Person / Sovereign Stack Refs** | Weave §11 + Brandon msg | Arquitectura identidad soberana | `GAIA-infra-connect` / `GAIA-trust-bridge` |
+| **First Person / Sovereign Stack Refs** | Weave §11 + mensaje del equipo Gaia-Mycelium | Arquitectura identidad soberana | `GAIA-infra-connect` / `GAIA-trust-bridge` |
 
 ### 4.2 Gaps Menores (Mejora Continua)
 
@@ -248,13 +248,14 @@ node scripts/orchestrator-next-steps.js run P0-valueflows
 ```
 
 **Entregables a intercambiar:**
+
 | De HSCSG → Gaia/Mycelium | De Gaia/Mycelium → HSCSG |
 |---------------------------|--------------------------|
-| Repo HSCSG_v15_OS (público) | SynchroLabs API specs |
+| Repo HSCSG_v15_OS (público) | **Discovery Layer API specs** |
 | Doc integración completa | Project Weave protocol specs (DIDComm, Trust Registry, VC schemas) |
 | Orchestrator CLI + GAIA_INTEGRATION | FPP specs + First Person refs |
 | Skills: orchestrator + gaia-integration | Sovereign Stack Model refs |
-| Demo: /boundaries, /automata, /coach, /vasos, /simulador | SynchroLabs demo + Project Weave demo |
+| Demo: /boundaries, /automata, /coach, /vasos, /simulador | **Discovery Layer demo** + **Project Weave demo** |
 | navteka: neko-room + Coworkers + Boundaries | Gaia Hub matching + Mycelium portal |
 
 ### Semana 2: Primer Vaso Comunicante — `governance:sync`
@@ -263,8 +264,7 @@ node scripts/orchestrator-next-steps.js run P0-valueflows
 node scripts/orchestrator-next-steps.js run GAIA-gov-sync
 ```
 
-**Entregable:** CDS Decision Records → Gaia DAO proposals (VC signed), MJ Gate veto functional
-
+**Entregable:** CDS Decision Records → Gaia DAO proposals (VC signed), MJ Gate veto funcional  
 **Dependencias:** P0-copiosis (NetBenefitFlow types) + COACH-automaton (MJ Gate)
 
 ### Semana 3: Trust Bridge — `trust:bridge`
@@ -273,8 +273,7 @@ node scripts/orchestrator-next-steps.js run GAIA-gov-sync
 node scripts/orchestrator-next-steps.js run GAIA-trust-bridge
 ```
 
-**Entregable:** NetBenefitFlow ↔ VC settlement, Trust Registry ↔ RAO sync, DIDComm working
-
+**Entregable:** NetBenefitFlow ↔ VC settlement, Trust Registry ↔ RAO sync, DIDComm working  
 **Dependencias:** GAIA-gov-sync + P0-valueflows
 
 ### Semana 4: Infra Connect + Intel Match (Paralelo)
@@ -337,12 +336,12 @@ node scripts/orchestrator-next-steps.js run GAIA-intel-match
 
 | Acción | Responsable | Deadline | Comando/Enlace |
 |--------|-------------|----------|----------------|
-| Compartir SynchroLabs API specs | Brandon | Mié 27/08 | Email/Telegram |
-| Compartir Project Weave protocol specs (DIDComm, Trust Registry, VC schemas) | Brandon | Mié 27/08 | Email/Telegram |
-| Compartir FPP specs + First Person refs | Brandon/Kaliya | Mié 27/08 | Email/Telegram |
-| Compartir Sovereign Stack Model refs | Brandon | Mié 27/08 | Email/Telegram |
+| Compartir **Discovery Layer API specs** | Equipo Gaia-Mycelium | Mié 27/08 | Email/Telegram |
+| Compartir Project Weave protocol specs (DIDComm, Trust Registry, VC schemas) | Equipo Gaia-Mycelium | Mié 27/08 | Email/Telegram |
+| Compartir FPP specs + First Person refs | Equipo Gaia-Mycelium / Kaliya | Mié 27/08 | Email/Telegram |
+| Compartir Sovereign Stack Model refs | Equipo Gaia-Mycelium | Mié 27/08 | Email/Telegram |
 | Enviar HSCSG_v15_OS repo + docs | Isaac | Mar 26/08 | GitHub links arriba |
-| Programar demo mutua 30 min | Isaac + Brandon + Felipe | Jue 28/08 | Calendly/calendar |
+| Programar demo mutua 30 min | Isaac + Felipe + Equipo Gaia-Mycelium | Jue 28/08 | Calendly/calendar |
 | Ejecutar P0 foundation tasks | Isaac | Mar-Mié 26-27/08 | `orchestrator-next-steps.js run P0-*` |
 | Ejecutar GAIA-gov-sync | Isaac | Jue-Vie 28-29/08 | `orchestrator run GAIA-gov-sync` |
 
@@ -350,7 +349,7 @@ node scripts/orchestrator-next-steps.js run GAIA-intel-match
 
 | Rol | Persona | Contacto |
 |-------|---------|----------|
-| **Integration Manager (Tech)** | Isaac Ko (HSCSG) + Brandon Nørgaard | `isaacko0@users.noreply.github.com` / `brandon@civicenlightenment.org` |
+| **Integration Manager (Tech)** | Isaac Ko (HSCSG) + Equipo Gaia-Mycelium | `isaacko0@users.noreply.github.com` / [contacto privado] |
 | **Content/Audience Deal Lead** | Felipe (Gaia/Mycelium) | (via Felipe) |
 | **Funding Proposal Lead** | Felipe + Isaac | Próxima semana |
 | **Technical Convening (Neutral)** | Project Weave (Kaliya/Kevin) | `hello@projectweave.tech` |
