@@ -52,3 +52,4 @@ urbanika_*
 near_core-contracts/
 near_*/
 .env*
+.local_backups/
