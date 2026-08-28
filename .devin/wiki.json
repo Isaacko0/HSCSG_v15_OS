@@ -1,13 +1,9 @@
-{
-  "repo_notes": [
+]
+    },
     {
-      "content": ""
-    }
-  ],
-  "pages": [
-    {
-      "title": "Overview: HSCSG v15 OS",
-      "purpose": "High-level introduction to the HSCSG v15 OS — what it is, its civilizational mission, the Materialismo Jerárquico (MJ) framework, the three core laws, and how the system is organized. Links to all major child sections.",
+      "title": "Mundus, Life, and Civilizaciones",
+      "purpose": "Covers the Mundus module (src/core/lib/mundus.ts — makeMundusState, MUNDUS_PILLARS mapping to IDETRA initiatives, Blue Circle symbol, Circular Exchange System), the Life personal organizer (src/core/lib/life.ts — addGoal, matrixCalculation, znuProjected, GoalType/Effort/Area), and the Civilizaciones module (src/core/lib/civilizaciones.ts — external civilization links catalog). Covers Mundus.tsx, Life.tsx, Civilizaciones.tsx screens.",
+      "parent": "Community Modules and Social Layer",
       "page_notes": [
         {
           "content": ""
@@ -15,26 +11,21 @@
       ]
     },
     {
-      "title": "Project Philosophy and Civilizational Framework",
-      "purpose": "Deep dive into the Materialismo Jerárquico (MJ) philosophy, the Three Laws (Ley I/II/III), the Cuaternidad Soberana business model,  the Amphibious (Anfibio) design principle, and the GaiaUnion biological meta-architecture that maps OS modules to vital systems.",
-      "parent": "Overview: HSCSG v15 OS",
-      "page_notes": [
+      "title": "Sovereignty and Verification",
+          "title": "Mundus, Life, and Civilizaciones",
+          "purpose": "En Construccion",
+          "parent": "Community Modules and Social Layer",
+          "page_notes": [
+            {
+              "content": "En Construccion"
+            }
+          ]
+        },
         {
-          "content": ""
-        }
-      ]
-    },
-    {
-      "title": "Getting Started: Setup, Build, and Deployment",
-      "purpose": "How to install, run locally (Vite dev server), build for production, and deploy to Vercel or Netlify. Covers package.json scripts, Node.js requirements, the SPA catch-all routing configuration, and the vitest test runner setup.",
-      "parent": "Overview: HSCSG v15 OS",
+          "title": "Sovereignty and Verification",
+      "purpose": "Overview of the sovereignty diagnostic and verification layer — the 13 Pillars × 7 Layers matrix, the Proof of Response verification protocol, the Evidence Model, and the NEAR/Buzz integration for decentralized verification. Links to child pages.",
       "page_notes": [
-        {
-          "content": ""
-        }
-      ]
-    },
-    {
+        {    {
       "title": "Core Architecture",
       "purpose": "Overview of the technical architecture: React/TypeScript SPA, Zustand global store, module pattern, offline-first persistence, and the relationship between lib (pure logic), state (types + initial state), and screens (UI). Links to child pages for each major subsystem.",
       "page_notes": [
