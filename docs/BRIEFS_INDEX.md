@@ -171,11 +171,17 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **BF-092** | **obsidian_vault_backup.md** | `docs/` | ✅ **NUEVO** | `H:\\Mi unidad\\HSCSG Empresa mas memoria\\` (Vault Obsidian) | Backup quirúrgico: HSCSG_MJ_SYNTHESIS_v15 (38KB), Autovividasis, URBION Ontogénesis Urbana, Karatani Modos de Intercambio, Plan 90 días, Fases 0→E |
 | **BF-093** | **obsidian_vault_integration.md** | `docs/` | ✅ **NUEVO** | `H:\\Mi unidad\\HSCSG Empresa mas memoria\\` (Vault Obsidian) | Integración operativa: 11 isomorfismos vault ↔ código, 7 módulos nuevos, CAC v12, ZNU v2, Autómata v2 MJ, Talents v2, Autovividasis |
 
-### 🌱 ECOALDEA DEL MONTE / FERIA CONUQUERA (Federación Ecoaldeas)
-| # | Documento | Ubicación | Estado | Fuente | Descripción |
-|---|-----------|-----------|--------|--------|-------------|
-| **BF-094** | **ecoaldea_monte_backup.md** | `docs/` | ✅ **NUEVO** | Ecoaldea del Monte / Feria Conuquera | Backup quirúrgico: 43 docs técnicos + página pública, 19 fases completadas, 152 migraciones, pool global, padrino, FRNE, fideicomiso, perfiles, .nfcpkg, nodo satélite |
-| **BF-095** | **ecoaldea_monte_integration.md** | `docs/` | ✅ **NUEVO** | Ecoaldea del Monte / Feria Conuquera | Integración operativa: 28 isomorfismos, 13 Take / 10 Adapt / 5 Discard, 12 módulos nuevos, 11 pantallas, plan 6 semanas, 12 briefs operativos |
+|### 🌱 ECOALDEA DEL MONTE / FERIA CONUQUERA (Federación Ecoaldeas)
+|| # | Documento | Ubicación | Estado | Fuente | Descripción |
+||---|-----------|-----------|--------|--------|-------------|
+|| **BF-094** | **ecoaldea_monte_backup.md** | `docs/` | ✅ **NUEVO** | Ecoaldea del Monte / Feria Conuquera | Backup quirúrgico: 43 docs técnicos + página pública, 19 fases completadas, 152 migraciones, pool global, padrino, FRNE, fideicomiso, perfiles, .nfcpkg, nodo satélite |
+|| **BF-095** | **ecoaldea_monte_integration.md** | `docs/` | ✅ **NUEVO** | Ecoaldea del Monte / Feria Conuquera | Integración operativa: 28 isomorfismos, 13 Take / 10 Adapt / 5 Discard, 12 módulos nuevos, 11 pantallas, plan 6 semanas, 12 briefs operativos |
+
+### 🤖 OPENEXECUTIVE (SenteLabsAI) — Equipo Ejecutivo Multi-Agente
+|| # | Documento | Ubicación | Estado | Fuente | Descripción |
+||---|-----------|-----------|--------|--------|-------------|
+|| **BF-106** | **openexecutive_backup.md** | `docs/` | ✅ **NUEVO** | OpenExecutive (SenteLabsAI) | Backup quirúrgico: 8 agentes especialistas (CSO/CFO/CHRO/GC/COO/CMO/CPO/Board), RAG dual, memoria episódica, scheduler, multi-interfaz |
+|| **BF-107** | **openexecutive_integration.md** | `docs/` | ✅ **NUEVO** | OpenExecutive (SenteLabsAI) | Integración operativa: 22 isomorfismos, 9 Take / 10 Adapt / 3 Discard, 7 módulos nuevos, 6 pantallas, plan 5 semanas, 10 briefs operativos |
 
 ### ⚙️ MÓDULOS TÉCNICOS HSCSG v15 OS (Core)
 | # | Documento | Ubicación | Estado | Módulo | Descripción |
@@ -320,9 +326,10 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **USDGLO** | ✅ 1 backup | ✅ 1 integration | Stablecoin → priceParity oracle | 0 | 2 |
 | **opc-source/one-person-company** | ✅ `opc_source_opc_backup.md` | ✅ `opc_source_opc_integration.md` | `lib/multi_cluster.ts`, `lib/service_mesh.ts`, `lib/observability_stack.ts`, `lib/cloud_native_container.ts`, `lib/cncf_landscape.ts`, `lib/alibaba_cloud_stack.ts`, `lib/cluster_delivery.ts`, `lib/iac_manager.ts`, `lib/microservice_frameworks.ts`, `lib/os_reference.ts`, `docs/infrastructure_diagram_v010.md` | 1 (`hscsg-opc-source-assimilation` pendiente) | 2 |
 | **chen103226/awesome-one-person-company** | ✅ `awesome_opc_backup.md` | ✅ `awesome_opc_integration.md` | `lib/case_studies.ts`, `lib/stacks_recommendations.ts`, `lib/mom_test_methodology.ts`, `docs/30_day_launch_checklist.md`, `docs/learning_paths.md`, `docs/creator_quotes.md` | 1 (`hscsg-awesome-opc-assimilation` pendiente) | 2 |
-| **Ecoaldea del Monte / Feria Conuquera** | ✅ `ecoaldea_monte_backup.md` | ✅ `ecoaldea_monte_integration.md` | 0 (plan 12 módulos nuevos) | 0 | 2 |
+|| **Ecoaldea del Monte / Feria Conuquera** | ✅ `ecoaldea_monte_backup.md` | ✅ `ecoaldea_monte_integration.md` | 0 (plan 12 módulos nuevos) | 0 | 2 ||
+|| **OpenExecutive (SenteLabsAI)** | ✅ `openexecutive_backup.md` | ✅ `openexecutive_integration.md` | 0 (plan 7 módulos nuevos) | 0 | 2 ||
 
-**Total:** 40 proyectos fuente | 32 completados (64 docs backup+integration) | 8 pendientes | **127 briefs totales** | 4 skills Hermes desplegadas | 46 docs operativos en `docs/`
+**Total:** 41 proyectos fuente | 33 completados (66 docs backup+integration) | 8 pendientes | **137 briefs totales** | 4 skills Hermes desplegadas | 48 docs operativos en `docs/`
 
 ---
 

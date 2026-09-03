@@ -88,6 +88,16 @@ function initializeState() {
       {"id": "ECO-skill-marketplace", "title": "Crear lib/skill_marketplace.ts + CLI hermes skill install/publish", "deps": ["ECO-skill-runtime"], "effort": 3, "value": 90, "workstream": "ECOALDEA_INTEGRATION", "source": "agent", "priority": 90, "blocks": [], "status": "pending", "notes": "Marketplace local, registry git, semver, hermes skill install <url>"},
       {"id": "ECO-tribal-gatherings", "title": "Crear lib/tribal_gatherings.ts — Encuentros estacionales (4/año)", "deps": [], "effort": 2, "value": 85, "workstream": "ECOALDEA_INTEGRATION", "source": "agent", "priority": 85, "blocks": [], "status": "pending", "notes": "Solsticios/equinoccios, sincronización pools, intercambio semillas, rituales, actas"},
       {"id": "ECO-screens", "title": "Crear 11 pantallas Ecoaldea: /global-pool, /bilateral-pools, /basket-governance, /energy-metric, /reconciliation, /cultural-profiles, /norm-gossip, /frne-calculator, /land-trust, /tribal-gatherings, /skill-marketplace", "deps": ["ECO-global-pool", "ECO-basket", "ECO-energy-metric", "ECO-reconciliation", "ECO-cultural-profiles", "ECO-norm-gossip", "ECO-frne", "ECO-land-trust", "ECO-skill-runtime", "ECO-tribal-gatherings"], "effort": 5, "value": 95, "workstream": "ECOALDEA_INTEGRATION", "source": "agent", "priority": 95, "blocks": [], "status": "pending", "notes": "Icon Leaf/Users, routing, i18n, store integration, sidebar items"}
+    ],
+    "OPENEXECUTIVE_INTEGRATION": [
+      {"id": "OE-local-models", "title": "Crear lib/local_models.ts — Abstracción OpenAI-compatible (Ollama/LM Studio/vLLM)", "deps": [], "effort": 3, "value": 95, "workstream": "OPENEXECUTIVE_INTEGRATION", "source": "agent", "priority": 95, "blocks": ["OE-knowledge-seed", "OE-background-extractor"], "status": "pending", "notes": "Interface unificada, hybrid routing per-coworker, test connection + model pull"},
+      {"id": "OE-knowledge-seed", "title": "Crear lib/knowledge_seed.ts — Knowledge Seeding (Markdown → Vector Store)", "deps": ["OE-local-models"], "effort": 3, "value": 93, "workstream": "OPENEXECUTIVE_INTEGRATION", "source": "agent", "priority": 93, "blocks": ["OE-background-extractor"], "status": "pending", "notes": "Lee knowledge/builtin/*.md al boot, chunks + embeddings (transformers.js) → IndexedDB, separado de tribe knowledge"},
+      {"id": "OE-background-extractor", "title": "Crear lib/background_extractor.ts — Background Memory Extraction", "deps": ["OE-knowledge-seed"], "effort": 3, "value": 92, "workstream": "OPENEXECUTIVE_INTEGRATION", "source": "agent", "priority": 92, "blocks": ["OE-rao-verification"], "status": "pending", "notes": "Post-response Web Worker: extrae decisiones/iniciativas/consejos → RAO entries + Lucidez blocks"},
+      {"id": "OE-rao-verification", "title": "Crear lib/rao_verification.ts — RAO Verification Triaxial", "deps": ["OE-background-extractor"], "effort": 3, "value": 94, "workstream": "OPENEXECUTIVE_INTEGRATION", "source": "agent", "priority": 94, "blocks": ["OE-lucidez-toggle"], "status": "pending", "notes": "3 ejes: RAO (ERC-8004+IPFS) + MJ Gate (veto ético) + Cross-check (coworkers+autómata)"},
+      {"id": "OE-lucidez-toggle", "title": "Crear lib/lucidez_toggle.ts — Modo Lucidez Toggle (3 niveles) + CoachFAB integration", "deps": ["OE-rao-verification"], "effort": 2, "value": 91, "workstream": "OPENEXECUTIVE_INTEGRATION", "source": "agent", "priority": 91, "blocks": ["OE-coworker-roles"], "status": "pending", "notes": "Full/Semantic/Raw (.lucidez-raw), toggle sol/luna en CoachFAB header, cache strategy per block"},
+      {"id": "OE-coworker-roles", "title": "Extender coworkers.ts con 8 standing roles OpenExecutive + Discord adapter", "deps": ["OE-lucidez-toggle"], "effort": 3, "value": 93, "workstream": "OPENEXECUTIVE_INTEGRATION", "source": "agent", "priority": 93, "blocks": ["OE-domain-pillar-map"], "status": "pending", "notes": "CSO/CFO/CHRO/GC/COO/CMO/CPO/Board + discordAdapter config, channel per coworker"},
+      {"id": "OE-domain-pillar-map", "title": "Crear lib/domain_pillar_map.ts — Dominios (8) → Pilares Base Material (13×7)", "deps": ["OE-coworker-roles"], "effort": 2, "value": 88, "workstream": "OPENEXECUTIVE_INTEGRATION", "source": "agent", "priority": 88, "blocks": ["OE-screens"], "status": "pending", "notes": "Mapping table strategy/finance/hr/legal/ops/marketing/product/governance → 13 pillars"},
+      {"id": "OE-screens", "title": "Crear 6 pantallas OpenExecutive: /local-models, /knowledge, /rao, /lucidez-toggle, /coworkers/discord, /domain-pillar-map", "deps": ["OE-domain-pillar-map"], "effort": 4, "value": 95, "workstream": "OPENEXECUTIVE_INTEGRATION", "source": "agent", "priority": 95, "blocks": [], "status": "pending", "notes": "Icon Briefcase/Users, routing, i18n, store integration, sidebar items"}
     ]
   };
 
@@ -116,8 +126,8 @@ function getTask(state, id) {
 }
 
 function getAvailableTasks(state) {
-  return getAllTasks(state).filter(t => 
-    t.status === 'pending' && 
+  return getAllTasks(state).filter(t =>
+    t.status === 'pending' &&
     (t.dependencies || []).every(depId => getTask(state, depId)?.status === 'done')
   );
 }
@@ -139,21 +149,21 @@ function cmdStatus(state) {
   const sorted = sortByPriority(available, state);
   const completed = getAllTasks(state).filter(t => t.status === 'done').length;
   const total = Object.keys(state.taskRegistry).length;
-  
+
   console.log('\n╔═══════════════════════════════════════════════════════════════════╗');
   console.log(`║  HSCSG NEXT STEPS ORCHESTRATOR — Ciclo ${state.cycle}                          ║`);
   console.log(`║  Estado: ${completed}/${total} tareas completadas | Workstream: ${state.currentWorkstream}    ║`);
   console.log('╠═══════════════════════════════════════════════════════════════════╣');
   console.log('║  PRÓXIMAS ACCIONES RECOMENDADAS (orden topológico + score):      ║');
   console.log('║                                                                  ║');
-  
+
   sorted.slice(0, 8).forEach((t, i) => {
     const depCount = (t.dependencies || []).length;
     const effortBar = '●'.repeat(t.effort) + '○'.repeat(5 - t.effort);
     console.log(`║  ${i+1}. [${t.id.padEnd(20)}] ${t.workstream.padEnd(12)} ${effortBar} Esf:${t.effort} Val:${t.value} Dep:${depCount}  ║`);
     console.log(`║       └─> ${t.notes || t.title}                                       ║`);
   });
-  
+
   const userTasks = getAllTasks(state).filter(t => t.source === 'user' && t.status === 'pending');
   if (userTasks.length > 0) {
     console.log('║                                                                  ║');
@@ -162,12 +172,12 @@ function cmdStatus(state) {
       console.log(`║  ${t.id}: "${t.title}"  (${t.workstream})                          ║`);
     });
   }
-  
+
   console.log('║                                                                  ║');
   console.log('║  ACCIONES: [1-8] Ejecutar  |  [a] Añadir tarea  |  [r] Repriorizar║');
   console.log('║            [g] Ver grafo  |  [n] Próxima óptima |  [q] Salir     ║');
   console.log('╚═══════════════════════════════════════════════════════════════════╝\n');
-  
+
   return sorted;
 }
 
@@ -217,7 +227,7 @@ function cmdGraph(state) {
   console.log(`ROLES-mapping ──► ROLES-state ──► ROLES-ui`);
   console.log(`                                    │`);
   console.log(`DEPLOY-link ──► DEPLOY-verify ──► DEPLOY-auto\n`);
-  
+
   console.log('🔴 Critical Path HSCSG: P0-netbenefit → P0-copiosis → COACH-automaton → COACH-integration → MIG-P5-Produce → MIG-P9/MIG-P10 (18 días mínimos)');
   console.log('🔴 Critical Path GAIA: P0-copiosis → COACH-automaton → GAIA-gov-sync → GAIA-trust-bridge → GAIA-app-federate → GAIA-eco-sync (15 días adicionales)');
   console.log('🔴 Critical Path Integrado: 18 + 15 = 33 días mínimos\n');
@@ -239,14 +249,14 @@ function cmdNext(state) {
 
 async function cmdAddTask(state) {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-  
+
   const ask = (q) => new Promise(resolve => rl.question(q, resolve));
-  
+
   console.log('\n➕ AÑADIR TAREA PERSONALIZADA\n');
-  
+
   const title = await ask('Título: ');
   if (!title.trim()) { console.log('❌ Título requerido'); rl.close(); return state; }
-  
+
   const workstream = await ask('Workstream [P0_SPECS/MIGRATION/COACH/ROLES/DEPLOY/NEW]: ') || 'NEW';
   const depsInput = await ask('Dependencias (IDs separadas por coma, vacío=ninguna): ');
   const deps = depsInput.split(',').map(s => s.trim()).filter(Boolean);
@@ -254,22 +264,22 @@ async function cmdAddTask(state) {
   const value = parseInt(await ask('Valor 1-100 [70]: ') || '70');
   const priority = parseInt(await ask('Prioridad 0-100 [80]: ') || '80');
   const notes = await ask('Notas: ');
-  
+
   // Generate ID
   const prefix = workstream === 'NEW' ? 'U' : workstream.substring(0,3).toUpperCase();
   const existing = Object.keys(state.taskRegistry).filter(k => k.startsWith(prefix + '-')).length;
   const id = `${prefix}-${String(existing + 1).padStart(3, '0')}`;
-  
+
   const newTask = {
     id, title, workstream, source: 'user', priority, effort, value,
     dependencies: deps, blocks: [], status: 'pending',
     notes, created: new Date().toISOString(), updated: new Date().toISOString()
   };
-  
+
   state.taskRegistry[id] = newTask;
   state.userPriorities.unshift(id);
   state.sessionLog.push({ timestamp: new Date().toISOString(), action: 'add-task', task: id, user: 'Isaacko0' });
-  
+
   saveState(state);
   console.log(`\n✅ Tarea ${id} registrada. Aparecerá en próximo menú.`);
   rl.close();
@@ -279,15 +289,15 @@ async function cmdAddTask(state) {
 async function cmdReprioritize(state) {
   const available = getAvailableTasks(state);
   const sorted = sortByPriority(available, state);
-  
+
   console.log('\n🔄 REPRIORIZAR - Marca prioridad 0-100 (Enter=mantener):\n');
   sorted.slice(0, 10).forEach((t, i) => {
     console.log(`${i+1}. [${t.id}] ${t.title} (actual: ${t.priority})`);
   });
-  
+
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   const ask = (q) => new Promise(resolve => rl.question(q, resolve));
-  
+
   for (let i = 0; i < Math.min(10, sorted.length); i++) {
     const input = await ask(`Prioridad para ${sorted[i].id} [${sorted[i].priority}]: `);
     if (input.trim()) {
@@ -299,7 +309,7 @@ async function cmdReprioritize(state) {
       }
     }
   }
-  
+
   saveState(state);
   console.log('\n✅ Prioridades actualizadas.');
   rl.close();
@@ -310,29 +320,29 @@ async function cmdRun(state, taskId) {
   const task = getTask(state, taskId);
   if (!task) { console.log(`❌ Tarea ${taskId} no encontrada`); return state; }
   if (task.status === 'done') { console.log(`✅ ${taskId} ya completada`); return state; }
-  
+
   // Check dependencies
   const blocked = (task.dependencies || []).filter(depId => getTask(state, depId)?.status !== 'done');
   if (blocked.length > 0) {
     console.log(`❌ ${taskId} bloqueada por: ${blocked.join(', ')}`);
     return state;
   }
-  
+
   task.status = 'in_progress';
   state.currentTask = taskId;
   state.currentWorkstream = task.workstream;
   state.sessionLog.push({ timestamp: new Date().toISOString(), action: 'run-start', task: taskId });
   saveState(state);
-  
+
   console.log(`\n🚀 EJECUTANDO: [${taskId}] ${task.title}`);
   console.log(`   Workstream: ${task.workstream}`);
   console.log(`   Esfuerzo estimado: ${task.effort} días`);
   console.log(`   Notas: ${task.notes || '—'}`);
-  
+
   // Simulate work (in real impl, this would call actual build/migration commands)
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   const ask = (q) => new Promise(resolve => rl.question(q, resolve));
-  
+
   console.log('\n   Pasos sugeridos (marca cada uno):');
   const steps = [
     'Crear archivos core (.ts)',
@@ -342,7 +352,7 @@ async function cmdRun(state, taskId) {
     'Verificar build (pnpm build)',
     'Test manual en navegador'
   ];
-  
+
   for (const step of steps) {
     const done = await ask(`   ☐ ${step} [s/n]: `);
     if (done.toLowerCase() !== 's') {
@@ -353,13 +363,13 @@ async function cmdRun(state, taskId) {
       return state;
     }
   }
-  
+
   task.status = 'done';
   task.updated = new Date().toISOString();
   state.completedTasks.push(taskId);
   state.sessionLog.push({ timestamp: new Date().toISOString(), action: 'run-complete', task: taskId, result: 'done' });
   saveState(state);
-  
+
   console.log(`\n✅ ${taskId} COMPLETADA`);
   rl.close();
   return state;
@@ -371,9 +381,9 @@ async function main() {
   const args = process.argv.slice(2);
   const command = args[0] || 'status';
   const arg = args[1];
-  
+
   let state = loadState();
-  
+
   switch (command) {
     case 'status':
       cmdStatus(state);
