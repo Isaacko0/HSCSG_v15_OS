@@ -130,8 +130,8 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **BI-104** | **hscsg_definition.md** | `docs/` | ✅ **Completo** | Documentos del usuario (Isaac Ko) | Definición oficial Holosociocibersimbiogenesis: Cuaternidad Soberana Ampliada, 5 planos, Leyes MJ, Funnel transición, Autodiagnóstico |
 | **BI-105** | **obsidian_vault_backup.md** | `docs/` | ✅ **Completo** | `H:\\Mi unidad\\HSCSG Empresa mas memoria\\` (Vault Obsidian) | Backup quirúrgico: HSCSG_MJ_SYNTHESIS_v15 (38KB), Autovividasis, URBION, Karatani, Plan 90 días, Fases 0→E |
 | **BI-106** | **obsidian_vault_integration.md** | `docs/` | ✅ **Completo** | `H:\\Mi unidad\\HSCSG Empresa mas memoria\\` (Vault Obsidian) | Integración operativa: 11 isomorfismos vault ↔ código, 7 módulos nuevos, CAC v12, ZNU v2, Autómata v2 MJ, Talents v2, Autovividasis |
-| **BI-107** | **ecoaldea_monte_backup.md** | `docs/` | ✅ **Completo** | Ecoaldea del Monte / Feria Conuquera | Backup quirúrgico: 43 docs técnicos + página pública, 19 fases completadas, 152 migraciones, pool global, padrino, FRNE, fideicomiso, perfiles, .nfcpkg, nodo satélite |
-| **BI-108** | **ecoaldea_monte_integration.md** | `docs/` | ✅ **Completo** | Ecoaldea del Monte / Feria Conuquera | Integración operativa: 28 isomorfismos, 13 Take / 10 Adapt / 5 Discard, 12 módulos nuevos, 11 pantallas, plan 6 semanas, 12 briefs operativos |
+| **BI-107** | **ecoaldea_monte_backup.md** | `docs/` | ✅ **Completo** | Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas / Feria Conuquera | Backup quirúrgico: 43 docs técnicos + página pública, 19 fases completadas, 152 migraciones, pool global, padrino, FRNE, fideicomiso, perfiles, .nfcpkg, nodo satélite |
+| **BI-108** | **ecoaldea_monte_integration.md** | `docs/` | ✅ **Completo** | Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas / Feria Conuquera | Integración operativa: 28 isomorfismos, 13 Take / 10 Adapt / 5 Discard, 12 módulos nuevos, 11 pantallas, plan 6 semanas, 12 briefs operativos |
 
 ### 🎨 FRONTEND / UX / PATRONES DE INTERFAZ
 | # | Documento | Ubicación | Estado | Fuente | Descripción |
@@ -174,14 +174,20 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 |### 🌱 ECOALDEA DEL MONTE / FERIA CONUQUERA (Federación Ecoaldeas)
 || # | Documento | Ubicación | Estado | Fuente | Descripción |
 ||---|-----------|-----------|--------|--------|-------------|
-|| **BF-094** | **ecoaldea_monte_backup.md** | `docs/` | ✅ **NUEVO** | Ecoaldea del Monte / Feria Conuquera | Backup quirúrgico: 43 docs técnicos + página pública, 19 fases completadas, 152 migraciones, pool global, padrino, FRNE, fideicomiso, perfiles, .nfcpkg, nodo satélite |
-|| **BF-095** | **ecoaldea_monte_integration.md** | `docs/` | ✅ **NUEVO** | Ecoaldea del Monte / Feria Conuquera | Integración operativa: 28 isomorfismos, 13 Take / 10 Adapt / 5 Discard, 12 módulos nuevos, 11 pantallas, plan 6 semanas, 12 briefs operativos |
+|| **BF-094** | **ecoaldea_monte_backup.md** | `docs/` | ✅ **NUEVO** | Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas / Feria Conuquera | Backup quirúrgico: 43 docs técnicos + página pública, 19 fases completadas, 152 migraciones, pool global, padrino, FRNE, fideicomiso, perfiles, .nfcpkg, nodo satélite |
+|| **BF-095** | **ecoaldea_monte_integration.md** | `docs/` | ✅ **NUEVO** | Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas / Feria Conuquera | Integración operativa: 28 isomorfismos, 13 Take / 10 Adapt / 5 Discard, 12 módulos nuevos, 11 pantallas, plan 6 semanas, 12 briefs operativos |
 
 ### 🤖 OPENEXECUTIVE (SenteLabsAI) — Equipo Ejecutivo Multi-Agente
-|| # | Documento | Ubicación | Estado | Fuente | Descripción |
-||---|-----------|-----------|--------|--------|-------------|
-|| **BF-106** | **openexecutive_backup.md** | `docs/` | ✅ **NUEVO** | OpenExecutive (SenteLabsAI) | Backup quirúrgico: 8 agentes especialistas (CSO/CFO/CHRO/GC/COO/CMO/CPO/Board), RAG dual, memoria episódica, scheduler, multi-interfaz |
-|| **BF-107** | **openexecutive_integration.md** | `docs/` | ✅ **NUEVO** | OpenExecutive (SenteLabsAI) | Integración operativa: 22 isomorfismos, 9 Take / 10 Adapt / 3 Discard, 7 módulos nuevos, 6 pantallas, plan 5 semanas, 10 briefs operativos |
+|| # | Documento | Ubicación | Estado | Fuente | Descripción ||
+||---|-----------|-----------|--------|--------|-------------||
+|| **BF-106** | **openexecutive_backup.md** | `docs/` | ✅ **NUEVO** | OpenExecutive (SenteLabsAI) | Backup quirúrgico: 8 agentes especialistas (CSO/CFO/CHRO/GC/COO/CMO/CPO/Board), RAG dual, memoria episódica, scheduler, multi-interfaz ||
+|| **BF-107** | **openexecutive_integration.md** | `docs/` | ✅ **NUEVO** | OpenExecutive (SenteLabsAI) | Integración operativa: 22 isomorfismos, 9 Take / 10 Adapt / 3 Discard, 7 módulos nuevos, 6 pantallas, plan 5 semanas, 10 briefs operativos ||
+
+### 📈 MARKETING OS (Yuzzyuk) — Departamento Marketing Completo
+|| # | Documento | Ubicación | Estado | Fuente | Descripción ||
+||---|-----------|-----------|--------|--------|-------------||
+|| **BF-116** | **marketing_os_backup.md** | `docs/` | ✅ **NUEVO** | Marketing OS (Yuzzyuk) | Backup quirúrgico: 14 módulos (audit, geo, copy, hooks, paid-ads, email, social, launch, positioning, competitive, app-store, analytics, slop-patterns, rubrics/specs) |
+|| **BF-117** | **marketing_os_integration.md** | `docs/` | ✅ **NUEVO** | Marketing OS (Yuzzyuk) | Integración operativa: 18 isomorfismos, 8 Take / 7 Adapt / 3 Discard, 12 módulos nuevos, 6 pantallas, plan 4 semanas, 9 briefs operativos |
 
 ### ⚙️ MÓDULOS TÉCNICOS HSCSG v15 OS (Core)
 | # | Documento | Ubicación | Estado | Módulo | Descripción |
@@ -326,10 +332,11 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **USDGLO** | ✅ 1 backup | ✅ 1 integration | Stablecoin → priceParity oracle | 0 | 2 |
 | **opc-source/one-person-company** | ✅ `opc_source_opc_backup.md` | ✅ `opc_source_opc_integration.md` | `lib/multi_cluster.ts`, `lib/service_mesh.ts`, `lib/observability_stack.ts`, `lib/cloud_native_container.ts`, `lib/cncf_landscape.ts`, `lib/alibaba_cloud_stack.ts`, `lib/cluster_delivery.ts`, `lib/iac_manager.ts`, `lib/microservice_frameworks.ts`, `lib/os_reference.ts`, `docs/infrastructure_diagram_v010.md` | 1 (`hscsg-opc-source-assimilation` pendiente) | 2 |
 | **chen103226/awesome-one-person-company** | ✅ `awesome_opc_backup.md` | ✅ `awesome_opc_integration.md` | `lib/case_studies.ts`, `lib/stacks_recommendations.ts`, `lib/mom_test_methodology.ts`, `docs/30_day_launch_checklist.md`, `docs/learning_paths.md`, `docs/creator_quotes.md` | 1 (`hscsg-awesome-opc-assimilation` pendiente) | 2 |
-|| **Ecoaldea del Monte / Feria Conuquera** | ✅ `ecoaldea_monte_backup.md` | ✅ `ecoaldea_monte_integration.md` | 0 (plan 12 módulos nuevos) | 0 | 2 ||
+|| **Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas / Feria Conuquera** | ✅ `ecoaldea_monte_backup.md` | ✅ `ecoaldea_monte_integration.md` | 0 (plan 12 módulos nuevos) | 0 | 2 ||
 || **OpenExecutive (SenteLabsAI)** | ✅ `openexecutive_backup.md` | ✅ `openexecutive_integration.md` | 0 (plan 7 módulos nuevos) | 0 | 2 ||
+|| **Marketing OS (Yuzzyuk)** | ✅ `marketing_os_backup.md` | ✅ `marketing_os_integration.md` | 0 (plan 12 módulos nuevos) | 0 | 2 ||
 
-**Total:** 41 proyectos fuente | 33 completados (66 docs backup+integration) | 8 pendientes | **137 briefs totales** | 4 skills Hermes desplegadas | 48 docs operativos en `docs/`
+**Total:** 42 proyectos fuente | 34 completados (68 docs backup+integration) | 8 pendientes | **146 briefs totales** | 4 skills Hermes desplegadas | 50 docs operativos en `docs/`
 
 ---
 
@@ -376,4 +383,4 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 
 ---
 
-*Última actualización: 2026-09-02 — Ciclo: Skill brief-detector-recommender + 82 docs backup/integration + 127 briefs totales + 4 skills Hermes + Análisis exhaustivo OpenHaven+Weave+Gaia + Ecoaldea del Monte asimilada*
+*Última actualización: 2026-09-02 — Ciclo: Skill brief-detector-recommender + 82 docs backup/integration + 127 briefs totales + 4 skills Hermes + Análisis exhaustivo OpenHaven+Weave+Gaia + Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas asimilada*

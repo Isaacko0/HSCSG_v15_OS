@@ -1,6 +1,6 @@
-# Ecoaldea del Monte / Feria Conuquera Agroecológica — Backup Quirúrgico Completo
+# Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas / Feria Conuquera Agroecológica — Backup Quirúrgico Completo
 
-**Fuente original:** `C:\Users\Isaacko0\Downloads\Desktop\HSCSG dinero flores\nuevas integraciones\Documentacion tecnica Ecoaldea del Monte.zip` + `Ecoaldea del Monte Cergio Monasterio.html` (página pública de federación)
+**Fuente original:** `C:\Users\Isaacko0\Downloads\Desktop\HSCSG dinero flores\nuevas integraciones\Documentacion tecnica Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas.zip` + `Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas Cergio Monasterio.html` (página pública de federación)
 
 **Fecha de asimilación:** 2026-09-02
 
@@ -339,7 +339,7 @@ R_neto = I_ini - D_desgaste - C_restauracion +/- B_TQ - T_salida
 
 ---
 
-## 🌱 Página Pública: Feria Conuquera Agroecológica (Ecoaldea del Monte Cergio Monasterio.html)
+## 🌱 Página Pública: Feria Conuquera Agroecológica (Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas Cergio Monasterio.html)
 
 **URL original:** `https://feria.loanstly.com/main/p/federacion`
 
@@ -366,7 +366,7 @@ R_neto = I_ini - D_desgaste - C_restauracion +/- B_TQ - T_salida
 
 ### Isomorfismos Directos con HSCSG
 
-| Ecoaldea del Monte | HSCSG v15 OS Equivalente |
+| Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas | HSCSG v15 OS Equivalente |
 |--------------------|---------------------------|
 | **Nodo federado** | Nodo HSCSG / tribu fractal |
 | **Piscina global multilateral** | Vasos Comunicantes / red de seguridad distribuida |
@@ -402,9 +402,9 @@ R_neto = I_ini - D_desgaste - C_restauracion +/- B_TQ - T_salida
 
 ## 📁 Archivos Fuente Referenciados
 
-- ZIP: `C:\Users\Isaacko0\Downloads\Desktop\HSCSG dinero flores\nuevas integraciones\Documentacion tecnica Ecoaldea del Monte.zip` (237 KB, 43 archivos .md)
-- HTML: `C:\Users\Isaacko0\Downloads\Desktop\HSCSG dinero flores\nuevas integraciones\Ecoaldea del Monte Cergio Monasterio.html` (144 KB, página federación completa)
-- Extraído en: `C:\Users\Isaacko0\ecoaldea_monte_extract\Documentacion tecnica Ecoaldea del Monte\`
+- ZIP: `C:\Users\Isaacko0\Downloads\Desktop\HSCSG dinero flores\nuevas integraciones\Documentacion tecnica Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas.zip` (237 KB, 43 archivos .md)
+- HTML: `C:\Users\Isaacko0\Downloads\Desktop\HSCSG dinero flores\nuevas integraciones\Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas Cergio Monasterio.html` (144 KB, página federación completa)
+- Extraído en: `C:\Users\Isaacko0\ecoaldea_monte_extract\Documentacion tecnica Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas\`
 
 ---
 

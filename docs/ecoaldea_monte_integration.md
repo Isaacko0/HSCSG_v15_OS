@@ -1,4 +1,4 @@
-# Ecoaldea del Monte / Feria Conuquera → HSCSG v15 OS — Integración Operativa
+# Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas / Feria Conuquera → HSCSG v15 OS — Integración Operativa
 
 **Fecha:** 2026-09-02  
 **Fuente:** `docs/ecoaldea_monte_backup.md` (43 docs técnicos + página pública)  
@@ -8,7 +8,7 @@
 
 ## 🔄 Tabla Maestra de Isomorfismos (28 conceptos × 2 sistemas)
 
-| # | Concepto Ecoaldea del Monte | Concepto HSCSG v15 OS | Tipo | Acción | Notas |
+| # | Concepto Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas | Concepto HSCSG v15 OS | Tipo | Acción | Notas |
 |---|----------------------------|----------------------|------|--------|-------|
 | 1 | Nodo federado autónomo | Tribu fractal / Nodo HSCSG | **Take** | ✅ Directo | Misma arquitectura: soberanía local + federación voluntaria |
 | 2 | Piscina global multilateral (node_bridge_global) | Vasos Comunicantes / Red seguridad distribuida | **Take** | ✅ Directo | Pool compartido real vs verificación bilateral |
@@ -324,7 +324,7 @@ interface EcoaldeaState {
 
 ## 🔗 VASOS COMUNICANTES ACTUALIZADOS (Ecoaldea → HSCSG)
 
-| Vaso | Ecoaldea del Monte | HSCSG v15 OS | Estado |
+| Vaso | Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas | HSCSG v15 OS | Estado |
 |------|-------------------|--------------|--------|
 | 1 | **Gobernanza: Sync** | Federación + Consenso 100% | 🟡 Adaptar (triaxial) |
 | 2 | **Confianza: Bridge** | Sponsor → Nodo Mentor + Reserva Subsistencia | 🟡 Adaptar |
