@@ -287,6 +287,67 @@ pushed to GitHub once already. The user couldn't see the corrections on GitHub
 because the file on disk was already broken; the agent had reported "pushed" but
 the file was still broken. The audit-then-fix cycle is what surfaced the issue.
 
+**Pitfall D: Hardcoded Windows MSYS paths break in native Python.**
+Inside any Python script that lives under `skills/<name>/scripts/`, do NOT
+hardcode paths like `Path("/c/Users/Isaacko0/HSCSG_v15_OS/docs")`. This works in
+Git Bash but fails silently in native Windows Python (`python.exe` from PATH),
+which sees the path as a relative single-segment string and resolves to the
+wrong directory (e.g. `C:\Users\Isaacko0\HSCSG_v15_OS\skills\docs` instead of
+`C:\Users\Isaacko0\HSCSG_v15_OS\docs`).
+
+**Always use:**
+```python
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent.parent.parent  # scripts/<name>/ → skills/ → repo/
+DOCS_DIR = REPO_ROOT / "docs"
+```
+
+Verified in `hscsg-document-architect/scripts/audit_docs.py` (fixed 2026-09-04,
+commit `4dcaa58`): initially pointed to `skills/docs` instead of `docs/`; fix
+went from `parent.parent` to `parent.parent.parent`.
+
+**Pitfall E: "Pushed" status alone is not enough — surface the URL and local path.**
+After committing and pushing any document the user will want to read, the agent
+must include in the final reply:
+
+1. The **GitHub URL** for the file:
+   `https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/<file>.md`
+2. The **local Windows path** (since this user works on Windows with Git Bash):
+   `C:\Users\Isaacko0\HSCSG_v15_OS\docs\<file>.md`
+3. The **commit SHA** (short, 7 chars): `<7char-sha>`
+
+Without this trio, the user has to dig through `git log` to find what was pushed,
+which broke the 2026-09-04 session when the user asked "no veo ningun documento
+que creamos hoy en github, tambien dame la ruta local" — the assistant had
+*correctly* pushed the file but did not surface the URL/path in the reply, and
+the user perceived that nothing was done. Embed this in the final message
+template, not just memory.
+
+**Pitfall F: The audit script `scripts/audit_docs.py` is the re-runnable form of Pitfall A/B.**
+The bash one-liners in Pitfall A and B are kept for copy-paste in chat replies,
+but the durable reusable form is `scripts/audit_docs.py` (lives next to this
+SKILL.md, mirrored to `~/AppData/Local/hermes/skills/<category>/hscsg-document-architect/scripts/audit_docs.py`).
+Always prefer running the script over re-typing the one-liners — it covers all
+known pitfalls in one pass and supports `--fix` for auto-typo correction:
+
+```bash
+# Audit every .md in docs/ of the repo
+python scripts/audit_docs.py
+
+# Audit a specific file
+python scripts/audit_docs.py docs/RESPUESTA_A_JAVIER_FATJO_ECALDEA_HSCSG.md
+
+# Auto-fix known typos (does NOT fix broken tables — those need manual intervention)
+python scripts/audit_docs.py --fix docs/RESPUESTA_A_JAVIER_FATJO_ECALDEA_HSCSG.md
+```
+
+**Pitfall G: `hscsg-repo-guard` is the sibling skill for repo ingestion.**
+When the user says "guarda este repo" or "asimila este proyecto", load
+`hscsg-repo-guard` instead — it owns the pre-correction backup, the surgical
+backup file, and the integration doc scaffolding. The pre-correction backup
+recipe in Pitfall C above (`~/Documents/HSCSG_BACKUPS/...`) is the same workflow
+`hscsg-repo-guard` runs internally; keep them in sync.
+
 ---
 
 ## ⚠️ PITFALL — "Documento creado y pusheado" ≠ "Documento correcto"
