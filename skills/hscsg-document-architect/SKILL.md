@@ -193,6 +193,122 @@ concatenated section strings and verifies all `## N.` headings are present/in-or
 
 ---
 
+## ⚠️ PITFALLS — Spanish docs with comparison tables (high-frequency, learned 2026-09-04)
+
+**Pitfall A: Markdown tables without the `|---|---|` separator render as plain text.**
+The number-one silent bug in long Spanish strategy documents. When writing tables
+to compare concepts, systems, or any tabular data, **every table MUST have**:
+
+```
+| Column A | Column B | Column C |
+|----------|----------|----------|
+| row 1    | ...      | ...      |
+```
+
+The second line (the `|---|---|`) is what tells markdown parsers "this is a table."
+Forgetting it makes the entire block render as a paragraph in GitHub, VS Code,
+Vercel preview, and any other markdown engine. Easy to miss in long outputs.
+
+**Audit recipe (run before declaring any long doc "done"):**
+```bash
+cd /c/Users/Isaacko0/HSCSG_v15_OS/docs
+python3 -c "
+import re, sys
+for f in ['YOUR_FILE.md']:
+    with open(f) as fp: content = fp.read()
+    lines = content.split('\n')
+    bad = []
+    for i, line in enumerate(lines):
+        # Header line: starts/ends with pipe, has 2+ pipes
+        if line.strip().startswith('|') and line.strip().endswith('|') and line.count('|') >= 3:
+            # Next line should be separator
+            if i+1 < len(lines):
+                nxt = lines[i+1].strip()
+                if not (nxt.startswith('|') and '---' in nxt and nxt.endswith('|')):
+                    bad.append((i+1, line[:80]))
+    if bad:
+        print(f'{f}: {len(bad)} tables missing separator:')
+        for ln, txt in bad: print(f'  line {ln}: {txt}')
+    else:
+        print(f'{f}: OK ({len(re.findall(chr(124)+chr(124), content))//4} tables valid)')
+"
+```
+
+**Pitfall B: English/German/Portuguese interference typos in Spanish docs.**
+When writing long Spanish strategy docs in bursts, common silent typos:
+- `HSCSGllama` (missing space) → `HSCSG llama`
+- `addtion` → `añadir` or `adición`
+- `Lex I MJ` → `Ley I MJ` (HSCSG Leyes MJ are "Leyes", not "Lex")
+- `mögliche` (German "possible") → `posible`
+- `classifyadas` → `clasificadas`
+- `informaless` → `informales`
+- `interoperability` → `interoperabilidad`
+- `troba` (Catalan) → `encuentra`
+- `HSCSG compartida` (conjugated form needed) → `HSCSG comparte`
+- `HSCSG addtion` (English "addition") → `HSCSG añade`
+
+**Audit recipe:**
+```bash
+cd /c/Users/Isaacko0/HSCSG_v15_OS/docs
+grep -nE 'HSCSGllama|HSCSG addtion|classifyadas|informaless| addtion |Lex [I]+ MJ|Lex [II]+ MJ|Lex [III]+ MJ| mögliche| troba | trobes |interoperability|HSCSG compartida' *.md
+```
+
+If matches appear in a file OTHER than a section that quotes the typo intentionally
+(e.g. a "corrections applied" footer), they need to be fixed. A 17-typo fix
+session in RESPUESTA_A_JAVIER_FATJO_ECALDEA_HSCSG.md (415 lines) caught the issue
+AFTER it had been committed and pushed once already.
+
+**Pitfall C: "Pre-correction backup" pattern when user asks to review/fix existing docs.**
+When the user says "haz backup local y revisa todo lo que quedó truncado y mal
+escrito desde <DATE>", the mandatory sequence is:
+
+1. **Backup first** to `~/Documents/HSCSG_BACKUPS/<YYYY-MM-DD-pre-correccion>/`:
+   ```bash
+   mkdir -p ~/Documents/HSCSG_BACKUPS/2026-09-04-pre-correccion
+   cd /c/Users/Isaacko0/HSCSG_v15_OS
+   cp -r docs/ ~/Documents/HSCSG_BACKUPS/2026-09-04-pre-correccion/docs/
+   cp -r skills/ ~/Documents/HSCSG_BACKUPS/2026-09-04-pre-correccion/skills/
+   cp -r scripts/ ~/Documents/HSCSG_BACKUPS/2026-09-04-pre-correccion/scripts/
+   du -sh ~/Documents/HSCSG_BACKUPS/2026-09-04-pre-correccion/*
+   ```
+2. **Audit** (combining both recipes above, plus content-level checks).
+3. **Correct in place** with `patch` for surgical fixes or `write_file` for full
+   rewrites of files <50KB. For files >50KB with many issues, the
+   `execute_code` + `open().write()` pattern from `references/large_markdown_recovery.md`
+   is preferred.
+4. **Verify with the same audits** — the post-fix grep/python should return 0
+   matches.
+5. **Single commit + push** with all the v2 fixes together, plus a footer in
+   each fixed file documenting what was corrected and why.
+
+**Why this matters:** The 2026-09-04 audit caught 8 broken tables + 17 typos in
+one 415-line file (`RESPUESTA_A_JAVIER_FATJO_ECALDEA_HSCSG.md`) that had been
+pushed to GitHub once already. The user couldn't see the corrections on GitHub
+because the file on disk was already broken; the agent had reported "pushed" but
+the file was still broken. The audit-then-fix cycle is what surfaced the issue.
+
+---
+
+## ⚠️ PITFALL — "Documento creado y pusheado" ≠ "Documento correcto"
+
+Symptom: agent reports "✅ file created and pushed" but the file on GitHub has
+broken tables, typos, or structural issues. User then asks "no veo el documento
+en GitHub" or "está mal escrito". Root cause: the agent verified the **push
+exited 0** but did not verify the **content was correct**.
+
+**Mitigation:** before reporting any doc done, run the table-separator and typo
+audits from Pitfall A/B above. The audit takes 5-10 seconds and catches
+~80% of silent corruption. Only after both audits return clean should the agent
+report "pushed and correct."
+
+**Why this matters:** The 2026-09-04 session included 9 docs (8 from prior days
++ 1 new) that the user "couldn't see on GitHub" — they were all pushed correctly
+but the user was looking at older or uncached URLs. The audit also surfaced
+truncation/typo issues that the prior session had missed. Both root causes
+require an explicit content audit, not just a `git status` check.
+
+---
+
 ## Quality Gates
 - Single self-contained Markdown file at the end of every session.
 - Every section the user asked to add is present and non-empty.
