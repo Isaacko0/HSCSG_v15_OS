@@ -24,7 +24,10 @@ from pathlib import Path
 
 # ----- Config ----------------------------------------------------------------
 
-DOCS_DIR = Path("/c/Users/Isaacko0/HSCSG_v15_OS/docs")
+# Resolve repo root from script location: skills/<name>/scripts/ → ../../..
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent.parent.parent
+DOCS_DIR = REPO_ROOT / "docs"
 
 # Common typos: pattern -> correction
 TYPO_FIXES = [
