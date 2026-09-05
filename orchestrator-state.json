@@ -1,0 +1,1179 @@
+{
+  "cycle": 1,
+  "version": "0.2.0",
+  "taskRegistry": {
+    "P0-netbenefit": {
+      "id": "P0-netbenefit",
+      "title": "Crear lib/netbenefit.ts",
+      "deps": [],
+      "effort": 3,
+      "value": 95,
+      "workstream": "P0_SPECS",
+      "source": "agent",
+      "priority": 90,
+      "blocks": [
+        "P0-cds_jurados",
+        "P0-copiosis"
+      ],
+      "status": "pending",
+      "notes": "Motor NetBenefit 8 escalas + CDS_Jurados weights"
+    },
+    "P0-cds_jurados": {
+      "id": "P0-cds_jurados",
+      "title": "Crear lib/cds_jurados.ts",
+      "deps": [
+        "P0-netbenefit"
+      ],
+      "effort": 3,
+      "value": 90,
+      "workstream": "P0_SPECS",
+      "source": "agent",
+      "priority": 88,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Jury summon, weights, actas RAO, rotation"
+    },
+    "P0-copiosis": {
+      "id": "P0-copiosis",
+      "title": "Crear lib/copiosis.ts",
+      "deps": [
+        "P0-netbenefit"
+      ],
+      "effort": 2,
+      "value": 88,
+      "workstream": "P0_SPECS",
+      "source": "agent",
+      "priority": 86,
+      "blocks": [
+        "P0-valueflows",
+        "COACH-automaton"
+      ],
+      "status": "pending",
+      "notes": "NetBenefitFlow, GoodType, LuxuryPriceNBR, CapitalAccessTier, BNGradient"
+    },
+    "P0-valueflows": {
+      "id": "P0-valueflows",
+      "title": "Extender ValueFlows types",
+      "deps": [
+        "P0-copiosis"
+      ],
+      "effort": 1,
+      "value": 85,
+      "workstream": "P0_SPECS",
+      "source": "agent",
+      "priority": 84,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Extended EconomicEvent con goodType, luxuryPriceNBR, capitalAccessTier, netBenefitFlow"
+    },
+    "MIG-P1-BranDNA": {
+      "id": "MIG-P1-BranDNA",
+      "title": "Migrar P1 BranDNA + store",
+      "deps": [],
+      "effort": 5,
+      "value": 92,
+      "workstream": "MIGRATION",
+      "source": "agent",
+      "priority": 92,
+      "blocks": [
+        "MIG-P2-Products",
+        "MIG-P3-Personas",
+        "MIG-P5-Produce",
+        "COACH-integration"
+      ],
+      "status": "pending",
+      "notes": "Base para P5 auto-llenado"
+    },
+    "MIG-P2-Products": {
+      "id": "MIG-P2-Products",
+      "title": "Migrar P2 Products",
+      "deps": [
+        "MIG-P1-BranDNA"
+      ],
+      "effort": 4,
+      "value": 88,
+      "workstream": "MIGRATION",
+      "source": "agent",
+      "priority": 88,
+      "blocks": [
+        "MIG-P4-Plan",
+        "MIG-P8-Pagos"
+      ],
+      "status": "pending",
+      "notes": ""
+    },
+    "MIG-P3-Personas": {
+      "id": "MIG-P3-Personas",
+      "title": "Migrar P3 Personas/CRM",
+      "deps": [
+        "MIG-P1-BranDNA"
+      ],
+      "effort": 5,
+      "value": 85,
+      "workstream": "MIGRATION",
+      "source": "agent",
+      "priority": 85,
+      "blocks": [
+        "MIG-P4-Plan",
+        "MIG-P11-Prospecta"
+      ],
+      "status": "pending",
+      "notes": ""
+    },
+    "MIG-P4-Plan": {
+      "id": "MIG-P4-Plan",
+      "title": "Migrar P4 StrategicBrain",
+      "deps": [
+        "MIG-P2-Products",
+        "MIG-P3-Personas"
+      ],
+      "effort": 4,
+      "value": 90,
+      "workstream": "MIGRATION",
+      "source": "agent",
+      "priority": 90,
+      "blocks": [
+        "MIG-P5-Produce",
+        "MIG-P7-Pauta"
+      ],
+      "status": "pending",
+      "notes": ""
+    },
+    "MIG-P5-Produce": {
+      "id": "MIG-P5-Produce",
+      "title": "Migrar P5 VITCH + auto-llenado P1→P5",
+      "deps": [
+        "MIG-P1-BranDNA",
+        "MIG-P4-Plan"
+      ],
+      "effort": 5,
+      "value": 95,
+      "workstream": "MIGRATION",
+      "source": "agent",
+      "priority": 95,
+      "blocks": [
+        "MIG-P9-Perfecciona",
+        "MIG-P10-Publica",
+        "COACH-integration"
+      ],
+      "status": "pending",
+      "notes": "Auto-llenado BranDNA→VITCH"
+    },
+    "MIG-P6-Persuade": {
+      "id": "MIG-P6-Persuade",
+      "title": "Migrar P6 CloserAI",
+      "deps": [
+        "MIG-P1-BranDNA"
+      ],
+      "effort": 4,
+      "value": 82,
+      "workstream": "MIGRATION",
+      "source": "agent",
+      "priority": 82,
+      "blocks": [],
+      "status": "pending",
+      "notes": ""
+    },
+    "MIG-P7-Pauta": {
+      "id": "MIG-P7-Pauta",
+      "title": "Migrar P7 MediaBuyer",
+      "deps": [
+        "MIG-P4-Plan"
+      ],
+      "effort": 4,
+      "value": 85,
+      "workstream": "MIGRATION",
+      "source": "agent",
+      "priority": 85,
+      "blocks": [],
+      "status": "pending",
+      "notes": ""
+    },
+    "MIG-P8-Pagos": {
+      "id": "MIG-P8-Pagos",
+      "title": "Migrar P8 RevenueThermometer",
+      "deps": [
+        "MIG-P2-Products"
+      ],
+      "effort": 3,
+      "value": 80,
+      "workstream": "MIGRATION",
+      "source": "agent",
+      "priority": 80,
+      "blocks": [],
+      "status": "pending",
+      "notes": ""
+    },
+    "MIG-P9-Perfecciona": {
+      "id": "MIG-P9-Perfecciona",
+      "title": "Migrar P9 QA/Iteration",
+      "deps": [
+        "MIG-P5-Produce"
+      ],
+      "effort": 3,
+      "value": 78,
+      "workstream": "MIGRATION",
+      "source": "agent",
+      "priority": 78,
+      "blocks": [],
+      "status": "pending",
+      "notes": ""
+    },
+    "MIG-P10-Publica": {
+      "id": "MIG-P10-Publica",
+      "title": "Migrar P10 Publica/Radar",
+      "deps": [
+        "MIG-P5-Produce"
+      ],
+      "effort": 3,
+      "value": 75,
+      "workstream": "MIGRATION",
+      "source": "agent",
+      "priority": 75,
+      "blocks": [],
+      "status": "pending",
+      "notes": ""
+    },
+    "MIG-P11-Prospecta": {
+      "id": "MIG-P11-Prospecta",
+      "title": "Migrar P11 Scout/LeadGen",
+      "deps": [
+        "MIG-P3-Personas"
+      ],
+      "effort": 3,
+      "value": 77,
+      "workstream": "MIGRATION",
+      "source": "agent",
+      "priority": 77,
+      "blocks": [],
+      "status": "pending",
+      "notes": ""
+    },
+    "COACH-automaton": {
+      "id": "COACH-automaton",
+      "title": "Crear lib/automaton.ts (SOUL, E²R, MJ Gate)",
+      "deps": [
+        "P0-netbenefit",
+        "P0-copiosis"
+      ],
+      "effort": 5,
+      "value": 90,
+      "workstream": "COACH",
+      "source": "agent",
+      "priority": 90,
+      "blocks": [
+        "COACH-hook"
+      ],
+      "status": "pending",
+      "notes": "SOUL, tiers, heartbeat, E²R, MJ Gate, spawn"
+    },
+    "COACH-hook": {
+      "id": "COACH-hook",
+      "title": "Crear hook useAutomaton()",
+      "deps": [
+        "COACH-automaton"
+      ],
+      "effort": 2,
+      "value": 88,
+      "workstream": "COACH",
+      "source": "agent",
+      "priority": 88,
+      "blocks": [
+        "COACH-integration"
+      ],
+      "status": "pending",
+      "notes": "Zustand integration"
+    },
+    "COACH-integration": {
+      "id": "COACH-integration",
+      "title": "Refactor CoachFAB → useAutomaton + BranDNA context",
+      "deps": [
+        "COACH-hook",
+        "MIG-P1-BranDNA"
+      ],
+      "effort": 3,
+      "value": 92,
+      "workstream": "COACH",
+      "source": "agent",
+      "priority": 92,
+      "blocks": [
+        "COACH-lucidez"
+      ],
+      "status": "pending",
+      "notes": "askAutomaton + BranDNA context + Lucidez toggle"
+    },
+    "COACH-lucidez": {
+      "id": "COACH-lucidez",
+      "title": "Modo Lucidez Material toggle en CoachFAB",
+      "deps": [
+        "COACH-integration"
+      ],
+      "effort": 2,
+      "value": 85,
+      "workstream": "COACH",
+      "source": "agent",
+      "priority": 85,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Botón luna/sol, .lucidez-raw blocks"
+    },
+    "ROLES-mapping": {
+      "id": "ROLES-mapping",
+      "title": "Definir mapping DeseOS→Coworkers en coworkerRoles.ts",
+      "deps": [],
+      "effort": 1,
+      "value": 80,
+      "workstream": "ROLES",
+      "source": "agent",
+      "priority": 80,
+      "blocks": [
+        "ROLES-state"
+      ],
+      "status": "pending",
+      "notes": "6 roles: Strategist, Creative Director, Closer, Media Buyer, Scout, QA Lead"
+    },
+    "ROLES-state": {
+      "id": "ROLES-state",
+      "title": "Actualizar coworkers.ts con deseosRole + seeds",
+      "deps": [
+        "ROLES-mapping"
+      ],
+      "effort": 2,
+      "value": 82,
+      "workstream": "ROLES",
+      "source": "agent",
+      "priority": 82,
+      "blocks": [
+        "ROLES-ui"
+      ],
+      "status": "pending",
+      "notes": ""
+    },
+    "ROLES-ui": {
+      "id": "ROLES-ui",
+      "title": "UI Coworkers: badges Creative/Operator, filtros",
+      "deps": [
+        "ROLES-state"
+      ],
+      "effort": 2,
+      "value": 78,
+      "workstream": "ROLES",
+      "source": "agent",
+      "priority": 78,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Chips color-coded, filtro sidebar"
+    },
+    "DEPLOY-link": {
+      "id": "DEPLOY-link",
+      "title": "Vercel link + env vars + deploy prod",
+      "deps": [],
+      "effort": 2,
+      "value": 95,
+      "workstream": "DEPLOY",
+      "source": "agent",
+      "priority": 95,
+      "blocks": [
+        "DEPLOY-verify"
+      ],
+      "status": "pending",
+      "notes": "Fix 404 DEPLOYMENT_NOT_FOUND"
+    },
+    "DEPLOY-verify": {
+      "id": "DEPLOY-verify",
+      "title": "Verificar rutas 200 + CoachFAB visible",
+      "deps": [
+        "DEPLOY-link"
+      ],
+      "effort": 1,
+      "value": 90,
+      "workstream": "DEPLOY",
+      "source": "agent",
+      "priority": 90,
+      "blocks": [
+        "DEPLOY-auto"
+      ],
+      "status": "pending",
+      "notes": "/, /coach, /boundaries, /coworkers"
+    },
+    "DEPLOY-auto": {
+      "id": "DEPLOY-auto",
+      "title": "Configurar auto-deploy on push",
+      "deps": [
+        "DEPLOY-verify"
+      ],
+      "effort": 1,
+      "value": 85,
+      "workstream": "DEPLOY",
+      "source": "agent",
+      "priority": 85,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Vercel dashboard Settings → Git"
+    },
+    "GAIA-gov-sync": {
+      "id": "GAIA-gov-sync",
+      "title": "Implementar governance:sync CDS↔Gaia DAO",
+      "deps": [
+        "P0-copiosis",
+        "COACH-automaton"
+      ],
+      "effort": 5,
+      "value": 95,
+      "workstream": "GAIA_INTEGRATION",
+      "source": "agent",
+      "priority": 95,
+      "blocks": [
+        "GAIA-trust-bridge",
+        "GAIA-app-federate"
+      ],
+      "status": "pending",
+      "notes": "VC-signed Decision Records, MJ Gate veto, RAO anchor"
+    },
+    "GAIA-trust-bridge": {
+      "id": "GAIA-trust-bridge",
+      "title": "Implementar trust:bridge NetBenefitFlow↔VC",
+      "deps": [
+        "GAIA-gov-sync",
+        "P0-valueflows"
+      ],
+      "effort": 5,
+      "value": 93,
+      "workstream": "GAIA_INTEGRATION",
+      "source": "agent",
+      "priority": 93,
+      "blocks": [
+        "GAIA-app-federate"
+      ],
+      "status": "pending",
+      "notes": "DIDComm, Project Weave, Trust Registry ↔ RAO"
+    },
+    "GAIA-infra-connect": {
+      "id": "GAIA-infra-connect",
+      "title": "Implementar infra:connect neko↔**Discovery Layer**",
+      "deps": [
+        "MIG-P10-Publica",
+        "DEPLOY-link"
+      ],
+      "effort": 4,
+      "value": 90,
+      "workstream": "GAIA_INTEGRATION",
+      "source": "agent",
+      "priority": 90,
+      "blocks": [
+        "GAIA-intel-match"
+      ],
+      "status": "pending",
+      "notes": "WebRTC discovery, Boundaries CEL allowlist"
+    },
+    "GAIA-intel-match": {
+      "id": "GAIA-intel-match",
+      "title": "Implementar intel:match Autómata↔AI Matching",
+      "deps": [
+        "GAIA-infra-connect",
+        "COACH-integration"
+      ],
+      "effort": 4,
+      "value": 92,
+      "workstream": "GAIA_INTEGRATION",
+      "source": "agent",
+      "priority": 92,
+      "blocks": [
+        "GAIA-eco-sync"
+      ],
+      "status": "pending",
+      "notes": "E²R ↔ Recommendation Engine, verifiable inference"
+    },
+    "GAIA-app-federate": {
+      "id": "GAIA-app-federate",
+      "title": "Implementar app:federate Marketplace↔CaaS-BM",
+      "deps": [
+        "GAIA-trust-bridge",
+        "MIG-P5-Produce"
+      ],
+      "effort": 5,
+      "value": 94,
+      "workstream": "GAIA_INTEGRATION",
+      "source": "agent",
+      "priority": 94,
+      "blocks": [
+        "GAIA-eco-sync"
+      ],
+      "status": "pending",
+      "notes": "Custom commission, Commonomics, ZNU settlement"
+    },
+    "GAIA-eco-sync": {
+      "id": "GAIA-eco-sync",
+      "title": "Implementar eco:sync Base Material↔Gaia Impact",
+      "deps": [
+        "GAIA-app-federate",
+        "GAIA-intel-match"
+      ],
+      "effort": 3,
+      "value": 88,
+      "workstream": "GAIA_INTEGRATION",
+      "source": "agent",
+      "priority": 88,
+      "blocks": [],
+      "status": "pending",
+      "notes": "CAC/PGS ↔ Gaia Score, multidimensional pipelines"
+    },
+    "GAIA-funding-proposal": {
+      "id": "GAIA-funding-proposal",
+      "title": "Propuesta financiación conjunta (Sección 15)",
+      "deps": [
+        "GAIA-gov-sync",
+        "GAIA-trust-bridge"
+      ],
+      "effort": 2,
+      "value": 90,
+      "workstream": "GAIA_INTEGRATION",
+      "source": "agent",
+      "priority": 90,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Arquitectura común: datos+confianza+IA+educación+proyectos+territorios+economía+regeneración"
+    },
+    "GAIA-marketplace-level3": {
+      "id": "GAIA-marketplace-level3",
+      "title": "Integrar Gaia AI Agent (Level 3) con CoachFAB",
+      "deps": [
+        "COACH-integration",
+        "GAIA-infra-connect"
+      ],
+      "effort": 3,
+      "value": 85,
+      "workstream": "GAIA_INTEGRATION",
+      "source": "agent",
+      "priority": 85,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Business+Personal assistance, Gaia ecosystem matchmaking"
+    },
+    "ECO-global-pool": {
+      "id": "ECO-global-pool",
+      "title": "Crear lib/global_pool.ts — Piscina global multilateral",
+      "deps": [],
+      "effort": 3,
+      "value": 95,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 95,
+      "blocks": [
+        "ECO-bilateral-pool",
+        "ECO-reconciliation"
+      ],
+      "status": "pending",
+      "notes": "Pool compartido real entre tribus, pool_type global/bilateral, sin filtrar counterpart"
+    },
+    "ECO-bilateral-pool": {
+      "id": "ECO-bilateral-pool",
+      "title": "Crear lib/bilateral_pool.ts — Piscinas bilaterales",
+      "deps": [
+        "ECO-global-pool"
+      ],
+      "effort": 2,
+      "value": 90,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 90,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Acuerdos pares, no afectan pool global, límites negociados"
+    },
+    "ECO-basket": {
+      "id": "ECO-basket",
+      "title": "Crear lib/basket.ts — Canasta básica federada (consenso 100%)",
+      "deps": [],
+      "effort": 3,
+      "value": 93,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 93,
+      "blocks": [
+        "ECO-energy-metric"
+      ],
+      "status": "pending",
+      "notes": "500 TQ base, items energéticos, propuesta federada, approvalThreshold 100"
+    },
+    "ECO-energy-metric": {
+      "id": "ECO-energy-metric",
+      "title": "Crear lib/energy_metric.ts — Métrica TQ=1kWh + ICE Database",
+      "deps": [
+        "ECO-basket"
+      ],
+      "effort": 3,
+      "value": 92,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 92,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Constante física inmutable, subset ICE materials, TQ↔kWh↔moneda local via priceParity"
+    },
+    "ECO-reconciliation": {
+      "id": "ECO-reconciliation",
+      "title": "Crear lib/reconciliation.ts — Reconexión off-grid + hash chain",
+      "deps": [
+        "ECO-global-pool"
+      ],
+      "effort": 3,
+      "value": 94,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 94,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Comparar last_hash, intercambiar divergencias, verificar firmas duales + hashes"
+    },
+    "ECO-modules": {
+      "id": "ECO-modules",
+      "title": "Crear lib/modules.ts — AssemblyOwnedModule (auto-suscripción)",
+      "deps": [],
+      "effort": 2,
+      "value": 88,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 88,
+      "blocks": [],
+      "status": "pending",
+      "notes": "is_assembly_owned=true, servicios obligatorios: energía, agua, comms, gobernanza"
+    },
+    "ECO-frne": {
+      "id": "ECO-frne",
+      "title": "Crear lib/frne.ts — Fórmula Restitución No Especulativa (FRNE)",
+      "deps": [],
+      "effort": 2,
+      "value": 90,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 90,
+      "blocks": [],
+      "status": "pending",
+      "notes": "R_neto = I_ini - D_desgaste - C_restauracion +/- B_TQ - T_salida, pago 12-24 meses"
+    },
+    "ECO-land-trust": {
+      "id": "ECO-land-trust",
+      "title": "Crear lib/land_trust.ts — Fideicomiso comunitario inalienable",
+      "deps": [],
+      "effort": 2,
+      "value": 88,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 88,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Tierra colectiva/indivisible/inalienable, usufructo membresía activa, no venta mercado abierto"
+    },
+    "ECO-cultural-profiles": {
+      "id": "ECO-cultural-profiles",
+      "title": "Crear lib/cultural_profiles.ts — Cultura anidada (8 perfiles + custom)",
+      "deps": [],
+      "effort": 3,
+      "value": 91,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 91,
+      "blocks": [
+        "ECO-norm-gossip"
+      ],
+      "status": "pending",
+      "notes": "Adventista, ISKCON, Plum Village, Halal, Kosher, Jain, Vegano, Ital Rastafari + crear custom"
+    },
+    "ECO-norm-gossip": {
+      "id": "ECO-norm-gossip",
+      "title": "Crear lib/norm_gossip.ts — Flujo normas descentralizado (CRDT)",
+      "deps": [
+        "ECO-cultural-profiles"
+      ],
+      "effort": 3,
+      "value": 89,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 89,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Gossip 60s, sharing prohibiciones, auto-aprobación opcional, independencia local"
+    },
+    "ECO-skill-runtime": {
+      "id": "ECO-skill-runtime",
+      "title": "Crear lib/skill_runtime.ts — Runtime WASM/QuickJS (evolución .nfcpkg)",
+      "deps": [],
+      "effort": 4,
+      "value": 93,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 93,
+      "blocks": [
+        "ECO-skill-marketplace"
+      ],
+      "status": "pending",
+      "notes": "Sandbox QuickJS/WASM, timeout configurable, capacidades declarativas, firmado tribu"
+    },
+    "ECO-skill-marketplace": {
+      "id": "ECO-skill-marketplace",
+      "title": "Crear lib/skill_marketplace.ts + CLI hermes skill install/publish",
+      "deps": [
+        "ECO-skill-runtime"
+      ],
+      "effort": 3,
+      "value": 90,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 90,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Marketplace local, registry git, semver, hermes skill install <url>"
+    },
+    "ECO-tribal-gatherings": {
+      "id": "ECO-tribal-gatherings",
+      "title": "Crear lib/tribal_gatherings.ts — Encuentros estacionales (4/año)",
+      "deps": [],
+      "effort": 2,
+      "value": 85,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 85,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Solsticios/equinoccios, sincronización pools, intercambio semillas, rituales, actas"
+    },
+    "ECO-screens": {
+      "id": "ECO-screens",
+      "title": "Crear 11 pantallas Ecoaldea: /global-pool, /bilateral-pools, /basket-governance, /energy-metric, /reconciliation, /cultural-profiles, /norm-gossip, /frne-calculator, /land-trust, /tribal-gatherings, /skill-marketplace",
+      "deps": [
+        "ECO-global-pool",
+        "ECO-basket",
+        "ECO-energy-metric",
+        "ECO-reconciliation",
+        "ECO-cultural-profiles",
+        "ECO-norm-gossip",
+        "ECO-frne",
+        "ECO-land-trust",
+        "ECO-skill-runtime",
+        "ECO-tribal-gatherings"
+      ],
+      "effort": 5,
+      "value": 95,
+      "workstream": "ECOALDEA_INTEGRATION",
+      "source": "agent",
+      "priority": 95,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Icon Leaf/Users, routing, i18n, store integration, sidebar items"
+    },
+    "OE-local-models": {
+      "id": "OE-local-models",
+      "title": "Crear lib/local_models.ts — Abstracción OpenAI-compatible (Ollama/LM Studio/vLLM)",
+      "deps": [],
+      "effort": 3,
+      "value": 95,
+      "workstream": "OPENEXECUTIVE_INTEGRATION",
+      "source": "agent",
+      "priority": 95,
+      "blocks": [
+        "OE-knowledge-seed",
+        "OE-background-extractor"
+      ],
+      "status": "pending",
+      "notes": "Interface unificada, hybrid routing per-coworker, test connection + model pull"
+    },
+    "OE-knowledge-seed": {
+      "id": "OE-knowledge-seed",
+      "title": "Crear lib/knowledge_seed.ts — Knowledge Seeding (Markdown → Vector Store)",
+      "deps": [
+        "OE-local-models"
+      ],
+      "effort": 3,
+      "value": 93,
+      "workstream": "OPENEXECUTIVE_INTEGRATION",
+      "source": "agent",
+      "priority": 93,
+      "blocks": [
+        "OE-background-extractor"
+      ],
+      "status": "pending",
+      "notes": "Lee knowledge/builtin/*.md al boot, chunks + embeddings (transformers.js) → IndexedDB, separado de tribe knowledge"
+    },
+    "OE-background-extractor": {
+      "id": "OE-background-extractor",
+      "title": "Crear lib/background_extractor.ts — Background Memory Extraction",
+      "deps": [
+        "OE-knowledge-seed"
+      ],
+      "effort": 3,
+      "value": 92,
+      "workstream": "OPENEXECUTIVE_INTEGRATION",
+      "source": "agent",
+      "priority": 92,
+      "blocks": [
+        "OE-rao-verification"
+      ],
+      "status": "pending",
+      "notes": "Post-response Web Worker: extrae decisiones/iniciativas/consejos → RAO entries + Lucidez blocks"
+    },
+    "OE-rao-verification": {
+      "id": "OE-rao-verification",
+      "title": "Crear lib/rao_verification.ts — RAO Verification Triaxial",
+      "deps": [
+        "OE-background-extractor"
+      ],
+      "effort": 3,
+      "value": 94,
+      "workstream": "OPENEXECUTIVE_INTEGRATION",
+      "source": "agent",
+      "priority": 94,
+      "blocks": [
+        "OE-lucidez-toggle"
+      ],
+      "status": "pending",
+      "notes": "3 ejes: RAO (ERC-8004+IPFS) + MJ Gate (veto ético) + Cross-check (coworkers+autómata)"
+    },
+    "OE-lucidez-toggle": {
+      "id": "OE-lucidez-toggle",
+      "title": "Crear lib/lucidez_toggle.ts — Modo Lucidez Toggle (3 niveles) + CoachFAB integration",
+      "deps": [
+        "OE-rao-verification"
+      ],
+      "effort": 2,
+      "value": 91,
+      "workstream": "OPENEXECUTIVE_INTEGRATION",
+      "source": "agent",
+      "priority": 91,
+      "blocks": [
+        "OE-coworker-roles"
+      ],
+      "status": "pending",
+      "notes": "Full/Semantic/Raw (.lucidez-raw), toggle sol/luna en CoachFAB header, cache strategy per block"
+    },
+    "OE-coworker-roles": {
+      "id": "OE-coworker-roles",
+      "title": "Extender coworkers.ts con 8 standing roles OpenExecutive + Discord adapter",
+      "deps": [
+        "OE-lucidez-toggle"
+      ],
+      "effort": 3,
+      "value": 93,
+      "workstream": "OPENEXECUTIVE_INTEGRATION",
+      "source": "agent",
+      "priority": 93,
+      "blocks": [
+        "OE-domain-pillar-map"
+      ],
+      "status": "pending",
+      "notes": "CSO/CFO/CHRO/GC/COO/CMO/CPO/Board + discordAdapter config, channel per coworker"
+    },
+    "OE-domain-pillar-map": {
+      "id": "OE-domain-pillar-map",
+      "title": "Crear lib/domain_pillar_map.ts — Dominios (8) → Pilares Base Material (13×7)",
+      "deps": [
+        "OE-coworker-roles"
+      ],
+      "effort": 2,
+      "value": 88,
+      "workstream": "OPENEXECUTIVE_INTEGRATION",
+      "source": "agent",
+      "priority": 88,
+      "blocks": [
+        "OE-screens"
+      ],
+      "status": "pending",
+      "notes": "Mapping table strategy/finance/hr/legal/ops/marketing/product/governance → 13 pillars"
+    },
+    "OE-screens": {
+      "id": "OE-screens",
+      "title": "Crear 6 pantallas OpenExecutive: /local-models, /knowledge, /rao, /lucidez-toggle, /coworkers/discord, /domain-pillar-map",
+      "deps": [
+        "OE-domain-pillar-map"
+      ],
+      "effort": 4,
+      "value": 95,
+      "workstream": "OPENEXECUTIVE_INTEGRATION",
+      "source": "agent",
+      "priority": 95,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Icon Briefcase/Users, routing, i18n, store integration, sidebar items"
+    },
+    "MO-brand-context": {
+      "id": "MO-brand-context",
+      "title": "Crear lib/brand_context.ts — Brand Context obligatorio (per-tribe)",
+      "deps": [],
+      "effort": 2,
+      "value": 92,
+      "workstream": "MARKETING_OS_INTEGRATION",
+      "source": "agent",
+      "priority": 92,
+      "blocks": [
+        "MO-marketing-audit",
+        "MO-hooks-engine",
+        "MO-copy-grader"
+      ],
+      "status": "pending",
+      "notes": "Mismo principio que Marketing OS: sin brand context no se generan outputs. Mapea a Pilar 13 (Cultura) + Tribu perfil"
+    },
+    "MO-marketing-audit": {
+      "id": "MO-marketing-audit",
+      "title": "Crear lib/marketing_audit.ts — Auditoría inicial (antes de generar contenido)",
+      "deps": [
+        "MO-brand-context"
+      ],
+      "effort": 2,
+      "value": 90,
+      "workstream": "MARKETING_OS_INTEGRATION",
+      "source": "agent",
+      "priority": 90,
+      "blocks": [
+        "MO-hooks-engine"
+      ],
+      "status": "pending",
+      "notes": "Diagnóstico: brand pillars, voice/tone, audience, positioning. Equivale a NetBenefit aplicado a marketing"
+    },
+    "MO-hooks-engine": {
+      "id": "MO-hooks-engine",
+      "title": "Crear lib/hooks_engine.ts — Hook Engine (18 tácticas)",
+      "deps": [
+        "MO-marketing-audit"
+      ],
+      "effort": 3,
+      "value": 88,
+      "workstream": "MARKETING_OS_INTEGRATION",
+      "source": "agent",
+      "priority": 88,
+      "blocks": [
+        "MO-copy-grader"
+      ],
+      "status": "pending",
+      "notes": "Tactical hooks para tribus (curiosity, contrarian, story, pattern interrupt, etc.)"
+    },
+    "MO-copy-grader": {
+      "id": "MO-copy-grader",
+      "title": "Crear lib/copy_grader.ts — Copy Grader (calidad de contenido)",
+      "deps": [
+        "MO-hooks-engine"
+      ],
+      "effort": 2,
+      "value": 87,
+      "workstream": "MARKETING_OS_INTEGRATION",
+      "source": "agent",
+      "priority": 87,
+      "blocks": [
+        "MO-launch-playbook"
+      ],
+      "status": "pending",
+      "notes": "Evalúa claridad, persuasión, alineación brand, NetBenefit score (no solo vanity metrics)"
+    },
+    "MO-ad-diagnosis": {
+      "id": "MO-ad-diagnosis",
+      "title": "Crear lib/ad_diagnosis.ts — Diagnóstico de anuncios (qué falla)",
+      "deps": [
+        "MO-copy-grader"
+      ],
+      "effort": 2,
+      "value": 85,
+      "workstream": "MARKETING_OS_INTEGRATION",
+      "source": "agent",
+      "priority": 85,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Análisis de anuncios existentes: hook rate, CTR, conversion, alineación NetBenefit"
+    },
+    "MO-launch-playbook": {
+      "id": "MO-launch-playbook",
+      "title": "Crear lib/launch_playbook.ts — Playbook de lanzamiento (secuencia coordinada)",
+      "deps": [
+        "MO-copy-grader"
+      ],
+      "effort": 3,
+      "value": 89,
+      "workstream": "MARKETING_OS_INTEGRATION",
+      "source": "agent",
+      "priority": 89,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Secuencia: pre-launch (expectativa) → launch (impacto) → post-launch (sostenimiento). Compatible con Encuentro Tribal Mayor"
+    },
+    "TRI-001": {
+      "id": "TRI-001",
+      "title": "Firmar memorando tripartito + constituir equipo núcleo (3 personas, 1 por proyecto)",
+      "deps": [],
+      "effort": 1,
+      "value": 95,
+      "workstream": "TRIPARTITE_INTEGRATION",
+      "source": "agent",
+      "priority": 95,
+      "blocks": [
+        "TRI-002",
+        "TRI-010"
+      ],
+      "status": "pending",
+      "notes": "Documento MEMORANDUM_TRIPARTITA.md firmado por 3 líderes. Ver COLABORACION_TRIPARTITA §14"
+    },
+    "TRI-002": {
+      "id": "TRI-002",
+      "title": "Crear monorepo tripartite-core + configurar pnpm workspaces + CI/CD",
+      "deps": [
+        "TRI-001"
+      ],
+      "effort": 1,
+      "value": 90,
+      "workstream": "TRIPARTITE_INTEGRATION",
+      "source": "agent",
+      "priority": 90,
+      "blocks": [
+        "TRI-003",
+        "TRI-004"
+      ],
+      "status": "pending",
+      "notes": "Estructura: apps/{hscsg,gaia,ecoldea} + packages/{core,vasos,priceParity,identity}. GitHub org: tripartite-core"
+    },
+    "TRI-003": {
+      "id": "TRI-003",
+      "title": "Implementar packages/identity/identity_tripartite.ts (DID:hsccsg + Pasaporte Gaia + Ed25519 puente)",
+      "deps": [
+        "TRI-002"
+      ],
+      "effort": 2,
+      "value": 92,
+      "workstream": "TRIPARTITE_INTEGRATION",
+      "source": "agent",
+      "priority": 92,
+      "blocks": [
+        "TRI-005",
+        "TRI-006"
+      ],
+      "status": "pending",
+      "notes": "Mapeo: DID:hsccsg ↔ Pasaporte Gaia (VC W3C) ↔ Ed25519 nodo. Bridge con verificación cruzada"
+    },
+    "TRI-004": {
+      "id": "TRI-004",
+      "title": "Implementar packages/priceParity/index.ts — Oracle multi-oracle 2/3 consenso",
+      "deps": [
+        "TRI-002"
+      ],
+      "effort": 3,
+      "value": 91,
+      "workstream": "TRIPARTITE_INTEGRATION",
+      "source": "agent",
+      "priority": 91,
+      "blocks": [
+        "TRI-006",
+        "TRI-008"
+      ],
+      "status": "pending",
+      "notes": "Oracles: Chainlink + Pyth + custom HSCSG. Consenso 2/3. Fallback modo postmonetario si oracle falla. 1 TQ=1kWh invariante"
+    },
+    "TRI-005": {
+      "id": "TRI-005",
+      "title": "Implementar packages/vasos/sync_protocol.ts + 3 adaptadores (HSCSG, Gaia, Ecoaldea)",
+      "deps": [
+        "TRI-003"
+      ],
+      "effort": 2,
+      "value": 90,
+      "workstream": "TRIPARTITE_INTEGRATION",
+      "source": "agent",
+      "priority": 90,
+      "blocks": [
+        "TRI-006"
+      ],
+      "status": "pending",
+      "notes": "10 Vasos Comunicantes: gov-sync, trust-bridge, infra-connect, intel-match, app-federate, eco-sync, impact-bridge, ritual-sync, capital-flow, sabiduria-synthesis"
+    },
+    "TRI-006": {
+      "id": "TRI-006",
+      "title": "Desplegar piloto nodo único (1 Ecoaldea + 1 Tribu HSCSG + 1 Hub Gaia sincronizados)",
+      "deps": [
+        "TRI-003",
+        "TRI-004",
+        "TRI-005"
+      ],
+      "effort": 4,
+      "value": 95,
+      "workstream": "TRIPARTITE_INTEGRATION",
+      "source": "agent",
+      "priority": 95,
+      "blocks": [
+        "TRI-007",
+        "TRI-009"
+      ],
+      "status": "pending",
+      "notes": "Piloto end-to-end: trueque TQ ↔ ZNU ↔ CoRe, identidad DID, sync Vasos, gobernanza CEL. Métricas baseline $10k valor circular, 20 miembros"
+    },
+    "TRI-007": {
+      "id": "TRI-007",
+      "title": "Implementar packages/governance/governance_tripartite.ts (CEL tripartito 3 scopes)",
+      "deps": [
+        "TRI-006"
+      ],
+      "effort": 2,
+      "value": 88,
+      "workstream": "TRIPARTITE_INTEGRATION",
+      "source": "agent",
+      "priority": 88,
+      "blocks": [
+        "TRI-009"
+      ],
+      "status": "pending",
+      "notes": "CEL con 3 scopes: hscsg_scope, gaia_scope, ecoldea_scope. Triple veto: MJ Gate + Commonomics + FRNE"
+    },
+    "TRI-008": {
+      "id": "TRI-008",
+      "title": "Implementar packages/value/value_tripartite.ts (TQ↔ZNU↔CoRe↔USD + reglas flujo)",
+      "deps": [
+        "TRI-004"
+      ],
+      "effort": 2,
+      "value": 87,
+      "workstream": "TRIPARTITE_INTEGRATION",
+      "source": "agent",
+      "priority": 87,
+      "blocks": [
+        "TRI-009"
+      ],
+      "status": "pending",
+      "notes": "4 unidades: TQ (1=kWh), ZNU (demurrage), CoRe (5 niveles), USD (oracle). Reglas: 50% nodos + 30% fondo tierra + 10% educación + 5% infra + 5% reserva"
+    },
+    "TRI-009": {
+      "id": "TRI-009",
+      "title": "Implementar packages/certification/certification_tripartite.ts (4 niveles unificados)",
+      "deps": [
+        "TRI-006",
+        "TRI-007",
+        "TRI-008"
+      ],
+      "effort": 1,
+      "value": 85,
+      "workstream": "TRIPARTITE_INTEGRATION",
+      "source": "agent",
+      "priority": 85,
+      "blocks": [
+        "TRI-010"
+      ],
+      "status": "pending",
+      "notes": "Niveles: Self / Community / Ambassador / Third-Party. Mapeo: HSCSG CDS ↔ Gaia Certificación ↔ Ecoaldea Padrino/Mentor"
+    },
+    "TRI-010": {
+      "id": "TRI-010",
+      "title": "Documentar TRIPARTITE_CONSTITUTION.md v0.1 (carta fundacional)",
+      "deps": [
+        "TRI-001",
+        "TRI-009"
+      ],
+      "effort": 1,
+      "value": 92,
+      "workstream": "TRIPARTITE_INTEGRATION",
+      "source": "agent",
+      "priority": 92,
+      "blocks": [],
+      "status": "pending",
+      "notes": "Documento constitucional: Cuaternidad Soberana + 5 Planos + Leyes MJ + Commonomics + FRNE. Firmado por 3 proyectos. Próxima v0.2 → v1.0 con BioRegión piloto"
+    }
+  },
+  "currentWorkstream": "P0_SPECS",
+  "currentTask": null,
+  "completedTasks": [],
+  "userPriorities": [],
+  "sessionLog": [],
+  "lastInteraction": "2026-09-05T06:04:04.610Z"
+}
