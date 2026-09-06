@@ -332,11 +332,16 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **USDGLO** | ✅ 1 backup | ✅ 1 integration | Stablecoin → priceParity oracle | 0 | 2 |
 | **opc-source/one-person-company** | ✅ `opc_source_opc_backup.md` | ✅ `opc_source_opc_integration.md` | `lib/multi_cluster.ts`, `lib/service_mesh.ts`, `lib/observability_stack.ts`, `lib/cloud_native_container.ts`, `lib/cncf_landscape.ts`, `lib/alibaba_cloud_stack.ts`, `lib/cluster_delivery.ts`, `lib/iac_manager.ts`, `lib/microservice_frameworks.ts`, `lib/os_reference.ts`, `docs/infrastructure_diagram_v010.md` | 1 (`hscsg-opc-source-assimilation` pendiente) | 2 |
 | **chen103226/awesome-one-person-company** | ✅ `awesome_opc_backup.md` | ✅ `awesome_opc_integration.md` | `lib/case_studies.ts`, `lib/stacks_recommendations.ts`, `lib/mom_test_methodology.ts`, `docs/30_day_launch_checklist.md`, `docs/learning_paths.md`, `docs/creator_quotes.md` | 1 (`hscsg-awesome-opc-assimilation` pendiente) | 2 |
-|| **Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas / Feria Conuquera** | ✅ `ecoaldea_monte_backup.md` | ✅ `ecoaldea_monte_integration.md` | 0 (plan 12 módulos nuevos) | 0 | 2 ||
+|| **Red de Intercambio Federada Ecoaldea Raices del Monte inicio de Federación de Ecoaldeas / Feria Conuquera** | ✅ `ecoaldea_monte_backup.md` | ✅ `ecoaldea_monte_integration.md` | 0 (plan 12 módulos nuevos) | 0 | 2 |
+| **Libro Ecoaldeas Federadas (versión expandida)** | ✅ `libro_ecoaldeas_federadas_backup.md` | ✅ `gaia_ecoaldeas_deep_integration.md` | 0 (plan 12 semanas) | 0 | 2 |
+| **Gaia Commons Framework (BioRegions & gLocal CommUnities)** | ✅ `gaia_commons_framework_backup.md` | ✅ `gaia_ecoaldeas_deep_integration.md` | 0 (plan 12 semanas) | 0 | 2 |
+| **CoRe Tokenomics (Commons Regenerative Economy)** | ✅ `core_tokenomics_backup.md` | ✅ `gaia_ecoaldeas_deep_integration.md` | 0 (plan 12 semanas) | 0 | 2 |
+| **Gaia Commons Constitution (Catalyst Phase)** | ✅ `gaia_commons_constitution_backup.md` | ✅ `gaia_ecoaldeas_deep_integration.md` | 0 (plan 12 semanas) | 0 | 2 |
+| **Nodos de Cuidado de Proximidad – Ecoaldeas LATAM** | ✅ `nodos_cuidado_proximidad_backup.md` | ✅ `nodos_cuidado_integration.md` | 0 (plan 8 semanas) | 0 | 2 ||
 || **OpenExecutive (SenteLabsAI)** | ✅ `openexecutive_backup.md` | ✅ `openexecutive_integration.md` | 0 (plan 7 módulos nuevos) | 0 | 2 ||
 || **Marketing OS (Yuzzyuk)** | ✅ `marketing_os_backup.md` | ✅ `marketing_os_integration.md` | 0 (plan 12 módulos nuevos) | 0 | 2 ||
 
-**Total:** 42 proyectos fuente | 34 completados (68 docs backup+integration) | 8 pendientes | **146 briefs totales** | 4 skills Hermes desplegadas | 50 docs operativos en `docs/`
+| **Total:** 42 proyectos fuente | 39 completados (78 docs backup+integration) | 8 pendientes | **151 briefs totales** | 4 skills Hermes desplegadas | 55 docs operativos en `docs/` |
 
 ---
 

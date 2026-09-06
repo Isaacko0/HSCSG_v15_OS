@@ -934,6 +934,14 @@ interface EconomicEvent {
 | Versión | Fecha | Cambios | Autor |
 |---------|-------|---------|-------|
 | v1.0 | 2026-08-22 | Documento fundacional completo con integración Copiosis, navteka, análisis contento/deseOS | Isaac Ko |
+| v1.1 | 2026-08-25 | + Sistema Alráico (7 PDFs, 8 caras, código real, 144 conceptos, 39 fuentes) + Presentación transdisciplinarios/arquidiciplinarios | Isaac Ko |
+| v1.2 | 2026-08-25 | + MATEMAS_GRIMORIO.md (20 Matemas Tractatus-style + subhashitas + sentencias portales) + hscsg_definition.md v2.0 con vault completo | Isaac Ko |
+| v1.3 | 2026-08-26 | + Purga SynchroLabs (22 reemplazos) + Brandon (19 reemplazos) + backups locales en `.local_backups/` | Isaac Ko |
+| v1.4 | 2026-09-02 | + Red de Intercambio Federada Ecoaldea Raices del Monte (43 docs + página pública, 19 fases, 152 migraciones) + 12 módulos planificados + workstream ECOALDEA_INTEGRATION (14 tareas) | Isaac Ko |
+| v1.5 | 2026-09-02 | + OpenExecutive (8 agentes, RAG dual, scheduler, 22 isomorfismos) + Marketing OS (14 módulos, 16 isomorfismos) + 2 workstreams | Isaac Ko |
+| v1.6 | 2026-09-03 | + Gaia Meta-Plataforma (Documento Maestro 10,556 tokens, 35+ isomorfismos) + hscsg-repo-guard skill + Colaboración Recíproca HSCSG↔Ecoaldea | Isaac Ko |
+| v1.7 | 2026-09-04 | + Respuesta Javier Fatjó (Ecoaldea, 415 líneas) + Respuesta Guía Ciudades Integrales Sostenibles (18,000+ chars) + trabajo Tripartito HSCSG↔Gaia↔Ecoaldea | Isaac Ko |
+| v1.8 | 2026-09-05 | + Libro Ecoaldeas Federadas (Manual 22 caps, 862 líneas) + Gaia Commons Framework (BioRegions, 62KB, 1309 líneas) + CoRe Tokenomics (In-Depth, 314 líneas) + Gaia Commons Constitution Catalyst Phase (402KB, 771 líneas) + Paper Nodos de Cuidado de Proximidad (168KB, 7+ páginas) | Isaac Ko |
 
 ---
 
