@@ -942,6 +942,7 @@ interface EconomicEvent {
 | v1.6 | 2026-09-03 | + Gaia Meta-Plataforma (Documento Maestro 10,556 tokens, 35+ isomorfismos) + hscsg-repo-guard skill + Colaboración Recíproca HSCSG↔Ecoaldea | Isaac Ko |
 | v1.7 | 2026-09-04 | + Respuesta Javier Fatjó (Ecoaldea, 415 líneas) + Respuesta Guía Ciudades Integrales Sostenibles (18,000+ chars) + trabajo Tripartito HSCSG↔Gaia↔Ecoaldea | Isaac Ko |
 | v1.8 | 2026-09-05 | + Libro Ecoaldeas Federadas (Manual 22 caps, 862 líneas) + Gaia Commons Framework (BioRegions, 62KB, 1309 líneas) + CoRe Tokenomics (In-Depth, 314 líneas) + Gaia Commons Constitution Catalyst Phase (402KB, 771 líneas) + Paper Nodos de Cuidado de Proximidad (168KB, 7+ páginas) | Isaac Ko |
+| v1.9 | 2026-09-05 | + One Community Global (33 páginas estructurales, 1.78 MB EN + 180 KB ES) — 7 aldeas, Duplicable City Center, 7 pilares Highest Good, código abierto radical, modelo auto-replicante | Isaac Ko |
 
 ---
 

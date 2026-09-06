@@ -337,11 +337,12 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 | **Gaia Commons Framework (BioRegions & gLocal CommUnities)** | ✅ `gaia_commons_framework_backup.md` | ✅ `gaia_ecoaldeas_deep_integration.md` | 0 (plan 12 semanas) | 0 | 2 |
 | **CoRe Tokenomics (Commons Regenerative Economy)** | ✅ `core_tokenomics_backup.md` | ✅ `gaia_ecoaldeas_deep_integration.md` | 0 (plan 12 semanas) | 0 | 2 |
 | **Gaia Commons Constitution (Catalyst Phase)** | ✅ `gaia_commons_constitution_backup.md` | ✅ `gaia_ecoaldeas_deep_integration.md` | 0 (plan 12 semanas) | 0 | 2 |
-| **Nodos de Cuidado de Proximidad – Ecoaldeas LATAM** | ✅ `nodos_cuidado_proximidad_backup.md` | ✅ `nodos_cuidado_integration.md` | 0 (plan 8 semanas) | 0 | 2 ||
+|| **Nodos de Cuidado de Proximidad – Ecoaldeas LATAM** | ✅ `nodos_cuidado_proximidad_backup.md` | ✅ `nodos_cuidado_integration.md` | 0 (plan 8 semanas) | 0 | 2 ||
 || **OpenExecutive (SenteLabsAI)** | ✅ `openexecutive_backup.md` | ✅ `openexecutive_integration.md` | 0 (plan 7 módulos nuevos) | 0 | 2 ||
 || **Marketing OS (Yuzzyuk)** | ✅ `marketing_os_backup.md` | ✅ `marketing_os_integration.md` | 0 (plan 12 módulos nuevos) | 0 | 2 ||
+|| **One Community Global** | ✅ `onecommunity_global_backup_en.md` | ✅ `onecommunity_global_backup_es.md` | workstream ONECOMMUNITY_INTEGRATION (10 tareas) | 1 (`hscsg-onecommunity-integration`) | 2 |
 
-| **Total:** 42 proyectos fuente | 39 completados (78 docs backup+integration) | 8 pendientes | **151 briefs totales** | 4 skills Hermes desplegadas | 55 docs operativos en `docs/` |
+| **Total:** 43 proyectos fuente | 40 completados (80 docs backup+integration) | 8 pendientes | **153 briefs totales** | 4 skills Hermes desplegadas | 57 docs operativos en `docs/` |
 
 ---
 
