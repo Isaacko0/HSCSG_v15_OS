@@ -1,7 +1,7 @@
-# 🧠 Sistema Alráico — Para Yoka, Filósofo Informático Solarpunk
+# 🧠 Sistema Alráico — Para Yoka
 
 **Fecha:** 2026-09-05  
-**Para:** Yoka (+34 641 05 57 10) — operador del Kernel E=V, filosofía informática, conciencia y sistemas  
+**Para:** Yoka (+34 641 05 57 10) — operador del Kernel E=V, filosofía informática solarpunk, conciencia y sistemas  
 **Desde:** HSCSG v15 OS / Isaac Ko  
 **Contexto:** Conversación WhatsApp "Ecoaldeas federadas" (5/9/2026) + 7 PDFs Alráico + 144 conceptos + código real implementado
 
