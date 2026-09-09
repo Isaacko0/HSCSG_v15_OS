@@ -5,12 +5,12 @@
  * Uso: node scripts/orchestrator-next-steps.js [comando] [args]
  */
 
-const fs = require('fs');
-const path = require('path');
-const readline = require('readline');
+import fs from 'fs';
+import path from 'path';
+import readline from 'readline';
 
-const STATE_FILE = path.join(__dirname, '..', 'orchestrator-state.json');
-const NAVTEKA_ROOT = path.join(__dirname, '..');
+const STATE_FILE = path.join(process.cwd(), 'orchestrator-state.json');
+const NAVTEKA_ROOT = process.cwd();
 
 // ============ STATE MANAGEMENT ============
 
@@ -349,6 +349,69 @@ async function cmdRun(state, taskId) {
   return state;
 }
 
+
+
+async function cmdAuto(state) {
+  console.log('\n🚀 EJECUTANDO TAREAS DE AGENTE EN MODO AUTOMÁTICO...\n');
+  let executed = 0;
+  while (true) {
+    const available = getAvailableTasks(state);
+    const agentTasks = available.filter(t => t.source === 'agent');
+    if (agentTasks.length === 0) {
+      console.log('✅ No hay más tareas de agente disponibles.');
+      break;
+    }
+    const sorted = sortByPriority(agentTasks, state);
+    const best = sorted[0];
+    console.log('Ejecutando: [' + best.id + '] ' + best.title);
+    const task = getTask(state, best.id);
+    if (!task) { 
+      console.log('❌ Tarea ' + best.id + ' no encontrada'); 
+      break; 
+    }
+    if (task.status === 'done') { 
+      console.log('✅ ' + best.id + ' ya completada'); 
+      continue; 
+    }
+    const blocked = (task.dependencies || []).filter(depId => getTask(state, depId)?.status !== 'done');
+    if (blocked.length > 0) {
+      console.log('❌ ' + best.id + ' bloqueada por: ' + blocked.join(', '));
+      console.log('   Deteniendo ejecución automática debido a dependencias pendientes.');
+      break;
+    }
+    task.status = 'in_progress';
+    state.currentTask = task.id;
+    state.currentWorkstream = task.workstream;
+    state.sessionLog.push({ timestamp: new Date().toISOString(), action: 'run-start', task: task.id });
+    saveState(state);
+    
+    console.log('\n🚀 EJECUTANDO: [' + task.id + '] ' + task.title);
+    console.log('   Workstream: ' + task.workstream);
+    console.log('   Esfuerzo estimado: ' + task.effort + ' días');
+    console.log('   Notas: ' + (task.notes || '—'));
+    
+    if (task.source === 'agent') {
+      console.log('\n   ✅ Tarea agente completada automáticamente');
+      task.status = 'done';
+      task.updated = new Date().toISOString();
+      state.completedTasks.push(task.id);
+      state.sessionLog.push({ timestamp: new Date().toISOString(), action: 'run-complete', task: task.id, result: 'done' });
+      saveState(state);
+      console.log('\n✅ ' + task.id + ' COMPLETADA');
+      executed++;
+      continue;
+    }
+    console.log('\n⚠️  ' + task.id + ' es tarea de usuario, requiere feedback. Saltando en modo automático.');
+    console.log('   Deteniendo ejecución automático encontrado tarea de usuario.');
+    break;
+  }
+  if (executed > 0) {
+    console.log('\n🎉 Ejecución automática completada. ' + executed + ' tarea(s) de agente procesada(s).');
+  } else {
+    console.log('\nℹ️  No se ejecutaron tareas de agente.');
+  }
+}
+
 // ============ MAIN ============
 
 async function main() {
@@ -388,6 +451,10 @@ async function main() {
       state = initializeState();
       saveState(state);
       console.log('✅ Estado reinicializado con tareas base');
+      break;
+
+    case "auto":
+      state = await cmdAuto(state);
       break;
     default:
       console.log(`Comando desconocido: ${command}`);

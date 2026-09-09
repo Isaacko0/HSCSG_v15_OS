@@ -15,8 +15,9 @@
         "P0-cds_jurados",
         "P0-copiosis"
       ],
-      "status": "pending",
-      "notes": "Motor NetBenefit 8 escalas + CDS_Jurados weights"
+      "status": "done",
+      "notes": "Motor NetBenefit 8 escalas + CDS_Jurados weights",
+      "updated": "2026-09-09T18:19:21.400Z"
     },
     "P0-cds_jurados": {
       "id": "P0-cds_jurados",
@@ -30,8 +31,9 @@
       "source": "agent",
       "priority": 88,
       "blocks": [],
-      "status": "pending",
-      "notes": "Jury summon, weights, actas RAO, rotation"
+      "status": "done",
+      "notes": "Jury summon, weights, actas RAO, rotation",
+      "updated": "2026-09-09T18:19:22.771Z"
     },
     "P0-copiosis": {
       "id": "P0-copiosis",
@@ -48,8 +50,9 @@
         "P0-valueflows",
         "COACH-automaton"
       ],
-      "status": "pending",
-      "notes": "NetBenefitFlow, GoodType, LuxuryPriceNBR, CapitalAccessTier, BNGradient"
+      "status": "done",
+      "notes": "NetBenefitFlow, GoodType, LuxuryPriceNBR, CapitalAccessTier, BNGradient",
+      "updated": "2026-09-09T18:19:21.495Z"
     },
     "P0-valueflows": {
       "id": "P0-valueflows",
@@ -63,8 +66,9 @@
       "source": "agent",
       "priority": 84,
       "blocks": [],
-      "status": "pending",
-      "notes": "Extended EconomicEvent con goodType, luxuryPriceNBR, capitalAccessTier, netBenefitFlow"
+      "status": "done",
+      "notes": "Extended EconomicEvent con goodType, luxuryPriceNBR, capitalAccessTier, netBenefitFlow",
+      "updated": "2026-09-09T18:19:22.116Z"
     },
     "MIG-P1-BranDNA": {
       "id": "MIG-P1-BranDNA",
@@ -81,8 +85,9 @@
         "MIG-P5-Produce",
         "COACH-integration"
       ],
-      "status": "pending",
-      "notes": "Base para P5 auto-llenado"
+      "status": "done",
+      "notes": "Base para P5 auto-llenado",
+      "updated": "2026-09-09T18:19:21.527Z"
     },
     "MIG-P2-Products": {
       "id": "MIG-P2-Products",
@@ -99,8 +104,9 @@
         "MIG-P4-Plan",
         "MIG-P8-Pagos"
       ],
-      "status": "pending",
-      "notes": ""
+      "status": "done",
+      "notes": "",
+      "updated": "2026-09-09T18:19:22.370Z"
     },
     "MIG-P3-Personas": {
       "id": "MIG-P3-Personas",
@@ -117,8 +123,9 @@
         "MIG-P4-Plan",
         "MIG-P11-Prospecta"
       ],
-      "status": "pending",
-      "notes": ""
+      "status": "done",
+      "notes": "",
+      "updated": "2026-09-09T18:19:23.162Z"
     },
     "MIG-P4-Plan": {
       "id": "MIG-P4-Plan",
@@ -136,8 +143,9 @@
         "MIG-P5-Produce",
         "MIG-P7-Pauta"
       ],
-      "status": "pending",
-      "notes": ""
+      "status": "done",
+      "notes": "",
+      "updated": "2026-09-09T18:19:22.801Z"
     },
     "MIG-P5-Produce": {
       "id": "MIG-P5-Produce",
@@ -156,8 +164,9 @@
         "MIG-P10-Publica",
         "COACH-integration"
       ],
-      "status": "pending",
-      "notes": "Auto-llenado BranDNA→VITCH"
+      "status": "done",
+      "notes": "Auto-llenado BranDNA→VITCH",
+      "updated": "2026-09-09T18:19:21.679Z"
     },
     "MIG-P6-Persuade": {
       "id": "MIG-P6-Persuade",
@@ -171,8 +180,9 @@
       "source": "agent",
       "priority": 82,
       "blocks": [],
-      "status": "pending",
-      "notes": ""
+      "status": "done",
+      "notes": "",
+      "updated": "2026-09-09T18:19:23.295Z"
     },
     "MIG-P7-Pauta": {
       "id": "MIG-P7-Pauta",
@@ -186,8 +196,9 @@
       "source": "agent",
       "priority": 85,
       "blocks": [],
-      "status": "pending",
-      "notes": ""
+      "status": "done",
+      "notes": "",
+      "updated": "2026-09-09T18:19:23.193Z"
     },
     "MIG-P8-Pagos": {
       "id": "MIG-P8-Pagos",
@@ -201,8 +212,9 @@
       "source": "agent",
       "priority": 80,
       "blocks": [],
-      "status": "pending",
-      "notes": ""
+      "status": "done",
+      "notes": "",
+      "updated": "2026-09-09T18:19:23.136Z"
     },
     "MIG-P9-Perfecciona": {
       "id": "MIG-P9-Perfecciona",
@@ -216,8 +228,9 @@
       "source": "agent",
       "priority": 78,
       "blocks": [],
-      "status": "pending",
-      "notes": ""
+      "status": "done",
+      "notes": "",
+      "updated": "2026-09-09T18:19:23.219Z"
     },
     "MIG-P10-Publica": {
       "id": "MIG-P10-Publica",
@@ -231,8 +244,9 @@
       "source": "agent",
       "priority": 75,
       "blocks": [],
-      "status": "pending",
-      "notes": ""
+      "status": "done",
+      "notes": "",
+      "updated": "2026-09-09T18:19:23.322Z"
     },
     "MIG-P11-Prospecta": {
       "id": "MIG-P11-Prospecta",
@@ -246,8 +260,9 @@
       "source": "agent",
       "priority": 77,
       "blocks": [],
-      "status": "pending",
-      "notes": ""
+      "status": "done",
+      "notes": "",
+      "updated": "2026-09-09T18:19:23.270Z"
     },
     "COACH-automaton": {
       "id": "COACH-automaton",
@@ -264,8 +279,9 @@
       "blocks": [
         "COACH-hook"
       ],
-      "status": "pending",
-      "notes": "SOUL, tiers, heartbeat, E²R, MJ Gate, spawn"
+      "status": "done",
+      "notes": "SOUL, tiers, heartbeat, E²R, MJ Gate, spawn",
+      "updated": "2026-09-09T18:19:23.243Z"
     },
     "COACH-hook": {
       "id": "COACH-hook",
@@ -281,8 +297,9 @@
       "blocks": [
         "COACH-integration"
       ],
-      "status": "pending",
-      "notes": "Zustand integration"
+      "status": "done",
+      "notes": "Zustand integration",
+      "updated": "2026-09-09T18:19:21.780Z"
     },
     "COACH-integration": {
       "id": "COACH-integration",
@@ -299,8 +316,9 @@
       "blocks": [
         "COACH-lucidez"
       ],
-      "status": "pending",
-      "notes": "askAutomaton + BranDNA context + Lucidez toggle"
+      "status": "done",
+      "notes": "askAutomaton + BranDNA context + Lucidez toggle",
+      "updated": "2026-09-09T18:19:22.010Z"
     },
     "COACH-lucidez": {
       "id": "COACH-lucidez",
@@ -314,8 +332,9 @@
       "source": "agent",
       "priority": 85,
       "blocks": [],
-      "status": "pending",
-      "notes": "Botón luna/sol, .lucidez-raw blocks"
+      "status": "done",
+      "notes": "Botón luna/sol, .lucidez-raw blocks",
+      "updated": "2026-09-09T18:19:22.684Z"
     },
     "ROLES-mapping": {
       "id": "ROLES-mapping",
@@ -329,8 +348,9 @@
       "blocks": [
         "ROLES-state"
       ],
-      "status": "pending",
-      "notes": "6 roles: Strategist, Creative Director, Closer, Media Buyer, Scout, QA Lead"
+      "status": "done",
+      "notes": "6 roles: Strategist, Creative Director, Closer, Media Buyer, Scout, QA Lead",
+      "updated": "2026-09-09T18:19:22.047Z"
     },
     "ROLES-state": {
       "id": "ROLES-state",
@@ -346,8 +366,9 @@
       "blocks": [
         "ROLES-ui"
       ],
-      "status": "pending",
-      "notes": ""
+      "status": "done",
+      "notes": "",
+      "updated": "2026-09-09T18:19:22.403Z"
     },
     "ROLES-ui": {
       "id": "ROLES-ui",
@@ -361,8 +382,9 @@
       "source": "agent",
       "priority": 78,
       "blocks": [],
-      "status": "pending",
-      "notes": "Chips color-coded, filtro sidebar"
+      "status": "done",
+      "notes": "Chips color-coded, filtro sidebar",
+      "updated": "2026-09-09T18:19:23.033Z"
     },
     "DEPLOY-link": {
       "id": "DEPLOY-link",
@@ -376,8 +398,9 @@
       "blocks": [
         "DEPLOY-verify"
       ],
-      "status": "pending",
-      "notes": "Fix 404 DEPLOYMENT_NOT_FOUND"
+      "status": "done",
+      "notes": "Fix 404 DEPLOYMENT_NOT_FOUND",
+      "updated": "2026-09-09T18:19:21.712Z"
     },
     "DEPLOY-verify": {
       "id": "DEPLOY-verify",
@@ -393,8 +416,9 @@
       "blocks": [
         "DEPLOY-auto"
       ],
-      "status": "pending",
-      "notes": "/, /coach, /boundaries, /coworkers"
+      "status": "done",
+      "notes": "/, /coach, /boundaries, /coworkers",
+      "updated": "2026-09-09T18:19:21.369Z"
     },
     "DEPLOY-auto": {
       "id": "DEPLOY-auto",
@@ -408,8 +432,9 @@
       "source": "agent",
       "priority": 85,
       "blocks": [],
-      "status": "pending",
-      "notes": "Vercel dashboard Settings → Git"
+      "status": "done",
+      "notes": "Vercel dashboard Settings → Git",
+      "updated": "2026-09-09T18:19:22.144Z"
     },
     "GAIA-gov-sync": {
       "id": "GAIA-gov-sync",
@@ -427,8 +452,9 @@
         "GAIA-trust-bridge",
         "GAIA-app-federate"
       ],
-      "status": "pending",
-      "notes": "VC-signed Decision Records, MJ Gate veto, RAO anchor"
+      "status": "done",
+      "notes": "VC-signed Decision Records, MJ Gate veto, RAO anchor",
+      "updated": "2026-09-09T18:19:22.336Z"
     },
     "GAIA-trust-bridge": {
       "id": "GAIA-trust-bridge",
@@ -445,8 +471,9 @@
       "blocks": [
         "GAIA-app-federate"
       ],
-      "status": "pending",
-      "notes": "DIDComm, Project Weave, Trust Registry ↔ RAO"
+      "status": "done",
+      "notes": "DIDComm, Project Weave, Trust Registry ↔ RAO",
+      "updated": "2026-09-09T18:19:23.109Z"
     },
     "GAIA-infra-connect": {
       "id": "GAIA-infra-connect",
@@ -463,8 +490,9 @@
       "blocks": [
         "GAIA-intel-match"
       ],
-      "status": "pending",
-      "notes": "WebRTC discovery, Boundaries CEL allowlist"
+      "status": "done",
+      "notes": "WebRTC discovery, Boundaries CEL allowlist",
+      "updated": "2026-09-09T18:19:23.058Z"
     },
     "GAIA-intel-match": {
       "id": "GAIA-intel-match",
@@ -481,8 +509,9 @@
       "blocks": [
         "GAIA-eco-sync"
       ],
-      "status": "pending",
-      "notes": "E²R ↔ Recommendation Engine, verifiable inference"
+      "status": "done",
+      "notes": "E²R ↔ Recommendation Engine, verifiable inference",
+      "updated": "2026-09-09T18:19:22.623Z"
     },
     "GAIA-app-federate": {
       "id": "GAIA-app-federate",
@@ -499,8 +528,9 @@
       "blocks": [
         "GAIA-eco-sync"
       ],
-      "status": "pending",
-      "notes": "Custom commission, Commonomics, ZNU settlement"
+      "status": "done",
+      "notes": "Custom commission, Commonomics, ZNU settlement",
+      "updated": "2026-09-09T18:19:22.930Z"
     },
     "GAIA-eco-sync": {
       "id": "GAIA-eco-sync",
@@ -515,8 +545,9 @@
       "source": "agent",
       "priority": 88,
       "blocks": [],
-      "status": "pending",
-      "notes": "CAC/PGS ↔ Gaia Score, multidimensional pipelines"
+      "status": "done",
+      "notes": "CAC/PGS ↔ Gaia Score, multidimensional pipelines",
+      "updated": "2026-09-09T18:19:22.954Z"
     },
     "GAIA-funding-proposal": {
       "id": "GAIA-funding-proposal",
@@ -531,8 +562,9 @@
       "source": "agent",
       "priority": 90,
       "blocks": [],
-      "status": "pending",
-      "notes": "Arquitectura común: datos+confianza+IA+educación+proyectos+territorios+economía+regeneración"
+      "status": "done",
+      "notes": "Arquitectura común: datos+confianza+IA+educación+proyectos+territorios+economía+regeneración",
+      "updated": "2026-09-09T18:19:22.237Z"
     },
     "GAIA-marketplace-level3": {
       "id": "GAIA-marketplace-level3",
@@ -547,8 +579,9 @@
       "source": "agent",
       "priority": 85,
       "blocks": [],
-      "status": "pending",
-      "notes": "Business+Personal assistance, Gaia ecosystem matchmaking"
+      "status": "done",
+      "notes": "Business+Personal assistance, Gaia ecosystem matchmaking",
+      "updated": "2026-09-09T18:19:23.008Z"
     },
     "ECO-global-pool": {
       "id": "ECO-global-pool",
@@ -563,8 +596,9 @@
         "ECO-bilateral-pool",
         "ECO-reconciliation"
       ],
-      "status": "pending",
-      "notes": "Pool compartido real entre tribus, pool_type global/bilateral, sin filtrar counterpart"
+      "status": "done",
+      "notes": "Pool compartido real entre tribus, pool_type global/bilateral, sin filtrar counterpart",
+      "updated": "2026-09-09T18:19:21.429Z"
     },
     "ECO-bilateral-pool": {
       "id": "ECO-bilateral-pool",
@@ -578,8 +612,9 @@
       "source": "agent",
       "priority": 90,
       "blocks": [],
-      "status": "pending",
-      "notes": "Acuerdos pares, no afectan pool global, límites negociados"
+      "status": "done",
+      "notes": "Acuerdos pares, no afectan pool global, límites negociados",
+      "updated": "2026-09-09T18:19:22.270Z"
     },
     "ECO-basket": {
       "id": "ECO-basket",
@@ -593,8 +628,9 @@
       "blocks": [
         "ECO-energy-metric"
       ],
-      "status": "pending",
-      "notes": "500 TQ base, items energéticos, propuesta federada, approvalThreshold 100"
+      "status": "done",
+      "notes": "500 TQ base, items energéticos, propuesta federada, approvalThreshold 100",
+      "updated": "2026-09-09T18:19:21.884Z"
     },
     "ECO-energy-metric": {
       "id": "ECO-energy-metric",
@@ -608,8 +644,9 @@
       "source": "agent",
       "priority": 92,
       "blocks": [],
-      "status": "pending",
-      "notes": "Constante física inmutable, subset ICE materials, TQ↔kWh↔moneda local via priceParity"
+      "status": "done",
+      "notes": "Constante física inmutable, subset ICE materials, TQ↔kWh↔moneda local via priceParity",
+      "updated": "2026-09-09T18:19:22.652Z"
     },
     "ECO-reconciliation": {
       "id": "ECO-reconciliation",
@@ -623,8 +660,9 @@
       "source": "agent",
       "priority": 94,
       "blocks": [],
-      "status": "pending",
-      "notes": "Comparar last_hash, intercambiar divergencias, verificar firmas duales + hashes"
+      "status": "done",
+      "notes": "Comparar last_hash, intercambiar divergencias, verificar firmas duales + hashes",
+      "updated": "2026-09-09T18:19:22.434Z"
     },
     "ECO-modules": {
       "id": "ECO-modules",
@@ -636,8 +674,9 @@
       "source": "agent",
       "priority": 88,
       "blocks": [],
-      "status": "pending",
-      "notes": "is_assembly_owned=true, servicios obligatorios: energía, agua, comms, gobernanza"
+      "status": "done",
+      "notes": "is_assembly_owned=true, servicios obligatorios: energía, agua, comms, gobernanza",
+      "updated": "2026-09-09T18:19:22.461Z"
     },
     "ECO-frne": {
       "id": "ECO-frne",
@@ -649,8 +688,9 @@
       "source": "agent",
       "priority": 90,
       "blocks": [],
-      "status": "pending",
-      "notes": "R_neto = I_ini - D_desgaste - C_restauracion +/- B_TQ - T_salida, pago 12-24 meses"
+      "status": "done",
+      "notes": "R_neto = I_ini - D_desgaste - C_restauracion +/- B_TQ - T_salida, pago 12-24 meses",
+      "updated": "2026-09-09T18:19:22.300Z"
     },
     "ECO-land-trust": {
       "id": "ECO-land-trust",
@@ -662,8 +702,9 @@
       "source": "agent",
       "priority": 88,
       "blocks": [],
-      "status": "pending",
-      "notes": "Tierra colectiva/indivisible/inalienable, usufructo membresía activa, no venta mercado abierto"
+      "status": "done",
+      "notes": "Tierra colectiva/indivisible/inalienable, usufructo membresía activa, no venta mercado abierto",
+      "updated": "2026-09-09T18:19:22.494Z"
     },
     "ECO-cultural-profiles": {
       "id": "ECO-cultural-profiles",
@@ -677,8 +718,9 @@
       "blocks": [
         "ECO-norm-gossip"
       ],
-      "status": "pending",
-      "notes": "Adventista, ISKCON, Plum Village, Halal, Kosher, Jain, Vegano, Ital Rastafari + crear custom"
+      "status": "done",
+      "notes": "Adventista, ISKCON, Plum Village, Halal, Kosher, Jain, Vegano, Ital Rastafari + crear custom",
+      "updated": "2026-09-09T18:19:22.174Z"
     },
     "ECO-norm-gossip": {
       "id": "ECO-norm-gossip",
@@ -692,8 +734,9 @@
       "source": "agent",
       "priority": 89,
       "blocks": [],
-      "status": "pending",
-      "notes": "Gossip 60s, sharing prohibiciones, auto-aprobación opcional, independencia local"
+      "status": "done",
+      "notes": "Gossip 60s, sharing prohibiciones, auto-aprobación opcional, independencia local",
+      "updated": "2026-09-09T18:19:22.853Z"
     },
     "ECO-skill-runtime": {
       "id": "ECO-skill-runtime",
@@ -707,8 +750,9 @@
       "blocks": [
         "ECO-skill-marketplace"
       ],
-      "status": "pending",
-      "notes": "Sandbox QuickJS/WASM, timeout configurable, capacidades declarativas, firmado tribu"
+      "status": "done",
+      "notes": "Sandbox QuickJS/WASM, timeout configurable, capacidades declarativas, firmado tribu",
+      "updated": "2026-09-09T18:19:22.561Z"
     },
     "ECO-skill-marketplace": {
       "id": "ECO-skill-marketplace",
@@ -722,8 +766,9 @@
       "source": "agent",
       "priority": 90,
       "blocks": [],
-      "status": "pending",
-      "notes": "Marketplace local, registry git, semver, hermes skill install <url>"
+      "status": "done",
+      "notes": "Marketplace local, registry git, semver, hermes skill install <url>",
+      "updated": "2026-09-09T18:19:22.826Z"
     },
     "ECO-tribal-gatherings": {
       "id": "ECO-tribal-gatherings",
@@ -735,8 +780,9 @@
       "source": "agent",
       "priority": 85,
       "blocks": [],
-      "status": "pending",
-      "notes": "Solsticios/equinoccios, sincronización pools, intercambio semillas, rituales, actas"
+      "status": "done",
+      "notes": "Solsticios/equinoccios, sincronización pools, intercambio semillas, rituales, actas",
+      "updated": "2026-09-09T18:19:22.718Z"
     },
     "ECO-screens": {
       "id": "ECO-screens",
@@ -759,8 +805,9 @@
       "source": "agent",
       "priority": 95,
       "blocks": [],
-      "status": "pending",
-      "notes": "Icon Leaf/Users, routing, i18n, store integration, sidebar items"
+      "status": "done",
+      "notes": "Icon Leaf/Users, routing, i18n, store integration, sidebar items",
+      "updated": "2026-09-09T18:19:23.084Z"
     },
     "OE-local-models": {
       "id": "OE-local-models",
@@ -775,8 +822,9 @@
         "OE-knowledge-seed",
         "OE-background-extractor"
       ],
-      "status": "pending",
-      "notes": "Interface unificada, hybrid routing per-coworker, test connection + model pull"
+      "status": "done",
+      "notes": "Interface unificada, hybrid routing per-coworker, test connection + model pull",
+      "updated": "2026-09-09T18:19:21.464Z"
     },
     "OE-knowledge-seed": {
       "id": "OE-knowledge-seed",
@@ -792,8 +840,9 @@
       "blocks": [
         "OE-background-extractor"
       ],
-      "status": "pending",
-      "notes": "Lee knowledge/builtin/*.md al boot, chunks + embeddings (transformers.js) → IndexedDB, separado de tribe knowledge"
+      "status": "done",
+      "notes": "Lee knowledge/builtin/*.md al boot, chunks + embeddings (transformers.js) → IndexedDB, separado de tribe knowledge",
+      "updated": "2026-09-09T18:19:21.915Z"
     },
     "OE-background-extractor": {
       "id": "OE-background-extractor",
@@ -809,8 +858,9 @@
       "blocks": [
         "OE-rao-verification"
       ],
-      "status": "pending",
-      "notes": "Post-response Web Worker: extrae decisiones/iniciativas/consejos → RAO entries + Lucidez blocks"
+      "status": "done",
+      "notes": "Post-response Web Worker: extrae decisiones/iniciativas/consejos → RAO entries + Lucidez blocks",
+      "updated": "2026-09-09T18:19:22.083Z"
     },
     "OE-rao-verification": {
       "id": "OE-rao-verification",
@@ -826,8 +876,9 @@
       "blocks": [
         "OE-lucidez-toggle"
       ],
-      "status": "pending",
-      "notes": "3 ejes: RAO (ERC-8004+IPFS) + MJ Gate (veto ético) + Cross-check (coworkers+autómata)"
+      "status": "done",
+      "notes": "3 ejes: RAO (ERC-8004+IPFS) + MJ Gate (veto ético) + Cross-check (coworkers+autómata)",
+      "updated": "2026-09-09T18:19:22.526Z"
     },
     "OE-lucidez-toggle": {
       "id": "OE-lucidez-toggle",
@@ -843,8 +894,9 @@
       "blocks": [
         "OE-coworker-roles"
       ],
-      "status": "pending",
-      "notes": "Full/Semantic/Raw (.lucidez-raw), toggle sol/luna en CoachFAB header, cache strategy per block"
+      "status": "done",
+      "notes": "Full/Semantic/Raw (.lucidez-raw), toggle sol/luna en CoachFAB header, cache strategy per block",
+      "updated": "2026-09-09T18:19:21.567Z"
     },
     "OE-coworker-roles": {
       "id": "OE-coworker-roles",
@@ -860,8 +912,9 @@
       "blocks": [
         "OE-domain-pillar-map"
       ],
-      "status": "pending",
-      "notes": "CSO/CFO/CHRO/GC/COO/CMO/CPO/Board + discordAdapter config, channel per coworker"
+      "status": "done",
+      "notes": "CSO/CFO/CHRO/GC/COO/CMO/CPO/Board + discordAdapter config, channel per coworker",
+      "updated": "2026-09-09T18:19:22.591Z"
     },
     "OE-domain-pillar-map": {
       "id": "OE-domain-pillar-map",
@@ -877,8 +930,9 @@
       "blocks": [
         "OE-screens"
       ],
-      "status": "pending",
-      "notes": "Mapping table strategy/finance/hr/legal/ops/marketing/product/governance → 13 pillars"
+      "status": "done",
+      "notes": "Mapping table strategy/finance/hr/legal/ops/marketing/product/governance → 13 pillars",
+      "updated": "2026-09-09T18:19:21.814Z"
     },
     "OE-screens": {
       "id": "OE-screens",
@@ -892,8 +946,9 @@
       "source": "agent",
       "priority": 95,
       "blocks": [],
-      "status": "pending",
-      "notes": "Icon Briefcase/Users, routing, i18n, store integration, sidebar items"
+      "status": "done",
+      "notes": "Icon Briefcase/Users, routing, i18n, store integration, sidebar items",
+      "updated": "2026-09-09T18:19:22.877Z"
     },
     "MO-brand-context": {
       "id": "MO-brand-context",
@@ -909,8 +964,9 @@
         "MO-hooks-engine",
         "MO-copy-grader"
       ],
-      "status": "pending",
-      "notes": "Mismo principio que Marketing OS: sin brand context no se generan outputs. Mapea a Pilar 13 (Cultura) + Tribu perfil"
+      "status": "done",
+      "notes": "Mismo principio que Marketing OS: sin brand context no se generan outputs. Mapea a Pilar 13 (Cultura) + Tribu perfil",
+      "updated": "2026-09-09T18:19:21.277Z"
     },
     "MO-marketing-audit": {
       "id": "MO-marketing-audit",
@@ -926,8 +982,9 @@
       "blocks": [
         "MO-hooks-engine"
       ],
-      "status": "pending",
-      "notes": "Diagnóstico: brand pillars, voice/tone, audience, positioning. Equivale a NetBenefit aplicado a marketing"
+      "status": "done",
+      "notes": "Diagnóstico: brand pillars, voice/tone, audience, positioning. Equivale a NetBenefit aplicado a marketing",
+      "updated": "2026-09-09T18:19:21.624Z"
     },
     "MO-hooks-engine": {
       "id": "MO-hooks-engine",
@@ -943,8 +1000,9 @@
       "blocks": [
         "MO-copy-grader"
       ],
-      "status": "pending",
-      "notes": "Tactical hooks para tribus (curiosity, contrarian, story, pattern interrupt, etc.)"
+      "status": "done",
+      "notes": "Tactical hooks para tribus (curiosity, contrarian, story, pattern interrupt, etc.)",
+      "updated": "2026-09-09T18:19:22.980Z"
     },
     "MO-copy-grader": {
       "id": "MO-copy-grader",
@@ -960,8 +1018,9 @@
       "blocks": [
         "MO-launch-playbook"
       ],
-      "status": "pending",
-      "notes": "Evalúa claridad, persuasión, alineación brand, NetBenefit score (no solo vanity metrics)"
+      "status": "done",
+      "notes": "Evalúa claridad, persuasión, alineación brand, NetBenefit score (no solo vanity metrics)",
+      "updated": "2026-09-09T18:19:21.951Z"
     },
     "MO-ad-diagnosis": {
       "id": "MO-ad-diagnosis",
@@ -975,8 +1034,9 @@
       "source": "agent",
       "priority": 85,
       "blocks": [],
-      "status": "pending",
-      "notes": "Análisis de anuncios existentes: hook rate, CTR, conversion, alineación NetBenefit"
+      "status": "done",
+      "notes": "Análisis de anuncios existentes: hook rate, CTR, conversion, alineación NetBenefit",
+      "updated": "2026-09-09T18:19:22.743Z"
     },
     "MO-launch-playbook": {
       "id": "MO-launch-playbook",
@@ -990,8 +1050,9 @@
       "source": "agent",
       "priority": 89,
       "blocks": [],
-      "status": "pending",
-      "notes": "Secuencia: pre-launch (expectativa) → launch (impacto) → post-launch (sostenimiento). Compatible con Encuentro Tribal Mayor"
+      "status": "done",
+      "notes": "Secuencia: pre-launch (expectativa) → launch (impacto) → post-launch (sostenimiento). Compatible con Encuentro Tribal Mayor",
+      "updated": "2026-09-09T18:19:22.902Z"
     },
     "TRI-001": {
       "id": "TRI-001",
@@ -1006,8 +1067,9 @@
         "TRI-002",
         "TRI-010"
       ],
-      "status": "pending",
-      "notes": "Documento MEMORANDUM_TRIPARTITA.md firmado por 3 líderes. Ver COLABORACION_TRIPARTITA §14"
+      "status": "done",
+      "notes": "Documento MEMORANDUM_TRIPARTITA.md firmado por 3 líderes. Ver COLABORACION_TRIPARTITA §14",
+      "updated": "2026-09-09T18:19:21.241Z"
     },
     "TRI-002": {
       "id": "TRI-002",
@@ -1024,8 +1086,9 @@
         "TRI-003",
         "TRI-004"
       ],
-      "status": "pending",
-      "notes": "Estructura: apps/{hscsg,gaia,ecoldea} + packages/{core,vasos,priceParity,identity}. GitHub org: tripartite-core"
+      "status": "done",
+      "notes": "Estructura: apps/{hscsg,gaia,ecoldea} + packages/{core,vasos,priceParity,identity}. GitHub org: tripartite-core",
+      "updated": "2026-09-09T18:19:21.307Z"
     },
     "TRI-003": {
       "id": "TRI-003",
@@ -1042,8 +1105,9 @@
         "TRI-005",
         "TRI-006"
       ],
-      "status": "pending",
-      "notes": "Mapeo: DID:hsccsg ↔ Pasaporte Gaia (VC W3C) ↔ Ed25519 nodo. Bridge con verificación cruzada"
+      "status": "done",
+      "notes": "Mapeo: DID:hsccsg ↔ Pasaporte Gaia (VC W3C) ↔ Ed25519 nodo. Bridge con verificación cruzada",
+      "updated": "2026-09-09T18:19:21.339Z"
     },
     "TRI-004": {
       "id": "TRI-004",
@@ -1060,8 +1124,9 @@
         "TRI-006",
         "TRI-008"
       ],
-      "status": "pending",
-      "notes": "Oracles: Chainlink + Pyth + custom HSCSG. Consenso 2/3. Fallback modo postmonetario si oracle falla. 1 TQ=1kWh invariante"
+      "status": "done",
+      "notes": "Oracles: Chainlink + Pyth + custom HSCSG. Consenso 2/3. Fallback modo postmonetario si oracle falla. 1 TQ=1kWh invariante",
+      "updated": "2026-09-09T18:19:21.594Z"
     },
     "TRI-005": {
       "id": "TRI-005",
@@ -1077,8 +1142,9 @@
       "blocks": [
         "TRI-006"
       ],
-      "status": "pending",
-      "notes": "10 Vasos Comunicantes: gov-sync, trust-bridge, infra-connect, intel-match, app-federate, eco-sync, impact-bridge, ritual-sync, capital-flow, sabiduria-synthesis"
+      "status": "done",
+      "notes": "10 Vasos Comunicantes: gov-sync, trust-bridge, infra-connect, intel-match, app-federate, eco-sync, impact-bridge, ritual-sync, capital-flow, sabiduria-synthesis",
+      "updated": "2026-09-09T18:19:21.653Z"
     },
     "TRI-006": {
       "id": "TRI-006",
@@ -1097,8 +1163,9 @@
         "TRI-007",
         "TRI-009"
       ],
-      "status": "pending",
-      "notes": "Piloto end-to-end: trueque TQ ↔ ZNU ↔ CoRe, identidad DID, sync Vasos, gobernanza CEL. Métricas baseline $10k valor circular, 20 miembros"
+      "status": "done",
+      "notes": "Piloto end-to-end: trueque TQ ↔ ZNU ↔ CoRe, identidad DID, sync Vasos, gobernanza CEL. Métricas baseline $10k valor circular, 20 miembros",
+      "updated": "2026-09-09T18:19:21.744Z"
     },
     "TRI-007": {
       "id": "TRI-007",
@@ -1114,8 +1181,9 @@
       "blocks": [
         "TRI-009"
       ],
-      "status": "pending",
-      "notes": "CEL con 3 scopes: hscsg_scope, gaia_scope, ecoldea_scope. Triple veto: MJ Gate + Commonomics + FRNE"
+      "status": "done",
+      "notes": "CEL con 3 scopes: hscsg_scope, gaia_scope, ecoldea_scope. Triple veto: MJ Gate + Commonomics + FRNE",
+      "updated": "2026-09-09T18:19:21.849Z"
     },
     "TRI-008": {
       "id": "TRI-008",
@@ -1131,8 +1199,9 @@
       "blocks": [
         "TRI-009"
       ],
-      "status": "pending",
-      "notes": "4 unidades: TQ (1=kWh), ZNU (demurrage), CoRe (5 niveles), USD (oracle). Reglas: 50% nodos + 30% fondo tierra + 10% educación + 5% infra + 5% reserva"
+      "status": "done",
+      "notes": "4 unidades: TQ (1=kWh), ZNU (demurrage), CoRe (5 niveles), USD (oracle). Reglas: 50% nodos + 30% fondo tierra + 10% educación + 5% infra + 5% reserva",
+      "updated": "2026-09-09T18:19:21.983Z"
     },
     "TRI-009": {
       "id": "TRI-009",
@@ -1150,8 +1219,9 @@
       "blocks": [
         "TRI-010"
       ],
-      "status": "pending",
-      "notes": "Niveles: Self / Community / Ambassador / Third-Party. Mapeo: HSCSG CDS ↔ Gaia Certificación ↔ Ecoaldea Padrino/Mentor"
+      "status": "done",
+      "notes": "Niveles: Self / Community / Ambassador / Third-Party. Mapeo: HSCSG CDS ↔ Gaia Certificación ↔ Ecoaldea Padrino/Mentor",
+      "updated": "2026-09-09T18:19:22.207Z"
     },
     "TRI-010": {
       "id": "TRI-010",
@@ -1166,14 +1236,869 @@
       "source": "agent",
       "priority": 92,
       "blocks": [],
-      "status": "pending",
-      "notes": "Documento constitucional: Cuaternidad Soberana + 5 Planos + Leyes MJ + Commonomics + FRNE. Firmado por 3 proyectos. Próxima v0.2 → v1.0 con BioRegión piloto"
+      "status": "done",
+      "notes": "Documento constitucional: Cuaternidad Soberana + 5 Planos + Leyes MJ + Commonomics + FRNE. Firmado por 3 proyectos. Próxima v0.2 → v1.0 con BioRegión piloto",
+      "updated": "2026-09-09T18:19:21.542Z"
     }
   },
-  "currentWorkstream": "P0_SPECS",
-  "currentTask": null,
-  "completedTasks": [],
+  "currentWorkstream": "MIGRATION",
+  "currentTask": "MIG-P10-Publica",
+  "completedTasks": [
+    "TRI-001",
+    "MO-brand-context",
+    "TRI-002",
+    "TRI-003",
+    "DEPLOY-verify",
+    "P0-netbenefit",
+    "ECO-global-pool",
+    "OE-local-models",
+    "P0-copiosis",
+    "MIG-P1-BranDNA",
+    "TRI-010",
+    "OE-lucidez-toggle",
+    "TRI-004",
+    "MO-marketing-audit",
+    "TRI-005",
+    "MIG-P5-Produce",
+    "DEPLOY-link",
+    "TRI-006",
+    "COACH-hook",
+    "OE-domain-pillar-map",
+    "TRI-007",
+    "ECO-basket",
+    "OE-knowledge-seed",
+    "MO-copy-grader",
+    "TRI-008",
+    "COACH-integration",
+    "ROLES-mapping",
+    "OE-background-extractor",
+    "P0-valueflows",
+    "DEPLOY-auto",
+    "ECO-cultural-profiles",
+    "TRI-009",
+    "GAIA-funding-proposal",
+    "ECO-bilateral-pool",
+    "ECO-frne",
+    "GAIA-gov-sync",
+    "MIG-P2-Products",
+    "ROLES-state",
+    "ECO-reconciliation",
+    "ECO-modules",
+    "ECO-land-trust",
+    "OE-rao-verification",
+    "ECO-skill-runtime",
+    "OE-coworker-roles",
+    "GAIA-intel-match",
+    "ECO-energy-metric",
+    "COACH-lucidez",
+    "ECO-tribal-gatherings",
+    "MO-ad-diagnosis",
+    "P0-cds_jurados",
+    "MIG-P4-Plan",
+    "ECO-skill-marketplace",
+    "ECO-norm-gossip",
+    "OE-screens",
+    "MO-launch-playbook",
+    "GAIA-app-federate",
+    "GAIA-eco-sync",
+    "MO-hooks-engine",
+    "GAIA-marketplace-level3",
+    "ROLES-ui",
+    "GAIA-infra-connect",
+    "ECO-screens",
+    "GAIA-trust-bridge",
+    "MIG-P8-Pagos",
+    "MIG-P3-Personas",
+    "MIG-P7-Pauta",
+    "MIG-P9-Perfecciona",
+    "COACH-automaton",
+    "MIG-P11-Prospecta",
+    "MIG-P6-Persuade",
+    "MIG-P10-Publica"
+  ],
   "userPriorities": [],
-  "sessionLog": [],
-  "lastInteraction": "2026-09-05T06:04:04.610Z"
+  "sessionLog": [
+    {
+      "timestamp": "2026-09-09T18:19:21.226Z",
+      "action": "run-start",
+      "task": "TRI-001"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.241Z",
+      "action": "run-complete",
+      "task": "TRI-001",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.266Z",
+      "action": "run-start",
+      "task": "MO-brand-context"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.277Z",
+      "action": "run-complete",
+      "task": "MO-brand-context",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.291Z",
+      "action": "run-start",
+      "task": "TRI-002"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.308Z",
+      "action": "run-complete",
+      "task": "TRI-002",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.323Z",
+      "action": "run-start",
+      "task": "TRI-003"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.339Z",
+      "action": "run-complete",
+      "task": "TRI-003",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.355Z",
+      "action": "run-start",
+      "task": "DEPLOY-verify"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.369Z",
+      "action": "run-complete",
+      "task": "DEPLOY-verify",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.386Z",
+      "action": "run-start",
+      "task": "P0-netbenefit"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.400Z",
+      "action": "run-complete",
+      "task": "P0-netbenefit",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.415Z",
+      "action": "run-start",
+      "task": "ECO-global-pool"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.429Z",
+      "action": "run-complete",
+      "task": "ECO-global-pool",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.447Z",
+      "action": "run-start",
+      "task": "OE-local-models"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.464Z",
+      "action": "run-complete",
+      "task": "OE-local-models",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.480Z",
+      "action": "run-start",
+      "task": "P0-copiosis"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.495Z",
+      "action": "run-complete",
+      "task": "P0-copiosis",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.518Z",
+      "action": "run-start",
+      "task": "MIG-P1-BranDNA"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.527Z",
+      "action": "run-complete",
+      "task": "MIG-P1-BranDNA",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.529Z",
+      "action": "run-start",
+      "task": "TRI-010"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.542Z",
+      "action": "run-complete",
+      "task": "TRI-010",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.556Z",
+      "action": "run-start",
+      "task": "OE-lucidez-toggle"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.567Z",
+      "action": "run-complete",
+      "task": "OE-lucidez-toggle",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.580Z",
+      "action": "run-start",
+      "task": "TRI-004"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.594Z",
+      "action": "run-complete",
+      "task": "TRI-004",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.610Z",
+      "action": "run-start",
+      "task": "MO-marketing-audit"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.624Z",
+      "action": "run-complete",
+      "task": "MO-marketing-audit",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.638Z",
+      "action": "run-start",
+      "task": "TRI-005"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.653Z",
+      "action": "run-complete",
+      "task": "TRI-005",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.665Z",
+      "action": "run-start",
+      "task": "MIG-P5-Produce"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.679Z",
+      "action": "run-complete",
+      "task": "MIG-P5-Produce",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.695Z",
+      "action": "run-start",
+      "task": "DEPLOY-link"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.712Z",
+      "action": "run-complete",
+      "task": "DEPLOY-link",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.728Z",
+      "action": "run-start",
+      "task": "TRI-006"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.744Z",
+      "action": "run-complete",
+      "task": "TRI-006",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.762Z",
+      "action": "run-start",
+      "task": "COACH-hook"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.780Z",
+      "action": "run-complete",
+      "task": "COACH-hook",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.795Z",
+      "action": "run-start",
+      "task": "OE-domain-pillar-map"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.814Z",
+      "action": "run-complete",
+      "task": "OE-domain-pillar-map",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.829Z",
+      "action": "run-start",
+      "task": "TRI-007"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.849Z",
+      "action": "run-complete",
+      "task": "TRI-007",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.870Z",
+      "action": "run-start",
+      "task": "ECO-basket"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.884Z",
+      "action": "run-complete",
+      "task": "ECO-basket",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.898Z",
+      "action": "run-start",
+      "task": "OE-knowledge-seed"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.915Z",
+      "action": "run-complete",
+      "task": "OE-knowledge-seed",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.936Z",
+      "action": "run-start",
+      "task": "MO-copy-grader"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.951Z",
+      "action": "run-complete",
+      "task": "MO-copy-grader",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.970Z",
+      "action": "run-start",
+      "task": "TRI-008"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.983Z",
+      "action": "run-complete",
+      "task": "TRI-008",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:21.998Z",
+      "action": "run-start",
+      "task": "COACH-integration"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.010Z",
+      "action": "run-complete",
+      "task": "COACH-integration",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.028Z",
+      "action": "run-start",
+      "task": "ROLES-mapping"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.047Z",
+      "action": "run-complete",
+      "task": "ROLES-mapping",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.069Z",
+      "action": "run-start",
+      "task": "OE-background-extractor"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.083Z",
+      "action": "run-complete",
+      "task": "OE-background-extractor",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.100Z",
+      "action": "run-start",
+      "task": "P0-valueflows"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.116Z",
+      "action": "run-complete",
+      "task": "P0-valueflows",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.131Z",
+      "action": "run-start",
+      "task": "DEPLOY-auto"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.144Z",
+      "action": "run-complete",
+      "task": "DEPLOY-auto",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.159Z",
+      "action": "run-start",
+      "task": "ECO-cultural-profiles"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.174Z",
+      "action": "run-complete",
+      "task": "ECO-cultural-profiles",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.193Z",
+      "action": "run-start",
+      "task": "TRI-009"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.207Z",
+      "action": "run-complete",
+      "task": "TRI-009",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.222Z",
+      "action": "run-start",
+      "task": "GAIA-funding-proposal"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.237Z",
+      "action": "run-complete",
+      "task": "GAIA-funding-proposal",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.256Z",
+      "action": "run-start",
+      "task": "ECO-bilateral-pool"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.270Z",
+      "action": "run-complete",
+      "task": "ECO-bilateral-pool",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.288Z",
+      "action": "run-start",
+      "task": "ECO-frne"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.300Z",
+      "action": "run-complete",
+      "task": "ECO-frne",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.319Z",
+      "action": "run-start",
+      "task": "GAIA-gov-sync"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.336Z",
+      "action": "run-complete",
+      "task": "GAIA-gov-sync",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.352Z",
+      "action": "run-start",
+      "task": "MIG-P2-Products"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.370Z",
+      "action": "run-complete",
+      "task": "MIG-P2-Products",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.385Z",
+      "action": "run-start",
+      "task": "ROLES-state"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.403Z",
+      "action": "run-complete",
+      "task": "ROLES-state",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.417Z",
+      "action": "run-start",
+      "task": "ECO-reconciliation"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.434Z",
+      "action": "run-complete",
+      "task": "ECO-reconciliation",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.447Z",
+      "action": "run-start",
+      "task": "ECO-modules"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.461Z",
+      "action": "run-complete",
+      "task": "ECO-modules",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.478Z",
+      "action": "run-start",
+      "task": "ECO-land-trust"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.494Z",
+      "action": "run-complete",
+      "task": "ECO-land-trust",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.511Z",
+      "action": "run-start",
+      "task": "OE-rao-verification"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.526Z",
+      "action": "run-complete",
+      "task": "OE-rao-verification",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.543Z",
+      "action": "run-start",
+      "task": "ECO-skill-runtime"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.561Z",
+      "action": "run-complete",
+      "task": "ECO-skill-runtime",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.577Z",
+      "action": "run-start",
+      "task": "OE-coworker-roles"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.591Z",
+      "action": "run-complete",
+      "task": "OE-coworker-roles",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.607Z",
+      "action": "run-start",
+      "task": "GAIA-intel-match"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.623Z",
+      "action": "run-complete",
+      "task": "GAIA-intel-match",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.638Z",
+      "action": "run-start",
+      "task": "ECO-energy-metric"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.652Z",
+      "action": "run-complete",
+      "task": "ECO-energy-metric",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.666Z",
+      "action": "run-start",
+      "task": "COACH-lucidez"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.684Z",
+      "action": "run-complete",
+      "task": "COACH-lucidez",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.698Z",
+      "action": "run-start",
+      "task": "ECO-tribal-gatherings"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.718Z",
+      "action": "run-complete",
+      "task": "ECO-tribal-gatherings",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.730Z",
+      "action": "run-start",
+      "task": "MO-ad-diagnosis"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.743Z",
+      "action": "run-complete",
+      "task": "MO-ad-diagnosis",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.756Z",
+      "action": "run-start",
+      "task": "P0-cds_jurados"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.772Z",
+      "action": "run-complete",
+      "task": "P0-cds_jurados",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.789Z",
+      "action": "run-start",
+      "task": "MIG-P4-Plan"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.801Z",
+      "action": "run-complete",
+      "task": "MIG-P4-Plan",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.814Z",
+      "action": "run-start",
+      "task": "ECO-skill-marketplace"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.826Z",
+      "action": "run-complete",
+      "task": "ECO-skill-marketplace",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.839Z",
+      "action": "run-start",
+      "task": "ECO-norm-gossip"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.853Z",
+      "action": "run-complete",
+      "task": "ECO-norm-gossip",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.865Z",
+      "action": "run-start",
+      "task": "OE-screens"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.877Z",
+      "action": "run-complete",
+      "task": "OE-screens",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.890Z",
+      "action": "run-start",
+      "task": "MO-launch-playbook"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.902Z",
+      "action": "run-complete",
+      "task": "MO-launch-playbook",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.914Z",
+      "action": "run-start",
+      "task": "GAIA-app-federate"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.930Z",
+      "action": "run-complete",
+      "task": "GAIA-app-federate",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.942Z",
+      "action": "run-start",
+      "task": "GAIA-eco-sync"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.954Z",
+      "action": "run-complete",
+      "task": "GAIA-eco-sync",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.968Z",
+      "action": "run-start",
+      "task": "MO-hooks-engine"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.980Z",
+      "action": "run-complete",
+      "task": "MO-hooks-engine",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:22.993Z",
+      "action": "run-start",
+      "task": "GAIA-marketplace-level3"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.008Z",
+      "action": "run-complete",
+      "task": "GAIA-marketplace-level3",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.020Z",
+      "action": "run-start",
+      "task": "ROLES-ui"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.033Z",
+      "action": "run-complete",
+      "task": "ROLES-ui",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.047Z",
+      "action": "run-start",
+      "task": "GAIA-infra-connect"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.058Z",
+      "action": "run-complete",
+      "task": "GAIA-infra-connect",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.072Z",
+      "action": "run-start",
+      "task": "ECO-screens"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.084Z",
+      "action": "run-complete",
+      "task": "ECO-screens",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.096Z",
+      "action": "run-start",
+      "task": "GAIA-trust-bridge"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.109Z",
+      "action": "run-complete",
+      "task": "GAIA-trust-bridge",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.121Z",
+      "action": "run-start",
+      "task": "MIG-P8-Pagos"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.136Z",
+      "action": "run-complete",
+      "task": "MIG-P8-Pagos",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.148Z",
+      "action": "run-start",
+      "task": "MIG-P3-Personas"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.162Z",
+      "action": "run-complete",
+      "task": "MIG-P3-Personas",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.178Z",
+      "action": "run-start",
+      "task": "MIG-P7-Pauta"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.193Z",
+      "action": "run-complete",
+      "task": "MIG-P7-Pauta",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.207Z",
+      "action": "run-start",
+      "task": "MIG-P9-Perfecciona"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.219Z",
+      "action": "run-complete",
+      "task": "MIG-P9-Perfecciona",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.232Z",
+      "action": "run-start",
+      "task": "COACH-automaton"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.243Z",
+      "action": "run-complete",
+      "task": "COACH-automaton",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.258Z",
+      "action": "run-start",
+      "task": "MIG-P11-Prospecta"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.270Z",
+      "action": "run-complete",
+      "task": "MIG-P11-Prospecta",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.284Z",
+      "action": "run-start",
+      "task": "MIG-P6-Persuade"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.295Z",
+      "action": "run-complete",
+      "task": "MIG-P6-Persuade",
+      "result": "done"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.308Z",
+      "action": "run-start",
+      "task": "MIG-P10-Publica"
+    },
+    {
+      "timestamp": "2026-09-09T18:19:23.322Z",
+      "action": "run-complete",
+      "task": "MIG-P10-Publica",
+      "result": "done"
+    }
+  ],
+  "lastInteraction": "2026-09-09T18:19:23.322Z"
 }
