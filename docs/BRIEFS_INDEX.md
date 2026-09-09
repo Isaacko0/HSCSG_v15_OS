@@ -1,6 +1,6 @@
 # ÍNDICE DE BRIEFS — Documentos Informativos Operacionales
 **HSCSG v15 OS / Cosateca OS / navteka**  
-**Versión:** 1.3 | **Fecha:** 2026-09-02 | **Autor:** Isaac Ko (Isaacko0)  
+**Versión:** 1.4 | **Fecha:** 2026-09-10 | **Autor:** Isaac Ko (Isaacko0)  
 **Repo:** `https://github.com/Isaacko0/HSCSG_v15_OS` | **Deploy:** `https://hscsg-v15-os.vercel.app` (OS) + `navteka.vercel.app` (social)
 
 ---
@@ -340,9 +340,18 @@ Este índice centraliza **todos los briefs/documentos informativos operacionales
 || **Nodos de Cuidado de Proximidad – Ecoaldeas LATAM** | ✅ `nodos_cuidado_proximidad_backup.md` | ✅ `nodos_cuidado_integration.md` | 0 (plan 8 semanas) | 0 | 2 ||
 || **OpenExecutive (SenteLabsAI)** | ✅ `openexecutive_backup.md` | ✅ `openexecutive_integration.md` | 0 (plan 7 módulos nuevos) | 0 | 2 ||
 || **Marketing OS (Yuzzyuk)** | ✅ `marketing_os_backup.md` | ✅ `marketing_os_integration.md` | 0 (plan 12 módulos nuevos) | 0 | 2 ||
-|| **One Community Global** | ✅ `onecommunity_global_backup_en.md` | ✅ `onecommunity_global_backup_es.md` | workstream ONECOMMUNITY_INTEGRATION (10 tareas) | 1 (`hscsg-onecommunity-integration`) | 2 |
+|| **One Community Global** | ✅ `onecommunity_global_backup_en.md` | ✅ `onecommunity_global_backup_es.md` | workstream ONECOMMUNITY_INTEGRATION (10 tareas) | 1 (`hscsg-onecommunity-integration`) | 2 ||
+|| **BreadchainCoop/bread-docs** | ✅ `breadchain_bread-docs_backup.md` | ✅ `breadchain_bread-docs_integration.md` | workstream BREADCHAIN_INTEGRATION (10 tasks) | 0 | 2 ||
+|| **BreadchainCoop/crowdstake.fun** | ✅ `breadchain_crowdstake.fun_backup.md` | ✅ `breadchain_crowdstake.fun_integration.md` | workstream BREADCHAIN_INTEGRATION (10 tasks) | 0 | 2 ||
+|| **BreadchainCoop/ourcoop** | ✅ `breadchain_ourcoop_backup.md` | ✅ `breadchain_ourcoop_integration.md` | workstream BREADCHAIN_INTEGRATION (10 tasks) | 0 | 2 ||
+|| **BreadchainCoop/bread-design-system** | ✅ `breadchain_bread-design-system_backup.md` | ✅ `breadchain_bread-design-system_integration.md` | workstream BREADCHAIN_INTEGRATION (10 tasks) | 0 | 2 ||
+|| **BreadchainCoop/coopstable-contracts** | ✅ `breadchain_coopstable-contracts_backup.md` | ✅ `breadchain_coopstable-contracts_integration.md` | workstream BREADCHAIN_INTEGRATION (10 tasks) | 0 | 2 ||
+|| **BreadchainCoop/monorepo** | ✅ `breadchain_monorepo_backup.md` | ✅ `breadchain_monorepo_integration.md` | workstream BREADCHAIN_INTEGRATION (10 tasks) | 0 | 2 ||
+|| **BreadchainCoop/commonware-restaking-contracts** | ✅ `breadchain_commonware-restaking-contracts_backup.md` | ✅ `breadchain_commonware-restaking-contracts_integration.md` | workstream BREADCHAIN_INTEGRATION (10 tasks) | 0 | 2 ||
+|| **BreadchainCoop/bread-gnosis-pay** | ✅ `breadchain_bread-gnosis-pay_backup.md` | ✅ `breadchain_bread-gnosis-pay_integration.md` | workstream BREADCHAIN_INTEGRATION (3 tasks) | 0 | 2 ||
+|| **BreadchainCoop/breadchain-crowdstaking** | ✅ `breadchain_breadchain-crowdstaking_backup.md` | ✅ `breadchain_breadchain-crowdstaking_integration.md` | workstream BREADCHAIN_INTEGRATION (2 tasks) | 0 | 2 ||
 
-| **Total:** 43 proyectos fuente | 40 completados (80 docs backup+integration) | 8 pendientes | **153 briefs totales** | 4 skills Hermes desplegadas | 57 docs operativos en `docs/` |
+|| **Total:** 52 proyectos fuente | 49 completados (98 docs backup+integration) | 8 pendientes | **171 briefs totales** | 4 skills Hermes desplegadas | 75 docs operativos en `docs/` |
 
 ---
 
