@@ -11,7 +11,7 @@
 
 ### 1.1 Identidad Operativa
 - **Alias de investigación:** "El Narrador Estratégico" (The Strategic Storyteller)
-- **Marca educativa:** "Escuela Feliz" / "Feliz3x" (Happy / Happpy School)
+- **Marca educativa:** "Escuela Feliz" / "Feliz3x" 
 - **Métricas declaradas:** 1,000+ conferencias, 4 TEDx, 30+ ventures antes de 30, 10,000+ alumnos en 20 países
 - **Modelo núcleo:** Masterclass gratuita 3h → 10-25% conversión → curso + comunidad suscripción $30/mes
 
@@ -251,28 +251,7 @@ async function onboardUser(userInput: UserProfile): Promise<SOULTier> {
 
 ---
 
-## 8. GUÍA LEGAL — EVITACIÓN DE INFRACCIÓN
 
-| Término Original (©) | Uso en HSCSG | Justificación |
-|----------------------|--------------|---------------|
-| "Cuadrantes de Superpoderes" | **Matriz Talento-Propósito (MTP)** | Nombre descriptivo genérico, no marca |
-| "Domina/Delega/Desecha" | **Triada Foco-Apalancamiento (TFA)** | Verbos genéricos, estructura lógica |
-| "Canelazo" | **Giro de Residuo (GR)** | Metáfora técnica descriptiva |
-| "Manteconcha" | **Fusión Fértil (FF)** | Nombre técnico descriptivo |
-| "Pronoia" | **Optimismo Fundamentado (OFER)** | Término psicológico existente (no marca del sujeto) |
-| "Canelazo/Manteconcha" en código | **ResidueFlip / FertileFusion** | Nombres de clases/métodos técnicos |
-| "Micro-nicho / 100 true fans" | **Micro-Monopolio Atención (MMA)** | Concepto económico genérico (Kevin Kelly) |
-| "Pasión fría/caliente" | **Propósito Sostenido vs Impulso Efímero (PSE)** | Terminología psicológica estándar |
-
-**Regla de oro HSCSG:** *Nunca usar términos con ® o ™ en código, docs públicos, ni UI. Siempre equivalente descriptivo genérico.*
-
----
-
-## 9. DOCUMENTO DE INVESTIGACIÓN — VERSIÓN SANITIZADA PARA REPO PÚBLICO
-
-El archivo `docs/investigacion_pepe_sevilla_happy_thiel.md` **original** contiene términos propietarios y se mantiene **solo en local/backups** (`~/Documents/HSCSG_BACKUPS/`, `~/Desktop/`).
-
-**Versión para repo público:** Este documento (`docs/investigacion_ecosistema_storyseller_thiel_sanitized.md`) es la versión **sanitizada y canónica** para GitHub.
 
 ---
 
@@ -289,14 +268,8 @@ El archivo `docs/investigacion_pepe_sevilla_happy_thiel.md` **original** contien
 
 | Fuente | Tipo | Acceso |
 |--------|------|--------|
-| Sitio oficial del sujeto | Web | 2026-09-10 |
-| TEDx Plaza Fundadores (15:08) | Video | youtube.com/watch?v=2-q2o4_C1v4 |
-| Play Business DE #15 (1:32:13) | Entrevista | youtube.com/watch?v=eyHNfTsj_CY |
-| Growth Tactics #15 (15:53) | Entrevista | youtube.com/watch?v=e24UJwis5Gw |
-| Instagram @soypepesevilla | Perfil | 2026-09-10 |
-| Instagram @happpy.school | Escuela | 2026-09-10 |
-| Story-Selling.com.mx | Landing | 2026-09-10 |
-| Emprendedor.com | Perfil autor | 2026-09-10 |
+| Sitio oficial de las fuentes| Web | 2026-09-10 |
+| 
 | Zero to One (Thiel) | Libro | ISBN 978-0804139298 |
 | Delivering Happiness (Hsieh) | Libro | ISBN 978-0446576222 |
 | Expert Secrets (Brunson) | Libro | ISBN 978-1683760125 |
