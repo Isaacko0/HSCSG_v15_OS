@@ -6,7 +6,7 @@
 **Clasificación:** INTERNO — Insumo obligatorio para toda decisión de uso comercial
 **Alcance:** 114 fuentes (52 entradas de `docs/fuentes_indice.json` + 62 fuentes asimiladas presentes en `docs/*_backup.md` / `docs/*_integration.md` sin entrada en el índice)
 **Criterios aplicados:** matriz de compatibilidad de `AREX_SKILL_SYNERGY_PLAN.md` §1.3 + análisis de `LEGAL_PROTECTION_FINANCIAL_RETURN.md` + doctrinas de `LEGAL_NOTICE.md`
-**Sustituye a:** el análisis parcial de `LEGAL_PROTECTION_FINANCIAL_RETURN.md` §1.1 (solo `brendanhogan/loophole` y `open-legal-products/mike`)
+**Sustituye a:** el análisis parcial de `LEGAL_PROTECTION_FINANCIAL_RETURN.md` §1.1 (solo `brendanhogan/loophole` y `open-legal-products/mike`) y la primera versión de este documento, limitada a las entradas del índice y con licencias asumidas sin evidencia local
 
 ---
 
@@ -39,7 +39,7 @@
 
 | # | Prioridad | Acción | Fuentes afectadas | Criterio |
 |---|-----------|--------|-------------------|----------|
-| 1 | **P0 — Bloqueante** | **Retirar del repo público los backups que reproducen obras completas de terceros** | `F-27` (libro íntegro de Amiya Tulu), `F-33` (tesis Towards an Open Civics), `24` (Libro Ecoaldeas Federadas), `F-20`/`F-21` (corpus NC-ND de Yoka & Balbi) | `LEGAL_NOTICE.md` §5: el material literal de terceros debe permanecer SOLO LOCAL |
+| 1 | **P0 — Bloqueante** | **Retirar del repo público los backups que reproducen obras completas de terceros.** Hecho para `F-20`/`F-21` (movidos a `docs/_licencia_incompatible/`); **pendiente** para el resto | `F-27` (libro íntegro de Amiya Tulu), `F-33` (tesis Towards an Open Civics), `24` (Libro Ecoaldeas Federadas), `25`/`27` (documentos Gaia Commons) | `LEGAL_NOTICE.md` §5: el material literal de terceros debe permanecer SOLO LOCAL |
 | 2 | **P0 — Bloqueante** | **Resolver el conflicto NC-ND (Yoka & Fabio Balbi)**: obtener licencia comercial escrita o dual-licensing; si no se obtiene, sustituir el material por síntesis propia no derivada | `F-15`, `F-20`, `F-21`, `F-22` | CC BY-NC-ND 4.0 prohíbe uso comercial Y obras derivadas |
 | 3 | **P0 — Bloqueante** | **Aislar todo copyleft fuerte en microservicios separados** con repo propio bajo la misma licencia y adapter abstracto; cero imports en `src/core/` | `F-02`…`F-05` (Colony, GPL-3.0), `F-28` (Kleros, GPL-3.0), `F-43` (tekitl, GPL-3.0), `F-29` (Nextcloud, AGPL-3.0), `F-61` (Mike, AGPL-3.0) | `LEGAL_PROTECTION` §2 Capa 1 + `AREX_SKILL_SYNERGY_PLAN` §1.3 |
 | 4 | **P1 — Alta** | **No integrar código source-available con cláusula anti-SaaS**; reimplementar o negociar licencia comercial | `F-11` (Aurora ELv2), `F-47` (Didacta SUL) | Ambas licencias prohíben explícitamente el servicio gestionado de pago |
@@ -79,7 +79,9 @@ El core HSCSG está licenciado MIT/Apache-2.0 (`LEGAL_PROTECTION` §2.2). Cualqu
 | `biotesis_yoka_corpus_nuclear_backup.md` (`F-15`) | Yoka (ex-Diego) | No declarada; el resto del corpus del autor es CC BY-NC-ND 4.0 | Presunción de NC-ND por coherencia de autor |
 | `mk1_balbi_backup.md` (`F-22`) | Fabio F. Balbi | No declarada; mismo autor que `F-20` | MK-1 está integrado operativamente en el Sistema Alráico |
 
-**Acción requerida (P0):** autorización escrita de Yoka y de Fabio F. Balbi (licencia comercial o dual-licensing) o retirada del material del producto. Los cuatro archivos están actualmente **versionados en el repositorio público**.
+**Estado:** `el_enlace_yoka_fabio_backup.md` y `filosofia_propria_yoka_backup.md` ya están aislados en `docs/_licencia_incompatible/` (ver su `README.md`), pero siguen versionados en el repositorio; `biotesis_yoka_corpus_nuclear_backup.md` y `mk1_balbi_backup.md` permanecen en `docs/`.
+
+**Acción requerida (P0):** autorización escrita de Yoka y de Fabio F. Balbi (licencia comercial o dual-licensing) o retirada efectiva del material del producto y del historial público.
 
 ### 2.3 Frameworks Pepe Sevilla / Happy (DeseOS / ContenOS)
 
@@ -103,8 +105,8 @@ Estas licencias **no son open source** y no aparecen en la matriz de `AREX_SKILL
 | `docs/iambrainstorming_libro_completo.md` | Libro íntegro (>16.000 líneas) | Amiya Tulu |
 | `docs/towards_open_civics_backup.txt` | Tesis/publicación íntegra | OpenCivics |
 | `docs/libro_ecoaldeas_federadas_backup.md` | Libro completo (22 capítulos) | Ecoaldeas Federadas |
-| `docs/el_enlace_yoka_fabio_backup.md` | Documento CC BY-NC-ND íntegro | Yoka + Fabio Balbi |
-| `docs/filosofia_propria_yoka_backup.md` | Documento CC BY-NC-ND íntegro | Yoka |
+| `docs/_licencia_incompatible/el_enlace_yoka_fabio_backup.md` | Documento CC BY-NC-ND íntegro (ya aislado, aún versionado) | Yoka + Fabio Balbi |
+| `docs/_licencia_incompatible/filosofia_propria_yoka_backup.md` | Documento CC BY-NC-ND íntegro (ya aislado, aún versionado) | Yoka |
 | `docs/gaia_commons_constitution_backup.md` | Constitución (402 KB de origen) | Gaia Commons |
 
 **Nota positiva:** los backups de las obras publicadas con copyright editorial (`115`–`125`: Land, Kurzweil, Murra, Kardiner, Capella, Rojas, Q'ero, Cosmotechnics) **no están en el repositorio** — solo sus `_integration.md`. Ese es el patrón correcto y debe aplicarse a la tabla anterior.
@@ -249,7 +251,7 @@ Fuentes con `_backup.md` / `_integration.md` en `docs/` (incluidos los subdirect
 
 ## 5. ESQUEMA DE AUDITORÍA EN EL ÍNDICE MAESTRO
 
-Cada entrada de `docs/fuentes_indice.json` incorpora dos campos nuevos:
+Cada entrada de `docs/fuentes_indice.json` lleva los campos de auditoría:
 
 ```jsonc
 {
@@ -257,14 +259,21 @@ Cada entrada de `docs/fuentes_indice.json` incorpora dos campos nuevos:
   "nombre": "OpenBot (CopilotKit)",
   "url": "https://github.com/CopilotKit/OpenBot",
   "estado": "✅ Completo",
-  "licencia": "MIT",              // licencia detectada, o "DESCONOCIDA / NO AUDITADA"
-  "riesgo_legal": "BAJO",         // BAJO | MEDIO | ALTO (ver §1.1)
   "backup": "openbot_backup.md",
   "integration": "openbot_integration.md",
   "briefs_relacionados": ["BF-010"],
-  "seccion_ref": "2.1"
+  "seccion_ref": "2.1",
+  "licencia": "MIT",                   // licencia detectada, o "DESCONOCIDA / NO AUDITADA"
+  "tipo_licencia": "permisiva",        // permisiva | copyleft | no_comercial_no_derivadas | propietaria | desconocida
+  "riesgo_legal": "BAJO",              // BAJO | MEDIO | ALTO (ver §1.1)
+  "tipo_contenido": "codigo",          // codigo | corpus_textual | mixto
+  "auditada": true,                    // false mientras la licencia no esté declarada/verificada
+  "fecha_auditoria": "2026-09-10",
+  "mitigacion": "Mantener LICENSE/NOTICE de upstream en el wrapper"
 }
 ```
+
+`auditada` es `false` en toda fuente cuya licencia no consta en su backup: no se asume una licencia por el hecho de que el origen sea un repositorio de GitHub.
 
 **Convención de valores:**
 
