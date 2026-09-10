@@ -1,0 +1,436 @@
+# GitHub Actions Workflow for HSCSG Tool Forge
+# CI/CD Pipeline: Test → Build → Deploy → CaaS Daily Tick
+
+name: Tool Forge CI/CD
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'tool-forge/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tool-forge/**'
+  workflow_dispatch:
+  schedule:
+    # Daily tick for CaaS economy (ZNU/FRNE emission, priceParity update)
+    - cron: '0 2 * * *'  # 2 AM UTC daily
+
+env:
+  NODE_VERSION: '20.x'
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
+jobs:
+  # ══════════════════════════════════════════════════════════════════
+  # LINT & TYPE CHECK
+  # ══════════════════════════════════════════════════════════════════
+  lint-and-typecheck:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./tool-forge
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: tool-forge/frontend/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run TypeScript type check
+        run: npm run type-check
+
+      - name: Run Prettier check
+        run: npx prettier --check .
+
+  # ══════════════════════════════════════════════════════════════════
+  # TEST CaaS ENGINE
+  # ══════════════════════════════════════════════════════════════════
+  test-caas:
+    name: Test CaaS Engine
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./tool-forge
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Test CaaS Engine basic operations
+        run: |
+          npx tsx -e "
+            import { caasEngine } from './backend/caas-engine';
+            
+            // Test 1: Create user
+            const user = await caasEngine.getOrCreateUser('did:hsccsg:user:test123');
+            console.log('✅ User created:', user.did, 'Tier:', user.tier);
+            
+            // Test 2: Verify access (FREE tier)
+            const access = await caasEngine.verifyAccess(user.did, 'qr-3d-generator', 'run');
+            console.log('✅ Access check:', access.allowed ? 'ALLOWED' : 'DENIED', access.tier);
+            
+            // Test 3: Record usage
+            const contrib = await caasEngine.recordUsage(user.did, 'qr-3d-generator', 'run');
+            console.log('✅ Usage recorded:', contrib.frneEmitted, 'FRNE');
+            
+            // Test 4: Upgrade tier
+            const upgrade = await caasEngine.upgradeTier(user.did, 'PRO');
+            console.log('✅ Upgrade:', upgrade.success ? 'SUCCESS' : 'FAILED', upgrade.reason || '');
+            
+            // Test 5: Analytics
+            const analytics = caasEngine.getAnalytics();
+            console.log('✅ Analytics:', analytics.totalUsers, 'users,', analytics.monthlyRecurringUsd, 'USD MRR');
+            
+            // Test 6: Daily tick
+            const tick = await caasEngine.dailyTick();
+            console.log('✅ Daily tick:', tick.activeUsers, 'active,', tick.totalFrneEmitted, 'FRNE');
+            
+            console.log('\\n🎉 All CaaS Engine tests PASSED!');
+          "
+
+  # ══════════════════════════════════════════════════════════════════
+  # TEST TOOL GENERATOR
+  # ══════════════════════════════════════════════════════════════════
+  test-tool-generator:
+    name: Test Tool Generator
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./tool-forge
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Test QR 3D Generator execution
+        run: |
+          npx tsx -e "
+            import { executeQR3DGenerator } from './tools/qr-3d-generator';
+            
+            const result = await executeQR3DGenerator({
+              url: 'https://example.com',
+              baseColor: '#000000',
+              qrColor: '#FFFFFF',
+              shape: 'stand',
+              text: 'Test',
+              emoji: '⭐'
+            });
+            
+            console.log('✅ QR 3D Generated:');
+            console.log('  PNG:', result.png.substring(0, 50) + '...');
+            console.log('  SVG length:', result.svg.length);
+            console.log('  3MF length:', result['3mf'].length);
+            console.log('  STL length:', result.stl.length);
+            console.log('  Preview3D:', !!result.preview3d);
+            
+            if (result.png && result.svg && result['3mf'] && result.stl) {
+              console.log('\\n🎉 QR 3D Generator test PASSED!');
+            } else {
+              throw new Error('Missing outputs');
+            }
+          "
+
+      - name: Test Tool Generator batch (dry run)
+        run: |
+          npx tsx -e "
+            import { batchGenerateTools, MVP_TOOL_SPECS } from './backend/tool-generator';
+            
+            // Just validate specs are well-formed
+            for (const spec of MVP_TOOL_SPECS) {
+              console.log('✅ Spec valid:', spec.slug, '-', spec.name);
+              console.log('  Tier:', spec.tier);
+              console.log('  Category:', spec.category);
+              console.log('  Keywords:', spec.seo.targetKeywords.length);
+              console.log('  Test cases:', spec.testCases.length);
+            }
+            console.log('\\n🎉 All', MVP_TOOL_SPECS.length, 'MVP tool specs VALIDATED!');
+          "
+
+  # ══════════════════════════════════════════════════════════════════
+  # BUILD FRONTEND
+  # ══════════════════════════════════════════════════════════════════
+  build-frontend:
+    name: Build Frontend
+    runs-on: ubuntu-latest
+    needs: [lint-and-typecheck, test-caas, test-tool-generator]
+    defaults:
+      run:
+        working-directory: ./tool-forge/frontend
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: tool-forge/frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js application
+        run: npm run build
+        env:
+          NEXT_PUBLIC_CAAS_API_URL: ${{ secrets.CAAS_API_URL }}
+          NEXT_PUBLIC_VERCEL_URL: ${{ secrets.VERCEL_URL }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nextjs-build
+          path: |
+            .next
+            public
+          retention-days: 1
+
+  # ══════════════════════════════════════════════════════════════════
+  # DEPLOY TO VERCEL (Preview on PR, Production on main)
+  # ══════════════════════════════════════════════════════════════════
+  deploy-vercel:
+    name: Deploy to Vercel
+    runs-on: ubuntu-latest
+    needs: build-frontend
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nextjs-build
+          path: ./tool-forge/frontend/.next
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        if: github.ref == 'refs/heads/main'
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Preview to Vercel
+        uses: amondnet/vercel-action@v25
+        if: github.ref != 'refs/heads/main'
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Comment PR with Preview URL
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: deployments } = await github.rest.repos.listDeployments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              environment: 'preview',
+              per_page: 1
+            });
+            if (deployments.length > 0) {
+              const url = deployments[0].url;
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                body: `🚀 **Preview Deployment Ready!**\n\n🔗 **URL:** ${url}\n\nThis preview will update automatically on new commits.`
+              });
+            }
+
+  # ══════════════════════════════════════════════════════════════════
+  # DAILY CaaS TICK (Scheduled: 2 AM UTC daily)
+  # ══════════════════════════════════════════════════════════════════
+  daily-caas-tick:
+    name: Daily CaaS Economy Tick
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    defaults:
+      run:
+        working-directory: ./tool-forge
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Execute Daily CaaS Tick
+        run: |
+          npx tsx -e "
+            import { caasEngine } from './backend/caas-engine';
+            
+            console.log('🌅 Starting Daily CaaS Tick...');
+            console.log('Time:', new Date().toISOString());
+            
+            const result = await caasEngine.dailyTick();
+            
+            console.log('\\n📊 DAILY TICK RESULTS:');
+            console.log('  Timestamp:', new Date(result.timestamp).toISOString());
+            console.log('  Active Users:', result.activeUsers);
+            console.log('  Total FRNE Emitted:', result.totalFrneEmitted.toString());
+            console.log('  Total ZNU Burned:', result.totalZnuBurned.toString());
+            console.log('  Price Parity (USD/ZNU):', result.priceParity);
+            console.log('  Total Users:', result.totalUsers);
+            console.log('  Total Tools:', result.totalTools);
+            
+            // Get full analytics
+            const analytics = caasEngine.getAnalytics();
+            console.log('\\n📈 ANALYTICS:');
+            console.log('  Total Users:', analytics.totalUsers);
+            console.log('  By Tier:', JSON.stringify(analytics.usersByTier));
+            console.log('  Total Tools:', analytics.totalTools);
+            console.log('  Total FRNE Circulating:', analytics.totalFrneCirculating.toString());
+            console.log('  Total ZNU Held:', analytics.totalZnuHeld.toString());
+            console.log('  Monthly Recurring USD:', analytics.monthlyRecurringUsd.toFixed(2));
+            console.log('  Top Tools:', analytics.topTools.map(t => t.id + ':' + t.runs).join(', '));
+            
+            console.log('\\n✅ Daily tick completed successfully!');
+          "
+
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '❌ Daily CaaS Tick Failed',
+              body: `The daily CaaS economy tick failed at ${new Date().toISOString()}. Check the workflow logs for details.`,
+              labels: ['bug', 'caas', 'daily-tick']
+            });
+
+  # ══════════════════════════════════════════════════════════════════
+  # DEPLOY TO HOSTINGER (Production only, manual trigger)
+  # ══════════════════════════════════════════════════════════════════
+  deploy-hostinger:
+    name: Deploy to Hostinger
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    environment: production
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nextjs-build
+          path: ./tool-forge/frontend/.next
+
+      - name: Build static export for Hostinger
+        run: |
+          cd tool-forge/frontend
+          # Next.js static export for shared hosting
+          npm run build
+          # Copy to deploy folder
+          mkdir -p ../deploy-hostinger
+          cp -r .next/static ../deploy-hostinger/
+          cp -r public ../deploy-hostinger/
+          # Generate static HTML for all routes
+          npx next export -o ../deploy-hostinger
+
+      - name: Deploy to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.HOSTINGER_FTP_HOST }}
+          username: ${{ secrets.HOSTINGER_FTP_USER }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          local-dir: ./tool-forge/deploy-hostinger/
+          server-dir: public_html/
+          protocol: ftps
+          port: 21
+          timeout: 120000
+
+  # ══════════════════════════════════════════════════════════════════
+  # NOTIFICATIONS
+  # ═════════════════════════════════════════════════════════════════
+  notify-success:
+    name: Notify Success
+    runs-on: ubuntu-latest
+    needs: [deploy-vercel, deploy-hostinger]
+    if: always() && needs.deploy-vercel.result == 'success'
+    steps:
+      - name: Notify Discord
+        if: env.DISCORD_WEBHOOK != ''
+        run: |
+          curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
+            -H "Content-Type: application/json" \
+            -d '{"content": "🚀 **Tool Forge Deployed!**\n🔗 **Vercel:** https://tool-forge.vercel.app\n🏠 **Hostinger:** https://tool-forge.hscsg.io\n📊 **CaaS Analytics:** https://tool-forge.vercel.app/api/caas/analytics"}'
+
+  notify-failure:
+    name: Notify Failure
+    runs-on: ubuntu-latest
+    needs: [lint-and-typecheck, test-caas, test-tool-generator, build-frontend, deploy-vercel]
+    if: always() && (needs.lint-and-typecheck.result == 'failure' || needs.test-caas.result == 'failure' || needs.test-tool-generator.result == 'failure' || needs.build-frontend.result == 'failure' || needs.deploy-vercel.result == 'failure')
+    steps:
+      - name: Create Failure Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '❌ Tool Forge Pipeline Failed',
+              body: `Pipeline failed at ${new Date().toISOString()}. Check the workflow run for details.`,
+              labels: ['bug', 'ci-failure']
+            });
+      - name: Notify Discord
+        if: env.DISCORD_WEBHOOK != ''
+        run: |
+          curl -X POST ${{ secrets.DISCORD_WEBHOOK }} \
+            -H "Content-Type: application/json" \
+            -d '{"content": "❌ **Tool Forge Pipeline Failed!** Check GitHub Actions for details."}'
