@@ -1,8 +1,7 @@
 # HAPPPY SOVEREIGN ENTREPRENEUR LAB™
-## Propuesta de colaboración estratégica
-### Happpy × HSCSG v15 OS
+## Propuesta de Colaboración Estratégica — Happy × HSCSG v15 OS
 
-**Versión:** 1.0  
+**Versión:** 2.0  
 **Fecha:** Septiembre 2026  
 **Duración propuesta:** 90 días  
 **Piloto:** 50 participantes  
@@ -13,13 +12,13 @@
 
 # 1. RESUMEN EJECUTIVO
 
-Happpy ha construido una comunidad y una propuesta educativa capaces de activar a personas interesadas en emprendimiento.
+Happy ha construido una comunidad y una propuesta educativa capaces de activar a personas interesadas en emprendimiento.
 
 HSCSG v15 OS aporta una arquitectura experimental para llevar esa experiencia un paso más allá:
 
 > **convertir aprendizaje en acción, acción en evidencia y evidencia en contribución.**
 
-La oportunidad no consiste en reconstruir Happpy alrededor de una nueva tecnología.
+La oportunidad no consiste en reconstruir Happy alrededor de una nueva tecnología.
 
 Consiste en crear un **laboratorio controlado de 90 días** para probar una hipótesis:
 
@@ -32,7 +31,7 @@ La propuesta:
 - 1 transformación principal.
 - KPIs definidos antes del lanzamiento.
 - Integración progresiva.
-- Sin migrar toda la infraestructura de Happpy.
+- Sin migrar toda la infraestructura de Happy.
 - Sin exigir adoptar toda la arquitectura HSCSG desde el primer día.
 
 Si el experimento funciona, se escala.
@@ -41,57 +40,91 @@ Si no funciona, se aprende antes de realizar una inversión mayor.
 
 ---
 
-# 2. LA TESIS
+# 2. CONTEXTO REAL: EL ECOSISTEMA PEPE SEVILLA
 
-La educación online tradicional sigue un patrón:
+**Happy / ContenOS / DeseOS / Soul.MBA fueron creados por Pepe Sevilla.**
 
-```text
-Contenido
-   ↓
-Alumno
-   ↓
-Tarea
-   ↓
-Certificado
-```
+| Sistema | Descripción | Estado | Demo |
+|---------|-------------|--------|------|
+| **ContenOS** | Sistema operativo de contenido para creadores | Producción | https://demo.contento.pro/ |
+| **DeseOS** | Sistema operativo de deseo/transformación personal | Desarrollo (project1) | Demo local |
+| **Soul.MBA** | Plataforma de negocio basada en identidad | Producción | Integrado en ContenOS |
 
-El nuevo modelo propone:
+### Métricas Reales (demo.contento.pro)
+- **Pipeline P1–P11**: BrandDNA → Productos → Personas → Plan → Produce → Persuade → Presenta → Pauta → Prospecta → Pagos → Perfecciona
+- **KPIs**: 31 piezas/mes, 3.8x ROAS, 48.2k alcance, 1.840 prospectos
+- **Contactos**: 312 contactos, +18/semana (Apify enrichment)
+- **Pipeline ventas 5 niveles**: Día 0 ($0) → Foundation ($97) → Blueprint ($1,997) → Cohorte ($8,000) → VIP ($25,000)
+- **Cobros**: 41% créditos, $8.2k/$20k cobrados
+- **Offline-first**: PWA completa con Service Worker
 
-```text
-Diagnóstico
-   ↓
-Ruta personalizada
-   ↓
-Acción
-   ↓
-Coach / IA
-   ↓
-Evidencia
-   ↓
-Contribución
-   ↓
-Comunidad
-   ↓
-Nueva oportunidad
-```
+### 8 Frameworks Propietarios → Sanitizados como Módulos HSCSG
+| Framework Pepe Sevilla | Módulo HSCSG v15 | Estado |
+|------------------------|------------------|--------|
+| MTP Matrix | `mtp_matrix.ts` | ✅ Asimilado |
+| TFA Engine | `tfa_engine.ts` | ✅ Asimilado |
+| Residue Flip | `residue_flip.ts` | ✅ Asimilado |
+| Fertile Fusion | `fertile_fusion.ts` | ✅ Asimilado |
+| Fundamented Optimism | `fundamented_optimism.ts` | ✅ Asimilado |
+| Guided Autonomous | `guided_autonomous.ts` | ✅ Asimilado |
+| MMA Engine | `mma_engine.ts` | ✅ Asimilado |
+| Tribal Vocab | `tribal_vocab.ts` | ✅ Asimilado |
 
-El cambio fundamental es pasar de:
-
-> **“¿Qué aprendiste?”**
-
-a:
-
-> **“¿Qué hiciste con lo que aprendiste?”**
+> **Commit 72381c4**: "feat: add 8 proprietary frameworks as HSCSG modules (sanitized, MIT)"
 
 ---
 
-# 3. LA NUEVA CATEGORÍA
+# 3. LA TESIS: FEDERACIÓN DE DOS SOBERANÍAS
 
-## Educación como sistema operativo
+No es "HSCSG vende tecnología a Happy".
 
-Happpy puede posicionarse no solamente como una escuela de emprendimiento.
+Es: **Pepe Sevilla (DeseOS/ContenOS/Soul.MBA) × Isaac Ko (HSCSG v15 OS) = Federación de dos OS soberanos**
 
-Puede convertirse en un laboratorio donde las personas aprenden a:
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    ECOSISTEMA PEPE SEVILLA                   │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
+│  │  ContenOS   │  │   DeseOS    │  │     Soul.MBA        │  │
+│  │ (Contenido) │  │ (Deseo/Trans)│  │  (Negocio/Identidad)│  │
+│  └──────┬──────┘  └──────┬──────┘  └──────────┬──────────┘  │
+│         │                │                    │             │
+│         └────────────────┼────────────────────┘             │
+│                          ▼                                 │
+│              ┌───────────────────────┐                     │
+│              │   CAPA DE INTEGRACIÓN  │  ← Happy Bridge    │
+│              │  (API + Webhooks + DID)│                     │
+│              └───────────┬───────────┘                     │
+└──────────────────────────┼────────────────────────────────┘
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      HSCSG v15 OS                            │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌────────┐ │
+│  │  Identidad  │ │   Nodos     │ │    Nexo     │ │ Reposi-│ │
+│  │  Soberana   │ │  Servicio   │ │     IA      │ │ torio  │ │
+│  └─────────────┘ └─────────────┘ └─────────────┘ └────────┘ │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Lo que cada parte aporta
+
+| HSCSG v15 OS | Ecosistema Pepe Sevilla |
+|--------------|------------------------|
+| Offline-first + PWA resiliente | ContenOS en producción (métricas reales) |
+| Autómata (SOUL/E²R/MJ Gate) | DeseOS: modelo deseo → acción validado |
+| CaaS (Compute as a Service) | Soul.MBA: Pasaporte Gaia + DID bridge |
+| Boundaries/CEL (gobernanza tripartita) | Comunidad Happy: 50+ pilotos + brand trust |
+| Skill Marketplace + RAO | Marketing de comunidades orgánico |
+| Vasos Comunicantes (flujo valor federado) | Pipeline P1–P11 operativo |
+| Economía Anfibia (ZNU/USD dual) | 312 contactos, ROAS 3.8x |
+| 8 Módulos Core (diagnóstico→validación) | Métricas reales de transformación |
+
+---
+
+# 4. EL MODELO: EDUCACIÓN COMO SISTEMA OPERATIVO
+
+Happy puede posicionarse no solamente como una escuela de emprendimiento.
+
+Puede convertirse en la **primera Escuela Emprendedora Soberana Federada**: un laboratorio donde las personas aprenden a:
 
 - identificar una oportunidad;
 - elegir una dirección;
@@ -103,699 +136,218 @@ Puede convertirse en un laboratorio donde las personas aprenden a:
 - contribuir;
 - y avanzar hacia una siguiente oportunidad.
 
-HSCSG proporciona componentes técnicos y conceptuales que pueden utilizarse para experimentar con este modelo.
+El cambio fundamental es pasar de:
+
+> **"¿Qué aprendiste?"** → **"¿Qué hiciste con lo que aprendiste?"**
 
 ---
 
-# 4. ¿QUÉ ES HSCSG?
+# 5. EL PRODUCTO: HAPPY SOVEREIGN ENTREPRENEUR LAB™
 
-HSCSG v15 OS se presenta en el propio repositorio como un sistema operativo orientado a soberanía cognitiva y civilizatoria.
+## "Construye algo real en 90 días."
 
-Su arquitectura incluye:
+Cada participante obtiene:
 
-- Autómata Soberano;
-- CaaS;
-- CoachFAB;
-- Boundaries/CEL;
-- verificación;
-- orquestación;
-- vasos comunicantes;
-- ZNU;
-- base material;
-- identidad;
-- módulos de gobernanza;
-- rutas y skills ejecutables.
-
-El repositorio indica además que sus módulos pueden utilizarse individualmente y que existe un flujo de diagnóstico → acción → documentación → verificación → federación.
-
-Para Happpy, esto permite seleccionar solamente las capacidades que mejoren la experiencia del alumno.
-
----
-
-# 5. LA OFERTA
-
-# HAPPPY SOVEREIGN ENTREPRENEUR LAB™
-
-### Construye algo real en 90 días.
-
-Un programa piloto que combina:
-
-## Happpy
-
-- marca;
-- comunidad;
-- contenido;
-- pedagogía;
-- storytelling;
-- distribución;
-- experiencia del alumno.
-
-## HSCSG
-
-- diagnóstico;
-- rutas;
-- orquestación;
-- acompañamiento;
-- evidencia;
-- contribución;
-- experimentación con células comunitarias;
-- infraestructura soberana.
-
----
-
-# 6. RESULTADO PROMETIDO
-
-Al terminar el piloto, el participante deberá haber producido:
-
-### 1. Una dirección
-
+### 01 — Una dirección
 Qué quiere construir y por qué.
 
-### 2. Una ruta
-
+### 02 — Una ruta
 Qué debe hacer ahora y qué puede ignorar.
 
-### 3. Una primera victoria
-
+### 03 — Una primera victoria
 Una acción real completada.
 
-### 4. Evidencia
+### 04 — Evidencia
+Un proyecto, resultado, portfolio, contribución o prueba verificable (RAO).
 
-Un proyecto, resultado, portfolio, contribución o prueba verificable.
-
-### 5. Una capacidad
-
+### 05 — Una capacidad
 Algo que ahora puede ofrecer a otra persona o proyecto.
 
-### 6. Una posición dentro de la comunidad
-
-El participante puede evolucionar desde consumidor hacia:
-
-- creador;
-- colaborador;
-- coach;
-- operador;
-- constructor;
-- miembro activo de una célula.
+### 06 — Una posición dentro de la comunidad
+El participante evoluciona desde consumidor hacia:
+- creador → colaborador → coach → operador → constructor → miembro activo de una célula
 
 ---
 
-# 7. THE SOVEREIGN LOOP™
+# 6. EL EXPERIMENTO: 50 PERSONAS · 90 DÍAS · 1 TRANSFORMACIÓN
 
-## 01 — DESCUBRE
+## FASE 1: MAPA (Días 1–14)
+- Diagnóstico talento (MTP Matrix)
+- Baseline métricas (KPIs personales)
+- Ruta personalizada (TFA Engine + Guided Autonomous)
+- Onboarding DID + Pasaporte Gaia
+- **Entregable**: *Sovereign Participant Map*
 
-Diagnóstico inicial.
+## FASE 2: PRIMERA VICTORIA (Días 15–45)
+- Ejecución guiada (CoachFAB + Autómata)
+- Micro-proyecto real (MMA Engine)
+- Conversión obstáculos (Residue Flip)
+- Validación mercado (MMA + Fertile Fusion)
+- **Objetivo**: 50 personas → 50 primeras victorias
+- **Entregable**: *Proof-of-Progress Portfolio*
 
-El participante identifica:
+## FASE 3: EVIDENCIA (Días 46–70)
+- Documentación automática (RAO Verification)
+- Portfolio evidencia (Skill Marketplace)
+- Métricas transformación (KPIs comparados)
+- Optimismo fundamentado (Fundamented Optimism Loop)
+- **Entregable**: *Sovereign Community Blueprint*
 
-- capacidades;
-- intereses;
-- recursos;
-- restricciones;
-- objetivo;
-- posibles especializaciones.
-
----
-
-## 02 — ELIGE
-
-El sistema transforma el diagnóstico en una ruta.
-
-El objetivo no es añadir más contenido.
-
-El objetivo es responder:
-
-> **“¿Qué hago ahora?”**
-
-HSCSG ya incluye un orquestador que expone diagnóstico, workstreams, dependencias y siguiente acción.
-
----
-
-## 03 — CONSTRUYE
-
-El participante ejecuta.
-
-La IA funciona como acompañamiento y exoesqueleto.
-
-No como sustituto de la persona.
-
-El repositorio describe CoachFAB como un entrenador y no como un gurú.
+## FASE 4: FEDERACIÓN (Días 71–90)
+- Colaboración cross-participantes (Vasos Comunicantes)
+- Contribución a comunidad (Skill Marketplace)
+- Gobernanza CEL (jurados sorteados)
+- Próxima oportunidad (Global Pool)
 
 ---
 
-## 04 — DEMUESTRA
+# 7. KPIs DE ÉXITO
 
-El resultado deja evidencia.
-
-La experiencia pasa de:
-
-> “Vi el contenido.”
-
-a:
-
-> “Esto hice.”
-
----
-
-## 05 — CONTRIBUYE
-
-El conocimiento adquirido se convierte en capacidad productiva.
-
-El participante puede:
-
-- enseñar;
-- ayudar;
-- crear;
-- documentar;
-- desarrollar;
-- conectar;
-- producir.
+| KPI | Target | Medición |
+|-----|--------|----------|
+| **Activación** | >80% inician Fase 2 | Login + primer acción |
+| **Time-to-First-Win** | <21 días | Fecha primera victoria validada |
+| **Proof Rate** | >60% generan evidencia RAO | Artifacts en Skill Marketplace |
+| **Contribution** | >30% ayudan a otros | Transacciones Vasos Comunicantes |
+| **Retention** | >70% activos Día 90 | Login semanal |
+| **Economic Signal** | >40% disposición pagar/intercambiar | Encuesta + comportamiento |
 
 ---
 
-## 06 — FEDERA
+# 8. QUÉ RECIBE HAPPY (HAPPY SOVEREIGN OS PILOT)
 
-Los participantes dejan de ser únicamente consumidores.
-
-Se convierten en nodos de una comunidad.
-
-La arquitectura HSCSG contempla mecanismos de comunicación y federación mediante vasos comunicantes.
-
----
-
-# 8. EL PILOTO
-
-# 90 DÍAS · 50 PARTICIPANTES
-
-No proponemos migrar Happpy.
-
-No proponemos reemplazar su plataforma.
-
-No proponemos desplegar toda la economía HSCSG.
-
-Proponemos demostrar una hipótesis.
+| Capa | Descripción | Módulo HSCSG |
+|------|-------------|--------------|
+| **01 Sovereign Onboarding** | Onboarding basado en diagnóstico y acción | MTP + TFA + DID |
+| **02 Personal Action Engine** | Cada participante recibe claridad sobre su siguiente acción | Guided Autonomous + Orchestration |
+| **03 Coach Layer** | Acompañamiento inteligente orientado a ejecución | CoachFAB + Autómata (SOUL/E²R) |
+| **04 Proof of Progress** | Evidencia estructurada del avance | RAO Verification + Skill Marketplace |
+| **05 Contribution Layer** | Mecanismo para pasar de alumno a contribuidor | Vasos Comunicantes + CaaS |
+| **06 Community Cells** | Experimentación con comunidades pequeñas | Células (8→64→512→4096) |
+| **07 Sovereign Portfolio** | Registro portable de logros y capacidades | Identity + RAO + ZNU |
+| **08 Governance Sandbox** | Experimentación controlada con nuevos mecanismos | CEL + Boundaries + Kleros |
 
 ---
 
-## FASE 1 — MAPA
-
-### Días 1–14
-
-- configurar el entorno piloto;
-- seleccionar participantes;
-- definir journey;
-- establecer baseline;
-- realizar diagnóstico;
-- asignar primera ruta;
-- establecer KPIs.
-
-### Entregable
-
-**Sovereign Participant Map**
-
----
-
-# FASE 2 — PRIMERA VICTORIA
-
-### Días 15–45
-
-Cada participante ejecuta una ruta concreta.
-
-Objetivo:
-
-> **50 personas → 50 primeras victorias.**
-
-Mediremos:
-
-- activación;
-- tiempo hasta primera acción;
-- finalización;
-- bloqueos;
-- uso del Coach;
-- avance.
-
----
-
-# FASE 3 — EVIDENCIA
-
-### Días 46–70
-
-Se documentan:
-
-- proyectos;
-- resultados;
-- aprendizajes;
-- contribuciones;
-- obstáculos;
-- métricas.
-
-### Entregable
-
-**Proof-of-Progress Portfolio**
-
----
-
-# FASE 4 — FEDERACIÓN
-
-### Días 71–90
-
-Experimentación con:
-
-- colaboración;
-- roles;
-- contribución;
-- comunidad;
-- células;
-- governance experimental;
-- señales económicas.
-
-### Entregable
-
-**Sovereign Community Blueprint**
-
----
-
-# 9. QUÉ RECIBE HAPPPY
-
-## HAPPPY SOVEREIGN OS PILOT
-
-### 01 — Sovereign Onboarding
-
-Un onboarding basado en diagnóstico y acción.
-
-### 02 — Personal Action Engine
-
-Cada participante recibe claridad sobre su siguiente acción.
-
-### 03 — Coach Layer
-
-Acompañamiento inteligente orientado a ejecución.
-
-### 04 — Proof of Progress
-
-Evidencia estructurada del avance.
-
-### 05 — Contribution Layer
-
-Mecanismo para pasar de alumno a contribuidor.
-
-### 06 — Community Cells
-
-Experimentación con comunidades pequeñas.
-
-### 07 — Sovereign Portfolio
-
-Registro portable de logros y capacidades.
-
-### 08 — Governance Sandbox
-
-Experimentación controlada con nuevos mecanismos comunitarios.
-
----
-
-# 10. QUÉ NO INCLUYE EL PILOTO
+# 9. QUÉ NO INCLUYE EL PILOTO
 
 El piloto deliberadamente NO intenta desplegar todo HSCSG.
 
 No es necesario comenzar con:
+- economía completa / ZNU para todos los usuarios
+- federación internacional / nueva moneda
+- toda la infraestructura descentralizada
+- todos los agentes / todos los módulos
+- una migración tecnológica completa
 
-- economía completa;
-- ZNU para todos los usuarios;
-- federación internacional;
-- nueva moneda;
-- toda la infraestructura descentralizada;
-- todos los agentes;
-- todos los módulos;
-- una migración tecnológica completa.
-
-La prioridad es:
-
-> **Resultado → evidencia → aprendizaje → escala.**
+La prioridad es: **Resultado → evidencia → aprendizaje → escala.**
 
 ---
 
-# 11. INVERSIÓN
+# 10. INVERSIÓN: FOUNDING PARTNER PILOT
 
-# FOUNDING PARTNER PILOT
+## $75,000 USD / 90 días / 50 participantes
 
-## $75,000 USD
+### Incluye:
+- diseño estratégico y del piloto
+- adaptación de módulos HSCSG
+- configuración técnica y arquitectura de experiencia
+- integración inicial (API + Webhooks + DID Bridge)
+- acompañamiento e instrumentación de métricas
+- análisis de resultados y documentación
+- roadmap de escalamiento
 
-### Duración
-
-90 días.
-
-### Participantes
-
-Hasta 50 participantes.
-
-### Incluye
-
-- diseño estratégico;
-- diseño del piloto;
-- adaptación de módulos HSCSG;
-- configuración técnica;
-- arquitectura de experiencia;
-- integración inicial;
-- acompañamiento;
-- instrumentación de métricas;
-- análisis de resultados;
-- documentación;
-- roadmap de escalamiento.
-
-Esta inversión no se plantea como desarrollo de software a medida.
-
-Se plantea como:
-
-> **transformación + infraestructura experimental + validación de una nueva categoría.**
+> **No es desarrollo de software a medida.**  
+> Es: **transformación + infraestructura experimental + validación de una nueva categoría.**
 
 ---
 
-# 12. BONOS DE FUNDADORES
+# 11. BONOS DE FUNDADORES (Valor de referencia: $180K+)
 
-Los bonos no funcionan como descuento.
-
-Funcionan como acumulación de valor.
-
----
-
-## BONUS #1 — SOVEREIGN OFFER ARCHITECT™
-
-**Valor de referencia: $15,000 USD**
-
-Diseño de la arquitectura comercial de la nueva experiencia.
-
-Incluye:
-
-- packaging;
-- pricing;
-- niveles;
-- ascensión;
-- retención;
-- narrativa de venta.
-
----
-
-## BONUS #2 — HAPPPY ACTION LIBRARY™
-
-**Valor de referencia: $12,000 USD**
-
-Biblioteca inicial de rutas accionables.
-
-Cada ruta:
-
-```text
-Objetivo
-↓
-Acciones
-↓
-Checkpoint
-↓
-Evidencia
-↓
-Siguiente acción
-```
-
----
-
-## BONUS #3 — AI COACH PLAYBOOK™
-
-**Valor de referencia: $18,000 USD**
-
-Diseño del comportamiento del Coach:
-
-- preguntar;
-- sugerir;
-- desafiar;
-- acompañar;
-- derivar;
-- detectar bloqueos;
-- evitar dependencia.
-
----
-
-## BONUS #4 — SOVEREIGN PORTFOLIO™
-
-**Valor de referencia: $20,000 USD**
-
-Diseño de la capa de evidencia del alumno.
-
-El alumno no solamente demuestra que terminó.
-
-Demuestra:
-
-> **qué produjo.**
-
----
-
-## BONUS #5 — COMMUNITY CELL BLUEPRINT™
-
-**Valor de referencia: $15,000 USD**
-
-Diseño de células comunitarias:
-
-- roles;
-- rituales;
-- contribución;
-- coordinación;
-- métricas;
-- autonomía;
-- federación.
-
----
-
-## BONUS #6 — 90-DAY EXECUTIVE WAR ROOM
-
-**Valor de referencia: $25,000 USD**
-
-Sesión estratégica semanal entre responsables de Happpy y HSCSG.
-
-Objetivo:
-
-> impedir que el proyecto se convierta en otro experimento tecnológico sin adopción.
-
----
-
-# 13. VALOR TOTAL
+| Bono | Valor | Descripción |
+|------|-------|-------------|
+| **Sovereign Offer Architect™** | $15,000 | Arquitectura comercial: packaging, pricing, niveles, ascensión, retención, narrativa |
+| **Happy Action Library™** | $12,000 | Biblioteca inicial de rutas accionables (Objetivo → Acciones → Checkpoint → Evidencia → Siguiente) |
+| **AI Coach Playbook™** | $18,000 | Comportamiento del Coach: preguntar, sugerir, desafiar, acompañar, derivar, detectar bloqueos, evitar dependencia |
+| **Sovereign Portfolio™** | $20,000 | Capa de evidencia: el alumno demuestra **qué produjo**, no solo que terminó |
+| **Community Cell Blueprint™** | $15,000 | Diseño de células: roles, rituales, contribución, coordinación, métricas, autonomía, federación |
+| **90-Day Executive War Room** | $25,000 | Sesión estratégica semanal Happy × HSCSG: impedir experimento tecnológico sin adopción |
 
 | Componente | Valor de referencia |
-|---|---:|
+|------------|---------------------|
 | Programa Founding Pilot | $75,000 |
 | Sovereign Offer Architect | $15,000 |
-| Happpy Action Library | $12,000 |
+| Happy Action Library | $12,000 |
 | AI Coach Playbook | $18,000 |
 | Sovereign Portfolio | $20,000 |
 | Community Cell Blueprint | $15,000 |
 | Executive War Room | $25,000 |
-| **Valor total de referencia** | **$180,000+** |
+| **TOTAL** | **$180,000+** |
 
-# Inversión Founding Partner
-
-## $75,000 USD
+**Inversión Founding Partner: $75,000 USD** — No es descuento, es **Founding Partner Access**.
 
 ---
 
-# 14. GARANTÍA
-
-# THE PROOF-OF-VALUE GUARANTEE™
+# 12. GARANTÍA: THE PROOF-OF-VALUE GUARANTEE™
 
 No prometemos ingresos futuros que todavía no han sido demostrados.
 
-Garantizamos el proceso de validación.
+Garantizamos el **proceso de validación**.
 
 Si al día 45 el piloto no produce evidencia suficiente para evaluar positivamente la hipótesis acordada:
-
-1. se detiene la expansión;
-2. se realiza un diagnóstico conjunto;
-3. se entrega un análisis de causas;
-4. se rediseña el experimento;
-5. se extiende el acompañamiento estratégico hasta completar una segunda iteración, sin honorarios adicionales de consultoría.
+1. Se detiene la expansión
+2. Se realiza un diagnóstico conjunto
+3. Se entrega un análisis de causas
+4. Se rediseña el experimento
+5. Se extiende el acompañamiento estratégico hasta completar una segunda iteración, **sin honorarios adicionales de consultoría**
 
 La garantía reduce el riesgo sin recurrir a promesas comerciales artificiales.
 
 ---
 
-# 15. MÉTRICAS DE ÉXITO
+# 13. MODELOS DE COLABORACIÓN POST-PILOTO
 
-## ACTIVACIÓN
+Después de los 90 días, con datos reales, tres opciones:
 
-Porcentaje de participantes que inicia una acción real.
+## OPCIÓN A — LICENCIA MÓDULOS HSCSG
+- Fee anual + soporte + evolución
+- Happy integra autónomamente
+- $15K/año + revenue share 10%
 
-## TIME-TO-FIRST-WIN
+## OPCIÓN B — REVENUE SHARE
+- Happy conserva su negocio
+- HSCSG participa del valor incremental atribuible a la infraestructura
+- Alineación de incentivos a largo plazo
 
-Tiempo entre onboarding y primera victoria.
-
-## PROOF RATE
-
-Porcentaje que produce evidencia verificable.
-
-## CONTRIBUTION RATE
-
-Porcentaje que realiza al menos una contribución.
-
-## RETENTION
-
-Retención a 30, 60 y 90 días.
-
-## COMMUNITY VALUE
-
-Número y calidad de colaboraciones producidas.
-
-## ECONOMIC SIGNAL
-
-Señales de disposición a pagar, intercambio o generación de valor.
-
----
-
-# 16. EL MODELO DE ESCALA
-
-Después de los 90 días existen tres niveles.
-
----
-
-## LEVEL 1 — PILOT
-
-**50 participantes**
-
-**$75K**
-
-Objetivo:
-
-> demostrar.
-
----
-
-## LEVEL 2 — SOVEREIGN SCHOOL
-
-**500–2,000 participantes**
-
-Modelo potencial:
-
-- licencia;
-- implementación;
-- soporte;
-- revenue share.
-
-Objetivo:
-
-> industrializar.
-
----
-
-## LEVEL 3 — SOVEREIGN NETWORK
-
-Múltiples comunidades y organizaciones.
-
-HSCSG funciona como infraestructura federadora.
-
-Objetivo:
-
-> crear una nueva categoría.
-
----
-
-# 17. MODELO POST-PILOTO
-
-Una vez obtenidos datos reales:
-
-### OPCIÓN A — LICENCIA
-
-Fee anual + soporte + evolución.
-
-### OPCIÓN B — REVENUE SHARE
-
-Happpy conserva su negocio y HSCSG participa del valor incremental atribuible a la infraestructura.
-
-### OPCIÓN C — JOINT VENTURE
-
-Para expansión internacional y creación de:
-
-# HAPPPY SOVEREIGN SCHOOL
+## OPCIÓN C — JOINT VENTURE 50/50 (Co-Building DeseOS v2)
+- Reescritura DeseOS sobre arquitectura HSCSG
+- IP compartida, revenue share
+- Timeline: 6–12 meses
+- Para expansión internacional: **HAPPY SOVEREIGN SCHOOL**
 
 Las condiciones definitivas se negocian después del piloto.
 
 ---
 
-# 18. POR QUÉ HAPPPY
+# 14. EL RIESGO ESTÁ CONTROLADO
 
-Happpy aporta:
+No te proponemos construir una nueva empresa.
 
-- distribución;
-- marca;
-- confianza;
-- comunidad;
-- pedagogía;
-- storytelling;
-- audiencia.
+No te proponemos migrar Happy.
 
-HSCSG aporta:
+No te proponemos sustituir tu plataforma.
 
-- arquitectura;
-- experimentación tecnológica;
-- orquestación;
-- acompañamiento;
-- verificación;
-- soberanía;
-- mecanismos de federación.
+No te proponemos desplegar toda la economía HSCSG.
 
-La combinación permite probar una experiencia que ninguna de las dos partes debería construir completamente por separado.
+**Te proponemos un experimento de 90 días.**
+
+Solo probamos:
+
+> **¿Aumenta el valor percibido y la transformación real cuando el alumno tiene un SO personal de ejecución federado con el OS que ya usa?**
 
 ---
 
-# 19. LA NUEVA HISTORIA
-
-No vender:
-
-> “Tenemos una arquitectura llamada HSCSG.”
-
-No vender:
-
-> “Tenemos blockchain, IA, ZNU, DID, federación y múltiples módulos.”
-
-Eso describe tecnología.
-
-La historia comercial es:
-
-> **Happpy enseñó a miles de personas a pensar como emprendedores.**
->
-> **Ahora podemos ayudarles a actuar como constructores.**
->
-> HSCSG proporciona una capa que conecta aprendizaje, ejecución, evidencia y contribución.
->
-> Durante 90 días lo vamos a probar con un grupo controlado.
->
-> Si funciona, escalamos.
->
-> Si no funciona, lo sabremos antes de invertir millones.
-
----
-
-# 19. VISIÓN
-
-El objetivo final no es crear otra escuela online.
-
-Es crear una nueva unidad educativa y económica:
-
-> **La comunidad que convierte aprendizaje en capacidad productiva.**
-
-Una persona entra diciendo:
-
-> “Quiero emprender.”
-
-Y puede salir diciendo:
-
-> “Sé qué estoy construyendo. Ya hice algo real. Puedo demostrarlo. Y sé dónde puedo contribuir después.”
-
-Una comunidad deja de ser:
-
-> audiencia.
-
-Y se convierte en:
-
-> infraestructura social.
-
----
-
-# 21. PRÓXIMO PASO
+# 15. PRÓXIMO PASO
 
 No proponemos firmar un acuerdo de cinco años.
 
@@ -804,15 +356,14 @@ Proponemos firmar un experimento de 90 días.
 ## Reunión de decisión — 90 minutos
 
 ### Agenda
-
-1. Definir el resultado más valioso para Happpy.
-2. Seleccionar 50 participantes.
-3. Elegir una transformación inicial.
-4. Establecer baseline.
-5. Definir KPIs.
-6. Configurar el piloto.
-7. Firmar Founding Pilot Agreement.
-8. Lanzar.
+1. Definir el resultado más valioso para Happy
+2. Seleccionar 50 participantes
+3. Elegir una transformación inicial
+4. Establecer baseline
+5. Definir KPIs
+6. Configurar el piloto
+7. Firmar Founding Pilot Agreement
+8. Lanzar
 
 ### Pregunta final
 
@@ -820,22 +371,23 @@ Proponemos firmar un experimento de 90 días.
 
 Si la respuesta es sí:
 
-# 90 días.
-# 50 personas.
-# 1 transformación.
-# Datos reales.
+# 90 DÍAS  
+# 50 PERSONAS  
+# 1 TRANSFORMACIÓN  
+# DATOS REALES
 
 ---
 
 # HAPPPY SOVEREIGN ENTREPRENEUR LAB™
 
-### Aprende menos.
-### Construye más.
-### Demuestra lo que haces.
-### Contribuye a otros.
+### Aprende menos.  
+### Construye más.  
+### Demuestra lo que haces.  
+### Contribuye a otros.  
 ### Convierte tu comunidad en infraestructura.
 
-**Happpy × HSCSG v15 OS**
+**Happy (Pepe Sevilla) × HSCSG v15 OS (Isaac Ko)**  
+*La primera Escuela Emprendedora Soberana Federada*
 
 ---
 
