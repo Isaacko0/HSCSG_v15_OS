@@ -1,8 +1,10 @@
 // HSCSG v15 OS — loopEngine: Orquestador nativo del Sistema Alráico (compatible con estado real)
 // Kernel de orquestación: ejecuta loops, detecta resonancia, dispara γ-CARMIS, spawnea skills/agentes.
 // Anfibio: offline (RAO local) ↔ conectado (Nostr/NEAR).
+// Integración Cosmotechnics: Buzhou Shan Monitor (glitch cósmico) + γ-CARMIS reconfiguración
 import type { AppState } from '@core/state/store'
 import { proveFailure as porProve } from '@core/lib/proofOfResponse'
+import { monitorCosmicGlitch, reconfigureForGlitch, type CosmicGlitch } from '@core/lib/chinese-cosmotechnics'
 
 export interface LoopResult {
   loop: string
@@ -267,12 +269,34 @@ export function runAlraicoTick(
   const results: LoopResult[] = []
 
   // 1. γ-CARMIS: detectar sobrecargas en el estado de entrada (antes de reparar)
-  const initialOverloads = detectOverloads(current)
-  if (initialOverloads.length > 0) {
-    const reconfig = simulateReconfig(initialOverloads, current)
-    current = { ...current, ...reconfig }
-    results.push({ loop: 'gammaCARMIS', executed: true, delta: reconfig })
-  }
+    const initialOverloads = detectOverloads(current)
+    if (initialOverloads.length > 0) {
+      const reconfig = simulateReconfig(initialOverloads, current)
+      current = { ...current, ...reconfig }
+      results.push({ loop: 'gammaCARMIS', executed: true, delta: reconfig })
+    }
+
+    // 1b. BUZHOU SHAN MONITOR: detectar glitch cósmico y reconfigurar (Cosmotechnics integration)
+    const cosmicGlitch = monitorCosmicGlitch(current)
+    if (cosmicGlitch) {
+      const glitchReconfig = reconfigureForGlitch(cosmicGlitch)
+      // Apply reconfiguration actions
+      for (const action of glitchReconfig.actions) {
+        // In a full implementation, these would trigger specific module reconfigurations
+        // For now, we log the glitch and planned actions
+        results.push({
+          loop: 'buzhouShan',
+          executed: true,
+          delta: {
+            loopEngine: {
+              ...current.loopEngine,
+              lastGlitch: cosmicGlitch,
+              pendingReconfig: glitchReconfig.actions,
+            } as any,
+          },
+        })
+      }
+    }
 
   // 2. Loops de reparación/mantenimiento
   const loops: Array<{ name: string; fn: (s: AppState) => Partial<AppState> }> = [

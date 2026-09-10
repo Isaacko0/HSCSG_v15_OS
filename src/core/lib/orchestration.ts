@@ -1,9 +1,10 @@
 // HSCSG v15 OS — Lógica de Orquestación asimilada de Paperclip (control plane de agentes)
 // Toda mutación pasa por las 3 Leyes MJ (gobernanza) y genera AuditEntry (trazabilidad).
-
+// Integración Cosmotechnics: LingganDetector (epifanía/inspiración) + MJ Gate preserva creatividad humana
 import type {
   AgentNode, GoalNode, TaskNode, AuditEntry, AgentStatus, AuditActor, AuditTone,
 } from '@core/state/orchestration'
+import { detectLinggan, quantifyNoetic, type LingganEvent, type NoeticMetric } from '@core/lib/chinese-cosmotechnics'
 
 const uid = () => Math.random().toString(36).slice(2, 9)
 
@@ -32,10 +33,12 @@ export function budgetStatus(agent: AgentNode): 'ok' | 'warn' | 'over' {
 
 // ---- Aprobación MJ (Paperclip: approval gates para acciones gobernadas) ----
 // Devuelve { pass, law, reason } evaluando contra Ley I/II/III.
+// Integración Cosmotechnics: LingganDetector preserva creatividad humana vs teleoplexia maquínica
 export function evaluateMJGate(
   _action: string,
   ctx: { pgs: number; pop: number; usdc: number; hitsBaseMaterial: boolean },
-): { pass: boolean; law: 'I' | 'II' | 'III' | null; reason: string } {
+  lingganContext?: { processTraceId: string; noeticMetric: NoeticMetric },
+): { pass: boolean; law: 'I' | 'II' | 'III' | null; reason: string; lingganPreserved?: boolean } {
   // Ley I: no dañar base material
   if (ctx.hitsBaseMaterial) {
     return { pass: false, law: 'I', reason: 'Ley I MJ: acción toca base material (tierra/agua/energía/comida/herramientas/cuerpos/semillas)' }
@@ -49,7 +52,23 @@ export function evaluateMJGate(
   if (ctx.pgs <= 0) {
     return { pass: false, law: 'III', reason: 'Ley III MJ: sin datos de laboratorio (PGS=0), no hay lucidez material' }
   }
-  return { pass: true, law: null, reason: 'Pasa las 3 Leyes MJ' }
+
+  // LINGGAN PRESERVATION (Cosmotechnics): si hay métrica noética, verificar que creatividad humana no es suprimida
+  let lingganPreserved = true
+  if (lingganContext) {
+    const { noeticMetric } = lingganContext
+    // Si automationBlindnessIndex > 0.8 y humanCreativeRatio < 0.2 → teleoplexia risk
+    if (noeticMetric.automationBlindnessIndex > 0.8 && noeticMetric.humanCreativeRatio < 0.2) {
+      lingganPreserved = false
+      return {
+        pass: false,
+        law: 'II',
+        reason: `Ley II MJ: Teleoplexia detectada — automationBlindnessIndex ${noeticMetric.automationBlindnessIndex.toFixed(2)}, humanCreativeRatio ${noeticMetric.humanCreativeRatio.toFixed(2)}`
+      }
+    }
+  }
+
+  return { pass: true, law: null, reason: 'Pasa las 3 Leyes MJ', lingganPreserved }
 }
 
 // ---- Audit log (Paperclip: activity logging para mutaciones) ----
@@ -95,4 +114,37 @@ export function orchestrationStats(agents: AgentNode[], tasks: TaskNode[], goals
   const tasksOpen = tasks.filter((t) => t.status !== 'done' && t.status !== 'cancelled').length
   const goalsActive = goals.filter((g) => g.status === 'active').length
   return { active, paused, overBudget, tasksDone, tasksOpen, goalsActive }
-}
+  }
+
+  // ============================================================================
+  // LINGGAN DETECTOR INTEGRATION (Cosmotechnics)
+  // ============================================================================
+
+  /**
+   * Analiza una traza de proceso para detectar eventos de linggan (inspiración/epifanía)
+   * y cuantificar métricas noéticas. Integración Qian Xuesen → HSCSG.
+   */
+  export function analyzeProcessForLinggan(processTrace: {
+    id: string
+    steps: Array<{
+      actor: 'human' | 'automaton' | 'hybrid'
+      type: 'decision' | 'creative_leap' | 'routine' | 'override'
+      timestamp: number
+      metadata?: Record<string, unknown>
+    }>
+  }): { lingganEvents: LingganEvent[]; noeticMetric: NoeticMetric } {
+    const lingganEvents = detectLinggan(processTrace)
+    const noeticMetric = quantifyNoetic(lingganEvents)
+    return { lingganEvents, noeticMetric }
+  }
+
+  /**
+   * Crea un contexto de linggan para evaluateMJGate a partir de una traza de proceso.
+   */
+  export function createLingganContext(processTraceId: string, processTrace: Parameters<typeof analyzeProcessForLinggan>[0]): {
+    processTraceId: string
+    noeticMetric: NoeticMetric
+  } {
+    const { noeticMetric } = analyzeProcessForLinggan(processTrace)
+    return { processTraceId, noeticMetric }
+  }
