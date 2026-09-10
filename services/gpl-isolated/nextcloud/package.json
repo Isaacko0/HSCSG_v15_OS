@@ -1,0 +1,21 @@
+{
+  "name": "@hscsg/nextcloud-agpl-wrapper",
+  "version": "1.0.0",
+  "description": "AGPL-3.0 isolated microservice for Nextcloud file storage",
+  "license": "AGPL-3.0-or-later",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "nextcloud-node-client": "^1.0.0",
+    "fastify": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "tsx": "^4.0.0"
+  }
+}

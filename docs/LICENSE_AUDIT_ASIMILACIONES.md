@@ -4,7 +4,7 @@
 **Fecha:** 2026-09-10
 **Versión:** 1.0
 **Clasificación:** INTERNO — Insumo obligatorio para toda decisión de uso comercial
-**Alcance:** 114 fuentes (52 entradas de `docs/fuentes_indice.json` + 62 fuentes asimiladas presentes en `docs/*_backup.md` / `docs/*_integration.md` sin entrada en el índice)
+**Alcance:** 119 fuentes (57 entradas de `docs/fuentes_indice.json` + 62 fuentes asimiladas presentes en `docs/*_backup.md` / `docs/*_integration.md` sin entrada en el índice)
 **Criterios aplicados:** matriz de compatibilidad de `AREX_SKILL_SYNERGY_PLAN.md` §1.3 + análisis de `LEGAL_PROTECTION_FINANCIAL_RETURN.md` + doctrinas de `LEGAL_NOTICE.md`
 **Sustituye a:** el análisis parcial de `LEGAL_PROTECTION_FINANCIAL_RETURN.md` §1.1 (solo `brendanhogan/loophole` y `open-legal-products/mike`) y la primera versión de este documento, limitada a las entradas del índice y con licencias asumidas sin evidencia local
 
@@ -16,10 +16,10 @@
 
 | Nivel | Fuentes | % | Significado |
 |-------|---------|---|-------------|
-| **ALTO** | 31 | 27% | Copyleft fuerte, No-Comercial/No-Derivadas, source-available con cláusula SaaS, u obra de tercero reproducida literalmente. **Bloquea o condiciona el retorno financiero.** |
-| **MEDIO** | 58 | 51% | Licencia no declarada o no verificada (riesgo latente): por defecto, todos los derechos reservados. |
-| **BAJO** | 25 | 22% | Permisiva (MIT / Apache-2.0 / BSD), CC BY, CC0 o IP propia. Uso comercial libre con atribución. |
-| **TOTAL** | **114** | 100% | |
+| **ALTO** | 31 | 26% | Copyleft fuerte, No-Comercial/No-Derivadas, source-available con cláusula SaaS, u obra de tercero reproducida literalmente. **Bloquea o condiciona el retorno financiero.** |
+| **MEDIO** | 63 | 53% | Licencia no declarada o no verificada (riesgo latente): por defecto, todos los derechos reservados. |
+| **BAJO** | 25 | 21% | Permisiva (MIT / Apache-2.0 / BSD), CC BY, CC0 o IP propia. Uso comercial libre con atribución. |
+| **TOTAL** | **119** | 100% | |
 
 ### 1.2 Conteo por tipo de licencia
 
@@ -27,13 +27,13 @@
 |------|---------|
 | Desconocida | 59 |
 | Permisiva | 25 |
-| Source-available / Propietaria | 16 |
+| Source-available / Propietaria | 21 |
 | Copyleft fuerte | 8 |
 | No-comercial / No-derivadas | 3 |
 | Contenido abierto (CC) | 2 |
 | Dominio público (CC0) | 1 |
 
-**Cobertura de auditoría:** 59 de 114 fuentes (52%) NO declaran licencia verificable en su `_backup.md`. Solo 22 de los 83 archivos `_backup.md` presentes en el repositorio incluyen un campo `**Licencia:**`.
+**Cobertura de auditoría:** 59 de 119 fuentes (50%) NO declaran licencia verificable en su `_backup.md`. Solo 22 de los 83 archivos `_backup.md` presentes en el repositorio incluyen un campo `**Licencia:**`.
 
 ### 1.3 Lista priorizada de acciones de mitigación
 
@@ -113,7 +113,7 @@ Estas licencias **no son open source** y no aparecen en la matriz de `AREX_SKILL
 
 ### 2.6 Riesgo latente: backups sin campo `Licencia:`
 
-59 de las 114 fuentes auditadas (52%) no tienen licencia declarada ni verificada. Por defecto, **todos los derechos reservados**: legalmente equivalen a material propietario mientras no se auditen.
+59 de las 119 fuentes auditadas (50%) no tienen licencia declarada ni verificada. Por defecto, **todos los derechos reservados**: legalmente equivalen a material propietario mientras no se auditen.
 
 ---
 
@@ -175,6 +175,11 @@ Los `ID` corresponden al campo `id` de `docs/fuentes_indice.json`.
 | `126` | **Pepe Sevilla — HAPPPY × HSCSG** | Pepe Sevilla (ecosistema Storyseller / Happy) | local | **PROPIETARIA (frameworks y terminología de marca)** | Source-available / Propietaria | Corpus textual/creativo | Terminología y frameworks propietarios; uso comercial requiere transformación creativa documentada | **ALTO** | Reclamación por uso de vocabulario/frameworks del ecosistema Storyseller | Cumplimiento estricto de LEGAL_NOTICE.md + HOMOLOGACION_TERMINOS_PEPE_SEVILLA_HSCSG.md; CI `validate:terminology`; documento original solo local |
 | `127` | **STWR / Share The World's Resources** | Mohammed Sofiane Mesbahi (STWR, ONG registrada en UK) | https://sharing.org | **PROPIETARIA — © STWR / Mesbahi, todos los derechos reservados (web de acceso libre; impreso reservado)** | Source-available / Propietaria | Corpus textual/creativo | Acceso web libre para lectura; sin licencia de reutilización comercial ni de obra derivada | **ALTO** | Organización con personalidad jurídica y estatus ECOSOC: reutilización comercial de sus publicaciones requiere permiso escrito | Citar con atribución y enlace; solicitar permiso a STWR para cualquier uso comercial o derivado; mantener el backup literal fuera del repo público (ya ausente) |
 | `128` | **STWR Legal Foundation (documento propio)** | HSCSG (Isaac Ko) sobre datos públicos de STWR | local | **Propia (HSCSG)** | Permisiva | Corpus textual/creativo | Documento propio de due diligence; sin restricción externa | **BAJO** | Ninguno; contiene datos registrales públicos de un tercero | Mantener actualizadas las verificaciones pendientes del propio documento (§ copyright policies) |
+| `129` | **Nieves — Conjetura de Polignac y primos gemelos** | Rodolfo Nieves Rivas | local (PDF del autor, OCR) | **PROPIETARIA — © del autor, sin licencia declarada** | Source-available / Propietaria | Corpus textual/creativo | Los resultados matemáticos no son protegibles por copyright, pero sí la expresión literal del paper: el OCR no puede publicarse | **MEDIO** | Reclamación por reproducción del texto del paper o por atribución insuficiente de la autoría del resultado | Mantener el OCR solo local (ya ausente del repo); publicar únicamente el `_integration.md` con formulación propia y cita explícita del autor |
+| `130` | **Nieves — Conjetura de Beal (5 ecuaciones canónicas)** | Rodolfo Nieves Rivas | local (PDF del autor, OCR) | **PROPIETARIA — © del autor, sin licencia declarada** | Source-available / Propietaria | Corpus textual/creativo | Uso de las ecuaciones permitido (no protegibles); reproducción del paper, no | **MEDIO** | Atribución insuficiente de la autoría del resultado | OCR solo local; cita explícita del autor en el documento público |
+| `131` | **Nieves — Subset Sum, NP-completo y P=NP** | Rodolfo Nieves Rivas | local (PDF del autor, OCR) | **PROPIETARIA — © del autor, sin licencia declarada** | Source-available / Propietaria | Corpus textual/creativo | Idem: algoritmo utilizable, texto no reproducible | **MEDIO** | Atribución insuficiente; además, una afirmación P=NP no verificada expone a riesgo reputacional si se presenta como resultado establecido | OCR solo local; cita del autor; no presentar el resultado como validado por revisión por pares |
+| `132` | **Nieves — Ecuación funcional de estructuración unificada** | Rodolfo Nieves Rivas | local (PDF del autor, OCR) | **PROPIETARIA — © del autor, sin licencia declarada** | Source-available / Propietaria | Corpus textual/creativo | Idem | **MEDIO** | Atribución insuficiente de la autoría del resultado | OCR solo local; cita explícita del autor |
+| `133` | **Nieves — Máquina de Turing-Scriven / Blindcoin** | Rodolfo Nieves Rivas (diseño Turing-Scriven-Bratt) | local (PDF del autor, OCR) | **PROPIETARIA — © del autor, sin licencia declarada** | Source-available / Propietaria | Mixto (código + corpus) | Diseño utilizable; el texto del paper no. Verificar además que 'Blindcoin' no colisione con marcas o con el protocolo homónimo de terceros | **MEDIO** | Atribución insuficiente; posible conflicto de nombre con el Blindcoin de terceros | OCR solo local; cita del autor; renombrar el módulo si se confirma colisión de marca |
 
 ---
 
@@ -282,7 +287,7 @@ Cada entrada de `docs/fuentes_indice.json` lleva los campos de auditoría:
 | `licencia` | Identificador SPDX cuando existe (`MIT`, `Apache-2.0`, `GPL-3.0`, `AGPL-3.0-or-later`, `CC-BY-4.0`, `CC-BY-NC-ND-4.0`, `CC0-1.0`), nombre completo cuando no es SPDX (`Elastic License 2.0`), `Propia (HSCSG)`, `PROPIETARIA`, o `DESCONOCIDA / NO AUDITADA` |
 | `riesgo_legal` | `BAJO` (permisiva / CC BY / CC0 / propia) · `MEDIO` (no declarada, no verificada, o corpus de tercero de uso conceptual) · `ALTO` (copyleft fuerte, NC-ND, source-available anti-SaaS, u obra de tercero reproducida literalmente) |
 
-**Pendiente propuesto:** dar de alta en el índice las 62 fuentes `F-xx` de §4 para que el índice maestro cubra las 114 fuentes reales asimiladas.
+**Pendiente propuesto:** dar de alta en el índice las 62 fuentes `F-xx` de §4 para que el índice maestro cubra las 119 fuentes reales asimiladas.
 
 ---
 

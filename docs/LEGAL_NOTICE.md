@@ -255,3 +255,25 @@ export function validateText(text: string): {
 **FIN DEL AVISO LEGAL Y MARCO DE PROTECCIÓN HSCSG v15 OS**
 
 *Este documento forma parte integral del repositorio HSCSG v15 OS. Su cumplimiento es obligatorio para todo contributor. La violación deliberada de las reglas de terminología puede resultar en rechazo de PR, bloqueo de merge, o remoción de acceso al repositorio.*
+---
+
+## ANEXO: AISLAMIENTO GPL/AGPL (2026-09-10)
+
+### Microservicios Aislados
+Los siguientes componentes GPL/AGPL han sido aislados en microservicios separados para evitar contaminación del core MIT de HSCSG v15 OS:
+
+| Componente | Licencia | Microservicio | Puerto |
+|---|---|---|---|
+| Colony (4 repos) | GPL-3.0 | `services/gpl-isolated/colony/` | 3001 |
+| Kleros (2+ repos) | GPL-3.0 | `services/gpl-isolated/kleros/` | 3002 |
+| Nextcloud | AGPL-3.0 | `services/gpl-isolated/nextcloud/` | 3003 |
+| Tekitl | GPL-3.0 | `services/gpl-isolated/tekitl/` | 3004 |
+
+### Doctrina Aplicada: Mere Aggregation
+Comunicación exclusiva vía HTTP/REST entre procesos separados = **NO trabajo derivado** = Core MIT permanece limpio.
+
+### Verificación CI/CD
+`npm run license:check` excluye `services/gpl-isolated/**` y falla si detecta GPL/AGPL/NC-ND en core.
+
+### NC-ND Segregado
+Contenido CC BY-NC-ND 4.0 (Yoka/Fabio) movido a `docs/_licencia_incompatible/` — excluido de build y distribución pública.
