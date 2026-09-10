@@ -79,7 +79,7 @@ El core HSCSG está licenciado MIT/Apache-2.0 (`LEGAL_PROTECTION` §2.2). Cualqu
 | `biotesis_yoka_corpus_nuclear_backup.md` (`F-15`) | Yoka (ex-Diego) | No declarada; el resto del corpus del autor es CC BY-NC-ND 4.0 | Presunción de NC-ND por coherencia de autor |
 | `mk1_balbi_backup.md` (`F-22`) | Fabio F. Balbi | No declarada; mismo autor que `F-20` | MK-1 está integrado operativamente en el Sistema Alráico |
 
-**Estado:** `el_enlace_yoka_fabio_backup.md` y `filosofia_propria_yoka_backup.md` ya están aislados en `docs/_licencia_incompatible/` (ver su `README.md`), pero siguen versionados en el repositorio; `biotesis_yoka_corpus_nuclear_backup.md` y `mk1_balbi_backup.md` permanecen en `docs/`.
+**Estado:** `el_enlace_yoka_fabio_backup.md` y `filosofia_propria_yoka_backup.md` quedan únicamente en `docs/_licencia_incompatible/` (ver su `README.md`); esta rama elimina las copias duplicadas que seguían en `docs/`. Siguen versionados en el repositorio: la retirada efectiva exige purgarlos o negociar licencia. `biotesis_yoka_corpus_nuclear_backup.md` y `mk1_balbi_backup.md` permanecen en `docs/`.
 
 **Acción requerida (P0):** autorización escrita de Yoka y de Fabio F. Balbi (licencia comercial o dual-licensing) o retirada efectiva del material del producto y del historial público.
 
