@@ -1,0 +1,65 @@
+name: License Audit
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 2 * * 1'  # Weekly Monday 2AM
+
+jobs:
+  license-check:
+    name: License Compliance Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run license check
+        run: npm run license:check
+      
+      - name: Generate license report
+        run: npm run license:report
+      
+      - name: Upload license report
+        uses: actions/upload-artifact@v4
+        with:
+          name: license-report
+          path: license-report.csv
+          retention-days: 30
+      
+      - name: Check for high-risk licenses
+        if: failure()
+        run: |
+          echo "❌ LICENSE CHECK FAILED - High risk licenses detected"
+          echo "Review license-report.csv artifact"
+          exit 1
+
+  audit-latent:
+    name: Audit Latent Licenses
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Run latent license audit
+        run: |
+          chmod +x scripts/audit-latent-licenses.sh
+          ./scripts/audit-latent-licenses.sh || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
