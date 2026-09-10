@@ -1,0 +1,351 @@
+{
+  "repo_notes": [
+    {
+      "content": "HSCSG v15 OS (Holosociocibersimbiogénesis) — Sistema operativo soberano offline-first para la civilización post-monetaria. Arquitectura: React/TypeScript SPA, Zustand, PWA, Service Worker, IndexedDB. Misión: Materialismo Jerárquico (MJ) — 3 Leyes (Ley I: Materia prima soberana, Ley II: Trabajo como fuente de valor, Ley III: Float soberano). Principio Anfibio: misma lógica opera en modo postmonetario (ZNU/CaaS) o conectado (USD/USDC vía priceParity). GaiaUnion meta-arquitectura biológica mapea módulos OS a sistemas vitales. Creador: Isaac Ko. Colaboración estratégica: Pepe Sevilla (DeseOS/ContenOS/Soul.MBA) — 8 frameworks propietarios sanitizados como módulos HSCSG (commit 72381c4). Sinergia activa: AREX-Skill (5000+ skills, formato compatible 100%). Docs en español. Backups sensibles solo local (~ / ~/Documents / ~/Desktop). Tipos TypeScript: re-export desde lib/, nunca duplicar en state/. Pantallas nuevas: Aside.tsx + i18n + lucide. hscsg_definition.md debe incluir formalismo matemático + mantras líricos + subhashitas + retórica poética (estilo Tractatus)."
+    }
+  ],
+  "pages": [
+    {
+      "title": "Visión General: HSCSG v15 OS",
+      "purpose": "Introducción de alto nivel: qué es HSCSG v15 OS, su misión civilizacional, el marco Materialismo Jerárquico (MJ), las Tres Leyes Fundamentales, el Principio Anfibio, la meta-arquitectura GaiaUnion, y cómo se organiza el sistema. Enlaces a todas las secciones mayores.",
+      "page_notes": [
+        {
+          "content": "Archivo: docs/hscsg_definition.md | Misión: Soberanía computacional y económica para la civilización post-monetaria | Key concepts: MJ Laws, Cuaternidad Soberana, Anfibio, GaiaUnion, ZNU, CaaS, Autómata Soberano, Vasos Comunicantes, Skill Marketplace, RAO Verification, Federación de nodos"
+        }
+      ]
+    },
+    {
+      "title": "Filosofía y Marco Civilizacional",
+      "purpose": "Profundización en el Materialismo Jerárquico (MJ): Ley I (Materia Prima Soberana), Ley II (Trabajo como Fuente de Valor), Ley III (Float Soberano). Cuaternidad Soberana como modelo de negocio. Principio Anfibio (dualidad ZNU/USD). GaiaUnion: meta-arquitectura biológica que mapea módulos OS a sistemas vitales (nervioso=Autómata, circulatorio=ValueDual, inmunológico=Boundaries, digestivo=Pipeline, reproductivo=Federación). Subhashitas y mantras líricos del vault Obsidian.",
+      "parent": "Visión General: HSCSG v15 OS",
+      "page_notes": [
+        {
+          "content": "Archivo: docs/hscsg_mj_synthesis.md | Vault: H:\\Mi unidad\\HSCSG Empresa mas memoria\\ | Formalismo matemático + retórica poética estilo Tractatus Wittgenstein"
+        }
+      ]
+    },
+    {
+      "title": "Primeros Pasos: Setup, Build y Deploy",
+      "purpose": "Instalación, ejecución local (Vite dev server), build producción, deploy Vercel/Netlify. Scripts package.json, requisitos Node.js, configuración SPA catch-all routing, vitest test runner, Tailwind CSS, Lucide icons, i18n (ES/EN/PT).",
+      "parent": "Visión General: HSCSG v15 OS",
+      "page_notes": [
+        {
+          "content": "Archivo: README.md | Comandos: npm run dev / build / preview / test / lint / typecheck / deploy"
+        }
+      ]
+    },
+    {
+      "title": "Arquitectura Núcleo",
+      "purpose": "Visión técnica: React/TypeScript SPA, Zustand global store, patrón módulo (lib/state/screens), offline-first persistence (IndexedDB + Service Worker), relación lib (lógica pura) ↔ state (tipos + estado inicial) ↔ screens (UI). 46+ rutas en App.tsx. Diseño system CSS variables + Tailwind. Lucidez Mode (data-lucidez attribute).",
+      "page_notes": [
+        {
+          "content": "Código: src/core/, src/app/ | Patrones: Module Federation, Offline-First, PWA, Zustand + persist/partialize"
+        }
+      ]
+    },
+    {
+      "title": "Global State Store (useAppStore)",
+      "purpose": "Referencia detallada del store Zustand en src/core/state/store.ts: AppState interface, slices (BaseMaterial, CACVectors, ZNUState, IntegralState, SymbioskyState, AgentMeshState, ProofOfResponseState, NOOAState, ColonyState, CelulasState, MundusState, LifeState, CivilizacionesState, EducationState, AgenciaState, ContentState, SolarpunkState, TekitlState, RegenState, VecinalState, TrustlinesState, SovereignCreditState, USDGLOState, VestingState, CaaSState, AutomatonState, OrchestrationState, PipelineState, BoundariesState, CoworkersState), actions clave (setLucidez, updateBase, runCaasPayout, proposeAction, evaluateMJGate, spawnChild, dispatchMatch, governAction, mintZNU, openTrustline), estrategia persist/partialize localStorage, patrón seed initialization.",
+      "parent": "Arquitectura Núcleo",
+      "page_notes": [
+        {
+          "content": "Archivo: src/core/state/store.ts | Tests: store.test.ts | Slices: 30+ sub-states coordinados"
+        }
+      ]
+    },
+    {
+      "title": "UI Shell: Layout, Navegación e i18n",
+      "purpose": "Mapa de rutas App.tsx (46+ routes), componentes Layout/Aside/Header, array NAV_ITEMS, Lucidez Mode toggle (data-lucidez), design system global (CSS variables, color tokens, Tailwind config), componentes compartidos (Card, Stat, Bar, Badge, Modal, Toast, Tooltip), diccionario i18n (ES/EN/PT), import lucide-react en Aside.tsx obligatorio para pantallas nuevas.",
+      "parent": "Arquitectura Núcleo",
+      "page_notes": [
+        {
+          "content": "Código: src/app/components/, src/app/i18n/ | Lucidez: toggle CSS-only, sin JS | i18n: 3 idiomas, fallback ES"
+        }
+      ]
+    },
+    {
+      "title": "Patrón de Assimilation de Módulos Externos",
+      "purpose": "Pipeline canónico 4 fases para integrar repos externos como módulos vivos: Identify (descubrimiento) → Filter (filtrado licencias/compatibilidad) → Map (mapeo isomorfismos Leyes MJ) → Index (registro en fuentes_indice.json). Scaffold canónico: screen/ + lib/ + state/ + docs/. Mapeo isomorfismo Leyes MJ por módulo. Registro fuentes_indice.json (114 fuentes asimiladas). Skill hscsg-repo-assimilation como orquestadora.",
+      "parent": "Arquitectura Núcleo",
+      "page_notes": [
+        {
+          "content": "Skill: skills/hscsg/hscsg-repo-assimilation/ | Referencias: skills/hscsg/hscsg-repo-assimilation/references/ | Fuentes: docs/fuentes_indice.json (114 entradas) | Licencia target: MIT"
+        }
+      ]
+    },
+    {
+      "title": "Métricas y Librería de Cálculo",
+      "purpose": "Referencia de src/core/lib/metrics.ts: funciones puras de cálculo — autFromCAC (vectores AUT desde sensores CAC), pgsLM (score biofísico), survivalCredit, znuEligible/znuEmission (umbrales AUT), demurrage (5%/28-días), ics (coeficiente simbiótico), population. Alimentan store actions y loopEngine. Tipos TypeScript en lib/ re-exportados a state/.",
+      "parent": "Arquitectura Núcleo",
+      "page_notes": [
+        {
+          "content": "Archivo: src/core/lib/metrics.ts | Tests: metrics.test.ts | Métricas: AUT, PGs, Survival Credit, ZNU, Demurrage, ICS, Population"
+        }
+      ]
+    },
+    {
+      "title": "Sistema Alráico y loopEngine",
+      "purpose": "Kernel tick-based G1-CARMIS que impulsa todo el OS. 6 loops de mantenimiento, γ-CARMIS reconfiguración heurística, detección de resonancias (Ω, s, κ), Simulador screen triaxial. Orquesta: CDS decay, Merit mint, Agent compute, Regen MRV, Nostr audit, Vecinal accountability. Skills layer: hscsg-orquestador-skills (master router), hscsg-sistema-alraico, hscsg-coeficiente-autonomia. CSV taxonomías, worksheets, canvas scripts.",
+      "page_notes": [
+        {
+          "content": "Archivo: docs/SISTEMA_ALRAICO_BACKUP.md | Código: src/core/lib/loopEngine.ts | Tests: loopEngine.test.ts | UI: Simulador.tsx (sliders Ω, s, κ) | Skills: hscsg-orquestador-skills, hscsg-sistema-alraico, hscsg-coeficiente-autonomia"
+        }
+      ]
+    },
+    {
+      "title": "loopEngine: Ejecución Tick y γ-CARMIS",
+      "purpose": "Deep dive en src/core/lib/loopEngine.ts: runAlraicoTick, runAlraicoSimulation, detectOverloads (checks lucidez/symbiosky/agentMesh/proofOfResponse/regen), simulateReconfig (heurística γ-CARMIS), 6 maintenance loops (cdsDecay, meritMint, agentCompute, regenMrv, nostrAudit, vecinalAccountability), detectResonances, LoopEngineConfig. Simulador.tsx verificación triaxial (Ω, s, κ sliders).",
+      "parent": "Sistema Alráico y loopEngine",
+      "page_notes": [
+        {
+          "content": "Código: src/core/lib/loopEngine.ts | Tests: loopEngine.test.ts | UI: Simulador.tsx | Overloads: 5 detectores críticos"
+        }
+      ]
+    },
+    {
+      "title": "Skills Framework y Orquestador",
+      "purpose": "Estructura skills/: hscsg-orquestador-skills (master router, auto-execute workstreams), skill loading via skill_view(), protocolo vasos comunicantes cross-citation, sync_docs.sh automation. Skills nativas: hscsg-sistema-alraico, hscsg-coeficiente-autonomia, hscsg-repo-assimilation, hscsg-document-architect, hscsg-monetary-integration, hscsg-multi-framework-integration, hscsg-unified-assimilation-science, hscsg-percon-flow-scan, hscsg-scientific-papers, hscsg-sistema-alraico, hscsg-orquestador-skills, loop-engineering-canvas, sofia-valeria, unified-assimilation-science. Referencias: CSV taxonomías, worksheets, canvas scripts.",
+      "parent": "Sistema Alráico y loopEngine",
+      "page_notes": [
+        {
+          "content": "Directorio: skills/hscsg/ | Router: hscsg-orquestador-skills | Workstreams: 12 definidos en orchestrator-next-steps.js | Auto-execute: sí | Cross-citation: vasos comunicantes protocol"
+        }
+      ]
+    },
+    {
+      "title": "Gobernanza y Toma de Decisiones",
+      "purpose": "Capa de gobernanza: cómo se deciden, ratifican y ejecutan decisiones. Integral Loop (5 etapas), AuroraGov OU tree (delegación líquida), Symbiosky (conviction voting), Kleros (justicia descentralizada, Fact Bands), Democracia líquida (DPoS por expertise), Vecinal (gobernanza vecinal commit-reveal). Pipeline anidado + Matchmaker como puente gobernanza-ejecución.",
+      "page_notes": [
+        {
+          "content": "Sub-sistemas: Integral Loop, Symbiosky, Kleros, AuroraGov, Delegation, Democracia, Vecinal, Pipeline | Principio: Triple Veto (MJ Gate + Commonomics + FRNE)"
+        }
+      ]
+    },
+    {
+      "title": "El Bucle Integral (CDS → OAD → COS → ITC → FRS)",
+      "purpose": "Ciclo coordinación 5 etapas en src/core/lib/integral.ts y src/core/state/integral.ts: raiseIssue/raiseIssueWithEvidence, validateProposalScore (votación mérito Shivarthu), ratifyDecision/DecisionRecord, certifyDesign (OAD ecoScore), logLabor (COS), awardCredits con decay (ITC), ingestSignal/recommend (FRS), systemHealth diagnostic, applyDecision actuator. Screen: Integral.tsx.",
+      "parent": "Gobernanza y Toma de Decisiones",
+      "page_notes": [
+        {
+          "content": "Código: src/core/lib/integral.ts, src/core/state/integral.ts | UI: Integral.tsx | Etapas: 5 | Votación: Shivarthu merit-based"
+        }
+      ]
+    },
+    {
+      "title": "Symbiosky: Conviction Voting y Credibilidad",
+      "purpose": "Protocolo commit-reveal voting en src/core/lib/symbiosky.ts y src/core/state/symbiosky.ts: castCommit/revealVote, weightedConviction, computeReward, ConvictionLock mechanics, inactivity decay (INACTIVITY_DECAY_BPS), principio anti-ballena (illiquidity), Credibilidad.tsx screen. Tests: symbiosky.test.ts.",
+      "parent": "Gobernanza y Toma de Decisiones",
+      "page_notes": [
+        {
+          "content": "Código: src/core/lib/symbiosky.ts, src/core/state/symbiosky.ts | UI: Credibilidad.tsx | Tests: symbiosky.test.ts | Decay: INACTIVITY_DECAY_BPS"
+        }
+      ]
+    },
+    {
+      "title": "Justicia, Delegación y Democracia",
+      "purpose": "Kleros justice module (src/core/lib/kleros.ts: openDispute, addEvidence, castVote, resolveDispute, attestIdentity, Evidence Model con Fact Bands), AuroraGov power delegation (src/core/lib/delegation.ts: delegatePower, revokeDelegation, liquid democracy tree), Democracia screen (DPoS por expertise, electRep), Vecinal module (gobernanza vecinal commit-reveal voting).",
+      "parent": "Gobernanza y Toma de Decisiones",
+      "page_notes": [
+        {
+          "content": "Código: kleros.ts, delegation.ts | UI: Democracia.tsx, Vecinal.tsx | Fact Bands: 5 niveles evidencia | DPoS: expertise-weighted"
+        }
+      ]
+    },
+    {
+      "title": "Pipeline y Matchmaker",
+      "purpose": "Orchestrador anidado en src/core/lib/pipeline.ts: computeCapabilities, collectNeeds, Matchmaker (35% AUT + 30% credibilidad + 20% expertise + 15% learning), dispatchMatch, autoAdvisory, routeFeedback (FRS sistema nervioso), pipeDecay (ZNU anti-acumulación), pipelineHealth. Pipeline.tsx screen, connector.ts stage navigation.",
+      "parent": "Gobernanza y Toma de Decisiones",
+      "page_notes": [
+        {
+          "content": "Código: src/core/lib/pipeline.ts | UI: Pipeline.tsx | Matchmaker weights: AUT 35% + Cred 30% + Expertise 20% + Learning 15% | FRS: feedback routing system"
+        }
+      ]
+    },
+    {
+      "title": "Economía Post-Monetaria",
+      "purpose": "Capa económica: ZNU currency (unidad de cuenta interna), CaaS tiers (5 niveles), Trustlines (crédito mutuo bilateral), Vesting (BerryInvestor isomorf), Copiosis Net Benefit, USDGLO oracle (ReFi), arquitectura Anfibia (ZNU ↔ USD via priceParity). Niveles: Nivel 1-2 postmonetario, Nivel 3 ReFi conectado. Fondo Solarpunk financiado por revenue share.",
+      "page_notes": [
+        {
+          "content": "Sub-sistemas: ZNU, CaaS, Trustlines, Vesting, USDGLO, Soberano Crédito | Principio: Anfibio (offline-first default) | Oracle: priceParity | Fondo: Solarpunk"
+        }
+      ]
+    },
+    {
+      "title": "ZNU Currency: Emisión, Demurrage y Vesting",
+      "purpose": "ZNU como unidad de cuenta interna: znuEligible/znuEmission (condiciones umbrales AUT), demurrage 5% por época 28-días (znuDecayOnBalance), valueDual.ts arquitectura Anfibia (displayValue, NodeMode, priceParity oracle), Vesting module (src/core/lib/vesting.ts: BerryInvestorVesting isomorf, totalUnlocked, releasable, setBeneficiary, canRenounce). Screens: ZNU.tsx, Vesting.tsx.",
+      "parent": "Economía Post-Monetaria",
+      "page_notes": [
+        {
+          "content": "Código: valueDual.ts, vesting.ts | UI: ZNU.tsx, Vesting.tsx | Demurrage: 5%/28d | Oracle: priceParity | Vesting: BerryInvestor isomorf"
+        }
+      ]
+    },
+    {
+      "title": "CaaS: Community-as-a-Service Tiers y Revenue",
+      "purpose": "5 tiers CaaS en src/core/lib/caas.ts: Visitante → Explorador → Contribuidor → Guardián → Custodio. tierEligible (umbrales AUT/CDS), streamMJStatus (compliance Leyes MJ para revenue streams), revenueShare/runCaasPayout, CaaS.tsx screen, CaaS Market Fit EBD doc. USDC revenue → ZNU via priceParity → Fondo Solarpunk.",
+      "parent": "Economía Post-Monetaria",
+      "page_notes": [
+        {
+          "content": "Código: src/core/lib/caas.ts | UI: CaaS.tsx | Tiers: 5 | MJ Compliance: streamMJStatus | Revenue: USDC→ZNU→Fondo Solarpunk"
+        }
+      ]
+    },
+    {
+      "title": "Trustlines, Crédito Soberano y USDGLO",
+      "purpose": "Trustlines bilateral (src/core/lib/trustlines.ts: openTrustline, increaseDebt, debitTransfer, getDebt symmetry), Crédito Soberano (src/core/lib/sovereignCredit.ts: attestation-based scoring, exportAttestation para DeFi/NEAR bridge), USDGLO oracle ReFi (src/core/lib/usdglo.ts: canMint, mintHeadroom, isSovereign). Screens: Trustlines.tsx, SoberaniaCredito.tsx.",
+      "parent": "Economía Post-Monetaria",
+      "page_notes": [
+        {
+          "content": "Código: trustlines.ts, sovereignCredit.ts, usdglo.ts | UI: Trustlines.tsx, SoberaniaCredito.tsx | Bridge: NEAR/DeFi via exportAttestation | Oracle: ReFi USDGLO"
+        }
+      ]
+    },
+    {
+      "title": "Agentes Autónomos y Mesh de Cómputo",
+      "purpose": "Capa de agentes: Autómata Soberano (SOUL + E²R + MJ Gate), Orquestación control plane, AgentMesh/Buzz compute pool, Nostr relay transport, OO-Agents (NOOA), Boundaries policy gateway (fail-closed CEL-like), Coworkers roster (standing roles). Arquitectura: spawnChild, runHeartbeat, shareCompute, requestCompute, remoteResurrect (Buzz pattern), meshAutonomy.",
+      "page_notes": [
+        {
+          "content": "Sub-sistemas: Autómata, Orchestration, AgentMesh, Nostr, Proof of Response, NOOA, Boundaries, Coworkers | Patrón: Buzz Mesh remote resurrect | Gateway: Boundaries fail-closed"
+        }
+      ]
+    },
+    {
+      "title": "Autómata Soberano y MJ Gate",
+      "purpose": "Autómata en src/core/lib/automaton.ts: survivalTier (AUT-based: high/normal/low_material/critical/dormant), evaluateAction (delegación a MJ Gate via evaluateMJGate), soulDrift (detección float Ley III), spawnChild, runHeartbeat. Orquestación en src/core/lib/orchestration.ts: evaluateMJGate (enforcement Ley I/II/III), budgetStatus, nextHeartbeat. Types: AgentNode, TaskNode, AuditEntry. Screens: Automata.tsx, Automat.tsx.",
+      "parent": "Agentes Autónomos y Mesh de Cómputo",
+      "page_notes": [
+        {
+          "content": "Código: automaton.ts, orchestration.ts | UI: Automata.tsx, Automat.tsx | Survival Tiers: 5 | MJ Gate: enforcement 3 Leyes | Heartbeat: automático"
+        }
+      ]
+    },
+    {
+      "title": "AgentMesh, Nostr Relay y Proof of Response",
+      "purpose": "AgentMesh (src/core/state/agentMesh.ts: Agent struct, spawnAgent, shareCompute, requestCompute, remoteResurrect — Buzz Mesh pattern), Nostr Relay (src/core/lib/nostrRelay.ts: buildEvent, verifyEventShape, queryLocal — NIP-50 local filter), Proof of Response (src/core/state/proofOfResponse.ts: issueRequest, respond, proveFailure, isSatisfied — NEAR AI protocol), NOOA OO-Agents (src/core/state/nooa.ts: visibleMethods, detectBlindAgents, reconfigBlindAgents, meshAutonomy). Screens: Nostr.tsx, Agentes.tsx, OoAgents.tsx.",
+      "parent": "Agentes Autónomos y Mesh de Cómputo",
+      "page_notes": [
+        {
+          "content": "Código: agentMesh.ts, nostrRelay.ts, proofOfResponse.ts, nooa.ts | UI: Nostr.tsx, Agentes.tsx, OoAgents.tsx | Buzz Mesh: remoteResurrect | Nostr: NIP-50 | PoR: NEAR AI | NOOA: blind agent detection"
+        }
+      ]
+    },
+    {
+      "title": "Boundaries Policy Gateway y Coworkers",
+      "purpose": "Capa gobernanza inspirada OpenBot: Boundaries (src/core/lib/boundaries.ts: governAction, evaluateBoundary, fail-closed CEL-like rules, dry-run vs enforce modes, repeat detector, human handover), Boundaries.tsx (policy admin UI), Coworkers.tsx (agent roster, standing roles, channels), AG-UI protocol skill. Fail-closed por defecto, dry-run para testing.",
+      "parent": "Agentes Autónomos y Mesh de Cómputo",
+      "page_notes": [
+        {
+          "content": "Código: boundaries.ts | UI: Boundaries.tsx, Coworkers.tsx | Modo: fail-closed default | Dry-run: sí | Human handover: escalation path | AG-UI: skill integrado"
+        }
+      ]
+    },
+    {
+      "title": "Módulos Comunitarios y Capa Social",
+      "purpose": "Capa social: Colectivo/Colony (domain tree), Células (Freedom Cells fractal 8→64→512→4096), Círculos (navegación stages), Solarpunk gift economy (Web of Trust), Tekitl (proyectos colaborativos FSM), Regen/Vecinal (gobernanza vecinal, EcoTech), Educación (EduCaaS anfibio, cursos, certificados), Agencia (BrandDNA 12 secciones, OFFER_LADDER 5M, ICP awareness, reversePlan), Content (idea capture → brandFit → human gate → angles → news rolling), Civilizaciones/Mundus/Life (personal organizer, catálogo civilizaciones externas).",
+      "page_notes": [
+        {
+          "content": "Sub-módulos: Colony, Células, Círculos, Solarpunk, Tekitl, Regen, Vecinal, EduCaaS, Education, Agencia, Content, Mundus, Life, Civilizaciones | Fractal: 8→64→512→4096 | BrandDNA: 12 secciones | OFFER_LADDER: 5M escalera"
+        }
+      ]
+    },
+    {
+      "title": "Organización Colectiva: Colony, Células y Círculos",
+      "purpose": "Colony (src/core/lib/colony.ts: addDomain, addReputation, movePot, DomainKind hierarchy), Células (src/core/lib/celulas.ts: CELULA_PRINCIPIOS, CELULA_RECOMENDACIONES, escala fractal 8→64→512→4096), Círculos (Circulos.tsx: NextStageBanner, connector.ts stage seeding), Colectivo.tsx screen.",
+      "parent": "Módulos Comunitarios y Capa Social",
+      "page_notes": [
+        {
+          "content": "Código: colony.ts, celulas.ts | UI: Colectivo.tsx, Circulos.tsx | Fractal: 4 niveles | DomainKind: jerarquía | Stage seeding: connector.ts"
+        }
+      ]
+    },
+    {
+      "title": "Solarpunk Gift Economy, Tekitl Projects y Regen",
+      "purpose": "Solarpunk (src/core/lib/solarpunk.ts: matchOffersNeeds, trustScore Web of Trust, postMonetaryIndex, evaluateSanctuary Ley I gate), Tekitl (src/core/lib/tekitl.ts: createProject, FSM stage transitions, addRole, applyToRole, logHours, mintCoins, declareTalent), Regen (src/core/lib/regen.ts: EcoTech catalog, addEcoTech, avgSaving), Vecinal (src/core/lib/vecinal.ts: neighborhood governance). Screens: Solarpunk.tsx, Tekitl.tsx, Regen.tsx, Vecinal.tsx.",
+      "parent": "Módulos Comunitarios y Capa Social",
+      "page_notes": [
+        {
+          "content": "Código: solarpunk.ts, tekitl.ts, regen.ts, vecinal.ts | UI: Solarpunk.tsx, Tekitl.tsx, Regen.tsx, Vecinal.tsx | Web of Trust: trustScore | FSM: Tekitl stages | EcoTech: catalog + avgSaving"
+        }
+      ]
+    },
+    {
+      "title": "Educación, Agencia y Content Creation",
+      "purpose": "EduCaaS (src/core/lib/educaas.ts: priceLabel, isActive anfibio), Education (src/core/lib/education.ts: course/enrollment/certificate lifecycle), Agencia (src/core/lib/agencia.ts: BrandDNA 12 secciones, OFFER_LADDER 5M escalera, ICP awareness levels, reversePlan), Content (src/core/lib/content.ts: idea capture → brandFit score → human gate → angles → news rolling). Screens: Educacion.tsx, Agencia.tsx, Contenido.tsx.",
+      "parent": "Módulos Comunitarios y Capa Social",
+      "page_notes": [
+        {
+          "content": "Código: educaas.ts, education.ts, agencia.ts, content.ts | UI: Educacion.tsx, Agencia.tsx, Contenido.tsx | BrandDNA: 12 sections | OFFER_LADDER: 5M | Pipeline content: 5 etapas | EduCaaS: anfibio"
+        }
+      ]
+    },
+    {
+      "title": "Mundus, Life y Civilizaciones",
+      "purpose": "Mundus (src/core/lib/mundus.ts: makeMundusState, MUNDUS_PILLARS mapping a IDETRA initiatives, Blue Circle symbol, Circular Exchange System), Life personal organizer (src/core/lib/life.ts: addGoal, matrixCalculation, znuProjected, GoalType/Effort/Area), Civilizaciones (src/core/lib/civilizaciones.ts: catálogo civilizaciones externas). Screens: Mundus.tsx, Life.tsx, Civilizaciones.tsx.",
+      "parent": "Módulos Comunitarios y Capa Social",
+      "page_notes": [
+        {
+          "content": "Código: mundus.ts, life.ts, civilizaciones.ts | UI: Mundus.tsx, Life.tsx, Civilizaciones.tsx | Mundus Pillars: IDETRA mapping | Blue Circle: símbolo | Life: matrixCalculation + znuProjected"
+        }
+      ]
+    },
+    {
+      "title": "Soberanía y Verificación",
+      "purpose": "Capa diagnóstico soberanía y verificación: matriz 13 Pillars × 7 Layers (capas: Identidad, Computo, Datos, Economía, Gobernanza, Social, Física × pilares: Autonomía, Resiliencia, Verificabilidad, Interoperabilidad, Composibilidad, Regeneración, Soberanía), Proof of Response verification protocol (NEAR AI), Evidence Model (Fact Bands 5 niveles), integración NEAR/Buzz para verificación descentralizada.",
+      "page_notes": [
+        {
+          "content": "Matriz: 13×7 = 91 celdas diagnóstico | Capas: 7 | Pilares: 7 | PoR: NEAR AI | Fact Bands: 5 niveles | Buzz Mesh: verificación distribuida"
+        }
+      ]
+    },
+    {
+      "title": "Ecosistema Pepe Sevilla: DeseOS / ContenOS / Soul.MBA",
+      "purpose": "Contexto real de la federación: Pepe Sevilla creó ContenOS (producción, demo.contento.pro), DeseOS (desarrollo project1), Soul.MBA (integrado en ContenOS). Métricas reales: Pipeline P1-P11, 31 piezas/mes, 3.8x ROAS, 48.2k alcance, 1.840 prospectos, 312 contactos +18/sem, pipeline 5 niveles ($0→$97→$1,997→$8,000→$25,000), 41% créditos, PWA offline-first. 8 frameworks sanitizados como módulos HSCSG. Homologación terminología DeseOS/ContenOS ↔ HSCSG v15 OS.",
+      "parent": "Visión General: HSCSG v15 OS",
+      "page_notes": [
+        {
+          "content": "Archivos: docs/HOMOLOGACION_TERMINOS_PEPE_SEVILLA_HSCSG.md, docs/Pitch_Pepe_Happpy_Sovereign_Entrepreneur_Lab.md, docs/HAPPPY_Sovereign_Entrepreneur_Lab_Propuesta_Estrategica.md | Demo: https://demo.contento.pro/ | Commit: 72381c4 | 8 módulos: mtp_matrix, tfa_engine, residue_flip, fertile_fusion, fundamented_optimism, guided_autonomous, mma_engine, tribal_vocab"
+        }
+      ]
+    },
+    {
+      "title": "Sinergia AREX-Skill",
+      "purpose": "Plan de integración con VectorSpaceLab/AREX-Skill (5000+ skills, Apache-2.0). Compatibilidad 100%: formato SKILL.md idéntico, estructura directorios idéntica, licencia por skill, estándar Agent Skills Format común. 3 fases: 1) Adapter AREX→HSCSG + Importador + License Checker, 2) Unified Router (HSCSG workstreams + AREX area→family) + Orchestrator integration, 3) DisCo Creator → HSCSG Skill Factory + Marketplace unificado bidireccional. Target semana 6: ≥200 skills importados, ≥20 skills nativos via DisCo, >90% router accuracy.",
+      "parent": "Visión General: HSCSG v15 OS",
+      "page_notes": [
+        {
+          "content": "Archivos: docs/AREX_SKILL_SYNERGY_PLAN.md, skills/hscsg/hscsg-repo-assimilation/references/arex-integration-patterns.md | Repo: https://github.com/VectorSpaceLab/AREX-Skill | Licencia filter: Apache-2.0/MIT/BSD ✅ | GPL/AGPL ❌ | DisCo CLI: @arex-skill/disco"
+        }
+      ]
+    },
+    {
+      "title": "Documentos Estratégicos y Colaboraciones",
+      "purpose": "Índice de documentos estratégicos: Pitch 10 slides (federación Happy×HSCSG), Propuesta Estratégica 15 secciones (piloto 90d/50p/$75K), Homologación términos, Protección legal/retorno financiero, Aviso legal, Plan sinergia AREX, Colaboraciones tripartitas (HSCSG×EcAldea×Raíces, HSCSG×Gaia×EcAldea). Todos en /docs.",
+      "parent": "Visión General: HSCSG v15 OS",
+      "page_notes": [
+        {
+          "content": "Archivos: Pitch_Pepe_Happpy_Sovereign_Entrepreneur_Lab.md, HAPPPY_Sovereign_Entrepreneur_Lab_Propuesta_Estrategica.md, HOMOLOGACION_TERMINOS_PEPE_SEVILLA_HSCSG.md, LEGAL_PROTECTION_FINANCIAL_RETURN.md, LEGAL_NOTICE.md, AREX_SKILL_SYNERGY_PLAN.md, COLABORACION_RECIPROCA_HSCSG_ECALDEA_RAICES.md, COLABORACION_TRIPARTITA_HSCSG_GAIA_ECALDEA.md"
+        }
+      ]
+    },
+    {
+      "title": "Índice de Assimilaciones (40+ Repos)",
+      "purpose": "Catálogo de repos externos asimilados via hscsg-repo-assimilation: Breadchain (6), Copiosis, Gaia Commons (4), OpenCivics (4), OpenExecutive, OneCommunity, EcoAldea Monte, Yoka/Fabio, Biotesis Yoka, Shivarthu, AuroraGov, Kleros, Trustlines, Colony, Células, Solarpunk, Tekitl, Regen, Vecinal, DeseOS (Pepe Sevilla), ContentCreation, Compai CRM, Automaton, CaaS, Awesome OPC, BerryVesting, GaiaUnion, Metacrisis, OPC Source, Near, Buzz, Urbanika, Didacta, Bots, Conversations, Research Output, Transparencia Radical. Cada uno: _backup.md (local only) + _integration.md (análisis + isomorfismos + plan).",
+      "parent": "Arquitectura Núcleo",
+      "page_notes": [
+        {
+          "content": "Patrón: <repo>_backup.md (solo local) + <repo>_integration.md (público) | Referencias: skills/hscsg/hscsg-repo-assimilation/references/ | Índice maestro: docs/fuentes_indice.json (114 fuentes) | Backups sensibles: nunca a GitHub"
+        }
+      ]
+    },
+    {
+      "title": "Referencia Rápida: Archivos Clave Código ↔ Tests ↔ Screens",
+      "purpose": "Tabla navegable módulo → archivo principal → tests → screen UI para desarrollo rápido.",
+      "parent": "Arquitectura Núcleo",
+      "page_notes": [
+        {
+          "content": "Ver DOCUMENTATION_INDEX.md sección 11 | Módulos: 40+ | Patrones: lib/ (lógica) + state/ (tipos) + screens/ (UI) | Tests: vitest | Screens: *.tsx en src/app/screens/"
+        }
+      ]
+    }
+  ]
+}

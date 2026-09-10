@@ -243,7 +243,15 @@ Esta documentación organiza el conocimiento técnico de **HSCSG v15 OS** (Holos
 
 ---
 
-## 14. ENLACES EXTERNOS CLAVE
+## 14. NAVEGACIÓN ESTRUCTURADA (JSON)
+
+| Archivo | Descripción |
+|---------|-------------|
+| [`HSCSG_v15_OS_DOCS_NAVIGATION.json`](HSCSG_v15_OS_DOCS_NAVIGATION.json) | Estructura completa navegable (29 páginas, jerarquía padre-hijo, purpose, page_notes con enlaces a código/docs) — lista para renderizar en UI de documentación |
+
+---
+
+## 15. ENLACES EXTERNOS CLAVE
 
 | Recurso | URL |
 |---------|-----|
