@@ -87,36 +87,6 @@ Búsqueda/descubrimiento gobernado por comunidades → **"apropiarse de los medi
 
 Pipelines basados en ciencias sociales (no solo LLM) para medir impacto de personas, orgs, proyectos, territorios, redes → conecta con Gaia Score, confianza, financiación, Marketplace, fondos, certificación.
 
----
-
-## 7. Modelo Económico: Gaia Platform 3 Niveles (Secciones 13, 1)
-
-| Nivel | Propósito | Global South | Global North | Key Features |
-|-------|-----------|--------------|--------------|--------------|
-| **1. Presence** | Ser visible/descubrible | **$0** | **$0** | Perfil público, AI Matching, Map, Directory |
-| **2. Activation** | Conectar + CTAs | **$1/mes** | **$5/mes** | Botones Contact/Connect/Collaborate, conexiones directas |
-| **3. Business & AI** | Comercio + IA personal | **Desde $5/mes** | **Desde $10/mes** | Gaia Market, Gaia AI Agent (business + personal), transacciones |
-
-**Progresión UX:** Belong → Connect → Create → Exchange → Regenerate
-
----
-
-## 8. Gaia Market Commission & Commonomics (Secciones 4-6)
-
-- **Comisión personalizada** por oferta (10-50% framework), no universal
-- Factores: tipo, precio, margen, complejidad, marketing, CAC, valor estratégico, **Commonomics**
-- **Proceso:** Member submits → Gaia Agency evaluates → Commercial proposal → Member approves/rejects
-- **Commonomics:** Balance Creator Value + Gaia Contribution + Network Contribution + Commons Contribution
-
----
-
-## 9. Referral Economy & Common Fund (Secciones 7-8)
-
-- **Referral:** 30% comisión a referidor / 70% a Gaia
-- **Gaia Common Fund:** External infra + Growth + Development
-- **Surplus** → **Gaia Impact & Innovation Fund** (regeneración + innovación)
-
----
 
 ## 10. Governance Principles (Secciones 10-11, 18)
 
