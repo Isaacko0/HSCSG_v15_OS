@@ -34,7 +34,6 @@ La Alianza Gaia-Mycelium aporta la **capa de interoperabilidad, confianza verifi
 | 16 | **Ecosystem Mapping (gobernado por comunidades)** | 8 | Colectivo + Tekitl + Priorizar Colectivo | `lib/colectivo.ts`, `lib/priorizar.ts` | `GAIA-eco-sync` task |
 | 17 | **Gaia 3 Niveles (Presence/Activation/Business+AI)** | 1 | CoachFAB (free) + CaaS-BM tiers + Autómata | `packages/ui/CoachFAB.tsx`, `lib/caas.ts` | Mapear tiers |
 | 18 | **Gaia AI Agent (Level 3) ↔ CoachFAB (Happpy)** | 3 | Unified agent interface | `packages/ui/CoachFAB.tsx` | `GAIA-marketplace-level3` task |
-| 19 | **Referral Economy (30/70)** | 7 | ValueFlows peer-to-peer + affiliate revenue | `lib/valueflows.ts` | Extender referral type |
 | 20 | **Gaia Common Fund → Impact & Innovation Fund** | 8, 11 | Fondo Solarpunk (25% excedentes) + DSI | `lib/solarpunk.ts` | Fusionar fondos |
 
 ---
