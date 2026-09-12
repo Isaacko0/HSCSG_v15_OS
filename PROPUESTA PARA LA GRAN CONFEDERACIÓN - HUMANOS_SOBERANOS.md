@@ -1851,5 +1851,4 @@ La Confederación opera bajo **triple perspectiva** (inspirada en RIDF + Alráic
 
 ## E=V.
 
-## Salu², Yoka.
 
