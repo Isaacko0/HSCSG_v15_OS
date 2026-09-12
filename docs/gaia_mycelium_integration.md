@@ -113,19 +113,7 @@ TOTAL: 33 días mínimos
 | `lib/funding_proposal.md` | Documento conjunto para financiadores (Sección 15) | GAIA-funding-proposal |
 | `packages/ui/GaiaAgentBridge.tsx` | CoachFAB ↔ Gaia AI Agent unified interface | GAIA-marketplace-level3 |
 
----
 
-## Extensiones a Tipos Existentes
-
-### `lib/valueflows.ts` — Añadir:
-```typescript
-interface EconomicEvent {
-  // ... existing
-  referralSplit?: { referrer: string; percentage: number }; // 30/70 Gaia
-  gaiaMarketCommission?: { percentage: number; commonomics: boolean };
-  trustLevel?: 'self' | 'community' | 'ambassador' | 'third-party'; // Mycelium 4 niveles
-  vcCredential?: VerifiableCredential; // Gaia VC integration
-}
 ```
 
 ### `lib/cds.ts` — Añadir:
