@@ -48,7 +48,6 @@ La Alianza Gaia-Mycelium aporta la **capa de interoperabilidad, confianza verifi
 5. **Holón / Arquitectura abierta** → Vasos Comunicantes ya son holones
 6. **No Founder Equity** → Ley II MJ del Autómata (gana existencia soberanizando)
 6. **Progresión UX: Belong → Connect → Create → Exchange → Regenerate** → CoachFAB + CaaS-BM tiers + Autómata
-7. **Referral Economy 30/70** → Extender ValueFlows con `referralSplit`
 7. **Surplus → Impact Fund** → Fondo Solarpunk + Gaia Impact Fund = merged
 8. **Governance: Consenso modificado + subsidiariedad** → CDS (voto por competencia) + subsidiaridad fractal
 
