@@ -1777,13 +1777,6 @@ El **HSCSG v15 OS** aporta la infraestructura técnica y económica para operar 
 - **QR 3D Generator**: PNG/SVG/3MF/STL + Three.js preview.
 - **CaaS Wallet**: DID connect, balances ZNU/FRNE, tier upgrade (FREE/PRO/ENTERPRISE), access gates.
 
-### §58.2. Modelo Económico — Skilio 5 Skills adaptado
-
-| Tier | Acceso | Monetización |
-|-------|--------|--------------|
-| **FREE** | Ads | Ingreso por atención |
-| **PRO** | Quema ZNU | Contribución por uso |
-| **ENTERPRISE** | Trustlines B2B | Crédito mutuo B2B |
 
 ### §58.3. Economía Dual — Anfibio ZNU / FRNE
 
