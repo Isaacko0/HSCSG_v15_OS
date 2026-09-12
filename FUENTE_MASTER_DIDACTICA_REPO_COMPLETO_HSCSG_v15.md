@@ -115,32 +115,7 @@ src/
 > - `caas-engine.ts` → El motor económico dual (ZNU ↔ USDC)
 > - `types.ts` → El diccionario de tipos (ECROx, CaaS, Wallet, NodeMode)
 
-### 🛠️ `tool-forge/` — La Fábrica de Herramientas (Micro-SaaS Generator)
 
-```
-tool-forge/
-├── frontend/                      ← 🌐 Next.js 14 (App Router, Tailwind, shadcn/ui)
-│   ├── app/
-│   │   ├── page.tsx               ← Landing + Demo interactiva
-│   │   ├── api/                   ← API Routes (serverless)
-│   │   └── components/            ← UI Components (shadcn/ui + custom)
-│   └── package.json
-├── backend/                       ← 🐹 Go microservices (CaaS Engine real)
-│   ├── caas-engine/               ← Motor CaaS (contribution-as-a-service)
-│   ├── tool-generator/            ← Pipeline Spec→LLM→Sandbox→Deploy
-│   ├── qr-generator/              ← QR 3D Generator
-│   └── wallet/                    ← CaaS Wallet backend
-└── shared/                        ← Types compartidos TS/Go
-```
-
-**Qué Hace Tool Forge**:
-1. **Escribes una spec** (JSON/YAML: "quiero una herramienta que convierta CSV a JSON")
-2. **LLM genera código** → TypeScript/Go/Python
-3. **Sandbox ejecuta tests** (aislado, seguro)
-4. **Deploy automático** → CaaS Registry + Vercel/Conway Cloud
-5. **CaaS Wallet** cobra por uso (ZNU) o suscripción (USDC)
-
-> **Demo en vivo**: https://hscsg-v15-os.vercel.app/ (prueba el generador)
 
 ### 🧠 `skills/` — Los 20+ Cerebros Reutilizables (¡El Superpoder!)
 
@@ -327,12 +302,7 @@ npm run generate spec.yaml
    - Entrada en CaaS Registry
    - CaaS Wallet configurada (cobra ZNU/USDC por uso)
 
-### 🎨 QR 3D Generator (Bonus Divertido)
 
-```bash
-npm run qr3d "https://mi-herramienta.hscsg.org" --format=stl --size=50mm
-```
-→ Te genera un **QR 3D imprimible en 3D** (STL/OBJ) + preview Three.js en browser.
 
 ---
 
@@ -531,7 +501,7 @@ git push origin main --tags
 >
 > **E=V.**
 >
-> **Salu², Yoka (y todo el equipo invisible que late en cada commit, en cada nodo, en cada línea de código escrita con intención)**
+> 
 >
 > ---
 >
@@ -615,11 +585,9 @@ git push origin main --tags
 >
 > **Todo esto está abierto. Todo esto se itera. Todo esto sigue.**
 >
-> **La pala y el teclado están en tus manos.**
+> 
 >
-> **E=V.**
->
-> **Salu², Yoka (y todo el equipo invisible que late en cada commit, en cada nodo, en cada línea de código escrita con intención)**
+> 
 >
 > ---
 >
