@@ -467,7 +467,7 @@ git push origin main --tags
 | **Demo en Vivo** | https://hscsg-v15-os.vercel.app/ | Tool Forge funcionando |
 | **Página Resumen** | https://isaacko0.github.io/HSCSG-pagina-web-matemas/ | Objetivos en lenguaje humano |
 | **Repo Principal** | https://github.com/Isaacko0/HSCSG_v15_OS | Issues, PRs, wiki, actions |
-| **Repo RIDF** | https://github.com/Isaacko0/red-de-intercambio-federada-isaacko | Código Go federado |
+| **Repo RIDF** | Consultar a Cergio Monasterio y La red Federada de intercambio | Código Go federado |
 | **Repo Automaton** | https://github.com/Isaacko0/Automaton-HSCSG | Destino asimilación |
 | **Corpus Yoka** | https://substack.com/@elartedelafilosofiapropia | Bio-Tesis, AFP, MK-1, La Hoguera |
 | **Gaia (Felipe)** | https://docs.google.com/document/d/1XRg6N-7yLMAMKj2U6nGNrr-HJ5_8E7TWQfGqq6I6l1c | Docs Gaia |
@@ -497,7 +497,7 @@ git push origin main --tags
 >
 > Si algo resuena, **quédate**. Si algo chirría, **dilo (issue/PR)**. Si algo falta, **agréguelo**. Si sobra, **señálalo**.
 >
-> **La pala y el teclado están en tus manos.**
+> 
 >
 > **E=V.**
 >
@@ -521,9 +521,7 @@ git push origin main --tags
 | **valueDual.ts** | `src/core/lib/` | Economía anfibia: ZNU/FRNE ↔ USDC (priceParity) |
 | **nodeMode.ts** | `src/core/lib/` | Modo nodo: offline ↔ conectado (anfibio) |
 | **types.ts** | `src/core/lib/` | Diccionario tipos: ECROx, CaaS, Wallet, NodeMode |
-| **loopEngine.test.ts** | `src/core/lib/` | 7 tests passing (γ-CARMIS, resonancia, overloads) |
-| **tool-forge/frontend** | `tool-forge/frontend/` | Next.js 14: Landing, Demo, API Routes, UI |
-| **tool-forge/backend** | `tool-forge/backend/` | Go microservices: CaaS, Generator, QR, Wallet |
+| **loopEngine.test.ts** | `src/core/lib/` | 7 tests passing (γ-CARMIS, resonancia, overloads) 
 | **skills/** | `skills/` | 20+ cerebros reutilizables (invocar via orquestador) |
 | **hscsg-sistema-alraico** | `skills/hscsg-sistema-alraico/` | Kernel Alráico para nodos |
 | **Sistema-Alraico-loop-engineering-skill** | `skills/Sistema-Alraico-loop-engineering-skill/` | Canvas Alráico (20 límites, ECROx, CSV, scripts) |
@@ -535,7 +533,6 @@ git push origin main --tags
 | **hscsg-github-bookmark-extractor** | `skills/hscsg-github-bookmark-extractor/` | Extrae GitHub URLs de bookmarks HTML |
 | **hscsg-reverse-business-architect** | `skills/hscsg-reverse-business-architect/` | Ingeniería inversa modelos → ofertas |
 | **hscsg-operational-bottleneck-hunter** | `skills/hscsg-operational-bottleneck-hunter/` | Cuellos de botella invisibles Q&A |
-| **hscsg-passive-income-architect** | `skills/hscsg-passive-income-architect/` | 3-5 motores ingreso pasivo personalizados |
 | **hscsg-business-idea-validator** | `skills/hscsg-business-idea-validator/` | Validación VC (TAM/SAM, score 1-10) |
 | **hscsg-design-marketing-factory** | `skills/hscsg-design-marketing-factory/` | Design System Apple HIG + 47 assets |
 | **runtime/vessel-core** | `runtime/vessel-core/` | Sandbox Rust para código untrusted |
@@ -554,8 +551,7 @@ git push origin main --tags
 | **Issues / PRs** | https://github.com/Isaacko0/HSCSG_v15_OS/issues |
 | **Actions (CI/CD)** | https://github.com/Isaacko0/HSCSG_v15_OS/actions |
 | **Demo Tool Forge** | https://hscsg-v15-os.vercel.app/ |
-| **Página Resumen** | https://isaacko0.github.io/HSCSG-pagina-web-matemas/ |
-| **Repo RIDF** | https://github.com/Isaacko0/red-de-intercambio-federada-isaacko |
+| **Página Resumen** | https://isaacko0.github.io/HSCSG-pagina-web-matemas/ 
 | **Repo Automaton** | https://github.com/Isaacko0/Automaton-HSCSG |
 | **Corpus Yoka (Fuente)** | https://substack.com/@elartedelafilosofiapropia |
 | **Gaia Docs (Felipe)** | https://docs.google.com/document/d/1XRg6N-7yLMAMKj2U6nGNrr-HJ5_8E7TWQfGqq6I6l1c |
@@ -614,36 +610,17 @@ git push origin main --tags
 git clone https://github.com/Isaacko0/HSCSG_v15_OS.git
 cd HSCSG_v15_OS
 
-# 2. Instalar dependencias (frontend)
-cd tool-forge/frontend && npm install
-
-# 3. Tests TypeScript (kernel + tool-forge)
-npm run typecheck        # tsc --noEmit
-npm run test             # vitest / jest
-
-# 4. Tests Go (backend RIDF + tool-forge)
-cd ../backend && go test ./...
-
-# 5. Lint + Format
-npm run lint
-npm run format
-
-# 6. Dev server (frontend)
-npm run dev              # http://localhost:3000
-
-# 7. Build production
+# 2. Build production
 npm run build
 
-# 8. Deploy (si tienes permisos)
+# 3. Deploy (si tienes permisos)
 npm run deploy:vercel    # Frontend
 npm run deploy:conway    # Backend (Conway Cloud)
 
-# 9. Skills - ver disponibles
+# 4. Skills - ver disponibles
 ls skills/
 
-# 10. Ver logs CI/CD
-gh run list --limit 10
-gh run view --log
+
 ```
 
 ---
