@@ -175,19 +175,6 @@ Investigación Activa → Envíos Comunidad → Revisión Líder Investigación
 | 5. Aplicaciones | Market, PHI, Map, Passport, Gatherings | Diseño + 90-day launch |
 | 6. Ecosistema Vivo | Personas, comunidades, territorios | En desarrollo |
 
-#### Modelo Económico 3 Niveles (Gaia Platform)
-| Nivel | Propósito | Global South | Global North |
-|-------|-----------|--------------|--------------|
-| **1. Presence** | Visibilidad + AI Matching | **$0** | **$0** |
-| **2. Activation** | Conexión + CTAs | **$1/mes** | **$5/mes** |
-| **3. Business + AI** | Comercio + Gaia AI Agent | **Desde $5/mes** | **Desde $10/mes** |
-
-#### Commonomics + Market Commission
-- Comisión personalizada por oferta (10-50% framework)
-- Proceso: Member → Gaia Agency → Propuesta → Approve/Reject
-- Referral: 30% referrer / 70% Gaia
-- Common Fund → Technology + Marketing + Development → Surplus → **Impact & Innovation Fund**
-
 ---
 
 ## 3. MAPEO DE CONVERGENCIA TÉCNICA (ISOMORFISMO)
