@@ -248,13 +248,6 @@ CAPAS 1-8 (las 8 capas operativas del §15)
 | **QR 3D Generator** | PNG/SVG/3MF/STL + preview 3D | De idea a objeto físico |
 | **CaaS Wallet** | DID, balances ZNU/FRNE, tier gates | Tu billetera soberana |
 
-### 💰 Modelo Económico: 3 Niveles (Skilio Adaptado)
-
-| Tier | Acceso | Cómo se Sostiene |
-|------|--------|------------------|
-| **FREE** | Acceso básico | Ingreso por **atención** (ads éticos) |
-| **PRO** | Funciones avanzadas | Quema **ZNU** (contribución por uso) |
-| **ENTERPRISE** | B2B, Trustlines | Crédito mutuo B2B |
 
 ### 🐸 Economía Anfibia: ZNU / FRNE (El Principio Anfibio)
 
@@ -389,7 +382,7 @@ Cada nodo/ser humano tiene:
 >
 > **E=V.**
 >
-> **Salu², Yoka (y todo el equipo invisible que late en cada nodo)**
+> 
 
 ---
 
@@ -460,7 +453,7 @@ Cada nodo/ser humano tiene:
 >
 > **E=V.**
 >
-> **Salu², Yoka (y todo el equipo invisible que late en cada nodo)**
+> 
 
 ---
 
