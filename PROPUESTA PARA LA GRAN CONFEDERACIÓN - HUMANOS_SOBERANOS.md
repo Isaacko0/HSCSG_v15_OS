@@ -1852,3 +1852,23 @@ La Confederación opera bajo **triple perspectiva** (inspirada en RIDF + Alráic
 ## E=V.
 
 
+
+
+
+
+*Corrientes filosóficas* 
+
+- Perennialismo/hermetismo (MK-1): todas las tradiciones dicen lo mismo; triada, geometría, fractalidad.
+- Neoplatonismo: el Todo se fragmenta para conocerse.
+- Teoría de sistemas y termodinámica (Prigogine, Bateson): coherencia, autoorganización, capas.
+- Estoicismo/ley natural: causa-efecto sin moral. Explícitamente Nietzsche: ni bien ni mal.
+- Anarquismo federalista: nodos soberanos, sin Estado, salida libre.
+- Ecología profunda y bioregionalismo (Lovelock, Berg) en Gaia.
+- Gnosticismo tecno-milenarista en El Enlace: Matrix, despertar, iniciación. Es el eslabón menos compatible con los otros tres.
+
+ *Alineación económica* 
+
+Mutualismo proudhoniano: usufructo en vez de propiedad, autoría sin monopolio, retorno al común. El TQ replica los labor notes de Owen y, al fijar 1 TQ = 1 kWh, la tecnocracia energética de Technocracy Inc. (1933) y la energética de Soddy/Odum. Súmese economía del don (Mauss), commons policéntricos (Ostrom) y contabilidad multicapital.
+
+
+
