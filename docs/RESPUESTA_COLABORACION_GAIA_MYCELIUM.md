@@ -72,7 +72,6 @@
 | **Project Weave Protocol Specs** | DIDComm, Trust Registry, VC schemas, FPP specs | Weave technical-depth + Equipo Gaia-Mycelium | `GAIA-trust-bridge` / `lib/trust_bridge.ts` |
 | **VC Schemas 4 niveles confianza** | Tipos VC formales (self/community/ambassador/third-party) | Weave §7 + Gaia §7 | `GAIA-trust-bridge` / `lib/cds.ts` |
 | **AI Matching / Recommendation Engine** | API para conectar Autómata E²R ↔ Gaia Matching + Weave Recommendation | Gaia §13 + Weave §4 | `GAIA-intel-match` / `lib/ai_matching_bridge.ts` |
-| **Gaia Market commission + Commonomics** | Reglas comisión personalizada + referral 30/70 + **Weave Canal Funds model** | Gaia §4,6 + Weave Stream D | `GAIA-app-federate` / `lib/marketplace_federation.ts` |
 | **Medición Impacto Multidimensional** | Pipelines ciencias sociales (no LLM) + **señales verificación OpenHaven** | Gaia §12 + Weave §12 | `GAIA-eco-sync` / `lib/impact_bridge.ts` |
 | **First Person Project / Sovereign Stack** | Referencia arquitectónica para capa identidad | Weave §11 + Equipo Gaia-Mycelium | `GAIA-infra-connect` / `GAIA-trust-bridge` |
 | **OpenHaven Matrix API** | 205 herramientas, 40 attrs, filtros gobernanza/riesgo captura | OpenHaven Matrix | `GAIA-infra-connect` / discovery layer |
