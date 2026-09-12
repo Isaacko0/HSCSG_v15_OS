@@ -167,17 +167,6 @@ P0-netbenefit → P0-copiosis → COACH-automaton → COACH-integration
 
 ---
 
-## Modelo Económico Integrado (Commonomics + CaaS-BM)
-
-| Flujo | HSCSG | Gaia | Integrado |
-|-------|-------|------|-----------|
-| **Ingreso usuario** | Stake ZNU + CaaS-BM subscription | Level 1 Free / Level 2 $1-5 / Level 3 $5-10 | Unified tier: ZNU stake unlocks Gaia levels |
-| **Comisión** | 10% affiliate / revenue share autómata | Custom 10-50% per offering + Commonomics | Commonomics formula applied to both |
-| **Referidos** | ValueFlows peer-to-peer | 30% referral / 70% Gaia | Unified referral economy cross-platform |
-| **Fondo común** | Fondo Solarpunk (25% excedentes autómata) | Gaia Technology Platforms Common Fund | Merged fund → Gaia Impact & Innovation Fund |
-| **Superávit** | Subvenciones nodos PGS≥1.5 | Gaia Commons Surplus Formula → Impact Fund | Single surplus formula → regenerative investment |
-
----
 
 ## Próximos Pasos Inmediatos (Orquestador)
 
