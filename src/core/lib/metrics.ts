@@ -1,115 +1,354 @@
-// HSCSG v15 OS — Librería de cálculo (Lucidez Material)
-// Todas las funciones son PURAS y derivan de inputs editables del nodo real.
-// Fórmulas ancladas al synthesis HSCSG_MJ_SYNTHESIS_v15.md (§4, §5, §6).
+// HSCSG v15 OS — Métricas Soberanas (Ontología HSCSG)
+// Reemplaza métricas SaaS/VC (MRR, CAC, LTV, Churn) por métricas de autonomía territorial
+// Basado en: E=V, Mutualismo Proudhoniano, Alráico (PI, γ-CARMIS, 20 límites), Principio Anfibio
 
-import type { BaseMaterial, CACVectors, Member, PVSO, ValueFlow } from '@core/state/types'
+export type NodeMode = 'postmonetario' | 'conectado'
 
-export const clamp = (v: number, min = 0, max = 1): number =>
-  Math.max(min, Math.min(max, v))
+// === TIPOS BASE ===
 
-export function population(members: Member[]): number {
-  return Math.max(members.filter((m) => m.signedSocialDNA).length, 1)
+export interface ZNUAmount {
+  amount: number
+  unit: 'ZNU'
 }
 
-// AUT_* desde vectores CAC medidos (sensores) — síntesis §4.1
-export function autFromCAC(cac: CACVectors) {
-  return {
-    ALIM: clamp(cac.ALIM),
-    ENER: clamp(cac.ENER),
-    SALU: clamp(cac.SALU),
-    HABI: clamp(cac.HABI),
-    PROD: clamp(cac.PROD),
+export interface EnergyAmount {
+  amount: number // kWh
+  unit: 'kWh'
+}
+
+export interface TimeAmount {
+  amount: number // horas vitales
+  unit: 'hr_vital'
+}
+
+export interface AUTScore {
+  value: number // 0-1 (Coeficiente de Autonomía)
+  components: {
+    material: number    // Base material cubierta (alimento, agua, energía, hábitat)
+    cognitive: number   // Lucidez + CDS funcionando
+    economic: number    // ZNU flow + trustlines activos
+    social: number      // Resonancias + células federadas
   }
 }
 
-// PGS_LM = media de vectores CON SENSOR (solo biofísicos: ALIM, ENER, SALU, HABI, PROD)
-export function pgsLM(aut: { ALIM: number; ENER: number; SALU: number; HABI: number; PROD: number }): number {
-  const v = [aut.ALIM, aut.ENER, aut.SALU, aut.HABI, aut.PROD]
-  return v.reduce((a, b) => a + b, 0) / v.length
+export interface CDSScore {
+  value: number // 0-1 (Coeficiente de Deliberación Soberana)
+  components: {
+    participation: number  // % miembros activos en deliberaciones
+    convergence: number    // Rapidez decisiones inevitables
+    transparency: number   // Ley III: sin excepciones silenciosas
+    lucidez: number        // Lucidez Mode activa
+  }
 }
 
-// Crédito de supervivencia = BASE MATERIAL, no USDC — síntesis §5.3
-export function survivalCredit(bm: BaseMaterial): number {
-  return (
-    bm.tierra_ha * 10 * 100 + // 1 ha = 1000 créditos
-    bm.agua_l_dia * 0.1 + // 1000 L/día = 100
-    bm.energia_kwh_dia * 5 + // 10 kWh/día = 50
-    bm.comida_kg_dia * 2 + // 10 kg/día = 20
-    bm.herramientas_fabship * 1 + // 10 herramientas = 10
-    bm.semillas_criollas * 0.5 + // 100 variedades = 50
-    bm.usdc_reserva * 0.1 // solo para compras externas
+// === MÉTRICAS DE FLUJO (Equivalentes a MRR/ARR) ===
+
+export interface ZNUFlow {
+  mensual: ZNUAmount      // Net benefit ZNU/mes (revenue - cost en ZNU)
+  anual: ZNUAmount        // Proyección anual
+  netBenefit: ZNUAmount   // Net Benefit actual (Copiosis NBR adaptado)
+  flowVelocity: number    // Velocidad circulación ZNU (rotaciones/mes)
+  concentrationIndex: number // Índice Gini ZNU (0=perfecta distribución, 1=concentrado)
+  demurrageLoss: ZNUAmount  // ZNU perdido por demurrage/decay (anti-acumulación)
+}
+
+export interface EnergyFlow {
+  mensual: EnergyAmount   // kWh generados/consumidos netos
+  anual: EnergyAmount
+  sovereignty: number     // % energía autoproducida vs importada
+  storageEfficiency: number // Eficiencia almacenamiento (baterías, térmico, etc.)
+}
+
+export interface TimeFlow {
+  mensual: TimeAmount     // Horas vitales aportadas al común
+  anual: TimeAmount
+  autonomyHours: number   // Horas vitales liberadas (no vendidas a mercado)
+  careHours: number       // Horas vitales en cuidado (niños, mayores, enfermos)
+  learningHours: number   // Horas vitales en aprendizaje/desaprendizaje
+}
+
+// === MÉTRICAS DE ACTIVACIÓN (Equivalentes a CAC/Conversion) ===
+
+export interface ActivationCost {
+  horasVitales: number    // Horas vitales invertidas en onboarding
+  kWh: number             // Energía invertida (infra, herramientas, semillas)
+  znu: number             // ZNU invertido (herramientas, capacitación)
+  totalAutonomyCost: number // Score compuesto 0-100 (menor = más eficiente)
+  breakdown: {
+    diagnosis: number     // Costo diagnóstico CAC
+    onboarding: number    // Costo onboarding real (tierra, agua, semillas, saberes)
+    cdsBootstrap: number  // Costo poner CDS funcionando
+    trustlinesSetup: number // Costo establecer trustlines bilaterales
+  }
+}
+
+export interface GerminationRate {
+  semillas: number        // Iniciativas/individuos que inician diagnóstico
+  celulasViables: number  // Que alcanzan AUT ≥ 0.3 + CDS ≥ 0.3 en 90 días
+  rate: number            // celulasViables / semillas (0-1)
+  timeToViability: number // Días promedio semilla → célula viable
+  failureModes: string[]  // Por qué fallan las que no germinan
+}
+
+// === MÉTRICAS DE SUPERVIVENCIA (Equivalentes a LTV/Churn) ===
+
+export interface NodeLifespan {
+  generaciones: number    // Generaciones de sostenibilidad proyectada (target ≥ 7)
+  currentGeneration: number // Generación actual del nodo (0 = fundacional)
+  autonomyTrajectory: 'CRECIENTE' | 'ESTABLE' | 'DECAYENDO' | 'COLAPSADO'
+  regenerationCapacity: number // 0-1: capacidad de regenerar base material tras shock
+  knowledgeRetention: number   // 0-1: % saberes prácticos transmitidos a siguiente gen
+}
+
+export interface SovereigntyLeak {
+  rate: number            // % nodos/año que pierden AUT < 0.2 o CDS < 0.2
+  causes: {
+    materialCollapse: number    // Fallo base material (sequía, enfermedad, etc.)
+    cognitiveDrift: number      // Pérdida lucidez / CDS disfuncional
+    economicCapture: number     // Captura por mercado externo (USD dependency)
+    socialFragmentation: number // Ruptura resonancias / células
+  }
+  earlyWarnings: string[] // Señales detectadas por γ-CARMIS / loopEngine
+}
+
+// === MÉTRICAS DE RED (Equivalentes a Referral/Monopoly/Niche) ===
+
+export interface IncomingResonance {
+  count: number           // Nodos externos con resonancia αʰ > umbral
+  avgAlphaH: number       // αʰ promedio de resonancias entrantes
+  strongestResonance: {   // Resonancia más fuerte
+    nodeId: string
+    alphaH: number
+    modules: string[]     // 𝕮 que resuenan
+  }
+  federationReadiness: number // 0-1: listo para federar (consenso 100% + piscina global)
+}
+
+export interface TerritorialDifferentiation {
+  uniquenessScore: number // 0-1: unicidad biofísica/cultural del territorio
+  bioregionMatch: number  // 0-1: ajuste a bioregión (Berg/Lovelock)
+  endemicSpecies: number  // Especies/variedades endémicas custodiadas
+  uniqueKnowledge: string[] // Saberes únicos del territorio
+  replicability: number   // 0-1: ¿Replicable en otro territorio? (bajo = bueno para soberanía)
+}
+
+export interface TerritoryStewardship {
+  coverage: number        // % necesidades básicas cubiertas localmente (target 100%)
+  breakdown: {
+    food: number          // % alimento autoproducido
+    water: number         // % agua captada/gestionada local
+    energy: number        // % energía autoproducida
+    health: number        // % salud resuelta local (plantas, parteras, saberes)
+    governance: number    // % decisiones resueltas en CDS local
+    habitat: number       // % hábitat construido/mantenido local
+    communication: number // % comms infraestructura propia (mesh, Nostr relay)
+    finance: number       // % transacciones en ZNU/trustlines vs USD
+  }
+  importDependency: string[] // Qué se importa aún (objetivo: lista vacía en 7 gen)
+}
+
+// === MÉTRICAS DE SALUD SISTÉMICA (Alráico / LoopEngine) ===
+
+export interface SystemHealth {
+  lucidez: boolean        // Ley III: transparencia total
+  gammaCARMIS: {
+    active: boolean       // γ-CARMIS monitoreando
+    triggers: number      // Disparos γ-CARMIS en último ciclo
+    reconfigurations: number // Reconfiguraciones exitosas
+    pendingOverloads: number // Sobrecargas ΣPᵢ > κ no resueltas
+  }
+  resonance: {
+    active: number        // Resonancias activas αʰ > umbral
+    potential: number     // Pares con potencial resonancia
+    coupled: number       // Resonancias acopladas (RAO)
+  }
+  loops: {
+    running: string[]     // Loops activos (CDS, MeritMint, AgentCompute, Regen, etc.)
+    stalled: string[]     // Loops atascados
+    tickInterval: number  // Intervalo real vs configurado
+  }
+  boundaries: {
+    respected: boolean    // Límites biofísicos respetados (Ley II)
+    violations: string[]  // Violaciones detectadas
+  }
+}
+
+// === MÉTRICA MAESTRA: ÍNDICE DE SOBERANÍA TERRITORIAL (IST) ===
+
+export interface TerritorialSovereigntyIndex {
+  // Componentes (cada uno 0-1)
+  autonomy: AUTScore      // Coeficiente de Autonomía
+  deliberation: CDSScore  // Coeficiente de Deliberación Soberana
+  material: {
+    coverage: TerritoryStewardship['coverage']
+    regeneration: NodeLifespan['regenerationCapacity']
+  }
+  economic: {
+    znuFlow: ZNUFlow['mensual']['amount']
+    energySovereignty: EnergyFlow['sovereignty']
+    timeAutonomy: TimeFlow['autonomyHours']
+    demurrageHealth: number // 1 - (demurrageLoss / totalFlow)
+  }
+  cognitive: {
+    lucidez: SystemHealth['lucidez'] ? 1 : 0
+    gammaCARMIS: SystemHealth['gammaCARMIS']['reconfigurations'] > 0 ? 1 : 0
+    resonanceDensity: SystemHealth['resonance']['active'] / 10 // Normalizado
+  }
+  social: {
+    germinationRate: GerminationRate['rate']
+    sovereigntyLeak: 1 - SovereigntyLeak['rate']
+    resonanceIncoming: IncomingResonance['count'] / 5 // Normalizado
+  }
+  territorial: {
+    differentiation: TerritorialDifferentiation['uniquenessScore']
+    stewardship: TerritoryStewardship['coverage']
+    bioregionFit: TerritorialDifferentiation['bioregionMatch']
+  }
+
+  // Score compuesto (media geométrica — si uno es 0, todo es 0)
+  composite: number       // 0-1
+  level: 'SEMILLA' | 'GERMINANDO' | 'CELULA_VIABLE' | 'CIVILIZACION_NASCIENTE' | 'SOBERANA_PLENA'
+
+  // Trayectoria
+  trend: 'MEJORANDO' | 'ESTABLE' | 'DEGRADANDO'
+  lastUpdated: Date
+}
+
+// === FUNCIONES DE CÁLCULO ===
+
+export function calculateZNUFlow(
+  revenueZNU: number,
+  costZNU: number,
+  balanceZNU: number,
+  daysSinceActivity: number,
+  rotationDays = 60
+): ZNUFlow {
+  const netBenefit = Math.max(0, revenueZNU - costZNU)
+  const flowVelocity = balanceZNU > 0 ? (revenueZNU + costZNU) / balanceZNU : 0
+  
+  // Demurrage/decay loss (simplificado)
+  const demurrageLoss = balanceZNU * (1 - Math.pow(0.95, daysSinceActivity / rotationDays))
+  
+  return {
+    mensual: { amount: netBenefit, unit: 'ZNU' },
+    anual: { amount: netBenefit * 12, unit: 'ZNU' },
+    netBenefit: { amount: netBenefit, unit: 'ZNU' },
+    flowVelocity,
+    concentrationIndex: 0, // Requiere datos de red completa
+    demurrageLoss: { amount: demurrageLoss, unit: 'ZNU' }
+  }
+}
+
+export function calculateActivationCost(
+  diagnosisHours: number,
+  onboardingHours: number,
+  onboardingKWh: number,
+  onboardingZNU: number,
+  cdsBootstrapHours: number,
+  trustlinesSetupHours: number
+): ActivationCost {
+  const totalHours = diagnosisHours + onboardingHours + cdsBootstrapHours + trustlinesSetupHours
+  const totalKWh = onboardingKWh
+  const totalZNU = onboardingZNU
+  
+  // Score compuesto: menor = más eficiente (normalizado a 0-100)
+  const totalAutonomyCost = Math.min(100, 
+    (totalHours / 100) * 40 + 
+    (totalKWh / 500) * 30 + 
+    (totalZNU / 1000) * 30
   )
+  
+  return {
+    horasVitales: totalHours,
+    kWh: totalKWh,
+    znu: totalZNU,
+    totalAutonomyCost,
+    breakdown: {
+      diagnosis: diagnosisHours,
+      onboarding: onboardingHours,
+      cdsBootstrap: cdsBootstrapHours,
+      trustlinesSetup: trustlinesSetupHours
+    }
+  }
 }
 
-// ZNU v2: emisión SOLO si AUT_ALIM≥0.5, AUT_ENER≥0.5, AUT_HABI≥0.4 — síntesis §6.2
-export function znuEligible(aut: { ALIM: number; ENER: number; HABI: number }): boolean {
-  return aut.ALIM >= 0.5 && aut.ENER >= 0.5 && aut.HABI >= 0.4
+export function calculateGerminationRate(
+  semillas: number,
+  celulasViables: number,
+  timeToViabilityDays: number[],
+  failureModes: string[]
+): GerminationRate {
+  return {
+    semillas,
+    celulasViables,
+    rate: semillas > 0 ? celulasViables / semillas : 0,
+    timeToViability: timeToViabilityDays.length > 0 
+      ? timeToViabilityDays.reduce((a, b) => a + b, 0) / timeToViabilityDays.length 
+      : 0,
+    failureModes
+  }
 }
 
-export function znuEmission(members: Member[], eligible: boolean, perMember = 100): number {
-  const active = members.filter((m) => m.signedSocialDNA).length
-  return eligible ? active * perMember : 0
+export function calculateTerritorialSovereigntyIndex(
+  components: Omit<TerritorialSovereigntyIndex, 'composite' | 'level' | 'trend' | 'lastUpdated'>
+): TerritorialSovereigntyIndex {
+  // Media geométrica de componentes principales
+  const values = [
+    components.autonomy.value,
+    components.deliberation.value,
+    components.material.coverage,
+    components.material.regeneration,
+    components.economic.energySovereignty,
+    components.economic.timeAutonomy / 1000, // Normalizar
+    components.economic.demurrageHealth,
+    components.cognitive.lucidez,
+    components.cognitive.gammaCARMIS,
+    Math.min(1, components.cognitive.resonanceDensity),
+    components.social.germinationRate,
+    components.social.sovereigntyLeak,
+    Math.min(1, components.social.resonanceIncoming),
+    components.territorial.differentiation,
+    components.territorial.stewardship,
+    components.territorial.bioregionFit
+  ].filter(v => v > 0)
+  
+  const geometricMean = values.length > 0
+    ? Math.pow(values.reduce((a, b) => a * b, 1), 1 / values.length)
+    : 0
+  
+  let level: TerritorialSovereigntyIndex['level']
+  if (geometricMean >= 0.8) level = 'SOBERANA_PLENA'
+  else if (geometricMean >= 0.6) level = 'CIVILIZACION_NASCIENTE'
+  else if (geometricMean >= 0.4) level = 'CELULA_VIABLE'
+  else if (geometricMean >= 0.2) level = 'GERMINANDO'
+  else level = 'SEMILLA'
+  
+  return {
+    ...components,
+    composite: geometricMean,
+    level,
+    trend: 'ESTABLE', // Requiere histórico
+    lastUpdated: new Date()
+  }
 }
 
-// Demurrage anti-acumulación real — síntesis §6.2
-export function demurrage(total: number, threshold = 300, rate = 0.05): number {
-  if (total <= threshold) return 0
-  return +( (total - threshold) * rate).toFixed(2)
-}
+// === EXPORT POR DEFECTO ===
 
-export type CACStatus = 'soberano' | 'en transición' | 'dependiente'
-export function cacStatus(value: number, threshold = 0.8): CACStatus {
-  if (value >= threshold) return 'soberano'
-  if (value >= threshold * 0.5) return 'en transición'
-  return 'dependiente'
-}
-
-// ξ (aprendizaje validado) = Δη por ciclo, solo si PGS final > inicio + 0.05 — síntesis §4.2
-export function xiFromPVSO(pvsos: PVSO[]): number {
-  if (pvsos.length < 2) return 0
-  const first = pvsos[0].pgs
-  const last = pvsos[pvsos.length - 1].pgs
-  return last > first + 0.05 ? +(last - first).toFixed(2) : 0
-}
-
-// η (capacidad ontogenética) ≈ PGS promedio de PVSOs
-export function etaFromPVSO(pvsos: PVSO[]): number {
-  if (pvsos.length === 0) return 0
-  return +(pvsos.reduce((a, p) => a + p.pgs, 0) / pvsos.length).toFixed(2)
-}
-
-// PMRTE PARCIAL (modelo mínimo) — síntesis §4.3. Requiere datos de laboratorio para completar μ,ε,ρ,τ,δ.
-export function pmrtePartial(aut: { ALIM: number; ENER: number; HABI: number }, pvsos: PVSO[]): number {
-  const mu = pvsos.length >= 2 ? clamp(pvsos[pvsos.length - 1].pgs - pvsos[0].pgs) : 0
-  const eps = clamp(0.5 + 0.5 * aut.ALIM) // placeholder reciclaje de metabolitos
-  const rho = 1 // no-jerárquico asumido si hay ValueFlows
-  const tau = 0.3 // prácticas heredadas sin coerción (placeholder)
-  const delta = 0.3 // rituales sin justificación dinero (placeholder)
-  return +(mu * eps * rho * tau * delta).toFixed(3)
-}
-
-// ---- Autómata v2 — Leyes MJ (síntesis §5.1) ----
-
-// LEY I: NUNCA DAÑES LA BASE MATERIAL
-export function leyI(action: string): { pass: boolean; hits: string[] } {
-  const harm = ['tierra', 'agua', 'energia', 'comida', 'herramientas', 'cuerpos', 'semillas']
-  const a = action.toLowerCase()
-  const hits = harm.filter((h) => a.includes(h))
-  return { pass: hits.length === 0, hits }
-}
-
-// LEY II: GÁNATE LA VIDA SOBERANIZANDO LA BASE MATERIAL (ROI = ΔAUT / crédito)
-export function leyII(pgs: number, pop: number, usdc: number): { pass: boolean; roi: number } {
-  const valueGenerated = pgs * pop
-  const cost = Math.max(usdc, 1e-6)
-  const roi = valueGenerated / cost
-  return { pass: roi >= 1, roi: +roi.toFixed(2) }
-}
-
-// Índice de Cohesión del Colectivo (CDS) simple
-export function ics(members: Member[], flows: ValueFlow[]): number {
-  const signed = members.filter((m) => m.signedSocialDNA).length
-  const base = signed >= 5 ? 0.6 : signed / 5 * 0.6
-  const flowBonus = Math.min(flows.length / 50, 0.4) // 50 eventos = máximo
-  return +Math.min(1, base + flowBonus).toFixed(2)
-}
+export const HSCSG_METRICS = {
+  ZNUFlow,
+  EnergyFlow,
+  TimeFlow,
+  ActivationCost,
+  GerminationRate,
+  NodeLifespan,
+  SovereigntyLeak,
+  IncomingResonance,
+  TerritorialDifferentiation,
+  TerritoryStewardship,
+  SystemHealth,
+  TerritorialSovereigntyIndex,
+  calculateZNUFlow,
+  calculateActivationCost,
+  calculateGerminationRate,
+  calculateTerritorialSovereigntyIndex
+} as const
