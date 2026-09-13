@@ -8,9 +8,9 @@ de las skills de instalación de Hermes (agency-*, business-design/*, software-d
 - Viven en `HSCSG_v15_OS/skills/` (carpetas `SKILL.md`) y se espejan a `~/.hermes/skills/hscsg/`.
 - El cron `sync_docs.sh` las re-copia automáticamente al índice de Hermes.
 
-## Skills propias (creadas en conjunto) — 10 TOTAL
+## Skills propias (creadas en conjunto) — 15 TOTAL
 
-> **Ubicación:** Todas en `HSCSG_v15_OS/skills/<nombre>/` (carpetas SKILL.md) y
+> **Ubicación:** Todas en `HSCSG_v15_OS/skills/<nombre>/` (carpetas `SKILL.md`) y
 > indexadas en `~/.hermes/skills/hscsg/<nombre>/` (verificadas `available`).
 
 | # | Skill (name) | Dominio | Indexada |
@@ -25,6 +25,11 @@ de las skills de instalación de Hermes (agency-*, business-design/*, software-d
 | 8 | `hscsg-coeficiente-autonomia` | **NUEVA** AUT, CDS, 3 Leyes MJ, soberanía del nodo | ✅ (available) |
 | 9 | `hscsg-sistema-alraico` | **NUEVA** Kernel loopEngine: γ-CARMIS, resonancia, sobrecargas | ✅ (available) |
 | 10 | `hscsg-orquestador-skills` | **NUEVA** Router maestro + vasos comunicantes entre las 9 | ✅ (available) |
+| 11 | `hscsg-viabilidad-territorial` | **NUEVA** Valida autosuficiencia 7 gen (AUT/CDS/ZNU) | ✅ (available) |
+| 12 | `hscsg-autotrofia-disenador` | **NUEVA** Diseña autotrofia 7 gen: agua, alimento, energía, salud, hábitat | ✅ (available) |
+| 13 | `hscsg-comunicacion-veraz` | **NUEVA** Comunicación sin manipulación; transparencia radical | ✅ (available) |
+| 14 | `hscsg-ingenieria-inversa-patrones-vivos` | **NUEVA** Extrae patrones de sistemas vivos, no startups | ✅ (available) |
+| 15 | `hscsg-asimilacion-ecosistemica` | **NUEVA** Asimila repos como organismos, no activos | ✅ (available) |
 
 ## Skills de instalación de Hermes (NO nuestras — no tocar con cron)
 
