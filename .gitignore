@@ -53,3 +53,17 @@ near_core-contracts/
 near_*/
 .env*
 .local_backups/
+
+# === LEGAL-SAFE WORKFLOW ===
+# Backups locales - NUNCA en repo
+/HSCSG_Backups_Local/
+~/HSCSG_Backups_Local/
+
+# Trabajo en progreso local
+HSCSG_Work/
+*.local.md
+*.work.md
+
+# Backups pattern
+*_backup.*
+_licencia_incompatible/
