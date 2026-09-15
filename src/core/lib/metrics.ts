@@ -1,8 +1,9 @@
 // HSCSG v15 OS — Métricas Soberanas (Ontología HSCSG)
 // Reemplaza métricas SaaS/VC (MRR, CAC, LTV, Churn) por métricas de autonomía territorial
 // Basado en: E=V, Mutualismo Proudhoniano, Alráico (PI, γ-CARMIS, 20 límites), Principio Anfibio
+// ACTUALIZADO: VitalTimeFlow, VitalTimeActivationCost + BT213 (Límite Kernel) + BT214 (Humano Artífice) + AFP + BT180 + BT165 + BT164
 
-export type NodeMode = 'postmonetario' | 'conectado'
+export type NodeMode = 'postmonetario' | 'conectado' | 'vital_time'
 
 // === TIPOS BASE ===
 
@@ -20,6 +21,8 @@ export interface TimeAmount {
   amount: number // horas vitales
   unit: 'hr_vital'
 }
+
+// === AUT / CDS ===
 
 export interface AUTScore {
   value: number // 0-1 (Coeficiente de Autonomía)
@@ -67,6 +70,65 @@ export interface TimeFlow {
   learningHours: number   // Horas vitales en aprendizaje/desaprendizaje
 }
 
+// ===== NUEVO: VitalTimeFlow (BT215 + AFP + BT180 + BT165 + BT164) =====
+
+export interface VitalTimeFlow {
+  mensual: TimeAmount           // hr_vital aportadas al común (verificadas triaxial)
+  anual: TimeAmount
+  autonomyHours: number         // Horas vitales liberadas (no vendidas a mercado)
+  careHours: number             // Horas vitales en cuidado
+  learningHours: number         // Horas vitales en aprendizaje/desaprendizaje
+  
+  // ===== BT213: Límite Kernel =====
+  kernelLimitsRespected: number   // % verificaciones que respetan límite kernel (target 100%)
+  twoDomainsIntegrated: number    // % verificaciones con experiencia directa + rastros compartidos
+  noConsciousnessAudit: number    // % verificaciones sin auditar conciencia (target 100%)
+  
+  // ===== BT214: Humano Artífice =====
+  responsibilityAccepted: number  // % mint con responsabilidad indelegable firmada (target 100%)
+  uncertaintyAcknowledged: number // % mint con incertidumbre estructural asumida (target 100%)
+  translationSignatureUnique: number // % mint con firma única operador (target 100%)
+  betaPerpetuaMode: number        // % nodos en beta perpetua (target 100%)
+  
+  // ===== AFP Pilar 3: Tiempo Vital =====
+  consciousEnergyVerified: number // % hr_vital con energía consciente verificada
+  contributionHours: number       // Horas contribución verificada total
+  expandedAccessActive: number    // % nodos con acceso expandido por contribución
+  nbuCoveredRate: number          // % NBU cubiertas por existir/participar
+  ecoImpactScore: number          // Impacto positivo en red (promedio)
+  
+  // ===== BT180: Poder = Tiempo Vital =====
+  controlsOwnTime: number         // % nodos que controlan su propio tiempo
+  consentGradientsAvg: number     // Gradiente consentimiento promedio (0-1)
+  energyFromBelowRate: number     // % energía desde abajo (target 100%)
+  notForSaleCompliance: number    // % cumplimiento "no se vende, se habita" (target 100%)
+  
+  // ===== BT165: Ecuación Lastre E=V =====
+  truthAssumedAvg: number         // Promedio verdad asumida (numerador E=V)
+  truthEvadedAvg: number          // Promedio verdad evadida (denominador E=V)
+  evasionLightensDetected: number // % nodos con evasión detectada (alert)
+  presenceDensifiesRate: number   // % nodos donde presencia densifica
+  peaceFromAssumptionRate: number // % nodos reportando paz por certeza
+  
+  // ===== BT164: Margen Real =====
+  realMarginAvg: number           // Margen real promedio (espacio trayectorias)
+  evasionReducesMarginRate: number // % nodos donde evasión reduce margen
+  presenceExpandsMarginRate: number // % nodos donde presencia amplía margen
+  extractionSequestersRate: number // % nodos con extracción secuestra margen
+  thresholdRealAvg: number        // Umbral real promedio
+  lagRealAvg: number              // Desfase conciencia > capacidad promedio
+  
+  // Verificación triaxial
+  triaxialDailyRate: number       // % días con verificación triaxial completa (target ≥ 80%)
+  triaxialPassRate: number        // % verificaciones que pasan (≥ 0.7 combinado)
+  witnessVerificationRate: number // % verificaciones con testigo
+  
+  // Pool mechanics
+  rotationCompliance: number      // % nodos cumpliendo rotación 30d (target 100%)
+  demurrageHealth: number         // 1 - (decay aplicado / balance total)
+  concentrationAlerts: number     // Alertas concentración > 5%
+}
+
 // === MÉTRICAS DE ACTIVACIÓN (Equivalentes a CAC/Conversion) ===
 
 export interface ActivationCost {
@@ -79,6 +141,43 @@ export interface ActivationCost {
     onboarding: number    // Costo onboarding real (tierra, agua, semillas, saberes)
     cdsBootstrap: number  // Costo poner CDS funcionando
     trustlinesSetup: number // Costo establecer trustlines bilaterales
+  }
+}
+
+// ===== NUEVO: VitalTimeActivationCost (BT213 + BT214 + AFP) =====
+
+export interface VitalTimeActivationCost {
+  horasVitales: number            // Horas vitales invertidas en activación tiempo vital
+  kWh: number                     // Energía invertida (infra verificación, biométrica, testigos)
+  znu: number                     // ZNU invertido (herramientas, capacitación triaxial)
+  totalVitalTimeCost: number      // Score compuesto 0-100 (menor = más eficiente)
+  
+  // BT213: Costos de respetar límite kernel
+  kernelLimitsCompliance: number  // Costo asegurar límite kernel (no auditar conciencia, etc.)
+  twoDomainsIntegration: number   // Costo integrar experiencia directa + rastros
+  threeDomainsClassification: number // Costo clasificar compatible/incompatible/no-evaluable
+  
+  // BT214: Costos de responsabilidad artífice
+  responsibilityCeremony: number  // Costo ceremonia responsabilidad indelegable
+  uncertaintyWorkshop: number     // Costo taller incertidumbre estructural
+  translationSignature: number    // Costo generar firma única operador
+  betaPerpetuaOnboarding: number  // Costo onboarding beta perpetua
+  
+  // AFP: Costos pilar 3
+  consciousEnergyCalibration: number // Costo calibrar energía consciente
+  contributionTracking: number    // Costo tracking contribuciones
+  witnessNetworkSetup: number     // Costo red testigos (Lautaro, Yoka, etc.)
+  nbuBaselineSetup: number        // Costo establecer baseline NBU
+  
+  breakdown: {
+    diagnosis: number             // Costo diagnóstico triaxial inicial
+    triaxialSetup: number         // Costo setup verificación Mental+Sim+Lab
+    kernelLimitsTraining: number  // Costo entrenamiento límites kernel (BT213)
+    artificerResponsibility: number // Costo responsabilidad artífice (BT214)
+    afpOnboarding: number         // Costo onboarding AFP Pilar 3
+    witnessAssignment: number     // Costo asignación testigos
+    cdsBootstrap: number          // Costo CDS para gobernanza hr_vital
+    trustlinesSetup: number       // Costo trustlines bilaterales
   }
 }
 
@@ -143,6 +242,7 @@ export interface TerritoryStewardship {
     habitat: number       // % hábitat construido/mantenido local
     communication: number // % comms infraestructura propia (mesh, Nostr relay)
     finance: number       // % transacciones en ZNU/trustlines vs USD
+    vitalTime: number     // % transacciones en hr_vital vs USD/ZNU
   }
   importDependency: string[] // Qué se importa aún (objetivo: lista vacía en 7 gen)
 }
@@ -163,13 +263,22 @@ export interface SystemHealth {
     coupled: number       // Resonancias acopladas (RAO)
   }
   loops: {
-    running: string[]     // Loops activos (CDS, MeritMint, AgentCompute, Regen, etc.)
+    running: string[]     // Loops activos (CDS, MeritMint, AgentCompute, Regen, VitalTimeMint)
     stalled: string[]     // Loops atascados
     tickInterval: number  // Intervalo real vs configurado
   }
   boundaries: {
     respected: boolean    // Límites biofísicos respetados (Ley II)
     violations: string[]  // Violaciones detectadas
+  }
+  // BT213 + BT214
+  kernelLimits: {
+    respected: boolean    // Límite kernel respetado en todos los módulos
+    violations: string[]  // Violaciones límite kernel detectadas
+  }
+  humanArtificer: {
+    active: boolean       // Humanos operando como artífices
+    violations: string[]  // IA intentando habitar/pagar/transformar/decidir por humano
   }
 }
 
@@ -187,17 +296,21 @@ export interface TerritorialSovereigntyIndex {
     znuFlow: ZNUFlow['mensual']['amount']
     energySovereignty: EnergyFlow['sovereignty']
     timeAutonomy: TimeFlow['autonomyHours']
+    vitalTimeAutonomy: VitalTimeFlow['autonomyHours']
     demurrageHealth: number // 1 - (demurrageLoss / totalFlow)
+    vitalTimeDemurrageHealth: number // 1 - (vitalTimeDecay / vitalTimeBalance)
   }
   cognitive: {
     lucidez: SystemHealth['lucidez'] ? 1 : 0
     gammaCARMIS: SystemHealth['gammaCARMIS']['reconfigurations'] > 0 ? 1 : 0
-    resonanceDensity: SystemHealth['resonance']['active'] / 10 // Normalizado
+    resonanceDensity: SystemHealth['resonance']['active'] / 10
+    kernelLimitsRespected: SystemHealth['kernelLimits']['respected'] ? 1 : 0
+    humanArtificerActive: SystemHealth['humanArtificer']['active'] ? 1 : 0
   }
   social: {
     germinationRate: GerminationRate['rate']
     sovereigntyLeak: 1 - SovereigntyLeak['rate']
-    resonanceIncoming: IncomingResonance['count'] / 5 // Normalizado
+    resonanceIncoming: IncomingResonance['count'] / 5
   }
   territorial: {
     differentiation: TerritorialDifferentiation['uniquenessScore']
@@ -226,7 +339,6 @@ export function calculateZNUFlow(
   const netBenefit = Math.max(0, revenueZNU - costZNU)
   const flowVelocity = balanceZNU > 0 ? (revenueZNU + costZNU) / balanceZNU : 0
   
-  // Demurrage/decay loss (simplificado)
   const demurrageLoss = balanceZNU * (1 - Math.pow(0.95, daysSinceActivity / rotationDays))
   
   return {
@@ -234,8 +346,77 @@ export function calculateZNUFlow(
     anual: { amount: netBenefit * 12, unit: 'ZNU' },
     netBenefit: { amount: netBenefit, unit: 'ZNU' },
     flowVelocity,
-    concentrationIndex: 0, // Requiere datos de red completa
+    concentrationIndex: 0,
     demurrageLoss: { amount: demurrageLoss, unit: 'ZNU' }
+  }
+}
+
+// ===== NUEVO: calculateVitalTimeFlow =====
+
+export function calculateVitalTimeFlow(
+  nodes: any[],
+  periodDays: number = 30
+): VitalTimeFlow {
+  const verifiedNodes = nodes.filter(n => n.triaxialVerificationCount > 0)
+  const totalNodes = nodes.length || 1
+  
+  const mensualAmount = verifiedNodes.reduce((sum, n) => sum + n.vitalTimeBalance?.amount || 0, 0)
+  
+  return {
+    mensual: { amount: mensualAmount, unit: 'hr_vital' },
+    anual: { amount: mensualAmount * 12, unit: 'hr_vital' },
+    autonomyHours: mensualAmount, // Todas hr_vital son autonomía (no se venden)
+    careHours: 0, // Requiere tracking específico
+    learningHours: 0, // Requiere tracking específico
+    
+    // BT213
+    kernelLimitsRespected: verifiedNodes.filter(n => n.kernelLimits?.cannotAuditConsciousness).length / totalNodes,
+    twoDomainsIntegrated: verifiedNodes.filter(n => n.presenceIntegration?.directExperienceVerified && n.presenceIntegration?.sharedTracesVerified).length / totalNodes,
+    noConsciousnessAudit: 1.0, // Por diseño - kernel no puede auditar
+    
+    // BT214
+    responsibilityAccepted: verifiedNodes.filter(n => n.humanArtificer?.responsibilityAccepted).length / totalNodes,
+    uncertaintyAcknowledged: verifiedNodes.filter(n => n.humanArtificer?.uncertaintyAcknowledged).length / totalNodes,
+    translationSignatureUnique: verifiedNodes.filter(n => n.humanArtificer?.translationSignature).length / totalNodes,
+    betaPerpetuaMode: verifiedNodes.filter(n => n.humanArtificer?.betaPerpetuaMode).length / totalNodes,
+    
+    // AFP
+    consciousEnergyVerified: verifiedNodes.filter(n => n.afpVitalTime?.consciousEnergyVerified).length / totalNodes,
+    contributionHours: verifiedNodes.reduce((sum, n) => sum + n.afpVitalTime?.contributionHours || 0, 0),
+    expandedAccessActive: verifiedNodes.filter(n => n.afpVitalTime?.expandedAccess).length / totalNodes,
+    nbuCoveredRate: verifiedNodes.filter(n => n.afpVitalTime?.nbuCovered).length / totalNodes,
+    ecoImpactScore: verifiedNodes.reduce((sum, n) => sum + n.afpVitalTime?.ecoImpact || 0, 0) / totalNodes,
+    
+    // BT180
+    controlsOwnTime: verifiedNodes.filter(n => n.powerAsVitalTime?.controlsOwnTime).length / totalNodes,
+    consentGradientsAvg: verifiedNodes.reduce((sum, n) => sum + n.powerAsVitalTime?.consentGradients || 0, 0) / totalNodes,
+    energyFromBelowRate: verifiedNodes.filter(n => n.powerAsVitalTime?.energyFromBelow).length / totalNodes,
+    notForSaleCompliance: verifiedNodes.filter(n => n.powerAsVitalTime?.notForSale).length / totalNodes,
+    
+    // BT165
+    truthAssumedAvg: verifiedNodes.reduce((sum, n) => sum + n.ballastEquation?.truthAssumed || 0, 0) / totalNodes,
+    truthEvadedAvg: verifiedNodes.reduce((sum, n) => sum + n.ballastEquation?.truthEvaded || 0, 0) / totalNodes,
+    evasionLightensDetected: verifiedNodes.filter(n => n.ballastEquation?.evasionLightensToday).length / totalNodes,
+    presenceDensifiesRate: verifiedNodes.filter(n => n.ballastEquation?.presenceDensifiesNow).length / totalNodes,
+    peaceFromAssumptionRate: verifiedNodes.filter(n => n.ballastEquation?.peaceFromAssumption).length / totalNodes,
+    
+    // BT164
+    realMarginAvg: verifiedNodes.reduce((sum, n) => sum + n.realMargin?.currentMargin || 0, 0) / totalNodes,
+    evasionReducesMarginRate: verifiedNodes.filter(n => n.realMargin?.evasionReducesMargin).length / totalNodes,
+    presenceExpandsMarginRate: verifiedNodes.filter(n => n.realMargin?.presenceExpandsMargin).length / totalNodes,
+    extractionSequestersRate: verifiedNodes.filter(n => n.realMargin?.extractionSequestersMargin).length / totalNodes,
+    thresholdRealAvg: verifiedNodes.reduce((sum, n) => sum + n.realMargin?.thresholdReal || 0, 0) / totalNodes,
+    lagRealAvg: verifiedNodes.reduce((sum, n) => sum + n.realMargin?.lagReal || 0, 0) / totalNodes,
+    
+    // Triaxial
+    triaxialDailyRate: 0, // Requiere tracking histórico
+    triaxialPassRate: verifiedNodes.filter(n => n.triaxialVerificationCount > 0).length / totalNodes,
+    witnessVerificationRate: verifiedNodes.filter(n => n.vitalTimeBalance?.triaxialProof?.laboratory?.witnessNodeId).length / totalNodes,
+    
+    // Pool
+    rotationCompliance: verifiedNodes.filter(n => n.rotationDays <= 30).length / totalNodes,
+    demurrageHealth: 1.0, // Calcular real
+    concentrationAlerts: 0
   }
 }
 
@@ -251,7 +432,6 @@ export function calculateActivationCost(
   const totalKWh = onboardingKWh
   const totalZNU = onboardingZNU
   
-  // Score compuesto: menor = más eficiente (normalizado a 0-100)
   const totalAutonomyCost = Math.min(100, 
     (totalHours / 100) * 40 + 
     (totalKWh / 500) * 30 + 
@@ -272,6 +452,61 @@ export function calculateActivationCost(
   }
 }
 
+// ===== NUEVO: calculateVitalTimeActivationCost =====
+
+export function calculateVitalTimeActivationCost(
+  diagnosisHours: number,
+  triaxialSetupHours: number,
+  kernelLimitsTrainingHours: number,
+  artificerResponsibilityHours: number,
+  afpOnboardingHours: number,
+  witnessAssignmentHours: number,
+  cdsBootstrapHours: number,
+  trustlinesSetupHours: number,
+  energyKWh: number,
+  znuAmount: number
+): VitalTimeActivationCost {
+  const totalHours = diagnosisHours + triaxialSetupHours + kernelLimitsTrainingHours + 
+    artificerResponsibilityHours + afpOnboardingHours + witnessAssignmentHours + 
+    cdsBootstrapHours + trustlinesSetupHours
+  
+  const totalVitalTimeCost = Math.min(100,
+    (totalHours / 200) * 40 +
+    (energyKWh / 1000) * 30 +
+    (znuAmount / 2000) * 30
+  )
+  
+  return {
+    horasVitales: totalHours,
+    kWh: energyKWh,
+    znu: znuAmount,
+    totalVitalTimeCost,
+    
+    kernelLimitsCompliance: kernelLimitsTrainingHours,
+    twoDomainsIntegration: kernelLimitsTrainingHours * 0.5,
+    threeDomainsClassification: kernelLimitsTrainingHours * 0.3,
+    responsibilityCeremony: artificerResponsibilityHours * 0.5,
+    uncertaintyWorkshop: artificerResponsibilityHours * 0.3,
+    translationSignature: artificerResponsibilityHours * 0.2,
+    betaPerpetuaOnboarding: artificerResponsibilityHours * 0.2,
+    consciousEnergyCalibration: afpOnboardingHours * 0.4,
+    contributionTracking: afpOnboardingHours * 0.3,
+    witnessNetworkSetup: witnessAssignmentHours,
+    nbuBaselineSetup: afpOnboardingHours * 0.3,
+    
+    breakdown: {
+      diagnosis: diagnosisHours,
+      triaxialSetup: triaxialSetupHours,
+      kernelLimitsTraining: kernelLimitsTrainingHours,
+      artificerResponsibility: artificerResponsibilityHours,
+      afpOnboarding: afpOnboardingHours,
+      witnessAssignment: witnessAssignmentHours,
+      cdsBootstrap: cdsBootstrapHours,
+      trustlinesSetup: trustlinesSetupHours
+    }
+  }
+}
+
 export function calculateGerminationRate(
   semillas: number,
   celulasViables: number,
@@ -282,8 +517,8 @@ export function calculateGerminationRate(
     semillas,
     celulasViables,
     rate: semillas > 0 ? celulasViables / semillas : 0,
-    timeToViability: timeToViabilityDays.length > 0 
-      ? timeToViabilityDays.reduce((a, b) => a + b, 0) / timeToViabilityDays.length 
+    timeToViability: timeToViabilityDays.length > 0
+      ? timeToViabilityDays.reduce((a, b) => a + b, 0) / timeToViabilityDays.length
       : 0,
     failureModes
   }
@@ -299,11 +534,15 @@ export function calculateTerritorialSovereigntyIndex(
     components.material.coverage,
     components.material.regeneration,
     components.economic.energySovereignty,
-    components.economic.timeAutonomy / 1000, // Normalizar
+    components.economic.timeAutonomy / 1000,
+    components.economic.vitalTimeAutonomy / 1000,
     components.economic.demurrageHealth,
+    components.economic.vitalTimeDemurrageHealth,
     components.cognitive.lucidez,
     components.cognitive.gammaCARMIS,
     Math.min(1, components.cognitive.resonanceDensity),
+    components.cognitive.kernelLimitsRespected,
+    components.cognitive.humanArtificerActive,
     components.social.germinationRate,
     components.social.sovereigntyLeak,
     Math.min(1, components.social.resonanceIncoming),
@@ -327,7 +566,7 @@ export function calculateTerritorialSovereigntyIndex(
     ...components,
     composite: geometricMean,
     level,
-    trend: 'ESTABLE', // Requiere histórico
+    trend: 'ESTABLE',
     lastUpdated: new Date()
   }
 }
@@ -338,7 +577,9 @@ export const HSCSG_METRICS = {
   ZNUFlow,
   EnergyFlow,
   TimeFlow,
+  VitalTimeFlow,
   ActivationCost,
+  VitalTimeActivationCost,
   GerminationRate,
   NodeLifespan,
   SovereigntyLeak,
@@ -348,7 +589,9 @@ export const HSCSG_METRICS = {
   SystemHealth,
   TerritorialSovereigntyIndex,
   calculateZNUFlow,
+  calculateVitalTimeFlow,
   calculateActivationCost,
+  calculateVitalTimeActivationCost,
   calculateGerminationRate,
   calculateTerritorialSovereigntyIndex
 } as const

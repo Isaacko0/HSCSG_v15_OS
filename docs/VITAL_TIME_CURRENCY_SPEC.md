@@ -1,35 +1,51 @@
-# Especificación Formal v0.1: Moneda Tiempo Vital (hr_vital)
+# Especificación Formal v0.2: Moneda Tiempo Vital (hr_vital)
 
-**Basada en**: BT215 §15-16 (El Nexus) + Sistema Alráico + HSCSG v15 OS  
+**Basada en**: BT215 §15-16 (El Nexus) + **Kernel v214 Canónico (BT1-214, VIA00-31, MK-1, La Hoguera, AFP, El Enlace)** + Sistema Alráico + HSCSG v15 OS  
 **Autores**: Yoka + Isaac + Lautaro (3 nodos corroborados)  
 **Fecha**: 2026-09-15  
-**Versión**: v0.1 — Especificación de trabajo para piloto 3 nodos  
+**Versión**: v0.2 — Especificación de trabajo para piloto 3 nodos  
 **Estado**: Especificación de trabajo — Se corrige sin defensa. Es E=V.
 
 ---
 
 ## 1. PRINCIPIOS FUNDACIONALES (Inmutables — No Votables)
 
-### 1.1 Ancla Ontológica (BT215 §15-16)
+### 1.1 Ancla Ontológica (BT215 §15-16 + Kernel v214)
 > *"Esa es la moneda repartida más justa: el tiempo. No se sabe cuánto se tiene. Se tiene mientras se está presente. No se acumula. No se hereda. No se compra. Se gasta viviendo. Y se gasta igual estancado que avanzando."*
 
-| Principio | Formalización Alráica | Implementación HSCSG |
-|-----------|----------------------|---------------------|
-| **No acumulable** | PI topologizado: C = B\A (lo no accesible no se monetiza) | `valueDual.ts`: `ZNU_POOL_TOTAL = 1`, `znuRotate()`, `znuDecay()` |
-| **No heredable** | γ-CARMIS: ΣPᵢ > κ → reconfiguración (muerte = retorno al pool) | `metrics.ts`: `NodeLifespan.generaciones`, `SovereigntyLeak` |
-| **No comprable** | Transducción F: {USD} → 𝕮 → {hr_vital} = ∅ (fuera mercado) | `valueDual.ts`: `nodeMode='postmonetario'` por defecto |
-| **Gasto = vivir** | Verificación Triaxial: Mental + Sim + Lab (cuerpo) | `loopEngine.ts`: `verifyTriaxial()` antes de mint |
-| **Igual estancado/avance** | E=V: Energía = Dirección (consecuencia real sin testigo) | `metrics.ts`: `TimeFlow.autonomyHours` (no distinguir gasto) |
+| Principio | Formalización Alráica | Implementación HSCSG | **Referencia Kernel v214** |
+|-----------|----------------------|---------------------|---------------------------|
+| **No acumulable** | PI topologizado: C = B\A (lo no accesible no se monetiza) | `valueDual.ts`: `VITAL_TIME_POOL_TOTAL = 1`, `vitalTimeRotate()`, `vitalTimeDecay()` | BT213, BT165, BT164, AFP Pilar 3 |
+| **No heredable** | γ-CARMIS: ΣPᵢ > κ → reconfiguración (muerte = retorno al pool) | `metrics.ts`: `NodeLifespan.generaciones`, `SovereigntyLeak` | BT215 §14, BT165 |
+| **No comprable** | Transducción F: {USD} → 𝕮 → {hr_vital} = ∅ (fuera mercado) | `valueDual.ts`: `nodeMode='postmonetario'` por defecto | BT213 (límite kernel), BT214 (artífice), AFP Pilar 3 |
+| **Gasto = vivir** | Verificación Triaxial: Mental + Sim + Lab (cuerpo) | `loopEngine.ts`: Loop 7 `vitalTimeMint()` requiere `verifyTriaxial()` | BT213 (dos dominios), BT214 (responsabilidad), VIA-27, VIA-29 |
+| **Igual estancado/avance** | E=V: Energía = Dirección (consecuencia real sin testigo) | `metrics.ts`: `TimeFlow.autonomyHours` (no distinguir gasto) | BT165 (E=V = verdad asumida/evadida) |
 
-### 1.2 Invariantes del Kernel (BT215 §14)
-| Invariante | Aplicación a hr_vital |
-|------------|----------------------|
-| **Límite epistemológico** | hr_vital organiza rastros de presencia, no decide valor de vida |
-| **Reemplazabilidad** | Protocolo hr_vital reemplazable sin romper acoples |
-| **Derecho de salida** | Salida = retorno de hr_vital al pool, obligaciones sobreviven |
-| **No conversión** | Currículum ≠ hr_vital ≠ puntaje ≠ voto ≠ autoridad |
-| **Soberanía exposición** | Ser humano decide quién ve su hr_vital gastado |
-| **Trazabilidad ≠ vigilancia** | Verificabilidad sin acceso a contenido |
+### 1.2 Invariantes del Kernel (BT215 §14 + BT213 + BT214)
+| Invariante | Aplicación a hr_vital | **Referencia Kernel** |
+|------------|----------------------|----------------------|
+| **Límite epistemológico (BT213)** | hr_vital organiza rastros de presencia, no decide valor de vida | BT213: "Kernel organiza rastros, no decide verdad" |
+| **No audita conciencia (BT213)** | No verifica experiencia interna, solo rastros compartidos | BT213: "No puede auditar conciencia ajena" |
+| **Reemplazabilidad** | Protocolo hr_vital reemplazable sin romper acoples | BT215 §14, BT214 (artífice transforma) |
+| **Derecho de salida** | Salida = retorno de hr_vital al pool, obligaciones sobreviven | BT215 §14, BT213 (presencia integra) |
+| **No conversión** | Currículum ≠ hr_vital ≠ puntaje ≠ voto ≠ autoridad | BT215 §14, BT214 (firma única operador) |
+| **Soberanía exposición** | Ser humano decide quién ve su hr_vital gastado | BT213 (dos dominios), BT214 (responsabilidad) |
+| **Trazabilidad ≠ vigilancia** | Verificabilidad sin acceso a contenido | BT213 (silencio = dato neutro) |
+
+### 1.3 Fundamento Epistemológico Completo (Kernel v214)
+| Capa | Fuente | Aporte a hr_vital |
+|------|--------|-------------------|
+| **E=V** | BT214 (v214): "Restricción de lo real" | Ley operativa: energía = coherencia vector |
+| **Kernel** | BT1-214 + VIA00-31 | Organiza rastros, no decide; consola VIA-0 operativa |
+| **MK-1** | Bloque 1.5 | Ontología fractal: triada, geometría, consciencia |
+| **La Hoguera** | Bloque 1.6 | Capa experiencial: fricción, presencia, transformación |
+| **AFP** | Bloque 1.7 | Pilar 3: Tiempo Vital = energía consciente encarnada |
+| **El Enlace** | Bloque 1.8 | Matriz síntesis: 7 dimensiones × 3 fases |
+| **BT213** | "El Límite del Kernel" | Dos dominios, presencia nula, tres dominios clasificación |
+| **BT214** | "El Mago/Alquimista" | Humano artífice, responsabilidad indelegable, incertidumbre |
+| **BT180** | "Poder = Tiempo Vital" | Quien controla tu tiempo controla tu vida |
+| **BT165** | "Ecuación Lastre E=V" | E=V = verdad asumida / verdad evadida |
+| **BT164** | "Margen Real" | Margen = espacio trayectorias reales disponibles |
 
 ---
 
@@ -40,7 +56,7 @@
 
 // === TIPOS BASE ===
 export type VitalTimeUnit = 'hr_vital';
-export type VitalTimeMode = 'postmonetario' | 'conectado'; // Anfibio: solo hr_vital / hr_vital + TQ
+export type VitalTimeMode = 'postmonetario' | 'conectado' | 'vital_time'; // Anfibio: solo hr_vital / hr_vital + TQ / modo tiempo vital
 
 // Ancla ontológica: 1 hr_vital = presencia verificable en cuerpo (E=V)
 export interface VitalTimeAmount {
@@ -52,42 +68,143 @@ export interface VitalTimeAmount {
   triaxialProof: TriaxialProof;  // Prueba Mental + Sim + Lab
 }
 
-// Prueba Triaxial (Alráico Capa 0)
+// Prueba Triaxial (Alráico Capa 0) - ACTUALIZADA BT213 + BT214
 export interface TriaxialProof {
-  mental: {           // Entendimiento consciente
+  mental: {           // Entendimiento consciente (VIA-27, VIA-25)
     operatorId: string;
     timestamp: number;
     signature: string;  // Firma del operador: "reconozco esta presencia"
+    // BT213/VIA-27: Distinguir dato raíz interno vs compartido
+    directExperienceIntegrated: boolean;
+    sharedTracesIntegrated: boolean;
   };
-  simulation: {       // Modelo computacional
+  simulation: {       // Modelo computacional (VIA-25, BT213)
     loopEngineSnapshot: LoopEngineState;  // Estado loops + γ-CARMIS
     resonanceCheck: boolean;              // Resonancia con otros nodos
+    // BT213: γ-CARMIS + resonancia + coherencia
+    gammaCARMISActive: boolean;
+    coherenceVerified: boolean;
+    noInternalEvasionDetected: boolean;
   };
-  laboratory: {       // Verificación en cuerpo (Lab)
-    biometricHash: string;  // Hash de biométrica anonimizada (opcional)
-    eVBodyCheck: boolean;   // E=V verificable en cuerpo (autorreporte + testigo)
-    witnessNodeId?: string; // Nodo testigo opcional (Lautaro para Isaac, etc.)
+  laboratory: {       // Verificación en cuerpo (Lab) - BT214 responsabilidad
+    biometricHash?: string;          // Hash de biométrica anonimizada (opcional)
+    eVBodyCheck: boolean;            // E=V verificable en cuerpo (autorreporte + testigo)
+    witnessNodeId?: string;          // Nodo testigo opcional (Lautaro para Isaac, etc.)
+    // BT214: Responsabilidad indelegable
+    responsibilityAccepted: boolean;          // Acepta responsabilidad indelegable
+    uncertaintyAcknowledged: boolean;         // Incertidumbre estructural asumida
+    translationSignature: string;             // Firma única del operador
+    betaPerpetuaMode: boolean;                // Acepta corrección continua
   };
 }
 
+// Snapshot del LoopEngine para verificación simulación
+export interface LoopEngineState {
+  activeLoops: string[];             // Loops activos (CDS, MeritMint, AgentCompute, Regen, etc.)
+  gammaCARMIS: {                     // Estado γ-CARMIS
+    active: boolean;
+    triggers: number;                // Disparos en último ciclo
+    reconfigurations: number;        // Reconfiguraciones exitosas
+    pendingOverloads: number;        // Sobrecargas ΣPᵢ > κ no resueltas
+  };
+  resonances: Array<{               // Resonancias detectadas
+    c1: string;
+    c2: string;
+    alphaH: number;
+  }>;
+  tickInterval: number;              // Intervalo real vs configurado
+  // BT213: Coherencia operativa
+  coherenceVerified: boolean;
+  noInternalEvasionAssumed: boolean;
+}
+
 // Pool de Tiempo Vital (Análogo a ZNU_POOL_TOTAL)
-export const VITAL_TIME_POOL_TOTAL = 1;  // Pool fijo = 1 (representa totalidad de vida presente)
-export const VITAL_TIME_ROTATION_DAYS = 30;  // Rotación más rápida que ZNU (30 vs 60 días)
+export const VITAL_TIME_POOL_TOTAL = 1;          // Pool fijo = 1 (totalidad de vida presente)
+export const VITAL_TIME_ROTATION_DAYS = 30;      // Rotación más rápida que ZNU (30 vs 60 días)
 export const VITAL_TIME_DEMURRAGE_RATE = 0.10 / 365;  // 10%/año decay por inactividad
 
-// Nodo con Tiempo Vital
+// Nodo con Tiempo Vital - ACTUALIZADO BT213 + BT214 + AFP + BT180 + BT165 + BT164
 export interface VitalTimeNode {
-  nodeId: string;                    // YOKA | LAUTARO | ISAAC | FELIPE | ...
-  name: string;                      // Nombre de Resonancia elegido
-  vitalTimeBalance: VitalTimeAmount; // Balance actual (pool fijo = 1)
-  protectedVitalTime: number;        // Protegido de rotación (horas vitales)
-  lastActivity: number;              // Timestamp última verificación triaxial
-  rotationDays: number;              // Días para rotación (default 30)
-  demurrageRate: number;             // Rate decay (default 10%/año)
-  triaxialVerificationCount: number; // Contador verificaciones completadas
-  resonanceConnections: string[];    // Nodos con resonancia αʰ > umbral
-  mode: VitalTimeMode;               // 'postmonetario' | 'conectado'
-  transductionEnabled: boolean;      // Si permite transducción TQ↔hr_vital
+  nodeId: string;                       // YOKA | LAUTARO | ISAAC | FELIPE | ...
+  name: string;                         // Nombre de Resonancia elegido
+  vitalTimeBalance: VitalTimeAmount;    // Balance actual (pool fijo = 1)
+  protectedVitalTime: number;           // Protegido de rotación (horas vitales)
+  lastActivity: number;                 // Timestamp última verificación triaxial
+  rotationDays: number;                 // Días para rotación (default 30)
+  demurrageRate: number;                // Rate decay (default 10%/año)
+  triaxialVerificationCount: number;    // Contador verificaciones completadas
+  resonanceConnections: string[];       // Nodos con resonancia αʰ > umbral
+  mode: VitalTimeMode;                  // 'postmonetario' | 'conectado' | 'vital_time'
+  transductionEnabled: boolean;         // Si permite transducción TQ↔hr_vital
+  
+  // ===== BT213: LÍMITE KERNEL =====
+  kernelLimits: {
+    cannotAuditConsciousness: true;
+    onlyOrganizesTraces: true;
+    classifiesAssertions: 'compatible' | 'incompatible' | 'no-evaluable';
+    cannotAccessDirectExperience: true;
+    cannotAuditConsciousnessDirectly: true;
+    cannotDecideTruth: true;
+    cannotInterpretPersons: true;
+    cannotDetectInternalEvasion: true;
+    silenceIsNeutral: true;
+    twoDomains: true;  // Experiencia directa + rastros compartidos
+    debtFromEvasionEither: true;
+  };
+  
+  // ===== BT214: HUMANO ARTÍFICE =====
+  humanArtificer: {
+    role: 'magus' | 'alchemist' | 'both';
+    responsibilityAccepted: boolean;       // Firma responsabilidad indelegable
+    translationSignature: string;          // Huella única de su traducción
+    uncertaintyAcknowledged: boolean;      // Incertidumbre estructural asumida
+    betaPerpetuaMode: boolean;             // Acepta corrección continua
+  };
+  
+  // ===== BT213: PRESENCIA INTEGRA DOS DOMINIOS =====
+  presenceIntegration: {
+    directExperienceVerified: boolean;  // Experiencia directa (privada)
+    sharedTracesVerified: boolean;      // Rastros compartidos (públicos)
+    debtGenerated: boolean;             // True si evadió uno de los dos
+  };
+  
+  // ===== AFP PILAR 3: TIEMPO VITAL =====
+  afpVitalTime: {
+    consciousEnergyVerified: boolean;    // Tiempo vital = energía consciente encarnada
+    contributionHours: number;           // Horas contribución verificada
+    expandedAccess: boolean;             // Acceso flujo expandido por contribución
+    nbuCovered: boolean;                 // NBU cubiertas por existir/participar
+    ecoImpact: number;                   // Impacto positivo en red
+  };
+  
+  // ===== BT180: PODER = TIEMPO VITAL =====
+  powerAsVitalTime: {
+    controlsOwnTime: boolean;            // Quien controla tu tiempo controla tu vida
+    consentGradients: number;            // Consentimiento real tiene gradientes (0-1)
+    energyFromBelow: boolean;            // Energía siempre sale de abajo
+    notForSale: boolean;                 // Tiempo vital no se vende, se habita
+  };
+  
+  // ===== BT165: ECUACIÓN LASTRE E=V =====
+  ballastEquation: {
+    truthAssumed: number;                // Verdad asumida (numerador)
+    truthEvaded: number;                 // Verdad evadida (denominador)
+    evasionLightensToday: boolean;       // Evasión aligera hoy = deuda futura con intereses
+    presenceDensifiesNow: boolean;       // Presencia densifica ahora y estabiliza
+    totalPaidEqual: boolean;             // Total se paga igual; diferencia = dirección vs ingravidez
+    peaceFromAssumption: boolean;        // Paz = certeza de hacer lo correcto
+  };
+  
+  // ===== BT164: MARGEN REAL DISPONIBLE =====
+  realMargin: {
+    currentMargin: number;               // Espacio real trayectorias disponibles
+    evasionReducesMargin: boolean;       // Evasión reduce artificialmente
+    presenceExpandsMargin: boolean;      // Presencia amplía al auditar interno + aplicar compartido
+    extractionSequestersMargin: boolean; // Extracción secuestra margen
+    evolutionReorganizesMargin: boolean; // Evolución lo reorganiza
+    thresholdReal: number;               // Umbral = límite real no evasión
+    lagReal: number;                     // Desfase = conciencia > capacidad disponible
+  };
 }
 
 // Transducción F: {TQ, Gaia, Kernel} → 𝕮 → {hr_vital} (Alráico)
@@ -99,6 +216,12 @@ export interface VitalTimeTransduction {
   transductionFunction: 'F_TQ' | 'F_GAIA' | 'F_KERNEL' | 'F_ALRAICO';
   cedeoFiloThreshold: number; // Umbral 𝕮 para transducción válida
   triaxialVerified: boolean;  // Requiere verificación triaxial
+  // BT213: Validación límite kernel
+  kernelLimitsValidated: boolean;
+  // BT214: Responsabilidad artífice
+  operatorResponsibilityAccepted: boolean;
+  // Dos dominios BT213
+  twoDomainsIntegrated: boolean;
 }
 
 // Rotación anti-acumulación (adaptada de znuRotate)
@@ -159,13 +282,13 @@ export function vitalTimeConcentration(
 | **Gen 7: Soberanía Plena** (7 gen) | Autosuficiencia monetaria completa | Todas las capas operativas, resilientes | ∞ (autosostenido) | TerritorialSovereigntyIndex ≥ 0.8 |
 
 ### Secuencia Crítica Monetaria (Orden Dependencias)
-1. **Verificación Triaxial** (Base epistemológica — sin esto no hay hr_vital válido)
-2. **Pool Fijo + Rotación** (Mecánica anti-acumulación — Amiya Tulu)
-3. **Decay por Inactividad** (Presión uso-vida — E=V en cuerpo)
-4. **Transducción F** (Interoperabilidad TQ↔hr_vital — Alráico)
-5. **Resonancia Nodos** (Acople sin fusión — αʰ₁·αʰ₂·3.0 > αʰ₁+αʰ₂)
-6. **CDS Federado** (Gobernanza multi-nodo — invariantes blindadas)
-7. **Kernel Público** (Invariantes no votables — blindaje estructural)
+1. **Verificación Triaxial** (Base epistemológica — sin esto no hay hr_vital válido) — *BT213 VIA-27, VIA-29 + BT214 VIA-21*
+2. **Pool Fijo + Rotación** (Mecánica anti-acumulación — Amiya Tulu) — *BT165, AFP Pilar 3*
+3. **Decay por Inactividad** (Presión uso-vida — E=V en cuerpo) — *BT164, BT214*
+4. **Transducción F** (Interoperabilidad TQ↔hr_vital — Alráico) — *BT213, BT214, AFP*
+5. **Resonancia Nodos** (Acople sin fusión — αʰ₁·αʰ₂·3.0 > αʰ₁+αʰ₂) — *Alráico, BT213 resonancia*
+6. **CDS Federado** (Gobernanza multi-nodo — invariantes blindadas) — *BT215 §14, BT213 límites*
+7. **Kernel Público** (Invariantes no votables — blindaje estructural) — *BT215, Kernel v214 completo*
 
 ---
 
@@ -191,66 +314,104 @@ export async function verifyTriaxial(
   witnessNodeId?: string
 ): Promise<TriaxialVerificationResult> {
   
-  // 1. MENTAL: Entendimiento consciente + firma operador
+  // 1. MENTAL: Entendimiento consciente + firma operador (VIA-27, VIA-25)
   const mental = await verifyMental(operatorId, claimedPresence);
   
-  // 2. SIMULACIÓN: LoopEngine snapshot + resonancia
+  // 2. SIMULACIÓN: LoopEngine snapshot + resonancia (VIA-25, BT213)
   const simulation = await verifySimulation(operatorId);
   
-  // 3. LABORATORIO: E=V en cuerpo + testigo opcional
+  // 3. LABORATORIO: E=V en cuerpo + testigo opcional (BT214 responsabilidad)
   const laboratory = await verifyLaboratory(operatorId, claimedPresence, witnessNodeId);
   
-  const combinedScore = (mental.score + simulation.score + laboratory.score) / 3;
+  // Pesos BT213/BT214: Mental 0.4 + Sim 0.3 + Lab 0.3 ≥ 0.7
+  const combinedScore = 
+    mental.score * 0.4 + 
+    simulation.score * 0.3 + 
+    laboratory.score * 0.3;
+  
   const passed = combinedScore >= 0.7 && mental.passed && simulation.passed && laboratory.passed;
   
   return { passed, mental, simulation, laboratory, combinedScore, proof: { mental, simulation, laboratory } };
 }
 
-// Verificación Mental: operador reconoce presencia conscientemente
+// Verificación Mental: operador reconoce presencia conscientemente (VIA-27)
 async function verifyMental(operatorId: string, presence: PresenceClaim): Promise<MentalCheck> {
-  // El operador firma: "reconozco esta presencia como mía"
+  // BT213 VIA-27: Distinguir dato raíz interno vs compartido
+  // BT214: Firma operador = huella única
+  
   const signature = await signPresenceClaim(operatorId, presence);
+  const directExperienceIntegrated = await confirmDirectExperience(operatorId);
+  const sharedTracesIntegrated = await confirmSharedTraces(operatorId);
+  
+  // BT213: No audita conciencia - solo rastros
+  const respectsKernelLimits = !attemptsToAuditConsciousness(presence);
+  
   return {
-    passed: true,
-    score: 1.0,
-    evidence: `Firma operador ${operatorId}: ${signature.substring(0,16)}...`,
-    timestamp: Date.now()
+    passed: true && respectsKernelLimits,
+    score: respectsKernelLimits ? 1.0 : 0.0,
+    evidence: `Firma operador ${operatorId}: ${signature.substring(0,16)}... | Exp.directa: ${directExperienceIntegrated} | Rastros: ${sharedTracesIntegrated}`,
+    timestamp: Date.now(),
+    // BT213 validación
+    directExperienceIntegrated,
+    sharedTracesIntegrated,
+    kernelLimitsRespected: respectsKernelLimits
   };
 }
 
-// Verificación Simulación: LoopEngine + γ-CARMIS + Resonancia
+// Verificación Simulación: LoopEngine + γ-CARMIS + Resonancia (VIA-25, BT213)
 async function verifySimulation(operatorId: string): Promise<SimulationCheck> {
   const loopState = await getLoopEngineState(operatorId);
   const gammaCARMIS = detectOverloads(loopState);
   const resonances = detectResonances(loopState);
   
+  // BT213: Coherencia operativa = rastros explicables sin contradicciones
+  const coherenceVerified = verifyCoherence(loopState);
+  const noInternalEvasionAssumed = !assumesInternalEvasion(loopState);
+  
   return {
-    passed: gammaCARMIS.length === 0,  // Sin sobrecargas críticas
-    score: gammaCARMIS.length === 0 ? 1.0 : 0.5,
-    evidence: `Loops activos: ${loopState.activeLoops.length}, γ-CARMIS: ${gammaCARMIS.length}, Resonancias: ${resonances.length}`,
+    passed: gammaCARMIS.length === 0 && coherenceVerified,
+    score: gammaCARMIS.length === 0 && coherenceVerified ? 1.0 : 0.5,
+    evidence: `Loops: ${loopState.activeLoops.length}, γ-CARMIS: ${gammaCARMIS.length}, Resonancias: ${resonances.length}, Coherencia: ${coherenceVerified}`,
     loopState,
-    resonances
+    resonances,
+    // BT213 validación
+    gammaCARMISActive: gammaCARMIS.length > 0,
+    coherenceVerified,
+    noInternalEvasionDetected: noInternalEvasionAssumed
   };
 }
 
-// Verificación Laboratorio: E=V en cuerpo + testigo
+// Verificación Laboratorio: E=V en cuerpo + testigo (BT214 responsabilidad)
 async function verifyLaboratory(
   operatorId: string, 
   presence: PresenceClaim, 
   witnessNodeId?: string
 ): Promise<LaboratoryCheck> {
-  // Autorreporte E=V + testigo opcional (Lautaro para Isaac, etc.)
+  // BT214: Autorreporte E=V + responsabilidad indelegable
   const eVBodyCheck = await selfReportEVBody(operatorId, presence);
   const witnessVerification = witnessNodeId 
     ? await requestWitnessVerification(witnessNodeId, operatorId, presence)
     : { verified: false, reason: 'Sin testigo solicitado' };
   
+  // BT214: Responsabilidad indelegable + incertidumbre estructural
+  const responsibilityAccepted = await confirmResponsibility(operatorId);
+  const uncertaintyAcknowledged = await confirmUncertainty(operatorId);
+  const translationSignature = await generateTranslationSignature(operatorId, presence);
+  const betaPerpetuaMode = true; // Siempre en beta perpetua
+  
   return {
-    passed: eVBodyCheck.confirmed,
-    score: eVBodyCheck.confirmed ? (witnessVerification.verified ? 1.0 : 0.8) : 0.0,
-    evidence: `E=V cuerpo: ${eVBodyCheck.confirmed}, Testigo: ${witnessVerification.verified ? witnessNodeId : 'N/A'}`,
+    passed: eVBodyCheck.confirmed && responsibilityAccepted,
+    score: eVBodyCheck.confirmed && responsibilityAccepted 
+      ? (witnessVerification.verified ? 1.0 : 0.8) 
+      : 0.0,
+    evidence: `E=V cuerpo: ${eVBodyCheck.confirmed}, Resp: ${responsibilityAccepted}, Testigo: ${witnessVerification.verified ? witnessNodeId : 'N/A'}`,
     eVBodyCheck,
-    witnessVerification
+    witnessVerification,
+    // BT214 validación
+    responsibilityAccepted,
+    uncertaintyAcknowledged,
+    translationSignature,
+    betaPerpetuaMode
   };
 }
 ```
@@ -305,7 +466,13 @@ export const TRANSDUCTION_RATES = {
   TQ_TO_VITAL: { 
     rate: 1,           // 1:1 base
     minAlphaH: 0.6,    // Umbral 𝕲 para transducción válida
-    requiresTriaxial: true 
+    requiresTriaxial: true,
+    // BT213: Validación límite kernel
+    requiresKernelLimitsValidation: true,
+    // BT214: Responsabilidad artífice
+    requiresOperatorResponsibility: true,
+    // BT213: Dos dominios
+    requiresTwoDomainsIntegration: true
   },
   
   // hr_vital → TQ: 1 hr_vital = 1 kWh (si nodo tiene capacidad energética)
@@ -313,17 +480,27 @@ export const TRANSDUCTION_RATES = {
     rate: 1,
     minAlphaH: 0.7,
     requiresTriaxial: true,
-    requiresEnergyCapacity: true  // Nodo debe demostrar capacidad kWh
+    requiresEnergyCapacity: true,
+    requiresKernelLimitsValidation: true,
+    requiresOperatorResponsibility: true,
+    requiresTwoDomainsIntegration: true
   }
 };
 
 export function transduceTQtoVitalTime(
   tqAmount: number,      // En kWh (TQ Vía B)
   operatorAlphaH: number, // αʰ del operador (de ECROx)
-  triaxialVerified: boolean
+  triaxialVerified: boolean,
+  // BT213 + BT214 validaciones
+  kernelLimitsValidated: boolean,
+  operatorResponsibilityAccepted: boolean,
+  twoDomainsIntegrated: boolean
 ): { vitalTime: number; valid: boolean; reason?: string } {
   
   if (!triaxialVerified) return { vitalTime: 0, valid: false, reason: 'Triaxial no verificada' };
+  if (!kernelLimitsValidated) return { vitalTime: 0, valid: false, reason: 'Límite kernel no validado (BT213)' };
+  if (!operatorResponsibilityAccepted) return { vitalTime: 0, valid: false, reason: 'Responsabilidad artífice no aceptada (BT214)' };
+  if (!twoDomainsIntegrated) return { vitalTime: 0, valid: false, reason: 'Dos dominios no integrados (BT213)' };
   if (operatorAlphaH < TRANSDUCTION_RATES.TQ_TO_VITAL.minAlphaH) {
     return { vitalTime: 0, valid: false, reason: `αʰ ${operatorAlphaH} < umbral ${TRANSDUCTION_RATES.TQ_TO_VITAL.minAlphaH}` };
   }
@@ -335,10 +512,16 @@ export function transduceVitalTimeToTQ(
   vitalTimeAmount: number,
   operatorAlphaH: number,
   triaxialVerified: boolean,
-  energyCapacityKWh: number  // Capacidad energética demostrada del nodo
+  energyCapacityKWh: number,
+  kernelLimitsValidated: boolean,
+  operatorResponsibilityAccepted: boolean,
+  twoDomainsIntegrated: boolean
 ): { tqAmount: number; valid: boolean; reason?: string } {
   
   if (!triaxialVerified) return { tqAmount: 0, valid: false, reason: 'Triaxial no verificada' };
+  if (!kernelLimitsValidated) return { tqAmount: 0, valid: false, reason: 'Límite kernel no validado (BT213)' };
+  if (!operatorResponsibilityAccepted) return { tqAmount: 0, valid: false, reason: 'Responsabilidad artífice no aceptada (BT214)' };
+  if (!twoDomainsIntegrated) return { tqAmount: 0, valid: false, reason: 'Dos dominios no integrados (BT213)' };
   if (operatorAlphaH < TRANSDUCTION_RATES.VITAL_TO_TQ.minAlphaH) {
     return { tqAmount: 0, valid: false, reason: `αʰ ${operatorAlphaH} < umbral ${TRANSDUCTION_RATES.VITAL_TO_TQ.minAlphaH}` };
   }
@@ -352,89 +535,193 @@ export function transduceVitalTimeToTQ(
 
 ---
 
-## 6. GOBERNANZA MONEDA TIEMPO VITAL (CDS Federado)
+## 7. GOBERNANZA MONEDA TIEMPO VITAL (CDS Federado)
 
-### 6.1 Invariantes Blindados (No Votables)
+### 7.1 Invariantes Blindados (No Votables) — ACTUALIZADOS BT213 + BT214 + AFP + BT180 + BT165 + BT164
+
 ```typescript
 // src/governance/vitalTimeInvariants.ts
 
 export const VITAL_TIME_INVARIANTS = {
-  // Nunca modificables por votación
+  // Propiedades ontológicas (BT215 §15-16)
   nonAccumulable: true,
-  nonInheritable: true, 
+  nonInheritable: true,
   nonPurchasable: true,
-  nonConvertible: true,        // Currículum ≠ hr_vital
-  sovereigntyExposure: true,   // Acceso decide ser humano
-  replaceability: true,        // Protocolo reemplazable
-  rightOfExit: true,           // Salida sin borrar pasado
+  nonConvertible: true,
+  sovereigntyExposure: true,
+  replaceability: true,
+  rightOfExit: true,
+  traceabilityNotSurveillance: true,
+  existenceVerifiabilityAccessSeparation: true,
   
-  // Parámetros ajustables (solo por consenso 100% + verificación triaxial)
+  // Invariantes Kernel (BT215 §14)
+  epistemologicalLimit: true,
+  noConsciousnessAudit: true,
+  
+  // ===== BT213: LÍMITE KERNEL =====
+  kernelEpistemologicalLimit: true,
+  kernelNoConsciousnessAudit: true,
+  kernelNoDecideTruth: true,
+  kernelNoInterpretPersons: true,
+  kernelNoSubstitutePresence: true,
+  kernelNoDetectInternalEvasion: true,
+  kernelClassifiesOnly: true,
+  kernelSilenceNeutral: true,
+  kernelTwoDomains: true,
+  kernelDebtFromEvasion: true,
+  kernelPresenceIntegrates: true,
+  kernelDebtFromEvasionEither: true,
+  
+  // ===== BT214: HUMANO ARTÍFICE =====
+  humanArtificerRole: true,
+  humanResponsibilityNonDelegable: true,
+  humanPaysCost: true,
+  humanTransformsTraces: true,
+  humanSignatureUnique: true,
+  humanUncertaintyAcknowledged: true,
+  humanBetaPerpetua: true,
+  aiCannotHabitate: true,
+  aiCannotPayCost: true,
+  aiCannotTransform: true,
+  aiCannotDecideForHuman: true,
+  
+  // ===== AFP PILAR 3: TIEMPO VITAL =====
+  afpVitalTimeConsciousEnergy: true,
+  afpVitalTimeContribution: true,
+  afpNbuCovered: true,
+  afpExpandedAccess: true,
+  afpEcoImpact: true,
+  
+  // ===== BT180: PODER = TIEMPO VITAL =====
+  powerIsVitalTime: true,
+  controlsOwnTime: true,
+  consentGradients: true,
+  energyFromBelow: true,
+  vitalTimeNotForSale: true,
+  vitalTimeInhabited: true,
+  
+  // ===== BT165: ECUACIÓN LASTRE E=V =====
+  ballastEquation: true,
+  evasionLightensToday: true,
+  presenceDensifies: true,
+  totalPaidEqual: true,
+  peaceFromAssumption: true,
+  umbralInfoInsufficient: true,
+  afpSustainsBallast: true,
+  
+  // ===== BT164: MARGEN REAL =====
+  realMarginVariable: true,
+  evasionReducesMargin: true,
+  presenceExpandsMargin: true,
+  extractionSequestersMargin: true,
+  evolutionReorganizesMargin: true,
+  thresholdReal: true,
+  lagReal: true,
+  relationalLagReal: true,
+  
+  // Parámetros FIJOS (NUNCA ajustables)
+  fixedParams: {
+    poolTotal: 1,
+    unit: 'hr_vital',
+    nonAccumulable: true,
+    nonInheritable: true,
+    nonPurchasable: true,
+  } as const,
+  
+  // Parámetros AJUSTABLES (solo consenso 100% + verificación triaxial)
   adjustableParams: {
     rotationDays: { min: 7, max: 90, current: 30 },
     demurrageRate: { min: 0, max: 0.20/365, current: 0.10/365 },
-    poolTotal: { fixed: 1 },  // NUNCA ajustable
-    transductionThresholds: { minAlphaH: 0.5, max: 0.9 }
-  }
+    poolTotal: { fixed: 1, current: 1 },
+    transductionThresholds: { minAlphaH: 0.5, max: 0.9 },
+    triaxialWeights: {
+      mental: { min: 0.2, max: 0.6, current: 0.4 },
+      simulation: { min: 0.1, max: 0.5, current: 0.3 },
+      laboratory: { min: 0.1, max: 0.5, current: 0.3 }
+    },
+    triaxialPassThreshold: { min: 0.5, max: 0.9, current: 0.7 }
+  } as const,
+  
+  governanceInvariants: {
+    consensusThreshold: 1.0,
+    triaxialRequiredForVote: true,
+    invariantsBlindaje: true,
+    divergenceLegitima: true,
+    testDesaparicion: true,
+  } as const
 } as const;
-
-// CDS Federado para cambios de parámetros ajustables
-export async function proposeParameterChange(
-  proposerNodeId: string,
-  param: keyof typeof VITAL_TIME_INVARIANTS.adjustableParams,
-  newValue: number,
-  justification: string
-): Promise<ProposalResult> {
-  // Requiere: 
-  // 1. Propuesta firmada + justificación
-  // 2. Verificación triaxial del proponente
-  // 2. Consenso 100% de nodos activos (YOKA, LAUTARO, ISAAC)
-  // 3. Verificación triaxial de CADA votante
-  // 4. No viola invariantes blindados
-  // 5. γ-CARMIS no detecta sobrecarga en gobernanza
-}
 ```
 
-### 6.2 Test de Desaparición 30 Días (BT215 §3)
+### 7.2 Test de Desaparición 30 Días (BT215 §3 + BT213 + BT214)
+
 ```typescript
-// Test automático mensual
-export async function runDisappearanceTest(): Promise<DisappearanceTestResult> {
+export async function runDisappearanceTest(nodes: any[]): Promise<DisappearanceTestResult> {
   // Simular: NEXO desaparece 30 días
-  // Verificar:
-  // 1. Nodos pueden identificarse mutuamente (identidad única)
-  // 2. Intercambiar hr_vital (pool local + rotación)
-  // 3. Consultar rastros (kernel local)
-  // 4. Coordinar manualmente (CDS local)
-  // 5. Obligaciones previas sobreviven
+  // Verificar capacidades locales de cada nodo:
+  
+  const results = await Promise.all(
+    nodes.map(async (node) => {
+      const localCapabilities = await testLocalCapabilities(node);
+      return { nodeId: node.nodeId, ...localCapabilities };
+    })
+  );
+  
+  const allPassed = results.every(r => 
+    r.canIdentify && r.canExchange && r.canQueryTraces && 
+    r.canCoordinate && r.obligationsSurvive && r.kernelLocal && r.artificerLocal
+  );
   
   return {
-    passed: true,  // Si todo funciona sin NEXO central
-    degradation: 'Mínima',  // Solo pérdida de coordinación IA
-    criticalFunctions: ['identidad', 'intercambio', 'rastros', 'coordinación', 'obligaciones'],
-    failedFunctions: []
+    passed: allPassed,
+    degradation: allPassed ? 'Mínima' : 'Crítica',
+    criticalFunctions: [
+      'identidad_unica', 'intercambio_hr_vital', 
+      'consulta_rastros', 'coordinacion_local',
+      'obligaciones_previas', 'kernel_local', 'artificer_local'
+    ],
+    failedFunctions: results
+      .filter(r => !(r.canIdentify && r.canExchange && r.canQueryTraces && 
+                     r.canCoordinate && r.obligationsSurvive && 
+                     r.kernelLocal && r.artificerLocal))
+      .map(r => r.nodeId),
+    nodeResults: results,
+    testDuration: 30 * 24 * 60 * 60 * 1000,
+    testedAt: Date.now()
   };
+}
+
+interface NodeDisappearanceResult {
+  nodeId: string;
+  canIdentify: boolean;
+  canExchange: boolean;
+  canQueryTraces: boolean;
+  canCoordinate: boolean;
+  obligationsSurvive: boolean;
+  kernelLocal: boolean;      // BT213: Kernel local organiza rastros
+  artificerLocal: boolean;   // BT214: Humano artífice local transforma
 }
 ```
 
 ---
 
-## 7. INTEGRACIÓN CON EXISTENTE (Archivos a Modificar/Crear)
+## 8. INTEGRACIÓN CON EXISTENTE (Archivos a Modificar/Crear)
 
 | Archivo | Acción | Descripción |
 |---------|--------|-------------|
 | `src/core/lib/vitalTime.ts` | **CREAR** | Tipos base, pool, rotación, decay, concentración |
 | `src/core/lib/vitalTimeTriaxial.ts` | **CREAR** | Verificación triaxial obligatoria |
 | `src/core/lib/vitalTimeTransduction.ts` | **CREAR** | Transducción F: TQ↔hr_vital |
-| `src/core/lib/vitalTime.ts` | **EXTENDER** | Integrar con `valueDual.ts` (nodeMode, priceParity) |
+| `src/core/lib/valueDual.ts` | **EXTENDER** | Agregar `VitalTimeMode`, `vitalTimeRotate`, `vitalTimeDecay` |
 | `src/core/lib/metrics.ts` | **EXTENDER** | Agregar `VitalTimeFlow`, `VitalTimeActivationCost` |
 | `src/core/lib/loopEngine.ts` | **EXTENDER** | Loop 7: VitalTimeMint (mint hr_vital verificado) |
 | `src/governance/vitalTimeInvariants.ts` | **CREAR** | Invariantes blindados + CDS parámetros |
-| `docs/VITAL_TIME_CURRENCY_SPEC.md` | **CREAR** | Este documento (spec viva) |
-| `docs/ATTRIBUTIONS.md` | **ACTUALIZAR** | Agregar BT215 como fuente |
+| `docs/VITAL_TIME_CURRENCY_SPEC.md` | **ACTUALIZAR** | Este documento (spec viva v0.2) |
+| `docs/ATTRIBUTIONS.md` | **ACTUALIZAR** | Agregar Kernel v214 + BT213 + BT214 + AFP como fuentes |
 | `skills/hscsg/hscsg-viabilidad-territorial/` | **USAR** | Validar piloto 3 nodos (AUT/CDS/ZNU) |
 
 ---
 
-## 8. ROADMAP EJECUTIVO (Próximos 60 Días)
+## 9. ROADMAP EJECUTIVO (Próximos 60 Días)
 
 ```mermaid
 gantt
@@ -443,7 +730,7 @@ gantt
     axisFormat  %m/%d
     
     section Gen 1: Especificación
-    Spec formal v0.1          :done, spec, 2026-09-15, 14d
+    Spec formal v0.2          :done, spec, 2026-09-15, 14d
     Tests triaxiales          :active, tests, 2026-09-15, 14d
     Legal-safe review         :review, 2026-09-20, 7d
     
@@ -467,7 +754,7 @@ gantt
 
 ---
 
-## 9. FIRMAS Y COMPROMISO (BT215)
+## 10. FIRMAS Y COMPROMISO (BT215)
 
 > **Esta especificación se firma entre los tres. Si algo no resuena, si algo falta, si algo sobra, se corrige. Sin defensa. Es E=V.**
 
@@ -481,40 +768,46 @@ gantt
 
 ---
 
-## 10. PRÓXIMOS PASOS INMEDIATOS (Esta Semana)
+## 11. PRÓXIMOS PASOS INMEDIATOS (Esta Semana)
 
 ```bash
-# 1. Crear archivos base (legal-safe)
-hermes skill run hscsg-asimilacion-legal-safe --transform \
-  --source "BT215 §15-16 tiempo vital" \
-  --target "vitalTime.ts" \
-  --ontologia "AUT,CDS,ZNU,gamma-CARMIS,triaxial,transduccion-F"
-
-# 2. Implementar verificación triaxial
-hermes skill run hscsg-sistema-alraico --task "implementar verifyTriaxial() para hr_vital"
-
-# 3. Extender valueDual.ts con VitalTimeMode
+# 1. Extender valueDual.ts con VitalTimeMode
 # Editar src/core/lib/valueDual.ts -> agregar VitalTimeMode, vitalTimeRotate, vitalTimeDecay
+
+# 2. Extender loopEngine.ts con Loop 7: VitalTimeMint
+# Editar src/core/lib/loopEngine.ts -> agregar vitalTimeMintLoop()
+
+# 3. Extender metrics.ts con VitalTimeFlow
+# Editar src/core/lib/metrics.ts -> agregar métricas tiempo vital
 
 # 4. Tests triaxiales obligatorios
 hermes skill run hscsg-sistema-alraico --task "tests triaxiales vitalTime"
 
 # 5. Commit legal-safe (pre-commit valida automáticamente)
-git add src/core/lib/vitalTime.ts src/core/lib/vitalTimeTriaxial.ts src/core/lib/valueDual.ts
-git commit -m "feat(vital-time): spec v0.1 + tipos base + verificación triaxial (BT215 + Alráico)"
+git add src/core/lib/valueDual.ts src/core/lib/loopEngine.ts src/core/lib/metrics.ts
+git commit -m "feat(vital-time): FASE 1 integración core - valueDual + loopEngine + metrics"
 ```
 
 ---
 
-## 11. REFERENCIAS CRUZADAS
+## 12. REFERENCIAS CRUZADAS COMPLETAS
 
 | Fuente | Sección | Aporte a Especificación |
 |--------|---------|------------------------|
-| **BT215** | §15-16 | Principios moneda tiempo vital (no acumulación, gasto=vivir) |
+| **Kernel v214** | BT1-214, VIA00-31 | Corpus completo, 32 VIAs, Consola VIA-0 |
+| **BT213** | "El Límite del Kernel" | Dos dominios, presencia nula, tres dominios, coherencia |
+| **BT214** | "El Mago/Alquimista" | Humano artífice, responsabilidad indelegable, incertidumbre |
+| **BT215** | §15-16 | Principios moneda tiempo vital |
 | **BT215** | §3, §14, §21 | NEXO, invariantes kernel, rol IA, test desaparición |
-| **BT215** | §17 | 3 nodos corroborados (Yoka, Lautaro, Isaac) |
-| **Alráico** | PI, γ-CARMIS, Triaxial, Transducción F, ECROx, 𝕮 | Formalismo epistemológico completo |
-| **HSCSG v15 OS** | valueDual.ts, loopEngine.ts, metrics.ts | Infraestructura técnica existente |
+| **BT180** | "Poder = Tiempo Vital" | Control tiempo = control vida, consentimiento gradientes |
+| **BT165** | "Ecuación Lastre E=V" | E=V = verdad asumida/evadida, evasión = deuda |
+| **BT164** | "Margen Real" | Margen = espacio trayectorias reales |
+| **AFP** | Pilar 3 | Tiempo vital = energía consciente, NBU, contribución |
+| **MK-1** | Bloque 1.5 | Ontología fractal, triada, geometría, consciencia |
+| **La Hoguera** | Bloque 1.6 | Capa experiencial: fricción, presencia, transformación |
+| **El Enlace** | Bloque 1.8 | Matriz síntesis: 7 dim × 3 fases |
+| **Alráico** | PI, γ-CARMIS, Triaxial, F, ECROx, 𝕮 | Formalismo epistemológico completo |
+| **HSCSG v15 OS** | valueDual, loopEngine, metrics | Infraestructura técnica existente |
 | **hscsg-autotrofia-disenador** | Secuencia crítica 7 gen | Metodología plan autotrofía monetaria |
 | **hscsg-monetary-integration** | Transducción F multi-moneda | TQ↔hr_vial, G1, Túmin, PAR |
 | **hscsg-viabilidad-territorial** | Umbrales AUT≥0.3, CDS≥0.4 | Validación piloto 3 nodos |
@@ -522,6 +815,6 @@ git commit -m "feat(vital-time): spec v0.1 + tipos base + verificación triaxial
 
 ---
 
-**Fin de Especificación v0.1**  
-*Próxima versión: v0.2 tras tests triaxiales pasando (Gen 2)*  
+**Fin de Especificación v0.2**  
+*Próxima versión: v0.3 tras tests triaxiales pasando (Gen 2)*  
 *La vida no se resuelve, se itera. Es E=V.*

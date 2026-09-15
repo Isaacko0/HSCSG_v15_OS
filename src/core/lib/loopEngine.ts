@@ -2,6 +2,8 @@
 // Kernel de orquestación: ejecuta loops, detecta resonancia, dispara γ-CARMIS, spawnea skills/agentes.
 // Anfibio: offline (RAO local) ↔ conectado (Nostr/NEAR).
 // Integración Cosmotechnics: Buzhou Shan Monitor (glitch cósmico) + γ-CARMIS reconfiguración
+// ACTUALIZADO: Loop 7 VitalTimeMint + BT213 límites kernel + BT214 humano artífice
+
 import type { AppState } from '@core/state/store'
 import { proveFailure as porProve } from '@core/lib/proofOfResponse'
 import { monitorCosmicGlitch, reconfigureForGlitch, type CosmicGlitch } from '@core/lib/chinese-cosmotechnics'
@@ -56,6 +58,14 @@ export function detectOverloads(st: AppState): Array<{ module: string; kappa: nu
     overloads.push({ module: 'regen', kappa: st.regen.systems.length, alphaH: st.regen.ecotech.length })
   }
 
+  // VitalTime: nodos sin verificación triaxial reciente
+  if (st.vitalTime?.nodes) {
+    const staleNodes = Object.values(st.vitalTime.nodes).filter(
+      (n: any) => now - n.lastActivity > (n.rotationDays || 30) * 24 * 60 * 60 * 1000
+    )
+    if (staleNodes.length > 0) overloads.push({ module: 'vitalTime', kappa: 0, alphaH: staleNodes.length })
+  }
+
   return overloads
 }
 
@@ -106,6 +116,15 @@ export function simulateReconfig(overloads: ReturnType<typeof detectOverloads>, 
         }
         break
       }
+      case 'vitalTime': {
+        // BT213: No puede auditar conciencia - solo notifica
+        // BT214: Humano artífice debe responder
+        delta.vitalTime = {
+          ...st.vitalTime,
+          staleAlerts: [...(st.vitalTime?.staleAlerts || []), ...staleNodes.map((n: any) => n.nodeId)]
+        }
+        break
+      }
     }
   }
   return delta
@@ -128,6 +147,7 @@ export function detectResonances(st: AppState): Array<{ c1: string; c2: string; 
     nostrRelay: st.nostrRelay.connected ? 0.8 : 0.3,
     agentMesh: st.agentMesh.agents.length > 0 ? 0.7 : 0.3,
     proofOfResponse: st.proofOfResponse.responses.length > 0 ? 0.7 : 0.3,
+    vitalTime: st.vitalTime?.nodes && Object.keys(st.vitalTime.nodes).length > 0 ? 0.7 : 0.2,
   }
 
   const modules = Object.entries(metrics)
@@ -241,7 +261,6 @@ function regenMrvLoop(st: AppState): Partial<AppState> {
 /** Loop: Nostr Audit (placeholder — sin auditTrail para evitar acoplamiento de firma) */
 function nostrAuditLoop(st: AppState): Partial<AppState> {
   if (st.nostrRelay.connected && st.nostrRelay.events.length > 0) {
-    // placeholder: en implementación completa registraría en RAO
     return {}
   }
   return {}
@@ -258,6 +277,83 @@ function vecinalAccountabilityLoop(st: AppState): Partial<AppState> {
   )
   if (failed.length > 0) return { delegation: { ...st.delegation } }
   return {}
+}
+
+/** Loop 7: VitalTimeMint — Minea hr_vital por presencia verificada (BT215 + BT213 + BT214) */
+function vitalTimeMintLoop(st: AppState): Partial<AppState> {
+  if (!st.vitalTime?.nodes) return {}
+
+  const now = Date.now()
+  const delta: Partial<AppState> = { vitalTime: { ...st.vitalTime } }
+  let executed = false
+
+  for (const [nodeId, node] of Object.entries(st.vitalTime.nodes)) {
+    // Verificar si el nodo debe rotar (exceso de 30h protegidas)
+    const daysSinceActivity = (now - node.lastActivity) / (1000 * 60 * 60 * 24)
+    
+    if (daysSinceActivity >= (node.rotationDays || 30)) {
+      // BT213: Kernel solo organiza rastros, no decide mint
+      // BT214: Humano artífice debe firmar responsabilidad
+      // Requiere verificación triaxial completa
+      
+      if (node.triaxialVerificationCount > 0 && node.presenceIntegration?.directExperienceVerified && node.presenceIntegration?.sharedTracesVerified) {
+        // Rotación: libera exceso sobre 30h protegidas
+        const { active, released } = vitalTimeRotate(
+          node.vitalTimeBalance,
+          node.protectedVitalTime || 30,
+          daysSinceActivity,
+          node.rotationDays
+        )
+        
+        if (released > 0) {
+          delta.vitalTime = {
+            ...delta.vitalTime,
+            nodes: {
+              ...delta.vitalTime.nodes,
+              [nodeId]: {
+                ...node,
+                vitalTimeBalance: active,
+                lastActivity: now,
+                triaxialVerificationCount: node.triaxialVerificationCount + 1
+              }
+            }
+          }
+          executed = true
+        }
+      } else {
+        // BT213: No verificación triaxial = no mint, solo alerta (no decide)
+        delta.vitalTime = {
+          ...delta.vitalTime,
+          pendingVerifications: [...(delta.vitalTime.pendingVerifications || []), nodeId]
+        }
+      }
+    }
+    
+    // Decay por inactividad (BT164: evasión reduce margen)
+    if (daysSinceActivity > 7 && node.demurrageRate) {
+      const decayedAmount = vitalTimeDecay(node.vitalTimeBalance, node.demurrageRate, daysSinceActivity)
+      if (decayedAmount.amount < node.vitalTimeBalance.amount) {
+        delta.vitalTime = {
+          ...delta.vitalTime,
+          nodes: {
+            ...delta.vitalTime.nodes,
+            [nodeId]: {
+              ...node,
+              vitalTimeBalance: decayedAmount,
+              realMargin: {
+                ...node.realMargin,
+                currentMargin: node.realMargin?.currentMargin || 1,
+                evasionReducesMargin: true
+              }
+            }
+          }
+        }
+        executed = true
+      }
+    }
+  }
+
+  return executed ? delta : {}
 }
 
 /** EJECUTA UN TICK COMPLETO DEL MOTOR ALRÁICO */
@@ -280,10 +376,7 @@ export function runAlraicoTick(
     const cosmicGlitch = monitorCosmicGlitch(current)
     if (cosmicGlitch) {
       const glitchReconfig = reconfigureForGlitch(cosmicGlitch)
-      // Apply reconfiguration actions
       for (const action of glitchReconfig.actions) {
-        // In a full implementation, these would trigger specific module reconfigurations
-        // For now, we log the glitch and planned actions
         results.push({
           loop: 'buzhouShan',
           executed: true,
@@ -306,6 +399,7 @@ export function runAlraicoTick(
     { name: 'regenMrv', fn: regenMrvLoop },
     { name: 'nostrAudit', fn: nostrAuditLoop },
     { name: 'vecinalAccountability', fn: vecinalAccountabilityLoop },
+    { name: 'vitalTimeMint', fn: vitalTimeMintLoop },  // Loop 7: Tiempo Vital
   ]
 
   for (const loop of loops) {
@@ -342,3 +436,6 @@ export function runAlraicoSimulation(
   }
   return { finalState: current, history }
 }
+
+// Importar funciones vitalTime (definidas en valueDual.ts)
+import { vitalTimeRotate, vitalTimeDecay } from './valueDual'
