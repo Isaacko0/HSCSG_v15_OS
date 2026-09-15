@@ -301,22 +301,22 @@ export interface TerritorialSovereigntyIndex {
     vitalTimeDemurrageHealth: number // 1 - (vitalTimeDecay / vitalTimeBalance)
   }
   cognitive: {
-    lucidez: SystemHealth['lucidez'] ? 1 : 0
-    gammaCARMIS: SystemHealth['gammaCARMIS']['reconfigurations'] > 0 ? 1 : 0
-    resonanceDensity: SystemHealth['resonance']['active'] / 10
-    kernelLimitsRespected: SystemHealth['kernelLimits']['respected'] ? 1 : 0
-    humanArtificerActive: SystemHealth['humanArtificer']['active'] ? 1 : 0
-  }
+      lucidez: number
+      gammaCARMIS: number
+      resonanceDensity: number
+      kernelLimitsRespected: number
+      humanArtificerActive: number
+    }
   social: {
-    germinationRate: GerminationRate['rate']
-    sovereigntyLeak: 1 - SovereigntyLeak['rate']
-    resonanceIncoming: IncomingResonance['count'] / 5
-  }
-  territorial: {
-    differentiation: TerritorialDifferentiation['uniquenessScore']
-    stewardship: TerritoryStewardship['coverage']
-    bioregionFit: TerritorialDifferentiation['bioregionMatch']
-  }
+      germinationRate: number
+      sovereigntyLeak: number
+      resonanceIncoming: number
+    }
+    territorial: {
+      differentiation: number
+      stewardship: number
+      bioregionFit: number
+    }
 
   // Score compuesto (media geométrica — si uno es 0, todo es 0)
   composite: number       // 0-1
