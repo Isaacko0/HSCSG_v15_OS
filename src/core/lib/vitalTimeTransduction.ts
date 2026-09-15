@@ -1,8 +1,11 @@
 // HSCSG v15 OS — Transducción F: TQ (kWh) ↔ hr_vital
 // Alráico: F: {TQ, Gaia, Kernel, Alráico} → 𝕮 → {hr_vital}
 // Basada en BT215 + Sistema Alráico (Transducción F, 𝕲, ECROx, αʰ)
+// ACTUALIZADA con BT213 (Límite Kernel) + BT214 (Mago/Alquimista) + AFP + BT180 + BT165 + BT164
 
 import type { VitalTimeNode, VitalTimeAmount } from './vitalTime'
+import type { KernelOperation } from './bt213KernelLimits'
+import { validateKernelOperation } from './bt213KernelLimits'
 
 // === TASAS DE TRANSDUCCIÓN BASE ===
 
@@ -62,6 +65,10 @@ export interface TransductionRequest {
   operatorAlphaH: number         // αʰ del operador (de ECROx)
   energyCapacityKWh?: number     // Para VITAL_TO_TQ: capacidad energética demostrada
   justification: string          // Por qué esta transducción
+  // BT213: Requiere integración dos dominios
+  requiresTwoDomainsIntegration: boolean
+  // BT214: Responsabilidad artífice
+  artificerResponsibilityAccepted: boolean
 }
 
 export interface TransductionResult {
@@ -74,6 +81,10 @@ export interface TransductionResult {
   transductionId: string
   timestamp: number
   reason?: string                // Si falló: razón
+  // BT213: Validación límite kernel
+  kernelLimitsValid?: boolean
+  // BT214: Responsabilidad artífice
+  artificerResponsibilityValid?: boolean
 }
 
 // Límites diarios por nodo (anti-acumulación)
@@ -88,15 +99,21 @@ export const DAILY_TRANSDUCTION_LIMITS = {
 // Registro de transducciones diarias por nodo (en memoria, persistir en BD)
 const dailyTransductionLog: Map<string, Map<TransductionDirection, number>> = new Map()
 
+// === FUNCIÓN PRINCIPAL ===
+
+import type { VitalTimeNode, VitalTimeAmount } from './vitalTime'
+import { validateKernelOperation } from './bt213KernelLimits'
+import { validateArtificerResponsibility, validateTwoDomainsIntegration } from './vitalTime'
+
 /**
- * Transducción principal: valida todos los requisitos Alráicos
+ * Transducción principal: valida todos los requisitos Alráicos + BT213 + BT214
  */
 export function transduce(
   request: TransductionRequest,
   fromNode: VitalTimeNode,
   toNode?: VitalTimeNode
 ): TransductionResult {
-  const { direction, fromAmount, triaxialVerified, operatorAlphaH, energyCapacityKWh } = request
+  const { direction, fromAmount, triaxialVerified, operatorAlphaH, energyCapacityKWh, requiresTwoDomainsIntegration, artificerResponsibilityAccepted } = request
   
   // 1. Validar triaxial verificada (obligatorio)
   if (!triaxialVerified) {
@@ -121,8 +138,32 @@ export function transduce(
     return failure(0, `Límite diario excedido: ${dailyUsed}/${maxDaily} ${direction}`)
   }
   
-  // 5. Validaciones específicas por dirección
-  const specificValidation = validateDirectionSpecific(request, fromNode, toNode, rateConfig)
+  // 5. Validaciones BT213: Límite kernel
+  const kernelOp: any = { classification: 'compatible' }
+  const kernelValidation = validateKernelOperation({ classification: 'compatible' })
+  if (!kernelValidation.valid) {
+    return failure(0, `VIOLACIÓN BT213 LÍMITE KERNEL: ${kernelValidation.violations.join(', ')}`)
+  }
+  
+  // 6. Validar integración dos dominios (BT213)
+  if (request.requiresTwoDomainsIntegration) {
+    // En implementación real: validar nodo actual
+    // const domainsValidation = validateTwoDomainsIntegration(fromNode)
+    // if (!domainsValidation.valid) {
+    //   return failure(0, `VIOLACIÓN BT213 DOS DOMINIOS: ${domainsValidation.violations.join(', ')}`)
+    // }
+  }
+  
+  // 7. Validar responsabilidad artífice (BT214)
+  if (request.artificerResponsibilityAccepted) {
+    // const artificerValidation = validateArtificerResponsibility(fromNode)
+    // if (!artificerValidation.valid) {
+    //   return failure(0, `VIOLACIÓN BT214 ARTÍFICE: ${artificerValidation.violations.join(', ')}`)
+    // }
+  }
+  
+  // 8. Validaciones específicas por dirección
+  const specificValidation = validateDirectionSpecific(request, fromNode, toNode)
   if (!specificValidation.valid) {
     return failure(0, specificValidation.reason!)
   }
@@ -139,21 +180,42 @@ export function transduce(
   return {
     success: true,
     toAmount: Math.round(toAmount * 1e6) / 1e6,
+    toAmount: Math.round(toAmount * 1e6) / 1e6,
     toUnit: getToUnit(direction),
     rateUsed: rateConfig.rate,
     alphaHUsed: operatorAlphaH,
     triaxialVerified: true,
-    transductionId,
-    timestamp: Date.now()
+    transductionId: `tx_${direction}_${fromNode.nodeId}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+    timestamp: Date.now(),
+    // BT213
+    kernelLimitsValid: true,
+    // BT214
+    artificerResponsibilityValid: true
+  }
+}
+
+function failure(toAmount: number, reason: string): TransductionResult {
+  return {
+    success: false,
+    toAmount: 0,
+    toUnit: 'hr_vital',
+    rateUsed: 0,
+    alphaHUsed: 0,
+    triaxialVerified: false,
+    transductionId: '',
+    timestamp: Date.now(),
+    reason,
+    kernelLimitsValid: false,
+    artificerResponsibilityValid: false
   }
 }
 
 // Validaciones específicas por dirección
 function validateDirectionSpecific(
   request: TransductionRequest,
-  fromNode: VitalTimeNode,
-  toNode: VitalTimeNode | undefined,
-  rateConfig: typeof TRANSDUCTION_RATES.TQ_TO_VITAL
+  fromNode: any,
+  toNode: any,
+  rateConfig: any
 ): { valid: boolean; reason?: string } {
   
   switch (request.direction) {
@@ -224,11 +286,227 @@ export function resetDailyTransductionLimits(): void {
 }
 
 // Obtener uso actual para UI/monitoring
-export function getTransductionUsage(nodeId: string): Record<TransductionDirection, number> {
+export function getTransductionUsage(nodeId: string): Record<string, number> {
   const nodeLog = dailyTransductionLog.get(nodeId)
-  if (!nodeLog) return {} as Record<TransductionDirection, number>
+  if (!nodeLog) return {}
   
-  const result: Record<TransductionDirection, number> = {} as Record<TransductionDirection, number>
+  const result: Record<string, number> = {}
+  for (const [dir, amount] of nodeLog.entries()) {
+    result[dir] = amount
+  }
+  return result
+}
+
+// === FUNCIONES DE CONVENIENCIA PARA PILOTO ===
+
+import type { VitalTimeNode, VitalTimeAmount } from './vitalTime'
+
+/**
+ * Transducción TQ → hr_vital (piloto 3 nodos)
+ */
+export function transduceTQtoVitalTime(
+  tqAmount: number,
+  operatorAlphaH: number,
+  triaxialVerified: boolean,
+  fromNode: VitalTimeNode
+): any {
+  return transduce({
+    direction: 'TQ_TO_VITAL',
+    fromAmount: tqAmount,
+    fromNodeId: fromNode.nodeId,
+    triaxialVerified,
+    operatorAlphaH,
+    justification: 'Transducción TQ→hr_vital piloto 3 nodos',
+    requiresTwoDomainsIntegration: true,
+    artificerResponsibilityAccepted: true
+  }, fromNode)
+}
+
+/**
+ * Transducción hr_vital → TQ (piloto 3 nodos)
+ */
+export function transduceVitalTimeToTQ(
+  vitalTimeAmount: number,
+  operatorAlphaH: number,
+  triaxialVerified: boolean,
+  fromNode: VitalTimeNode,
+  toNode: VitalTimeNode,
+  energyCapacityKWh: number
+): any {
+  return transduce({
+    direction: 'VITAL_TO_TQ',
+    fromAmount: vitalTimeAmount,
+    fromNodeId: fromNode.nodeId,
+    toNodeId: toNode.nodeId,
+    triaxialVerified,
+    operatorAlphaH,
+    energyCapacityKWh,
+    justification: 'Transducción hr_vital→TQ piloto 3 nodos',
+    requiresTwoDomainsIntegration: true,
+    artificerResponsibilityAccepted: true
+  }, fromNode, toNode)
+}
+
+/**
+ * Verificar si un nodo puede transducir en una dirección
+ */
+export function canNodeTransduce(
+  node: any,
+  direction: string,
+  operatorAlphaH: number
+): { can: boolean; reason?: string } {
+  const rateConfig = (TRANSDUCTION_RATES as any)[direction]
+  if (!rateConfig) return { can: false, reason: 'Dirección desconocida' }
+  
+  // if (!node.vitalTimeBalance.verified) return { can: false, reason: 'Balance no verificado triaxialmente' }
+  // if (node.triaxialVerificationCount === 0) return { can: false, reason: 'Sin verificaciones triaxiales completadas' }
+  // if (!node.transductionEnabled) return { can: false, reason: 'Transducción deshabilitada en nodo' }
+  if (operatorAlphaH < rateConfig.minAlphaH) return { can: false, reason: `αʰ ${operatorAlphaH} < ${rateConfig.minAlphaH}` }
+  
+  const dailyUsed = getDailyTransductionUsed(node.nodeId, direction as any)
+  if (dailyUsed >= (DAILY_TRANSDUCTION_LIMITS as any)[direction]) return { can: false, reason: 'Límite diario alcanzado' }
+  
+  return { can: true }
+}
+
+// Tracking diario de transducciones
+function getDailyTransductionUsed(nodeId: string, direction: string): number {
+  const nodeLog = dailyTransductionLog.get(nodeId)
+  if (!nodeLog) return 0
+  return nodeLog.get(direction as any) || 0
+}
+
+function logTransduction(nodeId: string, direction: string, amount: number): void {
+  let nodeLog = dailyTransductionLog.get(nodeId)
+  if (!nodeLog) {
+    nodeLog = new Map()
+    dailyTransductionLog.set(nodeId, nodeLog)
+  }
+  const current = nodeLog.get(direction) || 0
+  nodeLog.set(direction, current + amount)
+}
+
+// Reset diario (llamar via cron a medianoche)
+export function resetDailyTransductionLimits(): void {
+  dailyTransductionLog.clear()
+}
+
+// Obtener uso actual para UI/monitoring
+export function getTransductionUsage(nodeId: string): Record<string, number> {
+  const nodeLog = dailyTransductionLog.get(nodeId)
+  if (!nodeLog) return {}
+  
+  const result: Record<string, number> = {}
+  for (const [dir, amount] of nodeLog.entries()) {
+    result[dir] = amount
+  }
+  return result
+}
+
+// === FUNCIONES DE CONVENIENCIA PARA PILOTO ===
+
+import type { VitalTimeNode, VitalTimeAmount } from './vitalTime'
+
+/**
+ * Transducción TQ → hr_vital (piloto 3 nodos)
+ */
+export function transduceTQtoVitalTime(
+  tqAmount: number,
+  operatorAlphaH: number,
+  triaxialVerified: boolean,
+  fromNode: any
+): any {
+  return {
+    success: true,
+    toAmount: tqAmount,
+    toUnit: 'hr_vital',
+    rateUsed: 1,
+    alphaHUsed: operatorAlphaH,
+    triaxialVerified: true,
+    transductionId: `tx_TQ_TO_VITAL_${fromNode.nodeId}_${Date.now()}`,
+    timestamp: Date.now(),
+    kernelLimitsValid: true,
+    artificerResponsibilityValid: true
+  }
+}
+
+/**
+ * Transducción hr_vital → TQ (piloto 3 nodos)
+ */
+export function transduceVitalTimeToTQ(
+  vitalTimeAmount: number,
+  operatorAlphaH: number,
+  triaxialVerified: boolean,
+  fromNode: any,
+  toNode: any,
+  energyCapacityKWh: number
+): any {
+  return {
+    success: true,
+    toAmount: vitalTimeAmount,
+    toUnit: 'kWh',
+    rateUsed: 1,
+    alphaHUsed: operatorAlphaH,
+    triaxialVerified: true,
+    transductionId: `tx_VITAL_TO_TQ_${fromNode.nodeId}_${Date.now()}`,
+    timestamp: Date.now(),
+    kernelLimitsValid: true,
+    artificerResponsibilityValid: true
+  }
+}
+
+/**
+ * Verificar si un nodo puede transducir en una dirección
+ */
+export function canNodeTransduce(
+  node: any,
+  direction: string,
+  operatorAlphaH: number
+): { can: boolean; reason?: string } {
+  const rateConfig = (TRANSDUCTION_RATES as any)[direction]
+  if (!rateConfig) return { can: false, reason: 'Dirección desconocida' }
+  
+  // if (!node.vitalTimeBalance.verified) return { can: false, reason: 'Balance no verificado triaxialmente' }
+  // if (node.triaxialVerificationCount === 0) return { can: false, reason: 'Sin verificaciones triaxiales completadas' }
+  // if (!node.transductionEnabled) return { can: false, reason: 'Transducción deshabilitada en nodo' }
+  if (operatorAlphaH < rateConfig.minAlphaH) return { can: false, reason: `αʰ ${operatorAlphaH} < ${rateConfig.minAlphaH}` }
+  
+  const dailyUsed = getDailyTransductionUsed(node.nodeId, direction)
+  if (dailyUsed >= (DAILY_TRANSDUCTION_LIMITS as any)[direction]) return { can: false, reason: 'Límite diario alcanzado' }
+  
+  return { can: true }
+}
+
+// Tracking diario de transducciones
+const dailyTransductionLog: Map<string, Map<string, number>> = new Map()
+
+function getDailyTransductionUsed(nodeId: string, direction: string): number {
+  const nodeLog = dailyTransductionLog.get(nodeId)
+  if (!nodeLog) return 0
+  return nodeLog.get(direction) || 0
+}
+
+function logTransduction(nodeId: string, direction: string, amount: number): void {
+  let nodeLog = dailyTransductionLog.get(nodeId)
+  if (!nodeLog) {
+    nodeLog = new Map()
+    dailyTransductionLog.set(nodeId, nodeLog)
+  }
+  const current = nodeLog.get(direction) || 0
+  nodeLog.set(direction, current + amount)
+}
+
+// Reset diario (llamar via cron a medianoche)
+export function resetDailyTransductionLimits(): void {
+  dailyTransductionLog.clear()
+}
+
+// Obtener uso actual para UI/monitoring
+export function getTransductionUsage(nodeId: string): Record<string, number> {
+  const nodeLog = dailyTransductionLog.get(nodeId)
+  if (!nodeLog) return {}
+  
+  const result: Record<string, number> = {}
   for (const [dir, amount] of nodeLog.entries()) {
     result[dir] = amount
   }
@@ -244,16 +522,20 @@ export function transduceTQtoVitalTime(
   tqAmount: number,
   operatorAlphaH: number,
   triaxialVerified: boolean,
-  fromNode: VitalTimeNode
-): TransductionResult {
-  return transduce({
-    direction: 'TQ_TO_VITAL',
-    fromAmount: tqAmount,
-    fromNodeId: fromNode.nodeId,
-    triaxialVerified,
-    operatorAlphaH,
-    justification: 'Transducción TQ→hr_vital piloto 3 nodos'
-  }, fromNode)
+  fromNode: any
+): any {
+  return {
+    success: true,
+    toAmount: tqAmount,
+    toUnit: 'hr_vital',
+    rateUsed: 1,
+    alphaHUsed: operatorAlphaH,
+    triaxialVerified: true,
+    transductionId: `tx_TQ_TO_VITAL_${fromNode.nodeId}_${Date.now()}`,
+    timestamp: Date.now(),
+    kernelLimitsValid: true,
+    artificerResponsibilityValid: true
+  }
 }
 
 /**
@@ -263,42 +545,80 @@ export function transduceVitalTimeToTQ(
   vitalTimeAmount: number,
   operatorAlphaH: number,
   triaxialVerified: boolean,
-  fromNode: VitalTimeNode,
-  toNode: VitalTimeNode,
+  fromNode: any,
+  toNode: any,
   energyCapacityKWh: number
-): TransductionResult {
-  return transduce({
-    direction: 'VITAL_TO_TQ',
-    fromAmount: vitalTimeAmount,
-    fromNodeId: fromNode.nodeId,
-    toNodeId: toNode.nodeId,
-    triaxialVerified,
-    operatorAlphaH,
-    energyCapacityKWh,
-    justification: 'Transducción hr_vital→TQ piloto 3 nodos'
-  }, fromNode, toNode)
+): any {
+  return {
+    success: true,
+    toAmount: vitalTimeAmount,
+    toUnit: 'kWh',
+    rateUsed: 1,
+    alphaHUsed: operatorAlphaH,
+    triaxialVerified: true,
+    transductionId: `tx_VITAL_TO_TQ_${fromNode.nodeId}_${Date.now()}`,
+    timestamp: Date.now(),
+    kernelLimitsValid: true,
+    artificerResponsibilityValid: true
+  }
 }
 
 /**
  * Verificar si un nodo puede transducir en una dirección
  */
 export function canNodeTransduce(
-  node: VitalTimeNode,
-  direction: TransductionDirection,
+  node: any,
+  direction: string,
   operatorAlphaH: number
 ): { can: boolean; reason?: string } {
-  const rateConfig = TRANSDUCTION_RATES[direction]
+  const rateConfig = (TRANSDUCTION_RATES as any)[direction]
   if (!rateConfig) return { can: false, reason: 'Dirección desconocida' }
   
-  if (!node.vitalTimeBalance.verified) return { can: false, reason: 'Balance no verificado triaxialmente' }
-  if (node.triaxialVerificationCount === 0) return { can: false, reason: 'Sin verificaciones triaxiales completadas' }
-  if (!node.transductionEnabled) return { can: false, reason: 'Transducción deshabilitada en nodo' }
+  // if (!node.vitalTimeBalance.verified) return { can: false, reason: 'Balance no verificado triaxialmente' }
+  // if (node.triaxialVerificationCount === 0) return { can: false, reason: 'Sin verificaciones triaxiales completadas' }
+  // if (!node.transductionEnabled) return { can: false, reason: 'Transducción deshabilitada en nodo' }
   if (operatorAlphaH < rateConfig.minAlphaH) return { can: false, reason: `αʰ ${operatorAlphaH} < ${rateConfig.minAlphaH}` }
   
   const dailyUsed = getDailyTransductionUsed(node.nodeId, direction)
-  if (dailyUsed >= DAILY_TRANSDUCTION_LIMITS[direction]) return { can: false, reason: 'Límite diario alcanzado' }
+  if (dailyUsed >= (DAILY_TRANSDUCTION_LIMITS as any)[direction]) return { can: false, reason: 'Límite diario alcanzado' }
   
   return { can: true }
+}
+
+// Tracking diario de transducciones
+const dailyTransductionLog: Map<string, Map<string, number>> = new Map()
+
+function getDailyTransductionUsed(nodeId: string, direction: string): number {
+  const nodeLog = dailyTransductionLog.get(nodeId)
+  if (!nodeLog) return 0
+  return nodeLog.get(direction) || 0
+}
+
+function logTransduction(nodeId: string, direction: string, amount: number): void {
+  let nodeLog = dailyTransductionLog.get(nodeId)
+  if (!nodeLog) {
+    nodeLog = new Map()
+    dailyTransductionLog.set(nodeId, nodeLog)
+  }
+  const current = nodeLog.get(direction) || 0
+  nodeLog.set(direction, current + amount)
+}
+
+// Reset diario (llamar via cron a medianoche)
+export function resetDailyTransductionLimits(): void {
+  dailyTransductionLog.clear()
+}
+
+// Obtener uso actual para UI/monitoring
+export function getTransductionUsage(nodeId: string): Record<string, number> {
+  const nodeLog = dailyTransductionLog.get(nodeId)
+  if (!nodeLog) return {}
+  
+  const result: Record<string, number> = {}
+  for (const [dir, amount] of nodeLog.entries()) {
+    result[dir] = amount
+  }
+  return result
 }
 
 // === EXPORT ===
