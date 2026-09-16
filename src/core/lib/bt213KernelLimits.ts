@@ -165,7 +165,7 @@ export function validateKernelOperation(operation: KernelOperation): KernelValid
 // Clasificación de afirmaciones (BT213)
 export type ClassificationDomain = 'compatible' | 'incompatible' | 'no-evaluable';
 
-export function classifyAssertion(traces: Trace[], assertion: string): { domain: 'compatible' | 'incompatible' | 'no-evaluable'; reason: string } {
+export function classifyAssertion(_traces: Trace[], _assertion: string): { domain: 'compatible' | 'incompatible' | 'no-evaluable'; reason: string } {
   // En implementación real: análisis de rastros vs afirmación
   // Para spec: estructura de retorno
   return {
@@ -339,4 +339,3 @@ export const BT213_KERNEL_LIMITS = {
 export type KernelLimitKeys = keyof typeof BT213_KERNEL_LIMITS;
 export type CannotKeys = typeof BT213_KERNEL_LIMITS.cannot[number];
 export type CanKeys = typeof BT213_KERNEL_LIMITS.can[number];
-export type ClassificationDomain = 'compatible' | 'incompatible' | 'no-evaluable';

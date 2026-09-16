@@ -2,6 +2,8 @@
 // El nodo opera en tres modos sin duplicar lógica de cálculo.
 // La lógica opera sobre `amount` (agnóstico a la unidad); el render decide la etiqueta.
 
+import type { VitalTimeAmount } from './vitalTime'
+
 export type ValueUnit = 'ZNU' | 'USD' | 'hr_vital'
 export type NodeMode = 'postmonetario' | 'conectado' | 'vital_time'
 
@@ -89,21 +91,37 @@ export function vitalTimeShare(balance: number, totalSupply: number): number {
 }
 
 export function vitalTimeRotate(
-  balance: number,
+  balance: number | VitalTimeAmount,
   protectedVitalTime: number,
   daysSinceActivity: number,
   rotationDays: number = 30,
-): { active: number; released: number } {
-  if (daysSinceActivity < 30) return { active: balance, released: 0 }
-  const excess = Math.max(0, balance - 30) // protectedVitalTime por defecto
+): { active: number | VitalTimeAmount; released: number } {
+  const amount = typeof balance === 'number' ? balance : balance.amount
+  if (daysSinceActivity < rotationDays) return { active: balance, released: 0 }
+  const excess = Math.max(0, amount - protectedVitalTime)
   const released = excess
-  return { active: balance - released, released }
+  const newAmount = amount - released
+  
+  if (typeof balance === 'number') {
+    return { active: newAmount, released }
+  }
+  return { active: { ...balance, amount: newAmount }, released }
 }
 
-export function vitalTimeDecay(balance: number, ratePerDay: number, daysSinceActivity: number): number {
-  if (balance <= 0 || daysSinceActivity <= 0) return balance
+export function vitalTimeDecay(
+  balance: number | VitalTimeAmount,
+  ratePerDay: number,
+  daysSinceActivity: number
+): number | VitalTimeAmount {
+  const amount = typeof balance === 'number' ? balance : balance.amount
+  if (amount <= 0 || daysSinceActivity <= 0) return balance
   const factor = Math.pow(1 - ratePerDay, daysSinceActivity)
-  return Math.round(balance * factor * 1e6) / 1e6
+  const newAmount = Math.round(amount * factor * 1e6) / 1e6
+  
+  if (typeof balance === 'number') {
+    return newAmount
+  }
+  return { ...balance, amount: newAmount }
 }
 
 export function vitalTimeConcentration(balance: number, totalSupply: number, threshold = 0.05): boolean {

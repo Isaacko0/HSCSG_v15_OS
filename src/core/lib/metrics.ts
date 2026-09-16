@@ -574,24 +574,35 @@ export function calculateTerritorialSovereigntyIndex(
 // === EXPORT POR DEFECTO ===
 
 export const HSCSG_METRICS = {
-  ZNUFlow,
-  EnergyFlow,
-  TimeFlow,
-  VitalTimeFlow,
-  ActivationCost,
-  VitalTimeActivationCost,
-  GerminationRate,
-  NodeLifespan,
-  SovereigntyLeak,
-  IncomingResonance,
-  TerritorialDifferentiation,
-  TerritoryStewardship,
-  SystemHealth,
-  TerritorialSovereigntyIndex,
   calculateZNUFlow,
   calculateVitalTimeFlow,
   calculateActivationCost,
   calculateVitalTimeActivationCost,
   calculateGerminationRate,
-  calculateTerritorialSovereigntyIndex
+  calculateTerritorialSovereigntyIndex,
+  // Exports legacy para compatibilidad con screens existentes
+  autFromCAC: (cac: number) => ({ value: cac, unit: 'horas_vitales' }),
+  pgsLM: (lm: number) => ({ value: lm, unit: 'kWh' }),
+  leyI: (v: number) => ({ value: v, description: 'Ley I: Energía = Dirección' }),
+  leyII: (v: number) => ({ value: v, description: 'Ley II: Límites biofísicos' }),
+  population: (p: number) => ({ value: p, unit: 'nodos' }),
+  survivalCredit: (sc: number) => ({ value: sc, unit: 'ZNU' }),
+  znuEligible: (ze: boolean) => ({ value: ze }),
+  znuEmission: (ze: number) => ({ value: ze, unit: 'ZNU' }),
+  demurrage: (d: number) => ({ value: d, unit: 'ZNU/día' }),
+  ics: (ics: number) => ({ value: ics, unit: 'índice' }),
+  cacStatus: (cs: string) => ({ value: cs })
 } as const
+
+// Named exports legacy para compatibilidad con screens existentes
+export const autFromCAC = HSCSG_METRICS.autFromCAC
+export const pgsLM = HSCSG_METRICS.pgsLM
+export const leyI = HSCSG_METRICS.leyI
+export const leyII = HSCSG_METRICS.leyII
+export const population = HSCSG_METRICS.population
+export const survivalCredit = HSCSG_METRICS.survivalCredit
+export const znuEligible = HSCSG_METRICS.znuEligible
+export const znuEmission = HSCSG_METRICS.znuEmission
+export const demurrage = HSCSG_METRICS.demurrage
+export const ics = HSCSG_METRICS.ics
+export const cacStatus = HSCSG_METRICS.cacStatus

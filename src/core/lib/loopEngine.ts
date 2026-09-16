@@ -1,4 +1,4 @@
-// HSCSG v15 OS — loopEngine: Orquestador nativo del Sistema Alráico (compatible con estado real)
+// HSCSG v15 OS — loopEngine: Orquestador nativo del Sistema Alráico
 // Kernel de orquestación: ejecuta loops, detecta resonancia, dispara γ-CARMIS, spawnea skills/agentes.
 // Anfibio: offline (RAO local) ↔ conectado (Nostr/NEAR).
 // Integración Cosmotechnics: Buzhou Shan Monitor (glitch cósmico) + γ-CARMIS reconfiguración
@@ -7,6 +7,7 @@
 import type { AppState } from '@core/state/store'
 import { proveFailure as porProve } from '@core/lib/proofOfResponse'
 import { monitorCosmicGlitch, reconfigureForGlitch, type CosmicGlitch } from '@core/lib/chinese-cosmotechnics'
+import { vitalTimeRotate, vitalTimeDecay } from './valueDual'
 
 export interface LoopResult {
   loop: string
@@ -31,34 +32,28 @@ export const DEFAULT_LOOP_CONFIG: LoopEngineConfig = {
   enableSkillExecution: true,
 }
 
-/** Detecta sobrecargas ΣPᵢ > κ en cada 𝕮 (módulo) - heurística compatible con tipos reales */
+/** Detecta sobrecargas ΣPᵢ > κ en cada 𝕮 (módulo) */
 export function detectOverloads(st: AppState): Array<{ module: string; kappa: number; alphaH: number }> {
   const overloads: Array<{ module: string; kappa: number; alphaH: number }> = []
 
-  // Lucidez: debe estar encendida (transparencia Ley III)
   if (!st.lucidez) overloads.push({ module: 'lucidez', kappa: 0.3, alphaH: 0.1 })
 
-  // Symbiosky: propuestas sin resultados
   const pendingSymbio = st.symbiosky.proposals.filter((p) => !st.symbiosky.results[p.id])
   if (pendingSymbio.length > 5) overloads.push({ module: 'symbiosky', kappa: 5, alphaH: pendingSymbio.length })
 
-  // AgentMesh: agentes con reputación 0 (inactivos)
   const idleAgents = st.agentMesh.agents.filter((a) => a.reputation === 0)
   if (idleAgents.length > 3) overloads.push({ module: 'agentMesh', kappa: 3, alphaH: idleAgents.length })
 
-  // ProofOfResponse: requests expirados sin respuesta
   const now = Date.now()
   const expiredPor = st.proofOfResponse.requests.filter(
     (r) => !st.proofOfResponse.responses.some((x) => x.requestId === r.id) && now > r.deadlineB,
   )
   if (expiredPor.length > 0) overloads.push({ module: 'proofOfResponse', kappa: 0, alphaH: -expiredPor.length })
 
-  // Regen: ecotecs sin sistemas bioclimáticos asociados
   if (st.regen.ecotech.length > st.regen.systems.length * 2) {
     overloads.push({ module: 'regen', kappa: st.regen.systems.length, alphaH: st.regen.ecotech.length })
   }
 
-  // VitalTime: nodos sin verificación triaxial reciente
   if (st.vitalTime?.nodes) {
     const staleNodes = Object.values(st.vitalTime.nodes).filter(
       (n: any) => now - n.lastActivity > (n.rotationDays || 30) * 24 * 60 * 60 * 1000
@@ -72,6 +67,8 @@ export function detectOverloads(st: AppState): Array<{ module: string; kappa: nu
 /** Simula reconfiguración γ-CARMIS para sobrecargas detectadas */
 export function simulateReconfig(overloads: ReturnType<typeof detectOverloads>, st: AppState): Partial<AppState> {
   const delta: Partial<AppState> = {}
+  const now = Date.now()
+  
   for (const o of overloads) {
     switch (o.module) {
       case 'lucidez':
@@ -93,7 +90,6 @@ export function simulateReconfig(overloads: ReturnType<typeof detectOverloads>, 
         }
         break
       case 'proofOfResponse': {
-        const now = Date.now()
         let porSt = st.proofOfResponse
         for (const r of st.proofOfResponse.requests.filter(
           (r) => !st.proofOfResponse.responses.some((x) => x.requestId === r.id) && now > r.deadlineB,
@@ -117,8 +113,9 @@ export function simulateReconfig(overloads: ReturnType<typeof detectOverloads>, 
         break
       }
       case 'vitalTime': {
-        // BT213: No puede auditar conciencia - solo notifica
-        // BT214: Humano artífice debe responder
+        const staleNodes = Object.values(st.vitalTime?.nodes || {}).filter(
+          (n: any) => now - n.lastActivity > (n.rotationDays || 30) * 24 * 60 * 60 * 1000
+        )
         delta.vitalTime = {
           ...st.vitalTime,
           staleAlerts: [...(st.vitalTime?.staleAlerts || []), ...staleNodes.map((n: any) => n.nodeId)]
@@ -130,7 +127,7 @@ export function simulateReconfig(overloads: ReturnType<typeof detectOverloads>, 
   return delta
 }
 
-/** Detecta resonancia entre 𝕮ᵢ y 𝕮ⱼ: αʰ_oda > αʰ₁ + αʰ₂ (factor 3.0) */
+/** Detecta resonancia: αʰ_oda > αʰ₁ + αʰ₂ (factor 3.0) */
 export function detectResonances(st: AppState): Array<{ c1: string; c2: string; alphaH: number }> {
   const resonances: Array<{ c1: string; c2: string; alphaH: number }> = []
 
@@ -162,7 +159,7 @@ export function detectResonances(st: AppState): Array<{ c1: string; c2: string; 
   return resonances.sort((a, b) => b.alphaH - a.alphaH)
 }
 
-/** Acopla resonancias detectadas (placeholder RAO — store no tiene RAO hoy) */
+/** Acopla resonancias detectadas */
 export function coupleResonances(_st: AppState, _resonances: ReturnType<typeof detectResonances>): Partial<AppState> {
   return {}
 }
@@ -173,7 +170,7 @@ function cdsDecayLoop(st: AppState): Partial<AppState> {
   return {}
 }
 
-/** Loop: Merit Mint - cierra propuestas Symbiosky elegibles */
+/** Loop: Merit Mint */
 function meritMintLoop(st: AppState): Partial<AppState> {
   const approvable = st.symbiosky.proposals.filter((p) => {
     if (st.symbiosky.results[p.id]) return false
@@ -232,7 +229,7 @@ function agentComputeLoop(st: AppState): Partial<AppState> {
   return delta
 }
 
-/** Loop: Regen MRV - solicita verificación para ecotecs sin sistema */
+/** Loop: Regen MRV */
 function regenMrvLoop(st: AppState): Partial<AppState> {
   if (st.regen.ecotech.length > st.regen.systems.length) {
     let porSt = st.proofOfResponse
@@ -258,7 +255,7 @@ function regenMrvLoop(st: AppState): Partial<AppState> {
   return {}
 }
 
-/** Loop: Nostr Audit (placeholder — sin auditTrail para evitar acoplamiento de firma) */
+/** Loop: Nostr Audit */
 function nostrAuditLoop(st: AppState): Partial<AppState> {
   if (st.nostrRelay.connected && st.nostrRelay.events.length > 0) {
     return {}
@@ -266,7 +263,7 @@ function nostrAuditLoop(st: AppState): Partial<AppState> {
   return {}
 }
 
-/** Loop: Vecinal Accountability (placeholder) */
+/** Loop: Vecinal Accountability */
 function vecinalAccountabilityLoop(st: AppState): Partial<AppState> {
   const failed = st.vecinal.propuestas.filter(
     (p) =>
@@ -284,60 +281,55 @@ function vitalTimeMintLoop(st: AppState): Partial<AppState> {
   if (!st.vitalTime?.nodes) return {}
 
   const now = Date.now()
-  const delta: Partial<AppState> = { vitalTime: { ...st.vitalTime } }
+  const currentVitalTime = st.vitalTime
+  const deltaVitalTime = {
+    nodes: { ...currentVitalTime.nodes },
+    staleAlerts: [...currentVitalTime.staleAlerts],
+    pendingVerifications: [...currentVitalTime.pendingVerifications]
+  }
   let executed = false
 
-  for (const [nodeId, node] of Object.entries(st.vitalTime.nodes)) {
-    // Verificar si el nodo debe rotar (exceso de 30h protegidas)
+  for (const [nodeId, node] of Object.entries(currentVitalTime.nodes)) {
     const daysSinceActivity = (now - node.lastActivity) / (1000 * 60 * 60 * 24)
+    const rotationDays = node.rotationDays || 30
     
-    if (daysSinceActivity >= (node.rotationDays || 30)) {
-      // BT213: Kernel solo organiza rastros, no decide mint
-      // BT214: Humano artífice debe firmar responsabilidad
-      // Requiere verificación triaxial completa
-      
-      if (node.triaxialVerificationCount > 0 && node.presenceIntegration?.directExperienceVerified && node.presenceIntegration?.sharedTracesVerified) {
-        // Rotación: libera exceso sobre 30h protegidas
-        const { active, released } = vitalTimeRotate(
-          node.vitalTimeBalance,
-          node.protectedVitalTime || 30,
-          daysSinceActivity,
-          node.rotationDays
-        )
+    if (daysSinceActivity >= rotationDays) {
+      if (node.triaxialVerificationCount > 0 && 
+          node.presenceIntegration?.directExperienceVerified && 
+          node.presenceIntegration?.sharedTracesVerified) {
         
-        if (released > 0) {
-          delta.vitalTime = {
-            ...delta.vitalTime,
-            nodes: {
-              ...delta.vitalTime.nodes,
-              [nodeId]: {
-                ...node,
-                vitalTimeBalance: active,
-                lastActivity: now,
-                triaxialVerificationCount: node.triaxialVerificationCount + 1
-              }
-            }
-          }
-          executed = true
-        }
+        const rotationResult = vitalTimeRotate(
+                  node.vitalTimeBalance,
+                  node.protectedVitalTime || 30,
+                  daysSinceActivity,
+                  rotationDays
+                )
+                const active = typeof rotationResult.active === 'number' 
+                  ? { ...node.vitalTimeBalance, amount: rotationResult.active }
+                  : rotationResult.active
+        
+                if (rotationResult.released > 0) {
+                  deltaVitalTime.nodes[nodeId] = {
+                    ...node,
+                    vitalTimeBalance: active,
+                    lastActivity: now,
+                    triaxialVerificationCount: node.triaxialVerificationCount + 1
+                  }
+                  executed = true
+                }
       } else {
-        // BT213: No verificación triaxial = no mint, solo alerta (no decide)
-        delta.vitalTime = {
-          ...delta.vitalTime,
-          pendingVerifications: [...(delta.vitalTime.pendingVerifications || []), nodeId]
-        }
+        deltaVitalTime.pendingVerifications = [...deltaVitalTime.pendingVerifications, nodeId]
       }
     }
     
-    // Decay por inactividad (BT164: evasión reduce margen)
     if (daysSinceActivity > 7 && node.demurrageRate) {
-      const decayedAmount = vitalTimeDecay(node.vitalTimeBalance, node.demurrageRate, daysSinceActivity)
-      if (decayedAmount.amount < node.vitalTimeBalance.amount) {
-        delta.vitalTime = {
-          ...delta.vitalTime,
-          nodes: {
-            ...delta.vitalTime.nodes,
-            [nodeId]: {
+          const decayResult = vitalTimeDecay(node.vitalTimeBalance, node.demurrageRate, daysSinceActivity)
+          const decayedAmount = typeof decayResult === 'number'
+            ? { ...node.vitalTimeBalance, amount: decayResult }
+            : decayResult
+      
+          if (decayedAmount.amount < node.vitalTimeBalance.amount) {
+            deltaVitalTime.nodes[nodeId] = {
               ...node,
               vitalTimeBalance: decayedAmount,
               realMargin: {
@@ -346,14 +338,12 @@ function vitalTimeMintLoop(st: AppState): Partial<AppState> {
                 evasionReducesMargin: true
               }
             }
+            executed = true
           }
         }
-        executed = true
-      }
-    }
   }
 
-  return executed ? delta : {}
+  return executed ? { vitalTime: deltaVitalTime } : {}
 }
 
 /** EJECUTA UN TICK COMPLETO DEL MOTOR ALRÁICO */
@@ -364,34 +354,31 @@ export function runAlraicoTick(
   let current = st
   const results: LoopResult[] = []
 
-  // 1. γ-CARMIS: detectar sobrecargas en el estado de entrada (antes de reparar)
-    const initialOverloads = detectOverloads(current)
-    if (initialOverloads.length > 0) {
-      const reconfig = simulateReconfig(initialOverloads, current)
-      current = { ...current, ...reconfig }
-      results.push({ loop: 'gammaCARMIS', executed: true, delta: reconfig })
-    }
+  const initialOverloads = detectOverloads(current)
+  if (initialOverloads.length > 0) {
+    const reconfig = simulateReconfig(initialOverloads, current)
+    current = { ...current, ...reconfig }
+    results.push({ loop: 'gammaCARMIS', executed: true, delta: reconfig })
+  }
 
-    // 1b. BUZHOU SHAN MONITOR: detectar glitch cósmico y reconfigurar (Cosmotechnics integration)
-    const cosmicGlitch = monitorCosmicGlitch(current)
-    if (cosmicGlitch) {
-      const glitchReconfig = reconfigureForGlitch(cosmicGlitch)
-      for (const action of glitchReconfig.actions) {
-        results.push({
-          loop: 'buzhouShan',
-          executed: true,
-          delta: {
-            loopEngine: {
-              ...current.loopEngine,
-              lastGlitch: cosmicGlitch,
-              pendingReconfig: glitchReconfig.actions,
-            } as any,
-          },
-        })
-      }
+  const cosmicGlitch = monitorCosmicGlitch(current)
+  if (cosmicGlitch) {
+    const glitchReconfig = reconfigureForGlitch(cosmicGlitch)
+    for (const action of glitchReconfig.actions) {
+      results.push({
+        loop: 'buzhouShan',
+        executed: true,
+        delta: {
+          loopEngine: {
+            ...current.loopEngine,
+            lastGlitch: cosmicGlitch,
+            pendingReconfig: glitchReconfig.actions,
+          } as any,
+        },
+      })
     }
+  }
 
-  // 2. Loops de reparación/mantenimiento
   const loops: Array<{ name: string; fn: (s: AppState) => Partial<AppState> }> = [
     { name: 'cdsDecay', fn: cdsDecayLoop },
     { name: 'meritMint', fn: meritMintLoop },
@@ -399,7 +386,7 @@ export function runAlraicoTick(
     { name: 'regenMrv', fn: regenMrvLoop },
     { name: 'nostrAudit', fn: nostrAuditLoop },
     { name: 'vecinalAccountability', fn: vecinalAccountabilityLoop },
-    { name: 'vitalTimeMint', fn: vitalTimeMintLoop },  // Loop 7: Tiempo Vital
+    { name: 'vitalTimeMint', fn: vitalTimeMintLoop },
   ]
 
   for (const loop of loops) {
@@ -409,7 +396,6 @@ export function runAlraicoTick(
     results.push({ loop: loop.name, executed, delta })
   }
 
-  // 3. Resonancia: detectar y acoplar
   const resonances = detectResonances(current)
   if (resonances.length > 0) {
     const coupled = coupleResonances(current, resonances)
@@ -420,7 +406,7 @@ export function runAlraicoTick(
   return { state: current, results }
 }
 
-/** EJECUTA MÚLTIPLES TICKS (simulación / homeostasis test) */
+/** EJECUTA MÚLTIPLES TICKS */
 export function runAlraicoSimulation(
   initialState: AppState,
   ticks: number,
@@ -436,6 +422,3 @@ export function runAlraicoSimulation(
   }
   return { finalState: current, history }
 }
-
-// Importar funciones vitalTime (definidas en valueDual.ts)
-import { vitalTimeRotate, vitalTimeDecay } from './valueDual'

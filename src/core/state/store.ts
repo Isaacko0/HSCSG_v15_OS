@@ -165,18 +165,23 @@ export interface AppState {
   setSearch: (s: string) => void
 
   // ===== HSCSG v15 domain state =====
-  nodeName: string
-  base: BaseMaterial
-  cac: CACVectors
-  sensors: SensorReading[]
-  members: Member[]
-  flows: ValueFlow[]
-  talents: Talent[]
-  plans: PlanCycle[]
-  pvsos: PVSO[]
-  znu: ZNUState
+    nodeName: string
+    base: BaseMaterial
+    cac: CACVectors
+    sensors: SensorReading[]
+    members: Member[]
+    flows: ValueFlow[]
+    talents: Talent[]
+    plans: PlanCycle[]
+    pvsos: PVSO[]
+    znu: ZNUState
+    vitalTime: {
+      nodes: Record<string, import('@core/lib/vitalTime').VitalTimeNode>
+      staleAlerts: string[]
+      pendingVerifications: string[]
+    }
 
-  // ===== Orquestación (asimilado de Paperclip) =====
+    // ===== Orquestación (asimilado de Paperclip) =====
   agents: AgentNode[]
   goals: GoalNode[]
   tasks: TaskNode[]
@@ -1450,20 +1455,25 @@ export const useAppStore = create<AppState>()(
         },
       })),
       resetAll: () =>
-        set({
-          nodeName: 'Nodo Cosateca v0.1',
-          base: initialBase,
-          boundaries: initialBoundaries,
-          coworkers: initialCoworkers,
-          cac: initialCAC,
-          sensors: [],
-          members: [],
-          flows: [],
-          talents: initialTalents,
-          plans: initialPlans,
-          pvsos: [],
-          znu: { perMember: 100, demurrageThreshold: 300, demurrageRate: 0.05, priceParity: 1 },
-          agents: [], goals: [], tasks: [], audit: [],
+              set({
+                nodeName: 'Nodo Cosateca v0.1',
+                base: initialBase,
+                boundaries: initialBoundaries,
+                coworkers: initialCoworkers,
+                cac: initialCAC,
+                sensors: [],
+                members: [],
+                flows: [],
+                talents: initialTalents,
+                plans: initialPlans,
+                pvsos: [],
+                znu: { perMember: 100, demurrageThreshold: 300, demurrageRate: 0.05, priceParity: 1 },
+                vitalTime: {
+                  nodes: {},
+                  staleAlerts: [],
+                  pendingVerifications: []
+                },
+                agents: [], goals: [], tasks: [], audit: [],
       // CaaS (Comunidad como Servicio reconciliado con MJ)
       caasTier: 'visitante' as CaaSTierKey,
       caasMembers: [],
@@ -1572,59 +1582,60 @@ export const useAppStore = create<AppState>()(
     {
       name: 'hscsg.v15.os.v1',
       partialize: (st) => ({
-        screen: st.screen,
-        collapsed: st.collapsed,
-        nodeName: st.nodeName,
-        base: st.base,
-        cac: st.cac,
-        sensors: st.sensors,
-        members: st.members,
-        flows: st.flows,
-        talents: st.talents,
-        plans: st.plans,
-        pvsos: st.pvsos,
-        znu: st.znu,
-        agents: st.agents,
-        goals: st.goals,
-        tasks: st.tasks,
-        audit: st.audit,
-        caasTier: st.caasTier,
-        caasMembers: st.caasMembers,
-        caasStreams: st.caasStreams,
-        caasPayouts: st.caasPayouts,
-        caasAudit: st.caasAudit,
-        soul: st.soul,
-        botActions: st.botActions,
-        botHeartbeats: st.botHeartbeats,
-        botChildren: st.botChildren,
-        botAudit: st.botAudit,
-        solar: st.solar,
-        colaberry: st.colaberry,
-        prio: st.prio,
-        vesting: st.vesting,
-        trust: st.trust,
-        tekitl: st.tekitl,
-        sovereignty: st.sovereignty,
-        integral: st.integral,
-        mundus: st.mundus,
-        life: st.life,
-        civilizaciones: st.civilizaciones,
-        celulas: st.celulas,
-        colony: st.colony,
-        kleros: st.kleros,
-        agencia: st.agencia,
-        nodeMode: st.nodeMode,
-        priceParity: st.priceParity,
-        gaia: st.gaia,
-        symbiosky: st.symbiosky,
-        democracia: st.democracia,
-        aprender: st.aprender,
-        oraculo: st.oraculo,
-        gaiaunion: st.gaiaunion,
-        stageSeeds: st.stageSeeds,
-        lang: st.lang,
-        lucidez: st.lucidez,
-      }),
+              screen: st.screen,
+              collapsed: st.collapsed,
+              nodeName: st.nodeName,
+              base: st.base,
+              cac: st.cac,
+              sensors: st.sensors,
+              members: st.members,
+              flows: st.flows,
+              talents: st.talents,
+              plans: st.plans,
+              pvsos: st.pvsos,
+              znu: st.znu,
+              vitalTime: st.vitalTime,
+              agents: st.agents,
+              goals: st.goals,
+              tasks: st.tasks,
+              audit: st.audit,
+              caasTier: st.caasTier,
+              caasMembers: st.caasMembers,
+              caasStreams: st.caasStreams,
+              caasPayouts: st.caasPayouts,
+              caasAudit: st.caasAudit,
+              soul: st.soul,
+              botActions: st.botActions,
+              botHeartbeats: st.botHeartbeats,
+              botChildren: st.botChildren,
+              botAudit: st.botAudit,
+              solar: st.solar,
+              colaberry: st.colaberry,
+              prio: st.prio,
+              vesting: st.vesting,
+              trust: st.trust,
+              tekitl: st.tekitl,
+              sovereignty: st.sovereignty,
+              integral: st.integral,
+              mundus: st.mundus,
+              life: st.life,
+              civilizaciones: st.civilizaciones,
+              celulas: st.celulas,
+              colony: st.colony,
+              kleros: st.kleros,
+              agencia: st.agencia,
+              nodeMode: st.nodeMode,
+              priceParity: st.priceParity,
+              gaia: st.gaia,
+              symbiosky: st.symbiosky,
+              democracia: st.democracia,
+              aprender: st.aprender,
+              oraculo: st.oraculo,
+              gaiaunion: st.gaiaunion,
+              stageSeeds: st.stageSeeds,
+              lang: st.lang,
+              lucidez: st.lucidez,
+            }),
     },
   ),
 )

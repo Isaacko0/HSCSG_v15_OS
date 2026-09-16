@@ -1,53 +1,23 @@
-// HSCSG v15 OS — Humano como Artífice: Mago + Alquimista (BT214 Completo)
+// HSCSG v15 OS — Humano como Artífice: Mago + Alquimista (BT214 Completo) — REFACTOR LIMPIO
 // Fuente: BT214 "El Mago/Alquimista" + Kernel v214 Canónico
 // Integrado con: Sistema Alráico + HSCSG v15 OS + Kernel v214
-
-export interface HumanArtificer {
-  // Identidad del operador
-  operatorId: string;
-  name: string; // Nombre de Resonancia
-  
-  // Roles duales (BT214)
-  magus: MagusRole;
-  alchemist: AlchemistRole;
-  
-  // Responsabilidad indelegable (BT214)
-  responsibility: Responsibility;
-  
-  // Función de transformación (BT214)
-  transformation: TransformationFunction;
-  
-  // Incertidumbre estructural (BT214)
-  uncertainty: StructuralUncertainty;
-  
-  // Beta Perpetua aplicada al operador (BT214)
-  betaPerpetua: BetaPerpetuaMode;
-  
-  // Límites IA (BT214)
-  aiLimitations: AILimitations;
-  
-  // Firma única del operador (BT214)
-  signature: OperatorSignature;
-  
-  // Estado de presencia (BT213 + BT214)
-  presence: PresenceState;
-}
+// Sin duplicados de tipos base
 
 // ============================================
 // ROLES: MAGO + ALQUIMISTA (BT214)
 // ============================================
 
 export interface MagusRole {
-  definition: 'combina lo que ya existe en formas que la naturaleza, sin deliberación orientada, no produciría';
-  action: 'combina lo existente en formas nuevas';
-  keyAttribute: 'creatividad estructural orientada';
+  definition: 'combina lo que ya existe en formas que la naturaleza, sin deliberación orientada, no produciría'
+  action: 'combina lo existente en formas nuevas'
+  keyAttribute: 'creatividad estructural orientada'
 }
 
 export interface AlchemistRole {
-  definition: 'transforma lo que tiene en lo que necesita por comprensión de la estructura, no por deseo';
-  action: 'transforma por comprensión estructural, no por deseo';
-  metaphor: 'símbolo, no afirmación física (transmutación requiere procesos nucleares)';
-  keyAttribute: 'transformación por comprensión estructural';
+  definition: 'transforma lo que tiene en lo que necesita por comprensión de la estructura, no por deseo'
+  action: 'transforma por comprensión estructural, no por deseo'
+  metaphor: 'símbolo, no afirmación física (transmutación requiere procesos nucleares)'
+  keyAttribute: 'transformación por comprensión estructural'
 }
 
 // ============================================
@@ -55,14 +25,14 @@ export interface AlchemistRole {
 // ============================================
 
 export interface Responsibility {
-  nonDelegable: true;
-  kernelDoesNotPayCost: true;
-  humanPaysCost: true;
-  knowledgeShared: true;
-  translationLeavesSignature: true; // huella única = firma operador
-  decisionUnderUncertainty: 'pertenece al operador';
-  costOfBet: 'asume operador';
-  noShortcut: 'kernel no puede ejecutar por humano';
+  nonDelegable: true
+  kernelDoesNotPayCost: true
+  humanPaysCost: true
+  knowledgeShared: true
+  translationLeavesSignature: true
+  decisionUnderUncertainty: 'pertenece al operador'
+  costOfBet: 'asume operador'
+  noShortcut: 'kernel no puede ejecutar por humano'
 }
 
 // ============================================
@@ -70,18 +40,18 @@ export interface Responsibility {
 // ============================================
 
 export interface TransformationFunction {
-  kernelOrganizes: 'rastros';
-  humanTransforms: 'rastros → dirección';
-  kernelShowsStructure: true;
-  humanDecidesAction: true;
-  noShortcut: 'kernel no puede ejecutar por humano';
+  kernelOrganizes: 'rastros'
+  humanTransforms: 'rastros → dirección'
+  kernelShowsStructure: true
+  humanDecidesAction: true
+  noShortcut: 'kernel no puede ejecutar por humano'
   process: {
-    step1: 'kernel organiza rastros (coherencia, resonancia, γ-CARMIS, etc.)';
-    step2: 'humano en presencia integra experiencia directa + rastros compartidos';
-    step3: 'humano decide dirección (transforma rastros → dirección)';
-    step4: 'decisión deja firma única (traducción = huella operador)';
-    step5: 'humano asume costo de la apuesta (incertidumbre estructural)';
-  };
+    step1: 'kernel organiza rastros (coherencia, resonancia, γ-CARMIS, etc.)'
+    step2: 'humano en presencia integra experiencia directa + rastros compartidos'
+    step3: 'humano decide dirección (transforma rastros → dirección)'
+    step4: 'decisión deja firma única (traducción = huella operador)'
+    step5: 'humano asume costo de la apuesta (incertidumbre estructural)'
+  }
 }
 
 // ============================================
@@ -89,11 +59,11 @@ export interface TransformationFunction {
 // ============================================
 
 export interface StructuralUncertainty {
-  structural: true;
-  noTranslationComplete: true;
-  decisionUnderUncertainty: 'pertenece al operador';
-  costOfBet: 'asume operador';
-  noTranslationCompleteNote: 'ninguna traducción humana es completa. La realidad siempre excede cualquier formulación.';
+  structural: true
+  noTranslationComplete: true
+  decisionUnderUncertainty: 'pertenece al operador'
+  costOfBet: 'asume operador'
+  noTranslationCompleteNote: 'ninguna traducción humana es completa. La realidad siempre excede cualquier formulación.'
 }
 
 // ============================================
@@ -101,12 +71,12 @@ export interface StructuralUncertainty {
 // ============================================
 
 export interface BetaPerpetuaMode {
-  completeMeans: 'estabilidad actual (no nuevos rastros justifican corrección)';
-  notOntologicalEnd: true;
-  stabilityFrom: 'operador en presencia de rastros no encuentra configuración más coherente que aumente el margen';
-  openToCorrection: 'siempre abierto cuando realidad lo exija';
-  betaPerpetuaIntact: true;
-  corpusAlwaysOpenToCorrection: true;
+  completeMeans: 'estabilidad actual (no nuevos rastros justifican corrección)'
+  notOntologicalEnd: true
+  stabilityFrom: 'operador en presencia de rastros no encuentra configuración más coherente que aumente el margen'
+  openToCorrection: 'siempre abierto cuando realidad lo exija'
+  betaPerpetuaIntact: true
+  corpusAlwaysOpenToCorrection: true
 }
 
 // ============================================
@@ -114,13 +84,13 @@ export interface BetaPerpetuaMode {
 // ============================================
 
 export interface AILimitations {
-  cannotHabitateForHuman: true;
-  cannotPayCost: true;
-  cannotTransform: true;
-  cannotDecideForHuman: true;
-  cannotHabitateForHumanNote: 'La IA no puede habitar por el humano. No paga costo. No transforma. No decide.';
-  kernelDoesNotPayCost: true;
-  humanPaysCost: true;
+  cannotHabitateForHuman: true
+  cannotPayCost: true
+  cannotTransform: true
+  cannotDecideForHuman: true
+  cannotHabitateForHumanNote: 'La IA no puede habitar por el humano. No paga costo. No transforma. No decide.'
+  kernelDoesNotPayCost: true
+  humanPaysCost: true
 }
 
 // ============================================
@@ -128,79 +98,54 @@ export interface AILimitations {
 // ============================================
 
 export interface OperatorSignature {
-  unique: true;
-  description: 'la traducción deja una huella única que es la firma del operador';
-  knowledgeShared: true;
-  translationLeavesTrace: true;
-  uniquePerOperator: true;
-  nonTransferable: true;
+  unique: true
+  description: 'la traducción deja una huella única que es la firma del operador'
+  knowledgeShared: true
+  translationLeavesTrace: true
+  uniquePerOperator: true
+  nonTransferable: true
 }
 
 // ============================================
-// ESTADO DE PRESENCIA (BT213 + BT214)
+// TIPOS BASE (definidos UNA SOLA VEZ)
 // ============================================
 
-export interface PresenceState {
-  // BT213: Presencia integra dos dominios
-  directExperienceVerified: boolean;  // experiencia directa (privada)
-  sharedTracesVerified: boolean;      // rastros compartidos (públicos)
-  debtGenerated: boolean;             // true si evadió uno de los dos
-  
-  // BT214: Responsabilidad asumida
-  responsibilityAccepted: boolean;    // firmó responsabilidad indelegable
-  
-  // BT214: Incertidumbre asumida
-  uncertaintyAcknowledged: boolean;   // incertidumbre estructural asumida
-  
-  // BT214: Beta Perpetua
-  betaPerpetuaMode: boolean;          // acepta corrección continua
-  
-  // BT214: Firma única
-  translationSignature: string;       // huella única de su traducción
-  
-  // Métricas de presencia
-  lastVerification: number;           // timestamp última verificación triaxial
-  verificationCount: number;          // contador verificaciones completadas
-  resonanceConnections: string[];     // nodos con resonancia αʰ > umbral
+export interface KernelTrace {
+  id: string
+  type: 'coherence' | 'resonance' | 'gammaCARMIS' | 'presence' | 'debt' | 'trace'
+  content: any
+  timestamp: number
+  verified: boolean
+}
+
+export interface OperatorPresence {
+  directExperience: any
+  sharedTraces: any[]
+  presenceVerified: boolean
+  debtLevel: number
+}
+
+export interface OperatorIntent {
+  direction: string
+  justification: string
+  riskAcknowledged: boolean
+  costAccepted: boolean
+}
+
+export interface HumanDirection {
+  direction: string
+  justification: string
+  riskLevel: 'low' | 'medium' | 'high'
+  costAccepted: boolean
+  signature: string
+  timestamp: number
+  betaPerpetua: boolean
 }
 
 // ============================================
 // FUNCIÓN PRINCIPAL: HUMANO TRANSFORMA (BT214)
 // ============================================
 
-export interface KernelTrace {
-  id: string;
-  type: 'coherence' | 'resonance' | 'gammaCARMIS' | 'presence' | 'debt' | 'trace';
-  content: any;
-  timestamp: number;
-  verified: boolean;
-}
-
-export interface OperatorPresence {
-  directExperience: any;      // experiencia directa integrada
-  sharedTraces: any[];        // rastros compartidos integrados
-  presenceVerified: boolean;  // presencia verificada (triaxial)
-  debtLevel: number;          // nivel deuda estructural actual
-}
-
-export interface OperatorIntent {
-  direction: string;          // dirección elegida
-  justification: string;      // justificación de la dirección
-  riskAcknowledged: boolean;  // riesgo asumido
-  costAccepted: boolean;      // costo de la apuesta aceptado
-}
-
-export interface HumanDirection {
-  direction: string;
-  justification: string;
-  riskLevel: 'low' | 'medium' | 'high';
-  costAccepted: boolean;
-  signature: string;           // firma única del operador
-  timestamp: number;
-  betaPerpetua: boolean;       // acepta corrección futura
-}
-
-// Función principal: Humano transforma rastros en dirección (BT214)
 export function humanTransform(
   kernelTraces: KernelTrace[],
   operatorPresence: OperatorPresence,
@@ -208,40 +153,40 @@ export function humanTransform(
 ): HumanDirection {
   // 1. Validar presencia verificada (triaxial)
   if (!operatorPresence.presenceVerified) {
-    throw new Error('REQUISITO BT213/BT214: Presencia debe estar verificada triaxialmente antes de transformar');
+    throw new Error('REQUISITO BT213/BT214: Presencia debe estar verificada triaxialmente antes de transformar')
   }
-  
+
   // 2. Validar que no hay deuda crítica sin resolver
   if (operatorPresence.debtLevel > 0.8) {
-    throw new Error('REQUISITO BT213: Deuda estructural crítica debe resolverse antes de transformar');
+    throw new Error('REQUISITO BT213: Deuda estructural crítica debe resolverse antes de transformar')
   }
-  
+
   // 3. Kernel ya organizó rastros (coherencia, resonancia, γ-CARMIS, etc.)
-  const organizedTraces = organizeTracesForTransformation(kernelTraces);
-  
+  organizeTracesForTransformation(kernelTraces)
+
   // 4. Humano en presencia integra experiencia directa + rastros compartidos
-  const integratedView = integrateExperienceAndTraces(
+  integrateExperienceAndTraces(
     operatorPresence.directExperience,
     operatorPresence.sharedTraces
-  );
-  
+  )
+
   // 5. Humano decide dirección (transforma rastros → dirección)
-  const direction = operatorIntent.direction;
-  const justification = operatorIntent.justification;
-  
+  const direction = operatorIntent.direction
+  const justification = operatorIntent.justification
+
   // 6. Validar que operador asume costo y riesgo
   if (!operatorIntent.riskAcknowledged || !operatorIntent.costAccepted) {
-    throw new Error('REQUISITO BT214: Operador debe asumir riesgo y costo de la apuesta (responsabilidad indelegable)');
+    throw new Error('REQUISITO BT214: Operador debe asumir riesgo y costo de la apuesta (responsabilidad indelegable)')
   }
-  
-  // 6. Decisión deja firma única (traducción = huella operador)
+
+  // 7. Decisión deja firma única (traducción = huella operador)
   const signature = generateOperatorSignature(
     direction,
     justification,
     kernelTraces
-  );
-  
-  // 7. Humano asume costo de la apuesta (incertidumbre estructural)
+  )
+
+  // 8. Humano asume costo de la apuesta (incertidumbre estructural)
   return {
     direction,
     justification,
@@ -249,28 +194,25 @@ export function humanTransform(
     costAccepted: operatorIntent.costAccepted,
     signature,
     timestamp: Date.now(),
-    betaPerpetua: true // BT214: acepta corrección futura
-  };
+    betaPerpetua: true
+  }
 }
 
 // Funciones auxiliares
 function organizeTracesForTransformation(traces: KernelTrace[]): KernelTrace[] {
-  // Filtrar y organizar rastros relevantes para transformación
-  return traces.filter(t => t.verified).sort((a, b) => b.timestamp - a.timestamp);
+  return traces.filter(t => t.verified).sort((a, b) => b.timestamp - a.timestamp)
 }
 
 function integrateExperienceAndTraces(
-  directExperience: any, 
+  directExperience: any,
   sharedTraces: any[]
 ): any {
-  // En implementación real: integración real de experiencia + rastros
-  // Para spec: retorna vista integrada
   return {
     experience: directExperience,
     traces: sharedTraces,
     integrated: true,
     timestamp: Date.now()
-  };
+  }
 }
 
 function generateOperatorSignature(
@@ -278,41 +220,20 @@ function generateOperatorSignature(
   justification: string,
   traces: KernelTrace[]
 ): string {
-  // En producción: firma criptográfica real (Ed25519/WebAuthn)
-  // Para spec: hash simple + metadatos
-  const payload = `${direction}|${justification}|${traces.length}|${Date.now()}`;
-  return `sig_${btoa(payload).substring(0, 64)}`;
+  const payload = `${direction}|${justification}|${traces.length}|${Date.now()}`
+  return `sig_${btoa(payload).substring(0, 64)}`
 }
 
 function calculateRiskLevel(
-  traces: KernelTrace[], 
+  traces: KernelTrace[],
   presence: OperatorPresence
 ): 'low' | 'medium' | 'high' {
-  const debtRatio = presence.debtLevel;
-  const traceCount = traces.filter(t => t.verified).length;
-  
-  if (debtRatio > 0.7) return 'high';
-  if (debtRatio > 0.4 || traceCount < 3) return 'medium';
-  return 'low';
-}
+  const debtRatio = presence.debtLevel
+  const traceCount = traces.filter(t => t.verified).length
 
-// ============================================
-// TIPOS BASE
-// ============================================
-
-export interface KernelTrace {
-  id: string;
-  type: 'coherence' | 'resonance' | 'gammaCARMIS' | 'presence' | 'debt' | 'trace';
-  content: any;
-  timestamp: number;
-  verified: boolean;
-}
-
-export interface OperatorPresence {
-  directExperience: any;
-  sharedTraces: any[];
-  presenceVerified: boolean;
-  debtLevel: number;
+  if (debtRatio > 0.7) return 'high'
+  if (debtRatio > 0.4 || traceCount < 3) return 'medium'
+  return 'low'
 }
 
 // ============================================
@@ -325,14 +246,14 @@ export const HUMAN_ARTIFICER = {
     action: 'combina lo existente en formas nuevas',
     keyAttribute: 'creatividad estructural orientada'
   } as const,
-  
+
   alchemist: {
     definition: 'transforma lo que tiene en lo que necesita por comprensión de la estructura, no por deseo',
     action: 'transforma por comprensión estructural, no por deseo',
     metaphor: 'símbolo, no afirmación física (transmutación requiere procesos nucleares)',
     keyAttribute: 'transformación por comprensión estructural'
   } as const,
-  
+
   responsibility: {
     nonDelegable: true,
     kernelDoesNotPayCost: true,
@@ -343,7 +264,7 @@ export const HUMAN_ARTIFICER = {
     costOfBet: 'asume operador',
     noShortcut: 'kernel no puede ejecutar por humano'
   } as const,
-  
+
   transformation: {
     kernelOrganizes: 'rastros',
     humanTransforms: 'rastros → dirección',
@@ -351,7 +272,7 @@ export const HUMAN_ARTIFICER = {
     humanDecidesAction: true,
     noShortcut: 'kernel no puede ejecutar por humano'
   } as const,
-  
+
   uncertainty: {
     structural: true,
     noTranslationComplete: true,
@@ -359,7 +280,7 @@ export const HUMAN_ARTIFICER = {
     costOfBet: 'asume operador',
     note: 'ninguna traducción humana es completa. La realidad siempre excede cualquier formulación.'
   } as const,
-  
+
   betaPerpetua: {
     completeMeans: 'estabilidad actual (no nuevos rastros justifican corrección)',
     notOntologicalEnd: true,
@@ -368,7 +289,7 @@ export const HUMAN_ARTIFICER = {
     betaPerpetuaIntact: true,
     corpusAlwaysOpenToCorrection: true
   } as const,
-  
+
   aiLimitations: {
     cannotHabitateForHuman: true,
     cannotPayCost: true,
@@ -376,7 +297,7 @@ export const HUMAN_ARTIFICER = {
     cannotDecideForHuman: true,
     note: 'La IA no puede habitar por el humano. No paga costo. No transforma. No decide.'
   } as const,
-  
+
   signature: {
     unique: true,
     description: 'la traducción deja una huella única que es la firma del operador',
@@ -385,10 +306,9 @@ export const HUMAN_ARTIFICER = {
     uniquePerOperator: true,
     nonTransferable: true
   } as const,
-  
+
   humanTransform,
-  
-  // Referencias BT214
+
   references: {
     bt214: 'El Mago/Alquimista - El kernel organiza rastros. El humano transforma.',
     bt213: 'El Límite del Kernel - kernel organiza rastros, no decide verdad',
@@ -397,6 +317,6 @@ export const HUMAN_ARTIFICER = {
     bt210: 'Axioma Cero v2.0 - verdad deja rastros, margen, posibilidad, poder',
     bt166: 'Beta Perpetua - vida no se resuelve, se itera'
   }
-} as const;
+} as const
 
-export type HumanArtificerType = typeof HUMAN_ARTIFICER;
+export type HumanArtificerType = typeof HUMAN_ARTIFICER
