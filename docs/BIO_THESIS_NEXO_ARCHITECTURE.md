@@ -1,6 +1,6 @@
 # (Bio-Tesis MAESTRA) LEY NATURAL, Zona Cero y el NEXO
 
-**Versión**: 5.0 · PARADIGMA 0  
+**Versión**: 6.0 · PARADIGMA 0 Integrado  
 **Fecha**: 2026-09-17  
 **Autores**: Yoka · Isaac · Lautaro · Cergio  
 **Estado**: Documento abierto, actualizable vía Google Docs  
@@ -1594,6 +1594,156 @@ Nos toca intentarlo a nosotros.
 No porque ya tengamos el sistema resuelto, sino porque tenemos suficientes piezas para intentar, por primera vez, que un grupo humano sostenga un núcleo común sin convertirlo inmediatamente en una jerarquía, una religión o una estructura de poder.
 
 Esto recién empieza. Debemos seguir destilando este conocimiento y aprender del flujo de la vida para que nosotros y los que vienen detrás vean que al fin aprendimos que la guerra no es el camino. La paz aceptando sus problemas y aprendizajes lo es.
+
+---
+
+## PARTE V — ARQUITECTURA TÉCNICA NEXO (Integración con HSCSG v15 OS)
+
+> Esta parte traduce operativamente los principios de las Partes I-IV a especificaciones técnicas implementadas en el repositorio HSCSG_v15_OS.
+
+### A.1 Estado Actual de Implementación Técnica
+
+| Componente | Estado | Repositorio |
+|------------|--------|-------------|
+| **E=V (núcleo)** | Formulación viva, corroborada por 4 nodos | `hscsg_definition.md`, Bio-Tesis corpus |
+| **Kernel local** | `loopEngine.ts` + `vitalTime.ts` + `vitalTimeTriaxial.ts` | `src/core/lib/` |
+| **IA bajo E=V** | `hscsg-sistema-alraico` (γ-CARMIS, Triaxial, PI) | `skills/hscsg-sistema-alraico/` |
+| **Moneda tiempo vital** | `vitalTime.ts` + `vitalTimeTriaxial.ts` + `vitalTimeTransduction.ts` | `src/core/lib/` |
+| **Gobernanza CDS** | `vitalTimeInvariants.ts` (invariantes blindados + 100% consenso) | `src/governance/` |
+| **Métricas soberanas** | `metrics.ts` (TerritorialSovereigntyIndex 16 comp) | `src/core/lib/metrics.ts` |
+| **Red federada** | `hscsg-monetary-integration` (transducción F multi-moneda) | `skills/hscsg-monetary-integration/` |
+| **Validación territorial** | `hscsg-viabilidad-territorial` (AUT/CDS/ZNU ≥ umbrales) | `skills/hscsg-viabilidad-territorial/` |
+| **Legal-safe workflow** | `hscsg-asimilacion-legal-safe` + pre-commit hook | `scripts/legal-safe-check.sh` |
+| **OpenSpec SDD** | 4 specs vivas + 1 change completo + CI/CD + skill | `openspec/` |
+| **Kernel Protocol** | `kernelProtocol.ts` (v214 + VIA00-31 + Consola VIA-0) | `src/core/lib/kernelProtocol.ts` |
+| **BT213 Limits** | `bt213KernelLimits.ts` (Límite kernel BT213) | `src/core/lib/bt213KernelLimits.ts` |
+| **Human Artificer** | `humanArtificer.ts` (Humano artífice BT214) | `src/core/lib/humanArtificer.ts` |
+| **Value Dual** | `valueDual.ts` (Arquitectura anfibia 3 modos) | `src/core/lib/valueDual.ts` |
+
+### A.2 Kernel Alráico como Núcleo Epistémico (Capa 0)
+
+PI Topologizado: B (cognoscible), A (accesible), C = B\A (brecha)  
+γ-CARMIS: ΣPᵢ > κ → reconfiguración consciente  
+20 Límites Cognitivos: L1-L20  
+Verificación Triaxial: Mental(0.4) + Sim(0.3) + Lab(0.3) ≥ 0.7  
+Transducción F: F:{X}→𝕮→{Y}, 𝕮(αʰ=Ω·s, γ, ν, κ)  
+Resonancia: αʰ₁·αʰ₂·3.0 > αʰ₁+αʰ₂ → acople sin fusión  
+ECROx: (αʰ, s, y, v, XP, k) — métrica compuesta
+
+**loopEngine.ts** — 7 Loops operativos:
+1. CDS/Lucidez Loop → Mantiene lucidez
+2. MeritMint Loop → Cierra propuestas elegibles
+3. AgentCompute Loop → Proof of Response + computación distribuida
+4. Regen Loop → Base material (ecotecs + bioclimáticos)
+5. Symbiosis Loop → Acoplamento resonancias
+6. γ-CARMIS Monitor → ΣPᵢ > κ → reconfiguración
+7. VitalTimeMint Loop → MINT hr_vital SOLO si verifyTriaxial() passed
+
+### A.3 Moneda Tiempo Vital (hr_vital)
+
+- pool=1 (total finito)
+- rotación 30 días (libera exceso)
+- decay 10%/año (penaliza inactividad)
+- triaxial obligatoria para mint
+- transducción F TQ↔hr_vital (αʰ ≥ 0.6, límite 24/día)
+
+### A.4 Gobernanza CDS Federado
+
+- Consenso 100% (no mayoría)
+- Invariantes blindados (no-conversión, no-herencia, no-acumulación)
+- Test desaparición 30 días obligatorio
+- Corrección horizontal (prioridad arquitectónica)
+
+### A.5 Stack 8 Capas NEXO
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ CAPA 7: INTERFAZ HUMANO-NEXO (Exoesqueleto Cognitivo)       │
+│ Triaxial UI · Dashboard Soberanía · Wallet · P2P           │
+├─────────────────────────────────────────────────────────────┤
+│ CAPA 6: IA COORDINADORA (Espejo-Excavador)                  │
+│ AgentMesh · ProofOfResponse · CoachFAB · CEL Gateway        │
+├─────────────────────────────────────────────────────────────┤
+│ CAPA 5: RED CONOCIMIENTO (Acople sin fusión)                │
+│ Gaia · RIDF · Bio-Tesis · AFP · MK-1 · El Enlace            │
+├─────────────────────────────────────────────────────────────┤
+│ CAPA 4: DELIBERACIÓN FEDERADA (CDS 100%)                    │
+│ Invariantes blindados · Consenso 100% · Corrección horizontal│
+├─────────────────────────────────────────────────────────────┤
+│ CAPA 3: INTERCAMBIO MEDIBLE (Moneda + Transducción)          │
+│ hr_vital · TQ · Trustlines · Transducción F · Anfibio       │
+├─────────────────────────────────────────────────────────────┤
+│ CAPA 2: IDENTIDAD SOBERANA (DID + FactBand)                 │
+│ DID · ECROx · RAO · Unicidad                                │
+├─────────────────────────────────────────────────────────────┤
+│ CAPA 1: KERNEL MAESTRO (VIA00-31 + Consola)                 │
+│ PI Topologizado · γ-CARMIS · Triaxial · VIA00-31 · MK-1    │
+├─────────────────────────────────────────────────────────────┤
+│ CAPA 0: E=V (Núcleo Criterial — No Implementable)           │
+│ E=V: Energía = Dirección | Auditable | No modificable       │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### A.6 Protocolo de Acople Externo
+
+Para sistemas TQ/Gaia/MK-1/AFP/El Enlace:
+1. Verificar compatibilidad ontológica con E=V
+2. Verificar resonancia (αʰ₁·αʰ₂·3.0 > αʰ₁+αʰ₂)
+3. Definir términos de acople
+4. Habilitar transducción F si compatible
+5. Condiciones de salida (obligaciones sobreviven)
+
+### A.7 Funciones Core Operativas
+
+| Función | Implementación | Frecuencia |
+|---------|----------------|------------|
+| Verificación Triaxial Diaria | `verifyTriaxial()` | Diaria |
+| Mint hr_vital | `mintVitalTime()` | Diaria (post-triaxial) |
+| Rotación 30d | `vitalTimeRotate()` | Automática |
+| Decay 10%/año | `vitalTimeDecay()` | Continua |
+| Transducción TQ↔hr_vital | `transduceTQtoVitalTime()` | Bajo demanda (24/día) |
+| Detección Resonancia | `detectResonances()` | Cada tick (1 min) |
+| γ-CARMIS Monitor | `detectOverloads()` | Cada tick (1 min) |
+| Actualización Métricas | `calculateTSI()` | Cada tick (1 min) |
+| Test Desaparición 30d | `runDisappearanceTest()` | Mensual |
+
+### A.8 Métricas de Éxito (KPIs)
+
+| Métrica | Umbral (Gen 3) | Óptimo |
+|---------|----------------|--------|
+| Verificación triaxial diaria | 80% días/nodo | 95% |
+| Rotación correcta (30d) | 100% nodos | 100% |
+| Decay funcional (10%/año) | Detectable tras 7d | Medible |
+| Transducción TQ↔hr_vital | 1:1 con αʰ≥0.6 | Operativo |
+| Resonancia 3 nodos | 3 pares resonantes | 3/3 |
+| TerritorialSovereigntyIndex | ≥ 0.3 | ≥ 0.4 |
+| No-conversión (invariante) | 0 violaciones | 0 |
+| Test desaparición 30d | Pasado | Pasado |
+
+### A.9 Roadmap 6 Fases
+
+| Fase | Duración | Entregable | Estado |
+|------|----------|------------|--------|
+| **FASE 0** (Fundamentos) | ✅ | Spec v0.1 + código base | ✅ |
+| **FASE 1** (Integración Core) | ✅ | OpenSpec SDD + vital-time + kernel protocol | ✅ |
+| **FASE 2** (Orquestador NEXO) | Mes 2 | nexusOrchestrator.ts + acopleProtocol.ts | ⏳ |
+| **FASE 3** (Interfaz Humano) | Mes 2-3 | UI Triaxial + Dashboard (offline-first) | ⏳ |
+| **FASE 4** (Red P2P + Acople) | Mes 3-4 | Nostr/NEAR/libp2p + TQ/Gaia | ⏳ |
+| **FASE 5** (Piloto 3 Nodos) | Mes 4-5 | 60 días Yoka/Lautaro/Isaac | ⏳ |
+| **FASE 6** (Federación) | Mes 6+ | Kernel votable + Gaia/TQ federados | ⏳ |
+
+### A.10 Referencias Cruzadas
+
+| Fuente | Aporte |
+|--------|--------|
+| Bio-Tesis v5.0+ | Definición conceptual, principios, E=V, NEXO |
+| Alráico (Amid Dabir) | Capa 0 epistémica (PI, γ-CARMIS, Triaxial) |
+| HSCSG v15 OS | Infraestructura técnica completa |
+| OpenSpec (Fission AI) | Metodología SDD |
+| BT213/214 | Límites kernel + Human Artificer |
+| TQ (Cergio) | Sistema económico alternativo |
+| MK-1 (Fabio F. Balbi) | Modelo ontológico |
+| AFP (Yoka) | Filosofía Propia |
 
 ---
 

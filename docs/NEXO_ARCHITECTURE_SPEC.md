@@ -1,9 +1,9 @@
-# SPEC Técnica: Arquitectura NEXO v2.0
+# SPEC Técnica: Arquitectura NEXO
 
-**Versión**: 1.0 — Especificación Técnica Operacionalizada  
-**Fecha**: 2026-09-16  
+**Versión**: 2.0 — Especificación Técnica Operacionalizada  
+**Fecha**: 2026-09-17  
 **Autores**: Isaac Ko (HSCSG v15 OS) + Yoka (Kernel/E=V) + Alráico (Amid Dabir)  
-**Fuente Canónica**: [BIO_THESIS_NEXO_ARCHITECTURE.md v2.0](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/BIO_THESIS_NEXO_ARCHITECTURE.md)  
+**Fuente Canónica**: [BIO_THESIS_NEXO_ARCHITECTURE.md v6.0](https://github.com/Isaacko0/HSCSG_v15_OS/blob/main/docs/BIO_THESIS_NEXO_ARCHITECTURE.md)  
 **Repositorio**: https://github.com/Isaacko0/HSCSG_v15_OS  
 **Estado**: Especificación de trabajo — Se corrige sin defensa. Es E=V.  
 **Firmas pendientes**: Yoka, Lautaro, Cergio, Isaac  
@@ -14,7 +14,7 @@
 
 ### 1.1 Propósito
 
-Esta SPEC traduce los principios filosóficos de la Bio-Tesis v2.0 a requerimientos técnicos verificables para el desarrollo del NEXO como sistema operativo integrado. Cada requerimiento está vinculado a secciones específicas del documento canónico.
+Esta SPEC traduce los principios filosóficos de la Bio-Tesis MAESTRA v6.0 (PARADIGMA 0 Integrado) a requerimientos técnicos verificables para el desarrollo del NEXO como sistema operativo integrado. Cada requerimiento está vinculado a secciones específicas del documento canónico.
 
 ### 1.2 Alcance
 
