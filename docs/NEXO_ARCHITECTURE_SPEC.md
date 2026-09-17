@@ -521,7 +521,7 @@ graph TD
 
 | Documento | Enlace |
 |-----------|--------|
-| Bio-Tesis MAESTRA v2.0 | `docs/BIO_THESIS_NEXO_ARCHITECTURE.md` |
+| Bio-Tesis MAESTRA v6.0 | `docs/BIO_THESIS_NEXO_ARCHITECTURE.md` |
 | Spec NEXO (OpenSpec) | `openspec/specs/nexo-architecture.md` |
 | Spec Vital Time Currency | `openspec/specs/vital-time-currency.md` |
 | Spec Triaxial Verification | `openspec/specs/triaxial-verification.md` |
