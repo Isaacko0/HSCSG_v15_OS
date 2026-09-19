@@ -1,0 +1,78 @@
+{
+  "agents": [
+    {
+      "id": "isaac",
+      "name": "Isaac Ko",
+      "role": "Founder / Futurist / Autonomía",
+      "type": "human",
+      "status": "active",
+      "capabilities": ["strategy", "architecture", "protocol-design", "hscsg-vision"]
+    },
+    {
+      "id": "zeitnus-architect",
+      "name": "Zeitnus Architect",
+      "role": "System Architect",
+      "type": "ai",
+      "runtime": "hermes",
+      "capabilities": ["typescript", "react", "zustand", "hscsg-integration", "openspec-sdd", "vital-time", "ev-pattern"],
+      "heartbeat_sec": 300,
+      "status": "active",
+      "reports_to": "isaac"
+    },
+    {
+      "id": "hscsg-researcher",
+      "name": "HSCSG Researcher",
+      "role": "Deep Research & Assimilation",
+      "type": "ai",
+      "runtime": "hermes",
+      "capabilities": ["repo-assimilation", "vault-mining", "pattern-extraction", "legal-safe-transform", "biotesis-integration"],
+      "heartbeat_sec": 600,
+      "status": "active",
+      "reports_to": "isaac"
+    },
+    {
+      "id": "ev-specialist",
+      "name": "E→V Specialist",
+      "role": "E→V Pattern Implementation",
+      "type": "ai",
+      "runtime": "hermes",
+      "capabilities": ["ev-pattern", "energy-efficiency", "truth-verification", "existential-compatibility", "zero-origin", "ev-record-format"],
+      "heartbeat_sec": 300,
+      "status": "active",
+      "reports_to": "zeitnus-architect"
+    },
+    {
+      "id": "openspec-engineer",
+      "name": "OpenSpec Engineer",
+      "role": "OpenSpec SDD Implementation",
+      "type": "ai",
+      "runtime": "hermes",
+      "capabilities": ["openspec-sdd", "vital-time-currency", "nexo-architecture", "kernel-protocol", "triaxial-verification", "openspec-changes"],
+      "heartbeat_sec": 300,
+      "status": "active",
+      "reports_to": "hscsg-researcher"
+    },
+    {
+      "id": "alraico-kernel",
+      "name": "Alraico Kernel",
+      "role": "Kernel v214 + VIAs + BT213/BT214",
+      "type": "ai",
+      "runtime": "hermes",
+      "capabilities": ["kernel-protocol", "vias-32", "bt213-limits", "bt214-artificer", "hoguera-afp", "mk1-ontology"],
+      "heartbeat_sec": 300,
+      "status": "active",
+      "reports_to": "openspec-engineer"
+    },
+    {
+      "id": "legal-safe-validator",
+      "name": "Legal-Safe Validator",
+      "role": "Legal-Safe Transformation & Attribution",
+      "type": "ai",
+      "runtime": "hermes",
+      "capabilities": ["legal-safe-check", "fair-use", "attributions", "pre-commit-hooks", "copyright-compliance"],
+      "heartbeat_sec": 600,
+      "status": "active",
+      "reports_to": "hscsg-researcher"
+    }
+  ]
+}
